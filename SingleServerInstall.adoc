@@ -1,203 +1,35 @@
-[[userbar]]
-* https://wiki.zimbra.com/wiki/Main_Page[image:images/logo.png[image]]
-* https://wiki.zimbra.com/wiki/Certified[____Certified]
-* https://wiki.zimbra.com/wiki/Category:Community_Sandbox[____Community]
-* https://wiki.zimbra.com/wiki/index.php?search[____Search]
-
-* https://wiki.zimbra.com/wiki/Main_Page[image:images/logo.png[image]]
-* https://wiki.zimbra.com/wiki/Certified[____Certified]
-+
-** https://wiki.zimbra.com/wiki/Webinars[____Webinars]
-** https://community.zimbra.com/collaboration/[____Forums]
-* __
-* https://wiki.zimbra.com/wiki/Category:Community_Sandbox[____Community]
-* link:#[__ Page]
-+
-** [[ca-nstab-main]]
-+
-https://wiki.zimbra.com/wiki/Zimbra_Releases/8.7.0/Single_Server_Installation[Page]
-** [[ca-talk]]
-+
-https://wiki.zimbra.com/index.php?title=Talk:Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&redlink=1[Discussion]
-** [[ca-history]]
-+
-https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=history[History]
-** https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit[Edit]
-* link:#[__ Actions]
-+
-** [[ca-watch]]
-+
-https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=watch&token=618e354d1b77108d536447fbf29878af58945817%2B%5C[Watch]
-** [[ca-protect]]
-+
-https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=protect[Protect]
-** [[ca-move]]
-+
-https://wiki.zimbra.com/wiki/Special:MovePage/Zimbra_Releases/8.7.0/Single_Server_Installation[Move]
-** [[ca-delete]]
-+
-https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=delete[Delete]
-* link:#[__ Personal]
-+
-** [[pt-userpage]]
-+
-https://wiki.zimbra.com/wiki/User:Gren_Elliot[Gren Elliot]
-** [[pt-mytalk]]
-+
-https://wiki.zimbra.com/wiki/User_talk:Gren_Elliot[Talk]
-** [[pt-preferences]]
-+
-https://wiki.zimbra.com/wiki/Special:Preferences[Preferences]
-** [[pt-watchlist]]
-+
-https://wiki.zimbra.com/wiki/Special:Watchlist[Watchlist]
-** [[pt-mycontris]]
-+
-https://wiki.zimbra.com/wiki/Special:Contributions/Gren_Elliot[Contributions]
-** [[pt-logout]]
-+
-https://wiki.zimbra.com/index.php?title=Special:UserLogout&returnto=Zimbra+Releases%2F8.7.0%2FSingle+Server+Installation[Log
-out]
-* link:#[__ Tools]
-+
-** [[t-info]]
-+
-https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=info[Page
-information]
-** [[t-permalink]]
-+
-https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&oldid=62518[Permanent
-link]
-** [[t-print]]
-+
-https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&printable=yes[Printable
-version]
-** [[t-specialpages]]
-+
-https://wiki.zimbra.com/wiki/Special:SpecialPages[Special pages]
-** [[t-upload]]
-+
-https://wiki.zimbra.com/wiki/Special:Upload[Upload file]
-** [[t-recentchangeslinked]]
-+
-https://wiki.zimbra.com/wiki/Special:RecentChangesLinked/Zimbra_Releases/8.7.0/Single_Server_Installation[Related
-changes]
-** [[t-whatlinkshere]]
-+
-https://wiki.zimbra.com/wiki/Special:WhatLinksHere/Zimbra_Releases/8.7.0/Single_Server_Installation[What
-links here]
-
-[[mw-page-base]][[mw-head-base]][[page-header]]
-* [[p-logo]]
-+
-https://wiki.zimbra.com/wiki/Main_Page[image:[Zimbra :: Tech Center]]
-* 
-
-[[content]]
-[[top]][[mw-js-message]][[bodyContent]]
-[[innerbodycontent]]
-[[firstHeading]]
-Zimbra Releases/8.7.0/Single Server Installation
-------------------------------------------------
-
-[[contentSub]][[mw-content-text]]
-[[toc]]
-[[toctitle]]
-[[contents]]
-Contents
-~~~~~~~~
-
- [link:#[hide]] 
-
-* link:#Performing_a_Single-Server_Installation[1 Performing a
-Single-Server Installation]
-** link:#Installation_Prerequisites[1.1 Installation Prerequisites]
-*** link:#System_Requirements[1.1.1 System Requirements]
-*** link:#Zimbra_Connector_for_Outlook_.28Network_Edition_Only.29[1.1.2
-Zimbra Connector for Outlook (Network Edition Only)]
-*** link:#Zimbra_Mobile_.28Network_Edition_Only.29[1.1.3 Zimbra Mobile
-(Network Edition Only)]
-*** link:#Zimbra_Touch_Client_.28Network_Edition_Only.29[1.1.4 Zimbra
-Touch Client (Network Edition Only)]
-*** link:#Available_Languages[1.1.5 Available Languages]
-** link:#Modifying_Operating_System_Configurations[1.2 Modifying
-Operating System Configurations]
-** link:#Configuring_High-Fidelity_Document_Preview_.28Network_Edition_Only.29[1.3
-Configuring High-Fidelity Document Preview (Network Edition Only)]
-*** link:#Install_Language_and_Font_Packages[1.3.1 Install Language and
-Font Packages]
-** link:#DNS_Configuration_Requirement[1.4 DNS Configuration
-Requirement]
-** link:#Overview_of_Installation_Process[1.5 Overview of Installation
-Process]
-*** link:#Zimbra_Application_Packages[1.5.1 Zimbra Application Packages]
-** link:#Downloading_the_Zimbra_Software[1.6 Downloading the Zimbra
-Software]
-** link:#Zimbra_License_Requirements_.28Network_Edition_Only.29[1.7
-Zimbra License Requirements (Network Edition Only)]
-*** link:#Zimbra_License_Requirements[1.7.1 Zimbra License Requirements]
-*** link:#License_Usage_by_Zimbra_Collaboration_Account_Type[1.7.2
-License Usage by Zimbra Collaboration Account Type]
-*** link:#License_Activation[1.7.3 License Activation]
-*** link:#Automatic_License_Activation[1.7.4 Automatic License
-Activation]
-*** link:#Manual_License_Activation[1.7.5 Manual License Activation]
-*** link:#License_Not_Installed_or_Activated[1.7.6 License Not Installed
-or Activated]
-*** link:#Obtaining_a_License[1.7.7 Obtaining a License]
-** link:#Basic_Configuration[1.8 Basic Configuration]
-** link:#Installing_Zimbra_Collaboration_Software[1.9 Installing Zimbra
-Collaboration Software]
-** link:#Final_Set-Up[1.10 Final Set-Up]
-** link:#Optional_Configurations[1.11 Optional Configurations]
-*** link:#Scanning_Attachments_in_Outgoing_Mail[1.11.1 Scanning
-Attachments in Outgoing Mail]
-** link:#Provisioning_Accounts[1.12 Provisioning Accounts]
-*** link:#Activate_the_Zimbra_Collaboration_license_.28Network_Edition_Only.29[1.12.1
-Activate the Zimbra Collaboration license (Network Edition Only)]
-*** link:#Provision_accounts[1.12.2 Provision accounts]
-*** link:#Configuring_One_Account[1.12.3 Configuring One Account]
-*** link:#Importing_Content_from_User_Mailboxes[1.12.4 Importing Content
-from User Mailboxes]
-*** link:#Administrators_Account[1.12.5 Administrators Account]
-** link:#Uninstalling_Zimbra_Collaboration[1.13 Uninstalling Zimbra
-Collaboration]
-
-[[performing-a-single-server-installationedit]]
 [[Performing_a_Single-Server_Installation]]Performing a Single-Server
-Installation[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=1[edit]]
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-The Zimbra Collaboration includes the Zimbra MTA, the Zimbra LDAP
+The {product-name} includes the Zimbra MTA, the Zimbra LDAP
 server, and the Zimbra mailbox server. In a single-server installation,
 all components are installed on one server and require no additional
 manual configuration.
 
 This installation guide is a quick start guide that describes the basic
-steps needed to install and configure Zimbra Collaboration in a direct
+steps needed to install and configure {product-name} in a direct
 network connect environment. In this environment, the Zimbra server is
 assigned a domain for which it receives mail, and a direct network
-connection to the Internet. When Zimbra Collaboration is installed, you
+connection to the Internet. When {product-name} is installed, you
 will be able to log on to the Zimbra administration console to manage
 the domain and provision accounts. The accounts you create are able to
 send and receive external email.
 
 *Important Notice About Single Server Installations*
 
-Zimbra Collaboration is designed to be the only application suite
-installed on the server. Zimbra Collaboration bundles and installs, as
+{product-name} is designed to be the only application suite
+installed on the server. {product-name} bundles and installs, as
 part of the installation process various other third party and open
 source software, including Apache Jetty, Postfix, and OpenLDAP®. The
 versions installed have been tested and configured to work with the
 Zimbra software. See the Administrator’s Guide for a complete list of
 software.
 
-A Zimbra license is required in order to create accounts on the Zimbra
-Collaboration Network Edition. You cannot install Zimbra Collaboration
+A Zimbra license is required in order to create accounts on the {product-name}
+Network Edition. You cannot install {product-name}
 without a license.
 
-The following table shows the default port settings when Zimbra
-Collaboration is installed.
+The following table shows the default port settings when {product-name}
+is installed.
 
 *Zimbra Port Mapping*
 
@@ -218,24 +50,20 @@ Collaboration is installed.
 **Important:**You cannot have any other web server, database, LDAP, or
 MTA server running, when you install the Zimbra software. If you have
 installed any of the applications before you install Zimbra software,
-disable these applications. During the Zimbra Collaboration
+disable these applications. During the {product-name}
 installation, Zimbra makes global system changes that may break
 applications that are on your server.
 
 [[installation-prerequisitesedit]]
 [[Installation_Prerequisites]]Installation
-Prerequisites[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=2[edit]]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to successfully install and run Zimbra Collaboration, ensure
+In order to successfully install and run {product-name}, ensure
 your system meets the requirements described in this section. System
 administrators should be familiar with installing and managing email
 systems.
 
 [[system-requirementsedit]]
-[[System_Requirements]]System
-Requirements[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=3[edit]]
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+[[System_Requirements]]System Requirements
 
 *Servers*
 
@@ -306,12 +134,12 @@ Linux deployments * NFS for backup only
 
 *Other Dependencies*
 
-Netcat (nc) is required on all operating systems using Zimbra
-Collaboration. The nc utility must be installed prior to installation or
+Netcat (nc) is required on all operating systems using {product-name}.
+The nc utility must be installed prior to installation or
 upgrading.
 
 For SUSE and Ubuntu systems, disable AppArmor and verify that services
-are not running before installing Zimbra Collaboration.
+are not running before installing {product-name}.
 
 For Red Hat Enterprise, Fedora Core and SUSE operating systems, the
 server must also have the following installed:
@@ -331,7 +159,7 @@ For Ubuntu 14 and Ubuntu 12:
 
 *Miscellaneous*
 
-* SSH client software to transfer and install the Zimbra Collaboration
+* SSH client software to transfer and install the {product-name}
 software.
 * Valid DNS configured with an A record and MX record.
 * Servers should be configured to run Network Time Protocol (NTP) on a
@@ -460,10 +288,7 @@ Display minimum resolution: 1024 x 768
 128 kbps or higher
 
 [[zimbra-connector-for-outlook-network-edition-onlyedit]]
-[[Zimbra_Connector_for_Outlook_.28Network_Edition_Only.29]]Zimbra
-Connector for Outlook (Network Edition
-Only)[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=4[edit]]
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+[[Zimbra_Connector_for_Outlook_.28Network_Edition_Only.29]]Zimbra Connector for Outlook (Network Edition Only)
 
 [width="100%",cols="50%,50%",]
 |=======================================================================
@@ -484,10 +309,7 @@ SP3 or later installed.
 |=======================================================================
 
 [[zimbra-mobile-network-edition-onlyedit]]
-[[Zimbra_Mobile_.28Network_Edition_Only.29]]Zimbra Mobile (Network
-Edition
-Only)[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=5[edit]]
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+[[Zimbra_Mobile_.28Network_Edition_Only.29]]Zimbra Mobile (Network Edition Only)
 
 [width="100%",cols="100%",]
 |=======================================================================
@@ -510,10 +332,7 @@ Non-Smartphone Operating Systems:
 |=======================================================================
 
 [[zimbra-touch-client-network-edition-onlyedit]]
-[[Zimbra_Touch_Client_.28Network_Edition_Only.29]]Zimbra Touch Client
-(Network Edition
-Only)[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=6[edit]]
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+[[Zimbra.28Network_Edition_Only.29]]Zimbra Touch Client (Network Edition Only)
 
 [width="100%",cols="100%",]
 |=======================================================================
@@ -529,9 +348,7 @@ III, Samsung Galaxy S® 4, Galaxy Nexus
  +
 
 [[available-languagesedit]]
-[[Available_Languages]]Available
-Languages[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=7[edit]]
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+[[Available_Languages]]Available Languages
 
 *End User Translations*
 
@@ -590,10 +407,9 @@ http://putty.nl/[http://putty.nl]
 
 [[modifying-operating-system-configurationsedit]]
 [[Modifying_Operating_System_Configurations]]Modifying Operating System
-Configurations[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=8[edit]]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configurations
 
-Zimbra Collaboration runs on one of several operating systems, including
+{product-name} runs on one of several operating systems, including
 Ubuntu® LTS, Red Hat® Enterprise Linux, and SUSE® Linux Enterprise.
 
 Installation modifications for frequently used operating systems are
@@ -607,15 +423,13 @@ A full default installation of the Linux distribution that you select is
 required.
 
 *Note:* Zimbra recommends that the operating systems you use are updated
-with the latest patches that have been tested with Zimbra Collaboration.
+with the latest patches that have been tested with {product-name}.
 See the latest release notes to see the operating systems patch list
-that has been tested with Zimbra Collaboration.
+that has been tested with {product-name}.
 
 [[configuring-high-fidelity-document-preview-network-edition-onlyedit]]
 [[Configuring_High-Fidelity_Document_Preview_.28Network_Edition_Only.29]]Configuring
-High-Fidelity Document Preview (Network Edition
-Only)[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=9[edit]]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+High-Fidelity Document Preview (Network Edition Only)
 
 The high-fidelity document preview feature requires the installation of
 LibreOffice or the LibreOffice-headless package, depending on the
@@ -623,7 +437,7 @@ operating system you are running.
 
 If the LibreOffice is installed, the system is automatically configured
 to use the high-fidelity document preview. If LibreOffice is not
-installed, the preview engine from prior Zimbra Collaboration releases
+installed, the preview engine from prior {product-name} releases
 is used.
 
 This can be accomplished with the Linux package management systems:
@@ -649,8 +463,7 @@ apt-get install libreoffice
 
 [[install-language-and-font-packagesedit]]
 [[Install_Language_and_Font_Packages]]Install Language and Font
-Packages[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=10[edit]]
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Packages
 
 Confirm you have the appropriate language packs or fonts installed for
 LibreOffice to properly view documents and attachments. For example:
@@ -679,8 +492,7 @@ libreoffice-langpack-xx
 
 [[dns-configuration-requirementedit]]
 [[DNS_Configuration_Requirement]]DNS Configuration
-Requirement[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=11[edit]]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Requirement
 
 In order to send and receive email, the Zimbra MTA must be configured in
 DNS with both A and MX records. For sending mail, the MTA uses DNS to
@@ -688,7 +500,7 @@ resolve hostnames and email-routing information. To receive mail, the MX
 record must be configured correctly to route the message to the mail
 server.
 
-During the installation process, Zimbra Collaboration checks to see if
+During the installation process, {product-name} checks to see if
 you have an MX record correctly configured. If it is not, an error is
 displayed suggesting that the domain name have an MX record configured
 in DNS.
@@ -700,21 +512,19 @@ MTA address to use for external delivery.
 
  +
 **Note:**Even if a relay host is configured, an MX record is still
-required if the Zimbra Collaboration server is going to receive email
+required if the {product-name} server is going to receive email
 from the Internet.
 
 [[overview-of-installation-processedit]]
 [[Overview_of_Installation_Process]]Overview of Installation
-Process[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=12[edit]]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Process
 
 When you run the install script, the process verifies that the correct
 prerequisite Zimbra application packages are available to be installed.
 
 [[zimbra-application-packagesedit]]
 [[Zimbra_Application_Packages]]Zimbra Application
-Packages[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=13[edit]]
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Packages
 
 Zimbra architecture includes open-source integrations using industry
 standard protocols. The third-party software has been tested and
@@ -742,7 +552,7 @@ application services.
 * **Zimbra LDAP:**User authentication is provided through OpenLDAP®
 software. Each account on the Zimbra server has a unique mailbox ID that
 is the primary point of reference to identify the account. The OpenLDAP
-schema has been customized for Zimbra Collaboration. The Zimbra LDAP
+schema has been customized for {product-name}. The Zimbra LDAP
 server must be configured before the other servers. You can set up LDAP
 replication, configuring a master LDAP server and replica LDAP servers.
 
@@ -753,7 +563,7 @@ Zimbra MTA also includes the anti-virus and anti-spam components.
 
 * *Zimbra Proxy:* Zimbra Proxy is a high-performance reverse proxy
 service for passing IMAP[S]/POP[S]/HTTP[S] client requests to other
-internal ZCS services.This package is normally installed on the MTA
+internal {product-name} services.This package is normally installed on the MTA
 server(s) or on its own independent server(s). When the zimbra-proxy
 package is installed, the proxy feature is enabled by default.
 Installing the Zimbra Proxy is highly recommended, and required if using
@@ -790,20 +600,16 @@ use to log on to the administration console, and you specify the
 location of the Zimbra license xml file.
 
 [[downloading-the-zimbra-softwareedit]]
-[[Downloading_the_Zimbra_Software]]Downloading the Zimbra
-Software[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=14[edit]]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[[Downloading_the_Zimbra_Software]]Downloading the Zimbra Software
 
-Obtain the Zimbra Collaboration software download and save to the
+Obtain the {product-name} software download and save to the
 computer from which you will install the software.
 
 [[zimbra-license-requirements-network-edition-onlyedit]]
 [[Zimbra_License_Requirements_.28Network_Edition_Only.29]]Zimbra License
-Requirements (Network Edition
-Only)[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=15[edit]]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Requirements (Network Edition Only)
 
-Zimbra Collaboration licensing gives administrators better visibility
+{product-name} licensing gives administrators better visibility
 and control into the licensed features they plan to deploy. The
 following is a summary of the feature attributes of a Zimbra
 Collaboration network edition license.
@@ -828,11 +634,10 @@ that can be created. The archive feature must be installed.
 
 [[zimbra-license-requirementsedit]]
 [[Zimbra_License_Requirements]]Zimbra License
-Requirements[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=16[edit]]
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Requirements
 
 A Zimbra license is required in order to create accounts in the Network
-Edition Zimbra Collaboration.
+Edition {product-name}.
 
 Several types of licenses are available:
 
@@ -844,12 +649,12 @@ Sales by contacting sales@zimbra.com or calling 1-650-427-5701. This
 license allows you to create up to 50 users and is valid for an extended
 period of time.
 * Subscription. You must purchase the Zimbra Subscription license. This
-license is valid for a specific Zimbra Collaboration system and is
+license is valid for a specific {product-name} system and is
 encrypted with the number of Zimbra accounts (seats) you have purchased,
 the effective date, and expiration date of the subscription license.
 * *Perpetual.* You must purchase the Zimbra Perpetual license. This
 license is similar to a subscription license and is valid for a specific
-Zimbra Collaboration system, is encrypted with the number of Zimbra
+{product-name} system, is encrypted with the number of Zimbra
 accounts (seats) you have purchased, the effective date, and an
 expiration date of 2099-12-31. When you renew your support agreement, no
 new perpetual license is sent to you, but your Account records in the
@@ -857,15 +662,13 @@ systems is updated with your new support end date.
 
 [[license-usage-by-zimbra-collaboration-account-typeedit]]
 [[License_Usage_by_Zimbra_Collaboration_Account_Type]]License Usage by
-Zimbra Collaboration Account
-Type[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=17[edit]]
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+{product-name} Account Type
 
 A mailbox license is required for an account assigned to a person,
 including accounts created for archiving. Distribution lists, aliases,
 locations and resources do not count against the license.
 
-Below is a description of Zimbra Collaboration accounts and if they
+Below is a description of {product-name} accounts and if they
 impact your license limit.
 
 * System accounts. System accounts are specific accounts used by Zimbra
@@ -884,12 +687,10 @@ change.
 * Distribution list. Distribution lists do not count against your
 license.
 * Resource account. Resource accounts (location and resources) do not
-count against your ZCS license.
+count against your {product-name} license.
 
 [[license-activationedit]]
-[[License_Activation]]License
-Activation[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=18[edit]]
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+[[License_Activation]]License Activation
 
 All network edition installations require license activation. New
 installations have a 10 day grace period from the license issue date
@@ -898,23 +699,21 @@ administration console by selecting Configure>Global Settings>License
 page, then clicking Activate License in the toolbar. You can also
 activate your license from the command line interface.
 
-Upgraded Zimbra Collaboration versions require an immediate activation
+Upgraded {product-name} versions require an immediate activation
 to maintain network feature functionality.
 
 [[automatic-license-activationedit]]
 [[Automatic_License_Activation]]Automatic License
-Activation[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=19[edit]]
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Activation
 
-Licenses are automatically activated if the Zimbra Collaboration server
+Licenses are automatically activated if the {product-name} server
 has a connection to the Internet and can communicate with the Zimbra
 License server. If you are unable to automatically activate your
 license, see the next section Manual License Activation.
 
 [[manual-license-activationedit]]
 [[Manual_License_Activation]]Manual License
-Activation[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=20[edit]]
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Activation
 
 For systems that do not have external access to the Zimbra License
 server, you can use the Zimbra Support Portal to manually activate your
@@ -925,35 +724,32 @@ Enter your email and password to log in.
 
 [[license-not-installed-or-activatededit]]
 [[License_Not_Installed_or_Activated]]License Not Installed or
-Activated[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=21[edit]]
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Activated
 
-If you fail to install or activate your Zimbra Collaboration server
-license, the following scenarios describe how your Zimbra Collaboration
+If you fail to install or activate your {product-name} server
+license, the following scenarios describe how your {product-name}
 server will be impacted.
 
 * License is not installed. If a license is not installed, the Zimbra
 Collaboration defaults to single user mode where all features limited by
 license are limited to one user.
 * License is not valid. If the license file is forged or could not be
-validated for other reasons, the Zimbra Collaboration defaults to single
+validated for other reasons, the {product-name} defaults to single
 user mode.
 * License is not activated. A license activation grace period is 10
 days. If for some reason the license is never activated, the Zimbra
 Collaboration defaults to single user mode.
 * License is in future. If the license starting date is still in the
-future, the Zimbra Collaboration defaults to single user mode.
+future, the {product-name} defaults to single user mode.
 * License is in grace period. If the license ending date has passed and
 is within the 30 day grace period, all features limited by license are
 still enabled, but administrators may see license renewal prompts.
 * License expired. If the license ending date has passed and the 30 day
-grace period expired, the Zimbra Collaboration server defaults to the
+grace period expired, the {product-name} server defaults to the
 feature set of the Open Source Edition.
 
 [[obtaining-a-licenseedit]]
-[[Obtaining_a_License]]Obtaining a
-License[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=22[edit]]
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+[[Obtaining_a_License]]Obtaining a License
 
 Go to Zimbra’s Website to obtain a trial license from the Network
 Downloads area. Contact Zimbra sales regarding a trial extended license,
@@ -961,8 +757,8 @@ or to purchase a subscription license or perpetual license, by emailing
 sales@zimbra.com or calling 1-650-427-5701.
 
 The subscription and perpetual license can only be installed on the
-Zimbra Collaboration system for which it is purchased. Only one Zimbra
-license is required for your Zimbra Collaboration environment. This
+{product-name} system for which it is purchased. Only one Zimbra
+license is required for your {product-name} environment. This
 license sets the number of accounts that can be created.
 
 Current license information, including the number of accounts purchased,
@@ -971,8 +767,7 @@ the number of accounts used, and the expiration date, can be viewed from
 
 [[basic-configurationedit]]
 [[Basic_Configuration]]Basic
-Configuration[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=23[edit]]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configuration
 
 The default configuration installs the Zimbra-LDAP, the Zimbra-MTA with
 anti-virus and anti-spam protection, the Zimbra mailbox server, the SNMP
@@ -1124,7 +919,7 @@ Admin user to create
 
 The user name assigned to the administrator account. Once the
 administrator account has been created, it is suggested that you do not
-rename the account as automatic Zimbra Collaboration notifications might
+rename the account as automatic {product-name} notifications might
 not be received.
 
 Admin Password
@@ -1181,8 +976,8 @@ connection.
 * *Configure for use with web proxy. FALSE* +
 If either or both of these are changed to TRUE, the proxy setting on the
 mailbox store are enabled in preparation for setting up zimbra proxy.
-* *Enable version update checks.* Zimbra Collaboration automatically
-checks to see if a new Zimbra Collaboration update is available. The
+* *Enable version update checks.* {product-name} automatically
+checks to see if a new {product-name} update is available. The
 default is TRUE.
 * *Enable version update notifications.* This enables automatic
 notification when updates are available when this is set to TRUE.
@@ -1202,9 +997,9 @@ Administration Console Tools Overview pane.
 
 *Default Class of Service Configuration*
 
-This menu section lists major new features for the Zimbra Collaboration
+This menu section lists major new features for the {product-name}
 release and whether the feature is enabled or not. When you change the
-feature setting during Zimbra Collaboration installation, you change the
+feature setting during {product-name} installation, you change the
 default COS settings Having this control, lets you decide when to
 introduce new features to your users.
 
@@ -1231,10 +1026,7 @@ q) Quit
 Quit can be used at any time to quit the installation.
 
 [[installing-zimbra-collaboration-softwareedit]]
-[[Installing_Zimbra_Collaboration_Software]]Installing Zimbra
-Collaboration
-Software[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=24[edit]]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[[Installing_Zimbra_Collaboration_Software]]Installing Zimbra Collaboration Software
 
 *Important:* Before you begin, make sure to:
 
@@ -1243,12 +1035,12 @@ your server as it is needed to complete your installation of Zimbra
 Collaboration.
 
 * Confirm you have the latest system requirements and prerequisites for
-installing Zimbra Collaboration.
+installing {product-name}.
 
 Open an SSH session to the Zimbra server and follow the steps below:
 
 \1. Log in as root to the Zimbra server and cd to the directory where
-the Zimbra Collaboration archive tar file is saved (cd /var/<tmp>). Type
+the {product-name} archive tar file is saved (cd /var/<tmp>). Type
 the following commands:
 
 * Unpack the file: `tar xzvf [zcsfullfilename.tgz]`
@@ -1424,7 +1216,7 @@ The system will be modified.  Continue? [N] y
 ....
 
 Also select the services to be installed on this server. To install
-Zimbra Collaboration on a single server, enter `Y` for the ldap, logger,
+{product-name} on a single server, enter `Y` for the ldap, logger,
 mta, snmp, store, and spell packages. If you use IMAP/POP Proxy, enter
 `Y` for the Zimbra proxy package.
 
@@ -1546,13 +1338,13 @@ characters. Press Enter.
 directory and file name for the
 
 Zimbra license. For example, if you saved to the tmp directory, you
-would type /tmp/ZCSLicense.xml. If you do not have the license, you
+would type /tmp/ZimbraLicense.xml. If you do not have the license, you
 cannot proceed. See Zimbra License Requirements on page 10.
 
 * Enable version update checks and Enable version update notifications
 
-are set to TRUE. Zimbra Collaboration automatically checks for the
-latest Zimbra Collaboration software updates and notifies the account
+are set to TRUE. {product-name} automatically checks for the
+latest {product-name} software updates and notifies the account
 that is configured in Version update notification email. You can modify
 this later from the administration console.
 
@@ -1656,14 +1448,12 @@ Configuration complete - press return to exit
 ....
 
 [[final-set-upedit]]
-[[Final_Set-Up]]Final
-Set-Up[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=25[edit]]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[[Final_Set-Up]]Final Set-Up
 
 After the Zimbra servers are configured, the following functions must be
 configured.
 
-*Important:* Zimbra Collaboration supports the default syslog of a
+*Important:* {product-name} supports the default syslog of a
 supported operating system. Depending on your operating system, the
 steps contained in this section might not be correct. See your operating
 system documentation for specific information about how to enable
@@ -1674,8 +1464,8 @@ enable server statistics to display on the administration console, and
 enable the logger monitor host. The server statistics includes
 information about the message count, message volume, and anti-spam and
 anti-virus activity.
-* Zimbra Collaboration ships a default zimbra user with a disabled
-password. Zimbra Collaboration requires access to this account via ssh
+* {product-name} ships a default zimbra user with a disabled
+password. {product-name} requires access to this account via ssh
 public key authentication. On most operating systems this combination is
 okay, but if you have modified pam rules to disallow any ssh access to
 disabled accounts then you must define a password for the zimbra UNIX
@@ -1714,17 +1504,12 @@ setting, SYSLOGD_options=”-r -m 0”
  +
 
 [[optional-configurationsedit]]
-[[Optional_Configurations]]Optional
-Configurations[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=26[edit]]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[[Optional_Configurations]]Optional Configurations
 
 You can configure the following options:
 
 [[scanning-attachments-in-outgoing-mailedit]]
-[[Scanning_Attachments_in_Outgoing_Mail]]Scanning Attachments in
-Outgoing
-Mail[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=27[edit]]
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+[[Scanning_Attachments_in_Outgoing_Mail]]Scanning Attachments in Outgoing Mail
 
 You can enable real-time scanning of attachments in outgoing emails sent
 using the Zimbra Web Client. If enabled, when an attachment is added to
@@ -1739,9 +1524,7 @@ zmprov mcf zimbraAttachmentsScanURL clam://localhost:3310/ zmprov mcf zimbraAtta
 ....
 
 [[provisioning-accountsedit]]
-[[Provisioning_Accounts]]Provisioning
-Accounts[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=28[edit]]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[[Provisioning_Accounts]]Provisioning Accounts
 
 Once the mailbox server is running, open your browser, enter the
 administration console URL and log on to the console to provision email
@@ -1763,27 +1546,21 @@ Enter the admin user name and password configured during the
 installation process. Enter the name as admin@mailhost.example.com.
 
 [[activate-the-zimbra-collaboration-license-network-edition-onlyedit]]
-[[Activate_the_Zimbra_Collaboration_license_.28Network_Edition_Only.29]]Activate
-the Zimbra Collaboration license (Network Edition
-Only)[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=29[edit]]
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+[[Activate_the_Zimbra_Collaboration_license_.28Network_Edition_Only.29]]Activate the {product-name} license
+(Network Edition Only)
 
 After you log on, a dialog displays stating your license is not
 activated. Go to Global Settings>License and click Activate License on
 the toolbar. Click OK to continue.
 
 [[provision-accountsedit]]
-[[Provision_accounts]]Provision
-accounts[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=30[edit]]
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+[[Provision_accounts]]Provision accounts
 
 You can configure one account at a time with the New Account Wizard or
 you can create many accounts at once using the Account Migration Wizard.
 
 [[configuring-one-accountedit]]
-[[Configuring_One_Account]]Configuring One
-Account[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=31[edit]]
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+[[Configuring_One_Account]]Configuring One Account
 
 The administration console New Account wizard steps you through the
 account information to be completed.
@@ -1806,15 +1583,13 @@ this account, proceed through the dialog before you click Finish. When
 the accounts are provisioned, you can send and receive emails.
 
 [[importing-content-from-user-mailboxesedit]]
-[[Importing_Content_from_User_Mailboxes]]Importing Content from User
-Mailboxes[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=32[edit]]
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+[[Importing_Content_from_User_Mailboxes]]Importing Content from User Mailboxes
 
 Zimbra developed different applications to facilitate moving a user’s
 email messages, calendars, and contacts from their old email servers to
 their accounts on the Zimbra server. When the user’s files are imported,
-the folder hierarchy is maintained. Use one of the Zimbra Collaboration
-utilities to move user mail to Zimbra Collaboration to guarantee that
+the folder hierarchy is maintained. Use one of the {product-name}
+utilities to move user mail to {product-name} to guarantee that
 all information is imported correctly.
 
 The following applications can be accessed from the administration
@@ -1825,10 +1600,10 @@ Alternatively, you can download the following applications from
 http://%7Bexample.com/downloads%7D/index.html (with “example” being your
 Zimbra server name).
 
-* Zimbra Collaboration Migration Wizard for Exchange. Format is an .exe
+* {product-name} Migration Wizard for Exchange. Format is an .exe
 file. You can migrate users from Microsoft® Exchange server email
 accounts to Zimbra server accounts.
-* Zimbra Collaboration Migration Wizard for Domino. Format is an .exe
+* {product-name} Migration Wizard for Domino. Format is an .exe
 file. You can migrate users from Lotus Domino server email accounts to
 Zimbra server accounts.
 * PST Import Wizard (User Instructions). Format is an .exe file. Users
@@ -1840,9 +1615,7 @@ errors in their file. For more information about this tool, go to
 http://support.microsoft.com/kb/287497.
 
 [[administrators-accountedit]]
-[[Administrators_Account]]Administrators
-Account[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=33[edit]]
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+[[Administrators_Account]]Administrators Account
 
 Initial administrative tasks when you log on for the first time may
 include setting up the admin mailbox to include features, aliases, and
@@ -1864,14 +1637,12 @@ during installation, the anti-virus notification is sent directly to the
 admin account.
 
 [[uninstalling-zimbra-collaborationedit]]
-[[Uninstalling_Zimbra_Collaboration]]Uninstalling Zimbra
-Collaboration[https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&action=edit&section=34[edit]]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[[Uninstalling_Zimbra_Collaboration]]Uninstalling Zimbra Collaboration
 
 To uninstall servers, run the install script -u, delete the Zimbra
 Collaboration directory, and remove the zcs.tgz file on the servers.
 
-\1. cd to the original install directory for the Zimbra Collaboration
+\1. cd to the original install directory for the {product-name}
 files.
 
 \2. Type ./install.sh -u
@@ -1880,170 +1651,7 @@ files.
 The Zimbra servers are stopped, the existing packages, the webapp
 directories, and the /opt/zimbra directory are removed.
 
-\4. Type rm -rf [zcsfullfilename] to delete the Zimbra Collaboration
+\4. Type rm -rf [zcsfullfilename] to delete the {product-name}
 directory.
 
 \5. Delete the zcs.tgz file.
-
- +
-
- +
-
-Retrieved from
-"https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0/Single_Server_Installation&oldid=62518"
-
-[[catlinks]][[jump-to-nav]]
-Jump to: link:#mw-head[navigation], link:#p-search[search]
-
- +
-
-[[footer]]
-
-'''''
-
-[[learn]]
-http://www.zimbra.com/learn/[Learn]
-+++++++++++++++++++++++++++++++++++
-
-http://www.zimbra.com/learn/[]
-
-What is Zimbra?
-
-http://www.zimbra.com/learn/zimbra-email-and-collaboration-benefits.html[]
-
-Benefits
-
-http://www.zimbra.com/learn/zimbra-demos-cheat-sheet.html[]
-
-Demos and Videos
-
-http://www.zimbra.com/learn/education-service-provider-business-solutions.html[]
-
-Industry Solutions
-
-http://www.zimbra.com/learn/customer-list.html[]
-
-Customers
-
-http://www.zimbra.com/learn/case-studies.html[]
-
-Case Studies
-
-http://www.zimbra.com/learn/awards.html[]
-
-Awards
-
-[[products]]
-http://www.zimbra.com/products/[Products]
-+++++++++++++++++++++++++++++++++++++++++
-
-http://www.zimbra.com/products/network-collaboration-server.html[]
-
-Zimbra Collaboration Server
-
-http://www.zimbra.com/products/virtualization.html[]
-
-Zimbra Cloud and Virtualization
-
-http://www.zimbra.com/products/zimbra-open-source.html[]
-
-Zimbra Open Source
-
-http://www.zimbra.com/products/desktop.html[]
-
-Zimbra Desktop
-
-http://www.zimbra.com/products/compare_products.html[]
-
-Compare Products
-
-http://www.zimbra.com/products/pricing.html[]
-
-Pricing
-
-http://www.zimbra.com/products/whats_new.html[]
-
-What’s New
-
-http://www.zimbra.com/downloads/[]
-
-Downloads
-
-[[community]]
-http://www.zimbra.com/community/[Community]
-+++++++++++++++++++++++++++++++++++++++++++
-
-http://www.zimbra.com/forums/[]
-
-Forums
-
-http://www.zimbra.com/community/documentation.html[]
-
-Documentation
-
-http://wiki.zimbra.com/[]
-
-Wiki
-
-http://blog.zimbra.com/[]
-
-Blog
-
-http://gallery.zimbra.com/[]
-
-Gallery
-
-http://bugzilla.zimbra.com/[]
-
-Submit Bug
-
-http://pm.zimbra.com/[]
-
-Release Status
-
-http://www.zimbra.com/community/contribute.html[]
-
-Contribute
-
-[[support]]
-http://www.zimbra.com/support/[Support]
-+++++++++++++++++++++++++++++++++++++++
-
-http://www.zimbra.com/support/support_overview.html[]
-
-Zimbra Support Program Overview
-
-http://help.zimbra.com/[]
-
-User Help
-
-https://support.zimbra.com/supportlogin.php[]
-
-Zimbra Customer Support Portal
-
-http://twitter.com/zimbra[]
-
-__
-
-http://www.facebook.com/Zimbra[]
-
-__
-
-https://plus.google.com/+zimbra/posts[]
-
-__
-
-http://www.linkedin.com/companies/zimbra[]
-
-__
-
- +
-
-Copyright © 2015 Zimbra, Inc. All rights reserved.
-https://zimbra.com/legal/[Legal Information] +
-https://www.mediawiki.org/[image:images/poweredby_mediawiki_88x31.png[Powered
-by MediaWiki,width=88,height=31]]
-http://www.mediawikibootstrapskin.co.uk/[image:images/BootStrapSkin_mediawiki_88x31.png[Powered
-by BootStrapSkin,width=88,height=31]]
-http://www.mediawikibootstrapskin.co.uk/[image:images/BootStrapSkin_logo_88x31.png[Powered
-by BootStrapSkin,width=88,height=31]]
