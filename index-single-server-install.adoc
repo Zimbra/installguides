@@ -42,4 +42,12 @@ include::dnsconfig.adoc[]
 
 include::overviewinstallprocess.adoc[]
 
+<<<
+
+include::licenserequirements.adoc[]
+
+<<<
+
+include::basicconfig.adoc[]
+
 :leveloffset: -1
