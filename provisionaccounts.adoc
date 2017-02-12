@@ -1,0 +1,121 @@
+[[Provisioning_Accounts]]
+## Provisioning Accounts
+:toc:
+
+Once the mailbox server is running, open your browser, enter the
+administration console URL and log on to the console to provision email
+accounts. The administration console URL is entered as:
+
+....
+https://[mailhost.example.com]:7071
+....
+
+*Note:* To go to the administration console, you must type **https**,
+even if you configured the Web server mode as HTTP.
+
+The first time you log on, a warning may be displayed stating the
+connection is untrusted. This only applies the first time you log in.
+Click **I understand the Risks** to be able to connect to the Zimbra
+administration console. Then click `OK`.
+
+Enter the admin user name and password configured during the
+installation process. Enter the name as `admin@mailhost.example.com`
+
+[[Activate_License]]
+### Activate the {product-name} license (Network Edition Only)
+
+Admin Console: ::
+After you log on, a dialog displays stating your license is not
+activated.
+
+Go to:
+
+*Home > Configure > Global Settings > License*
+
+click `Activate License` on the toolbar then Click `OK` to continue.
+
+[[Provision_accounts]]
+### Provision accounts
+
+You can configure one account at a time with the **New Account Wizard** or
+you can create many accounts at once using the **Account Migration Wizard**.
+
+[[Configuring_One_Account]]
+#### Configuring One Account
+
+Admin Console: ::
+The administration console **New Account wizard** steps you through the
+account information to be completed.
+
+1.  From the administration console *Home* page’s Content pane, go to
+`Add Accounts`. + 
+*Note:* Four accounts will already be listed - the admin account, two spam
+training accounts, and a global Documents account. These accounts do not
+need any additional configuration.
+
+2. Click `Add Account`. The first page of the New Account wizard opens.
+
+3. Enter the account name to be used as the email address and the last
+name. This is the only required information to create an account.
+
+4. You can click `Finish` at this point, and the account is configured
+with the default COS and global features.
+
+To configure aliases, forwarding addresses, and specific features for
+this account, proceed through the dialog before you click Finish.
+
+When the accounts are provisioned, you can send and receive emails.
+
+[[Importing_Content_from_User_Mailboxes]]
+#### Importing Content from User Mailboxes
+
+Zimbra developed different applications to facilitate moving a user’s
+email messages, calendars, and contacts from their old email servers to
+their accounts on the Zimbra server. When the user’s files are imported,
+the folder hierarchy is maintained. Use one of the {product-name}
+utilities to move user mail to {product-name} to guarantee that
+all information is imported correctly.
+
+The following applications can be accessed from the administration
+console **Download page**, and instruction guides are available from the
+Help Desk page or from the Zimbra Website, Documentation page.
+
+Alternatively, you can download the following applications from
+https://example.com/downloads/index.html (with “example.com” being your
+Zimbra server name).
+
+* **{product-name} Migration Wizard for Exchange**. Format is an .exe
+file. You can migrate users from Microsoft® Exchange server email
+accounts to Zimbra server accounts.
+* **{product-name} Migration Wizard for Domino**. Format is an .exe
+file. You can migrate users from Lotus Domino server email accounts to
+Zimbra server accounts.
+* **PST Import Wizard** (User Instructions). Format is an .exe file. Users
+download the Import Wizard to their computers and run the executable
+file to import their Outlook .pst files to the Zimbra server. Before
+users run this utility, Zimbra recommends that they run the Outlook
+Inbox Repair tool, `scanpst.exe`, on their .pst files, to clean up any
+errors in their file. For more information about this tool, go to
+http://support.microsoft.com/kb/287497.
+
+[[Administrators_Account]]
+#### Administrators Account
+
+Initial administrative tasks when you log on for the first time may
+include setting up the admin mailbox to include features, aliases, and
+forwarding addresses needed for the administrator’s working environment.
+
+Two aliases for the admin account are created during install:
+
+* **Postmaster**. The postmaster address is displayed in emails that are
+automatically generated from Postfix when messages cannot be sent. If
+users reply to this address, the message is forwarded to the admin
+mailbox.
+* **Root**. This address is where notification messages from the
+operating system are sent.
+
+If you entered a notification address for AV alerts when you configured
+the MTA, that is different from the default, you need to create that
+account in the administration console. If you didn’t change the default
+during installation, the anti-virus notification is sent directly to the
+admin account.

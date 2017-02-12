@@ -1,0 +1,427 @@
+[[Installing_Zimbra_Collaboration_Software]]
+== Installing Zimbra Collaboration Software
+:toc:
+
+*Important:* Before you begin, make sure to:
+
+* (Network Edition Only) Store your license in a directory folder on
+your server as it is needed to complete your installation of {product-name}
+* Confirm you have the latest system requirements and prerequisites for
+installing {product-name}.
+
+Open an SSH session to the Zimbra server and follow the steps below:
+
+[start=1]
+1. Log in as root to the Zimbra server and cd to the directory where
+   the {product-name} archive tar file is saved (cd /var/<tmp>). Type
+   the following commands:
+   * Unpack the file: `tar xvzf [zcsfullfilename.tgz]`
+   * Change to the correct directory: `cd [zcsfullfilename]`
+   * Begin the installation: `./install.sh`
+
+[source%nowrap,bash]
+....
+[root@zqa-222 tmp]# tar xvzf zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634.tgz
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-apache-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-archiving-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-convertd-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-core-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-dnscache-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-ldap-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-logger-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-mta-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-proxy-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-snmp-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-spell-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-store-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/bin/
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/bin/get_plat_tag.sh
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/bin/checkLicense.pl
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/bin/checkService.pl
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/bin/zmValidateLdap.pl
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/bin/checkValidBackup
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/bin/zmdbintegrityreport
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/lib/
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/lib/jars/
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/lib/jars/zimbra-license-tools.jar
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/data/
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/data/versions-init.sql
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/data/backup-version-init.sql
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/zimbra_network_eula.txt
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/keyview_eula.txt
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/oracle_jdk_eula.txt
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/admin.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/Import_Wizard_Outlook.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/Migration_Exch_Admin.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/MigrationWizard_Domino.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/MigrationWizard.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/quick_start.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/User Instructions Connector for Outlook.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/User Instructions for ZCS Import Wizard.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/ZCS_Apple_iSync_6.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/ZCS_Apple_iSync.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/ZCS Connector for Blackberry.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/ZCS Connector for Outlook.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/Zimbra iCalendar Migration Guide.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/zimbra_user_guide.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/util/
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/util/modules/
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/util/modules/getconfig.sh
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/util/modules/packages.sh
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/util/modules/postinstall.sh
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/util/addUser.sh
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/util/globals.sh
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/util/utilfunc.sh
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/readme_binary_en_US.txt
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/install.sh
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/README.txt
+....
+
+[start=2]
+2. The *install.sh* script reviews the installation software to verify that the
+Zimbra packages are available. + 
+The installation process checks to see if *Sendmail*, *Postfix*, and
+*MySQL* software are running. If any of these applications are running,
+you are asked to disable them. Disabling *MySQL* is *optional* but highly
+recommended. *Sendmail* and *Postfix must* be disabled for {product-name}
+to start correctly.
+
+[source%nowrap,bash]
+....
+[root@zqa-222 tmp]# cd zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634
+[root@zqa-222 zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634]# ./install.sh
+
+Operations logged to /tmp/install.log.FRNg7wVu
+Checking for existing installation...
+    zimbra-ldap...NOT FOUND
+    zimbra-logger...NOT FOUND
+    zimbra-mta...NOT FOUND
+    zimbra-dnscache...NOT FOUND
+    zimbra-snmp...NOT FOUND
+    zimbra-store...NOT FOUND
+    zimbra-apache...NOT FOUND
+    zimbra-spell...NOT FOUND
+    zimbra-convertd...NOT FOUND
+    zimbra-memcached...NOT FOUND
+    zimbra-proxy...NOT FOUND
+    zimbra-archiving...NOT FOUND
+    zimbra-core...NOT FOUND
+....
+
+[start=3]
+3. The Zimbra software agreement displays. Read the agreement and when + 
+`Do you agree with the terms of the software license agreement? [N]` + 
+displays, enter `Y` to continue. +
+*Important:* The license agreement displays in multiple sections,
+and you must accept each section of the license agreement.
+
+4. `Use Zimbra's package repository [Y]` + 
+displays, press `enter` to continue. Your system will be configured to add
+the Zimbra packaging repository for *yum* or *apt-get* as appropriate
+so it can install the Zimbra 3rd party packages.
+
+[source%nowrap]
+....
+Checking for installable packages
+
+Found zimbra-core
+Found zimbra-ldap
+Found zimbra-logger
+Found zimbra-mta
+Found zimbra-dnscache
+Found zimbra-snmp
+Found zimbra-store
+Found zimbra-apache
+Found zimbra-spell
+Found zimbra-convertd
+Found zimbra-memcached
+Found zimbra-proxy
+Found zimbra-archiving
+
+
+
+Use Zimbra's package repository [Y] y
+
+Use internal development repo [N] n
+Configuring package repository
+
+Select the packages to install
+
+Install zimbra-ldap [Y] y
+
+Install zimbra-logger [Y] y
+
+Install zimbra-mta [Y] y
+
+Install zimbra-dnscache [Y] y
+
+Install zimbra-snmp [Y] y
+
+Install zimbra-store [Y] y
+.
+.
+
+Checking required space for zimbra-core
+Checking space for zimbra-store
+Checking required packages for zimbra-store
+     MISSING: libreoffice
+     MISSING: libreoffice-headless
+
+###WARNING###
+
+One or more suggested packages for zimbra-store are missing.
+Some features may be disabled due to the missing package(s).
+
+
+Installing:
+    zimbra-core
+    zimbra-ldap
+    zimbra-logger
+    zimbra-mta
+    zimbra-dnscache
+    zimbra-snmp
+    zimbra-store
+   .
+   .
+
+
+The system will be modified.  Continue? [N] y
+....
+
+Also select the services to be installed on this server. To install
+{product-name} on a single server, enter `Y` for the ldap, logger,
+mta, snmp, store, and spell packages. If you use IMAP/POP Proxy, enter
+`Y` for the Zimbra proxy package.
+
+*Note:* For the cross mailbox search feature, install the Zimbra Archive
+package. To use the archiving and discovery feature, contact Zimbra
+sales.
+
+The installer verifies that there is enough room to install Zimbra.
+
+[start=5]
+5. Next, type `Y` and press `Enter` to modify the system.
+
+* Selected packages are installed on the server.
+* Checks to see if MX record is configured in DNS. The installer checks
+to see if the hostname is resolvable via DNS. If there is an error, the
+installer asks if you would like to change the hostname. We recommend
+that the domain name have an MX record configured in DNS.
+* Checks for port conflict.
+
+[source%nowrap]
+....
+Installing packages
+
+Local packages  zimbra-core zimbra-ldap zimbra-logger zimbra-mta zimbra-dnscache zimbra-snmp zimbra-store zimbra-apache zimbra-spell zimbra-convertd zimbra-proxy selected for installation
+Monitor /tmp/install.log.ykeq0Bw8 for package installation progress
+Remote package installation started
+Installing zimbra-core-components  zimbra-ldap-components zimbra-mta-components zimbra-dnscache-components zimbra-snmp-components zimbra-store-components zimbra-apache-components zimbra-spell-components zimbra-memcached zimbra-proxy-components....done
+Local package installation started
+Installing  zimbra-core zimbra-ldap zimbra-logger zimbra-mta zimbra-dnscache zimbra-snmp zimbra-store zimbra-apache zimbra-spell zimbra-convertd zimbra-proxy...done
+Operations logged to /tmp/zmsetup.20160711-234517.log
+Installing LDAP configuration database...done.
+Setting defaults...
+
+DNS ERROR resolving MX for zqa-221.eng.zimbra.com
+It is suggested that the domain name have an MX record configured in DNS
+Change domain name? [Yes] no
+done.
+Checking for port conflicts
+....
+
+[start=6]
+6. At this point, the Main menu displays showing the default entries
+for the Zimbra components you are installing. To expand the menu to see
+the configuration values, type `X` and press `Enter`. The Main menu
+expands to display configuration details for the packages being
+installed. Values that require further configuration are marked with
+asterisks (****) to their left. To navigate the Main menu, select the
+menu item to change. You can modify any of the defaults. For a quick
+installation, accepting all the defaults, you only need to do the
+following:
+
+7. If your time zone is not Pacific time, enter `1` to select Main menu,
+`1` to select Common Configuration and then enter `6` for TimeZone.
+Set the correct time zone.
+
+....
+Main menu
+
+   1) Common Configuration:
+   2) zimbra-ldap:                             Enabled
+   3) zimbra-logger:                           Enabled
+   4) zimbra-mta:                              Enabled
+   5) zimbra-dnscache:                         Enabled
+   6) zimbra-snmp:                             Enabled
+   7) zimbra-store:                            Enabled
+        +Create Admin User:                    yes
+        +Admin user to create:                 admin@zqa-221.eng.zimbra.com
+******* +Admin Password                        UNSET
+        +Anti-virus quarantine user:           virus-quarantine.ws91yggvp@zqa-221.eng.zimbra.com
+        +Enable automated spam training:       yes
+        +Spam training user:                   spam.seewcbk6@zqa-221.eng.zimbra.com
+        +Non-spam(Ham) training user:          ham.h8qmkwft@zqa-221.eng.zimbra.com
+        +SMTP host:                            zqa-221.eng.zimbra.com
+        +Web server HTTP port:                 8080
+        +Web server HTTPS port:                8443
+        +Web server mode:                      https
+        +IMAP server port:                     7143
+        +IMAP server SSL port:                 7993
+        +POP server port:                      7110
+        +POP server SSL port:                  7995
+        +Use spell check server:               yes
+        +Spell server URL:                     http://zqa-221.eng.zimbra.com:7780/aspell.php
+        +Enable version update checks:         TRUE
+        +Enable version update notifications:  TRUE
+        +Version update notification email:    admin@zqa-221.eng.zimbra.com
+        +Version update source email:          admin@zqa-221.eng.zimbra.com
+        +Install mailstore (service webapp):   yes
+        +Install UI (zimbra,zimbraAdmin webapps): yes
+******* +License filename:                     UNSET
+
+   8) zimbra-spell:                            Enabled
+   9) zimbra-convertd:                         Enabled
+  10) zimbra-proxy:                            Enabled
+  11) Default Class of Service Configuration:
+  12) Enable default backup schedule:          yes
+   s) Save config to file
+   x) Expand menu
+   q) Quit
+
+Address unconfigured (**) items  (? - help)
+....
+
+[start=8]
+8. Type `r` to return to the Main menu.
+
+9. Enter `5` to select *zimbra-dnscache* from the Main menu.
+
+* Select `1` to disable.
+* Select `2` to configure the master DNS IP address(es).
+
+10. Type `r` to return to the Main menu.
+
+11. Enter `7` to select *zimbra-store* from the Main menu. The store
+configuration menu displays.
+
+12. Select the following from the store configuration menu:
+
+* Type `4` to set the Admin Password. The password must be six or more characters.
+Press `Enter`.
+
+* (Network Edition only) Type `25` for *License filename* and type the
+directory and file name for the Zimbra license.
+For example, if you saved to the `/tmp` directory, you
+would type `/tmp/ZimbraLicense.xml`. If you do not have the license, you
+cannot proceed. See Zimbra License Requirements on page 10.
+
+* Enable version update checks and Enable version update notifications. + 
+If these are set to TRUE. {product-name} automatically checks for the
+latest {product-name} software updates and notifies the account
+that is configured in `Version update notification email`. You can modify
+this later from the administration console.
+
+13. Type `r` to return to the Main menu.
+
+14. If you want to change the default Class of Service settings for new
+features that are listed here, type `11` for Default Class of Service
+Configuration. + 
+Then type the appropriate number for the feature to be enabled or disabled.
+Changes you make here are reflected in the default COS configuration.
+
+15. If no other defaults need to be changed, type `a` to apply the
+configuration changes. Press `Enter`
+
+....
+*** CONFIGURATION COMPLETE - press 'a' to apply
+Select from menu, or press 'a' to apply config (? - help) a
+....
+
+[start=16]
+16. When Save Configuration data to file appears, type `Yes` and press `Enter`.
+
+....
+Save configuration data to a file? [Yes]
+....
+
+[start=17]
+17. The next request asks where to save the files. To accept the
+default, press `Enter`. To save the files to another directory, enter the
+directory and then press Enter
+
+....
+Save config in file: [/opt/zimbra/config.16039]
+Saving config in /opt/zimbra/config.16039...done.
+....
+
+18. When The system will be modified - continue? appears, type `Yes` and
+press `Enter`.
+
+The server is modified. Installing all the components and configuring
+the server can take several minutes. Components that are installed
+include spam training and documents, (wiki) accounts, time zone
+preferences, backup schedules, licenses, as well as common Zimlets.
+
+....
+The system will be modified - continue? [No] y
+Operations logged to /tmp/zmsetup.20160711-234517.log
+Setting local config values...done.
+Initializing core config...Setting up CA...done.
+Deploying CA to /opt/zimbra/conf/ca ...done.
+Creating SSL zimbra-store certificate...done.
+Creating new zimbra-ldap SSL certificate...done.
+Creating new zimbra-mta SSL certificate...done.
+Creating new zimbra-proxy SSL certificate...done.
+Installing mailboxd SSL certificates...done.
+Installing MTA SSL certificates...done.
+Installing LDAP SSL certificate...done.
+Installing Proxy SSL certificate...done.
+Initializing ldap...done.
+.
+.
+Checking current setting of zimbraReverseProxyAvailableLookupTargets
+Querying LDAP for other mailstores
+Searching LDAP for reverseProxyLookupTargets...done.
+Adding zqa-221.eng.zimbra.com to zimbraReverseProxyAvailableLookupTargets
+Setting convertd URL...done.
+.
+.
+Granting group zimbraDomainAdmins@zqa-221.eng.zimbra.com domain right +domainAdminConsoleRights on zqa-221.eng.zimbra.com...done.
+Granting group zimbraDomainAdmins@zqa-221.eng.zimbra.com global right +domainAdminZimletRights...done.
+Setting up global distribution list admin UI components..done.
+Granting group zimbraDLAdmins@zqa-221.eng.zimbra.com global right +adminConsoleDLRights...done.
+.
+.
+Setting default backup schedule...Done
+Looking for valid license to install...license installed.
+Starting servers...done.
+Installing common zimlets...
+        com_zimbra_attachmail...done.
+        com_zimbra_phone...done.
+        com_zimbra_proxy_config...done.
+          .
+          .
+        com_zimbra_ymemoticons...done.
+        com_zimbra_date...done.
+Finished installing common zimlets.
+Installing network zimlets...
+        com_zimbra_mobilesync...done.
+         .
+         .
+        com_zimbra_license...done.
+Finished installing network zimlets.
+Restarting mailboxd...done.
+Creating galsync account for default domain...done.
+Setting up zimbra crontab...done.
+
+
+Moving /tmp/zmsetup.20160711-234517.log to /opt/zimbra/log
+
+
+Configuration complete - press return to exit
+....

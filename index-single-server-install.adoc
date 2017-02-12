@@ -50,4 +50,24 @@ include::licenserequirements.adoc[]
 
 include::basicconfig.adoc[]
 
+<<<
+
+include::installing.adoc[]
+
+<<<
+
+include::finalsetup.adoc[]
+
+<<<
+
+include::scanningattachments.adoc[]
+
+<<<
+
+include::provisionaccounts.adoc[]
+
+<<<
+
+include::uninstalling.adoc[]
+
 :leveloffset: -1
