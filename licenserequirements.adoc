@@ -35,7 +35,7 @@ Several types of licenses are available:
 at https://www.zimbra.com. The trial license allows you to create up to
 50 users. It expires in 60 days.
 * *Trial Extended.*  You can obtain a Trial Extended license from Zimbra
-Sales by contacting sales@zimbra.com or calling 1-650-427-5701. This
+Sales by contacting sales@zimbra.com or calling 1-972-407-0688. This
 license allows you to create up to 50 users and is valid for an extended
 period of time.
 * *Subscription.*  You must purchase the Zimbra Subscription license. This
@@ -137,7 +137,7 @@ feature set of the Open Source Edition.
 Go to Zimbra’s Website https://www.zimbra.com to obtain a trial license
 from the Network Downloads area.  Contact Zimbra sales regarding a trial
 extended license, or to purchase a subscription license or perpetual
-license, by emailing sales@zimbra.com or calling 1-650-427-5701.
+license, by emailing sales@zimbra.com or calling 1-972-407-0688.
 
 The subscription and perpetual license can only be installed on the
 {product-name} system for which it is purchased. Only one Zimbra
