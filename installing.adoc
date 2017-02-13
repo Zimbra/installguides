@@ -84,11 +84,12 @@ zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/README.txt
 
 2. The *install.sh* script reviews the installation software to verify that the
 Zimbra packages are available. + 
-The installation process checks to see if *Sendmail*, *Postfix*, and
-*MySQL* software are running. If any of these applications are running,
-you are asked to disable them. Disabling *MySQL* is *optional* but highly
-recommended. *Sendmail* and *Postfix must* be disabled for {product-name}
-to start correctly.
+The installation process checks to see whether any of the applications
+*Sendmail*, *Postfix*, *MySQL* or *MariaDB* are running.
+If any of these applications are running,
+you are asked to disable them. Disabling *MySQL* and *MariaDB* is *optional*
+but highly recommended.
+*Sendmail* and *Postfix must* be disabled for {product-name} to start correctly.
 +
 --
 [source%nowrap,bash]
@@ -247,12 +248,12 @@ for the Zimbra components you are installing. To expand the menu to see
 the configuration values, type `X` and press `Enter`. The Main menu
 expands to display configuration details for the packages being
 installed. Values that require further configuration are marked with
-asterisks (****) to their left. To navigate the Main menu, select the
+asterisks (pass:[******]) to their left. To navigate the Main menu, select the
 menu item to change. You can modify any of the defaults. For a quick
 installation, accepting all the defaults, you only need to do the
 following:
 
-7. If your time zone is not Pacific time, enter `1` to select Main menu,
+7. To set the appropriate time zone, enter `1` to select Main menu,
 `1` to select Common Configuration and then enter `6` for TimeZone.
 Set the correct time zone.
 +

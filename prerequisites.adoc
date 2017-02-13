@@ -33,7 +33,7 @@ systems.
 * 10 GB free disk space for software and logs (SATA or SCSI for
 performance, and RAID/Mirroring for redundancy)
 * Additional disk space for mail storage
-* Temp files space: The zimbra-store requires 5GB for / opt/zimbra, plus
+* Temp files space: The zimbra-store requires 5GB for `/opt/zimbra`, plus
 additional space for mail storage. The other nodes require 100MB.
 
 *General Requirements*
@@ -70,8 +70,8 @@ https://www.zimbra.com.
 |*File Systems*
 |The following file systems are supported:
 
-* ext3 or ext4 file system for Linux deployments
-* NFS for backup only
+* **ext3** or **ext4** file systems for Linux deployments
+* **NFS** for backup only
 
 |*Other Dependencies*
 |Netcat (nc) is required on all operating systems using {product-name}.
