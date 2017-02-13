@@ -1,5 +1,5 @@
 [[Scanning_Attachments_in_Outgoing_Mail]]
-## Scanning Attachments in Outgoing Mail
+= Scanning Attachments in Outgoing Mail
 :toc:
 
 You can enable real-time scanning of attachments in outgoing emails sent

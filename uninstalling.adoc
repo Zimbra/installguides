@@ -1,5 +1,5 @@
 [[Uninstalling_Zimbra_Collaboration]]
-## Uninstalling {product-name}
+= Uninstalling {product-name}
 :toc:
 
 To uninstall servers, run the install script -u, delete the Zimbra
@@ -15,6 +15,6 @@ The Zimbra servers are stopped, the existing packages, webapp
 directories, and most of the contents of the `/opt/zimbra` directory
 are removed.
 
-4. Type rm -rf [zcsfullfilename] to delete the {product-name} directory.
+4. Type `rm -rf [zcsfullfilename]` to delete the {product-name} directory.
 
 5. Delete the zcs.tgz file.
