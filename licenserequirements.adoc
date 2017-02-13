@@ -94,7 +94,8 @@ to maintain network feature functionality.
 Licenses are automatically activated if the {product-name} server
 has a connection to the Internet and can communicate with the Zimbra
 License server. If you are unable to automatically activate your
-license, see the next section on Manual License Activation.
+license, see the next section on
+<<Manual_License_Activation,Manual License Activation>>
 
 [[Manual_License_Activation]]
 == Manual License Activation
