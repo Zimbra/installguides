@@ -21,7 +21,7 @@ Open an SSH session to the Zimbra server and follow the steps below:
 --
 [source%nowrap,bash]
 ....
-[root@zqa-222 tmp]# tar xvzf zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634.tgz
+[root@zmail tmp]# tar xvzf zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634.tgz
 zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/
 zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/
 zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-apache-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
@@ -93,8 +93,8 @@ to start correctly.
 --
 [source%nowrap,bash]
 ....
-[root@zqa-222 tmp]# cd zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634
-[root@zqa-222 zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634]# ./install.sh
+[root@zmail tmp]# cd zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634
+[root@zmail zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634]# ./install.sh
 
 Operations logged to /tmp/install.log.FRNg7wVu
 Checking for existing installation...
@@ -234,7 +234,7 @@ Operations logged to /tmp/zmsetup.20160711-234517.log
 Installing LDAP configuration database...done.
 Setting defaults...
 
-DNS ERROR resolving MX for zqa-221.eng.zimbra.com
+DNS ERROR resolving MX for zmail.example.com
 It is suggested that the domain name have an MX record configured in DNS
 Change domain name? [Yes] no
 done.
@@ -268,13 +268,13 @@ Main menu
    6) zimbra-snmp:                             Enabled
    7) zimbra-store:                            Enabled
         +Create Admin User:                    yes
-        +Admin user to create:                 admin@zqa-221.eng.zimbra.com
+        +Admin user to create:                 admin@zmail.example.com
 ******* +Admin Password                        UNSET
-        +Anti-virus quarantine user:           virus-quarantine.ws91yggvp@zqa-221.eng.zimbra.com
+        +Anti-virus quarantine user:           virus-quarantine.ws91yggvp@zmail.example.com
         +Enable automated spam training:       yes
-        +Spam training user:                   spam.seewcbk6@zqa-221.eng.zimbra.com
-        +Non-spam(Ham) training user:          ham.h8qmkwft@zqa-221.eng.zimbra.com
-        +SMTP host:                            zqa-221.eng.zimbra.com
+        +Spam training user:                   spam.seewcbk6@zmail.example.com
+        +Non-spam(Ham) training user:          ham.h8qmkwft@zmail.example.com
+        +SMTP host:                            zmail.example.com
         +Web server HTTP port:                 8080
         +Web server HTTPS port:                8443
         +Web server mode:                      https
@@ -283,11 +283,11 @@ Main menu
         +POP server port:                      7110
         +POP server SSL port:                  7995
         +Use spell check server:               yes
-        +Spell server URL:                     http://zqa-221.eng.zimbra.com:7780/aspell.php
+        +Spell server URL:                     http://zmail.example.com:7780/aspell.php
         +Enable version update checks:         TRUE
         +Enable version update notifications:  TRUE
-        +Version update notification email:    admin@zqa-221.eng.zimbra.com
-        +Version update source email:          admin@zqa-221.eng.zimbra.com
+        +Version update notification email:    admin@zmail.example.com
+        +Version update source email:          admin@zmail.example.com
         +Install mailstore (service webapp):   yes
         +Install UI (zimbra,zimbraAdmin webapps): yes
 ******* +License filename:                     UNSET
@@ -400,14 +400,14 @@ Initializing ldap...done.
 Checking current setting of zimbraReverseProxyAvailableLookupTargets
 Querying LDAP for other mailstores
 Searching LDAP for reverseProxyLookupTargets...done.
-Adding zqa-221.eng.zimbra.com to zimbraReverseProxyAvailableLookupTargets
+Adding zmail.example.com to zimbraReverseProxyAvailableLookupTargets
 Setting convertd URL...done.
 .
 .
-Granting group zimbraDomainAdmins@zqa-221.eng.zimbra.com domain right +domainAdminConsoleRights on zqa-221.eng.zimbra.com...done.
-Granting group zimbraDomainAdmins@zqa-221.eng.zimbra.com global right +domainAdminZimletRights...done.
+Granting group zimbraDomainAdmins@zmail.example.com domain right +domainAdminConsoleRights on zmail.example.com...done.
+Granting group zimbraDomainAdmins@zmail.example.com global right +domainAdminZimletRights...done.
 Setting up global distribution list admin UI components..done.
-Granting group zimbraDLAdmins@zqa-221.eng.zimbra.com global right +adminConsoleDLRights...done.
+Granting group zimbraDLAdmins@zmail.example.com global right +adminConsoleDLRights...done.
 .
 .
 Setting default backup schedule...Done
