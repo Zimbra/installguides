@@ -55,11 +55,11 @@ for more information
 2. You must enable syslog to log statistics from remote machines.
     RedHat Systems::
         * Edit the `/etc/sysconfig/syslog` file to add -r to the SYSLOGD_OPTIONS
-        setting, `SYSLOGD_options=”-r -m 0”`
+        setting, `SYSLOGD_options="-r -m 0"`
         * Stop the syslog daemon - `/etc/init.d/syslog stop`
         * Start the syslog daemon - `/etc/init.d/syslog start`
     Debian and Ubuntu Systems::
         * Edit the `/etc/default/syslogd` file to add -r to the SYSLOGD_OPTIONS
-        setting, `SYSLOGD_options=”-r -m 0”`
+        setting, `SYSLOGD_options="-r -m 0"`
         * Stop the syslog daemon -  `/etc/init.d/sysklogd stop`
         * Start the syslog daemon - `/etc/init.d/sysklogd start`
