@@ -1,5 +1,5 @@
 [[Basic_Configuration]]
-== Basic Configuration
+= Basic Configuration
 :toc:
 
 The default configuration installs Zimbra-LDAP, Zimbra-MTA with
@@ -13,7 +13,7 @@ process. The table below describes the menu options.
 
 *Main Menu Options*
 
-[cols=",",options="header",]
+[cols=",a",options="header",]
 |========================
 |*Main Menu* |*Description*
 
@@ -30,7 +30,6 @@ same as the hostname.
 |The default port is 389
 
 |LDAP Admin password
-
 |This is the master LDAP password.
 
 |Secure interprocess communications
@@ -261,3 +260,4 @@ introduce new features to your users.
 
 | q) Quit
 | Quit can be used at any time to quit the installation.
+|========================
