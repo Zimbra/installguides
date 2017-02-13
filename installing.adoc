@@ -1,5 +1,5 @@
 [[Installing_Zimbra_Collaboration_Software]]
-== Installing Zimbra Collaboration Software
+= Installing Zimbra Collaboration Software
 :toc:
 
 *Important:* Before you begin, make sure to:
@@ -11,14 +11,14 @@ installing {product-name}.
 
 Open an SSH session to the Zimbra server and follow the steps below:
 
-[start=1]
 1. Log in as root to the Zimbra server and cd to the directory where
    the {product-name} archive tar file is saved (cd /var/<tmp>). Type
    the following commands:
    * Unpack the file: `tar xvzf [zcsfullfilename.tgz]`
    * Change to the correct directory: `cd [zcsfullfilename]`
    * Begin the installation: `./install.sh`
-
++
+--
 [source%nowrap,bash]
 ....
 [root@zqa-222 tmp]# tar xvzf zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634.tgz
@@ -80,8 +80,8 @@ zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/readme_binary_en_US.txt
 zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/install.sh
 zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/README.txt
 ....
+--
 
-[start=2]
 2. The *install.sh* script reviews the installation software to verify that the
 Zimbra packages are available. + 
 The installation process checks to see if *Sendmail*, *Postfix*, and
@@ -89,7 +89,8 @@ The installation process checks to see if *Sendmail*, *Postfix*, and
 you are asked to disable them. Disabling *MySQL* is *optional* but highly
 recommended. *Sendmail* and *Postfix must* be disabled for {product-name}
 to start correctly.
-
++
+--
 [source%nowrap,bash]
 ....
 [root@zqa-222 tmp]# cd zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634
@@ -111,8 +112,8 @@ Checking for existing installation...
     zimbra-archiving...NOT FOUND
     zimbra-core...NOT FOUND
 ....
+--
 
-[start=3]
 3. The Zimbra software agreement displays. Read the agreement and when + 
 `Do you agree with the terms of the software license agreement? [N]` + 
 displays, enter `Y` to continue. +
@@ -123,7 +124,8 @@ and you must accept each section of the license agreement.
 displays, press `enter` to continue. Your system will be configured to add
 the Zimbra packaging repository for *yum* or *apt-get* as appropriate
 so it can install the Zimbra 3rd party packages.
-
++
+--
 [source%nowrap]
 ....
 Checking for installable packages
@@ -191,7 +193,9 @@ Installing:
 
 The system will be modified.  Continue? [N] y
 ....
-
+--
++
+--
 Also select the services to be installed on this server. To install
 {product-name} on a single server, enter `Y` for the ldap, logger,
 mta, snmp, store, and spell packages. If you use IMAP/POP Proxy, enter
@@ -202,17 +206,20 @@ package. To use the archiving and discovery feature, contact Zimbra
 sales.
 
 The installer verifies that there is enough room to install Zimbra.
+--
 
-[start=5]
 5. Next, type `Y` and press `Enter` to modify the system.
-
++
+--
 * Selected packages are installed on the server.
 * Checks to see if MX record is configured in DNS. The installer checks
 to see if the hostname is resolvable via DNS. If there is an error, the
 installer asks if you would like to change the hostname. We recommend
 that the domain name have an MX record configured in DNS.
 * Checks for port conflict.
-
+--
++
+--
 [source%nowrap]
 ....
 Installing packages
@@ -233,8 +240,8 @@ Change domain name? [Yes] no
 done.
 Checking for port conflicts
 ....
+--
 
-[start=6]
 6. At this point, the Main menu displays showing the default entries
 for the Zimbra components you are installing. To expand the menu to see
 the configuration values, type `X` and press `Enter`. The Main menu
@@ -248,7 +255,8 @@ following:
 7. If your time zone is not Pacific time, enter `1` to select Main menu,
 `1` to select Common Configuration and then enter `6` for TimeZone.
 Set the correct time zone.
-
++
+--
 ....
 Main menu
 
@@ -295,14 +303,14 @@ Main menu
 
 Address unconfigured (**) items  (? - help)
 ....
+--
 
-[start=8]
 8. Type `r` to return to the Main menu.
 
 9. Enter `5` to select *zimbra-dnscache* from the Main menu.
 
-* Select `1` to disable.
-* Select `2` to configure the master DNS IP address(es).
+    * Select `1` to disable.
+    * Select `2` to configure the master DNS IP address(es).
 
 10. Type `r` to return to the Main menu.
 
@@ -311,20 +319,20 @@ configuration menu displays.
 
 12. Select the following from the store configuration menu:
 
-* Type `4` to set the Admin Password. The password must be six or more characters.
-Press `Enter`.
+    * Type `4` to set the Admin Password. The password must be six or more characters.
+    Press `Enter`.
 
-* (Network Edition only) Type `25` for *License filename* and type the
-directory and file name for the Zimbra license.
-For example, if you saved to the `/tmp` directory, you
-would type `/tmp/ZimbraLicense.xml`. If you do not have the license, you
-cannot proceed. See Zimbra License Requirements on page 10.
+    * (Network Edition only) Type `25` for *License filename* and type the
+    directory and file name for the Zimbra license.
+    For example, if you saved to the `/tmp` directory, you
+    would type `/tmp/ZimbraLicense.xml`. If you do not have the license, you
+    cannot proceed. See Zimbra License Requirements on page 10.
 
-* Enable version update checks and Enable version update notifications. + 
-If these are set to TRUE. {product-name} automatically checks for the
-latest {product-name} software updates and notifies the account
-that is configured in `Version update notification email`. You can modify
-this later from the administration console.
+    * Enable version update checks and Enable version update notifications. + 
+    If these are set to TRUE. {product-name} automatically checks for the
+    latest {product-name} software updates and notifies the account
+    that is configured in `Version update notification email`. You can modify
+    this later from the administration console.
 
 13. Type `r` to return to the Main menu.
 
@@ -336,37 +344,42 @@ Changes you make here are reflected in the default COS configuration.
 
 15. If no other defaults need to be changed, type `a` to apply the
 configuration changes. Press `Enter`
-
++
+--
 ....
 *** CONFIGURATION COMPLETE - press 'a' to apply
 Select from menu, or press 'a' to apply config (? - help) a
 ....
+--
 
-[start=16]
 16. When Save Configuration data to file appears, type `Yes` and press `Enter`.
-
++
+--
 ....
 Save configuration data to a file? [Yes]
 ....
+--
 
-[start=17]
 17. The next request asks where to save the files. To accept the
 default, press `Enter`. To save the files to another directory, enter the
 directory and then press Enter
-
++
+--
 ....
 Save config in file: [/opt/zimbra/config.16039]
 Saving config in /opt/zimbra/config.16039...done.
 ....
+--
 
-18. When The system will be modified - continue? appears, type `Yes` and
+18. When `The system will be modified - continue?` appears, type `Yes` and
 press `Enter`.
-
++
 The server is modified. Installing all the components and configuring
 the server can take several minutes. Components that are installed
 include spam training and documents, (wiki) accounts, time zone
 preferences, backup schedules, licenses, as well as common Zimlets.
-
++
+--
 ....
 The system will be modified - continue? [No] y
 Operations logged to /tmp/zmsetup.20160711-234517.log
@@ -425,3 +438,4 @@ Moving /tmp/zmsetup.20160711-234517.log to /opt/zimbra/log
 
 Configuration complete - press return to exit
 ....
+--
