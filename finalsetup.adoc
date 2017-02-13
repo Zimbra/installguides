@@ -1,5 +1,5 @@
 [[Final_Set-Up]]
-## Final Set-Up
+= Final Set-Up
 :toc:
 
 After the {product-name} servers are configured, the following functions
@@ -17,7 +17,7 @@ enable the logger monitor host. The server statistics includes
 information about the message count, message volume, and anti-spam and
 anti-virus activity.
 
-### Access to the 'zimbra' user
+== Access to the 'zimbra' user
 
 {product-name} ships a default 'zimbra' user with a disabled
 password.
