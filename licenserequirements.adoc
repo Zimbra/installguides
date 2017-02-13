@@ -1,5 +1,5 @@
 [[Zimbra_Licenses]]
-== Zimbra Licensing (Network Edition Only)
+= Zimbra Licensing (Network Edition Only)
 :toc:
 
 {product-name} licensing gives administrators better visibility
@@ -24,7 +24,7 @@ installed.
 that can be created. The archive feature must be installed.
 
 [[Zimbra_License_Requirements]]
-=== Zimbra License Requirements
+== Zimbra License Requirements
 
 A Zimbra license is required in order to create accounts in the Network
 Edition of {product-name}.
@@ -51,7 +51,7 @@ new perpetual license is sent to you, but your Account records in the
 systems is updated with your new support end date.
 
 [[License_Usage_by_Zimbra_Collaboration_Account_Type]]
-=== License Usage by {product-name} Account Type
+== License Usage by {product-name} Account Type
 
 A mailbox license is required for an account assigned to a person,
 including accounts created for archiving. Distribution lists, aliases,
@@ -76,7 +76,7 @@ When you delete an account, the license account limit reflects the change.
 count against your {product-name} license.
 
 [[License_Activation]]
-=== License Activation
+== License Activation
 
 All network edition installations require license activation. New
 installations have a 10 day grace period from the license issue date
@@ -89,7 +89,7 @@ Upgraded {product-name} versions require an immediate activation
 to maintain network feature functionality.
 
 [[Automatic_License_Activation]]
-=== Automatic License Activation
+== Automatic License Activation
 
 Licenses are automatically activated if the {product-name} server
 has a connection to the Internet and can communicate with the Zimbra
@@ -97,7 +97,7 @@ License server. If you are unable to automatically activate your
 license, see the next section on Manual License Activation.
 
 [[Manual_License_Activation]]
-=== Manual License Activation
+== Manual License Activation
 
 For systems that do not have external access to the Zimbra License
 server, you can use the Zimbra Support Portal to manually activate your
@@ -107,7 +107,7 @@ Support Portal Login button to display the Zimbra Support Portal page.
 Enter your email and password to log in.
 
 [[License_Not_Installed_or_Activated]]
-=== License Not Installed or Activated
+== License Not Installed or Activated
 
 If you fail to install or activate your {product-name} server
 license, the following scenarios describe how your {product-name}
@@ -132,7 +132,7 @@ grace period expired, the {product-name} server defaults to the
 feature set of the Open Source Edition.
 
 [[Obtaining_a_License]]
-=== Obtaining a License
+== Obtaining a License
 
 Go to Zimbra’s Website https://www.zimbra.com to obtain a trial license
 from the Network Downloads area.  Contact Zimbra sales regarding a trial

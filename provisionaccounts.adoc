@@ -41,7 +41,7 @@ You can configure one account at a time with the **New Account Wizard** or
 you can create many accounts at once using the **Account Migration Wizard**.
 
 [[Configuring_One_Account]]
-=== Configuring One Account
+== Configuring One Account
 
 Admin Console: ::
 The administration console **New Account wizard** steps you through the
@@ -67,7 +67,7 @@ this account, proceed through the dialog before you click Finish.
 When the accounts are provisioned, you can send and receive emails.
 
 [[Importing_Content_from_User_Mailboxes]]
-=== Importing Content from User Mailboxes
+== Importing Content from User Mailboxes
 
 Zimbra developed different applications to facilitate moving a user’s
 email messages, calendars, and contacts from their old email servers to
@@ -99,7 +99,7 @@ errors in their file. For more information about this tool, go to
 http://support.microsoft.com/kb/287497.
 
 [[Administrators_Account]]
-=== Administrators Account
+== Administrator Account
 
 Initial administrative tasks when you log on for the first time may
 include setting up the admin mailbox to include features, aliases, and

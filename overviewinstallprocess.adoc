@@ -1,12 +1,12 @@
 [[Overview_of_Installation_Process]]
-== Overview of the Installation Process
+= Overview of the Installation Process
 :toc:
 
 When you run the install script, the process verifies that the correct
 prerequisite Zimbra application packages are available to be installed.
 
 [[Zimbra_Application_Packages]]
-=== Zimbra Application Packages
+== Zimbra Application Packages
 
 Zimbra architecture includes open-source integrations using industry
 standard protocols. The third-party software has been tested and
@@ -82,7 +82,7 @@ use to log on to the administration console, and you specify the
 location of the Zimbra license xml file.
 
 [[Downloading_the_Zimbra_Software]]
-== Downloading the Zimbra Software
+= Downloading the Zimbra Software
 
 Obtain the {product-name} software download and save to the
 computer from which you will install the software.

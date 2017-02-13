@@ -1,5 +1,5 @@
 [[Modifying_Operating_System_Configurations]]
-== Modifying Operating System Configurations
+= Modifying Operating System Configurations
 :toc:
 
 {product-name} runs on one of several operating systems, including

@@ -1,5 +1,5 @@
 [[Configuring_High-Fidelity_Document_Preview]]
-== Configuring High-Fidelity Document Preview (Network Edition Only)
+= Configuring High-Fidelity Document Preview (Network Edition Only)
 :toc:
 
 The high-fidelity document preview feature requires the installation of
@@ -34,7 +34,7 @@ apt-get install libreoffice
 ----
 
 [[Install_Language_and_Font_Packages]]
-=== Install Language and Font Packages
+== Install Language and Font Packages
 
 Confirm you have the appropriate language packs or fonts installed for
 LibreOffice to properly view documents and attachments. For example:

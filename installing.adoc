@@ -326,7 +326,8 @@ configuration menu displays.
     directory and file name for the Zimbra license.
     For example, if you saved to the `/tmp` directory, you
     would type `/tmp/ZimbraLicense.xml`. If you do not have the license, you
-    cannot proceed. See Zimbra License Requirements on page 10.
+    cannot proceed. See the section on
+    <<Zimbra_License_Requirements,Zimbra License Requirements>>
 
     * Enable version update checks and Enable version update notifications. + 
     If these are set to TRUE. {product-name} automatically checks for the
