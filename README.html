@@ -1,0 +1,3390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.5">
+<meta name="author" content="v8.7, April 2016">
+<title>Zimbra Collaboration Performing a Single-Server Installation</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
+/* Remove comment around @import statement below when using as a custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
+audio,canvas,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+[hidden],template{display:none}
+script{display:none!important}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:transparent}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+dfn{font-style:italic}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}
+input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*:before,*:after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.spread{width:100%}
+p.lead,.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{font-size:1.21875em;line-height:1.6}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:none}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #ddddd8;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol,ul.no-bullet,ol.no-bullet{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ul.no-bullet{list-style:none}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite:before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media only screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table thead,table tfoot{background:#f7f8f7;font-weight:bold}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt,table tr:nth-of-type(even){background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.clearfix:before,.clearfix:after,.float-group:before,.float-group:after{content:" ";display:table}
+.clearfix:after,.float-group:after{clear:both}
+*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+*:not(pre)>code.nobreak{word-wrap:normal}
+*:not(pre)>code.nowrap{white-space:nowrap}
+pre,pre>code{line-height:1.45;color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;text-rendering:optimizeSpeed}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menu{color:rgba(0,0,0,.8)}
+b.button:before,b.button:after{position:relative;top:-1px;font-weight:400}
+b.button:before{content:"[";padding:0 3px 0 2px}
+b.button:after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header:before,#header:after,#content:before,#content:after,#footnotes:before,#footnotes:after,#footer:before,#footer:after{content:" ";display:table}
+#header:after,#content:after,#footnotes:after,#footer:after{clear:both}
+#content{margin-top:1.25em}
+#content:before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #ddddd8}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #ddddd8;padding-bottom:8px}
+#header .details{border-bottom:1px solid #ddddd8;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span:before{content:"\00a0\2013\00a0"}
+#header .details br+span.author:before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark:before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber:after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #ddddd8;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #efefed;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media only screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #efefed;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #efefed;left:auto;right:0}}
+@media only screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:100%;background-color:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+.sect1{padding-bottom:.625em}
+@media only screen and (min-width:768px){.sect1{padding-bottom:1.25em}}
+.sect1+.sect1{border-top:1px solid #efefed}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor:before,h2>a.anchor:before,h3>a.anchor:before,#toctitle>a.anchor:before,.sidebarblock>.content>.title>a.anchor:before,h4>a.anchor:before,h5>a.anchor:before,h6>a.anchor:before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock>caption.title{white-space:nowrap;overflow:visible;max-width:0}
+.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock pre:not(.highlight),.listingblock pre[class="highlight"],.listingblock pre[class^="highlight "],.listingblock pre.CodeRay,.listingblock pre.prettyprint{background:#f7f7f8}
+.sidebarblock .literalblock pre,.sidebarblock .listingblock pre:not(.highlight),.sidebarblock .listingblock pre[class="highlight"],.sidebarblock .listingblock pre[class^="highlight "],.sidebarblock .listingblock pre.CodeRay,.sidebarblock .listingblock pre.prettyprint{background:#f2f1f1}
+.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;padding:1em;font-size:.8125em}
+.literalblock pre.nowrap,.literalblock pre[class].nowrap,.listingblock pre.nowrap,.listingblock pre[class].nowrap{overflow-x:auto;white-space:pre;word-wrap:normal}
+@media only screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}
+@media only screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}
+.literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]:before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:#999}
+.listingblock:hover code[data-lang]:before{display:block}
+.listingblock.terminal pre .command:before{content:attr(data-prompt);padding-right:.5em;color:#999}
+.listingblock.terminal pre .command:not([data-prompt]):before{content:"$"}
+table.pyhltable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0;line-height:1.45}
+table.pyhltable td.code{padding-left:.75em;padding-right:0}
+pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #ddddd8}
+pre.pygments .lineno{display:inline-block;margin-right:.25em}
+table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock blockquote p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote:before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.5em;margin-right:.5ex;text-align:right}
+.quoteblock .quoteblock{margin-left:0;margin-right:0;padding:.5em 0;border-left:3px solid rgba(0,0,0,.6)}
+.quoteblock .quoteblock blockquote{padding:0 0 0 .75em}
+.quoteblock .quoteblock blockquote:before{display:none}
+.verseblock{margin:0 1em 1.25em 1em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract{margin:0 0 1.25em 0;display:block}
+.quoteblock.abstract blockquote,.quoteblock.abstract blockquote p{text-align:left;word-spacing:0}
+.quoteblock.abstract blockquote:before,.quoteblock.abstract blockquote p:first-of-type:before{display:none}
+table.tableblock{max-width:100%;border-collapse:separate}
+table.tableblock td>.paragraph:last-child p>p:last-child,table.tableblock th>p:last-child,table.tableblock td>p:last-child{margin-bottom:0}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all th.tableblock,table.grid-all td.tableblock{border-width:0 1px 1px 0}
+table.grid-all tfoot>tr>th.tableblock,table.grid-all tfoot>tr>td.tableblock{border-width:1px 1px 0 0}
+table.grid-cols th.tableblock,table.grid-cols td.tableblock{border-width:0 1px 0 0}
+table.grid-all *>tr>.tableblock:last-child,table.grid-cols *>tr>.tableblock:last-child{border-right-width:0}
+table.grid-rows th.tableblock,table.grid-rows td.tableblock{border-width:0 0 1px 0}
+table.grid-all tbody>tr:last-child>th.tableblock,table.grid-all tbody>tr:last-child>td.tableblock,table.grid-all thead:last-child>tr>th.tableblock,table.grid-rows tbody>tr:last-child>th.tableblock,table.grid-rows tbody>tr:last-child>td.tableblock,table.grid-rows thead:last-child>tr>th.tableblock{border-bottom-width:0}
+table.grid-rows tfoot>tr>th.tableblock,table.grid-rows tfoot>tr>td.tableblock{border-width:1px 0 0 0}
+table.frame-all{border-width:1px}
+table.frame-sides{border-width:0 1px}
+table.frame-topbot{border-width:1px 0}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+td>div.verse{white-space:pre}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.unstyled,ol.unnumbered,ul.checklist,ul.none{list-style-type:none}
+ul.unstyled,ol.unnumbered,ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1em;font-size:.85em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{width:1em;position:relative;top:1px}
+ul.inline{margin:0 auto .625em auto;margin-left:-1.375em;margin-right:0;padding:0;list-style:none;overflow:hidden}
+ul.inline>li{list-style:none;float:left;margin-left:1.375em;display:block}
+ul.inline>li>*{display:block}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist>table tr>td:first-of-type{padding:0 .75em;line-height:1}
+.colist>table tr>td:last-of-type{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left,.imageblock[style*="float: left"]{margin:.25em .625em 1.25em 0}
+.imageblock.right,.imageblock[style*="float: right"]{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em 0;border-width:1px 0 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;text-indent:-1.05em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background-color:#00fafa}
+.black{color:#000}
+.black-background{background-color:#000}
+.blue{color:#0000bf}
+.blue-background{background-color:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background-color:#fa00fa}
+.gray{color:#606060}
+.gray-background{background-color:#7d7d7d}
+.green{color:#006000}
+.green-background{background-color:#007d00}
+.lime{color:#00bf00}
+.lime-background{background-color:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background-color:#7d0000}
+.navy{color:#000060}
+.navy-background{background-color:#00007d}
+.olive{color:#606000}
+.olive-background{background-color:#7d7d00}
+.purple{color:#600060}
+.purple-background{background-color:#7d007d}
+.red{color:#bf0000}
+.red-background{background-color:#fa0000}
+.silver{color:#909090}
+.silver-background{background-color:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background-color:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background-color:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background-color:#fafa00}
+span.icon>.fa{cursor:default}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note:before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip:before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning:before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution:before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important:before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background-color:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]:after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background-color:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@media print{@page{margin:1.25cm .75cm}
+*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare):after,a[href^="https:"]:not(.bare):after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]:after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #ddddd8!important;padding-bottom:0!important}
+.sect1{padding-bottom:0!important}
+.sect1+.sect1{border:0!important}
+#header>h1:first-child{margin-top:1.25rem}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em 0}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span:before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]:before{display:block}
+#footer{background:none!important;padding:0 .9375em}
+#footer-text{color:rgba(0,0,0,.6)!important;font-size:.9em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<style>
+/* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
+/*pre.CodeRay {background-color:#f7f7f8;}*/
+.CodeRay .line-numbers{border-right:1px solid #d8d8d8;padding:0 0.5em 0 .25em}
+.CodeRay span.line-numbers{display:inline-block;margin-right:.5em;color:rgba(0,0,0,.3)}
+.CodeRay .line-numbers strong{color:rgba(0,0,0,.4)}
+table.CodeRay{border-collapse:separate;border-spacing:0;margin-bottom:0;border:0;background:none}
+table.CodeRay td{vertical-align: top;line-height:1.45}
+table.CodeRay td.line-numbers{text-align:right}
+table.CodeRay td.line-numbers>pre{padding:0;color:rgba(0,0,0,.3)}
+table.CodeRay td.code{padding:0 0 0 .5em}
+table.CodeRay td.code>pre{padding:0}
+.CodeRay .debug{color:#fff !important;background:#000080 !important}
+.CodeRay .annotation{color:#007}
+.CodeRay .attribute-name{color:#000080}
+.CodeRay .attribute-value{color:#700}
+.CodeRay .binary{color:#509}
+.CodeRay .comment{color:#998;font-style:italic}
+.CodeRay .char{color:#04d}
+.CodeRay .char .content{color:#04d}
+.CodeRay .char .delimiter{color:#039}
+.CodeRay .class{color:#458;font-weight:bold}
+.CodeRay .complex{color:#a08}
+.CodeRay .constant,.CodeRay .predefined-constant{color:#008080}
+.CodeRay .color{color:#099}
+.CodeRay .class-variable{color:#369}
+.CodeRay .decorator{color:#b0b}
+.CodeRay .definition{color:#099}
+.CodeRay .delimiter{color:#000}
+.CodeRay .doc{color:#970}
+.CodeRay .doctype{color:#34b}
+.CodeRay .doc-string{color:#d42}
+.CodeRay .escape{color:#666}
+.CodeRay .entity{color:#800}
+.CodeRay .error{color:#808}
+.CodeRay .exception{color:inherit}
+.CodeRay .filename{color:#099}
+.CodeRay .function{color:#900;font-weight:bold}
+.CodeRay .global-variable{color:#008080}
+.CodeRay .hex{color:#058}
+.CodeRay .integer,.CodeRay .float{color:#099}
+.CodeRay .include{color:#555}
+.CodeRay .inline{color:#000}
+.CodeRay .inline .inline{background:#ccc}
+.CodeRay .inline .inline .inline{background:#bbb}
+.CodeRay .inline .inline-delimiter{color:#d14}
+.CodeRay .inline-delimiter{color:#d14}
+.CodeRay .important{color:#555;font-weight:bold}
+.CodeRay .interpreted{color:#b2b}
+.CodeRay .instance-variable{color:#008080}
+.CodeRay .label{color:#970}
+.CodeRay .local-variable{color:#963}
+.CodeRay .octal{color:#40e}
+.CodeRay .predefined{color:#369}
+.CodeRay .preprocessor{color:#579}
+.CodeRay .pseudo-class{color:#555}
+.CodeRay .directive{font-weight:bold}
+.CodeRay .type{font-weight:bold}
+.CodeRay .predefined-type{color:inherit}
+.CodeRay .reserved,.CodeRay .keyword {color:#000;font-weight:bold}
+.CodeRay .key{color:#808}
+.CodeRay .key .delimiter{color:#606}
+.CodeRay .key .char{color:#80f}
+.CodeRay .value{color:#088}
+.CodeRay .regexp .delimiter{color:#808}
+.CodeRay .regexp .content{color:#808}
+.CodeRay .regexp .modifier{color:#808}
+.CodeRay .regexp .char{color:#d14}
+.CodeRay .regexp .function{color:#404;font-weight:bold}
+.CodeRay .string{color:#d20}
+.CodeRay .string .string .string{background:#ffd0d0}
+.CodeRay .string .content{color:#d14}
+.CodeRay .string .char{color:#d14}
+.CodeRay .string .delimiter{color:#d14}
+.CodeRay .shell{color:#d14}
+.CodeRay .shell .delimiter{color:#d14}
+.CodeRay .symbol{color:#990073}
+.CodeRay .symbol .content{color:#a60}
+.CodeRay .symbol .delimiter{color:#630}
+.CodeRay .tag{color:#008080}
+.CodeRay .tag-special{color:#d70}
+.CodeRay .variable{color:#036}
+.CodeRay .insert{background:#afa}
+.CodeRay .delete{background:#faa}
+.CodeRay .change{color:#aaf;background:#007}
+.CodeRay .head{color:#f8f;background:#505}
+.CodeRay .insert .insert{color:#080}
+.CodeRay .delete .delete{color:#800}
+.CodeRay .change .change{color:#66f}
+.CodeRay .head .head{color:#f4f}
+</style>
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<h1>Zimbra Collaboration Performing a Single-Server Installation</h1>
+<div class="details">
+<span id="author" class="author">v8.7, April 2016</span><br>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_license">License</a></li>
+<li><a href="#introduction">Introduction</a>
+<ul class="sectlevel2">
+<li><a href="#_important_notice_about_single_server_installations">Important Notice About Single Server Installations</a></li>
+<li><a href="#_zimbra_port_mapping">Zimbra Port Mapping</a></li>
+</ul>
+</li>
+<li><a href="#Installation_Prerequisites">Installation Prerequisites</a>
+<ul class="sectlevel2">
+<li><a href="#System_Requirements">System Requirements</a></li>
+<li><a href="#Zimbra_Connector_for_Outlook">Zimbra Connector for Outlook (Network Edition Only)</a></li>
+<li><a href="#Zimbra_Mobile">Zimbra Mobile (Network Edition Only)</a></li>
+<li><a href="#Zimbra_Touch_Client">Zimbra Touch Client (Network Edition Only)</a></li>
+<li><a href="#Available_Languages">Available Languages</a></li>
+</ul>
+</li>
+<li><a href="#Modifying_Operating_System_Configurations">Modifying Operating System Configurations</a></li>
+<li><a href="#Configuring_High-Fidelity_Document_Preview">Configuring High-Fidelity Document Preview (Network Edition Only)</a>
+<ul class="sectlevel2">
+<li><a href="#Install_Language_and_Font_Packages">Install Language and Font Packages</a></li>
+</ul>
+</li>
+<li><a href="#DNS_Configuration_Requirement">DNS Configuration Requirement</a></li>
+<li><a href="#Overview_of_Installation_Process">Overview of the Installation Process</a>
+<ul class="sectlevel2">
+<li><a href="#Zimbra_Application_Packages">Zimbra Application Packages</a></li>
+</ul>
+</li>
+<li><a href="#Downloading_the_Zimbra_Software">Downloading the Zimbra Software</a></li>
+<li><a href="#Zimbra_Licenses">Zimbra Licensing (Network Edition Only)</a>
+<ul class="sectlevel2">
+<li><a href="#Zimbra_License_Requirements">Zimbra License Requirements</a></li>
+<li><a href="#License_Usage_by_Zimbra_Collaboration_Account_Type">License Usage by Zimbra Collaboration Account Type</a></li>
+<li><a href="#License_Activation">License Activation</a></li>
+<li><a href="#Automatic_License_Activation">Automatic License Activation</a></li>
+<li><a href="#Manual_License_Activation">Manual License Activation</a></li>
+<li><a href="#License_Not_Installed_or_Activated">License Not Installed or Activated</a></li>
+<li><a href="#Obtaining_a_License">Obtaining a License</a></li>
+</ul>
+</li>
+<li><a href="#Basic_Configuration">Basic Configuration</a></li>
+<li><a href="#Installing_Zimbra_Collaboration_Software">Installing Zimbra Collaboration Software</a></li>
+<li><a href="#Final_Set-Up">Final Set-Up</a>
+<ul class="sectlevel2">
+<li><a href="#_access_to_the_zimbra_user">Access to the 'zimbra' user</a></li>
+</ul>
+</li>
+<li><a href="#Scanning_Attachments_in_Outgoing_Mail">Scanning Attachments in Outgoing Mail</a></li>
+<li><a href="#Provisioning_Accounts">Provisioning Accounts</a>
+<ul class="sectlevel2">
+<li><a href="#Activate_License">Activate the Zimbra Collaboration license (Network Edition Only)</a></li>
+<li><a href="#Provision_accounts">Provision accounts</a></li>
+<li><a href="#Configuring_One_Account">Configuring One Account</a></li>
+<li><a href="#Importing_Content_from_User_Mailboxes">Importing Content from User Mailboxes</a></li>
+<li><a href="#Administrators_Account">Administrator Account</a></li>
+</ul>
+</li>
+<li><a href="#Uninstalling_Zimbra_Collaboration">Uninstalling Zimbra Collaboration</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_license">License</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="image"><img src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" alt="CC BY-SA"></span> Synacor, Inc., 2016-2017</p>
+</div>
+<div class="paragraph">
+<p>&#169; 2016-2017 by Synacor, Inc. Zimbra Collaboration Performing a Single-Server Installation</p>
+</div>
+<div class="paragraph">
+<p>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+International License unless another license agreement between you and
+Synacor, Inc. provides otherwise. To view a copy of this license, visit
+<a href="http://creativecommons.org/licenses/by-sa/4.0" class="bare">http://creativecommons.org/licenses/by-sa/4.0</a> or send a letter to Creative
+Commons, PO Box 1866, Mountain View, CA 94042, USA.</p>
+</div>
+<div class="paragraph">
+<p>Synacor, Inc., 2016<br>
+40 La Riviere Drive, Suite 300<br>
+Buffalo, New York 14202</p>
+</div>
+<div class="paragraph">
+<p><a href="http://www.synacor.com" class="bare">http://www.synacor.com</a></p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Zimbra Collaboration includes the Zimbra MTA, the Zimbra LDAP server, and the Zimbra mailbox server.
+In a single-server installation, all components are installed on one server and require no additional
+manual configuration.</p>
+</div>
+<div class="paragraph">
+<p>This installation guide is a quick start guide that describes the basic steps needed to install and configure
+Zimbra Collaboration in a direct network connect environment. In this environment, the Zimbra server is assigned a domain
+for which it receives mail, and a direct network connection to the Internet.  When Zimbra Collaboration is installed, you
+will be able to log on to the Zimbra administration console to manage the domain and provision accounts.
+The accounts you create are able to send and receive external email.</p>
+</div>
+<div class="sect2">
+<h3 id="_important_notice_about_single_server_installations">Important Notice About Single Server Installations</h3>
+<div class="paragraph">
+<p>Zimbra Collaboration is designed to be the only application suite installed on the server.
+As part of the installation process, Zimbra Collaboration bundles and installs various other third party and open
+source software, including Apache Jetty, Postfix, and OpenLDAP®.  The versions installed have been tested and
+configured to work with Zimbra software. See the Zimbra Collaboration Administrator Guide for a complete list of
+software.</p>
+</div>
+<div class="paragraph">
+<p>A Zimbra license is required in order to create accounts on servers running Zimbra Collaboration Network Edition.
+You cannot install Zimbra Collaboration Network Edition without a license.</p>
+</div>
+<div class="paragraph">
+<p>The following table shows the default port settings when Zimbra Collaboration is installed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zimbra_port_mapping">Zimbra Port Mapping</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Remote Queue Manager</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Postfix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">POP3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">110</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IMAP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">143</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LDAP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">389</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">443</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mailboxd IMAP SSL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">993</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mailboxd Pop SSL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">995</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mailboxd LMTP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7025</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Important:</strong> You cannot have any other web server, database, LDAP, or MTA server running, when you install
+Zimbra Collaboration. If you have installed any of those applications before you install Zimbra software, disable them.
+During Zimbra Collaboration installation, Zimbra makes global system changes that may break applications that are on
+your server.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Installation_Prerequisites">Installation Prerequisites</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In order to successfully install and run Zimbra Collaboration, ensure
+your system meets the requirements described in this section. System
+administrators should be familiar with installing and managing email
+systems.</p>
+</div>
+<div class="sect2">
+<h3 id="System_Requirements">System Requirements</h3>
+<table class="tableblock frame-all grid-rows spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Servers</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><strong>Evaluation and Testing</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Intel/AMD 64-bit CPU 1.5 GHz</p>
+</li>
+<li>
+<p>RAM requirements:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For single server installations, a minimum of 8GB of RAM is required.</p>
+</li>
+<li>
+<p>For multi-server installations, contact Zimbra sales for recommendations.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>5 GB free disk space for software and logs</p>
+</li>
+<li>
+<p>Temp file space for installs and upgrades*</p>
+</li>
+<li>
+<p>Additional disk space for mail storage</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Production environments</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Intel/AMD 2.0 GHZ+ 64-bit CPU</p>
+</li>
+<li>
+<p>RAM requirements:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>For single server installations, a minimum of 8GB of RAM is required.</p>
+</li>
+<li>
+<p>For multi-server installations, contact Zimbra sales for recommendations.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Temp file space for installs and upgrades*</p>
+</li>
+<li>
+<p>10 GB free disk space for software and logs (SATA or SCSI for
+performance, and RAID/Mirroring for redundancy)</p>
+</li>
+<li>
+<p>Additional disk space for mail storage</p>
+</li>
+<li>
+<p>Temp files space: The zimbra-store requires 5GB for <code>/opt/zimbra</code>, plus
+additional space for mail storage. The other nodes require 100MB.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>General Requirements</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Firewall Configuration should be set to “No firewall”.</p>
+</li>
+<li>
+<p>RAID-5 is not recommended for installations with more than 100 accounts.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Operating System (Network Edition)</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The following operating systems are supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Red Hat® Enterprise Linux® 7 (64-bit)</p>
+</li>
+<li>
+<p>CentOS Linux® 7 (64-bit)</p>
+</li>
+<li>
+<p>Red Hat Enterprise Linux 6 (64-bit), patch level 4 or later is required</p>
+</li>
+<li>
+<p>CentOS Linux 6 (64-bit), patch level 4 or later is required</p>
+</li>
+<li>
+<p>Ubuntu 14.04 LTS Server Edition (64-bit)</p>
+</li>
+<li>
+<p>Ubuntu 12.04.4 LTS Server Edition (64-bit) running the saucy (3.11) or
+later kernel is required. Note: If the original install was done with
+Ubuntu 12.04.2 or earlier, manual intervention is required to switch to
+the saucy (3.11) or later kernel series.
+See <a href="https://wiki.ubuntu.com/Kernel/LTSEnablementStack" class="bare">https://wiki.ubuntu.com/Kernel/LTSEnablementStack</a> for further information.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Virtualization (Network Edition)</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The following hypervisors are supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>VMware vSphere 4.x</p>
+</li>
+<li>
+<p>VMware vSphere 5.x</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Operating System (Open Source Edition)</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>In addition to supporting the operating systems listed above for the
+Network Edition, other operating system versions are available for the
+Open Source Edition. Check the Zimbra Open Source Downloads page on
+<a href="https://www.zimbra.com" class="bare">https://www.zimbra.com</a>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>File Systems</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The following file systems are supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>ext3</strong> or <strong>ext4</strong> file systems for Linux deployments</p>
+</li>
+<li>
+<p><strong>NFS</strong> for backup only</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Other Dependencies</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Netcat (nc) is required on all operating systems using Zimbra Collaboration.
+The nc utility must be installed prior to installation or upgrading.</p>
+</div>
+<div class="paragraph">
+<p>For SUSE and Ubuntu systems, disable AppArmor and verify that services
+are not running before installing Zimbra Collaboration.</p>
+</div>
+<div class="paragraph">
+<p>For Red Hat Enterprise, Fedora Core and SUSE operating systems, the
+server must also have the following installed:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>NPTL</strong>. Native POSIX Thread Library</p>
+</li>
+<li>
+<p><strong>Sudo</strong>. Superuser, required to delegate admins.</p>
+</li>
+<li>
+<p><strong>libidn</strong>. For internationalizing domain names in applications (IDNA)</p>
+</li>
+<li>
+<p><strong>GMP</strong>. GNU Multiple-Precision Library.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For Ubuntu 14 and Ubuntu 12:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Sudo</p>
+</li>
+<li>
+<p>libidn11</p>
+</li>
+<li>
+<p>libpcre3</p>
+</li>
+<li>
+<p>libexpat1</p>
+</li>
+<li>
+<p>libgmp3c2</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Miscellaneous</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p>SSH client software to transfer and install the Zimbra Collaboration software.</p>
+</li>
+<li>
+<p>Valid DNS configured with an A record and MX record.</p>
+</li>
+<li>
+<p>Servers should be configured to run Network Time Protocol (NTP) on a scheduled basis.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Administrator Computers<br>
+<br>
+Note: Other configurations may work.</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The following operating system/browser combinations are supported:</p>
+</div>
+<div class="paragraph">
+<p>Windows XP with required updates, Vista, Windows 7, or Windows 8 with
+one of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Internet Explorer 8.0 and higher</p>
+<div class="ulist">
+<ul>
+<li>
+<p>IE8.x for XP</p>
+</li>
+<li>
+<p>IE9.x and higher for Vista/Windows 7</p>
+</li>
+<li>
+<p>IE10 and higher for Windows 8</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The latest stable release of:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Firefox</p>
+</li>
+<li>
+<p>Safari</p>
+</li>
+<li>
+<p>Google Chrome</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Mac OS X 10.5, 10.6, 10.7, or 10.8 with one of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The latest stable release of:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Firefox</p>
+</li>
+<li>
+<p>Safari</p>
+</li>
+<li>
+<p>Google Chrome</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Linux (Red Hat, Ubuntu, Fedora, or SUSE) with one of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The latest stable release of:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Firefox</p>
+</li>
+<li>
+<p>Google Chrome</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Administrator Console Monitor</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Display minimum resolution 1024 x 768</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>End User Computers using Zimbra Web Client</strong><br>
+<br>
+Note: Other configurations may work.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><strong>For Zimbra Web Client - Advanced &amp; Standard version</strong></p>
+</div>
+<div class="paragraph">
+<p>Minimum</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Intel/AMD/Power PC CPU 750MHz</p>
+</li>
+<li>
+<p>256MB RAM</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Recommended</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Intel/AMD/Power PC CPU 1.5GHz</p>
+</li>
+<li>
+<p>512MB RAM</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following operating system/browser combinations are supported:</p>
+</div>
+<div class="paragraph">
+<p>Windows XP with required updates, Vista, Windows 7, or Windows 8 with
+one of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Internet Explorer 8.0 and higher</p>
+<div class="ulist">
+<ul>
+<li>
+<p>IE8.x for XP</p>
+</li>
+<li>
+<p>IE9.x and higher for Vista/Windows 7</p>
+</li>
+<li>
+<p>IE10 and higher for Windows 8</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The latest stable release of:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Firefox</p>
+</li>
+<li>
+<p>Safari</p>
+</li>
+<li>
+<p>Google Chrome</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Mac OS X 10.5, 10.6, 10.7, or 10.8 with one of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The latest stable release of:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Firefox</p>
+</li>
+<li>
+<p>Safari</p>
+</li>
+<li>
+<p>Google Chrome</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Linux (Red Hat, Ubuntu, Fedora, or SUSE) with one of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The latest stable release of:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Firefox</p>
+</li>
+<li>
+<p>Google Chrome</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>End User Computers Using Other Clients</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Minimum</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Intel/AMD/Power PC CPU 750MHz</p>
+</li>
+<li>
+<p>256MB RAM</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Recommended</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Intel/AMD/Power PC CPU 1.5GHz</p>
+</li>
+<li>
+<p>512MB RAM</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Operating system POP/IMAP combinations</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Windows XP SP 3, Vista SP 2, Windows 7 with Outlook Express 6, Outlook
+2003, (MAPI), Thunderbird</p>
+</li>
+<li>
+<p>Fedora Core 4 or later with Thunderbird</p>
+</li>
+<li>
+<p>Mac OS X 10.4 or later with Apple Mail</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Accessibility and Screen Readers</strong> Zimbra recommends that customers
+requiring use of screen readers for accessibility leverage the use of
+the Standard Zimbra Web Client (HTML). Zimbra continues to invest in
+improving the accessibility of this interface.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Exchange Web Services</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>EWS Clients</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Outlook 2011 (MAC only)</p>
+</li>
+<li>
+<p>Apple Desktop Clients (OS X, 10.8+)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>EWS Interoperability</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Exchange 2007+</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Monitor</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Display minimum resolution: 1024 x 768</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Internet Connection Speed</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>128 kbps or higher</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="Zimbra_Connector_for_Outlook">Zimbra Connector for Outlook (Network Edition Only)</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Operating System</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p>Windows 10</p>
+</li>
+<li>
+<p>Windows 8</p>
+</li>
+<li>
+<p>Windows 7</p>
+</li>
+<li>
+<p>Vista</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Microsoft Outlook</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p>Outlook 2013: 32-bit and 64-bit editions of Microsoft Outlook are
+supported.</p>
+</li>
+<li>
+<p>Outlook 2010: 32-bit and 64-bit editions of Microsoft Outlook are
+supported.</p>
+</li>
+<li>
+<p>Outlook 2007: Client computers must have Microsoft Office Outlook 2007
+SP3 or later installed.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="Zimbra_Mobile">Zimbra Mobile (Network Edition Only)</h3>
+<hr>
+<div class="paragraph">
+<p>Zimbra Mobile (MobileSync) provides mobile data access to email,
+calendar, and contacts for users of selected mobile operating systems,
+including:</p>
+</div>
+<div class="paragraph">
+<p><strong>Smartphone Operating Systems</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>iOS6, iOS7, iOS8, iOS9</p>
+</li>
+<li>
+<p>Android 2.3 and above</p>
+</li>
+<li>
+<p>Windows Mobile 6.0 and above</p>
+</li>
+<li>
+<p>Microsoft Outlook using the Exchange ActiveSync (EAS)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Non-Smartphone Operating Systems</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Various device/operating system combinations with mobile WAP browser.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Zimbra_Touch_Client">Zimbra Touch Client (Network Edition Only)</h3>
+<hr>
+<div class="paragraph">
+<p>Supported devices for the Zimbra Touch Client include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>iOS6+: iPad®, iPad mini®, iPhone®, iPod touch®</p>
+</li>
+<li>
+<p>Android 4.0+: Nexus 7, Nexus 10, Samsung Galaxy Tab,
+Samsung Galaxy S® III, Samsung Galaxy S® 4, Galaxy Nexus</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Available_Languages">Available Languages</h3>
+<div class="paragraph">
+<p><strong>End User Translations</strong></p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 15%;">
+<col style="width: 15%;">
+<col style="width: 70%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Component</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Category</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Languages</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Web Client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application/UI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Chinese
+(Simplified PRC and Traditional HK), Danish, Dutch, English (AU, UK,
+US), French, French Canadian, German, Hindi, Hungarian, Italian,
+Japanese, Korean, Malay, Polish, Portuguese (Brazil), Portuguese
+(Portugal), Romanian, Russian, Spanish, Swedish, Thai, Turkish,
+Ukrainian</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Web Client - Online Help (HTML)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Feature Documentation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dutch,
+English, Spanish, French, Italian, Japanese, German, Portuguese
+(Brazil), Chinese (Simplified PRC and Traditional HK), Russian</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Web Client - End User Guide (PDF)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Feature Documentation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">English</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Connector for Microsoft Outlook</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Installer + Application/UI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Chinese (Simplified PRC and Traditional HK),
+Danish, Dutch, English (AU, UK, US), French, French Canadian, German,
+Hindi, Hungarian, Italian, Japanese, Korean, Malay, Polish, Portuguese
+(Brazil), Portuguese (Portugal), Romanian, Russian, Spanish, Swedish,
+Thai, Turkish, Ukrainian</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Connector for Microsoft Outlook - End User Guide (PDF)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Feature
+Documentation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">English</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Admin Console</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Chinese
+(Simplified PRC and Traditional HK), Danish, Dutch, English (AU, UK,
+US), French, French Canadian, German, Hindi, Hungarian, Italian,
+Japanese, Korean, Malay, Polish, Portuguese (Brazil), Portuguese
+(Portugal), Romanian, Russian, Spanish, Swedish, Turkish, Ukrainian</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Admin Console Online Help (HTML)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Feature Documentation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">English</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Documentation" Install + Upgrade / Admin Manual / Migration / Import /
+Release Notes / System Requirements</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Guides</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">English</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Connector for Microsoft Outlook - Admin Guide (PDF)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Install + Configuration Guide</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">English</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Note: To find SSH client software, go to Download.com at
+<a href="http://www.download.com/" class="bare">http://www.download.com/</a> and search for SSH. The list displays software
+that can be purchased or downloaded for free. An example of a free SSH
+client software is PuTTY, a software implementation of SSH for Win32 and
+Unix platforms. To download a copy go to <a href="http://putty.nl/">http://putty.nl</a></p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Modifying_Operating_System_Configurations">Modifying Operating System Configurations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Zimbra Collaboration runs on one of several operating systems, including
+Ubuntu® LTS, Red Hat® Enterprise Linux, and SUSE® Linux Enterprise.</p>
+</div>
+<div class="paragraph">
+<p>Installation modifications for frequently used operating systems are
+described in individual configuration documents found on the Zimbra
+Collaboration documentation website. Other operating systems may require
+similar modifications, and you can use the information contained in
+these documents as a reference to gauge whether your operating system
+might need to be modified.</p>
+</div>
+<div class="paragraph">
+<p>A full default installation of the Linux distribution that you select is
+required.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> Zimbra recommends that the operating systems you use are updated
+with the latest patches that have been tested with Zimbra Collaboration.
+See the latest release notes to see the operating systems patch list
+that has been tested with Zimbra Collaboration.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Configuring_High-Fidelity_Document_Preview">Configuring High-Fidelity Document Preview (Network Edition Only)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The high-fidelity document preview feature requires the installation of
+LibreOffice or the LibreOffice-headless package, depending on the
+operating system you are running.</p>
+</div>
+<div class="paragraph">
+<p>If LibreOffice is installed, the system is automatically configured
+to use high-fidelity document preview. If LibreOffice is not
+installed, the preview engine from prior Zimbra Collaboration releases
+is used.</p>
+</div>
+<div class="paragraph">
+<p>This can be accomplished with the appropriate Linux distribution&#8217;s
+package management systems:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For RHEL, install the libreoffice-headless package:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>yum install libreoffice
+yum install libreoffice-headless</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For SLES, install libreoffice:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>yast2 -i libreoffice</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For Ubuntu, install libreoffice:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>apt-get install libreoffice</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Install_Language_and_Font_Packages">Install Language and Font Packages</h3>
+<div class="paragraph">
+<p>Confirm you have the appropriate language packs or fonts installed for
+LibreOffice to properly view documents and attachments. For example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If using Ubuntu 12.04 and viewing East Asian languages, be sure to install:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>apt-get install libreoffice-l10n-*
+apt-get install ttf-vlgothic</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If using Ubuntu 14.04 and viewing East Asian languages, be sure to install:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>apt-get install libreoffice-l10n-*
+apt-get install fonts-vlgothic</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If using RHEL, be sure to install:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>yum install libreoffice-langpack-xx</pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="DNS_Configuration_Requirement">DNS Configuration Requirement</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In order to send and receive email, the Zimbra MTA must be configured in
+DNS with both A and MX records. For sending mail, the MTA uses DNS to
+resolve hostnames and email-routing information. To receive mail, the MX
+record must be configured correctly to route the message to the mail
+server.</p>
+</div>
+<div class="paragraph">
+<p>During the installation process, Zimbra Collaboration checks to see if
+you have an MX record correctly configured. If it is not, an error is
+displayed suggesting that the domain name have an MX record configured
+in DNS.</p>
+</div>
+<div class="paragraph">
+<p>You must configure a relay host if you do not enable DNS. After Zimbra
+Collaboration is installed, go to the <strong>administration console</strong>'s
+<strong>Global Settings&gt;MTA</strong> tab and:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>uncheck <strong>Enable DNS lookups</strong>.</p>
+</li>
+<li>
+<p>Enter the <strong>relay MTA address</strong> to use for external delivery.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> Even if a relay host is configured, an MX record is still
+required if the Zimbra Collaboration server is going to receive email
+from the Internet.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Overview_of_Installation_Process">Overview of the Installation Process</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you run the install script, the process verifies that the correct
+prerequisite Zimbra application packages are available to be installed.</p>
+</div>
+<div class="sect2">
+<h3 id="Zimbra_Application_Packages">Zimbra Application Packages</h3>
+<div class="paragraph">
+<p>Zimbra architecture includes open-source integrations using industry
+standard protocols. The third-party software has been tested and
+configured to work with the Zimbra software.</p>
+</div>
+<div class="paragraph">
+<p>The following describes the Zimbra packages that are installed.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Zimbra Core:</strong> This package includes the libraries, utilities,
+monitoring tools, and basic configuration files. Zimbra Core is
+automatically installed on each server.</p>
+</li>
+<li>
+<p><strong>Zimbra Store:</strong> The Zimbra store includes the components for the
+mailbox server, including Jetty, which is the servlet container the
+Zimbra software runs within. The Zimbra mailbox server includes the
+following components:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Data store: The data store is a MariaDB© database.</p>
+</li>
+<li>
+<p>Message store: The message store is where all email messages and file
+attachments reside.</p>
+</li>
+<li>
+<p>Index store: Index and search technology is provided through Lucene.
+Index files are maintained for each mailbox.</p>
+</li>
+<li>
+<p>Web application services: The Jetty web application server runs web
+applications (webapps) on any store server. It provides one or more web
+application services.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Zimbra LDAP:</strong>User authentication is provided through OpenLDAP®
+software. Each account on the Zimbra server has a unique mailbox ID that
+is the primary point of reference to identify the account. The OpenLDAP
+schema has been customized for Zimbra Collaboration. The Zimbra LDAP
+server must be configured before the other servers. You can set up LDAP
+replication, configuring a master LDAP server and replica LDAP servers.</p>
+</li>
+<li>
+<p><strong>Zimbra MTA:</strong> Postfix is the open source mail transfer agent (MTA)
+that receives email via SMTP and routes each message to the appropriate
+Zimbra mailbox server using Local Mail Transfer Protocol (LMTP). The
+Zimbra MTA also includes the anti-virus and anti-spam components.</p>
+</li>
+<li>
+<p><strong>Zimbra Proxy:</strong> Zimbra Proxy is a high-performance reverse proxy
+service for passing IMAP[S]/POP[S]/HTTP[S] client requests to other
+internal Zimbra Collaboration services.This package is normally installed on the MTA
+server(s) or on its own independent server(s). When the zimbra-proxy
+package is installed, the proxy feature is enabled by default.
+Installing the Zimbra Proxy is highly recommended, and required if using
+a separate web application server.</p>
+</li>
+<li>
+<p><strong>Zimbra Memcached:</strong> Memcached is automatically selected when the
+zimbra-proxy is installed. At least one server must run zimbra-memcached
+when the proxy is in use. You can use a single memcached server with one
+or more Zimbra proxies.</p>
+</li>
+<li>
+<p><strong>Zimbra SNMP:</strong> Installing the Zimbra SNMP package is optional. If you
+choose to install zimbra-SNMP for monitoring, this package should be
+installed on every Zimbra server.</p>
+</li>
+<li>
+<p><strong>Zimbra Logger:</strong> Installing the Zimbra Logger package is optional and
+is installed on one mailbox server. The Zimbra Logger installs tools for
+syslog aggregation and reporting. If you do not install Logger, the
+server statistics section of the administration console will not
+display. <strong>Note:</strong> The Logger package must be installed at the same time
+as the mailbox server.</p>
+</li>
+<li>
+<p><strong>Zimbra Spell:</strong> Installing the Zimbra Spell package is optional.
+Aspell is the open source spell checker used on the Zimbra Web Client.</p>
+</li>
+<li>
+<p><strong>Zimbra Apache:</strong> This package is installed automatically when Zimbra
+Spell or Zimbra Convertd is installed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The Zimbra server configuration is menu driven. The installation menu
+shows you the default configuration values. The menu displays the
+logical host name and email domain name [mailhost.example.com] as
+configured on the computer. You can change any of the values. For single
+server installs, you must define the administrator’s password, which you
+use to log on to the administration console, and you specify the
+location of the Zimbra license xml file.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Downloading_the_Zimbra_Software">Downloading the Zimbra Software</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Obtain the Zimbra Collaboration software download and save to the
+computer from which you will install the software.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Zimbra_Licenses">Zimbra Licensing (Network Edition Only)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Zimbra Collaboration licensing gives administrators better visibility
+and control into the licensed features they plan to deploy. The
+following is a summary of the feature attributes of a Zimbra
+Collaboration network edition license.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Accounts limit.</strong> The maximum number of accounts you can create and
+the number of accounts created are shown.</p>
+</li>
+<li>
+<p><strong>Mobile accounts limit.</strong> The maximum number of accounts that can have
+the native mail mobile feature enabled.</p>
+</li>
+<li>
+<p><strong>Touch Client accounts limit</strong>. The maximum number of accounts that
+can have the touch client mobile feature enabled.</p>
+</li>
+<li>
+<p><strong>MAPI accounts limit</strong>. The maximum number of accounts that can use
+Zimbra Connector for Microsoft Outlook (ZCO).</p>
+</li>
+<li>
+<p><strong>Exchange Web Services (EWS) accounts limit.</strong> The maximum number of
+accounts that can use EWS for connecting to an Exchange server.</p>
+</li>
+<li>
+<p><strong>High-Fidelity Document Preview:</strong> The maximum number of accounts that
+can use the High-Fidelity document preview facility. LibreOffice must be
+installed.</p>
+</li>
+<li>
+<p><strong>Archiving Accounts limit.</strong> The maximum number of archive accounts
+that can be created. The archive feature must be installed.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="Zimbra_License_Requirements">Zimbra License Requirements</h3>
+<div class="paragraph">
+<p>A Zimbra license is required in order to create accounts in the Network
+Edition of Zimbra Collaboration.</p>
+</div>
+<div class="paragraph">
+<p>Several types of licenses are available:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Trial</strong>.  You can obtain a free Trial license from the Zimbra website,
+at <a href="https://www.zimbra.com" class="bare">https://www.zimbra.com</a>. The trial license allows you to create up to
+50 users. It expires in 60 days.</p>
+</li>
+<li>
+<p><strong>Trial Extended.</strong>  You can obtain a Trial Extended license from Zimbra
+Sales by contacting <a href="mailto:sales@zimbra.com">sales@zimbra.com</a> or calling 1-972-407-0688. This
+license allows you to create up to 50 users and is valid for an extended
+period of time.</p>
+</li>
+<li>
+<p><strong>Subscription.</strong>  You must purchase the Zimbra Subscription license. This
+license is valid for a specific Zimbra Collaboration system and is
+encrypted with the number of Zimbra accounts (seats) you have purchased,
+the effective date, and expiration date of the subscription license.</p>
+</li>
+<li>
+<p><strong>Perpetual.</strong>  You must purchase the Zimbra Perpetual license. This
+license is similar to a subscription license and is valid for a specific
+Zimbra Collaboration system, is encrypted with the number of Zimbra
+accounts (seats) you have purchased, the effective date, and an
+expiration date of 2099-12-31. When you renew your support agreement, no
+new perpetual license is sent to you, but your Account records in the
+systems is updated with your new support end date.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="License_Usage_by_Zimbra_Collaboration_Account_Type">License Usage by Zimbra Collaboration Account Type</h3>
+<div class="paragraph">
+<p>A mailbox license is required for an account assigned to a person,
+including accounts created for archiving. Distribution lists, aliases,
+locations and resources do not count against the license.</p>
+</div>
+<div class="paragraph">
+<p>Below is a description of types of Zimbra Collaboration accounts and if they
+impact your license limit.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>System accounts.</strong>  System accounts are specific accounts used by Zimbra
+Collaboration. They include the spam filter accounts for junk mail (spam
+and ham), virus quarantine account for email messages with viruses, and
+GALsync account if you configure GAL for your domain. <strong>Do not delete
+these accounts!</strong> These accounts do not count against your license.</p>
+</li>
+<li>
+<p><strong>Administrator account.</strong>  Administrator accounts count against your license.</p>
+</li>
+<li>
+<p><strong>User accounts.</strong>  User accounts count against your license account limit.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When you delete an account, the license account limit reflects the change.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alias account.</strong>  Aliases do not count against your license.</p>
+</li>
+<li>
+<p><strong>Distribution list.</strong>  Distribution lists do not count against your license.</p>
+</li>
+<li>
+<p><strong>Resource account.</strong>  Resource accounts (location and resources) do not
+count against your Zimbra Collaboration license.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="License_Activation">License Activation</h3>
+<div class="paragraph">
+<p>All network edition installations require license activation. New
+installations have a 10 day grace period from the license issue date
+before requiring activation. Your license can be activated from the
+administration console by selecting <strong>Configure&gt;Global Settings&gt;License</strong>,
+then clicking <strong>Activate License</strong> in the toolbar. You can also
+activate your license from the command line interface.</p>
+</div>
+<div class="paragraph">
+<p>Upgraded Zimbra Collaboration versions require an immediate activation
+to maintain network feature functionality.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Automatic_License_Activation">Automatic License Activation</h3>
+<div class="paragraph">
+<p>Licenses are automatically activated if the Zimbra Collaboration server
+has a connection to the Internet and can communicate with the Zimbra
+License server. If you are unable to automatically activate your
+license, see the next section on
+<a href="#Manual_License_Activation">Manual License Activation</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Manual_License_Activation">Manual License Activation</h3>
+<div class="paragraph">
+<p>For systems that do not have external access to the Zimbra License
+server, you can use the Zimbra Support Portal to manually activate your
+license. Go to the Zimbra website at <a href="https://www.zimbra.com" class="bare">https://www.zimbra.com</a> and click on the
+Support page to display the Zimbra Technical Support page. Click on the
+Support Portal Login button to display the Zimbra Support Portal page.
+Enter your email and password to log in.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="License_Not_Installed_or_Activated">License Not Installed or Activated</h3>
+<div class="paragraph">
+<p>If you fail to install or activate your Zimbra Collaboration server
+license, the following scenarios describe how your Zimbra Collaboration
+server will be impacted.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>License is not installed.</strong>  If a license is not installed, the
+Zimbra Collaboration server defaults to single user mode where all features
+limited by license are limited to one user.</p>
+</li>
+<li>
+<p><strong>License is not valid.</strong>  If the license file is forged or could not be
+validated for other reasons, the Zimbra Collaboration server defaults to
+single user mode.</p>
+</li>
+<li>
+<p><strong>License is not activated.</strong>  A license activation grace period is 10
+days. If for some reason the license is never activated, the
+Zimbra Collaboration server defaults to single user mode.</p>
+</li>
+<li>
+<p><strong>License is in future.</strong>  If the license starting date is still in the
+future, the Zimbra Collaboration server defaults to single user mode.</p>
+</li>
+<li>
+<p><strong>License is in grace period.</strong>  If the license ending date has passed and
+is within the 30 day grace period, all features limited by license are
+still enabled, but administrators may see license renewal prompts.</p>
+</li>
+<li>
+<p><strong>License expired.</strong>  If the license ending date has passed and the 30 day
+grace period expired, the Zimbra Collaboration server defaults to the
+feature set of the Open Source Edition.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Obtaining_a_License">Obtaining a License</h3>
+<div class="paragraph">
+<p>Go to Zimbra’s Website <a href="https://www.zimbra.com" class="bare">https://www.zimbra.com</a> to obtain a trial license
+from the Network Downloads area.  Contact Zimbra sales regarding a trial
+extended license, or to purchase a subscription license or perpetual
+license, by emailing <a href="mailto:sales@zimbra.com">sales@zimbra.com</a> or calling 1-972-407-0688.</p>
+</div>
+<div class="paragraph">
+<p>The subscription and perpetual license can only be installed on the
+Zimbra Collaboration system for which it is purchased. Only one Zimbra
+license is required for your Zimbra Collaboration environment. This
+license sets the number of accounts that can be created.</p>
+</div>
+<div class="paragraph">
+<p>Current license information, including the number of accounts purchased,
+the number of accounts used, and the expiration date, can be viewed from
+the administration console&#8217;s <strong>Configure&gt;Global Settings&gt;License</strong> page.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Basic_Configuration">Basic Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The default configuration installs Zimbra-LDAP, Zimbra-MTA with
+anti-virus and anti-spam protection, the Zimbra mailbox server, SNMP
+monitoring tools (optional), Zimbra-spell (optional), the logger tool
+(optional), and the Zimbra proxy (optional) on one server.</p>
+</div>
+<div class="paragraph">
+<p>The menu driven installation displays the components and their existing
+default values. You can modify the information during the installation
+process. The table below describes the menu options.</p>
+</div>
+<div class="paragraph">
+<p><strong>Main Menu Options</strong></p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Main Menu</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>Common Configuration - These are common settings for all servers</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hostname</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The host name configured in the operating system installation</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LDAP master host</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The LDAP host name. On a single server installation, this name is the
+same as the hostname.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LDAP port</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The default port is 389</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LDAP Admin password</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This is the master LDAP password.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Secure interprocess communications</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The default is YES. Secure interprocess communications requires that
+connections between the mail store, and other processes that use Java,
+use secure communications. It also specifies whether secure
+communications should be used between the master LDAP server and the
+replica LDAP servers for replication.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time Zone</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Select the time zone to apply to the default COS. The time zone that
+should be entered is the time zone that the majority of users in the COS
+will be located in. The default time zone is PST (Pacific Time).</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IP Mode</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>IPv4 or IPv6.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>zimbra-ldap</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The default is <strong>Enabled</strong>.  For replica LDAP servers, the status can be
+changed to Disabled if the database is manually loaded after
+installation completes.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create Domain</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>You can create one domain during installation. Additional domains can be
+created from the administration console.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Domain to create</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The default domain is the fully qualified hostname of the server. If you
+created a valid mail domain on your DNS server, enter it now. In most
+cases, you will accept the default.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LDAP Root password</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The root LDAP password for internal LDAP operations.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LDAP Replication password</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This is the password used by the LDAP replication user to identify
+itself to the LDAP master and must be the same as the password on the
+LDAP master server.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LDAP Postfix password</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This is the password used by the postfix user to identify itself to the
+LDAP server and must be configured on the MTA server to be the same as
+the password on the LDAP master server.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LDAP Amavis password</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This is the password used by the amavis user to identify itself to the
+LDAP server and must be configured on the MTA server to be the same as
+the password on the LDAP server.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>zimbra-logger</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>When installed, it is automatically enabled. Logs from the hosts are
+sent to the mailbox server where zimbra-logger is installed.  The
+information is used for generating statistics graphs and for message
+tracing.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>zimbra-mta</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MTA Auth host</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This is configured automatically if the MTA authentication server host
+is on the same server, but must be configured if the authentication
+server is not on the MTA.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Enable Spamassassin</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Default is enabled.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Enable ClamAV</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Default is enabled.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Notification address for AV alerts</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Sets the notification address for AV alerts.
+You can either accept the default or create a new address.
+If you create a new address, remember to provision this address
+from the admin console.<br>
+<strong>Note:</strong> If the virus notification address does not exist and your
+host name is the same as the domain name on the Zimbra server,
+the virus notifications queue in the Zimbra MTA server cannot be delivered.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Bind password for Postfix LDAP user</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Automatically set.  This is the password used by the postfix user to
+identify itself to the LDAP server and must be configured on the MTA
+server to be the same as the password on the LDAP master server.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Bind password for Amavis LDAP user</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Automatically set. This is the password used by the amavis user to
+identify itself to the LDAP server and must be configured on the MTA
+server to be the same as the password on the LDAP server.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>zimbra-dnscache (optional)</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Master DNS IP address(es)</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>IP addresses of DNS servers</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Enable DNS lookups over TCP</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Yes or No</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Enable DNS lookups over UDP</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Yes or No</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Only allow TCP to communicate with Master DNS</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Yes or No</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>zimbra-snmp(optional)</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Enable SNMP notifications</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The default is Yes.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SNMP Trap hostname</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The hostname of the SNMP Trap destination</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Enable SMTP notification</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The default is Yes.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SMTP Source email address</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>From address to use in email notifications</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SMTP Destination email address</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>To address to use in email notifications</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>zimbra-store</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create Admin User</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><strong>Yes</strong> or <strong>No</strong>. The administrator account is created during installation.
+This account is the first account provisioned on the Zimbra server and
+allows you to log on to the administration console.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Admin user to create</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The user name assigned to the administrator account. Once the
+administrator account has been created, it is suggested that you <strong>do not
+rename the account</strong> as automatic Zimbra Collaboration notifications might
+not be received.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Admin Password</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>You must set the admin account password. The password is case sensitive
+and must be a <strong>minimum of six characters</strong>. The administrator name, mail
+address, and password are required to log in to the administration
+console.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Anti-virus quarantine user</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>A virus quarantine account is automatically created during installation.
+When AmavisD identifies an email message with a virus, the email is
+automatically sent to this mailbox. The virus quarantine mailbox is
+configured to delete messages older than 7 days.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enable automated spam training</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><strong>Yes</strong> or <strong>No</strong>.  By default, the automated spam training filter is
+enabled and two mail accounts are created - one for the
+<strong>Spam Training User</strong> and one for the <strong>Non-spam (HAM) Training User</strong>.
+See the next 2 menu items which will be shown if spam training is
+enabled.<br>
+These addresses are automatically configured
+to work with the spam training filter. The accounts created have
+randomly selected names. To recognize what the accounts are used for,
+you may want to change their names.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Spam Training User</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>to receive mail notification about mail that was not marked as junk,
+but should have been.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Non-spam (HAM) Training User</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>to receive mail notification about mail that was marked as junk,
+but should not have been.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">The default port configurations are shown</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SMTP host</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Defaults to current server name</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Web server HTTP port:</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>default <strong>80</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Web server HTTPS port:</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>default <strong>443</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Web server mode</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Can be <strong>HTTP</strong>, <strong>HTTPS</strong>, <strong>Mixed</strong>, <strong>Both</strong> or <strong>Redirect</strong>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Mixed</strong> mode uses HTTPS for logging in and HTTP for normal session
+traffic</p>
+</li>
+<li>
+<p><strong>Both</strong> mode means that an HTTP session stays HTTP, including during
+the login phase, and an HTTPS session remains HTTPS throughout,
+including the login phase.</p>
+</li>
+<li>
+<p><strong>Redirect</strong> mode redirects any users connecting via HTTP to an HTTPS
+connection.</p>
+</li>
+<li>
+<p>All modes use SSL encryption for back-end administrative traffic.</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>IMAP server port</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>default <strong>143</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>IMAP server SSL port</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>default <strong>993</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>POP server port</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>default <strong>110</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>POP server SSL port</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>default <strong>995</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Use spell checker server</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>default <strong>Yes</strong> (if installed)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Spell server URL</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><a href="http://&lt;example.com&gt;:7780/aspell.php" class="bare">http://&lt;example.com&gt;:7780/aspell.php</a></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">If either or both of these are changed to TRUE, the proxy setting on the
+mailbox store are enabled in preparation for setting up zimbra proxy.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Configure for use with mail proxy.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>default <strong>FALSE</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Configure for use with web proxy.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>default <strong>FALSE</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Enable version update checks.</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Zimbra Collaboration automatically
+checks to see if a new Zimbra Collaboration update is available. The
+default is TRUE.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Enable version update notifications.</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This enables automatic notification when updates are available
+when this is set to TRUE.<br>
+<strong>Note:</strong> The software update information can be viewed from the
+Administration Console Tools Overview pane.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Version update notification email.</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This is the email address of the account to be notified
+when updates are available. The default is to send the notification
+to the admin’s account.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Version update source email.</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This is the email address of the account that sends the email
+notification. The default is the admin’s account.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>zimbra-spell</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>(optional) When installed, it is automatically enabled.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Default Class of Service Configuration</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>This menu section lists major new features for the Zimbra Collaboration
+release and whether the feature is enabled or not. When you change the
+feature setting during Zimbra Collaboration installation, you change the
+default COS settings Having this control, lets you decide when to
+introduce new features to your users.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">c) Collapse menu</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Allows you to expand or collapse the menu.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">r) Start servers after configuration</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>When the installation and configuration is complete, if this is set to
+<strong>Yes</strong>, the Zimbra server is automatically started.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">s) Save config to file</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>At any time during the installation, you can save the configuration to file.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">x) Expand menu</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Expand menus to see the underlying options</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">q) Quit</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Quit can be used at any time to quit the installation.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Installing_Zimbra_Collaboration_Software">Installing Zimbra Collaboration Software</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Important:</strong> Before you begin, make sure to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>(Network Edition Only) Store your license in a directory folder on
+your server as it is needed to complete your installation of Zimbra Collaboration</p>
+</li>
+<li>
+<p>Confirm you have the latest system requirements and prerequisites for
+installing Zimbra Collaboration.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Open an SSH session to the Zimbra server and follow the steps below:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log in as root to the Zimbra server and cd to the directory where
+the Zimbra Collaboration archive tar file is saved (cd /var/&lt;tmp&gt;). Type
+the following commands:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Unpack the file: <code>tar xvzf [zcsfullfilename.tgz]</code></p>
+</li>
+<li>
+<p>Change to the correct directory: <code>cd [zcsfullfilename]</code></p>
+</li>
+<li>
+<p>Begin the installation: <code>./install.sh</code></p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">[root@zmail tmp]# tar xvzf zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634.tgz
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-apache-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-archiving-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-convertd-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-core-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-dnscache-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-ldap-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-logger-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-mta-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-proxy-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-snmp-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-spell-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/packages/zimbra-store-8.7.0_GA_1659.RHEL6_64-20160628192634.x86_64.rpm
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/bin/
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/bin/get_plat_tag.sh
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/bin/checkLicense.pl
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/bin/checkService.pl
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/bin/zmValidateLdap.pl
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/bin/checkValidBackup
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/bin/zmdbintegrityreport
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/lib/
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/lib/jars/
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/lib/jars/zimbra-license-tools.jar
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/data/
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/data/versions-init.sql
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/data/backup-version-init.sql
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/zimbra_network_eula.txt
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/keyview_eula.txt
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/oracle_jdk_eula.txt
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/admin.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/Import_Wizard_Outlook.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/Migration_Exch_Admin.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/MigrationWizard_Domino.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/MigrationWizard.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/quick_start.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/User Instructions Connector for Outlook.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/User Instructions for ZCS Import Wizard.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/ZCS_Apple_iSync_6.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/ZCS_Apple_iSync.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/ZCS Connector for Blackberry.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/ZCS Connector for Outlook.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/Zimbra iCalendar Migration Guide.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/docs/en_US/zimbra_user_guide.pdf
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/util/
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/util/modules/
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/util/modules/getconfig.sh
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/util/modules/packages.sh
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/util/modules/postinstall.sh
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/util/addUser.sh
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/util/globals.sh
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/util/utilfunc.sh
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/readme_binary_en_US.txt
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/install.sh
+zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/README.txt</code></pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The <strong>install.sh</strong> script reviews the installation software to verify that the
+Zimbra packages are available.<br>
+The installation process checks to see whether any of the applications
+<strong>Sendmail</strong>, <strong>Postfix</strong>, <strong>MySQL</strong> or <strong>MariaDB</strong> are running.
+If any of these applications are running,
+you are asked to disable them. Disabling <strong>MySQL</strong> and <strong>MariaDB</strong> is <strong>optional</strong>
+but highly recommended.
+<strong>Sendmail</strong> and <strong>Postfix must</strong> be disabled for Zimbra Collaboration to start correctly.</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">[root@zmail tmp]# cd zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634
+[root@zmail zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634]# ./install.sh
+
+Operations logged to /tmp/install.log.FRNg7wVu
+Checking for existing installation...
+    zimbra-ldap...NOT FOUND
+    zimbra-logger...NOT FOUND
+    zimbra-mta...NOT FOUND
+    zimbra-dnscache...NOT FOUND
+    zimbra-snmp...NOT FOUND
+    zimbra-store...NOT FOUND
+    zimbra-apache...NOT FOUND
+    zimbra-spell...NOT FOUND
+    zimbra-convertd...NOT FOUND
+    zimbra-memcached...NOT FOUND
+    zimbra-proxy...NOT FOUND
+    zimbra-archiving...NOT FOUND
+    zimbra-core...NOT FOUND</code></pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>The Zimbra software agreement displays. Read the agreement and when<br>
+<code>Do you agree with the terms of the software license agreement? [N]</code><br>
+displays, enter <code>Y</code> to continue.<br>
+<strong>Important:</strong> The license agreement displays in multiple sections,
+and you must accept each section of the license agreement.</p>
+</li>
+<li>
+<p><code>Use Zimbra&#8217;s package repository [Y]</code><br>
+displays, press <code>enter</code> to continue. Your system will be configured to add
+the Zimbra packaging repository for <strong>yum</strong> or <strong>apt-get</strong> as appropriate
+so it can install the Zimbra 3rd party packages.</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>Checking for installable packages
+
+Found zimbra-core
+Found zimbra-ldap
+Found zimbra-logger
+Found zimbra-mta
+Found zimbra-dnscache
+Found zimbra-snmp
+Found zimbra-store
+Found zimbra-apache
+Found zimbra-spell
+Found zimbra-convertd
+Found zimbra-memcached
+Found zimbra-proxy
+Found zimbra-archiving
+
+
+
+Use Zimbra's package repository [Y] y
+
+Use internal development repo [N] n
+Configuring package repository
+
+Select the packages to install
+
+Install zimbra-ldap [Y] y
+
+Install zimbra-logger [Y] y
+
+Install zimbra-mta [Y] y
+
+Install zimbra-dnscache [Y] y
+
+Install zimbra-snmp [Y] y
+
+Install zimbra-store [Y] y
+.
+.
+
+Checking required space for zimbra-core
+Checking space for zimbra-store
+Checking required packages for zimbra-store
+     MISSING: libreoffice
+     MISSING: libreoffice-headless
+
+###WARNING###
+
+One or more suggested packages for zimbra-store are missing.
+Some features may be disabled due to the missing package(s).
+
+
+Installing:
+    zimbra-core
+    zimbra-ldap
+    zimbra-logger
+    zimbra-mta
+    zimbra-dnscache
+    zimbra-snmp
+    zimbra-store
+   .
+   .
+
+
+The system will be modified.  Continue? [N] y</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>Also select the services to be installed on this server. To install
+Zimbra Collaboration on a single server, enter <code>Y</code> for the ldap, logger,
+mta, snmp, store, and spell packages. If you use IMAP/POP Proxy, enter
+<code>Y</code> for the Zimbra proxy package.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> For the cross mailbox search feature, install the Zimbra Archive
+package. To use the archiving and discovery feature, contact Zimbra
+sales.</p>
+</div>
+<div class="paragraph">
+<p>The installer verifies that there is enough room to install Zimbra.</p>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Next, type <code>Y</code> and press <code>Enter</code> to modify the system.</p>
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Selected packages are installed on the server.</p>
+</li>
+<li>
+<p>Checks to see if MX record is configured in DNS. The installer checks
+to see if the hostname is resolvable via DNS. If there is an error, the
+installer asks if you would like to change the hostname. We recommend
+that the domain name have an MX record configured in DNS.</p>
+</li>
+<li>
+<p>Checks for port conflict.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>Installing packages
+
+Local packages  zimbra-core zimbra-ldap zimbra-logger zimbra-mta zimbra-dnscache zimbra-snmp zimbra-store zimbra-apache zimbra-spell zimbra-convertd zimbra-proxy selected for installation
+Monitor /tmp/install.log.ykeq0Bw8 for package installation progress
+Remote package installation started
+Installing zimbra-core-components  zimbra-ldap-components zimbra-mta-components zimbra-dnscache-components zimbra-snmp-components zimbra-store-components zimbra-apache-components zimbra-spell-components zimbra-memcached zimbra-proxy-components....done
+Local package installation started
+Installing  zimbra-core zimbra-ldap zimbra-logger zimbra-mta zimbra-dnscache zimbra-snmp zimbra-store zimbra-apache zimbra-spell zimbra-convertd zimbra-proxy...done
+Operations logged to /tmp/zmsetup.20160711-234517.log
+Installing LDAP configuration database...done.
+Setting defaults...
+
+DNS ERROR resolving MX for zmail.example.com
+It is suggested that the domain name have an MX record configured in DNS
+Change domain name? [Yes] no
+done.
+Checking for port conflicts</code></pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>At this point, the Main menu displays showing the default entries
+for the Zimbra components you are installing. To expand the menu to see
+the configuration values, type <code>X</code> and press <code>Enter</code>. The Main menu
+expands to display configuration details for the packages being
+installed. Values that require further configuration are marked with
+asterisks (******) to their left. To navigate the Main menu, select the
+menu item to change. You can modify any of the defaults. For a quick
+installation, accepting all the defaults, you only need to do the
+following:</p>
+</li>
+<li>
+<p>To set the appropriate time zone, enter <code>1</code> to select Main menu,
+<code>1</code> to select Common Configuration and then enter <code>6</code> for TimeZone.
+Set the correct time zone.</p>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>Main menu
+
+   1) Common Configuration:
+   2) zimbra-ldap:                             Enabled
+   3) zimbra-logger:                           Enabled
+   4) zimbra-mta:                              Enabled
+   5) zimbra-dnscache:                         Enabled
+   6) zimbra-snmp:                             Enabled
+   7) zimbra-store:                            Enabled
+        +Create Admin User:                    yes
+        +Admin user to create:                 admin@zmail.example.com
+******* +Admin Password                        UNSET
+        +Anti-virus quarantine user:           virus-quarantine.ws91yggvp@zmail.example.com
+        +Enable automated spam training:       yes
+        +Spam training user:                   spam.seewcbk6@zmail.example.com
+        +Non-spam(Ham) training user:          ham.h8qmkwft@zmail.example.com
+        +SMTP host:                            zmail.example.com
+        +Web server HTTP port:                 8080
+        +Web server HTTPS port:                8443
+        +Web server mode:                      https
+        +IMAP server port:                     7143
+        +IMAP server SSL port:                 7993
+        +POP server port:                      7110
+        +POP server SSL port:                  7995
+        +Use spell check server:               yes
+        +Spell server URL:                     http://zmail.example.com:7780/aspell.php
+        +Enable version update checks:         TRUE
+        +Enable version update notifications:  TRUE
+        +Version update notification email:    admin@zmail.example.com
+        +Version update source email:          admin@zmail.example.com
+        +Install mailstore (service webapp):   yes
+        +Install UI (zimbra,zimbraAdmin webapps): yes
+******* +License filename:                     UNSET
+
+   8) zimbra-spell:                            Enabled
+   9) zimbra-convertd:                         Enabled
+  10) zimbra-proxy:                            Enabled
+  11) Default Class of Service Configuration:
+  12) Enable default backup schedule:          yes
+   s) Save config to file
+   x) Expand menu
+   q) Quit
+
+Address unconfigured (**) items  (? - help)</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Type <code>r</code> to return to the Main menu.</p>
+</li>
+<li>
+<p>Enter <code>5</code> to select <strong>zimbra-dnscache</strong> from the Main menu.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Select <code>1</code> to disable.</p>
+</li>
+<li>
+<p>Select <code>2</code> to configure the master DNS IP address(es).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Type <code>r</code> to return to the Main menu.</p>
+</li>
+<li>
+<p>Enter <code>7</code> to select <strong>zimbra-store</strong> from the Main menu. The store
+configuration menu displays.</p>
+</li>
+<li>
+<p>Select the following from the store configuration menu:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Type <code>4</code> to set the Admin Password. The password must be six or more characters.
+Press <code>Enter</code>.</p>
+</li>
+<li>
+<p>(Network Edition only) Type <code>25</code> for <strong>License filename</strong> and type the
+directory and file name for the Zimbra license.
+For example, if you saved to the <code>/tmp</code> directory, you
+would type <code>/tmp/ZimbraLicense.xml</code>. If you do not have the license, you
+cannot proceed. See the section on
+<a href="#Zimbra_License_Requirements">Zimbra License Requirements</a></p>
+</li>
+<li>
+<p>Enable version update checks and Enable version update notifications.<br>
+If these are set to TRUE. Zimbra Collaboration automatically checks for the
+latest Zimbra Collaboration software updates and notifies the account
+that is configured in <code>Version update notification email</code>. You can modify
+this later from the administration console.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Type <code>r</code> to return to the Main menu.</p>
+</li>
+<li>
+<p>If you want to change the default Class of Service settings for new
+features that are listed here, type <code>11</code> for Default Class of Service
+Configuration.<br>
+Then type the appropriate number for the feature to be enabled or disabled.
+Changes you make here are reflected in the default COS configuration.</p>
+</li>
+<li>
+<p>If no other defaults need to be changed, type <code>a</code> to apply the
+configuration changes. Press <code>Enter</code></p>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>*** CONFIGURATION COMPLETE - press 'a' to apply
+Select from menu, or press 'a' to apply config (? - help) a</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>When Save Configuration data to file appears, type <code>Yes</code> and press <code>Enter</code>.</p>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>Save configuration data to a file? [Yes]</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>The next request asks where to save the files. To accept the
+default, press <code>Enter</code>. To save the files to another directory, enter the
+directory and then press Enter</p>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>Save config in file: [/opt/zimbra/config.16039]
+Saving config in /opt/zimbra/config.16039...done.</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>When <code>The system will be modified - continue?</code> appears, type <code>Yes</code> and
+press <code>Enter</code>.</p>
+<div class="paragraph">
+<p>The server is modified. Installing all the components and configuring
+the server can take several minutes. Components that are installed
+include spam training and documents, (wiki) accounts, time zone
+preferences, backup schedules, licenses, as well as common Zimlets.</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre>The system will be modified - continue? [No] y
+Operations logged to /tmp/zmsetup.20160711-234517.log
+Setting local config values...done.
+Initializing core config...Setting up CA...done.
+Deploying CA to /opt/zimbra/conf/ca ...done.
+Creating SSL zimbra-store certificate...done.
+Creating new zimbra-ldap SSL certificate...done.
+Creating new zimbra-mta SSL certificate...done.
+Creating new zimbra-proxy SSL certificate...done.
+Installing mailboxd SSL certificates...done.
+Installing MTA SSL certificates...done.
+Installing LDAP SSL certificate...done.
+Installing Proxy SSL certificate...done.
+Initializing ldap...done.
+.
+.
+Checking current setting of zimbraReverseProxyAvailableLookupTargets
+Querying LDAP for other mailstores
+Searching LDAP for reverseProxyLookupTargets...done.
+Adding zmail.example.com to zimbraReverseProxyAvailableLookupTargets
+Setting convertd URL...done.
+.
+.
+Granting group zimbraDomainAdmins@zmail.example.com domain right +domainAdminConsoleRights on zmail.example.com...done.
+Granting group zimbraDomainAdmins@zmail.example.com global right +domainAdminZimletRights...done.
+Setting up global distribution list admin UI components..done.
+Granting group zimbraDLAdmins@zmail.example.com global right +adminConsoleDLRights...done.
+.
+.
+Setting default backup schedule...Done
+Looking for valid license to install...license installed.
+Starting servers...done.
+Installing common zimlets...
+        com_zimbra_attachmail...done.
+        com_zimbra_phone...done.
+        com_zimbra_proxy_config...done.
+          .
+          .
+        com_zimbra_ymemoticons...done.
+        com_zimbra_date...done.
+Finished installing common zimlets.
+Installing network zimlets...
+        com_zimbra_mobilesync...done.
+         .
+         .
+        com_zimbra_license...done.
+Finished installing network zimlets.
+Restarting mailboxd...done.
+Creating galsync account for default domain...done.
+Setting up zimbra crontab...done.
+
+
+Moving /tmp/zmsetup.20160711-234517.log to /opt/zimbra/log
+
+
+Configuration complete - press return to exit</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Final_Set-Up">Final Set-Up</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After the Zimbra Collaboration servers are configured, the following functions
+must be configured.</p>
+</div>
+<div class="paragraph">
+<p><strong>Important:</strong> Zimbra Collaboration supports the default syslog of a
+supported operating system. Depending on your operating system, the
+steps contained in this section might not be correct. See your
+operating system documentation for specific information about how to
+enable syslog.</p>
+</div>
+<div class="paragraph">
+<p>If <strong>zimbra-logger</strong> is installed, set up the <strong>syslog</strong> configuration files
+to enable server statistics to display on the administration console, and
+enable the logger monitor host. The server statistics includes
+information about the message count, message volume, and anti-spam and
+anti-virus activity.</p>
+</div>
+<div class="sect2">
+<h3 id="_access_to_the_zimbra_user">Access to the 'zimbra' user</h3>
+<div class="paragraph">
+<p>Zimbra Collaboration ships a default 'zimbra' user with a disabled
+password.
+Zimbra Collaboration requires access to this account via
+<strong>ssh public key authentication</strong>.
+On most operating systems this combination is okay, but if you have
+:toc:
+modified pam rules to disallow any ssh access to disabled accounts
+then you must define a password for the zimbra UNIX account.
+This will allow ssh key authentication for checking remote
+queues. See the Zimbra wiki article,
+<a href="https://wiki.zimbra.com/wiki/Mail_Queue_Monitoring">Mail Queue Monitoring</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Set up the ssh keys.</strong> To populate the ssh keys</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">sudo -u zimbra -i # if not already logged in as the zimbra user
+zmupdateauthkeys</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The key is updated on <code>/opt/zimbra/.ssh/authorized_keys</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Enabling Server Statistics Display.</strong> In order for the server statistics
+to display on the administration console, the syslog configuration files
+must be modified.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Note, your system may use a different provider for the syslog service.
+See the Wiki article
+<a href="https://wiki.zimbra.com/wiki/Configuring-Logger-Host">Configuring Logger Host</a>
+for more information
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>As <strong>root</strong>, type the following command to enable the server to display
+statistics - <code>/opt/zimbra/libexec/zmsyslogsetup</code></p>
+</li>
+<li>
+<p>You must enable syslog to log statistics from remote machines.</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">RedHat Systems</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Edit the <code>/etc/sysconfig/syslog</code> file to add -r to the SYSLOGD_OPTIONS
+setting, <code>SYSLOGD_options="-r -m 0"</code></p>
+</li>
+<li>
+<p>Stop the syslog daemon - <code>/etc/init.d/syslog stop</code></p>
+</li>
+<li>
+<p>Start the syslog daemon - <code>/etc/init.d/syslog start</code></p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Debian and Ubuntu Systems</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Edit the <code>/etc/default/syslogd</code> file to add -r to the SYSLOGD_OPTIONS
+setting, <code>SYSLOGD_options="-r -m 0"</code></p>
+</li>
+<li>
+<p>Stop the syslog daemon -  <code>/etc/init.d/sysklogd stop</code></p>
+</li>
+<li>
+<p>Start the syslog daemon - <code>/etc/init.d/sysklogd start</code></p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+</li>
+</ol>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Scanning_Attachments_in_Outgoing_Mail">Scanning Attachments in Outgoing Mail</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can enable real-time scanning of attachments in outgoing emails sent
+using the Zimbra Web Client. If enabled, when an attachment is added to
+an email, it is scanned using ClamAV prior to sending the message. If
+ClamAV detects a virus, it will block attaching the file to the message.
+By default, scanning is configured for a single node installation.</p>
+</div>
+<div class="paragraph">
+<p>To enable using a single node:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">zmprov mcf zimbraAttachmentsScanURL clam://localhost:3310/
+zmprov mcf zimbraAttachmentsScanEnabled TRUE</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Provisioning_Accounts">Provisioning Accounts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once the mailbox server is running, open your browser, enter the
+administration console URL and log on to the console to provision email
+accounts. The administration console URL is entered as:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>https://[mailhost.example.com]:7071</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> To go to the administration console, you must type <strong>https</strong>,
+even if you configured the Web server mode as HTTP.</p>
+</div>
+<div class="paragraph">
+<p>The first time you log on, a warning may be displayed stating the
+connection is untrusted. This only applies the first time you log in.
+Click <strong>I understand the Risks</strong> to be able to connect to the Zimbra
+administration console. Then click <code>OK</code>.</p>
+</div>
+<div class="paragraph">
+<p>Enter the admin user name and password configured during the
+installation process. Enter the name as <code>admin@mailhost.example.com</code></p>
+</div>
+<div class="sect2">
+<h3 id="Activate_License">Activate the Zimbra Collaboration license (Network Edition Only)</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Admin Console: </dt>
+<dd>
+<p>After you log on, a dialog displays stating your license is not
+activated.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Go to:</p>
+</div>
+<div class="paragraph">
+<p><strong>Home &gt; Configure &gt; Global Settings &gt; License</strong></p>
+</div>
+<div class="paragraph">
+<p>click <code>Activate License</code> on the toolbar then Click <code>OK</code> to continue.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Provision_accounts">Provision accounts</h3>
+<div class="paragraph">
+<p>You can configure one account at a time with the <strong>New Account Wizard</strong> or
+you can create many accounts at once using the <strong>Account Migration Wizard</strong>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Configuring_One_Account">Configuring One Account</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Admin Console: </dt>
+<dd>
+<p>The administration console <strong>New Account wizard</strong> steps you through the
+account information to be completed.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>From the administration console <strong>Home</strong> page’s Content pane, go to
+<code>Add Accounts</code>.<br>
+<strong>Note:</strong> Four accounts will already be listed - the admin account, two spam
+training accounts, and a global Documents account. These accounts do not
+need any additional configuration.</p>
+</li>
+<li>
+<p>Click <code>Add Account</code>. The first page of the New Account wizard opens.</p>
+</li>
+<li>
+<p>Enter the account name to be used as the email address and the last
+name. This is the only required information to create an account.</p>
+</li>
+<li>
+<p>You can click <code>Finish</code> at this point, and the account is configured
+with the default COS and global features.</p>
+</li>
+</ol>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>To configure aliases, forwarding addresses, and specific features for
+this account, proceed through the dialog before you click Finish.</p>
+</div>
+<div class="paragraph">
+<p>When the accounts are provisioned, you can send and receive emails.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Importing_Content_from_User_Mailboxes">Importing Content from User Mailboxes</h3>
+<div class="paragraph">
+<p>Zimbra developed different applications to facilitate moving a user’s
+email messages, calendars, and contacts from their old email servers to
+their accounts on the Zimbra server. When the user’s files are imported,
+the folder hierarchy is maintained. Use one of the Zimbra Collaboration
+utilities to move user mail to Zimbra Collaboration to guarantee that
+all information is imported correctly.</p>
+</div>
+<div class="paragraph">
+<p>The following applications can be accessed from the administration
+console <strong>Download page</strong>, and instruction guides are available from the
+Help Desk page or from the Zimbra Website, Documentation page.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can download the following applications from
+<a href="https://example.com/downloads/index.html" class="bare">https://example.com/downloads/index.html</a> (with “example.com” being your
+Zimbra server name).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Zimbra Collaboration Migration Wizard for Exchange</strong>. Format is an .exe
+file. You can migrate users from Microsoft® Exchange server email
+accounts to Zimbra server accounts.</p>
+</li>
+<li>
+<p><strong>Zimbra Collaboration Migration Wizard for Domino</strong>. Format is an .exe
+file. You can migrate users from Lotus Domino server email accounts to
+Zimbra server accounts.</p>
+</li>
+<li>
+<p><strong>PST Import Wizard</strong> (User Instructions). Format is an .exe file. Users
+download the Import Wizard to their computers and run the executable
+file to import their Outlook .pst files to the Zimbra server. Before
+users run this utility, Zimbra recommends that they run the Outlook
+Inbox Repair tool, <code>scanpst.exe</code>, on their .pst files, to clean up any
+errors in their file. For more information about this tool, go to
+<a href="http://support.microsoft.com/kb/287497" class="bare">http://support.microsoft.com/kb/287497</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Administrators_Account">Administrator Account</h3>
+<div class="paragraph">
+<p>Initial administrative tasks when you log on for the first time may
+include setting up the admin mailbox to include features, aliases, and
+forwarding addresses needed for the administrator’s working environment.</p>
+</div>
+<div class="paragraph">
+<p>Two aliases for the admin account are created during install:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Postmaster</strong>. The postmaster address is displayed in emails that are
+automatically generated from Postfix when messages cannot be sent. If
+users reply to this address, the message is forwarded to the admin
+mailbox.</p>
+</li>
+<li>
+<p><strong>Root</strong>. This address is where notification messages from the
+operating system are sent.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you entered a notification address for AV alerts when you configured
+the MTA, that is different from the default, you need to create that
+account in the administration console. If you didn’t change the default
+during installation, the anti-virus notification is sent directly to the
+admin account.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Uninstalling_Zimbra_Collaboration">Uninstalling Zimbra Collaboration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To uninstall servers, run the install script -u, delete the Zimbra
+Collaboration directory, and remove the zcs.tgz file on the servers.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>cd to the original install directory for the Zimbra Collaboration files.</p>
+</li>
+<li>
+<p>Type <code>sudo ./install.sh -u</code></p>
+</li>
+<li>
+<p>When <code>Completely remove existing installation?</code> is displayed, type
+   <code>Yes</code>.
+The Zimbra servers are stopped, the existing packages, webapp
+directories, and most of the contents of the <code>/opt/zimbra</code> directory
+are removed.</p>
+</li>
+<li>
+<p>Type <code>rm -rf [zcsfullfilename]</code> to delete the Zimbra Collaboration directory.</p>
+</li>
+<li>
+<p>Delete the zcs.tgz file.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2017-02-13 13:18:40 GMT
+</div>
+</div>
+</body>
+</html>
