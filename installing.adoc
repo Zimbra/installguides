@@ -278,7 +278,7 @@ configuration menu displays.
     cannot proceed. See the section on
     <<Zimbra_License_Requirements,Zimbra License Requirements>>
 
-    * Enable version update checks and Enable version update notifications. + 
+    * Enable version update checks and Enable version update notifications. +
     If these are set to TRUE. {product-name} automatically checks for the
     latest {product-name} software updates and notifies the account
     that is configured in `Version update notification email`. You can modify
@@ -288,7 +288,7 @@ configuration menu displays.
 
 14. If you want to change the default Class of Service settings for new
 features that are listed here, type `11` for Default Class of Service
-Configuration. + 
+Configuration. +
 Then type the appropriate number for the feature to be enabled or disabled.
 Changes you make here are reflected in the default COS configuration.
 
