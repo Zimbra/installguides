@@ -172,7 +172,10 @@ The system will be modified.  Continue? [N] y
 Also select the services to be installed on this server. To install
 {product-name} on a single server, enter `Y` for the ldap, logger,
 mta, snmp, store, and spell packages. If you use IMAP/POP Proxy, enter
-`Y` for the Zimbra proxy package.
+`Y` for the Zimbra proxy package and the Zimbra Memcached package.
+
+*Note:* Ensure that the `zimbra-memcached` package is installed on at least one of the nodes in the system
+if the Proxy is installed.
 
 *Note:* For the cross mailbox search feature, install the Zimbra Archive
 package. To use the archiving and discovery feature, contact {product-provider}
