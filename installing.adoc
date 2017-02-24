@@ -156,6 +156,7 @@ Installing:
     zimbra-core
     zimbra-ldap
     zimbra-logger
+    zimbra-memcached
     zimbra-mta
     zimbra-dnscache
     zimbra-snmp
