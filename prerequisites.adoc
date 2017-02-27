@@ -18,7 +18,7 @@ systems.
 * Intel/AMD 64-bit CPU 1.5 GHz
 * RAM requirements:
 ** For single server installations, a minimum of 8GB of RAM is required.
-** For multi-server installations, contact Zimbra sales for recommendations.
+** For multi-server installations, contact {product-provider} sales for recommendations.
 * 5 GB free disk space for software and logs
 * Temp file space for installs and upgrades*
 * Additional disk space for mail storage
@@ -28,7 +28,7 @@ systems.
 * Intel/AMD 2.0 GHZ+ 64-bit CPU
 * RAM requirements:
 ** For single server installations, a minimum of 8GB of RAM is required.
-** For multi-server installations, contact Zimbra sales for recommendations.
+** For multi-server installations, contact {product-provider} sales for recommendations.
 * Temp file space for installs and upgrades*
 * 10 GB free disk space for software and logs (SATA or SCSI for
 performance, and RAID/Mirroring for redundancy)
@@ -41,13 +41,14 @@ additional space for mail storage. The other nodes require 100MB.
 * Firewall Configuration should be set to “No firewall”.
 * RAID-5 is not recommended for installations with more than 100 accounts.
 
-|*Operating System (Network Edition)*
+|*Operating System ({product-edition-commercial})*
 |The following operating systems are supported:
 
 * Red Hat® Enterprise Linux® 7 (64-bit)
 * CentOS Linux® 7 (64-bit)
 * Red Hat Enterprise Linux 6 (64-bit), patch level 4 or later is required
 * CentOS Linux 6 (64-bit), patch level 4 or later is required
+* Ubuntu 16.04 LTS Server Edition (64-bit)
 * Ubuntu 14.04 LTS Server Edition (64-bit)
 * Ubuntu 12.04.4 LTS Server Edition (64-bit) running the saucy (3.11) or
 later kernel is required. Note: If the original install was done with
@@ -55,7 +56,7 @@ Ubuntu 12.04.2 or earlier, manual intervention is required to switch to
 the saucy (3.11) or later kernel series.
 See https://wiki.ubuntu.com/Kernel/LTSEnablementStack for further information.
 
-|*Virtualization (Network Edition)*
+|*Virtualization ({product-edition-commercial})*
 |The following hypervisors are supported:
 
 * VMware vSphere 4.x
@@ -63,8 +64,8 @@ See https://wiki.ubuntu.com/Kernel/LTSEnablementStack for further information.
 
 |*Operating System (Open Source Edition)*
 |In addition to supporting the operating systems listed above for the
-Network Edition, other operating system versions are available for the
-Open Source Edition. Check the Zimbra Open Source Downloads page on
+{product-edition-commercial}, other operating system versions are available for the
+{product-edition-foss}. Check the {product-provider} Open Source Downloads page on
 https://www.zimbra.com.
 
 |*File Systems*
@@ -75,7 +76,7 @@ https://www.zimbra.com.
 
 |*Other Dependencies*
 |Netcat (nc) is required on all operating systems using {product-name}.
-The nc utility must be installed prior to installation or upgrading.
+The `nc` utility must be installed prior to installation or upgrading.
 
 For SUSE and Ubuntu systems, disable AppArmor and verify that services
 are not running before installing {product-name}.
@@ -134,10 +135,10 @@ Linux (Red Hat, Ubuntu, Fedora, or SUSE) with one of the following:
 |*Administrator Console Monitor*
 |Display minimum resolution 1024 x 768
 
-|*End User Computers using Zimbra Web Client* +
+|*End User Computers using {product-short} Web Client* +
  +
 Note: Other configurations may work.
-|*For Zimbra Web Client - Advanced & Standard version*
+|*For {product-short} Web Client - Advanced & Standard version*
 
 Minimum
 
@@ -194,9 +195,9 @@ Operating system POP/IMAP combinations
 * Fedora Core 4 or later with Thunderbird
 * Mac OS X 10.4 or later with Apple Mail
 
-*Accessibility and Screen Readers* Zimbra recommends that customers
+*Accessibility and Screen Readers* {product-provider} recommends that customers
 requiring use of screen readers for accessibility leverage the use of
-the Standard Zimbra Web Client (HTML). Zimbra continues to invest in
+the Standard {product-short} Web Client (HTML). {product-provider} continues to invest in
 improving the accessibility of this interface.
 
 |*Exchange Web Services*
@@ -217,7 +218,7 @@ EWS Interoperability
 |===
 
 [[Zimbra_Connector_for_Outlook]]
-== Zimbra Connector for Outlook (Network Edition Only)
+== {product-short} Connector for Outlook ({product-edition-commercial} Only)
 
 [width="100%",cols="20%,80%",]
 |=======================================================================
@@ -238,11 +239,11 @@ SP3 or later installed.
 |=======================================================================
 
 [[Zimbra_Mobile]]
-== Zimbra Mobile (Network Edition Only)
+== {product-short} Mobile ({product-edition-commercial} Only)
 
 '''
 
-Zimbra Mobile (MobileSync) provides mobile data access to email,
+{product-edition-commercial} Mobile (MobileSync) provides mobile data access to email,
 calendar, and contacts for users of selected mobile operating systems,
 including:
 
@@ -258,11 +259,11 @@ including:
 * Various device/operating system combinations with mobile WAP browser.
 
 [[Zimbra_Touch_Client]]
-== Zimbra Touch Client (Network Edition Only)
+== {product-short} Touch Client ({product-edition-commercial} Only)
 
 '''
 
-Supported devices for the Zimbra Touch Client include:
+Supported devices for the {product-short} Touch Client include:
 
 * iOS6+: iPad®, iPad mini®, iPhone®, iPod touch®
 * Android 4.0+: Nexus 7, Nexus 10, Samsung Galaxy Tab,
@@ -277,42 +278,42 @@ Supported devices for the Zimbra Touch Client include:
 |=======================================================================
 |*Component* |*Category* |*Languages*
 
-|Zimbra Web Client |Application/UI |Arabic, Basque (EU), Chinese
+|{product-short} Web Client |Application/UI |Arabic, Basque (EU), Chinese
 (Simplified PRC and Traditional HK), Danish, Dutch, English (AU, UK,
 US), French, French Canadian, German, Hindi, Hungarian, Italian,
 Japanese, Korean, Malay, Polish, Portuguese (Brazil), Portuguese
 (Portugal), Romanian, Russian, Spanish, Swedish, Thai, Turkish,
 Ukrainian
 
-|Zimbra Web Client - Online Help (HTML) |Feature Documentation |Dutch,
+|{product-short} Web Client - Online Help (HTML) |Feature Documentation |Dutch,
 English, Spanish, French, Italian, Japanese, German, Portuguese
 (Brazil), Chinese (Simplified PRC and Traditional HK), Russian
 
-|Zimbra Web Client - End User Guide (PDF) |Feature Documentation
+|{product-short} Web Client - End User Guide (PDF) |Feature Documentation
 |English
 
-|Zimbra Connector for Microsoft Outlook |Installer + Application/UI
+|{product-short} Connector for Microsoft Outlook |Installer + Application/UI
 |Arabic, Basque (EU), Chinese (Simplified PRC and Traditional HK),
 Danish, Dutch, English (AU, UK, US), French, French Canadian, German,
 Hindi, Hungarian, Italian, Japanese, Korean, Malay, Polish, Portuguese
 (Brazil), Portuguese (Portugal), Romanian, Russian, Spanish, Swedish,
 Thai, Turkish, Ukrainian
 
-|Zimbra Connector for Microsoft Outlook - End User Guide (PDF) |Feature
+|{product-short} Connector for Microsoft Outlook - End User Guide (PDF) |Feature
 Documentation |English
 
-|Zimbra Admin Console |Application |Arabic, Basque (EU), Chinese
+|{product-short} Admin Console |Application |Arabic, Basque (EU), Chinese
 (Simplified PRC and Traditional HK), Danish, Dutch, English (AU, UK,
 US), French, French Canadian, German, Hindi, Hungarian, Italian,
 Japanese, Korean, Malay, Polish, Portuguese (Brazil), Portuguese
 (Portugal), Romanian, Russian, Spanish, Swedish, Turkish, Ukrainian
 
-|Zimbra Admin Console Online Help (HTML) |Feature Documentation |English
+|{product-short} Admin Console Online Help (HTML) |Feature Documentation |English
 
 |"Documentation" Install + Upgrade / Admin Manual / Migration / Import /
 Release Notes / System Requirements |Guides |English
 
-|Zimbra Connector for Microsoft Outlook - Admin Guide (PDF) |
+|{product-short} Connector for Microsoft Outlook - Admin Guide (PDF) |
 Install + Configuration Guide |English
 |=======================================================================
 
