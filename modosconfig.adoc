@@ -15,7 +15,7 @@ might need to be modified.
 A full default installation of the Linux distribution that you select is
 required.
 
-*Note:* Zimbra recommends that the operating systems you use are updated
+*Note:* {product-provider} recommends that the operating systems you use are updated
 with the latest patches that have been tested with {product-name}.
 See the latest release notes to see the operating systems patch list
 that has been tested with {product-name}.

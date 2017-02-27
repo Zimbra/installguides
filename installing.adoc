@@ -1,17 +1,17 @@
 [[Installing_Zimbra_Collaboration_Software]]
-= Installing Zimbra Collaboration Software
+= Installing {product-name} Software
 :toc:
 
 *Important:* Before you begin, make sure to:
 
-* (Network Edition Only) Store your license in a directory folder on
+* ({product-edition-commercial} Only) Store your license in a directory folder on
 your server as it is needed to complete your installation of {product-name}
 * Confirm you have the latest system requirements and prerequisites for
 installing {product-name}.
 
-Open an SSH session to the Zimbra server and follow the steps below:
+Open an SSH session to the {product-short} server and follow the steps below:
 
-1. Log in as root to the Zimbra server and cd to the directory where
+1. Log in as root to the {product-short} server and cd to the directory where
    the {product-name} archive tar file is saved (cd /var/<tmp>). Type
    the following commands:
    * Unpack the file: `tar xvzf [zcsfullfilename.tgz]`
@@ -83,7 +83,7 @@ zcs-NETWORK-8.7.0_GA_1659.RHEL6_64.20160628192634/README.txt
 --
 
 2. The *install.sh* script reviews the installation software to verify that the
-Zimbra packages are available. + 
+{product-short} packages are available. + 
 The installation process checks to see whether any of the applications
 *Sendmail*, *Postfix*, *MySQL* or *MariaDB* are running.
 If any of these applications are running,
@@ -115,16 +115,16 @@ Checking for existing installation...
 ....
 --
 
-3. The Zimbra software agreement displays. Read the agreement and when + 
+3. The {product-short} software agreement displays. Read the agreement and when + 
 `Do you agree with the terms of the software license agreement? [N]` + 
 displays, enter `Y` to continue. +
 *Important:* The license agreement displays in multiple sections,
 and you must accept each section of the license agreement.
 
-4. `Use Zimbra's package repository [Y]` + 
+4. `Use {product-short}'s package repository [Y]` + 
 displays, press `enter` to continue. Your system will be configured to add
-the Zimbra packaging repository for *yum* or *apt-get* as appropriate
-so it can install the Zimbra 3rd party packages.
+the {product-short} packaging repository for *yum* or *apt-get* as appropriate
+so it can install the {product-short} 3rd party packages.
 +
 --
 [source%nowrap]
@@ -203,10 +203,10 @@ mta, snmp, store, and spell packages. If you use IMAP/POP Proxy, enter
 `Y` for the Zimbra proxy package.
 
 *Note:* For the cross mailbox search feature, install the Zimbra Archive
-package. To use the archiving and discovery feature, contact Zimbra
+package. To use the archiving and discovery feature, contact {product-provider}
 sales.
 
-The installer verifies that there is enough room to install Zimbra.
+The installer verifies that there is enough room to install {product-short}.
 --
 
 5. Next, type `Y` and press `Enter` to modify the system.
@@ -244,7 +244,7 @@ Checking for port conflicts
 --
 
 6. At this point, the Main menu displays showing the default entries
-for the Zimbra components you are installing. To expand the menu to see
+for the {product-short} components you are installing. To expand the menu to see
 the configuration values, type `X` and press `Enter`. The Main menu
 expands to display configuration details for the packages being
 installed. Values that require further configuration are marked with
@@ -323,7 +323,7 @@ configuration menu displays.
     * Type `4` to set the Admin Password. The password must be six or more characters.
     Press `Enter`.
 
-    * (Network Edition only) Type `25` for *License filename* and type the
+    * ({product-edition-commercial} only) Type `25` for *License filename* and type the
     directory and file name for the Zimbra license.
     For example, if you saved to the `/tmp` directory, you
     would type `/tmp/ZimbraLicense.xml`. If you do not have the license, you
