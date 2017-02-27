@@ -1,5 +1,5 @@
 [[Configuring_High-Fidelity_Document_Preview]]
-= Configuring High-Fidelity Document Preview (Network Edition Only)
+= Configuring High-Fidelity Document Preview ({product-edition-commercial} Only)
 :toc:
 
 The high-fidelity document preview feature requires the installation of

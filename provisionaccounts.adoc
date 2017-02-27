@@ -10,19 +10,19 @@ accounts. The administration console URL is entered as:
 https://[mailhost.example.com]:7071
 ....
 
-*Note:* To go to the administration console, you must type **https**,
+NOTE: To go to the administration console, you must type **https**,
 even if you configured the Web server mode as HTTP.
 
 The first time you log on, a warning may be displayed stating the
 connection is untrusted. This only applies the first time you log in.
-Click **I understand the Risks** to be able to connect to the Zimbra
+Click **I understand the Risks** to be able to connect to the {product-short}
 administration console. Then click `OK`.
 
 Enter the admin user name and password configured during the
 installation process. Enter the name as `admin@mailhost.example.com`
 
 [[Activate_License]]
-== Activate the {product-name} license (Network Edition Only)
+== Activate the {product-name} license ({product-edition-commercial} Only)
 
 Admin Console: ::
 After you log on, a dialog displays stating your license is not
@@ -48,10 +48,12 @@ The administration console **New Account wizard** steps you through the
 account information to be completed.
 
 1.  From the administration console *Home* page’s Content pane, go to
-`Add Accounts`. + 
-*Note:* Four accounts will already be listed - the admin account, two spam
+`Add Accounts`.
++
+NOTE: Four accounts will already be listed - the admin account, two spam
 training accounts, and a global Documents account. These accounts do not
 need any additional configuration.
++
 
 2. Click `Add Account`. The first page of the New Account wizard opens.
 
@@ -69,31 +71,31 @@ When the accounts are provisioned, you can send and receive emails.
 [[Importing_Content_from_User_Mailboxes]]
 == Importing Content from User Mailboxes
 
-Zimbra developed different applications to facilitate moving a user’s
+{product-provider} developed different applications to facilitate moving a user’s
 email messages, calendars, and contacts from their old email servers to
-their accounts on the Zimbra server. When the user’s files are imported,
+their accounts on the {product-short} server. When the user’s files are imported,
 the folder hierarchy is maintained. Use one of the {product-name}
 utilities to move user mail to {product-name} to guarantee that
 all information is imported correctly.
 
 The following applications can be accessed from the administration
 console **Download page**, and instruction guides are available from the
-Help Desk page or from the Zimbra Website, Documentation page.
+Help Desk page or from the {product-provider} Website, Documentation page.
 
 Alternatively, you can download the following applications from
 https://example.com/downloads/index.html (with “example.com” being your
-Zimbra server name).
+{product-short} server name).
 
 * **{product-name} Migration Wizard for Exchange**. Format is an .exe
 file. You can migrate users from Microsoft® Exchange server email
-accounts to Zimbra server accounts.
+accounts to {product-short} server accounts.
 * **{product-name} Migration Wizard for Domino**. Format is an .exe
 file. You can migrate users from Lotus Domino server email accounts to
-Zimbra server accounts.
+{product-short} server accounts.
 * **PST Import Wizard** (User Instructions). Format is an .exe file. Users
 download the Import Wizard to their computers and run the executable
-file to import their Outlook .pst files to the Zimbra server. Before
-users run this utility, Zimbra recommends that they run the Outlook
+file to import their Outlook .pst files to the {product-short} server. Before
+users run this utility, {product-provider} recommends that they run the Outlook
 Inbox Repair tool, `scanpst.exe`, on their .pst files, to clean up any
 errors in their file. For more information about this tool, go to
 http://support.microsoft.com/kb/287497.

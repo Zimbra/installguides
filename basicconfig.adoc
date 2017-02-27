@@ -2,10 +2,10 @@
 = Basic Configuration
 :toc:
 
-The default configuration installs Zimbra-LDAP, Zimbra-MTA with
-anti-virus and anti-spam protection, the Zimbra mailbox server, SNMP
-monitoring tools (optional), Zimbra-spell (optional), the logger tool
-(optional), and the Zimbra proxy (optional) on one server.
+The default configuration installs {product-short}-LDAP, {product-short}-MTA with
+anti-virus and anti-spam protection, the {product-short} mailbox server, SNMP
+monitoring tools (optional), {product-short}-spell (optional), the logger tool
+(optional), and the {product-short} proxy on one server.
 
 The menu driven installation displays the components and their existing
 default values. You can modify the information during the installation
@@ -83,7 +83,7 @@ the password on the LDAP server.
 
 |*zimbra-logger*
 |When installed, it is automatically enabled. Logs from the hosts are
-sent to the mailbox server where zimbra-logger is installed.  The
+sent to the mailbox server where `zimbra-logger` is installed.  The
 information is used for generating statistics graphs and for message
 tracing.
 
@@ -104,8 +104,8 @@ You can either accept the default or create a new address.
 If you create a new address, remember to provision this address
 from the admin console. + 
 **Note:** If the virus notification address does not exist and your
-host name is the same as the domain name on the Zimbra server,
-the virus notifications queue in the Zimbra MTA server cannot be delivered.
+host name is the same as the domain name on the {product-short} server,
+the virus notifications queue in the {product-short} MTA server cannot be delivered.
 
 |**Bind password for Postfix LDAP user**
 |Automatically set.  This is the password used by the postfix user to
@@ -127,7 +127,7 @@ server to be the same as the password on the LDAP server.
 
 |*Only allow TCP to communicate with Master DNS* | Yes or No
 
-2+|*zimbra-snmp(optional)*
+2+|*zimbra-snmp (optional)*
 
 |*Enable SNMP notifications* | The default is Yes.
 
@@ -143,7 +143,7 @@ server to be the same as the password on the LDAP server.
 
 |Create Admin User
 a|*Yes* or *No*. The administrator account is created during installation.
-This account is the first account provisioned on the Zimbra server and
+This account is the first account provisioned on the {product-short} server and
 allows you to log on to the administration console.
 
 a|Admin user to create
@@ -211,7 +211,7 @@ connection.
 | **Spell server URL** | http://<example.com>:7780/aspell.php
 
 2+|If either or both of these are changed to TRUE, the proxy setting on the
-mailbox store are enabled in preparation for setting up zimbra proxy.
+mailbox store are enabled in preparation for setting up `zimbra-proxy`.
 
 | *Configure for use with mail proxy. | default *FALSE*
 | *Configure for use with web proxy. | default *FALSE*
@@ -250,7 +250,7 @@ introduce new features to your users.
 
 | r) Start servers after configuration
 | When the installation and configuration is complete, if this is set to
-**Yes**, the Zimbra server is automatically started.
+**Yes**, the {product-short} server is automatically started.
 
 | s) Save config to file
 | At any time during the installation, you can save the configuration to file.

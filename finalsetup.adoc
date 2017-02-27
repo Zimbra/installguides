@@ -5,7 +5,7 @@
 After the {product-name} servers are configured, the following functions
 must be configured.
 
-*Important:* {product-name} supports the default syslog of a
+IMPORTANT: {product-name} supports the default syslog of a
 supported operating system. Depending on your operating system, the
 steps contained in this section might not be correct. See your
 operating system documentation for specific information about how to
@@ -19,14 +19,13 @@ anti-virus activity.
 
 == Access to the 'zimbra' user
 
-{product-name} ships a default 'zimbra' user with a disabled
+{product-name} ships a default `zimbra` user with a disabled
 password.
 {product-name} requires access to this account via
 **ssh public key authentication**.
 On most operating systems this combination is okay, but if you have
-:toc:
 modified pam rules to disallow any ssh access to disabled accounts
-then you must define a password for the zimbra UNIX account.
+then you must define a password for the `zimbra` UNIX account.
 This will allow ssh key authentication for checking remote
 queues. See the Zimbra wiki article,
 https://wiki.zimbra.com/wiki/Mail_Queue_Monitoring[Mail Queue Monitoring].

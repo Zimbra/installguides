@@ -1,5 +1,6 @@
 :product-name: Zimbra Collaboration
 :product-edition-commercial: Network Edition
+:product-edition-foss: Open Source Edition
 :product-short: Zimbra
 :product-family: Zimbra
 :product-provider: Zimbra
