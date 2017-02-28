@@ -25,16 +25,46 @@ link:http://asciidoctor.org/docs/user-manual/[Asciidoctor User Manual] for
 information on how to get started.
 
 Once you have Asciidoctor installed and working, you can build the
-documentation into HTML files like so:
+documentation into HTML files, as in the following examples:
+
+=== Zimbra Collaboration - Performing a Single-Server Installation
+
+Each section of each document is contained in its own file.
+You may use the `index-single-server-install.adoc` file to generate the entire
+document.
+
+==== HTML
 
 [source,bash]
 ----
 asciidoctor -b html5 -o single-server-install.html index-single-server-install.adoc
 ----
 
-Each section of each document is contained in its own file.
-You may use the `index-single-server-install.adoc` file to generate the entire
-*Zimbra Collaboration Performing a Single-Server Installation* document.
+==== PDF
+
+[source,bash]
+----
+asciidoctor-pdf -a allow-uri-read -o single-server-install.pdf index-single-server-install.adoc
+----
+
+
+
+=== Zimbra Collaboration - Upgrade Guide
+
+==== HTML
+
+[source,bash]
+----
+asciidoctor -b html5 -o upgrade.html upgrade.adoc
+----
+
+
+==== PDF
+
+[source,bash]
+----
+asciidoctor-pdf -o upgrade.pdf upgrade.adoc
+----
 
 
 Additional Information
