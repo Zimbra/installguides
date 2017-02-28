@@ -1,0 +1,10 @@
+[[Basic_Configuration]]
+= Basic Configuration
+:toc:
+
+The default configuration installs Zimbra-LDAP, Zimbra-MTA with
+anti-virus and anti-spam protection, the Zimbra mailbox server, SNMP
+monitoring tools (optional), Zimbra-spell (optional), the logger tool
+(optional), and the Zimbra proxy (optional) on one server.
+
+include::installconfig.adoc[]
