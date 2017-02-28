@@ -2,8 +2,8 @@
 = Uninstalling {product-name}
 :toc:
 
-To uninstall servers, run the install script -u, delete the Zimbra
-Collaboration directory, and remove the zcs.tgz file on the servers.
+To uninstall servers, run the install script -u, delete the
+{product-name} directory, and remove the zcs.tgz file on the servers.
 
 1. cd to the original install directory for the {product-name} files.
 
@@ -11,7 +11,7 @@ Collaboration directory, and remove the zcs.tgz file on the servers.
 
 3. When `Completely remove existing installation?` is displayed, type
    `Yes`.
-The Zimbra servers are stopped, the existing packages, webapp
+The {product-short} servers are stopped, the existing packages, webapp
 directories, and most of the contents of the `/opt/zimbra` directory
 are removed.
 

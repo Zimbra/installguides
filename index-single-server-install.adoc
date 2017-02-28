@@ -1,18 +1,9 @@
+include::settings.adoc[]
+
 :document-title: Performing a Single-Server Installation
-:product-name: Zimbra Collaboration
-:product-short: Zimbra
-:product-family: Zimbra
-:product-provider: Zimbra
-:product-abbrev: ZCS
 
 = {product-name} {document-title}
 v8.7, April 2016
-:icons: font
-:title-logo-image: images/zimbra-logo-non-interlaced.png
-:showlinks:
-:source-highlighter: coderay
-:toc: left
-
 :leveloffset: +1
 
 <<<
