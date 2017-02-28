@@ -1,0 +1,82 @@
+==== Process
+
+. Log in as `root` to the {product-short} server and `cd` to the
+directory where the {product-abbrev} {product-edition-commercial} archive tar file is saved.
+For example, `cd /var/tmp`. Then type the following commands:
++
+====
+Unpack the file
+----
+tar xzvf zcs.tgz
+----
+Change to the correct directory.
+----
+cd <expanded-directory>
+----
+Begin the upgrade installation.
+----
+./install.sh
+----
+====
++
+. The upgrade script checks if `proxy` and `memcached` are
+present. If both are found, the upgrade will proceed. If either are
+missing then the upgrade will abort and alert.
++
+[NOTE]
+====
+* From 8.7.0 onwards proxy and memcached are required.
+* See https://wiki.zimbra.com/wiki/Enabling_Zimbra_Proxy_and_memcached#Using_existing_servers[Enabling Zimbra Proxy and memcached]
+====
+. The {product-short} software agreement is displayed. Read this software
+license agreement and type `Y`.
+. When `Use Zimbra's packaging server [Y]` is displayed, press `enter`
+to continue. Your system will be configured to add the Zimbra
+packaging repository for '_yum'_ or _apt-get_ so it can install the
+Zimbra third party packages.
+. When `Do you wish to upgrade? [Y]` is displayed, press `enter` to
+continue. The upgrade packages are unpacked.
+. The packages are listed. The installer also lists packages that are
+not installed. If you want to install the packages at this time, type
+`Y`; otherwise press `enter`. The upgrade checks that there is enough
+space to perform the upgrade. If there is not enough space, the
+upgrade stops.
+. When `The system will be modified. Continue? [N]` is displayed, type
+`Y` and press `enter`. The {product-short} server is stopped, and the older
+packages are removed. The upgrade process verifies which version of
+ZCS is being run and proceeds to upgrade the services, restores the
+existing configuration files, and restarts the server. If you have a
+configuration with a large number of accounts created, this can take a
+while.
+. If you have not set the time zone, you will be asked to set it. This
+sets the time zone in the default COS. The time zone that should be
+entered is the time zone that the majority of users in the COS will be
+located in.
+. When Configuration complete, press `enter`.
+. After all _MTA_ nodes are upgraded to {product-name}
+{product-version},
+the following commands may be run to fix the default globalconfig
+values, if necessary.
++
+----
+zmprov mcf zimbraMtaCommandDirectory /opt/zimbra/common/sbin
+zmprov mcf zimbraMtaDaemonDirectory /opt/zimbra/common/libexec
+zmprov mcf zimbraMtaMailqPath /opt/zimbra/common/sbin/mailq
+zmprov mcf zimbraMtaManpageDirectory /opt/zimbra/common/share/man
+zmprov mcf zimbraMtaNewaliasesPath /opt/zimbra/common/sbin/newaliases
+zmprov mcf zimbraMtaSendmailPath /opt/zimbra/common/sbin/sendmail
+----
++
+. https://bugzilla.zimbra.com/show_bug.cgi?id=104158[DSPAM is not
+longer shipped] starting _Zimbra Collaboration 8.7_. Please enter the
+following commands to disable it.
++
+----
+zmprov ms `zmhostname` zimbraAmavisDSPAMEnabled FALSE
+zmlocalconfig -e amavis_dspam_enabled=false
+zmamavisdctl restart
+----
++
+. The upgrade is complete. It is recommended that you perform a full
+backup after performing a major upgrade, due to database schema
+changes.

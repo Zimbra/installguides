@@ -1,0 +1,536 @@
+include::settings.adoc[]
+= {product-name} {product-version} Upgrade Steps
+
+== Before you upgrade
+
+The following tasks might need to be performed before you
+upgrade. After you review the tasks in this section, go to Upgrade
+Instructions. Be sure to read the
+https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0[release note] information before upgrading.
+
+[NOTE]
+====
+https://bugzilla.zimbra.com/show_bug.cgi?id=105056[Bug
+105056]
+noted a problem that can occur during a rolling upgrade if two
+factor authentication (2FA) is enabled before all mailbox servers have
+been upgraded to 8.7.  In particular, pre-8.7 mailbox servers are not
+compatible with 2FA.
+
+Accordingly, it is recommended that 2FA is not enabled until all
+mailbox servers have been upgraded to 8.7.
+====
+
+=== Database Integrity Checking
+
+Some customers have had corrupted databases prior to upgrade, and the
+upgrade has in some of those cases exacerbated the problem. In order
+to detect any corrupted databases as early as possible, we have added
+an optional step to check the MariaDB database with
+`zmdbintegrityreport` prior to making any system changes. You are
+prompted to decide if you would like to run the zmdbintegrityreport.
+
+`zmdbintegrityreport` can take minutes to an hour to run,
+depending on your system size and disk bandwidth.
+
+[NOTE]
+====
+`zmdbintegrityreport` is run on a weekly basis from cron on all
+zimbra-store nodes. Large sites can opt to disable this by setting
+`zmlocalconfig -e zmdbintegrityreport_disabled=TRUE`. If
+you choose to disable this, it is recommended that the integrity
+reports be run by hand during the your normal maintenance windows and
+prior to running any {product-abbrev} upgrades.
+====
+
+=== Preparing your operating system
+
+Before you upgrade {product-abbrev}, {product-provider} recommends that the operating system is
+updated with the latest patches that have been tested with {product-abbrev}.
+
+==== Ubuntu OS
+
+* Ubuntu 16.04 LTS Server Edition (64-bit)
+* Ubuntu 14.04 LTS Server Edition (64-bit)
+* Ubuntu 12.04.4 LTS Server Edition running the saucy (3.11) or later
+  kernel is required.
++
+[CAUTION]
+====
+If the original install was done with Ubuntu 12.04.2 or earlier,
+manual intervention is required to switch to the saucy (3.11) or later
+kernel series. See https://wiki.ubuntu.com/Kernel/LTSEnablementStack
+for further information.
+====
++
+You can find your current kernel version by running:
++
+----
+uname -a
+----
++
+For example:
++
+----
+build@zre-ubuntu12-64:~$ uname -a
+Linux zre-ubuntu12-64 3.11.0-17-generic #31~precise1-Ubuntu SMP Tue Feb 4
+21:25:43 UTC 2014 x86_64 x86_64 x86_64 GNU/Linux
+----
++
+
+
+==== Red Hat Enterprise Linux/CentOS Linux
+
+[IMPORTANT]
+====
+* If running the RHEL linux distribution, you must have a current valid
+  license from RedHat.
+* The server must have a valid yum or apt-get configuration so that it
+  can reach the Zimbra package servers.
+====
+
+* Red Hat® Enterprise Linux® 7, AS/ES (64-bit) 
+* CentOS Linux® 7 (64-bit)
+* Red Hat Enterprise Linux 6, AS/ES (64-bit), patch level 4 or later is required
+* CentOS Linux 6 (64-bit), patch level 4 or later is required
+
+=== License Activation
+
+[IMPORTANT]
+====
+* At the beginning of an upgrade installation, the existing license is
+  validated as being current and qualifies for the upgrade. If your
+  license is expired, an error message displays and the upgrade cannot
+  be performed. Contact {product-provider} Sales for a license renewal to continue
+  your upgrade.
+* An upgrade installation will not proceed without automatic
+  activation or a manually activated license file. License activations
+  are limited to five activations per license file. If you have
+  previously used all activations prior to upgrading your production
+  system, you must contact {product-provider} Sales to enable additional license
+  activations.
+====
+
+All {product-edition-commercial} installations require a valid license and license
+activation. New installs will have a 10 day grace period from the
+license issue date before requiring activation.
+
+License activation is automatic during the install with systems that
+have external access to the {product-provider} license servers. A means of
+creating manual activations will be provided for systems that do not
+have external access to the {product-provider} license servers. See the
+_{product-admin-guide}_ for more information.
+
+
+When upgrading, the way in which ZCO and archiving licensing is
+enforced might have changed on the server if you are using an older
+version of {product-name}. Older licenses might have
+`MAPIConnectorAccountsLimit` set to `0` or `ArchivingAccountsLimit` missing
+in the license. Contact {product-provider} Sales for an updated license file prior
+to upgrading if you have licensed either of these features and your
+current license does not properly reflect the correct number.
+
+=== Upgrading LDAP Replica Servers or Multi-Master Server
+
+NOTE: These instructions apply to {product-abbrev} 8.0.0, 8.0.1, 8.0.2 to {product-abbrev}
+8.0.4 and later.
+
+If you have replica servers or are in multi-master mode, you have to
+install the {product-short} _LDAP_ schema specific to the release you are
+upgrading to onto the replica servers or onto the multi-master server
+before you upgrade to {product-abbrev} 8.0.4 and later.
+See https://bugzilla.zimbra.com/show_bug.cgi?id=81048[Bug 81048].
+
+.  On the master _LDAP_ server, perform a software installation only of
+{product-abbrev} 8.0.4 and later.
++
+----
+./install.sh -s
+----
++
+. On each replica or additional master _LDAP_ server in MMR mode, as
+the `zimbra` user:
+.. Stop the server via one of the following commands:
+... `ldap stop`
+... `zmcontrol stop`
+.. Move the `zimbra` schema out of the way
++
+----
+cd /opt/zimbra/data/ldap/config/cn=config/cn=schema
+mv cn={4}zimbra.ldif /opt/zimbra/data/ldap/cn={4}zimbra.ldif.dead
+----
++
+.. Copy the schema from the master _LDAP_ server.
++
+----
+scp root@<master>:/opt/zimbra/openldap/etc/openldap/schema/zimbra.ldif cn={4}zimbra.ldif
+----
++
+.. Edit cn={4}zimbra.ldif to change the following two lines:
++
+----
+dn: cn=zimbra,cn=schema,cn=config     ------->     dn: cn={4}zimbra
+cn: zimbra                            ------->     cn: {4}zimbra
+----
++
+.. Start the server via one of the following commands:
+... `ldap start`
+... `zmcontrol start`
+. On the master _LDAP_ server run:
++
+----
+/opt/zimbra/libexec/zmsetup.pl
+----
++
+. On each replica server run:
++
+----
+ ./install.sh
+----
++
+
+To continue the upgrade, see <<_multi_server_environment_upgrade_steps>>.
+
+=== Disable SSLv3 Support
+
+If upgrading to {product-abbrev} 8.7.0, you need to completely disable SSLv3
+support after the upgrade. Disabling SSLv3 is recommended as a result
+of the SSLv3 vulnerability described in
+https://www.us-cert.gov/ncas/alerts/TA14-290A[Alert (TA14-290A)].
+
+
+SSLv3 support has been deprecated by default in 8.6.0, although when
+upgrading from previous versions of {product-abbrev}, some protocols might still be
+enabled.
+
+[NOTE]
+====
+* New keys created in {product-abbrev} 8.7.0 (or later) have SSLv3 disabled by default.
+* Pre-existing keys from earlier versions of {product-abbrev} will still have SSLv3 enabled.
+====
+
+Follow the steps in the {product-provider} wiki article
+https://wiki.zimbra.com/wiki/How_to_disable_SSLv3[How to Disable
+SSLv3] to disable SSLv3 after upgrading to ZCS 8.7.0.
+
+=== Update Default Proxy SSL Ciphers Attribute
+
+Whenever upgrading, it is recommended that you check the values of the
+following attributes (`zmprov gcf <attr>`) and compare them
+with the current default values (`zmprov desc -a <attr>`).
+
+----
+zimbraReverseProxySSLCiphers
+zimbraReverseProxySSLProtocols
+zimbraSSLExcludeCipherSuites
+zimbraMailboxdSSLProtocols
+----
+
+TIP: If you have not performed any recent hardening of your settings,
+your config should already match the {product-abbrev} default; and no action would
+be required.
+
+In addition, it is recommended to make the following changes:
+
+. Remove the following from `zimbraReverseProxySSLCiphers`:
++
+----
+ECDHE-RSA-RC4-SHA
+ECDHE-ECDSA-RC4-SHA
+RC4-SHA
+----
++
+. Add the following to `zimbraReverseProxySSLCiphers`:
++
+----
+!RC4
+----
++
+
+NOTE: See https://wiki.zimbra.com/wiki/Cipher_suites for the most
+current information on cipher suite configuration.
+
+=== Customizing ZCO Installations
+
+Administrators who want to customize the _ZCO_ installation MSI should
+use the unsigned version of the MSI
+(`ZimbraConnectorOLK_n.n.n.nnnn_xnn-unsigned.msi`), available in the
+{product-provider} download directory. The modified MSI should then replace the
+standard signed MSI (`ZimbraConnectorOLK_n.n.n.nnnn_xnn.msi`) in order
+to be available to end users from `/downloads/index.html` and the _ZCO_
+auto-upgrade process. (https://bugzilla.zimbra.com/show_bug.cgi?id=85067[Bug 85067]).
+
+== Upgrade Instructions
+
+=== Download the Software
+
+For {product-edition-commercial}, go to
+http://www.zimbra.com/downloads/zimbra-collaboration to access the
+software.
+
+[IMPORTANT]
+====
+* Before you begin the upgrade, make sure you have a good backup for
+  all users!
+* Database reloads are performed on 7.x to any 8.x upgrade.
+====
+
+When you run the install script, if {product-abbrev} is already installed, you will
+be asked if you want to upgrade. Follow the instructions in this
+release note to perform the upgrade. For additional information, refer
+to the installation guide.
+
+[IMPORTANT]
+====
+{product-provider} recommends that an install or upgrade session be run with a
+UNIX command such as `screen` to help prevent an install or upgrade
+session from terminating before it is completed. This is important
+when the upgrade includes restoring a configuration that has a large
+number of accounts.
+
+Example command usage:
+----
+screen ./install.sh
+----
+====
+
+=== Single Server Upgrade Steps
+
+You do not need to stop the services before upgrading. The upgrade
+process automatically stops and starts the services as required for
+the upgrade.
+
+include::upgrade-process-inc.adoc[]
+
+=== Multi-Server Environment Upgrade Steps
+
+Upgrade the servers in the following order. Update each server one at
+a time, following the instructions under <<_process_2>> below.
+
+. _LDAP_ master server. The _LDAP_ master servers must all be upgraded
+  before proceeding, and they must be running as you upgrade the other
+  servers.
+. _LDAP_ replicas 
+. _MTA_ servers - see <<_using_lmdb_as_the_supported_back_end_for_on_disk_database_maps>>.
+. Proxy servers
+. Mailstore servers 
+
+include::upgrade-process-inc.adoc[]
+
+=== Using LMDB as the Supported Back-end for On-disk Database Maps
+
+[WARNING]
+====
+Starting with {product-abbrev} 8.5 and later, _Postfix_ is linked to _LMDB_, the same
+back-end {product-abbrev} uses with _OpenLDAP_. Prior to {product-abbrev} 8.0, _Postfix_ was linked
+to _Berkeley DB_.
+
+{product-abbrev} has not officially supported using any _Postfix_ on-disk database
+maps prior to {product-abbrev} 8.5. However, these have been used through custom
+non-preserved modifications to the `postconf` configuration. These
+modifications will be lost on upgrade.
+====
+
+To restore the modifications post-upgrade, the following steps need to
+be performed:
+
+. Run postmap against the database input file to generate an LMDB
+database.
+. It will be necessary to iterate through the postconf keys that have
+`hash:/path/to/db` values and update them in LDAP to use
+`lmdb:/path/to/db` values instead.
+
+Many previously unsupported features that could be used with on-disk
+database maps are now fully supported by {product-abbrev}. Check if your
+customizations are correctly carried forward when
+upgrading. See https://bugzilla.zimbra.com/show_bug.cgi?id=77586[Bug
+77586].
+
+== After the Upgrade is Complete
+
+After you completed the upgrade, the following might need to be
+addressed.
+
+* Review https://wiki.zimbra.com/wiki/How_to_disable_SSLv3[How to disable SSLv3].
+* Review https://wiki.zimbra.com/wiki/Cipher_suites[Cipher suites].
+* During the upgrade process, {product-short} might make a binary backup of
+  existing databases when there are major structural changes occurring
+  to the database format for ease of downgrading. Administrators will
+  want to clean these up once they have confirmed a successful
+  upgrade. For _LDAP_ servers, these backups are in
+  `/opt/zimbra/data/ldap`, and in the form of `<dbname>.prev.+++$$+++`
+  where `+++$$+++` is the process
+  ID of the upgrade script. See https://bugzilla.zimbra.com/show_bug.cgi?id=81167[Bug 81167].
+* You should run `zmldapupgrade -b 66387` after upgrading.  The
+`zimbraAllowFromAddress` attribute cannot be set for internal accounts
+ or distribution lists. Running this script will change
+ `zimbraAllowFromAddress` values to grants.
++
+[NOTE]
+====
+* This step was not included into the installer-driven upgrade due to
+  potentially long delay for sites that set `zimbraAllowFromAddress` on
+  many accounts.
+* The migration command reports how many accounts had the
+  `zimbraAllowFromAddress` attribute set and how many of
+  them needed migration. One way to verify all accounts got migrated
+  is to run the command again. The total won't change, and the number
+  migrated should be 0. See
+  https://bugzilla.zimbra.com/show_bug.cgi?id=66387[Bug 66387] for
+  more information.
+====
++
+* If your self-signed SSL certificates have expired, update them.
++
+[NOTE]
+====
+To check for expired certificates, run the following command as the
+`zimbra` user:
+----
+/opt/zimbra/libexec/zmcheckexpiredcerts -days 1 -verbose
+----
+{product-name} requires a valid self-signed or commercial SSL
+certificate for communication between some components. The self-signed
+certificates that are automatically created by the 
+{product-short} install have a default expiration.
+
+If you have a {product-name} installation that is over one year
+old and are using self-signed certificates, your certificates will
+need to be updated either prior to the upgrade or immediately
+following the upgrade.
+
+After you upgrade, the following commands run as the zimbra user will
+regenerate the self-signed SSL certificates:
+
+----
+sudo /opt/zimbra/bin/zmcertmgr createca -new
+sudo /opt/zimbra/bin/zmcertmgr deployca
+sudo /opt/zimbra/bin/zmcertmgr deploycrt self -new
+----
+====
++
+* If you were using `zmlogger` prior to {product-abbrev} 8.0.7, it is
+  possible that numerous `rdd` files could be generated causing large
+  amounts of disk space to be used. {product-abbrev} 8.0.7 and later
+  contain a patch that prevents future additional growth of `rdd` files
+  on the logger server. To clean up existing `rdd` files, use the
+  following script to remove `rdd` files from your server.
+  See https://bugzilla.zimbra.com/show_bug.cgi?id=85222[Bug 85222].
++
+----
+sudo su - zimbra
+zmloggerctl stop
+cd /opt/zimbra/logger/db/data
+
+for nhostid in $(sqlite3 /opt/zimbra/logger/db/data/logger.sqlitedb 'select
+id from hosts'); do for ID in $(sqlite3 logger.sqlitedb "select rrd_file, col_name_19 from rrds Where csv_file == 'imap.csv' and host_id == ${nhostid}" | egrep "__[0-9]+$" | cut -d'|' -f1 | sort -n | uniq); do mv rrds/${nhostid}-$ID.rrd /opt/zimbra/logger/db/data/wrong_rrds/; done ; done
+
+for mon in {1..12}; do MON=$(LANG=en_US; date +%b -d 2013-${mon}-01); sqlite3 logger.sqlitedb "DELETE FROM rrds WHERE col_name_19 LIKE '${MON}_%'"; done
+
+sqlite3 logger.sqlitedb "VACUUM;"
+
+zmloggerctl start
+rm -R /opt/zimbra/logger/db/data/wrong_rrds
+rm /opt/zimbra/logger/db/data/logger.sqlitedb.backup
+----
++
+* If you have configured the following keys, you will need to replace
+  them as described here.
++
+====
+The following keys are deprecated:
+
+----
+httpclient_client_connection_timeout
+httpclient_connmgr_connection_timeout
+httpclient_connmgr_idle_reaper_connection_timeout
+httpclient_connmgr_idle_reaper_sleep_interval
+httpclient_connmgr_keepalive_connections
+httpclient_connmgr_max_host_connections
+httpclient_connmgr_max_total_connections
+httpclient_connmgr_so_timeout
+httpclient_connmgr_tcp_nodelay
+----
+
+They are replaced by the following keys:
+
+----
+httpclient_internal_client_connection_timeout
+httpclient_internal_connmgr_connection_timeout
+httpclient_internal_connmgr_idle_reaper_connection_timeout
+httpclient_internal_connmgr_idle_reaper_sleep_interval
+httpclient_internal_connmgr_keepalive_connections
+httpclient_internal_connmgr_max_host_connections
+httpclient_internal_connmgr_max_total_connections
+httpclient_internal_connmgr_so_timeout
+httpclient_internal_connmgr_tcp_nodelay
+httpclient_external_client_connection_timeout
+httpclient_external_connmgr_connection_timeout
+httpclient_external_connmgr_idle_reaper_connection_timeout
+httpclient_external_connmgr_idle_reaper_sleep_interval
+httpclient_external_connmgr_keepalive_connections
+httpclient_external_connmgr_max_host_connections
+httpclient_external_connmgr_max_total_connections
+httpclient_external_connmgr_so_timeout
+httpclient_external_connmgr_tcp_nodelay
+----
+
+====
++
+
+
+== Remove Current Version and Perform Clean Install of ZCS
+
+If you do not want to upgrade, but prefer to install {product-name}
+{product-edition-commercial} as a new installation, when you run the
+{product-name} {product-edition-commercial} install script, enter `N` when asked
+`Do you wish to upgrade?`
+
+WARNING: A warning displays asking if you want to delete all existing
+users and mail. If you enter `Yes`, all users, mail, and
+previous files are removed before proceeding with the new
+installation. Refer to the installation guides for installation
+instructions.
+
+== Status of Your Customization after Upgrade
+
+Upgrading to the newest release does not delete your accounts or
+change your configuration.  Configuration settings stored in _LDAP_ and
+_localconfig_ are preserved during upgrades. Any files installed by
+{product-name} might be deprecated and/or overwritten during
+upgrades, removing any customizations. This includes customized
+themes, logo branding changes, and crontab changes.  Only the core
+Zimlets are enabled after the upgrade. Zimlets that you customized
+and/or deployed are preserved during the upgrade but will be
+disabled. As upgrading of customized Zimlets cannot be tested before
+the release, {product-provider} recommends that you verify that your customized
+Zimlets work correctly before re-enabling them for your end-users
+after the upgrade.
+
+NOTE: When upgrading to {product-name} 8.5.x and later from a
+previous major {product-abbrev} version, the upgrade step disables Zimlets that are
+not the core Zimlets for {product-abbrev} in all COSs. If you have enabled other
+Zimlets at the account level, you might need to manually disable these
+Zimlets. See https://bugzilla.zimbra.com/show_bug.cgi?id=77836[Bug 77836].
+
+All entries between the designated comments in the {product-short}
+crontab file are overwritten with new defaults upon
+upgrade. Customized backup schedules stored in the {product-short} crontab and
+customizations to the crontab entry outside the designated comments
+are preserved.
+
+== Changes to Customized Themes
+
+[WARNING]
+====
+In {product-name} 8.5.x and later, a new design for default skins was
+implemented. Custom skins created for {product-short} 7.x might not
+work as intended with {product-name} 8.5.x and later. Depending on
+what is in the skin, the issues might range from simple things such as
+colors being used in the wrong places to larger issues like functional
+components being hidden or placed in inaccessible areas of the
+screen. The proper fix for this is to take an existing 8.5.x or later
+skin, duplicate it, and update the skin to meet the same needs as the
+old skin. See https://bugzilla.zimbra.com/show_bug.cgi?id=62523[Bug
+62523].
+====
