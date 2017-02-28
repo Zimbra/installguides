@@ -8,7 +8,7 @@ administrators should be familiar with installing and managing email
 systems.
 
 [IMPORTANT]
-Do not manually create the user ‚Äòzimbra‚Äô before running the ZCS installation.
+Do not manually create the user *zimbra* before running the ZCS installation.
 The installation automatically creates this user and sets up its environment.
 
 [[System_Requirements]]
