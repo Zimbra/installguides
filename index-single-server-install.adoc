@@ -1,7 +1,9 @@
 include::settings.adoc[]
 
 :document-title: Performing a Single-Server Installation
-
+// This is intended to allow excluding certain text for a FOSS only manual
+// At present it is only partially implemented
+:networkeditiondoc: TRUE
 = {product-name} {document-title}
 v8.7, April 2016
 :leveloffset: +1
