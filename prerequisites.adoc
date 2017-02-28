@@ -1,5 +1,5 @@
 [[Installation_Prerequisites]]
-= Installation Prerequisites
+= Preparing Your Server Environment
 :toc:
 
 In order to successfully install and run {product-name}, ensure
@@ -7,10 +7,14 @@ your system meets the requirements described in this section. System
 administrators should be familiar with installing and managing email
 systems.
 
+[IMPORTANT]
+Do not manually create the user ‚Äòzimbra‚Äô before running the ZCS installation.
+The installation automatically creates this user and sets up its environment.
+
 [[System_Requirements]]
 == System Requirements
 
-[cols="20,80a",grid="rows"]
+[cols="20,80a",grid="all"]
 |===
 |*Servers*
 |*Evaluation and Testing*
@@ -46,21 +50,19 @@ additional space for mail storage. The other nodes require 100MB.
 
 * Red Hat® Enterprise Linux® 7 (64-bit)
 * CentOS Linux® 7 (64-bit)
-* Red Hat Enterprise Linux 6 (64-bit), patch level 4 or later is required
-* CentOS Linux 6 (64-bit), patch level 4 or later is required
-* Ubuntu 16.04 LTS Server Edition (64-bit)
+* Red Hat Enterprise Linux 6 (64-bit), *patch level 4 or later is required*
+* CentOS Linux 6 (64-bit), *patch level 4 or later is required*
+* Oracle Linux 7.2
+* Oracle Linux 6.6
 * Ubuntu 14.04 LTS Server Edition (64-bit)
-* Ubuntu 12.04.4 LTS Server Edition (64-bit) running the saucy (3.11) or
-later kernel is required. Note: If the original install was done with
+* Ubuntu 12.04.4 LTS Server Edition (64-bit) *running the saucy (3.11) or
+later kernel is required*.
++
+[NOTE]
+If the original install was done with
 Ubuntu 12.04.2 or earlier, manual intervention is required to switch to
 the saucy (3.11) or later kernel series.
 See https://wiki.ubuntu.com/Kernel/LTSEnablementStack for further information.
-
-|*Virtualization ({product-edition-commercial})*
-|The following hypervisors are supported:
-
-* VMware vSphere 4.x
-* VMware vSphere 5.x
 
 |*Operating System (Open Source Edition)*
 |In addition to supporting the operating systems listed above for the
@@ -68,18 +70,28 @@ See https://wiki.ubuntu.com/Kernel/LTSEnablementStack for further information.
 {product-edition-foss}. Check the {product-provider} Open Source Downloads page on
 https://www.zimbra.com.
 
+|*Virtualization ({product-edition-commercial})*
+|The following hypervisors are supported:
+
+* VMware vSphere 5.x
+* VMware vSphere 4.x
+* XenServer 6.5
+* XenServer 6.2
+* KVM
+
 |*File Systems*
 |The following file systems are supported:
 
-* **ext3** or **ext4** file systems for Linux deployments
-* **NFS** for backup only
+* *XFS*
+* *ext3* or *ext4* file systems for Linux deployments
+* *NFS* for backup only
 
 |*Other Dependencies*
 |Netcat (nc) is required on all operating systems using {product-name}.
 The `nc` utility must be installed prior to installation or upgrading.
 
-For SUSE and Ubuntu systems, disable AppArmor and verify that services
-are not running before installing {product-name}.
+For SUSE and Ubuntu systems, disable *AppArmor* and verify that the
+AppArmor service is not running before installing {product-name}.
 
 For Red Hat Enterprise, Fedora Core and SUSE operating systems, the
 server must also have the following installed:
@@ -102,11 +114,13 @@ For Ubuntu 14 and Ubuntu 12:
 * Valid DNS configured with an A record and MX record.
 * Servers should be configured to run Network Time Protocol (NTP) on a scheduled basis.
 
-|*Administrator Computers +
+a|Administrator Computers +
  +
-Note: Other configurations may work.*
+[NOTE]
+ Other configurations may work.
 |The following operating system/browser combinations are supported:
 
+// TODO this looks well out of date.  How about Windows 10?  Edge browser?
 Windows XP with required updates, Vista, Windows 7, or Windows 8 with
 one of the following:
 
@@ -135,9 +149,10 @@ Linux (Red Hat, Ubuntu, Fedora, or SUSE) with one of the following:
 |*Administrator Console Monitor*
 |Display minimum resolution 1024 x 768
 
-|*End User Computers using {product-short} Web Client* +
+a|*End User Computers using {product-short} Web Client* +
  +
-Note: Other configurations may work.
+[NOTE]
+ Other configurations may work.
 |*For {product-short} Web Client - Advanced & Standard version*
 
 Minimum
@@ -164,6 +179,7 @@ one of the following:
 ** Safari
 ** Google Chrome
 
+// TODO El Capitan is 10.11 and that isn't even the latest...
 Mac OS X 10.5, 10.6, 10.7, or 10.8 with one of the following:
 
 * The latest stable release of:
@@ -200,6 +216,10 @@ requiring use of screen readers for accessibility leverage the use of
 the Standard {product-short} Web Client (HTML). {product-provider} continues to invest in
 improving the accessibility of this interface.
 
+[TIP]
+If users are presently using IE 6, {product-provider} strongly recommends that they upgrade
+to the latest version of Internet Explorer for optimal performance with ZWC.
+
 |*Exchange Web Services*
 |EWS Clients
 
@@ -217,6 +237,7 @@ EWS Interoperability
 |128 kbps or higher
 |===
 
+ifdef::networkeditiondoc[]
 [[Zimbra_Connector_for_Outlook]]
 == {product-short} Connector for Outlook ({product-edition-commercial} Only)
 
@@ -227,17 +248,27 @@ EWS Interoperability
 * Windows 8
 * Windows 7
 * Vista
+* Windows XP with required updates
++
+[IMPORTANT]
+Windows XP is deprecated. The 8.x series of Zimbra Collaboration is the last release to support
+Microsoft Outlook 2003 and Microsoft Windows XP
 
 |*Microsoft Outlook* a|
-* Outlook 2013: 32-bit and 64-bit editions of Microsoft Outlook are
-supported.
-* Outlook 2010: 32-bit and 64-bit editions of Microsoft Outlook are
-supported.
+* Outlook 2016: 32-bit and 64-bit editions of Microsoft Outlook are supported.
+* Outlook 2013: 32-bit and 64-bit editions of Microsoft Outlook are supported.
+* Outlook 2010: 32-bit and 64-bit editions of Microsoft Outlook are supported.
 * Outlook 2007: Client computers must have Microsoft Office Outlook 2007
 SP3 or later installed.
-
+* Outlook 2003: Client computers must have Microsoft Office Outlook 2003 SP3 or later installed.
++
+[IMPORTANT]
+Outlook 2003 is deprecated. The 8.x series of Zimbra Collaboration is the last release to
+support Microsoft Outlook 2003 and Microsoft Windows XP.
 |=======================================================================
+endif::networkeditiondoc[]
 
+ifdef::networkeditiondoc[]
 [[Zimbra_Mobile]]
 == {product-short} Mobile ({product-edition-commercial} Only)
 
@@ -258,6 +289,11 @@ including:
 
 * Various device/operating system combinations with mobile WAP browser.
 
+See the {product-provider} web site
+http://www.zimbra.com/products/zimbra_mobile.html for more information.
+endif::networkeditiondoc[]
+
+ifdef::networkeditiondoc[]
 [[Zimbra_Touch_Client]]
 == {product-short} Touch Client ({product-edition-commercial} Only)
 
@@ -266,13 +302,29 @@ including:
 Supported devices for the {product-short} Touch Client include:
 
 * iOS6+: iPad®, iPad mini®, iPhone®, iPod touch®
-* Android 4.0+: Nexus 7, Nexus 10, Samsung Galaxy Tab,
-  Samsung Galaxy S® III, Samsung Galaxy S® 4, Galaxy Nexus
+* Android 4.0+: Nexus 7, Nexus 10, Samsung Galaxy Tab™,
+  Samsung Galaxy S® III, Samsung Galaxy S® 4, Galaxy Nexus™
+endif::networkeditiondoc[]
+
+ifdef::networkeditiondoc[]
+[[BES]]
+== Zimbra Connector for BlackBerry Enterprise Server ({product-edition-commercial} Only)
+
+{product-provider} Connector for BlackBerry Enterprise Server (ZCB) provides seamless,
+real-time synchronization of Zimbra user mailbox data to BlackBerry devices.
+
+See https://www.zimbra.com/products/blackberry-enterprise-server.html for more information.
+endif::networkeditiondoc[]
 
 [[Available_Languages]]
 == Available Languages
 
-*End User Translations*
+This section includes information about available languages, including
+<<end_user_translations,End User Translations>> and
+<<admin_translations,Administrator Translations>>.
+
+[[end_user_translations]]
+=== End User Translations
 
 [cols="15,15,70",]
 |=======================================================================
@@ -301,7 +353,14 @@ Thai, Turkish, Ukrainian
 
 |{product-short} Connector for Microsoft Outlook - End User Guide (PDF) |Feature
 Documentation |English
+|=======================================================================
 
+[[admin_translations]]
+=== Administrator Translations
+
+[cols="15,15,70",]
+|=======================================================================
+|*Component* |*Category* |*Languages*
 |{product-short} Admin Console |Application |Arabic, Basque (EU), Chinese
 (Simplified PRC and Traditional HK), Danish, Dutch, English (AU, UK,
 US), French, French Canadian, German, Hindi, Hungarian, Italian,
