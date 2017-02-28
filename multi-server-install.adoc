@@ -28,4 +28,8 @@ include::multi-server-install-intro.adoc[]
 
 include::multi-server-install-planning.adoc[]
 
+<<<
+
+include::prerequisites.adoc[]
+
 :leveloffset: -1
