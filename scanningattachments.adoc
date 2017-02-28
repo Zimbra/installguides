@@ -8,9 +8,23 @@ an email, it is scanned using ClamAV prior to sending the message. If
 ClamAV detects a virus, it will block attaching the file to the message.
 By default, scanning is configured for a single node installation.
 
+ifndef::multiserverdoc[]
 To enable using a single node:
 [source%nowrap,bash]
 ....
 zmprov mcf zimbraAttachmentsScanURL clam://localhost:3310/
 zmprov mcf zimbraAttachmentsScanEnabled TRUE
 ....
+endif::multiserverdoc[]
+ifdef::multiserverdoc[]
+To enable in a multi-node environment, one of the MTA nodes needs to be
+picked for handling ClamAV scanning. Then, the necessary configuration
+can be done using the following commands:
+
+[source%nowrap,bash]
+....
+zmprov ms <mta server> zimbraClamAVBindAddress <mta server>
+zmprov mcf zimbraAttachmentsScanURL clam://<mta server>:3310/
+zmprov mcf zimbraAttachmentsScanEnabled TRUE
+....
+endif::multiserverdoc[]
