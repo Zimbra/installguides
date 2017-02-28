@@ -1,0 +1,35 @@
+:document-title: Multi-Server Installation Guide
+:product-name: Zimbra Collaboration
+:product-version: 8.7
+:product-short: Zimbra
+:product-family: Zimbra
+:product-provider: Zimbra
+:product-abbrev: ZCS
+// This is intended to allow excluding certain text for a FOSS only manual
+// At present it is only partially implemented
+:networkeditiondoc: TRUE
+:multiserverdoc: TRUE
+= {product-name} {document-title}
+v8.7, April 2016
+:icons: font
+:title-logo-image: images/zimbra-logo.jpg
+:showlinks:
+:source-highlighter: coderay
+:toc: left
+:toclevels: 4
+
+:leveloffset: +1
+
+<<<
+
+include::legal.adoc[]
+
+<<<
+
+include::multi-server-install-intro.adoc[]
+
+<<<
+
+include::multi-server-install-planning.adoc[]
+
+:leveloffset: -1
