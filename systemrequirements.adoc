@@ -1,18 +1,6 @@
-[[Installation_Prerequisites]]
-= Preparing Your Server Environment
-:toc:
-
-In order to successfully install and run {product-name}, ensure
-your system meets the requirements described in this section. System
-administrators should be familiar with installing and managing email
-systems.
-
-[IMPORTANT]
-Do not manually create the user *zimbra* before running the ZCS installation.
-The installation automatically creates this user and sets up its environment.
-
 [[System_Requirements]]
-== System Requirements
+== System Requirements for {product-name}
+:toc:
 
 [cols="20,80a",grid="all"]
 |===
