@@ -1,0 +1,32 @@
+=== Feature Requirement
+
+Run the script `zmreplchk` located in `/opt/zimbra/libexec`.
+
+IMPORTANT: This script must be run on a {product-abbrev} server that has a
+`localconfig` value set for `ldap_url` that includes all of the replica
+servers and ends with the master server.
+
+=== Error Codes and Status Explanations
+
+The following monitoring error codes and status explanations are given
+with this feature:
+
+[options="header"]
+|====
+|Error Code |Status |Description
+|0 |In Sync |The servers are currently in sync.
+|1 |No contact |No connection to the master server and the system
+ exits.
+|2 |Stand-alone |The master server has no replica servers and is
+ considered a standalone master server.
+|3 |Could not execute StartTLS |The replica server requires StartTLS
+ and fails.
+|4 |Server down |The replica server is currently down.
+|5 |Unable to search |Searching the replica server for the context CSN
+ fails.
+|6 |Xw Xd Xh Xm Xs behind |The replica server becomes out of
+ sync. Status indicates amount of time the replica server is behind
+ the master server in w=weeks, d=days, h=hours, m=minutes, and
+ s=seconds.
+|====
+
