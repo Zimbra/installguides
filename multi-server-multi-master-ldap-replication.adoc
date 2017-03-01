@@ -1,0 +1,267 @@
+[[multi-master-replication]]
+= Configuring Multi-Master Replication
+
+Set up multi-master LDAP replication to have a copy of the LDAP
+database saved on each server in a group of LDAP servers identified
+for multi-master replication (MMR). The database can be updated by
+any member of the group. If one master fails, the other masters
+continue to update the database.
+
+The {product-short} install program is used to configure the multi-master LDAP
+servers. Each master LDAP server is given an unique identifier when
+they are configured and `zmlocalconfig` is used to add the ldap server
+to the multi- master group.
+
+== Managing Multiple Master LDAP Servers
+
+When you enable multi-master replication, you assign a server ID to
+each master server to identify them in the group. This is used to
+distinguish the servers in the group and to help resolve conflicts
+that might occur.
+
+In addition, each server is configured to assign internal replication
+ID’s that are unique to that specific server. Other LDAP master
+server can use the same replication ID, but within the server, these
+replication IDs must be unique.
+
+You can run the {product-abbrev} multiple master CLI,
+`zmldapquery-mmr` from a specific master to see the server ID for that
+master and all multi-master servers that are in the group and to see
+the replication ID values for those masters.
+
+On the server, enter the command as:
+
+----
+/opt/zimbra/libexec/zmldapquery-mmr
+----
+
+Before you can enable the multi-master replication feature, you must
+know the hostname of the first secondary master that is being added to
+the group. The hostname is entered when you enable the feature. Once
+you enable the multi- master replication feature, you do not need to
+run the command again.
+
+
+When `zmlocalconfig` is run the first time, the master LDAP servers
+are configured as follows:
+
+* The first master LDAP server ID is set to `1`.
+* The master LDAP server is put in a group with a secondary master
+that is listening to LDAP on port `389`.
+* The replication ID is set to `100` by default on the secondary
+  master.
+* Writes initiated from the server go to the LDAP _master1_ by
+  default. If LDAP _master1_ is down, writes move to ldap _master2_.
+.. To enable the feature run:
++
+----
+./libexec/zmldapenable-mmr -s 1 -m ldap://<<master2.example.com>>:389/
+----
++
+.. Once the feature is enabled use the `zmlocalconfig` command to add the
+LDAP servers to a group.
++
+----
+zmlocalconfig -e ldap_master_url="ldap://<<master1.example.com>>:389 ldap:// <<master2.example.com>>:389"
+----
++
+
+
+== Installing a Secondary Master LDAP Server
+
+The master LDAP server must be running when you install the secondary
+LDAP servers. You run the {product-abbrev} install program on the
+secondary master LDAP servers to install the LDAP package.
+
+=== Passwords Required to Install the Secondary Master
+
+[NOTE]
+====
+Before you install a secondary master, you must know the following
+passwords:
+
+* {product-short} admin LDAP password
+* LDAP replication password
+* NGINX LDAP password
+* Amavis LDAP password
+* Postfix LDAP password
+
+To find these passwords, on the {product-abbrev} server run:
+
+----
+zmlocalconfig -s | grep passw | grep ldap
+----
+====
+
+=== Setting Up a Secondary Master LDAP Server
+
+. Follow steps 1 through 4 in Starting the Installation Process (TODO
+link) to open a SSH session to the LDAP server, log on to the server
+as root, and unpack the {product-short} software.
+. Type `Y` and press _Enter_ to install the `zimbra-ldap` package.
+. Type `Y`, and press _Enter_ to modify the system. The selected packages are
+installed. The _Main_ menu shows the default entries for the LDAP
+server.
+. Type `1` to display the _Common Configuration_ submenu.
+.. Type `2` to change the _LDAP Master host_ name to the name of the
+primary master's hostname; e.g., _master1.example.com_.
+.. Type `4` to change the _LDAP admin password_ to the {product-short} admin
+password of the primary master.
+.. Type `r` to return to the main menu.
+. Type `2` to display the _LDAP configuration_ submenu.
+.. Type `4` to change the type to `mmr`.
++
+NOTE: Item `5`, _LDAP Server ID_, is set to `2`. If this is the second
+master, leave it unchanged. If it the third or later master, select `5`
+and update the server ID accordingly.
++
+The next four steps are to change the default passwords on this server
+to match the passwords on the _master1_ LDAP server.
++
+.. Type `7` to change the _LDAP replication password_.
+.. Type `8` to change the _LDAP postfix password_.
+.. Type `9` to change the _LDAP amavis password_.
+.. Type `10` to change the _LDAP NGINX password_.
+.. Type `r` to return to the main menu.
+. Type `a` to apply the configuration changes. Press _Enter_ to save
+the configuration data.
+. When _Save Configuration data to a file_ appears, press _Enter_.
+. When _The system will be modified - continue?_ appears, type `y` and press
+_Enter_.
++
+NOTE: The server is modified. Installing all the components and configuring the
+server can take a few minutes.
++
+. When _Installation complete - press return to exit_ displays, press
+_Enter_. The installation is complete.
+. Update the `ldap_master_url` attribute to contain both masters, enter
+this new master as the _first_ master in the list.
++
+----
+zmlocalconfig -e ldap_master_url="ldap://<<master2.example.com>>:389 ldap:// <<master1.example.com>>:389"
+----
++
+
+
+== Promote Existing Replicas to Multi-Master LDAP Servers
+
+In an existing {product-abbrev} setup where there is already a single master and
+multiple replicas, you can promote an existing replica to become a
+secondary master.
+
+. On the master LDAP server find the LDAP replication, Postfix,
+Amavis, and NGINX passwords.
++
+----
+zmlocalconfig -s | grep passw | grep ldap
+----
++
+. Change the LDAP passwords on the server you are promoting to be the
+same as the first master LDAP server.
+** LDAP replication password = `zmldappasswd -l <password>`
+** LDAP postfix password = `zmldappasswd -p <password>`
+** LDAP amavis password = `zmldappasswd -a <password>`
+** LDAP NGINX password = `zmldappasswd -n <password>`
+. Assign the next Server ID to this master. This example is `3`
++
+----
+/opt/zimbra/libexec/zmldappromote-replica-mmr -s 3
+----
++
+. Update the `ldap_master_url` attribute to add the master to the
+list.
++
+----
+zmlocalconfig -e ldap_master_url="ldap://<<master1.example.com>>:389 \
+  ldap://<<master2.example.com>>:389 ldap://<<master3.example.com>>:389"
+----
++
+
+
+This updates the replica to be a multi-master replica, enabled with a
+server ID. It is automatically configured to be a paired master with
+the master it was previously replicating from.
+
+
+== Deleting a Multi-Master Replication Node
+
+To delete a multi-master replication (MMR) node, use the following
+steps.
+
+NOTE: Deleting an MMR node can only be performed in {product-abbrev}
+8.0.7 and later.
+
+. Update the `ldap_master_url` and `ldap_url` on every node, removing the
+LDAP MMR node that will be shut down.
+. Wait 5-10 minutes to ensure the modification is in place.
+. Monitor `/var/log/zimbra.log` on the MMR node that will be shut down
+and confirm it is no longer receiving modification traffic.
+. Run `ldap stop` on the MMR node that is being shut down.
+. Log into the remaining MMR nodes and perform the following:
+.. `/opt/zimbra/libexec/zmldapmmrtool -q`
+.. Find the matching _RID_ for the MMR node you shut down.
+.. `/opt/zimbra/libexec/zmldapmmrtool -d -o RID`
+
+=== Example of Deleting an MMR Node
+
+The following is an example of using `zmldapmmrtool`.
+
+. There are three MMR servers, `ldap1.example.com`, `ldap2.example.com`,
+`ldap3.example.com`, with `ldap3.example.com` being shut down.
++
+----
+zimbra@ldap1:/tmp/mmr$ ./zmldapmmrtool -q
+Master replication information
+Master replica 1
+rid: 100 URI: ldap://ldap2.example.com:389/ TLS: critical Master replica 2
+rid: 101 URI: ldap://ldap3.example.com:389/ TLS: critical
+----
++
+. The RID being used by `ldap3.example.com` is `101`. This agreement can
+be deleted with:
++
+----
+zimbra@ldap1:/tmp/mmr$ ./zmldapmmrtool -d -o 101
+----
++
+. Confirm the deletion.
++
+----
+zimbra@ldap1:/tmp/mmr$ ./zmldapmmrtool -q
+Master replication information
+Master replica 1
+rid: 100 URI: ldap://ldap2.example.com:389/ TLS: critical zimbra@ldap1:/tmp/mmr
+----
++
+. Repeat on the remaining node(s).
+
+
+== Monitoring Multiple LDAP Master Status
+
+The _Monitoring LDAP Replication Status_ feature monitors the change
+sequence number (CSN) values between an LDAP master server and an LDAP
+replica server. The replica server is considered a shadow copy of the
+master server. If the servers become out of sync, the monitoring
+feature indicates the problem. The out of sync time period is
+typically five minutes, although this value is configurable.
+
+include::multi-server-ldap-error-codes.adoc[]
+
+For example, `ldap002.example.com` is the master server, and
+`ldap003.example.com` and `ldap004.example`.com are additional
+servers. The following screen-shot shows the additional master servers
+are in sync with the master server, as indicated by the `Code:0` and
+`Status: In Sync`, and master server `ldap005` is currently down, as
+indicated by `Code: 4` and `Status: Server down`.
+
+----
+zimbra@ldap002.example.com
+Master: ldap://ldap003.example.com:389 Code: 0 Status: In Sync CSN: 20120528123456.123456Z#000000#001#000000
+Master: ldap://ldap004.example.com:389 Code: 0 Status: In Sync CSN: 20120528123456.123456Z#000000#001#000000
+Master: ldap://ldap005.example.com:389 Code: 4 Status: Server down
+----
+
+
+
+
+
