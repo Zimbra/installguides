@@ -2,6 +2,11 @@
 == DNS Configuration Requirement
 :toc:
 
+When you create a domain during the installation process, {product-name} checks
+to see if you have an MX record correctly configured for that domain.
+If it is not, an error is displayed suggesting that the domain name have
+an MX record configured in DNS.
+
 In order to send and receive email, the {product-short} MTA must be configured in
 DNS with both A and MX records. For sending mail, the MTA uses DNS to
 resolve hostnames and email-routing information. To receive mail, the MX
