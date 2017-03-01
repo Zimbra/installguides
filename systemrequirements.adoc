@@ -1,5 +1,5 @@
 [[System_Requirements]]
-== System Requirements for {product-name}
+= System Requirements for {product-name}
 :toc:
 
 [cols="20,80a",grid="all"]

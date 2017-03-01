@@ -1,5 +1,5 @@
 [[DNS_Configuration_Requirement]]
-= DNS Configuration Requirement
+== DNS Configuration Requirement
 :toc:
 
 In order to send and receive email, the {product-short} MTA must be configured in
