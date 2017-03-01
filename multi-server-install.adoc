@@ -21,6 +21,10 @@ include::multi-server-install-intro.adoc[]
 
 <<<
 
+include::multi-server-ldap-replication.adoc[]
+
+<<<
+
 include::multi-server-install-planning.adoc[]
 
 <<<
