@@ -1,0 +1,242 @@
+[[multi-server-adding-mailbox]]
+= Adding a Mailbox Server to a Single Server Configuration
+
+In the {product-name} ({product-abbrev}) single server environment,
+the LDAP, MTA, and mailbox services are on one machine. This chapter
+explains how to add a new machine that is configured as a mailbox
+server to a single server configuration and how to remove the mailbox
+server from the single server node.
+
+== Setup Requirements For Adding a Mailbox Server
+
+* The new machine you are adding must have the same operating system,
+  including the latest version and patch levels, as installed on the
+  single server.
+* The system clock must be configured with the same time on both
+  machines.
+* You must install the same version of the {product-abbrev} software
+  that is installed on the single server node.
+* A copy of the {product-abbrev} license needs to be added to a
+  directory on the new machine.
+* you are adding {product-short} Proxy to {product-abbrev}, this
+   should be installed on the existing single-server before you set up
+   the new mailbox server. See the Multi-server Installation chapter,
+   Installing zimbra-proxy section. (TODO link)
+
+
+== Overview of Process
+
+* {product-short} Mailbox Server is installed on the prepared machine.
+* Customized configuration for the single-server, such as custom themes
+and Zimlets are added to the new mailbox server.
+* Commercial SSL certificates are added to the new mailbox server.
+* User accounts are moved from the single server to the new mailbox
+  server.
+* If you are moving all accounts from the single server, the mailbox
+  server is stopped on the single server machine.
+
+
+== Configuring the Mailbox Server
+
+The host name and zmhostname configured on the mailbox server is the
+same as on the name on the single server.
+
+Make sure you know the LDAP master password as you configure it on the
+sever that is being added. To find the master LDAP password on the
+single server node, type:
+
+----
+zmlocalconfig -s zimbra_ldap_password
+----
+
+IMPORTANT: Before you begin make sure you have an up-to-date backup!
+
+. Follow steps 1 through 4 in Starting the Installation Process on
+page 32 (TODO link) to log on to the server as root and unpack the
+{product-short} software.
+. Type `Y `for each package you are installing.
++
+--
+** Install `zimbra-store`, and `zimbra-spell` (optional) packages. When
+   `zimbra-spell` is installed, the `zimbra-apache` package also is
+   installed.
+** If `zimbra-proxy` is configured, install `memcached`.
+** The `zimbra-logger` package is installed only on one mailbox
+   server. If you are moving all mailboxes to this server from the
+   original single server, install the `zimbra-logger` package.
+** If _Archive and Discovery_ is installed on the single-server node,
+   install `zimbra-archiving` on the new mailbox server.
+
+NOTE: If SNMP is being used, type `Y` for `zimbra-snmp`. If SNMP is
+used, it is installed on every {product-short} server.
+--
+. Type `Y`, and press _Enter_ to modify the system. The selected packages
+are installed on the server.
++
+NOTE: The _Main_ menu displays the default entries for the {product-short}
+component you are installing.
+
+. Type `1` and press _Enter_ to go to the _Common Configuration_ menu.
++
+NOTE: The mailbox server hostname is displayed. You must change the
+LDAP master host name and password to be the values configured on the
+single- server node.
++
+--
+** Type `2`, press _Enter_, and type the LDAP host name.
+** Type `4`, press _Enter_, and type the LDAP password.
+
+NOTE: After you set these values, the server immediately contacts the
+LDAP server. If it cannot contact the server, you cannot proceed.
+--
+
+** Type `6` to set the correct time zone.
+. Type `r` to return to the _Main_ menu.
+. From the _Main_ menu, type `2` to go to the _Store_ configuration
+menu.
+** Type `4` and set the password for the administrator account. This
+should be the same password as configured on the original
+single-server node.
+** Type the corresponding number to set the SMTP host. This is the
+mta-server host name.
+** Type the corresponding number if you want to change the default web
+  server mode.
+** If you are setting up IMAP/POP proxy servers, type the
+   corresponding number to enable the servers.
+** If the `zimbra-proxy` is used and is installed on another server,
+   configure the following menu options
++
+--
+*** Configure for use with mail proxy
+*** Configure to use with web proxy
+
+NOTE: Set either or both of these to TRUE if you are going to set up
+`zimbra-proxy`.
+--
+
+** Type the corresponding menu number to install the {product-name} license
+   file. Enter the location of the license file. For example, if you
+   saved the license file to the tmp directory, you would type
+   `/tmp/ZCSLicense.xml`. You cannot proceed without a license file.
+** If you are setting up proxy servers, type the corresponding number
+   to enable the servers. When you enable these, IMAP/POP/HTTP server
+   port numbers and proxy port numbers are automatically changed. See
+   the Planning for the Installation chapter, Configuring Proxy
+   Server (TODO link).
+. When the mailbox server is configured, return to the _Main_ menu and
+type a to apply the configuration changes. Press _Enter_ to save the
+configuration data.
+. When _Save Configuration data to a file_ appears, press _Enter_.
+. The next request asks where to save the files. To accept the
+default, press _Enter_. To save the files to another directory, enter
+the directory and then press _Enter_.
+. When _The system will be modified - continue?_ appears, type `y` and
+press _Enter_.
++
+NOTE: The server is modified. Installing all the components and
+configuring the mailbox server can take a few minutes. This includes
+installing SSL certificates, setting passwords, setting ports,
+installing skins and Zimlets, setting time zone preferences, and
+starting the servers, among other processes.
++
+. When _Configuration complete - press return to exit_ displays, press
+_Enter_.
+
+The installation of the mailbox server is complete.
+
+== Adding Customized Features
+
+Any customizing of themes, or Zimlets, and any signed certificates
+stored on the single-server must be added to the new mailbox
+server. See the {product-admin-guide} for information about adding the
+customized features.
+
+== Testing the Configuration
+
+To make sure that the new mail store server is correctly configured,
+create a new user on the new mailbox server and log into the account
+to verify that your configuration is correct. See Provisioning
+Accounts in the Multiple-Server Installation chapter (TODO link).
+
+== Move Mailboxes
+
+The command, `zmmboxmove`, is run to move user accounts from the mailbox
+server on the single-sever node to the new mailbox server.
+
+You can set global options to exclude items from the mailbox move. See
+the {product-admin-guide} User Accounts chapter for more information
+about the mailbox move feature.
+
+Move the following types of mailboxes:
+
+* User accounts.
+* Admin mailboxes. If you do not move the admin mailbox, you cannot
+* log into the {product-name} Web Client.
+* Spam and ham mailboxes.
+
+NOTE: If you were using _Archive and Discovery_ on the single server
+mailbox, move the archival mailboxes as well.
+
+=== Move Mailboxes Using CLI zmmboxmove
+
+. To move a mailbox to a new server
++
+----
+zmmboxmove -a <email@address> --from <servername> --to <servername>
+----
+
+. To verify that the content of the mailbox was moved successfully, go
+to the administration console, select the account that was
+moved. Click _View Mail_ on the toolbar. When the account opens, verify
+that the account’s content is displayed and can be opened.
+. Purge the mailbox from the old server:
++
+----
+zmpurgeoldmbox -a <email@address> -s <oldservername>
+----
+
+== Turn Off Mailbox Server on Single-Server Node
+
+When all mailboxes have moved from the single-server node to the new
+mailbox server node, disable the Mailbox services on the original
+single-server machine.
+
+. On the original single-server node, disable the following mailbox
+server components:
++
+--
+[cols=">10%,<90%"]
+|====
+|mailbox   |`zmprov -l ms <singleserver.com> +++--+++ -zimbraServiceEnabled mailbox`
+|logger    |`zmprov -l ms <singleserver.com> +++--+++ -zimbraServiceEnabled logger`
+|stats     |`zmprov -l ms <singleserver.com> +++--+++ -zimbraServiceEnabled stats`
+|spell     |`zmprov -l ms <singleserver.com> +++--+++ -zimbraServiceEnabled spell`
+|convertd  |`zmprov -l ms <singleserver.com> +++--+++ -zimbraServiceEnabled convertd`
+|====
+
+If archiving was installed, disable it as well:
+
+----
+zmprov -l ms <singleserver.com> -- -zimbraServiceEnabled archiving
+----
+--
+
+. After the mailbox services are disabled, verify that antispam,
+antivirus, ldap, mta, snmp, proxy, and memcached are the only services
+on the original single-server node.
++
+----
+zmprov -l gs <singleserver.com> | grep -i serviceenabled
+----
+
+
+
+
+   
+   
+   
+   
+   
+
+
+   

@@ -29,6 +29,10 @@ include::prepareserver.adoc[]
 
 <<<
 
+include::multi-server-adding-mailbox.adoc[]
+
+<<<
+
 include::multi-server-multi-master-ldap-replication.adoc[]
 
 <<<
