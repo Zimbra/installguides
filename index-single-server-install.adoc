@@ -18,19 +18,7 @@ include::introduction.adoc[]
 
 <<<
 
-include::prerequisites.adoc[]
-
-<<<
-
-include::modosconfig.adoc[]
-
-<<<
-
-include::hifidocpreview.adoc[]
-
-<<<
-
-include::dnsconfig.adoc[]
+include::prepareserver.adoc[]
 
 <<<
 
@@ -63,5 +51,9 @@ include::provisionaccounts.adoc[]
 <<<
 
 include::uninstalling.adoc[]
+
+<<<
+
+include::systemrequirements.adoc[]
 
 :leveloffset: -1
