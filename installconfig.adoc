@@ -11,6 +11,7 @@ The menu driven installation displays the components and their existing
 default values. You can modify the information during the installation
 process. The table below describes the menu options.
 
+[[main_menu_options]]
 === Main Menu options
 
 [cols="5,15,80a",options="header",]
