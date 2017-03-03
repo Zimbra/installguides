@@ -29,6 +29,10 @@ include::prepareserver.adoc[]
 
 <<<
 
+include::multi-server-install-main.adoc[]
+
+<<<
+
 include::multi-server-adding-mailbox.adoc[]
 
 <<<
