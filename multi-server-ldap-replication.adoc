@@ -32,10 +32,10 @@ server instead of the master LDAP server.
 == Installing Zimbra Master LDAP Server
 
 You must install the master LDAP server before you can install replica
-LDAP servers. Refer to Installing Zimbra LDAP Master Server (TODO LINK)
+LDAP servers. Refer to <<install_ldap_master>>
 for master LDAP server installation instructions. After the
 installation of the master LDAP server has completed, continue
-to Enabling Replication on the LDAP Master (TODO LINK)
+to <<_enable_replication_on_the_ldap_master>>.
 
 == Enable Replication on the LDAP Master
 
@@ -49,8 +49,8 @@ The master LDAP server must be running when you install the replica
 server. You run the {product-abbrev} install program on the replica
 server to install the LDAP package.
 
-Follow steps 1 through 4 in Starting the Installation Process (TODO
-link) to open a SSH session to the LDAP server, log on to the server
+Follow steps 1 through 4 in <<starting_multiple_server_install>>
+to open a SSH session to the LDAP server, log on to the server
 as root, and unpack the {product-short} software.
 
 . Type `Y` and press _Enter_ to install the `zimbra-ldap` package. In the
@@ -134,7 +134,7 @@ Ldap configuration
 .. Type `2` and change _Create Domain_ to `no`.
 .. Type `4` for _LDAP replication password_ and enter the same password to
 match the value on the Master LDAP Admin user password for this local
-config variable. (TODO - reword, awkward)
+config variable.
 +
 NOTE: All passwords must be set to match the master ldap admin user
 password. To determine this value on the master LDAP server, run

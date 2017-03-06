@@ -95,8 +95,8 @@ zmlocalconfig -s | grep passw | grep ldap
 
 === Setting Up a Secondary Master LDAP Server
 
-. Follow steps 1 through 4 in Starting the Installation Process (TODO
-link) to open a SSH session to the LDAP server, log on to the server
+. Follow steps 1 through 4 in <<starting_multiple_server_install>>
+to open a SSH session to the LDAP server, log on to the server
 as root, and unpack the {product-short} software.
 . Type `Y` and press _Enter_ to install the `zimbra-ldap` package.
 . Type `Y`, and press _Enter_ to modify the system. The selected packages are

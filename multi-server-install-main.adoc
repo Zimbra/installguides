@@ -786,8 +786,7 @@ All modes use SSL encryption for back-end administrative traffic.
 11. If you are configuring proxy servers, type the corresponding number
     to enable the servers. When you enable these, the mail server port
     and proxy port numbers are automatically changed.
-// TODO add link in here
-    See the Planning for the Installation chapter, Configuring Proxy Server.
+	See <<_configuration_during_installation>>.
 
 12. If you install the *{product-short}-spell* package, it should be installed
     on every mailstore. +
@@ -1111,9 +1110,7 @@ account with that address after the installation is complete.
 --
 [NOTE]
 If you are installing the {product-short}-proxy package, see
-// TODO check link here
-<<installing_zimbra_proxy,Installing {product-short} Proxy>> before
-continuing.
+<<_installing_zimbra_proxy>> before continuing.
 --
 
 12. When the MTA server is configured, return to the Main menu and
@@ -1169,8 +1166,8 @@ default port is `11211` and is controlled by the
 
 If you are installing `zimbra-proxy` on the MTA server, select the
 `zimbra-proxy` package and the `zimbra-memcached` package. Follow the
-installation process for Installing Zimbra MTA on a Server on
-page 48. After Step 8, configure the Zimbra-proxy. TODO - link
+installation process for <<_installing_zimbra_mta_on_a_server>>.
+After Step 8, configure the Zimbra-proxy.
 
 . On the MTA server, select to install the `zimbra-proxy` and 
 `zimbra-memcached` packages, type `y` and press *Enter* to install the selected
@@ -1205,8 +1202,8 @@ Proxy configuration
 ----
 --
 +
-Return to the MTA section, Step 8 on page 51 to continue the MTA
-server installation. TODO link
+Return to <<_installing_zimbra_mta_on_a_server>>, step 8,
+to continue the MTA server installation.
 
 === Installing on a separate server
 
@@ -1214,9 +1211,8 @@ The LDAP host name and the {product-short} LDAP password must be known to the
 proxy server. If not, the proxy server cannot contact the LDAP server
 and the installation fails.
 
-. Follow steps 1 through 4 in Starting the Installation Process (TODO
-link)  on
-page 32 to open a SSH session to the server, log on to the server as
+. Follow steps 1 through 4 in <<starting_multiple_server_install>>
+to open a SSH session to the server, log on to the server as
 root, and unpack the {product-short} software.
 . Select to install the `zimbra-proxy` package and the `zimbra-memcached`
 package. The other packages should be marked `N`. If you have not
@@ -1461,8 +1457,8 @@ the following functions must be configured:
   each server to enable server statistics to display on the
   administration console, and then enable the logger monitor host. The
   server statistics includes information about the message count,
-  message volume, and anti-spam and anti-virus activity. See Enabling
-  Server Statistics Display. TODO - link
+  message volume, and anti-spam and anti-virus activity. See
+  <<_enabling_server_statistics_display>>.
 * {product-name} ships a default `zimbra` user with a disabled
   password. {product-abbrev} requires access to this account via ssh public key
   authentication. On most operating systems this combination is okay,

@@ -20,8 +20,7 @@ server from the single server node.
   directory on the new machine.
 * you are adding {product-short} Proxy to {product-abbrev}, this
    should be installed on the existing single-server before you set up
-   the new mailbox server. See the Multi-server Installation chapter,
-   Installing zimbra-proxy section. (TODO link)
+   the new mailbox server. See <<_installing_zimbra_proxy>>.
 
 
 == Overview of Process
@@ -51,8 +50,8 @@ zmlocalconfig -s zimbra_ldap_password
 
 IMPORTANT: Before you begin make sure you have an up-to-date backup!
 
-. Follow steps 1 through 4 in Starting the Installation Process on
-page 32 (TODO link) to log on to the server as root and unpack the
+. Follow steps 1 through 4 in <<starting_multiple_server_install>>
+to log on to the server as root and unpack the
 {product-short} software.
 . Type `Y `for each package you are installing.
 +
@@ -121,8 +120,7 @@ NOTE: Set either or both of these to TRUE if you are going to set up
 ** If you are setting up proxy servers, type the corresponding number
    to enable the servers. When you enable these, IMAP/POP/HTTP server
    port numbers and proxy port numbers are automatically changed. See
-   the Planning for the Installation chapter, Configuring Proxy
-   Server (TODO link).
+  <<_configuration_during_installation>>.
 . When the mailbox server is configured, return to the _Main_ menu and
 type a to apply the configuration changes. Press _Enter_ to save the
 configuration data.
@@ -155,8 +153,8 @@ customized features.
 
 To make sure that the new mail store server is correctly configured,
 create a new user on the new mailbox server and log into the account
-to verify that your configuration is correct. See Provisioning
-Accounts in the Multiple-Server Installation chapter (TODO link).
+to verify that your configuration is correct. See
+<<_provisioning_accounts>>.
 
 == Move Mailboxes
 
