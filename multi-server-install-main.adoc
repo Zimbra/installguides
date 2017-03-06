@@ -900,8 +900,248 @@ Configuration complete - press return to exit
 
 The installation of the mailbox server is complete.
 
+== Installing {product-short} MTA on a Server
 
-== Installing zimbra-archiving Package
+When {product-short}-mta is installed, the LDAP host name and the
+{product-short} LDAP password must be known to the MTA server.
+If not, the MTA cannot contact the LDAP server and is not able to
+complete the installation.
+
+1. Follow steps 1 through 4 in
+   <<starting_multiple_server_install,Starting the Installation Process>>
+   to open an SSH session to the MTA server, log on to the server as
+   *root*, and unpack the {product-abbrev} software.
+
+2. Type `y` and press `Enter` to install the *zimbra-mta* and 
+   *zimbra-dnscache* packages.  The other packages should be marked `n`.
+   In the following screen shot example, the packages to be installed are emphasized.
++
+--
+[NOTE]
+_If SNMP is being used, the SNMP package is installed on every
+{product-short} server. Mark_ `y`
+
+[source%nowrap]
+....
+Select the packages to install
+
+Install zimbra-ldap [Y] n
+
+Install zimbra-logger [Y] n
+
+Install zimbra-mta [Y] y
+
+Install zimbra-dnscache [Y] y
+
+Install zimbra-snmp [Y] n
+
+Install zimbra-store [Y] n
+
+Install zimbra-apache [Y] n
+
+Install zimbra-spell [Y] n
+
+Install zimbra-memcached [Y] n
+
+Install zimbra-proxy [Y] n
+Checking required space for zimbra-core
+
+Installing:
+    zimbra-core
+    zimbra-mta
+    zimbra-dnscache
+
+The system will be modified.  Continue? [N] y
+Installing packages
+....
+--
+
+3. Type `Y`, and press `Enter` to modify the system. The selected
+   packages are installed on the server.
++
+The Main menu displays the default entries for the Zimbra component you
+are installing. +
+To expand the menu to see the configuration values, type `x` and press `Enter`. +
+The main menu expands to display configuration details for the package
+being installed.
++
+--
+[NOTE]
+Values that require further configuration are marked with asterisks (`*`).
+--
++
+To navigate the Main menu, select the menu item to change. You can
+modify any of the values. See the section
+<<main_menu_options,Main Menu options>>
+for a description of the Main menu.
++
+--
+[source%nowrap]
+....
+Main menu
+
+   1) Common Configuration:
+        +Hostname:                             mta-1.example.com
+******* +Ldap master host:                     UNSET
+        +Ldap port:                            389
+******* +Ldap Admin password:                  UNSET
+        +LDAP Base DN:                         cn=zimbra
+        +Secure interprocess communications:   yes
+        +TimeZone:                             Africa/Monrovia
+        +IP Mode:                              ipv4
+        +Default SSL digest:                   sha256
+
+   2) zimbra-mta:                              Enabled
+        +Enable Spamassassin:                  yes
+        +Enable Clam AV:                       yes
+        +Enable OpenDKIM:                      yes
+        +Notification address for AV alerts:   admin@mta-1.example.com
+******* +Bind password for postfix ldap user:  UNSET
+******* +Bind password for amavis ldap user:   UNSET
+
+   3) zimbra-dnscache:                         Enabled
+   s) Save config to file
+   x) Expand menu
+   q) Quit
+
+Address unconfigured (**) items  (? - help)
+....
+--
+
+4.  Type `1` to display the *Common Configuration* submenu.
++
+--
+[source%nowrap]
+....
+Common configuration
+
+   1) Hostname:                                mta-1.example.com
+** 2) Ldap master host:                        UNSET
+   3) Ldap port:                               389
+** 4) Ldap Admin password:                     UNSET
+   5) LDAP Base DN:                            cn=zimbra
+   6) Secure interprocess communications:      yes
+   7) TimeZone:                                Africa/Monrovia
+   8) IP Mode:                                 ipv4
+   9) Default SSL digest:                      sha256
+....
+
+The mta server hostname is displayed.
+
+[IMPORTANT]
+You must change the LDAP master host name and password to be the
+values configured on the LDAP server.
+
+** Type `2`, press `Enter`, and type the LDAP host name.
+   (*ldap-1.example.com* in this example.)
+** Type `4`, press `Enter`, and type the LDAP password. +
+   To obtain the LDAP password, you will need to log on to the
+   LDAP server as the `zimbra` user, and run the following command:
+
+[source%nowrap,bash]
+....
+zmlocalconfig -s zimbra_ldap_password
+....
+
+After you set these values, the server immediately contacts the LDAP
+server. If it cannot contact the server, you cannot proceed.
+--
+
+5. Type `7` to set the correct time zone.
++
+--
+[source%nowrap]
+....
+1 Africa/Algiers
+.
+.
+.
+94 Europe/London
+.
+.
+.
+109 Pacific/Tongatapu
+110 UTC
+Enter the number for the local timezone: [110] 94
+....
+--
+
+
+6. Type `r` to return to the *Main* menu.
+
+7. Type `2` to got to the *Mta configuration* menu.
++
+--
+[source%nowrap]
+....
+Mta configuration
+
+   1) Status:                                  Enabled
+   2) Enable Spamassassin:                     yes
+   3) Enable Clam AV:                          yes
+   4) Enable OpenDKIM:                         yes
+   5) Notification address for AV alerts:      admin@mta-1.example.com
+** 6) Bind password for postfix ldap user:     UNSET
+** 7) Bind password for amavis ldap user:      UNSET
+
+Select, or 'r' for previous menu [r]
+....
+--
+
+8.  You can change the `Notification address for AV alerts`.  This should be
+    an address on the domain, such as the admin address. (*admin@example.com*)
++
+--
+[NOTE]
+If you enter an address other than the admin address, you must provision an
+account with that address after the installation is complete.
+--
+
+9.  Select the menu number for `Bind password for postfix ldap user`. +
+    You must use the same value for this as is configured on the
+    LDAP master server.
+
+10.  Select the menu number for `Bind password for amavis ldap user`. +
+     You must use the same value for this as is configured on the
+     LDAP master server.
+
+11. Type `r` to return to the *Main* menu.
++
+--
+[NOTE]
+If you are installing the {product-short}-proxy package, see
+// TODO check link here
+<<installing_zimbra_proxy,Installing {product-short} Proxy>> before
+continuing.
+--
+
+12. When the MTA server is configured, return to the Main menu and
+    type `a` to apply the configuration changes. +
+    Press `Enter` to save the configuration data.
+
+13. When `Save configuration data to file` appears, +
+    type `Yes` and press `Enter`.
+
+14. The next request asks where to save the file.  To accept the default,
+    press `Enter`. To save the files to another directory, enter the
+    directory and then press `Enter`.
+
+15. When `The system will be modified - continue?` appears, +
+    type `Yes` and press `Enter`.
++
+--
+The server is modified. Installing all the components and configuring
+the MTA server can take a few minutes. This can include setting
+passwords, setting ports, setting time zone preferences, and starting
+the server, among other processes.
+--
+
+16. When `Installation complete - press return to exit` displays,
+    press `Enter`.
+
+The installation of the MTA server is complete.
+
+== Installing {product-short}-archiving Package
 
 Installing the `zimbra-archiving` package is optional. This package
 enables {product-name} Archiving and Discovery, which offers:
