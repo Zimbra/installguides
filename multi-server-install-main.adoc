@@ -902,6 +902,7 @@ The installation of the mailbox server is complete.
 
 == Installing {product-short} MTA on a Server
 
+
 When {product-short}-mta is installed, the LDAP host name and the
 {product-short} LDAP password must be known to the MTA server.
 If not, the MTA cannot contact the LDAP server and is not able to
@@ -1141,7 +1142,241 @@ the server, among other processes.
 
 The installation of the MTA server is complete.
 
-== Installing {product-short}-archiving Package
+== Installing Zimbra Proxy
+
+Installing the `zimbra-proxy` package is optional, but recommended for
+scalable multi-server deployment. {product-short} proxy is normally installed
+on the MTA server or can be configured on a separate server. {product-short}
+proxy can be installed on more than one server. At least one instance
+of `zimbra-memcached` must be installed to cache the route information
+(upstream mailbox server for each endclient).
+
+IMPORTANT: If you are moving from a non-proxy environment (for
+example, single server to multi-server environment), additional steps
+are necessary for the mailbox server and proxy configuration. After
+you complete the proxy installation, reconfigure the mailbox server as
+described in the {product-admin-guide}, _Zimbra Proxy_ chapter.
+
+NOTE: Memcached is shipped as the caching layer to cache LDAP
+lookups. Memcache does not have authentication and security features
+so the servers should have a firewall set up appropriately. The
+default port is `11211` and is controlled by the
+`zimbraMemcacheBindPort` conf setting.
+
+
+=== Installing on the MTA Server
+
+
+If you are installing `zimbra-proxy` on the MTA server, select the
+`zimbra-proxy` package and the `zimbra-memcached` package. Follow the
+installation process for Installing Zimbra MTA on a Server on
+page 48. After Step 8, configure the Zimbra-proxy. TODO - link
+
+. On the MTA server, select to install the `zimbra-proxy` and 
+`zimbra-memcached` packages, type `y` and press *Enter* to install the selected
+package.
+. The _Main_ menu displays the default entries for the {product-short} component
+you are installing. Select *Proxy Configuration* menu. You can modify
+any of the values.
++
+--
+The *Bind password for Nginx ldap user* was configured when the LDAP
+server was installed. This is set when the MTA connected to the LDAP
+server. This is not used unless the Kerberos5 authenticating mechanism
+is enabled.
+
+NOTE: Setting the password even though GSSAPI auth/proxy
+is not set up does not cause any issues.
+
+----
+Proxy configuration
+
+      1) Status:                                Enabled
+      2) Enable POP/IMAP Proxy:                 TRUE
+      3) IMAP proxy port:                       143
+      4) IMAP SSL proxy port:                   993
+      5) POP proxy port: 110
+      6) POP SSL proxy port:                    995
+      7) Bind password for nginx ldap user:     set
+      8) Enable HTTP[S] Proxy:                  TRUE
+      9) HTTP proxy port:                       80
+      10) HTTPS proxy port:                     443
+      11) Proxy server mode:                    https
+----
+--
++
+Return to the MTA section, Step 8 on page 51 to continue the MTA
+server installation. TODO link
+
+=== Installing on a separate server
+
+The LDAP host name and the {product-short} LDAP password must be known to the
+proxy server. If not, the proxy server cannot contact the LDAP server
+and the installation fails.
+
+. Follow steps 1 through 4 in Starting the Installation Process (TODO
+link)  on
+page 32 to open a SSH session to the server, log on to the server as
+root, and unpack the {product-short} software.
+. Select to install the `zimbra-proxy` package and the `zimbra-memcached`
+package. The other packages should be marked `N`. If you have not
+installed `zimbra-proxy` on another server, you must have at least one
+instance of `zimbra-memcached` installed to cache the data for NGINX, as
+shown in the following screen shot example.
++
+--
+NOTE: If SNMP is used, the `zimbra-snmp` package must also be
+installed.
+--
++
+--
+[subs="quotes"]
+----
+Select the packages to install
+
+Install zimbra-ldap [Y] N
+Install zimbra-logger [Y] N
+Install zimbra-mta [Y] N
+Install zimbra-dnscache [N] N
+Install zimbra-snmp [Y] N
+Install zimbra-store [Y] N
+Install zimbra-apache [Y] N
+Install zimbra-spell [Y] N
+Install zimbra-convertd [N] N
+Install zimbra-memcached [N] *Y*
+Install zimbra-proxy [N] *Y*
+Install zimbra-archiving [N] N
+Installing:
+    zimbra-memcached
+    zimbra-proxy
+
+This system will be modified. Continue [N] *Y*
+Configuration section
+----
+--
++
+. Type `Y`, and press _Enter_ to install the selected package.
+. The _Main_ menu displays. Type `1` and press _Enter_ to go to the *Common
+Configuration* menu.
++
+--
+The mailbox server hostname is displayed. You must change the LDAP
+master host name and password to be the values configured on the LDAP
+server.
+
+** Type `2`, press _Enter_, and type the LDAP host
+   name. (`ldap-1.example.com`, in this example.)
+** Type `4`, press _Enter_, and type the LDAP password.
++
+After you set these values, the server immediately contacts the LDAP
+server. If it cannot contact the server, you cannot proceed.
++
+** Type 7 to set the correct time zone
+--
++
+. Type `r` to return to the Main menu.
+. Type `2` to select `zimbra-proxy`.
++
+--
+
+----
+Main menu
+
+1) Common Configuration:
+        +Hostname:                              localhost
+        +Ldap master host:                      ldap-1.example.com
+        +Ldap port:                             389
+        +LDAP Base DN:                          cn=zimbra
+        +Secure interprocess communications:    yes
+        +TimeZone:                              (GMT-08.00) Pacific Time (US & Canada)
+        +IP Mode:                               ipv4      
+        +Default SSL digest:                    sha256
+
+2) zimbra-proxy:                              Enabled
+        +Enable POP/IMAP Proxy:                 TRUE
+        +IMAP server port:                      7143
+        +IMAP server SSL port:                  7993
+        +IMAP proxy port:                       143
+        +IMAP SSL proxy port:                   993
+        +POP server port:                       7110
+        +POP server SSL port:                   7995
+        +POP proxy port:                        110
+        +POP SSL proxy port:                    995
+******* +Bind password for nginx ldap user:     Not Verified
+        +Enable HTTP[S] Proxy:                  TRUE
+      	+Web server HTTP port:				  	8080
+		+Web server HTTPS port:				  	8443
+		+HTTP proxy port: 					  	80
+		+HTTPS proxy port:					  	443
+		+Proxy server mode:					  	https
+
+3) Enable default backup schedule:			  	yes
+s) Save config to file
+x) Expand menu
+q) Quit
+
+Select, or 'r' for previous menu [r] 2
+
+----
+
+--
++
+. The *Proxy Configuration* menu displays. You can modify any of the
+values.
++
+--
+The *Bind password for Nginx ldap user* is configured when the LDAP
+server was installed. This is set when the MTA connected to the LDAP
+server. This is not used unless the Kerberos5 authenticating mechanism
+is enabled.
+
+NOTE: Setting the password even though GSSAPI auth/proxy is not set up
+does not cause any issues.
+
+----
+Proxy configuration
+
+   1) Status:                                  Enabled
+   2) Enable POP/IMAP Proxy:                   TRUE
+   3) IMAP server port:                        7143
+   4) IMAP server SSL port:                    7993
+   5) IMAP proxy port:                         143
+   6) IMAP SSL proxy port:                     993
+   7) POP server port:                         7110
+   8) POP server SSL port:                     7995
+   9) POP proxy port:                          110
+  10) POP SSL proxy port:                      995
+  11) Bind password for nginx ldap user:       set
+  12) Enable HTTP[S] Proxy:                    TRUE
+  13) Web server HTTP port:                    8080
+  14) Web server HTTPS port:                   8443
+  15) HTTP proxy port:                         80
+  16) HTTPS proxy port:                        443
+  17) Proxy server mode:                       https
+----
+
+--
++
+. Type `r` to return to the _Main_ menu.
+. When the proxy server is configured, return to the _Main_ menu and
+type `a` to apply the configuration changes. Press _Enter_ to save the
+configuration data.
+. When *Save Configuration data to a file* appears, press _Enter_.
+. The next request asks where to save the files. To accept the
+default, press _Enter_. To save the files to another directory, enter
+the directory and then press _Enter_.
+. When *The system will be modified - continue?* appears, type `y` and
+press _Enter_.
+. When *Installation complete - press return to exit* displays, press
+_Enter_.
+
+
+The installation of the proxy server is complete.
+
+
+
+== Installing zimbra-archiving Package
+
 
 Installing the `zimbra-archiving` package is optional. This package
 enables {product-name} Archiving and Discovery, which offers:
