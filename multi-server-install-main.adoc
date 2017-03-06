@@ -6,7 +6,7 @@ You run the same installation script on each server, select the
 component(s) to install, and use the menu to configure the system.
 
 When the server installation is complete after final set-up and server
-configuration steps are run, the servers are started and the status is
+nnconfiguration steps are run, the servers are started and the status is
 displayed.
 
 *Order of Installation*
@@ -899,3 +899,87 @@ Configuration complete - press return to exit
     press `Enter`
 
 The installation of the mailbox server is complete.
+
+
+== Post Installation Tasks
+
+Once {product-name} is installed, if you installed the
+{product-short} license, you can log on to the administration console and
+configure additional domains, create Classes of Service, and provision
+accounts. See the {product-admin-guide}.
+
+=== Defining Classes of Service
+
+A default _Class of Service_ (COS) is automatically created during the
+installation of {product-short} software. The COS controls mailbox quotas,
+message lifetime, password restrictions, attachment blocking and
+server pools. You can modify the default COS and create new COSs to
+assign to accounts according to your group management policies.
+
+In an environment with multiple mailbox servers, COS is used to assign
+the new accounts to a mailbox server. The COS server pool page lists
+the mailbox servers in your {product-short} environment. When you
+configure the COS, select which servers to add to the server
+pool. Within each pool of servers, a random algorithm assigns new
+mailboxes to any available server.
+
+
+To create or modify a COS, from the administration console,
+click COS. If you have questions, refer to the Help section.
+
+=== Provisioning Accounts
+
+You can configure one account at a time with the New Account Wizard or
+you can create many accounts at once using the Account Migration
+Wizard.
+
+=== Configuring One Account
+
+The administration console _New Account Wizard_ steps you through the
+account information to be completed.
+
+. From the administration console Navigation pane, click *Accounts*.
++
+NOTE: Four accounts are listed: admin account, two spam training
+accounts, and a global Documents account. These accounts do not need
+any additional configuration.
++
+. Click *New*. The first page of the *New Account Wizard* opens.
+. Enter the account name to be used as the email address and the last
+name. This the only required information to create an account.
+. You can click *Finish* at this point, and the account is configured with the
+default COS and global features.
++
+NOTE: To configure aliases, forwarding addresses, and specific features for this
+account, proceed through the dialog before you click *Finish*.
++
+
+When the accounts are provisioned, these accounts can immediately start to
+send and receive emails.
+
+=== Configuring Many Accounts at Once
+
+You can provision multiple accounts at once using the _Account
+Migration_ tool from the administration console. The wizard guides you
+through the steps to import accounts from an external directory
+server, either Active Directory or an LDAP server. The wizard
+downloads account information from your directory and creates the
+accounts in {product-abbrev}.
+
+Refer to the {product-admin-guide} to learn more about provisioning accounts.
+
+=== Import the Content of Users’ Mailboxes
+
+{product-short}’s migration and import tools can be used to move users’ email
+messages, calendars, and contacts from their old email servers to
+their accounts on the Zimbra server. When the user’s files are
+imported, the folder hierarchy is maintained. These tools can be
+accessed from the administration console Download page and instruction
+guides are available from the Administration Console Help Desk.
+
+
+== Uninstalling Zimbra Collaboration
+
+To uninstall servers, run the install script with the `-u` option.
+Then delete the `/opt/zimbra` directory and remove the {product-abbrev} tgz file on the
+servers.
