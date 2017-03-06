@@ -901,6 +901,176 @@ Configuration complete - press return to exit
 The installation of the mailbox server is complete.
 
 
+== Final Set-Up
+
+After the {product-short} servers are configured in a multi-node configuration,
+the following functions must be configured:
+
+* In order for remote management and postfix queue management, the ssh
+  keys must be manually populated on each server. See
+  <<_set_up_the_ssh_keys>>.
+* If logger is installed, set up the syslog configuration files on
+  each server to enable server statistics to display on the
+  administration console, and then enable the logger monitor host. The
+  server statistics includes information about the message count,
+  message volume, and anti-spam and anti-virus activity. See Enabling
+  Server Statistics Display. TODO - link
+* {product-name} ships a default `zimbra` user with a disabled
+  password. {product-abbrev} requires access to this account via ssh public key
+  authentication. On most operating systems this combination is okay,
+  but if you have modified pam rules to disallow any ssh access to
+  disabled accounts then you must define a password for the `zimbra`
+  UNIX account. This will allow ssh key authentication for checking
+  remote queues. See
+  https://wiki.zimbra.com/wiki/Mail_Queue_Monitoring[Mail queue
+  monitoring].
+  
+
+=== Set Up the SSH Keys
+
+To populate the SSH keys, perform the following as the `zimbra`
+user (`sudo su - zimbra`) on each server:
+
+----
+zmupdateauthkeys
+----
+
+The key is updated  in `/opt/zimbra/.ssh/authorized_keys`.
+
+=== Enabling Server Statistics Display
+
+In order for the server statistics to display on the administration
+console, the syslog configuration files must be modified.
+
+IMPORTANT: {product-name} supports the default syslog of a
+supported operating system. Depending on your operating system, the
+steps contained in this section might not be correct. See your
+operating system documentation for specific information about how to
+enable syslog.
+
+. On each server, as `root`, type
+`/opt/zimbra/libexec/zmsyslogsetup`. This enables the server to
+display statistics.
+. On the logger monitor host, you must enable either *syslog* or *rsyslog*
+to log statistics from remote machines:
++
+--
+
+For *syslog*:
+
+.. Edit the `/etc/sysconfig/syslog` file, add `-r` to the `SYSLOGD_OPTIONS`
+setting, `SYSLOGD_options="-r -m 0"`.
+.. Stop the syslog daemon. Type `/etc/init.d/syslog` stop.
+.. Start the syslog daemon. Type `/etc/init.d/syslog start`.
+
+For *syslog* on _Debian_ or _Ubuntu_:
+
+.. Edit the `/etc/default/syslogd` file, add `-r` to the `SYSLOGD_OPTIONS`
+setting, `SYSLOGD_options="-r -m 0"`
+.. Stop the syslog daemon. Type `/etc/init.d/sysklogd stop`.
+.. Start the syslog daemon. Type `/etc/init.d/sysklogd` start.
+
+For *rsyslog*:
+
+.. Uncomment the following lines in `/etc/rsyslog.conf`
++
+----
+$modload imudp
+$UDPServerRun 514
+----
++
+.. Restart rsyslog
+
+For *rsyslog* on _RHEL_ or _CentOS_:
+
+.. Uncomment the following lines in `/etc/rsyslog.conf`.
++
+----
+# Provides UDP syslog reception
+#$ModLoad imudp
+#$UDPServerRun 514
+
+# Provides TCP syslog reception
+#$ModLoad imtcp
+#$InputTCPServerRun 514
+----
+
+For *syslog-ng* on `SuSE`:
+
+Uncomment the following from `/etc/syslog-ng/syslog-ng.conf`:
+
+----
+#
+# uncomment to process log messages from network:
+#
+#udp(ip("0.0.0.0") port(514));
+----
+
+--
++
+
+
+=== Spam/Ham Training on MTA servers
+
+New installs of {product-abbrev} limit spam/ham training to the first MTA
+installed. If you uninstall or move this MTA, you will need to enable
+spam/ham training on another MTA, as one host should have this enabled
+to run `zmtrainsa --cleanup`. To do this, set `zmlocalconfig -e
+zmtrainsa_cleanup_host=TRUE`.
+
+
+== Verifying Server Configuration
+
+When *Configuration complete - press return to exit* is displayed, the
+installation is finished and the server has been started. Before going
+to the next server, you should verify that the server is running.
+
+
+Use the CLI command, `zmcontrol status`, to verify that each server is
+running.  Perform the following on each server in your {product-name}
+environment.
+
+. Log on as `root`.
+. Type `su - zimbra`.
+. Type `zmcontrol status`. The services status information is
+displayed. All services should be running.
++
+NOTE: If services are not started, you can type `zmcontrol start`. See
+the CLI command appendix in the {product-admin-guide} for more
+`zmcontrol` commands.
+
+
+== Logging on to the Administration Console
+
+. To log on to the administration console, open your browser, type the
+administration console URL and log on to the console. The
+administration console URL is entered as:
+** In case of Mailbox servers containing backend mailstore and UI
+services together (mailstore server + UI server), you can access the
+admin console directly using
+**\https://<mailstore-hostname>:<zimbraAdminPort>**.
+The default value of `zimbraAdminPort` is `7071`.
+** In case of a deployment having even a single mailbox server running
+in Web Application server split mode, the admin console needs to be
+accessed strictly through the proxy using
+*\https://<proxy-hostname>:<zimbraAdminProxyPort>*
+after switching `zimbraReverseProxyAdminEnabled` to `TRUE` and
+restarting the proxy.
+The default value of `zimbraAdminProxyPort` is `9071`.
++
+[NOTE]
+====
+* The administration console address must be typed with `https`, even if you configured only `http`.
+* The first time you log on, a certificate authority (CA) alert may be
+displayed. Click *Accept this certificate permanently* to accept the
+certificate and be able connect to the Zimbra administration console.
+Then click *OK*.
+====
++
+. Enter the admin user name and password configured during the
+installation process. Enter the user name as *admin@example.com*.
+
+
 == Post Installation Tasks
 
 Once {product-name} is installed, if you installed the
@@ -933,7 +1103,7 @@ You can configure one account at a time with the New Account Wizard or
 you can create many accounts at once using the Account Migration
 Wizard.
 
-=== Configuring One Account
+==== Configuring One Account
 
 The administration console _New Account Wizard_ steps you through the
 account information to be completed.
@@ -957,7 +1127,7 @@ account, proceed through the dialog before you click *Finish*.
 When the accounts are provisioned, these accounts can immediately start to
 send and receive emails.
 
-=== Configuring Many Accounts at Once
+==== Configuring Many Accounts at Once
 
 You can provision multiple accounts at once using the _Account
 Migration_ tool from the administration console. The wizard guides you
@@ -968,7 +1138,7 @@ accounts in {product-abbrev}.
 
 Refer to the {product-admin-guide} to learn more about provisioning accounts.
 
-=== Import the Content of Users’ Mailboxes
+==== Import the Content of Users’ Mailboxes
 
 {product-short}’s migration and import tools can be used to move users’ email
 messages, calendars, and contacts from their old email servers to
