@@ -901,6 +901,53 @@ Configuration complete - press return to exit
 The installation of the mailbox server is complete.
 
 
+== Installing zimbra-archiving Package
+
+Installing the `zimbra-archiving` package is optional. This package
+enables {product-name} Archiving and Discovery, which offers:
+
+* Archiving, the ability to archive messages that were delivered to or
+  sent by {product-abbrev}.
+* Discovery, the ability to search across mailboxes.
+
+The prerequisite to enabling archiving and discovery is the
+installation and configuration of the `zimbra-archiving` package on at
+least one mailbox server. The installation of this package provides
+the {product-abbrev} discovery (also known as cross mailbox) search tool and sets
+the attributes that allow archiving to be enabled on the {product-short} MTAs.
+
+To enable archiving and discovery, select the `zimbra-store` and `zimbra-archiving`
+packages during your installation process. The `zimbra-core`
+package is installed by default.
+
+[subs="quotes"]
+----
+Select the packages to install
+Install zimbra-ldap [Y] N
+Install zimbra-logger [Y] N
+Install zimbra-mta [Y] N
+Install zimbra-dnscache [N] N
+Install zimbra-snmp [Y] N
+Install zimbra-store [Y] *Y*
+Install zimbra-apache [Y] N
+Install zimbra-spell [Y] N
+Install zimbra-convertd [N] N
+Install zimbra-memcached [N] N
+Install zimbra-proxy [N] N
+Install zimbra-archiving [N] *Y*
+Installing:
+    zimbra-core
+    zimbra-store
+    zimbra-archiving
+This system will be modified. Continue [N] *Y*
+----
+
+
+See the _Zimbra Archiving and Discovery_ chapter in the
+{product-admin-guide} for more information about configuring and
+archiving.
+
+
 == Installing the zimbra-SNMP Package
 
 Installing the `zimbra-snmp` package is optional, but if you use SNMP
