@@ -901,6 +901,32 @@ Configuration complete - press return to exit
 The installation of the mailbox server is complete.
 
 
+== Installing the zimbra-SNMP Package
+
+Installing the `zimbra-snmp` package is optional, but if you use SNMP
+monitoring, this package should be installed on each {product-short}
+server.
+
+In the _Main_ menu, select `zimbra-snmp` to make changes to the
+default values. The following question is asked for SNMP configuration.
+
+Configure whether to be notified by SNMP or SMTP. The default is
+*No*. If you enter yes, you must enter additional information.
+
+* For SNMP type the SNMP Trap host name.
+* For SMTP type the SMTP source email address and destination email
+  address.
+
+----
+8) zimbra-snmp:                             Enabled
+   +Enable SNMP notifications:              yes
+   +SNMP Trap hostname:                     example.com
+   +Enable SMTP notifications:              yes
+   +SMTP Source email address:              admin@example.com
+   +SMTP Destination email address:         admin@example.com
+----
+
+
 == Final Set-Up
 
 After the {product-short} servers are configured in a multi-node configuration,
