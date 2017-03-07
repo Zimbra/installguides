@@ -1,0 +1,20 @@
+= Ephemeral Data Migration
+
+Versions of {product-short} prior to {product-version} stored
+_ephemeral data_ in _LDAP_.  Examples of _ephemeral data_ include:
+
+* `zimbraAuthTokens`
+* `zimbraCsrfTokenData`
+* `zimbraLastLogonTimestamp`
+
+{product-name} version {product-version} introduced the ability to
+store _ephemeral data_ in an external service such as
+http://ssdb.io/[SSDB]. This will improve _LDAP_ performance and
+stability.
+
+Please refer to the _{product-admin-guide}_ for more information.
+Migration of _ephemeral data_ out of _LDAP_ and into _SSDB_  must be
+performed after an install or upgrade has been completed.
+
+
+

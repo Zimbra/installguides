@@ -300,7 +300,9 @@ You do not need to stop the services before upgrading. The upgrade
 process automatically stops and starts the services as required for
 the upgrade.
 
+
 include::upgrade-process-inc.adoc[]
+
 
 === Multi-Server Environment Upgrade Steps
 
@@ -477,6 +479,12 @@ httpclient_external_connmgr_tcp_nodelay
 
 ====
 +
+
+
+:leveloffset: +1
+include::ephemeral.adoc[]
+:leveloffset: -1
+
 
 
 == Remove Current Version and Perform Clean Install of ZCS
