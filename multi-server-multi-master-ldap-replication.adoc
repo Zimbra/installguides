@@ -12,6 +12,8 @@ servers. Each master LDAP server is given an unique identifier when
 they are configured and `zmlocalconfig` is used to add the ldap server
 to the multi- master group.
 
+You can also promote an existing replica to be part of the multi-master group.
+
 == Managing Multiple Master LDAP Servers
 
 When you enable multi-master replication, you assign a server ID to
@@ -100,12 +102,12 @@ to open a SSH session to the LDAP server, log on to the server
 as root, and unpack the {product-short} software.
 . Type `Y` and press _Enter_ to install the `zimbra-ldap` package.
 . Type `Y`, and press _Enter_ to modify the system. The selected packages are
-installed. The _Main_ menu shows the default entries for the LDAP
+installed. The Main menu shows the default entries for the LDAP
 server.
 . Type `1` to display the _Common Configuration_ submenu.
-.. Type `2` to change the _LDAP Master host_ name to the name of the
+.. Type `2` to change the *LDAP Master host* name to the name of the
 primary master's hostname; e.g., _master1.example.com_.
-.. Type `4` to change the _LDAP admin password_ to the {product-short} admin
+.. Type `4` to change the *LDAP admin password* to the {product-short} admin
 password of the primary master.
 .. Type `r` to return to the main menu.
 . Type `2` to display the _LDAP configuration_ submenu.
@@ -125,14 +127,14 @@ to match the passwords on the _master1_ LDAP server.
 .. Type `r` to return to the main menu.
 . Type `a` to apply the configuration changes. Press _Enter_ to save
 the configuration data.
-. When _Save Configuration data to a file_ appears, press _Enter_.
-. When _The system will be modified - continue?_ appears, type `y` and press
+. When *Save Configuration data to a file* appears, press _Enter_.
+. When *The system will be modified - continue?* appears, type `y` and press
 _Enter_.
 +
 NOTE: The server is modified. Installing all the components and configuring the
 server can take a few minutes.
 +
-. When _Installation complete - press return to exit_ displays, press
+. When *Installation complete - press return to exit* displays, press
 _Enter_. The installation is complete.
 . Update the `ldap_master_url` attribute to contain both masters, enter
 this new master as the _first_ master in the list.
@@ -244,6 +246,15 @@ replica server. The replica server is considered a shadow copy of the
 master server. If the servers become out of sync, the monitoring
 feature indicates the problem. The out of sync time period is
 typically five minutes, although this value is configurable.
+
+=== Feature Requirement
+
+Run the script `zmreplchk` located in `/opt/zimbra/libexec`.
+
+IMPORTANT: This script must be run on a {product-abbrev} server that has a
+`localconfig` value set for `ldap_url` that includes all of the master
+servers.
+
 
 include::multi-server-ldap-error-codes.adoc[]
 

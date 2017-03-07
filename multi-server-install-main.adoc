@@ -214,7 +214,7 @@ section on <<ldap-replication,Configuring LDAP Replication>>
    <<starting_multiple_server_install,Starting the Installation Process>>
    to open an SSH session to the LDAP server, log on to the server as *root*,
    and unpack the {product-abbrev} software.
-2. Type `y` and press `Enter` to install the `zimbra-ldap` package. +
+2. Type `y` and press _Enter_ to install the `zimbra-ldap` package. +
    The `zimbra-mta`, `zimbra-store` and `zimbra-logger` packages should be
    marked `n`.
 +
@@ -254,12 +254,12 @@ The system will be modified.  Continue? [N]
 ....
 --
 
-3. Type `Y`, and press `Enter` to modify the system. The selected
+3. Type `Y`, and press _Enter_ to modify the system. The selected
    packages are installed on the server.
 +
 The Main menu displays the default entries for the Zimbra component you
 are installing. +
-To expand the menu to see the configuration values, type `x` and press `Enter`. +
+To expand the menu to see the configuration values, type `x` and press _Enter_. +
 The main menu expands to display configuration details for the package
 being installed.
 +
@@ -419,14 +419,14 @@ Saving config in /opt/zimbra/config.8381...done
     ** enter `r` to return to the main menu.
     ** Type `a` to apply the configuration changes.
     ** When `Save configuration data to file` appears, +
-       type `Yes` and press `Enter`.
+       type `Yes` and press _Enter_.
     ** The next request asks where to save the files. +
-       To accept the default, press `Enter`. +
+       To accept the default, press _Enter_. +
        To save the files to another directory, enter the directory
-       and press `Enter`.
+       and press _Enter_.
 
 12. When `The system will be modified - continue? [No]` appears, +
-    type `y` and press `Enter`.
+    type `y` and press _Enter_.
 +
 --
 The server is modified. Installing all the components and configuring
@@ -437,7 +437,7 @@ other processes.
 --
 
 13. When `Configuration complete - press return to exit` displays,
-    press `Enter`.
+    press _Enter_.
 +
 --
 [source%nowrap]
@@ -506,7 +506,7 @@ See <<Zimbra_License_Requirements,Zimbra License Requirements>>
    to open an SSH session to the Mailbox server, log on to the server as
    *root*, and unpack the {product-abbrev} software.
 
-2. Type `y` and press `Enter` to install the *zimbra-logger* package
+2. Type `y` and press _Enter_ to install the *zimbra-logger* package
    (optional and only on one mail server) and *zimbra-store*.
    In the following screen shot example, the packages to be installed are emphasized.
 +
@@ -560,12 +560,12 @@ The system will be modified.  Continue? [N]
 ....
 --
 
-3. Type `Y`, and press `Enter` to modify the system. The selected
+3. Type `Y`, and press _Enter_ to modify the system. The selected
    packages are installed on the server.
 +
 The Main menu displays the default entries for the Zimbra component you
 are installing. +
-To expand the menu to see the configuration values, type `x` and press `Enter`. +
+To expand the menu to see the configuration values, type `x` and press _Enter_. +
 The main menu expands to display configuration details for the package
 being installed.
 +
@@ -667,9 +667,9 @@ The mailbox server hostname is displayed.
 You must change the LDAP master host name and password to be the
 values configured on the LDAP server.
 
-** Type `2`, press `Enter`, and type the LDAP host name.
+** Type `2`, press _Enter_, and type the LDAP host name.
    (*ldap-1.example.com* in this example.)
-** Type `4`, press `Enter`, and type the LDAP password. +
+** Type `4`, press _Enter_, and type the LDAP password. +
    To obtain the LDAP password, you will need to log on to the
    LDAP server as the `zimbra` user, and run the following command:
 
@@ -852,9 +852,9 @@ for installing a split node environment.
 
 19.  When the mailbox server is configured, return to the Main menu
      and type `a` to apply the configuration changes. +
-     Press `Enter` to save the configuration data.
+     Press _Enter_ to save the configuration data.
 
-20. When Save Configuration data to file appears, type `Yes` and press `Enter`.
+20. When Save Configuration data to file appears, type `Yes` and press _Enter_.
 +
 --
 ....
@@ -863,7 +863,7 @@ Save configuration data to a file? [Yes]
 --
 
 21. The next request asks where to save the files. To accept the
-default, press `Enter`. To save the files to another directory, enter the
+default, press _Enter_. To save the files to another directory, enter the
 directory and then press Enter
 +
 --
@@ -874,7 +874,7 @@ Saving config in /opt/zimbra/config.16039...done.
 --
 
 22. When `The system will be modified - continue?` appears, type `Yes` and
-press `Enter`.
+press _Enter_.
 +
 The server is modified. Installing all the components and configuring
 the server can take several minutes. This includes installing SSL
@@ -895,7 +895,7 @@ Configuration complete - press return to exit
 --
 
 23. When `Configuration complete - press return to exit` displays,
-    press `Enter`
+    press _Enter_
 
 The installation of the mailbox server is complete.
 
@@ -912,7 +912,7 @@ complete the installation.
    to open an SSH session to the MTA server, log on to the server as
    *root*, and unpack the {product-abbrev} software.
 
-2. Type `y` and press `Enter` to install the *zimbra-mta* and 
+2. Type `y` and press _Enter_ to install the *zimbra-mta* and 
    *zimbra-dnscache* packages.  The other packages should be marked `n`.
    In the following screen shot example, the packages to be installed are emphasized.
 +
@@ -956,12 +956,12 @@ Installing packages
 ....
 --
 
-3. Type `Y`, and press `Enter` to modify the system. The selected
+3. Type `Y`, and press _Enter_ to modify the system. The selected
    packages are installed on the server.
 +
 The Main menu displays the default entries for the Zimbra component you
 are installing. +
-To expand the menu to see the configuration values, type `x` and press `Enter`. +
+To expand the menu to see the configuration values, type `x` and press _Enter_. +
 The main menu expands to display configuration details for the package
 being installed.
 +
@@ -1032,9 +1032,9 @@ The mta server hostname is displayed.
 You must change the LDAP master host name and password to be the
 values configured on the LDAP server.
 
-** Type `2`, press `Enter`, and type the LDAP host name.
+** Type `2`, press _Enter_, and type the LDAP host name.
    (*ldap-1.example.com* in this example.)
-** Type `4`, press `Enter`, and type the LDAP password. +
+** Type `4`, press _Enter_, and type the LDAP password. +
    To obtain the LDAP password, you will need to log on to the
    LDAP server as the `zimbra` user, and run the following command:
 
@@ -1115,17 +1115,17 @@ If you are installing the {product-short}-proxy package, see
 
 12. When the MTA server is configured, return to the Main menu and
     type `a` to apply the configuration changes. +
-    Press `Enter` to save the configuration data.
+    Press _Enter_ to save the configuration data.
 
 13. When `Save configuration data to file` appears, +
-    type `Yes` and press `Enter`.
+    type `Yes` and press _Enter_.
 
 14. The next request asks where to save the file.  To accept the default,
-    press `Enter`. To save the files to another directory, enter the
-    directory and then press `Enter`.
+    press _Enter_. To save the files to another directory, enter the
+    directory and then press _Enter_.
 
 15. When `The system will be modified - continue?` appears, +
-    type `Yes` and press `Enter`.
+    type `Yes` and press _Enter_.
 +
 --
 The server is modified. Installing all the components and configuring
@@ -1135,7 +1135,7 @@ the server, among other processes.
 --
 
 16. When `Installation complete - press return to exit` displays,
-    press `Enter`.
+    press _Enter_.
 
 The installation of the MTA server is complete.
 
@@ -1167,7 +1167,7 @@ default port is `11211` and is controlled by the
 If you are installing `zimbra-proxy` on the MTA server, select the
 `zimbra-proxy` package and the `zimbra-memcached` package. Follow the
 installation process for <<_installing_zimbra_mta_on_a_server>>.
-After Step 8, configure the Zimbra-proxy.
+After Step 11, configure the Zimbra-proxy.
 
 . On the MTA server, select to install the `zimbra-proxy` and 
 `zimbra-memcached` packages, type `y` and press *Enter* to install the selected
@@ -1192,7 +1192,7 @@ Proxy configuration
       2) Enable POP/IMAP Proxy:                 TRUE
       3) IMAP proxy port:                       143
       4) IMAP SSL proxy port:                   993
-      5) POP proxy port: 110
+      5) POP proxy port:                        110
       6) POP SSL proxy port:                    995
       7) Bind password for nginx ldap user:     set
       8) Enable HTTP[S] Proxy:                  TRUE
@@ -1202,7 +1202,7 @@ Proxy configuration
 ----
 --
 +
-Return to <<_installing_zimbra_mta_on_a_server>>, step 8,
+Return to <<_installing_zimbra_mta_on_a_server>>, step 12,
 to continue the MTA server installation.
 
 === Installing on a separate server
@@ -1697,3 +1697,20 @@ guides are available from the Administration Console Help Desk.
 To uninstall servers, run the install script with the `-u` option.
 Then delete the `/opt/zimbra` directory and remove the {product-abbrev} tgz file on the
 servers.
+
+. Change directories to the original install directory for the zcs
+files.
+. Type `./install.sh -u`.
+. When *Completely remove existing installation?* is displayed, type
+`Yes`.
++
+====
+The {product-short} servers are stopped, the existing packages, the webapp
+directories, and the `/opt/zimbra` directory are removed.
+====
++
+. Delete the zcs directory, type `rm -rf [zcsfilename]`.
+. Delete the `zcs.tgz` file, type `rm -rf zcs.tgz`.
+. Additional files may need to be deleted. See
+https://wiki.zimbra.com/wiki/UnInstalling_Zimbra_on_Linux[Uninstall Zimbra on Linux].
+

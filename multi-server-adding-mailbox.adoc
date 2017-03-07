@@ -53,7 +53,7 @@ IMPORTANT: Before you begin make sure you have an up-to-date backup!
 . Follow steps 1 through 4 in <<starting_multiple_server_install>>
 to log on to the server as root and unpack the
 {product-short} software.
-. Type `Y `for each package you are installing.
+. Type `Y` for each package you are installing.
 +
 --
 ** Install `zimbra-store`, and `zimbra-spell` (optional) packages. When
@@ -75,7 +75,7 @@ are installed on the server.
 NOTE: The _Main_ menu displays the default entries for the {product-short}
 component you are installing.
 
-. Type `1` and press _Enter_ to go to the _Common Configuration_ menu.
+. Type `1` and press _Enter_ to go to the *Common Configuration* menu.
 +
 NOTE: The mailbox server hostname is displayed. You must change the
 LDAP master host name and password to be the values configured on the
@@ -90,8 +90,8 @@ LDAP server. If it cannot contact the server, you cannot proceed.
 --
 
 ** Type `6` to set the correct time zone.
-. Type `r` to return to the _Main_ menu.
-. From the _Main_ menu, type `2` to go to the _Store_ configuration
+. Type `r` to return to the Main menu.
+. From the Main menu, type `2` to go to the Store configuration
 menu.
 ** Type `4` and set the password for the administrator account. This
 should be the same password as configured on the original
@@ -121,14 +121,14 @@ NOTE: Set either or both of these to TRUE if you are going to set up
    to enable the servers. When you enable these, IMAP/POP/HTTP server
    port numbers and proxy port numbers are automatically changed. See
   <<_configuration_during_installation>>.
-. When the mailbox server is configured, return to the _Main_ menu and
+. When the mailbox server is configured, return to the Main menu and
 type a to apply the configuration changes. Press _Enter_ to save the
 configuration data.
-. When _Save Configuration data to a file_ appears, press _Enter_.
+. When *Save Configuration data to a file* appears, press _Enter_.
 . The next request asks where to save the files. To accept the
 default, press _Enter_. To save the files to another directory, enter
 the directory and then press _Enter_.
-. When _The system will be modified - continue?_ appears, type `y` and
+. When *The system will be modified - continue?* appears, type `y` and
 press _Enter_.
 +
 NOTE: The server is modified. Installing all the components and
@@ -137,7 +137,7 @@ installing SSL certificates, setting passwords, setting ports,
 installing skins and Zimlets, setting time zone preferences, and
 starting the servers, among other processes.
 +
-. When _Configuration complete - press return to exit_ displays, press
+. When *Configuration complete - press return to exit* displays, press
 _Enter_.
 
 The installation of the mailbox server is complete.
@@ -169,7 +169,7 @@ Move the following types of mailboxes:
 
 * User accounts.
 * Admin mailboxes. If you do not move the admin mailbox, you cannot
-* log into the {product-name} Web Client.
+  log into the {product-name} Web Client.
 * Spam and ham mailboxes.
 
 NOTE: If you were using _Archive and Discovery_ on the single server
@@ -185,7 +185,7 @@ zmmboxmove -a <email@address> --from <servername> --to <servername>
 
 . To verify that the content of the mailbox was moved successfully, go
 to the administration console, select the account that was
-moved. Click _View Mail_ on the toolbar. When the account opens, verify
+moved. Click *View Mail* on the toolbar. When the account opens, verify
 that the account’s content is displayed and can be opened.
 . Purge the mailbox from the old server:
 +

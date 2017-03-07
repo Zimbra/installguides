@@ -73,7 +73,7 @@ Install zimbra-proxy [Y] n
 Installing:
     zimbra-core
 zimbra-ldap
-This system will be modified. Continue [N] *Y* Configuration section
+This system will be modified. Continue [N] *Y*
 ----
 +
 . Type `Y`, and press _Enter_ to modify the system. The selected packages
@@ -111,11 +111,11 @@ Common Configuration:
   6) TimeZone:                                  (GMT-08.00) Pacific Time (US & Canada)
 ----
 +
-. Type `2` to change the _Ldap Master host_ name to the name of the
+. Type `2` to change the *Ldap Master host* name to the name of the
 Master LDAP host.
-. Type `3`, to change the _Ldap port_ to the same port as configured
+. Type `3`, to change the *Ldap port* to the same port as configured
 for the Master LDAP server.
-. Type `4` and change the _Ldap Admin password_ to the
+. Type `4` and change the *Ldap Admin password* to the
 Master LDAP admin password, then type `r` to return to the main menu.
 . Type `2` to display the _LDAP configuration_ submenu.
 +
@@ -131,8 +131,8 @@ Ldap configuration
   7) Ldap Nginx password:                       set
 ----
 +
-.. Type `2` and change _Create Domain_ to `no`.
-.. Type `4` for _LDAP replication password_ and enter the same password to
+.. Type `2` and change *Create Domain* to `no`.
+.. Type `4` for *LDAP replication password* and enter the same password to
 match the value on the Master LDAP Admin user password for this local
 config variable.
 +
@@ -168,8 +168,8 @@ Operations logged to /tmp/zmsetup.log.2843
 Installation complete - press return to exit
 ----
 +
-. When _Save Configuration data to a file_ appears, press _Enter_.
-. When _The system will be modified - continue?_ appears, type `y` and press
+. When *Save Configuration data to a file* appears, press _Enter_.
+. When *The system will be modified - continue?* appears, type `y` and press
 _Enter_.
 +
 ----
@@ -177,13 +177,13 @@ The server is modified. Installing all the components and configuring the
 server can take a few minutes.
 ----
 +
-. When _Installation complete - press return to exit_ displays, press
+. When *Installation complete - press return to exit* displays, press
 _Enter_.
 +
-----
+====
 The installation on the replica LDAP server is complete. The content
 of the master LDAP directory is copied to the replica LDAP server.
-----
+====
 +
 
 
@@ -225,11 +225,12 @@ must update the `ldap_url` value on the {product-short} servers that will query
 the replica instead of the master. For each server that you want to
 change:
 
-. Stop the {product-short} services on the server. Type `zmcontrol
-stop`.
+. Stop the {product-short} services on the server. Type `zmcontrol stop`.
 . Update the `ldap_url` value. Enter the replica LDAP server URL
 +
+----
 zmlocalconfig -e ldap_url="ldap://<replicahost> ldap://<masterhost>"
+----
 +
 Enter more than one replica hostnames in the list typed as
 +
@@ -275,7 +276,7 @@ this by modifying the `ldap_url` to only include enabled
 {product-abbrev} LDAP servers.
 +
 IMPORTANT: The master LDAP server should always be
-at the end of the ldap_url string value.
+at the end of the `ldap_url` string value.
 +
 ----
 zmlocalconfig -e ldap_url="ldap://<replica-server-host> ldap://<master-server-host>"
@@ -313,6 +314,15 @@ replica server. The replica server is considered a shadow copy of the
 master server. If the servers become out of sync, the monitoring
 feature indicates the problem. The out of sync time period is
 typically five minutes, although this value is configurable.
+
+=== Feature Requirement
+
+Run the script `zmreplchk` located in `/opt/zimbra/libexec`.
+
+IMPORTANT: This script must be run on a {product-abbrev} server that has a
+`localconfig` value set for `ldap_url` that includes all of the replica
+servers and ends with the master server.
+
 
 include::multi-server-ldap-error-codes.adoc[]
 
