@@ -27,6 +27,20 @@ information on how to get started.
 Once you have Asciidoctor installed and working, you can build the
 documentation into HTML files, as in the following examples:
 
+=== Zimbra Collaboration - Performing a Multi-Server Installation
+
+Each section of each document is contained in its own file.
+You may use the `multi-server-install.adoc` file to generate the entire
+document.
+
+==== HTML
+
+[source,bash]
+----
+asciidoctor -b html5 -o multi-server-install.html multi-server-install.adoc
+----
+
+
 === Zimbra Collaboration - Performing a Single-Server Installation
 
 Each section of each document is contained in its own file.
