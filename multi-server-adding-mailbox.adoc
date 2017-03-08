@@ -18,7 +18,7 @@ server from the single server node.
   that is installed on the single server node.
 * A copy of the {product-abbrev} license needs to be added to a
   directory on the new machine.
-* you are adding {product-short} Proxy to {product-abbrev}, this
+* You are adding {product-short} Proxy to {product-abbrev}, this
    should be installed on the existing single-server before you set up
    the new mailbox server. See <<_installing_zimbra_proxy>>.
 
@@ -27,7 +27,7 @@ server from the single server node.
 
 * {product-short} Mailbox Server is installed on the prepared machine.
 * Customized configuration for the single-server, such as custom themes
-and Zimlets are added to the new mailbox server.
+  and Zimlets are added to the new mailbox server.
 * Commercial SSL certificates are added to the new mailbox server.
 * User accounts are moved from the single server to the new mailbox
   server.
@@ -94,12 +94,12 @@ LDAP server. If it cannot contact the server, you cannot proceed.
 . From the Main menu, type `2` to go to the Store configuration
 menu.
 ** Type `4` and set the password for the administrator account. This
-should be the same password as configured on the original
-single-server node.
+   should be the same password as configured on the original
+   single-server node.
 ** Type the corresponding number to set the SMTP host. This is the
-mta-server host name.
+   mta-server host name.
 ** Type the corresponding number if you want to change the default web
-  server mode.
+   server mode.
 ** If you are setting up IMAP/POP proxy servers, type the
    corresponding number to enable the servers.
 ** If the `zimbra-proxy` is used and is installed on another server,
@@ -226,15 +226,3 @@ on the original single-server node.
 ----
 zmprov -l gs <singleserver.com> | grep -i serviceenabled
 ----
-
-
-
-
-   
-   
-   
-   
-   
-
-
-   
