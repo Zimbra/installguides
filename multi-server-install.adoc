@@ -6,7 +6,7 @@ include::settings.adoc[]
 :networkeditiondoc: TRUE
 :multiserverdoc: TRUE
 = {product-name} {document-title}
-v{product-version}, April 2016
+v{product-version}, {product-release-date}
 :toclevels: 4
 
 :leveloffset: +1

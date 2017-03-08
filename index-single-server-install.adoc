@@ -5,7 +5,7 @@ include::settings.adoc[]
 // At present it is only partially implemented
 :networkeditiondoc: TRUE
 = {product-name} {document-title}
-v{product-version}, April 2016
+v{product-version}, {product-release-date}
 :leveloffset: +1
 
 <<<
