@@ -618,28 +618,36 @@ Buffalo, New York 14202</p>
 <h2 id="introduction">Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Zimbra Collaboration includes the Zimbra MTA, the Zimbra LDAP server, and the Zimbra mailbox server.
-In a single-server installation, all components are installed on one server and require no additional
-manual configuration.</p>
+<p>Zimbra Collaboration includes the Zimbra <em>MTA</em>, the
+Zimbra <em>LDAP</em> server, and the Zimbra <em>mailbox</em>
+server.  In a single-server installation, all components are installed
+on one server and require no additional manual configuration.</p>
 </div>
 <div class="paragraph">
-<p>This installation guide is a quick start guide that describes the basic steps needed to install and configure
-Zimbra Collaboration in a direct network connect environment. In this environment, the Zimbra server is assigned a domain
-for which it receives mail, and a direct network connection to the Internet.  When Zimbra Collaboration is installed, you
-will be able to log on to the Zimbra administration console to manage the domain and provision accounts.
-The accounts you create are able to send and receive external email.</p>
+<p>This installation guide is a quick start guide that describes the
+basic steps needed to install and configure Zimbra Collaboration in a direct
+network connect environment. In this environment, the Zimbra
+server is assigned a domain for which it receives mail, and a direct
+network connection to the Internet.  When Zimbra Collaboration is installed,
+you will be able to log on to the Zimbra administration
+console to manage the domain and provision accounts.  The accounts you
+create are able to send and receive external email.</p>
 </div>
 <div class="sect2">
 <h3 id="_important_notice_about_single_server_installations">Important Notice About Single Server Installations</h3>
 <div class="paragraph">
-<p>Zimbra Collaboration is designed to be the only application suite installed on the server.
-As part of the installation process, Zimbra Collaboration bundles and installs various other third party and open
-source software, including Apache Jetty, Postfix, and OpenLDAP®.  The versions installed have been tested and
-configured to work with Zimbra software. See the Zimbra Collaboration Administrator Guide for a complete list of
-software.</p>
+<p>Zimbra Collaboration is designed to be the only application suite installed
+on the server.  As part of the installation process, Zimbra Collaboration
+bundles and installs various other third party and open source
+software, including <a href="http://www.eclipse.org/jetty/">Eclipse Jetty</a>,
+<a href="http://www.postfix.org/">Postfix</a>, and <a href="https://www.openldap.org/">OpenLDAP®</a>.  The
+versions installed have been tested and configured to work with Zimbra
+software. See the Zimbra Collaboration Administrator Guide for a complete
+list of software.</p>
 </div>
 <div class="paragraph">
-<p>A Zimbra license is required in order to create accounts on servers running Zimbra Collaboration Network Edition.
+<p>A Zimbra license is required in order to create accounts on
+servers running Zimbra Collaboration Network Edition.
 You cannot install Zimbra Collaboration Network Edition without a license.</p>
 </div>
 <div class="paragraph">
@@ -697,10 +705,12 @@ You cannot install Zimbra Collaboration Network Edition without a license.</p>
 </tbody>
 </table>
 <div class="paragraph">
-<p><strong>Important:</strong> You cannot have any other web server, database, LDAP, or MTA server running, when you install
-Zimbra Collaboration. If you have installed any of those applications before you install Zimbra software, disable them.
-During Zimbra Collaboration installation, Zimbra makes global system changes that may break applications that are on
-your server.</p>
+<p><strong>Important:</strong> You cannot have any other web server, database, <em>LDAP</em>,
+or <em>MTA</em> server running, when you install Zimbra Collaboration. If you have
+installed any of those applications before you install Zimbra
+software, disable them.  During Zimbra Collaboration installation,
+Zimbra makes global system changes that may break
+applications that are on your server.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -828,6 +838,9 @@ additional space for mail storage. The other nodes require 100MB.</p>
 <p>CentOS Linux 6 (64-bit), patch level 4 or later is required</p>
 </li>
 <li>
+<p>Ubuntu 16.04 LTS Server Edition (64-bit)</p>
+</li>
+<li>
 <p>Ubuntu 14.04 LTS Server Edition (64-bit)</p>
 </li>
 <li>
@@ -885,7 +898,7 @@ Open Source Edition. Check the Zimbra Open Source Downloads page on
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Other Dependencies</strong></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>Netcat (nc) is required on all operating systems using Zimbra Collaboration.
-The nc utility must be installed prior to installation or upgrading.</p>
+The <code>nc</code> utility must be installed prior to installation or upgrading.</p>
 </div>
 <div class="paragraph">
 <p>For SUSE and Ubuntu systems, disable AppArmor and verify that services
@@ -1313,7 +1326,7 @@ SP3 or later installed.</p>
 <h3 id="Zimbra_Mobile">Zimbra Mobile (Network Edition Only)</h3>
 <hr>
 <div class="paragraph">
-<p>Zimbra Mobile (MobileSync) provides mobile data access to email,
+<p>Network Edition Mobile (MobileSync) provides mobile data access to email,
 calendar, and contacts for users of selected mobile operating systems,
 including:</p>
 </div>
@@ -1607,24 +1620,32 @@ displayed suggesting that the domain name have an MX record configured
 in DNS.</p>
 </div>
 <div class="paragraph">
-<p>You must configure a relay host if you do not enable DNS. After Zimbra
-Collaboration is installed, go to the <strong>administration console</strong>'s
+<p>You must configure a relay host if you do not enable DNS. After Zimbra Collaboration is installed, go to the <strong>administration console</strong>'s
 <strong>Global Settings&gt;MTA</strong> tab and:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>uncheck <strong>Enable DNS lookups</strong>.</p>
+<p>Uncheck <strong>Enable DNS lookups</strong>.</p>
 </li>
 <li>
 <p>Enter the <strong>relay MTA address</strong> to use for external delivery.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><strong>Note:</strong> Even if a relay host is configured, an MX record is still
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Even if a relay host is configured, an MX record is still
 required if the Zimbra Collaboration server is going to receive email
-from the Internet.</p>
+from the Internet.
+</td>
+</tr>
+</table>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1680,7 +1701,7 @@ application services.</p>
 </div>
 </li>
 <li>
-<p><strong>Zimbra LDAP:</strong>User authentication is provided through OpenLDAP®
+<p><strong>Zimbra LDAP:</strong> User authentication is provided through OpenLDAP®
 software. Each account on the Zimbra server has a unique mailbox ID that
 is the primary point of reference to identify the account. The OpenLDAP
 schema has been customized for Zimbra Collaboration. The Zimbra LDAP
@@ -1697,20 +1718,20 @@ Zimbra MTA also includes the anti-virus and anti-spam components.</p>
 <p><strong>Zimbra Proxy:</strong> Zimbra Proxy is a high-performance reverse proxy
 service for passing IMAP[S]/POP[S]/HTTP[S] client requests to other
 internal Zimbra Collaboration services.This package is normally installed on the MTA
-server(s) or on its own independent server(s). When the zimbra-proxy
+server(s) or on its own independent server(s). When the <code>zimbra-proxy</code>
 package is installed, the proxy feature is enabled by default.
-Installing the Zimbra Proxy is highly recommended, and required if using
-a separate web application server.</p>
+Installing the Zimbra Proxy is required as of
+ZCS 8.7.</p>
 </li>
 <li>
 <p><strong>Zimbra Memcached:</strong> Memcached is automatically selected when the
-zimbra-proxy is installed. At least one server must run zimbra-memcached
+<code>zimbra-proxy</code> is installed. At least one server must run <code>zimbra-memcached</code>
 when the proxy is in use. You can use a single memcached server with one
 or more Zimbra proxies.</p>
 </li>
 <li>
 <p><strong>Zimbra SNMP:</strong> Installing the Zimbra SNMP package is optional. If you
-choose to install zimbra-SNMP for monitoring, this package should be
+choose to install <code>zimbra-snmp</code> for monitoring, this package should be
 installed on every Zimbra server.</p>
 </li>
 <li>
@@ -1718,8 +1739,20 @@ installed on every Zimbra server.</p>
 is installed on one mailbox server. The Zimbra Logger installs tools for
 syslog aggregation and reporting. If you do not install Logger, the
 server statistics section of the administration console will not
-display. <strong>Note:</strong> The Logger package must be installed at the same time
-as the mailbox server.</p>
+display.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The Logger package must be installed at the same time
+as the mailbox server.
+</td>
+</tr>
+</table>
+</div>
 </li>
 <li>
 <p><strong>Zimbra Spell:</strong> Installing the Zimbra Spell package is optional.
@@ -1757,10 +1790,10 @@ computer from which you will install the software.</p>
 <h2 id="Zimbra_Licenses">Zimbra Licensing (Network Edition Only)</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Zimbra Collaboration licensing gives administrators better visibility
-and control into the licensed features they plan to deploy. The
-following is a summary of the feature attributes of a Zimbra
-Collaboration network edition license.</p>
+<p>Zimbra Collaboration licensing gives administrators better visibility and
+control into the licensed features they plan to deploy. The following
+is a summary of the feature attributes of a Zimbra Collaboration
+Network Edition license.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1798,8 +1831,8 @@ that can be created. The archive feature must be installed.</p>
 <div class="sect2">
 <h3 id="Zimbra_License_Requirements">Zimbra License Requirements</h3>
 <div class="paragraph">
-<p>A Zimbra license is required in order to create accounts in the Network
-Edition of Zimbra Collaboration.</p>
+<p>A Zimbra license is required in order to create accounts in
+the Network Edition of Zimbra Collaboration.</p>
 </div>
 <div class="paragraph">
 <p>Several types of licenses are available:</p>
@@ -1849,11 +1882,12 @@ impact your license limit.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>System accounts.</strong>  System accounts are specific accounts used by Zimbra
-Collaboration. They include the spam filter accounts for junk mail (spam
-and ham), virus quarantine account for email messages with viruses, and
-GALsync account if you configure GAL for your domain. <strong>Do not delete
-these accounts!</strong> These accounts do not count against your license.</p>
+<p><strong>System accounts.</strong> System accounts are specific accounts used by
+Zimbra Collaboration. They include the spam filter accounts for junk mail
+(spam and ham), virus quarantine account for email messages with
+viruses, and GALsync account if you configure GAL for your domain. <strong>Do
+not delete these accounts!</strong> These accounts do not count against your
+license.</p>
 </li>
 <li>
 <p><strong>Administrator account.</strong>  Administrator accounts count against your license.</p>
@@ -1884,7 +1918,7 @@ count against your Zimbra Collaboration license.</p>
 <div class="sect2">
 <h3 id="License_Activation">License Activation</h3>
 <div class="paragraph">
-<p>All network edition installations require license activation. New
+<p>All Network Edition installations require license activation. New
 installations have a 10 day grace period from the license issue date
 before requiring activation. Your license can be activated from the
 administration console by selecting <strong>Configure&gt;Global Settings&gt;License</strong>,
@@ -1988,7 +2022,7 @@ the administration console&#8217;s <strong>Configure&gt;Global Settings&gt;Licen
 <p>The default configuration installs Zimbra-LDAP, Zimbra-MTA with
 anti-virus and anti-spam protection, the Zimbra mailbox server, SNMP
 monitoring tools (optional), Zimbra-spell (optional), the logger tool
-(optional), and the Zimbra proxy (optional) on one server.</p>
+(optional), and the Zimbra proxy on one server.</p>
 </div>
 <div class="paragraph">
 <p>The menu driven installation displays the components and their existing
@@ -2122,7 +2156,7 @@ the password on the LDAP server.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>zimbra-logger</strong></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>When installed, it is automatically enabled. Logs from the hosts are
-sent to the mailbox server where zimbra-logger is installed.  The
+sent to the mailbox server where <code>zimbra-logger</code> is installed.  The
 information is used for generating statistics graphs and for message
 tracing.</p>
 </div></div></td>
@@ -2206,7 +2240,7 @@ server to be the same as the password on the LDAP server.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>zimbra-snmp(optional)</strong></p></td>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock"><strong>zimbra-snmp (optional)</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Enable SNMP notifications</strong></p></td>
@@ -2391,7 +2425,7 @@ connection.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">If either or both of these are changed to TRUE, the proxy setting on the
-mailbox store are enabled in preparation for setting up zimbra proxy.</p></td>
+mailbox store are enabled in preparation for setting up <code>zimbra-proxy</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">*Configure for use with mail proxy.</p></td>
@@ -3037,12 +3071,21 @@ Configuration complete - press return to exit</pre>
 <p>After the Zimbra Collaboration servers are configured, the following functions
 must be configured.</p>
 </div>
-<div class="paragraph">
-<p><strong>Important:</strong> Zimbra Collaboration supports the default syslog of a
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Zimbra Collaboration supports the default syslog of a
 supported operating system. Depending on your operating system, the
 steps contained in this section might not be correct. See your
 operating system documentation for specific information about how to
-enable syslog.</p>
+enable syslog.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>If <strong>zimbra-logger</strong> is installed, set up the <strong>syslog</strong> configuration files
@@ -3054,14 +3097,13 @@ anti-virus activity.</p>
 <div class="sect2">
 <h3 id="_access_to_the_zimbra_user">Access to the 'zimbra' user</h3>
 <div class="paragraph">
-<p>Zimbra Collaboration ships a default 'zimbra' user with a disabled
+<p>Zimbra Collaboration ships a default <code>zimbra</code> user with a disabled
 password.
 Zimbra Collaboration requires access to this account via
 <strong>ssh public key authentication</strong>.
 On most operating systems this combination is okay, but if you have
-:toc:
 modified pam rules to disallow any ssh access to disabled accounts
-then you must define a password for the zimbra UNIX account.
+then you must define a password for the <code>zimbra</code> UNIX account.
 This will allow ssh key authentication for checking remote
 queues. See the Zimbra wiki article,
 <a href="https://wiki.zimbra.com/wiki/Mail_Queue_Monitoring">Mail Queue Monitoring</a>.</p>
@@ -3186,9 +3228,18 @@ accounts. The administration console URL is entered as:</p>
 <pre>https://[mailhost.example.com]:7071</pre>
 </div>
 </div>
-<div class="paragraph">
-<p><strong>Note:</strong> To go to the administration console, you must type <strong>https</strong>,
-even if you configured the Web server mode as HTTP.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To go to the administration console, you must type <strong>https</strong>,
+even if you configured the Web server mode as HTTP.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>The first time you log on, a warning may be displayed stating the
@@ -3240,10 +3291,21 @@ account information to be completed.</p>
 <ol class="arabic">
 <li>
 <p>From the administration console <strong>Home</strong> page’s Content pane, go to
-<code>Add Accounts</code>.<br>
-<strong>Note:</strong> Four accounts will already be listed - the admin account, two spam
+<code>Add Accounts</code>.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Four accounts will already be listed - the admin account, two spam
 training accounts, and a global Documents account. These accounts do not
-need any additional configuration.</p>
+need any additional configuration.
+</td>
+</tr>
+</table>
+</div>
 </li>
 <li>
 <p>Click <code>Add Account</code>. The first page of the New Account wizard opens.</p>
@@ -3352,8 +3414,8 @@ admin account.</p>
 <h2 id="Uninstalling_Zimbra_Collaboration">Uninstalling Zimbra Collaboration</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To uninstall servers, run the install script -u, delete the Zimbra
-Collaboration directory, and remove the zcs.tgz file on the servers.</p>
+<p>To uninstall servers, run the install script -u, delete the
+Zimbra Collaboration directory, and remove the zcs.tgz file on the servers.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -3383,7 +3445,7 @@ are removed.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-02-13 13:18:40 GMT
+Last updated 2017-03-27 17:54:23 CDT
 </div>
 </div>
 </body>
