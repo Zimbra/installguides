@@ -37,8 +37,8 @@ server from the single server node.
 
 == Configuring the Mailbox Server
 
-The host name and zmhostname configured on the mailbox server is the
-same as on the name on the single server.
+The host name and zmhostname configured on the mailbox server are the
+same as on the single server.
 
 Make sure you know the LDAP master password as you configure it on the
 sever that is being added. To find the master LDAP password on the
@@ -47,6 +47,20 @@ single server node, type:
 ----
 zmlocalconfig -s zimbra_ldap_password
 ----
+
+[NOTE]
+====
+If you are installing the {product-short} proxy or _MTA_ on the
+new node, you will also need to record the following:
+
+* Bind password for postfix ldap user
+* Bind password for amavis ldap user
+* Bind password for nginx ldap user
+----
+zmlocalconfig -s | grep -E '(amavis|nginx|postfix)_password'
+----
+====
+
 
 IMPORTANT: Before you begin make sure you have an up-to-date backup!
 
@@ -93,9 +107,7 @@ LDAP server. If it cannot contact the server, you cannot proceed.
 . Type `r` to return to the Main menu.
 . From the Main menu, type `2` to go to the Store configuration
 menu.
-** Type `4` and set the password for the administrator account. This
-   should be the same password as configured on the original
-   single-server node.
+** Type `2` to set **Create Admin User** to `No`.
 ** Type the corresponding number to set the SMTP host. This is the
    mta-server host name.
 ** Type the corresponding number if you want to change the default web
