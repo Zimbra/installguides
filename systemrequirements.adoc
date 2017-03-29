@@ -273,15 +273,6 @@ including:
 * Windows Mobile 6.0 and above
 * Microsoft Outlook using the Exchange ActiveSync (EAS)
 
-*Non-Smartphone Operating Systems*:
-
-* Various device/operating system combinations with mobile WAP browser.
-
-See the {product-provider} web site
-http://www.zimbra.com/products/zimbra_mobile.html for more information.
-endif::networkeditiondoc[]
-
-ifdef::networkeditiondoc[]
 [[Zimbra_Touch_Client]]
 == {product-short} Touch Client ({product-edition-commercial} Only)
 
