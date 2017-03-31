@@ -1,10 +1,11 @@
+ifdef::networkeditiondoc[]
 [[Zimbra_Licenses]]
 = {product-short} Licensing ({product-edition-commercial} Only)
 :toc:
 
-{product-name} licensing gives administrators better visibility and
-control into the licensed features they plan to deploy. The following
-is a summary of the feature attributes of a {product-name}
+{product-name} licensing gives administrators better visibility
+and control into the licensed features they plan to deploy. The
+following is a summary of the feature attributes of a {product-name}
 {product-edition-commercial} license.
 
 * *Accounts limit.* The maximum number of accounts you can create and
@@ -17,6 +18,7 @@ can have the touch client mobile feature enabled.
 {product-short} Connector for Microsoft Outlook (ZCO).
 * *Exchange Web Services (EWS) accounts limit.* The maximum number of
 accounts that can use EWS for connecting to an Exchange server.
+EWS is a separately licensed add-on feature.
 * *High-Fidelity Document Preview:* The maximum number of accounts that
 can use the High-Fidelity document preview facility. LibreOffice must be
 installed.
@@ -67,14 +69,13 @@ viruses, and GALsync account if you configure GAL for your domain. *Do
 not delete these accounts!* These accounts do not count against your
 license.
 * *Administrator account.*  Administrator accounts count against your license.
-* *User accounts.*  User accounts count against your license account limit.
-
-When you delete an account, the license account limit reflects the change.
+* *User accounts.*  User accounts count against your license account limit. + 
+  When you delete an account, the license account limit reflects the change.
 
 * *Alias account.*  Aliases do not count against your license.
 * *Distribution list.*  Distribution lists do not count against your license.
 * *Resource account.*  Resource accounts (location and resources) do not
-count against your {product-name} license.
+  count against your {product-name} license.
 
 [[License_Activation]]
 == License Activation
@@ -82,12 +83,14 @@ count against your {product-name} license.
 All {product-edition-commercial} installations require license activation. New
 installations have a 10 day grace period from the license issue date
 before requiring activation. Your license can be activated from the
-administration console by selecting *Configure>Global Settings>License*,
+administration console by selecting + 
+*Configure>Global Settings>License* + 
 then clicking *Activate License* in the toolbar. You can also
 activate your license from the command line interface.
 
-Upgraded {product-name} versions require an immediate activation
-to maintain network feature functionality.
+[NOTE]
+Upgraded {product-name} versions require an immediate activation of a
+valid license to maintain network feature functionality.
 
 [[Automatic_License_Activation]]
 == Automatic License Activation
@@ -104,9 +107,12 @@ license, see the next section on
 For systems that do not have external access to the {product-short} License
 server, you can use the {product-short} Support Portal to manually activate your
 license. Go to the {product-provider} website at https://www.zimbra.com and click on the
-Support page to display the {product-short} Technical Support page. Click on the
-Support Portal Login button to display the {product-short} Support Portal page.
+*Support* page to display the {product-short} Technical Support page. Click on the
+*Support Portal Login* button to display the {product-short} Support Portal page.
 Enter your email and password to log in.
+
+If you have problems accessing the Support Portal, contact Zimbra Sales
+at sales@zimbra.com or by calling 1-972-407-0688.
 
 [[License_Not_Installed_or_Activated]]
 == License Not Installed or Activated
@@ -149,3 +155,5 @@ license sets the number of accounts that can be created.
 Current license information, including the number of accounts purchased,
 the number of accounts used, and the expiration date, can be viewed from
 the administration console's *Configure>Global Settings>License* page.
+
+endif::networkeditiondoc[]

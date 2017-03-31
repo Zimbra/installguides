@@ -1,0 +1,73 @@
+[[introduction]]
+= Introduction
+:toc:
+
+Information in this guide is intended for persons responsible for
+installing {product-name}. This guide will help you plan and
+perform all installation procedures necessary to deploy a fully
+functioning email system based on Zimbra’s messaging technology.
+
+This guide covers the installation of
+{product-name} Network Edition {product-version}.
+
+[[Audience]]
+== Audience
+
+This installation guide assumes you have a thorough understanding of
+system administration concepts and tasks and are familiar with email
+communication standards, security concepts, directory services, and
+database management.
+
+[[Intro_license]]
+== {product-name} License
+
+A Zimbra license is required in order to create accounts in
+{product-name} Network Edition. You cannot install {product-name}
+Network Edition without a license. For more information about licenses,
+see <<Zimbra_License_Requirements,Zimbra License Requirements>>
+
+If you do not have a license, go to Zimbra’s website
+https://www.zimbra.com to obtain a license from the Network Downloads area.
+
+[[For_More_Information]]
+== For More Information
+
+Zimbra documentation, including a readme text file, the administrator
+guide, and other Zimbra guides are copied to the servers during the
+installation. The major documentation types are listed below.
+You can access all the documents on the Zimbra website,
+https://www.zimbra.com and from the administration console, Help Desk page.
+
+* **Administrator Guide**. This guide describes product architecture,
+  server functionality, administration tasks, configuration options,
+  and backup and restore procedures.
+* **Administrator Help**. The administrator Help provides instructions
+  about how to add and maintain your servers, domains, and user
+  accounts from the admin console.
+* **Web Client Help**. The Web Client Help provides instructions about
+  how to use the Zimbra Web Client features.
+* **Migration Wizard Guides**. These guides describe how to migrate
+  users that are on Microsoft Exchange or Lotus Domino systems to
+  the Zimbra Collaboration.
+
+[[Support_and_Contact_Information]]
+== Support and Contact Information
+
+Visit https://www.zimbra.com to join the community and to be a part of
+building the best open source messaging solution.  We appreciate your
+feedback and suggestions.
+
+* Contact Zimbra Sales to purchase Zimbra Collaboration.
+* Network Edition customers can contact support at
+  **support@zimbra.com**.
+* Explore the https://forums.zimbra.org/[Zimbra Forums] for answers to
+  installation or configuration problems.
+* Join the Zimbra Community Forum, to participate and learn more about
+  {product-name}.
+* Send an email to **feedback@zimbra.com** to let us know what you like
+  about the product and what you would like to see in the product.
+  If you prefer, post your ideas to the Zimbra Forum.
+
+If you encounter problems with this software, visit
+https://bugzilla.zimbra.com and submit a bug report.
+Make sure you provide enough detail so that the bug can be easily duplicated.

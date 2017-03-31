@@ -209,7 +209,7 @@ sales.
 The installer verifies that there is enough room to install {product-short}.
 --
 
-5. Next, type `Y` and press `Enter` to modify the system.
+5. Next, type `Y` and press _Enter_ to modify the system.
 +
 --
 * Selected packages are installed on the server.
@@ -245,7 +245,7 @@ Checking for port conflicts
 
 6. At this point, the Main menu displays showing the default entries
 for the {product-short} components you are installing. To expand the menu to see
-the configuration values, type `X` and press `Enter`. The Main menu
+the configuration values, type `X` and press _Enter_. The Main menu
 expands to display configuration details for the packages being
 installed. Values that require further configuration are marked with
 asterisks (pass:[******]) to their left. To navigate the Main menu, select the
@@ -321,7 +321,7 @@ configuration menu displays.
 12. Select the following from the store configuration menu:
 
     * Type `4` to set the Admin Password. The password must be six or more characters.
-    Press `Enter`.
+    Press _Enter_.
 
     * ({product-edition-commercial} only) Type `25` for *License filename* and type the
     directory and file name for the Zimbra license.
@@ -345,7 +345,7 @@ Then type the appropriate number for the feature to be enabled or disabled.
 Changes you make here are reflected in the default COS configuration.
 
 15. If no other defaults need to be changed, type `a` to apply the
-configuration changes. Press `Enter`
+configuration changes. Press _Enter_
 +
 --
 ....
@@ -354,7 +354,7 @@ Select from menu, or press 'a' to apply config (? - help) a
 ....
 --
 
-16. When Save Configuration data to file appears, type `Yes` and press `Enter`.
+16. When Save Configuration data to file appears, type `Yes` and press _Enter_.
 +
 --
 ....
@@ -363,7 +363,7 @@ Save configuration data to a file? [Yes]
 --
 
 17. The next request asks where to save the files. To accept the
-default, press `Enter`. To save the files to another directory, enter the
+default, press _Enter_. To save the files to another directory, enter the
 directory and then press Enter
 +
 --
@@ -374,7 +374,7 @@ Saving config in /opt/zimbra/config.16039...done.
 --
 
 18. When `The system will be modified - continue?` appears, type `Yes` and
-press `Enter`.
+press _Enter_.
 +
 The server is modified. Installing all the components and configuring
 the server can take several minutes. Components that are installed

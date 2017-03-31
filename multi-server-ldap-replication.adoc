@@ -1,0 +1,355 @@
+[[ldap-replication]]
+= Configuring LDAP Replication
+
+== Configuring LDAP Replication Overview
+
+Setting up LDAP replication lets you distribute {product-short} server
+queries to specific replica LDAP servers. Only one master LDAP server
+can be set up. This server is authoritative for user information,
+server configuration, etc. Replica LDAP servers can be defined to
+improve performance and to reduce the load on the master server. All
+updates are made to the master server and these updates are copied to
+the replica servers.
+
+The {product-short} install program is used to configure a master LDAP
+server and additional read-only replica LDAP servers. The master LDAP
+server is installed and configured first, following the normal
+{product-abbrev} installation options. The LDAP replica server
+installation is modified to point the replica server to the LDAP
+master host.
+
+When the master LDAP server and the replica LDAP servers are correctly
+installed, the following is automatically configured:
+
+* SSH keys are set up on each LDAP server.
+* Trusted authentication between the master LDAP and the LDAP replica
+servers is set up.
+* The content of the master LDAP directory is copied to the replica
+LDAP server. Replica LDAP servers are read-only.
+* {product-short} servers are configured to query the replica LDAP
+server instead of the master LDAP server.
+
+== Installing Zimbra Master LDAP Server
+
+You must install the master LDAP server before you can install replica
+LDAP servers. Refer to <<install_ldap_master>>
+for master LDAP server installation instructions. After the
+installation of the master LDAP server has completed, continue
+to <<_enable_replication_on_the_ldap_master>>.
+
+== Enable Replication on the LDAP Master
+
+On the master LDAP server, as the `zimbra` user, type:
+`/opt/zimbra/libexec/ zmldapenablereplica` and press _Enter_. This enables
+replication on the LDAP Master.
+
+== Installing a Replica LDAP Server
+
+The master LDAP server must be running when you install the replica
+server. You run the {product-abbrev} install program on the replica
+server to install the LDAP package.
+
+Follow steps 1 through 4 in <<starting_multiple_server_install>>
+to open a SSH session to the LDAP server, log on to the server
+as root, and unpack the {product-short} software.
+
+. Type `Y` and press _Enter_ to install the `zimbra-ldap` package. In the
+screen shot below, the package to be installed is emphasized.
++
+[subs="quotes"]
+----
+Select the packages to install
+*Install zimbra-ldap [Y] y*
+Install zimbra-logger [Y] n
+Install zimbra-mta [Y] n
+Install zimbra-dnscache [N] n
+Install zimbra-snmp [Y] n
+Install zimbra-store [Y] n
+Install zimbra-apache [Y] n
+Install zimbra-spell [Y] n
+Install zimbra-convertd [N] n
+Install zimbra-memcached [Y] n
+Install zimbra-proxy [Y] n
+Installing:
+    zimbra-core
+zimbra-ldap
+This system will be modified. Continue [N] *Y*
+----
++
+. Type `Y`, and press _Enter_ to modify the system. The selected packages
+are installed. The Main menu shows the default entries for the LDAP
+replica server. To expand the menu type `X` and press _Enter_.
++
+----
+Main menu
+
+  1) Common Configuration:
+  2) zimbra-ldap:                               Enabled
+  .
+  .
+  .
+  .
+  r) Start servers after configuration          yes
+  s) Save config to file
+  x) Expand menu
+  q) Quit
+
+*** CONFIGURATION COMPLETE - press 'a' to apply
+Select from menu, or press 'a' to apply config (? - help)
+----
++
+. Type `1` to display the _Common Configuration_ submenus.
++
+----
+Common Configuration:
+
+  1) Hostname:                                  ldap-1.example.com
+  2) Ldap master host:                          ldap-1.example.com
+  3) Ldap port:                                 389
+  4) Ldap Admin password:                       set
+  5) Secure interprocess communications:        Yes
+  6) TimeZone:                                  (GMT-08.00) Pacific Time (US & Canada)
+----
++
+. Type `2` to change the *Ldap Master host* name to the name of the
+Master LDAP host.
+. Type `3`, to change the *Ldap port* to the same port as configured
+for the Master LDAP server.
+. Type `4` and change the *Ldap Admin password* to the
+Master LDAP admin password, then type `r` to return to the main menu.
+. Type `2` to display the _LDAP configuration_ submenu.
++
+----
+Ldap configuration
+
+  1) Status:                                    Enabled
+  2) Create Domain:                             no
+  3) Ldap Root password:                        set
+  4) Ldap Replication password:                 set
+  5) Ldap Postfix password:                     set
+  6) Ldap Amavis password:                      set
+  7) Ldap Nginx password:                       set
+----
++
+.. Type `2` and change *Create Domain* to `no`.
+.. Type `4` for *LDAP replication password* and enter the same password to
+match the value on the Master LDAP Admin user password for this local
+config variable.
++
+NOTE: All passwords must be set to match the master ldap admin user
+password. To determine this value on the master LDAP server, run
+`zmlocalconfig -s ldap_replication_password`
++
+[IMPORTANT]
+====
+If you have installed {product-short} MTA on the LDAP
+server, configure the Amavis and the Postfix passwords. To find these
+values, issue the following commands:
+
+----
+zmlocalconfig -s ldap_amavis_password
+zmlocalconfig -s ldap_postfix_password
+----
+====
++
+. When the LDAP server is configured, type `a` to apply the
+  configuration changes. Press _Enter_ to save the configuration data.
++
+----
+Select, or press 'a' to apply config (? - help) a
+Save configuration data? [Yes]
+Save config in file: [/opt/zimbra/config.2843]
+Saving config in /opt/zimbra/config.2843...Done
+The system will be modified - continue? [No] y
+Operations logged to /tmp/zmsetup.log.2843
+Setting local config zimbra_server_hostname to [ldap.example.com]
+.
+Operations logged to /tmp/zmsetup.log.2843
+Installation complete - press return to exit
+----
++
+. When *Save Configuration data to a file* appears, press _Enter_.
+. When *The system will be modified - continue?* appears, type `y` and press
+_Enter_.
++
+----
+The server is modified. Installing all the components and configuring the
+server can take a few minutes.
+----
++
+. When *Installation complete - press return to exit* displays, press
+_Enter_.
++
+====
+The installation on the replica LDAP server is complete. The content
+of the master LDAP directory is copied to the replica LDAP server.
+====
++
+
+
+=== Test the Replica
+
+. Create several user accounts, either from the admin console or on
+the master LDAP server. The CLI command to create these accounts is
++
+----
+zmprov ca <name@domain.com> <password>
+----
++
+If you do not have a mailbox server setup, you can create domains
+instead. Use this CLI command to create a domain
++
+----
+zmprov cd <domain name>
+----
++
+. To see if the accounts were correctly copied to the replica LDAP
+server, on the replica LDAP server, type `zmprov -l gaa`.
+Type `zmprov gad` to check all domains.
+The accounts/domains created on the master
+LDAP server should display on the replica LDAP server.
+
+
+In cases where the mailbox server is not setup, you can also use the
+following command for account creation.
+
+----
+zmprov ca <name@domain> <password> zimbraMailTransport <where_to_deliver>
+----
+
+
+== Configuring {product-short} Servers to Use LDAP Replica
+
+To use the replica LDAP server instead of the master LDAP server, you
+must update the `ldap_url` value on the {product-short} servers that will query
+the replica instead of the master. For each server that you want to
+change:
+
+. Stop the {product-short} services on the server. Type `zmcontrol stop`.
+. Update the `ldap_url` value. Enter the replica LDAP server URL
++
+----
+zmlocalconfig -e ldap_url="ldap://<replicahost> ldap://<masterhost>"
+----
++
+Enter more than one replica hostnames in the list typed as
++
+----
+"ldap://<replicahost1> ldap://<replicahost2> ldap://<masterhost>"
+----
++
+The hosts are tried in the order listed. The master URL _must_ always be
+included and is listed _last_.
++
+. Update the `ldap_master_url` value. Enter the master LDAP server URL,
+if not already set.
++
+----
+zmlocalconfig -e ldap_master_url=ldap://<masterhost>:port
+----
++
+
+
+
+[IMPORTANT]
+====
+Additional Steps for MTA hosts. After updating the `ldap_url`, rerun
+`/opt/zimbra/ libexec/zmmtainit`.  This rewrites the Postfix
+configuration with the updated `ldap_url`.
+====
+
+
+== Uninstalling an LDAP Replica Server
+
+If you do not want to use an LDAP replica server, follow these steps
+to disable it.
+
+NOTE: Uninstalling an LDAP server is the same as disabling it on the
+master LDAP server.
+
+=== Remove LDAP Replica from All Active Servers
+
+. On each member server, including the replica, verify the `ldap_url`
+value. Type	`zmlocalconfig [ldap_url]`.
+. Remove the disabled LDAP replica server URL from `zmlocalconfig`. Do
+this by modifying the `ldap_url` to only include enabled
+{product-abbrev} LDAP servers.
++
+IMPORTANT: The master LDAP server should always be
+at the end of the `ldap_url` string value.
++
+----
+zmlocalconfig -e ldap_url="ldap://<replica-server-host> ldap://<master-server-host>"
+----
++
+
+
+=== Disable LDAP on the Replica
+
+To disable LDAP on the replica server:
+
+. Type `zmcontrol stop` to stop the {product-short} services on the
+server.
+. To disable LDAP service, type
++
+----
+zmprov -l ms <zmhostname> -zimbraServiceEnabled ldap
+----
++
+. Type `zmcontrol start` to start other current {product-short} services on the
+server.
+
+[IMPORTANT]
+====
+Additional steps for MTA host. After updating the `ldap_url` with
+`zmlocalconfig`, rerun `/opt/zimbra/libexec/zmmtainit`. This rewrites the
+Postfix configuration with the updated `ldap_url`.
+====
+
+== Monitoring LDAP Replication Status
+
+The _Monitoring LDAP Replication Status_ feature monitors the change
+sequence number (CSN) values between an LDAP master server and an LDAP
+replica server. The replica server is considered a shadow copy of the
+master server. If the servers become out of sync, the monitoring
+feature indicates the problem. The out of sync time period is
+typically five minutes, although this value is configurable.
+
+=== Feature Requirement
+
+Run the script `zmreplchk` located in `/opt/zimbra/libexec`.
+
+IMPORTANT: This script must be run on a {product-abbrev} server that has a
+`localconfig` value set for `ldap_url` that includes all of the replica
+servers and ends with the master server.
+
+
+include::multi-server-ldap-error-codes.adoc[]
+
+For example, `ldap002.example.com` is the master server, and
+`ldap003.example.com` and `ldap004.example.com` are replicas servers. The
+following screen-shot shows that replica server `ldap003` is in sync
+with the master server, as indicated by the `Code:0` and `Status: In
+Sync`, and replica server `ldap004` is currently down, as indicated by
+`Code: 4` and `Status: Server down`.
+
+----
+zimbra@ldap002.example.com
+Replica: ldap://ldap003.example.com:389 Code: 0 Status: In Sync
+Replica: ldap://ldap004.example.com:389 Code: 4 Status: Server down
+----
+
+If the replica server becomes out of sync with the master server, the
+status given indicates in a time format how far behind the master
+server it has become:
+
+----
+Replica: ldap://ldap003.example.com:389 Code: 0 Status: In Sync
+Replica: ldap://ldap004.example.com:389 Code: 6 Status: 0w 0d 0h 14m 42s behind
+----
+
+
+
+
+
+

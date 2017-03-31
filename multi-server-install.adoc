@@ -1,11 +1,14 @@
 include::settings.adoc[]
 
-:document-title: Performing a Single-Server Installation
+:document-title: Multi-Server Installation Guide
 // This is intended to allow excluding certain text for a FOSS only manual
 // At present it is only partially implemented
 :networkeditiondoc: TRUE
+:multiserverdoc: TRUE
 = {product-name} {document-title}
 v{product-version}, {product-release-date}
+:toclevels: 4
+
 :leveloffset: +1
 
 <<<
@@ -14,7 +17,11 @@ include::legal.adoc[]
 
 <<<
 
-include::introduction.adoc[]
+include::multi-server-install-intro.adoc[]
+
+<<<
+
+include::multi-server-install-planning.adoc[]
 
 <<<
 
@@ -22,35 +29,19 @@ include::prepareserver.adoc[]
 
 <<<
 
-include::overviewinstallprocess.adoc[]
+include::multi-server-install-main.adoc[]
 
 <<<
 
-include::licenserequirements.adoc[]
+include::multi-server-adding-mailbox.adoc[]
 
 <<<
 
-include::basicconfig.adoc[]
+include::multi-server-multi-master-ldap-replication.adoc[]
 
 <<<
 
-include::installing.adoc[]
-
-<<<
-
-include::finalsetup.adoc[]
-
-<<<
-
-include::scanningattachments.adoc[]
-
-<<<
-
-include::provisionaccounts.adoc[]
-
-<<<
-
-include::uninstalling.adoc[]
+include::multi-server-ldap-replication.adoc[]
 
 <<<
 
