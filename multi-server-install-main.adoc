@@ -1706,6 +1706,11 @@ accessed from the administration console Download page and instruction
 guides are available from the Administration Console Help Desk.
 
 
+:leveloffset: +2
+include::ephemeral.adoc[]
+:leveloffset: -2
+
+
 == Uninstalling Zimbra Collaboration
 
 To uninstall servers, run the install script with the `-u` option.

@@ -33,10 +33,6 @@ include::multi-server-install-main.adoc[]
 
 <<<
 
-include::ephemeral.adoc[]
-
-<<<
-
 include::multi-server-adding-mailbox.adoc[]
 
 <<<
