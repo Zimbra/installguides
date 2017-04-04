@@ -52,19 +52,19 @@ are configured as follows:
 that is listening to LDAP on port `389`.
 * The replication ID is set to `100` by default on the secondary
   master.
-* Writes initiated from the server go to the LDAP _master1_ by
-  default. If LDAP _master1_ is down, writes move to ldap _master2_.
+* Writes initiated from the server go to the LDAP _master-1_ by
+  default. If LDAP _master-1_ is down, writes move to ldap _master-2_.
 .. To enable the feature run:
 +
 ----
-./libexec/zmldapenable-mmr -s 1 -m ldap://<<master2.example.com>>:389/
+./libexec/zmldapenable-mmr -s 1 -m ldap://<<master-2.example.com>>:389/
 ----
 +
 .. Once the feature is enabled use the `zmlocalconfig` command to add the
 LDAP servers to a group.
 +
 ----
-zmlocalconfig -e ldap_master_url="ldap://<<master1.example.com>>:389 ldap:// <<master2.example.com>>:389"
+zmlocalconfig -e ldap_master_url="ldap://<<master-1.example.com>>:389 ldap://<<master-2.example.com>>:389"
 ----
 +
 
@@ -106,7 +106,7 @@ installed. The Main menu shows the default entries for the LDAP
 server.
 . Type `1` to display the _Common Configuration_ submenu.
 .. Type `2` to change the *LDAP Master host* name to the name of the
-primary master's hostname; e.g., _master1.example.com_.
+primary master's hostname; e.g., _master-1.example.com_.
 .. Type `4` to change the *LDAP admin password* to the {product-short} admin
 password of the primary master.
 .. Type `r` to return to the main menu.
@@ -118,7 +118,7 @@ master, leave it unchanged. If it the third or later master, select `5`
 and update the server ID accordingly.
 +
 The next four steps are to change the default passwords on this server
-to match the passwords on the _master1_ LDAP server.
+to match the passwords on the _master-1_ LDAP server.
 +
 .. Type `7` to change the _LDAP replication password_.
 .. Type `8` to change the _LDAP postfix password_.
@@ -140,7 +140,7 @@ _Enter_. The installation is complete.
 this new master as the _first_ master in the list.
 +
 ----
-zmlocalconfig -e ldap_master_url="ldap://<<master2.example.com>>:389 ldap:// <<master1.example.com>>:389"
+zmlocalconfig -e ldap_master_url="ldap://<<master-2.example.com>>:389 ldap://<<master-1.example.com>>:389"
 ----
 +
 
@@ -174,8 +174,8 @@ same as the first master LDAP server.
 list.
 +
 ----
-zmlocalconfig -e ldap_master_url="ldap://<<master1.example.com>>:389 \
-  ldap://<<master2.example.com>>:389 ldap://<<master3.example.com>>:389"
+zmlocalconfig -e ldap_master_url="ldap://<<master-1.example.com>>:389 \
+  ldap://<<master-2.example.com>>:389 ldap://<<master-3.example.com>>:389"
 ----
 +
 
@@ -208,31 +208,31 @@ and confirm it is no longer receiving modification traffic.
 
 The following is an example of using `zmldapmmrtool`.
 
-. There are three MMR servers, `ldap1.example.com`, `ldap2.example.com`,
-`ldap3.example.com`, with `ldap3.example.com` being shut down.
+. There are three MMR servers, `ldap-1.example.com`, `ldap-2.example.com`,
+`ldap-3.example.com`, with `ldap-3.example.com` being shut down.
 +
 ----
-zimbra@ldap1:/tmp/mmr$ ./zmldapmmrtool -q
+zimbra@ldap-1:/tmp/mmr$ ./zmldapmmrtool -q
 Master replication information
 Master replica 1
-rid: 100 URI: ldap://ldap2.example.com:389/ TLS: critical Master replica 2
-rid: 101 URI: ldap://ldap3.example.com:389/ TLS: critical
+rid: 100 URI: ldap://ldap-2.example.com:389/ TLS: critical Master replica 2
+rid: 101 URI: ldap://ldap-3.example.com:389/ TLS: critical
 ----
 +
-. The RID being used by `ldap3.example.com` is `101`. This agreement can
+. The RID being used by `ldap-3.example.com` is `101`. This agreement can
 be deleted with:
 +
 ----
-zimbra@ldap1:/tmp/mmr$ ./zmldapmmrtool -d -o 101
+zimbra@ldap-1:/tmp/mmr$ ./zmldapmmrtool -d -o 101
 ----
 +
 . Confirm the deletion.
 +
 ----
-zimbra@ldap1:/tmp/mmr$ ./zmldapmmrtool -q
+zimbra@ldap-1:/tmp/mmr$ ./zmldapmmrtool -q
 Master replication information
 Master replica 1
-rid: 100 URI: ldap://ldap2.example.com:389/ TLS: critical zimbra@ldap1:/tmp/mmr
+rid: 100 URI: ldap://ldap-2.example.com:389/ TLS: critical zimbra@ldap-1:/tmp/mmr
 ----
 +
 . Repeat on the remaining node(s).
@@ -258,18 +258,18 @@ servers.
 
 include::multi-server-ldap-error-codes.adoc[]
 
-For example, `ldap002.example.com` is the master server, and
-`ldap003.example.com` and `ldap004.example`.com are additional
+For example, `ldap-2.example.com` is the master server, and
+`ldap-3.example.com` and `ldap-4.example`.com are additional
 servers. The following screen-shot shows the additional master servers
 are in sync with the master server, as indicated by the `Code:0` and
 `Status: In Sync`, and master server `ldap005` is currently down, as
 indicated by `Code: 4` and `Status: Server down`.
 
 ----
-zimbra@ldap002.example.com
-Master: ldap://ldap003.example.com:389 Code: 0 Status: In Sync CSN: 20120528123456.123456Z#000000#001#000000
-Master: ldap://ldap004.example.com:389 Code: 0 Status: In Sync CSN: 20120528123456.123456Z#000000#001#000000
-Master: ldap://ldap005.example.com:389 Code: 4 Status: Server down
+zimbra@ldap-2.example.com
+Master: ldap://ldap-3.example.com:389 Code: 0 Status: In Sync CSN: 20120528123456.123456Z#000000#001#000000
+Master: ldap://ldap-4.example.com:389 Code: 0 Status: In Sync CSN: 20120528123456.123456Z#000000#001#000000
+Master: ldap://ldap-5.example.com:389 Code: 4 Status: Server down
 ----
 
 
