@@ -607,6 +607,7 @@ Main menu
 ******* +Ldap master host:                     UNSET
         +Ldap port:                            389
 ******* +Ldap Admin password:                  UNSET
+        +LDAP Base DN:                         cn=zimbra
         +Store ephemeral attributes outside Ldap: no
         +Secure interprocess communications:   yes
         +TimeZone:                             UTC
@@ -664,11 +665,12 @@ Common configuration
 ** 2) Ldap master host:                        UNSET
    3) Ldap port:                               389
 ** 4) Ldap Admin password:                     UNSET
-   5) Store ephemeral attributes outside Ldap: no
-   6) Secure interprocess communications:      yes
-   7) TimeZone:                                UTC
-   8) IP Mode:                                 ipv4
-   9) Default SSL digest:                      sha256
+   5) LDAP Base DN:                            cn=zimbra
+   6) Store ephemeral attributes outside Ldap: no
+   7) Secure interprocess communications:      yes
+   8) TimeZone:                                UTC
+   9) IP Mode:                                 ipv4
+  10) Default SSL digest:                      sha256
 ....
 
 The mailbox server hostname is displayed.
@@ -692,7 +694,7 @@ After you set these values, the server immediately contacts the LDAP
 server. If it cannot contact the server, you cannot proceed.
 --
 
-5. Type `7` to set the correct time zone.
+5. Type `8` to set the correct time zone.
 +
 --
 [source%nowrap]
@@ -995,6 +997,7 @@ Main menu
 ******* +Ldap master host:                     UNSET
         +Ldap port:                            389
 ******* +Ldap Admin password:                  UNSET
+        +LDAP Base DN:                         cn=zimbra
         +Store ephemeral attributes outside Ldap: no
         +Secure interprocess communications:   yes
         +TimeZone:                             Africa/Monrovia
@@ -1029,11 +1032,12 @@ Common configuration
 ** 2) Ldap master host:                        UNSET
    3) Ldap port:                               389
 ** 4) Ldap Admin password:                     UNSET
-   5) Store ephemeral attributes outside Ldap: no
-   6) Secure interprocess communications:      yes
-   7) TimeZone:                                Africa/Monrovia
-   8) IP Mode:                                 ipv4
-   9) Default SSL digest:                      sha256
+   5) LDAP Base DN:                            cn=zimbra
+   6) Store ephemeral attributes outside Ldap: no
+   7) Secure interprocess communications:      yes
+   8) TimeZone:                                Africa/Monrovia
+   9) IP Mode:                                 ipv4
+  10) Default SSL digest:                      sha256
 ....
 
 The mta server hostname is displayed.
@@ -1057,7 +1061,7 @@ After you set these values, the server immediately contacts the LDAP
 server. If it cannot contact the server, you cannot proceed.
 --
 
-5. Type `7` to set the correct time zone.
+5. Type `8` to set the correct time zone.
 +
 --
 [source%nowrap]
@@ -1293,6 +1297,7 @@ Main menu
         +Ldap master host:                      ldap-1.example.com
         +Ldap port:                             389
         +Ldap Admin password:                   set
+        +LDAP Base DN:                          cn=zimbra
         +Store ephemeral attributes outside Ldap: no
         +Secure interprocess communications:    yes
         +TimeZone:                              (GMT-08.00) Pacific Time (US & Canada)
