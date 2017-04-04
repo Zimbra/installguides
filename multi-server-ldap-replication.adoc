@@ -327,17 +327,17 @@ servers and ends with the master server.
 
 include::multi-server-ldap-error-codes.adoc[]
 
-For example, `ldap002.example.com` is the master server, and
-`ldap003.example.com` and `ldap004.example.com` are replicas servers. The
-following screen-shot shows that replica server `ldap003` is in sync
+For example, `ldap-2.example.com` is the master server, and
+`ldap-3.example.com` and `ldap-4.example.com` are replicas servers. The
+following screen-shot shows that replica server `ldap-3` is in sync
 with the master server, as indicated by the `Code:0` and `Status: In
-Sync`, and replica server `ldap004` is currently down, as indicated by
+Sync`, and replica server `ldap-4` is currently down, as indicated by
 `Code: 4` and `Status: Server down`.
 
 ----
-zimbra@ldap002.example.com
-Replica: ldap://ldap003.example.com:389 Code: 0 Status: In Sync
-Replica: ldap://ldap004.example.com:389 Code: 4 Status: Server down
+zimbra@ldap-2.example.com
+Replica: ldap://ldap-3.example.com:389 Code: 0 Status: In Sync
+Replica: ldap://ldap-4.example.com:389 Code: 4 Status: Server down
 ----
 
 If the replica server becomes out of sync with the master server, the
@@ -345,8 +345,8 @@ status given indicates in a time format how far behind the master
 server it has become:
 
 ----
-Replica: ldap://ldap003.example.com:389 Code: 0 Status: In Sync
-Replica: ldap://ldap004.example.com:389 Code: 6 Status: 0w 0d 0h 14m 42s behind
+Replica: ldap://ldap-3.example.com:389 Code: 0 Status: In Sync
+Replica: ldap://ldap-4.example.com:389 Code: 6 Status: 0w 0d 0h 14m 42s behind
 ----
 
 

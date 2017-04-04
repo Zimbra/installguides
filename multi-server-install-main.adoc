@@ -307,8 +307,8 @@ Select from menu, or press 'a' to apply config (? - help)
 ....
 Common configuration
 
-   1) Hostname:                                ldap1.example.com
-   2) Ldap master host:                        ldap1.example.com
+   1) Hostname:                                ldap-1.example.com
+   2) Ldap master host:                        ldap-1.example.com
    3) Ldap port:                               389
    4) Ldap Admin password:                     set
    5) Store ephemeral attributes outside Ldap: no
