@@ -107,8 +107,9 @@ Common Configuration:
   2) Ldap master host:                          ldap-1.example.com
   3) Ldap port:                                 389
   4) Ldap Admin password:                       set
-  5) Secure interprocess communications:        Yes
-  6) TimeZone:                                  (GMT-08.00) Pacific Time (US & Canada)
+  5) Store ephemeral attributes outside Ldap: no
+  6) Secure interprocess communications:        Yes
+  7) TimeZone:                                  (GMT-08.00) Pacific Time (US & Canada)
 ----
 +
 . Type `2` to change the *Ldap Master host* name to the name of the

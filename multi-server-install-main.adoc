@@ -84,16 +84,16 @@ answer for your configuration._
 [source%nowrap,bash]
 ....
 root@mailhost:/tmp# tar xzvf zcs.tgz
-zcs-NETWORK-8.7.0_GA_1659.UBUNTU14_64.20160628202904/
-zcs-NETWORK-8.7.0_GA_1659.UBUNTU14_64.20160628202904/packages/
-zcs-NETWORK-8.7.0_GA_1659.UBUNTU14_64.20160628202904/packages/zimbra-apache_8.7.0.GA.1659.UBUNTU14.64_amd64.deb
+zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/
+zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/packages/
 .
 .
 .
-zcs-NETWORK-8.7.0_GA_1659.UBUNTU14_64.20160628202904/install.sh
-zcs-NETWORK-8.7.0_GA_1659.UBUNTU14_64.20160628202904/README.txt
-root@zimbraiop:/tmp/# cd zcs-NETWORK-8.7.0_GA_1659.UBUNTU14_64.20160628202904/
-root@zimbraiop:/tmp/zcs-NETWORK-8.7.0_GA_1659.UBUNTU14_64.20160628202904# ./install.sh
+zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/install.sh
+zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/README.txt
+
+root@zimbraiop:/tmp/# cd zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/
+root@zimbraiop:/tmp/zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124# ./install.sh
 
 Operations logged to /tmp/install.log.y1YeCSI5
 .
@@ -113,10 +113,13 @@ Operations logged to /tmp/install.log.y1YeCSI5
 --
 [source%nowrap,bash]
 ....
-root@zimbraiop:/tmp/zcs-NETWORK-8.7.0_GA_1659.UBUNTU14_64.20160628202904# ./install.sh
+root@zimbraiop:/tmp/zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124# ./install.sh
+
 
 Operations logged to /tmp/install.log.y1YeCSI5
 Checking for existing installation...
+    zimbra-chat...NOT FOUND
+    zimbra-drive...NOT FOUND
     zimbra-ldap...NOT FOUND
     zimbra-logger...NOT FOUND
     zimbra-mta...NOT FOUND
@@ -157,19 +160,21 @@ so it can install the {product-short} 3rd party packages.
 ....
 Checking for installable packages
 
-Found zimbra-core
-Found zimbra-ldap
-Found zimbra-logger
-Found zimbra-mta
-Found zimbra-dnscache
-Found zimbra-snmp
-Found zimbra-store
-Found zimbra-apache
-Found zimbra-spell
-Found zimbra-convertd
-Found zimbra-memcached
-Found zimbra-proxy
-Found zimbra-archiving
+Found zimbra-core (local)
+Found zimbra-ldap (local)
+Found zimbra-logger (local)
+Found zimbra-mta (local)
+Found zimbra-dnscache (local)
+Found zimbra-snmp (local)
+Found zimbra-store (local)
+Found zimbra-apache (local)
+Found zimbra-spell (local)
+Found zimbra-convertd (local)
+Found zimbra-memcached (repo)
+Found zimbra-proxy (local)
+Found zimbra-archiving (local)
+Found zimbra-chat (repo)
+Found zimbra-drive (repo)
 
 
 
@@ -221,29 +226,34 @@ section on <<ldap-replication,Configuring LDAP Replication>>
 --
 [source%nowrap]
 ....
-Install zimbra-ldap [Y] y
+Install zimbra-ldap [Y] Y
 
-Install zimbra-logger [Y] n
+Install zimbra-logger [Y] N
 
-Install zimbra-mta [Y] n
+Install zimbra-mta [Y] N
 
-Install zimbra-dnscache [Y] n
+Install zimbra-dnscache [Y] N
 
-Install zimbra-snmp [Y] n
+Install zimbra-snmp [Y] N
 
-Install zimbra-store [Y] n
+Install zimbra-store [Y] N
 
-Install zimbra-apache [Y] n
+Install zimbra-apache [Y] N
 
-Install zimbra-spell [Y] n
+Install zimbra-spell [Y] N
 
-Install zimbra-convertd [Y] n
+Install zimbra-convertd [Y] N
 
-Install zimbra-memcached [Y] n
+Install zimbra-memcached [Y] N
 
-Install zimbra-proxy [Y] n
+Install zimbra-proxy [Y] N
 
-Install zimbra-archiving [N] n
+Install zimbra-archiving [N] N
+
+Install zimbra-chat [Y] N
+
+Install zimbra-drive [Y] N
+
 Checking required space for zimbra-core
 
 Installing:
@@ -297,14 +307,15 @@ Select from menu, or press 'a' to apply config (? - help)
 ....
 Common configuration
 
-   1) Hostname:                                ldap-1.example.com
-   2) Ldap master host:                        ldap-1.example.com
+   1) Hostname:                                ldap1.example.com
+   2) Ldap master host:                        ldap1.example.com
    3) Ldap port:                               389
    4) Ldap Admin password:                     set
-   5) Secure interprocess communications:      yes
-   6) TimeZone:                                UTC
-   7) IP Mode:                                 ipv4
-   8) Default SSL digest:                      sha256
+   5) Store ephemeral attributes outside Ldap: no
+   6) Secure interprocess communications:      yes
+   7) TimeZone:                                America/Mexico_City
+   8) IP Mode:                                 ipv4
+   9) Default SSL digest:                      sha256
 
 Select, or 'r' for previous menu [r]
 ....
@@ -336,7 +347,7 @@ LDAP Port           _______________________
 You must configure this information when you install the mailbox servers
 and the MTA servers.
 
-6. Type `6` to set the correct time zone.
+6. Type `7` to set the correct time zone.
 +
 --
 [source%nowrap]
@@ -517,29 +528,34 @@ _If SNMP is being used, the SNMP package is installed on every
 
 [source%nowrap]
 ....
-Install zimbra-ldap [Y] n
+Install zimbra-ldap [Y] N
 
-Install zimbra-logger [Y] y
+Install zimbra-logger [Y] Y
 
-Install zimbra-mta [Y] n
+Install zimbra-mta [Y] N
 
-Install zimbra-dnscache [N] n
+Install zimbra-dnscache [Y] N
 
-Install zimbra-snmp [Y] y
+Install zimbra-snmp [Y] Y
 
-Install zimbra-store [Y] y
+Install zimbra-store [Y] Y
 
-Install zimbra-apache [Y] y
+Install zimbra-apache [Y] Y
 
-Install zimbra-spell [Y] y
+Install zimbra-spell [Y] Y
 
-Install zimbra-convertd [Y] y
+Install zimbra-convertd [Y] Y
 
-Install zimbra-memcached [Y] n
+Install zimbra-memcached [Y] N
 
-Install zimbra-proxy [Y] n
+Install zimbra-proxy [Y] N
 
-Install zimbra-archiving [N] y
+Install zimbra-archiving [N] Y
+
+Install zimbra-chat [Y] Y
+
+Install zimbra-drive [Y] Y
+
 Checking required space for zimbra-core
 Checking space for zimbra-store
 Checking required packages for zimbra-store
@@ -555,6 +571,8 @@ Installing:
     zimbra-spell
     zimbra-convertd
     zimbra-archiving
+    zimbra-chat
+    zimbra-drive
 
 The system will be modified.  Continue? [N]
 ....
@@ -589,7 +607,7 @@ Main menu
 ******* +Ldap master host:                     UNSET
         +Ldap port:                            389
 ******* +Ldap Admin password:                  UNSET
-        +LDAP Base DN:                         cn=zimbra
+        +Store ephemeral attributes outside Ldap: no
         +Secure interprocess communications:   yes
         +TimeZone:                             UTC
         +IP Mode:                              ipv4
@@ -601,28 +619,20 @@ Main menu
         +Create Admin User:                    yes
         +Admin user to create:                 admin@mailstore-1.example.com
 ******* +Admin Password                        UNSET
-        +Anti-virus quarantine user:           virus-quarantine.orulkdewtz@mailstore-1.example.com
+        +Anti-virus quarantine user:           virus-quarantine.mgpgruxx@mailstore-1.example.com
         +Enable automated spam training:       yes
-        +Spam training user:                   spam.udbnonsavi@mailstore-1.example.com
-        +Non-spam(Ham) training user:          ham.3ptgqja0f@mailstore-1.example.com
+        +Spam training user:                   spam.qgku2xsq@mailstore-1.example.com
+        +Non-spam(Ham) training user:          ham.y49bbzuis@mailstore-1.example.com
 ******* +SMTP host:                            UNSET
         +Web server HTTP port:                 8080
         +Web server HTTPS port:                8443
-        +HTTP proxy port:                      80
-        +HTTPS proxy port:                     443
         +Web server mode:                      https
         +IMAP server port:                     7143
         +IMAP server SSL port:                 7993
-        +IMAP proxy port:                      143
-        +IMAP SSL proxy port:                  993
         +POP server port:                      7110
         +POP server SSL port:                  7995
-        +POP proxy port:                       110
-        +POP SSL proxy port:                   995
         +Use spell check server:               yes
         +Spell server URL:                     http://mailstore-1.example.com:7780/aspell.php
-        +Configure for use with mail proxy:    TRUE
-        +Configure for use with web proxy:     TRUE
         +Enable version update checks:         TRUE
         +Enable version update notifications:  TRUE
         +Version update notification email:    admin@mailstore-1.example.com
@@ -638,7 +648,7 @@ Main menu
    s) Save config to file
    x) Expand menu
    q) Quit
-
+  
 Address unconfigured (**) items  (? - help)
 ....
 --
@@ -654,7 +664,7 @@ Common configuration
 ** 2) Ldap master host:                        UNSET
    3) Ldap port:                               389
 ** 4) Ldap Admin password:                     UNSET
-   5) LDAP Base DN:                            cn=zimbra
+   5) Store ephemeral attributes outside Ldap: no
    6) Secure interprocess communications:      yes
    7) TimeZone:                                UTC
    8) IP Mode:                                 ipv4
@@ -985,7 +995,7 @@ Main menu
 ******* +Ldap master host:                     UNSET
         +Ldap port:                            389
 ******* +Ldap Admin password:                  UNSET
-        +LDAP Base DN:                         cn=zimbra
+        +Store ephemeral attributes outside Ldap: no
         +Secure interprocess communications:   yes
         +TimeZone:                             Africa/Monrovia
         +IP Mode:                              ipv4
@@ -1019,7 +1029,7 @@ Common configuration
 ** 2) Ldap master host:                        UNSET
    3) Ldap port:                               389
 ** 4) Ldap Admin password:                     UNSET
-   5) LDAP Base DN:                            cn=zimbra
+   5) Store ephemeral attributes outside Ldap: no
    6) Secure interprocess communications:      yes
    7) TimeZone:                                Africa/Monrovia
    8) IP Mode:                                 ipv4
@@ -1282,7 +1292,8 @@ Main menu
         +Hostname:                              localhost
         +Ldap master host:                      ldap-1.example.com
         +Ldap port:                             389
-        +LDAP Base DN:                          cn=zimbra
+        +Ldap Admin password:                   set
+        +Store ephemeral attributes outside Ldap: no
         +Secure interprocess communications:    yes
         +TimeZone:                              (GMT-08.00) Pacific Time (US & Canada)
         +IP Mode:                               ipv4      
@@ -1406,6 +1417,9 @@ Install zimbra-convertd [N] N
 Install zimbra-memcached [N] N
 Install zimbra-proxy [N] N
 Install zimbra-archiving [N] *Y*
+Install zimbra-chat [Y] N
+Install zimbra-drive [Y] N
+
 Installing:
     zimbra-core
     zimbra-store
