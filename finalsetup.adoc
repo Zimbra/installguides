@@ -1,5 +1,5 @@
 [[Final_Set-Up]]
-= Final Set-Up
+= Final Set-Up (required)
 :toc:
 
 After the {product-name} servers are configured, the following functions
@@ -62,3 +62,12 @@ for more information
         setting, `SYSLOGD_options="-r -m 0"`
         * Stop the syslog daemon -  `/etc/init.d/sysklogd stop`
         * Start the syslog daemon - `/etc/init.d/sysklogd start`
+
+[[Final_Set-Up_Optional]]
+= Final Set-Up (optional)
+:toc:
+
+:leveloffset: +1
+include::ephemeral.adoc[]
+:leveloffset: -1
+

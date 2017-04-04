@@ -50,10 +50,6 @@ include::provisionaccounts.adoc[]
 
 <<<
 
-include::ephemeral.adoc[]
-
-<<<
-
 include::uninstalling.adoc[]
 
 <<<
