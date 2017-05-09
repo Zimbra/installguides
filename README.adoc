@@ -37,7 +37,7 @@ document.
 
 [source,bash]
 ----
-asciidoctor -b html5 -o multi-server-install.html multi-server-install.adoc
+asciidoctor -b html5 -o {version}/multi.html multi-server-install.adoc
 ----
 
 
@@ -51,7 +51,7 @@ document.
 
 [source,bash]
 ----
-asciidoctor -b html5 -o single-server-install.html index-single-server-install.adoc
+asciidoctor -b html5 -o {version}/single.html index-single-server-install.adoc
 ----
 
 ==== PDF
@@ -69,7 +69,7 @@ asciidoctor-pdf -a allow-uri-read -o single-server-install.pdf index-single-serv
 
 [source,bash]
 ----
-asciidoctor -b html5 -o upgrade.html upgrade.adoc
+asciidoctor -b html5 -o {version}/upgrade.html upgrade.adoc
 ----
 
 
