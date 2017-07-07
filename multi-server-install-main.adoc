@@ -6,7 +6,7 @@ You run the same installation script on each server, select the
 component(s) to install, and use the menu to configure the system.
 
 When the server installation is complete after final set-up and server
-nnconfiguration steps are run, the servers are started and the status is
+configuration steps are run, the servers are started and the status is
 displayed.
 
 *Order of Installation*
@@ -20,6 +20,8 @@ displayed.
     ** Zimbra Web Application Server Split mode, which includes:
         *** a Zimbra mailstore server (mailstore server)
         *** a Zimbra webapp server (UI server)
+5. {product-abbrev} IMAPD server(s)
+
 
 [NOTE]
 Zimbra-proxy is normally installed on the MTA server or you can install it on its own server.
@@ -120,6 +122,7 @@ Operations logged to /tmp/install.log.y1YeCSI5
 Checking for existing installation...
     zimbra-chat...NOT FOUND
     zimbra-drive...NOT FOUND
+    zimbra-imapd...NOT FOUND
     zimbra-ldap...NOT FOUND
     zimbra-logger...NOT FOUND
     zimbra-mta...NOT FOUND
@@ -133,14 +136,15 @@ Checking for existing installation...
     zimbra-proxy...NOT FOUND
     zimbra-archiving...NOT FOUND
     zimbra-core...NOT FOUND
+
 .
 .
 .
 ....
 --
 
-3. The {product-short} software agreement displays. Read the agreement and when + 
-`Do you agree with the terms of the software license agreement? [N]` + 
+3. The {product-short} software agreement displays. Read the agreement and when +
+`Do you agree with the terms of the software license agreement? [N]` +
 displays, enter `Y` to continue.
 +
 --
@@ -150,7 +154,7 @@ and you must accept each section of the license agreement.
 --
 
 
-4. `Use {product-short}'s package repository [Y]` + 
+4. `Use {product-short}'s package repository [Y]` +
 displays, press `enter` to continue. Your system will be configured to add
 the {product-short} packaging repository for *yum* or *apt-get* as appropriate
 so it can install the {product-short} 3rd party packages.
@@ -173,6 +177,7 @@ Found zimbra-convertd (local)
 Found zimbra-memcached (repo)
 Found zimbra-proxy (local)
 Found zimbra-archiving (local)
+Found zimbra-imapd (local)
 Found zimbra-chat (repo)
 Found zimbra-drive (repo)
 
@@ -253,6 +258,8 @@ Install zimbra-archiving [N] N
 Install zimbra-chat [Y] N
 
 Install zimbra-drive [Y] N
+
+Install zimbra-imapd [Y] N
 
 Checking required space for zimbra-core
 
@@ -556,6 +563,8 @@ Install zimbra-chat [Y] Y
 
 Install zimbra-drive [Y] Y
 
+Install zimbra-imapd [Y] N
+
 Checking required space for zimbra-core
 Checking space for zimbra-store
 Checking required packages for zimbra-store
@@ -649,7 +658,7 @@ Main menu
    s) Save config to file
    x) Expand menu
    q) Quit
-  
+
 Address unconfigured (**) items  (? - help)
 ....
 --
@@ -924,7 +933,7 @@ complete the installation.
    to open an SSH session to the MTA server, log on to the server as
    *root*, and unpack the {product-abbrev} software.
 
-2. Type `y` and press _Enter_ to install the *zimbra-mta* and 
+2. Type `y` and press _Enter_ to install the *zimbra-mta* and
    *zimbra-dnscache* packages.  The other packages should be marked `n`.
    In the following screen shot example, the packages to be installed are emphasized.
 +
@@ -1183,7 +1192,7 @@ If you are installing `zimbra-proxy` on the MTA server, select the
 installation process for <<_installing_zimbra_mta_on_a_server>>.
 After Step 11, configure the Zimbra-proxy.
 
-. On the MTA server, select to install the `zimbra-proxy` and 
+. On the MTA server, select to install the `zimbra-proxy` and
 `zimbra-memcached` packages, type `y` and press *Enter* to install the selected
 package.
 . The _Main_ menu displays the default entries for the {product-short} component
@@ -1301,7 +1310,7 @@ Main menu
         +Store ephemeral attributes outside Ldap: no
         +Secure interprocess communications:    yes
         +TimeZone:                              (GMT-08.00) Pacific Time (US & Canada)
-        +IP Mode:                               ipv4      
+        +IP Mode:                               ipv4
         +Default SSL digest:                    sha256
 
 2) zimbra-proxy:                              Enabled
@@ -1385,7 +1394,157 @@ _Enter_.
 
 The installation of the proxy server is complete.
 
+== Installing Zimbra IMAPD
 
+Installing the `zimbra-imapd` package is optional, but recommended for
+scalable multi-server deployment. {product-short} IMAPD is normally installed
+ separately from the mailbox server. {product-short} IMAPD can be installed on more than one server.
+
+IMPORTANT: After installation the new server will have to be added to the `zimbraReverseProxyUpstreamImapServers` LDAP multi-value configuration in order to enable the new server to service IMAP connections.
+
+
+=== Installing on the Mailbox Server
+
+
+If you are installing `zimbra-imapd` on a mailbox server, select the `zimbra-imapd` package in addition to `zimbra-store`.
+Follow the installation process for <<_installing_zimbra_mta_on_a_server>>.
+After Step 11, configure Zimbra-imapd.
+
+. On the MTA server, select to install the `zimbra-proxy` and
+`zimbra-memcached` packages, type `y` and press *Enter* to install the selected
+package.
+. The _Main_ menu displays the default entries for the {product-short} component
+you are installing. Select *Proxy Configuration* menu. You can modify
+any of the values.
++
+--
+The *Bind password for Nginx ldap user* was configured when the LDAP
+server was installed. This is set when the MTA connected to the LDAP
+server. This is not used unless the Kerberos5 authenticating mechanism
+is enabled.
+
+NOTE: Setting the password even though GSSAPI auth/proxy
+is not set up does not cause any issues.
+
+----
+Proxy configuration
+
+      1) Status:                                Enabled
+      2) Enable POP/IMAP Proxy:                 TRUE
+      3) IMAP proxy port:                       143
+      4) IMAP SSL proxy port:                   993
+      5) POP proxy port:                        110
+      6) POP SSL proxy port:                    995
+      7) Bind password for nginx ldap user:     set
+      8) Enable HTTP[S] Proxy:                  TRUE
+      9) HTTP proxy port:                       80
+      10) HTTPS proxy port:                     443
+      11) Proxy server mode:                    https
+----
+--
++
+Return to <<_installing_zimbra_mta_on_a_server>>, step 12,
+to continue the MTA server installation.
+
+=== Installing on a separate server
+
+The LDAP host name and the {product-short} LDAP password must be known to the
+imapd server. If not, the imapd server cannot contact the LDAP server
+and the installation fails.
+
+. Follow steps 1 through 4 in <<starting_multiple_server_install>>
+to open a SSH session to the server, log on to the server as
+root, and unpack the {product-short} software.
+. Select to install the `zimbra-imapd` package.
+The other packages should be marked `N`.
++
+--
+NOTE: If SNMP is used, the `zimbra-snmp` package must also be
+installed.
+--
++
+--
+[subs="quotes"]
+----
+Select the packages to install
+
+Install zimbra-ldap [Y] N
+Install zimbra-logger [Y] N
+Install zimbra-mta [Y] N
+Install zimbra-dnscache [N] N
+Install zimbra-snmp [Y] N
+Install zimbra-store [Y] N
+Install zimbra-apache [Y] N
+Install zimbra-spell [Y] N
+Install zimbra-convertd [N] N
+Install zimbra-memcached [N] N
+Install zimbra-proxy [N] N
+Install zimbra-archiving [N] N
+Install zimbra-imapd [N] *Y*
+Checking required space for zimbra-core
+
+Installing:
+    zimbra-core
+    zimbra-imapd
+
+This system will be modified. Continue [N] *Y*
+Configuration section
+----
+--
++
+. Type `Y`, and press _Enter_ to install the selected package.
+. The _Main_ menu displays. Type `1` and press _Enter_ to go to the *Common
+Configuration* menu.
++
+--
+The imapd server hostname is displayed. You must change the LDAP
+master host name and password to be the values configured on the LDAP
+server.
+
+** Type `2`, press _Enter_, and type the LDAP host
+   name. (`ldap-1.example.com`, in this example.)
+** Type `4`, press _Enter_, and type the LDAP password.
++
+After you set these values, the server immediately contacts the LDAP
+server. If it cannot contact the server, you cannot proceed.
++
+
+----
+Main menu
+
+1) Common Configuration:
+        +Hostname:                              localhost
+        +Ldap master host:                      ldap-1.example.com
+        +Ldap port:                             389
+        +Ldap Admin password:                   set
+        +LDAP Base DN:                          cn=zimbra
+        +Store ephemeral attributes outside Ldap: no
+        +Secure interprocess communications:    yes
+        +TimeZone:                              (GMT-08.00) Pacific Time (US & Canada)
+        +IP Mode:                               ipv4
+        +Default SSL digest:                    sha256
+
+2) zimbra-imapd:                              Enabled
+s) Save config to file
+x) Expand menu
+q) Quit
+
+
+** Type 2, press *Enter*, and the following menu displays:
+
+IMAPD configuration
+
+   1) Status:                                  Enabled
+   2) Add to upstream IMAP Servers?:           no
+
+Select, or 'r' for previous menu [r] 2
+
+. Type `1` to disable the IMAPD process on this machine.
+. Type `2` to add the server to the upstream IMAP Servers list.
+
+NOTE: No IMAP sessions will be routed to the IMAPD server unless it is added to the multi-valued
+`zimbraReverseProxyUpstreamImapServers` LDAP attribute.  This can be done using the `zmprov` command
+at any time after the server is installed and does not have to be done during installation.
 
 == Installing zimbra-archiving Package
 
@@ -1424,6 +1583,7 @@ Install zimbra-proxy [N] N
 Install zimbra-archiving [N] *Y*
 Install zimbra-chat [Y] N
 Install zimbra-drive [Y] N
+Install zimbra-imapd [Y] N
 
 Installing:
     zimbra-core
@@ -1487,7 +1647,7 @@ the following functions must be configured:
   remote queues. See
   https://wiki.zimbra.com/wiki/Mail_Queue_Monitoring[Mail queue
   monitoring].
-  
+
 
 === Set Up the SSH Keys
 
@@ -1737,4 +1897,3 @@ directories, and the `/opt/zimbra` directory are removed.
 . Delete the `zcs.tgz` file, type `rm -rf zcs.tgz`.
 . Additional files may need to be deleted. See
 https://wiki.zimbra.com/wiki/UnInstalling_Zimbra_on_Linux[Uninstall Zimbra on Linux].
-
