@@ -1534,9 +1534,14 @@ values.
 --
 By default the IMAPD service is enabled when it is selected for installation.
 
-NOTE: The IMAPD server is NOT automatically added to the upstream IMAP servers list.
-      This is done to allow the system administrator to control when the new server is
-      included in the cluster.
+NOTE: No IMAP sessions will be routed to the IMAPD server unless it is added to the multi-valued
+`zimbraReverseProxyUpstreamImapServers` LDAP attribute.  This can be done using the `zmprov` command
+at any time after the server is installed and does not have to be done during installation.
+After adding the new IMAPD node to `zimbraReverseProxyUpstreamImapServers`, the globalconfig LDAP
+cache must be flushed on all servers acting as lookup targets in order for them to pick up the change.
+This can be done with the command `zmprov flushCache -a config`. To verify that this has taken effect,
+make sure that the new IMAPD node is listed in the output of `zmprov gacf zimbraReverseProxyUpstreamImapServers`,
+when run from a lookup target server.
 
 ----
 IMAPD configuration
@@ -1559,7 +1564,6 @@ the directory and then press _Enter_.
 press _Enter_.
 . When *Installation complete - press return to exit* displays, press
 _Enter_.
-
 
 The installation of the imapd server is complete.
 
