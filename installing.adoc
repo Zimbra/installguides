@@ -33,7 +33,7 @@ zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/README.txt
 --
 
 2. The *install.sh* script reviews the installation software to verify that the
-{product-short} packages are available. + 
+{product-short} packages are available. +
 The installation process checks to see whether any of the applications
 *Sendmail*, *Postfix*, *MySQL* or *MariaDB* are running.
 If any of these applications are running,
@@ -65,17 +65,18 @@ Checking for existing installation...
     zimbra-proxy...NOT FOUND
     zimbra-archiving...NOT FOUND
     zimbra-core...NOT FOUND
+    zimbra-imapd...NOT FOUND
 
 ....
 --
 
-3. The {product-short} software agreement displays. Read the agreement and when + 
-`Do you agree with the terms of the software license agreement? [N]` + 
+3. The {product-short} software agreement displays. Read the agreement and when +
+`Do you agree with the terms of the software license agreement? [N]` +
 displays, enter `Y` to continue. +
 *Important:* The license agreement displays in multiple sections,
 and you must accept each section of the license agreement.
 
-4. `Use {product-short}'s package repository [Y]` + 
+4. `Use {product-short}'s package repository [Y]` +
 displays, press `enter` to continue. Your system will be configured to add
 the {product-short} packaging repository for *yum* or *apt-get* as appropriate
 so it can install the {product-short} 3rd party packages.
@@ -95,6 +96,7 @@ Found zimbra-store (local)
 Found zimbra-apache (local)
 Found zimbra-spell (local)
 Found zimbra-convertd (local)
+Found zimbra-imapd (local)
 Found zimbra-memcached (repo)
 Found zimbra-proxy (local)
 Found zimbra-archiving (local)
@@ -137,6 +139,8 @@ Install zimbra-chat [Y] N
 
 Install zimbra-drive [Y] N
 
+Install zimbra-imapd [Y] Y
+
 .
 .
 
@@ -161,6 +165,7 @@ Installing:
     zimbra-dnscache
     zimbra-snmp
     zimbra-store
+    zimbra-imapd
    .
    .
 
@@ -248,8 +253,9 @@ Main menu
    8) zimbra-spell:                            Enabled
    9) zimbra-convertd:                         Enabled
   10) zimbra-proxy:                            Enabled
-  11) Default Class of Service Configuration:
-  12) Enable default backup schedule:          yes
+  11) zimbra-imapd:                            Enabled
+  12) Default Class of Service Configuration:
+  13) Enable default backup schedule:          yes
    s) Save config to file
    x) Expand menu
    q) Quit
@@ -291,7 +297,7 @@ configuration menu displays.
 13. Type `r` to return to the Main menu.
 
 14. If you want to change the default Class of Service settings for new
-features that are listed here, type `11` for Default Class of Service
+features that are listed here, type `12` for Default Class of Service
 Configuration. +
 Then type the appropriate number for the feature to be enabled or disabled.
 Changes you make here are reflected in the default COS configuration.
