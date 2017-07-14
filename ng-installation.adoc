@@ -1,0 +1,106 @@
+[[Zimbra-Network-NG-Modules-first-steps-guide]]
+= Zimbra Network NG Modules: First Steps
+
+This guides contains all information needed in order to switch to the new Zimbra Network NG modules from their legacy counterparts after upgrading to Zimbra 8.8.
+
+[[backup-ng]]
+Switching to Backup NG
+----------------------
+Switching to the new Backup NG is a simple process that will initialize the
+new backup system on a dedicated path.
+Until the initialization is completed, the old backup engine will be active.
+Old backup files will not be removed and the old backup and restore tools are
+still available via the usual CLI commands.
+
+[[backup-path-limitations]]
+Backup Path Limitations
+~~~~~~~~~~~~~~~~~~~~~~~
+In order to hold Backup NG data, a storage must comply to the following:
+
+* The storage must have a mountpoint on the system.
+** The "zimbra" user must of course have r/w permission on the path.
+* The data must be stored on a case-sensitive filesystem.
+
+Other than this, there are no hard limitations.
+
+[[backup-ng-initialisation]]
+Backup NG Initialization
+~~~~~~~~~~~~~~~~~~~~~~~~
+Before initializing the Backup NG module, make sure you have enough space on
+the storage you wish to store the backup in. The average size of the backup is
+50-70% of the nominal total quota of all mailboxes.
+
+To initialize the Backup NG module:
+
+* Access the Zimbra Administration Console.
+* Enter the "Network Modules NG" section on the left menu.
+* Enter the "Backup" section.
+* Set the "Backup Path" to whatever directory you wish to store your backup into.
+* Click on the "Initialize" button
+
+[[mobile-ng]]
+Switching to Mobile NG
+----------------------
+Switching to the new Mobile NG is a simple process that will activate the new
+mobile handlers, deactivate the old ones and switch the synchronization control
+over to Mobile NG from the legacy Zimbra Mobile.
+Until the initialization is completed, the old mobile engine will be active.
+
+[[what-happens-after-the-switch]]
+What happens after the switch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+After switching to Mobile NG, all existing syncstates will be invalidated,
+and all connected devices will automatically re-synchronize all of their data
+through the new engine.
+
+WARNING: Since the switch will force all connected devices to re-synchonize all
+of their data, make sure to alert your users beforehand to make sure that they have
+wifi coverage or enough traffic on their mobile data plans.
+
+The switch is completely transparent to end users, and no user interaction
+ will be prompted or required.
+
+[[mobile-ng-initialisation]]
+Mobile NG Initialization
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+To initialize the Mobile NG module:
+
+* Access the Zimbra Administration Console.
+* Enter the "Network Modules NG" section on the left menu.
+* Enter the "Mobile" section.
+* Click on the "Activate" button.
+
+[[hsm-ng]]
+Switching to HSM NG
+-------------------
+The HSM NG module will become active as soon as the upgrade to Zimbra 8.8 is
+completed, and does not require any interaction.
+
+Any old HSM policy, volume and volume configuration will be maintained.
+
+[[admin-ng]]
+Switching to Admin NG
+---------------------
+Switching to the new Admin NG module is a simple process that will migrate any
+relevant ACL information to the module's own configuration manager, clearing
+existing ACLs and ACEs from the system.
+
+The Admin NG module is significantly different than the old Delegated Administration engine.
+Please make sure to read the product's documentation and to only migrate to Admin NG if its featureset
+meets your needs.
+
+WARNING: Admin Migration is a one way only process. Once Admin NG is initialized
+it's not possible to go back to the old engine, so if you have customized or complex
+ACLs/ACEs consider whether switching or not carefully.
+
+[[admin-ng-initialisation]]
+Admin NG Initialization
+~~~~~~~~~~~~~~~~~~~~~~~
+
+To initialize the Admin NG module:
+
+* Access the Zimbra Administration Console.
+* Enter the "Network Modules NG" section on the left menu.
+* Enter the "Admin" section.
+* Click on the "Migrate" button.
