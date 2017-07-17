@@ -32,6 +32,12 @@ additional space for mail storage. The other nodes require 100MB.
 
 * Firewall Configuration should be set to “No firewall”.
 * RAID-5 is not recommended for installations with more than 100 accounts.
+|*Network Edition and Open Source supported Cloud platforms*
+|The following Cloud Platforms are supported:
+
+* Oracle Cloud
+* VMware vCloud Director
+* VMware vCloud Air
 
 |*Operating System ({product-edition-commercial})*
 |The following operating systems are supported:
@@ -42,9 +48,10 @@ additional space for mail storage. The other nodes require 100MB.
 * CentOS Linux 6 (64-bit), *patch level 4 or later is required*
 * Oracle Linux 7.2
 * Oracle Linux 6.6
+* Ubuntu 16.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.7.1 and above
 * Ubuntu 14.04 LTS Server Edition (64-bit)
 * Ubuntu 12.04.4 LTS Server Edition (64-bit) *running the saucy (3.11) or
-later kernel is required*.
+later kernel is required. Deprecated starting Zimbra Collaboration 8.8*. 
 +
 [NOTE]
 If the original install was done with
@@ -155,13 +162,13 @@ Recommended
 
 The following operating system/browser combinations are supported:
 
-Windows XP with required updates, Vista, Windows 7, or Windows 8 with
-one of the following:
+Windows XP with required updates, Vista, Windows 7, Windows 8 or Windows 10 with one of the following:
 
 * Internet Explorer 8.0 and higher
 ** IE8.x for XP
 ** IE9.x and higher for Vista/Windows 7
 ** IE10 and higher for Windows 8
+* Microsoft Edge, supported since ZCS 8.6 P4 and above
 * The latest stable release of:
 ** Firefox
 ** Safari
