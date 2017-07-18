@@ -75,6 +75,10 @@ endif::networkeditiondoc[]
 | Select the sub-menu for
   <<proxy_config,Proxy configuration>>
 
+| zimbra-imapd
+| Select the sub-menu for
+  <<imapd_config,IMAPD configuration>>
+
 ifdef::networkeditiondoc[]
 | Enable VMware HA
 | Toggle whether **VMware HA** is enabled or not - defaults to **no** +
@@ -472,6 +476,7 @@ own independent server
 | Proxy server mode | default https
 |========================
 
+[[imapd_config]]
 === IMAPD configuration
 
 IMAPD is an external IMAP[S] service that may be used as a
