@@ -6,7 +6,8 @@ include::settings.adoc[]
 The following tasks might need to be performed before you
 upgrade. After you review the tasks in this section, go to Upgrade
 Instructions. Be sure to read the
-https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0[release note] information before upgrading.
+https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0[release note]
+information before upgrading.
 
 [NOTE]
 ====
@@ -20,6 +21,14 @@ compatible with 2FA.
 Accordingly, it is recommended that 2FA is not enabled until all
 mailbox servers have been upgraded to 8.7.
 ====
+
+The following new services are available for installation at upgrade
+time. Please refer to the _{product-admin-guide}_ for more information
+and to determine if you wish to install them.
+
+- `zimbra-chat`
+- `zimbra-drive`
+- `zimbra-imapd`
 
 === Database Integrity Checking
 
