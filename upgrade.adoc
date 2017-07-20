@@ -485,7 +485,9 @@ httpclient_external_connmgr_tcp_nodelay
 include::ephemeral.adoc[]
 :leveloffset: -2
 
-
+:leveloffset: +2
+include::imapd.adoc[]
+:leveloffset: -2
 
 == Remove Current Version and Perform Clean Install of ZCS
 
