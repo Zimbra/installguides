@@ -56,4 +56,8 @@ include::uninstalling.adoc[]
 
 include::systemrequirements.adoc[]
 
+<<<
+
+include::ng-installation.adoc[]
+
 :leveloffset: -1
