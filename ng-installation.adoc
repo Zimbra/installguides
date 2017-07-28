@@ -87,7 +87,7 @@ relevant ACL information to the module's own configuration manager, clearing
 existing ACLs and ACEs from the system.
 
 The Admin NG module is significantly different than the old Delegated Administration engine.
-Please make sure to read the product's documentation and to only migrate to Admin NG if its featureset
+Please make sure to read the product's documentation and to only migrate to Admin NG if its feature set
 meets your needs.
 
 WARNING: Admin Migration is a one way only process. Once Admin NG is initialized
