@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.5">
-<meta name="author" content="vIn-Development, Not released">
+<meta name="generator" content="Asciidoctor 1.5.6">
+<meta name="author" content="v8.8.0, 2017-07-20">
 <title>Zimbra Collaboration Multi-Server Installation Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -90,13 +90,12 @@ strong,b{font-weight:bold;line-height:inherit}
 small{font-size:60%;line-height:inherit}
 code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
 ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
-ul,ol,ul.no-bullet,ol.no-bullet{margin-left:1.5em}
+ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
 ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
 ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
-ul.no-bullet{list-style:none}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -132,7 +131,11 @@ strong strong{font-weight:400}
 kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
 .keyseq kbd:first-child{margin-left:0}
 .keyseq kbd:last-child{margin-right:0}
-.menuseq,.menu{color:rgba(0,0,0,.8)}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
 b.button:before,b.button:after{position:relative;top:-1px;font-weight:400}
 b.button:before{content:"[";padding:0 3px 0 2px}
 b.button:after{content:"]";padding:0 2px 0 3px}
@@ -199,7 +202,7 @@ table.tableblock>caption.title{white-space:nowrap;overflow:visible;max-width:0}
 table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inherit}
 .admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
 .admonitionblock>table td.icon{text-align:center;width:80px}
-.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon img{max-width:initial}
 .admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
@@ -255,13 +258,13 @@ table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
 table.tableblock{max-width:100%;border-collapse:separate}
 table.tableblock td>.paragraph:last-child p>p:last-child,table.tableblock th>p:last-child,table.tableblock td>p:last-child{margin-bottom:0}
 table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
-table.grid-all th.tableblock,table.grid-all td.tableblock{border-width:0 1px 1px 0}
-table.grid-all tfoot>tr>th.tableblock,table.grid-all tfoot>tr>td.tableblock{border-width:1px 1px 0 0}
-table.grid-cols th.tableblock,table.grid-cols td.tableblock{border-width:0 1px 0 0}
-table.grid-all *>tr>.tableblock:last-child,table.grid-cols *>tr>.tableblock:last-child{border-right-width:0}
-table.grid-rows th.tableblock,table.grid-rows td.tableblock{border-width:0 0 1px 0}
-table.grid-all tbody>tr:last-child>th.tableblock,table.grid-all tbody>tr:last-child>td.tableblock,table.grid-all thead:last-child>tr>th.tableblock,table.grid-rows tbody>tr:last-child>th.tableblock,table.grid-rows tbody>tr:last-child>td.tableblock,table.grid-rows thead:last-child>tr>th.tableblock{border-bottom-width:0}
-table.grid-rows tfoot>tr>th.tableblock,table.grid-rows tfoot>tr>td.tableblock{border-width:1px 0 0 0}
+table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
+table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
+table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
+table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px 0}
+table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0 0}
+table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
+table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
 table.frame-all{border-width:1px}
 table.frame-sides{border-width:0 1px}
 table.frame-topbot{border-width:1px 0}
@@ -282,10 +285,12 @@ ul li ol{margin-left:1.5em}
 dl dd{margin-left:1.125em}
 dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
 ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
-ul.unstyled,ol.unnumbered,ul.checklist,ul.none{list-style-type:none}
-ul.unstyled,ol.unnumbered,ul.checklist{margin-left:.625em}
-ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1em;font-size:.85em}
-ul.checklist li>p:first-child>input[type="checkbox"]:first-child{width:1em;position:relative;top:1px}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
 ul.inline{margin:0 auto .625em auto;margin-left:-1.375em;margin-right:0;padding:0;list-style:none;overflow:hidden}
 ul.inline>li{list-style:none;float:left;margin-left:1.375em;display:block}
 ul.inline>li>*{display:block}
@@ -302,7 +307,8 @@ ol.lowergreek{list-style-type:lower-greek}
 td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
 td.hdlist1{font-weight:bold;padding-bottom:1.25em}
 .literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
-.colist>table tr>td:first-of-type{padding:0 .75em;line-height:1}
+.colist>table tr>td:first-of-type{padding:.4em .75em 0 .75em;line-height:1;vertical-align:top}
+.colist>table tr>td:first-of-type img{max-width:initial}
 .colist>table tr>td:last-of-type{padding:.25em 0}
 .thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
 .imageblock.left,.imageblock[style*="float: left"]{margin:.25em .625em 1.25em 0}
@@ -365,6 +371,7 @@ div.unbreakable{page-break-inside:avoid}
 .yellow{color:#bfbf00}
 .yellow-background{background-color:#fafa00}
 span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
 .admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
 .admonitionblock td.icon .icon-note:before{content:"\f05a";color:#19407c}
 .admonitionblock td.icon .icon-tip:before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
@@ -515,7 +522,7 @@ table.CodeRay td.code>pre{padding:0}
 <div id="header">
 <h1>Zimbra Collaboration Multi-Server Installation Guide</h1>
 <div class="details">
-<span id="author" class="author">vIn-Development, Not released</span><br>
+<span id="author" class="author">v8.8.0, 2017-07-20</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -554,6 +561,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#snmp_config">Snmp configuration</a></li>
 <li><a href="#store_config">Store configuration</a></li>
 <li><a href="#proxy_config">Proxy configuration</a></li>
+<li><a href="#imapd_config">IMAPD configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -598,6 +606,12 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel3">
 <li><a href="#_installing_on_the_mta_server">Installing on the MTA Server</a></li>
 <li><a href="#_installing_on_a_separate_server">Installing on a separate server</a></li>
+</ul>
+</li>
+<li><a href="#_installing_zimbra_imapd">Installing Zimbra IMAPD</a>
+<ul class="sectlevel3">
+<li><a href="#_installing_on_the_mailbox_server">Installing on the Mailbox Server</a></li>
+<li><a href="#_installing_on_a_separate_server_2">Installing on a separate server</a></li>
 </ul>
 </li>
 <li><a href="#_installing_zimbra_archiving_package">Installing zimbra-archiving Package</a></li>
@@ -704,6 +718,28 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 </ul>
 </li>
+<li><a href="#Zimbra-Network-NG-Modules-first-steps-guide">Zimbra Network NG Modules: First Steps</a>
+<ul class="sectlevel2">
+<li><a href="#backup-ng">Switching to Backup NG</a>
+<ul class="sectlevel3">
+<li><a href="#backup-path-limitations">Backup Path Limitations</a></li>
+<li><a href="#backup-ng-initialisation">Backup NG Initialization</a></li>
+</ul>
+</li>
+<li><a href="#mobile-ng">Switching to Mobile NG</a>
+<ul class="sectlevel3">
+<li><a href="#what-happens-after-the-switch">What happens after the switch</a></li>
+<li><a href="#mobile-ng-initialisation">Mobile NG Initialization</a></li>
+</ul>
+</li>
+<li><a href="#hsm-ng">Switching to HSM NG</a></li>
+<li><a href="#admin-ng">Switching to Admin NG</a>
+<ul class="sectlevel3">
+<li><a href="#admin-ng-initialisation">Admin NG Initialization</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -751,7 +787,7 @@ functioning email system based on Zimbra’s messaging technology.</p>
 </div>
 <div class="paragraph">
 <p>This guide covers the installation of
-Zimbra Collaboration Network Edition In-Development.</p>
+Zimbra Collaboration Network Edition 8.8.0.</p>
 </div>
 <div class="sect2">
 <h3 id="Audience">Audience</h3>
@@ -1425,6 +1461,11 @@ process. The table below describes the menu options.</p>
   <a href="#proxy_config">Proxy configuration</a></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zimbra-imapd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Select the sub-menu for
+  <a href="#imapd_config">IMAPD configuration</a></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enable VMware HA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Toggle whether <strong>VMware HA</strong> is enabled or not - defaults to <strong>no</strong><br>
   VMware HA Clustering Heartbeat is only available when running within a
@@ -1464,6 +1505,9 @@ introduce new features to your users.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>x</strong>) Expand menu</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Expand menus to see the underlying options</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p><strong>q</strong>) Quit</p>
+</div></div></td>
 </tr>
 </tbody>
 </table>
@@ -2129,6 +2173,57 @@ own independent server</p></td>
 </tbody>
 </table>
 </div>
+<div class="sect4">
+<h5 id="imapd_config">IMAPD configuration</h5>
+<div class="paragraph">
+<p>IMAPD is an external IMAP[S] service that may be used as a
+replacement for the embedded IMAP[S] service that runs inside of
+<code>mailboxd</code>.  It would normally not be required with a single-server
+installation.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 15%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Server Configured</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Menu Item</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="3"><p class="tableblock"><strong>zimbra-imapd</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">mailbox server or<br>
+independent server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add to upstream IMAP Servers?:</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>default <code>no</code>.  If <code>yes</code>, the
+following global config settings will be applied:</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This server will be added to the list of <code>zimbraReverseProxyUpstreamImapServers</code></p>
+</li>
+<li>
+<p>Embedded IMAP[S] servers will be disabled.</p>
+</li>
+</ul>
+</div>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -2709,7 +2804,7 @@ component(s) to install, and use the menu to configure the system.</p>
 </div>
 <div class="paragraph">
 <p>When the server installation is complete after final set-up and server
-nnconfiguration steps are run, the servers are started and the status is
+configuration steps are run, the servers are started and the status is
 displayed.</p>
 </div>
 <div class="paragraph">
@@ -2749,6 +2844,9 @@ webapp services (mailstore server + UI server)</p>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p>ZCS IMAPD server(s)</p>
 </li>
 </ol>
 </div>
@@ -2929,6 +3027,7 @@ Operations logged to /tmp/install.log.y1YeCSI5
 Checking for existing installation...
     zimbra-chat...NOT FOUND
     zimbra-drive...NOT FOUND
+    zimbra-imapd...NOT FOUND
     zimbra-ldap...NOT FOUND
     zimbra-logger...NOT FOUND
     zimbra-mta...NOT FOUND
@@ -2942,6 +3041,7 @@ Checking for existing installation...
     zimbra-proxy...NOT FOUND
     zimbra-archiving...NOT FOUND
     zimbra-core...NOT FOUND
+
 .
 .
 .</code></pre>
@@ -2996,6 +3096,7 @@ Found zimbra-convertd (local)
 Found zimbra-memcached (repo)
 Found zimbra-proxy (local)
 Found zimbra-archiving (local)
+Found zimbra-imapd (local)
 Found zimbra-chat (repo)
 Found zimbra-drive (repo)
 
@@ -3111,6 +3212,8 @@ Install zimbra-archiving [N] N
 Install zimbra-chat [Y] N
 
 Install zimbra-drive [Y] N
+
+Install zimbra-imapd [Y] N
 
 Checking required space for zimbra-core
 
@@ -3539,6 +3642,8 @@ Install zimbra-archiving [N] Y
 Install zimbra-chat [Y] Y
 
 Install zimbra-drive [Y] Y
+
+Install zimbra-imapd [Y] N
 
 Checking required space for zimbra-core
 Checking space for zimbra-store
@@ -4706,6 +4811,264 @@ press <em>Enter</em>.</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="_installing_zimbra_imapd">Installing Zimbra IMAPD</h3>
+<div class="paragraph">
+<p>Installing the <code>zimbra-imapd</code> package is optional, but recommended for
+scalable multi-server deployment. Zimbra imapd is normally installed
+on the mailbox server or can be configured on a separate server. Zimbra
+imapd can be installed on more than one server.</p>
+</div>
+<div class="sect3">
+<h4 id="_installing_on_the_mailbox_server">Installing on the Mailbox Server</h4>
+<div class="paragraph">
+<p>If you are installing <code>zimbra-imapd</code> on the mailbox server, select the
+<code>zimbra-imapd</code> package. Follow the
+installation process for <a href="#_install_zimbra_mailbox_services">Install Zimbra Mailbox Services</a>.
+After Step 11, configure the Zimbra-imapd.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>On the mailbox server, select to install the <code>zimbra-imapd</code> packages,
+type <code>y</code> and press <strong>Enter</strong> to install the selected package.</p>
+</li>
+<li>
+<p>The <em>Main</em> menu displays the default entries for the Zimbra component
+you are installing. Select <strong>IMAPD Configuration</strong> menu. You can modify
+any of the values.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>IMAPD configuration
+
+   1) Status:                                  Enabled
+   2) Add to upstream IMAP Servers?:           no
+
+Select, or 'r' for previous menu [r] 2</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Type <code>1</code> to disable the IMAPD process on this machine.</p>
+</li>
+<li>
+<p>Type <code>2</code> to add the server to the upstream IMAP Servers list.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Return to <a href="#_install_zimbra_mailbox_services">Install Zimbra Mailbox Services</a>, step 12,
+to continue the server installation.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_installing_on_a_separate_server_2">Installing on a separate server</h4>
+<div class="paragraph">
+<p>The LDAP host name and the Zimbra LDAP password must be known to the
+imapd server. If not, the imapd server cannot contact the LDAP server
+and the installation fails.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Follow steps 1 through 4 in <a href="#starting_multiple_server_install">Starting the Installation Process</a>
+to open a SSH session to the server, log on to the server as
+root, and unpack the Zimbra software.</p>
+</li>
+<li>
+<p>Select to install the <code>zimbra-imapd</code> package as
+shown in the following screen shot example.
+The other packages should be marked <code>N</code>.</p>
+<div class="openblock">
+<div class="content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If SNMP is used, the <code>zimbra-snmp</code> package must also be
+installed.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>Select the packages to install
+
+Install zimbra-ldap [Y] N
+Install zimbra-logger [Y] N
+Install zimbra-mta [Y] N
+Install zimbra-dnscache [N] N
+Install zimbra-snmp [Y] N
+Install zimbra-store [Y] N
+Install zimbra-apache [Y] N
+Install zimbra-spell [Y] N
+Install zimbra-convertd [N] N
+Install zimbra-memcached [N] N
+Install zimbra-proxy [N] N
+Install zimbra-archiving [N] N
+Install zimbra-imapd [N] <strong>Y</strong>
+Checking required space for zimbra-core
+
+Installing:
+    zimbra-core
+    zimbra-imapd
+
+This system will be modified. Continue [N] <strong>Y</strong>
+Configuration section</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Type <code>Y</code>, and press <em>Enter</em> to install the selected package.</p>
+</li>
+<li>
+<p>The <em>Main</em> menu displays. Type <code>1</code> and press <em>Enter</em> to go to the <strong>Common
+Configuration</strong> menu.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The mailbox server hostname is displayed. You must change the LDAP
+master host name and password to be the values configured on the LDAP
+server.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Type <code>2</code>, press <em>Enter</em>, and type the LDAP host
+name. (<code>ldap-1.example.com</code>, in this example.)</p>
+</li>
+<li>
+<p>Type <code>4</code>, press <em>Enter</em>, and type the LDAP password.</p>
+<div class="paragraph">
+<p>After you set these values, the server immediately contacts the LDAP
+server. If it cannot contact the server, you cannot proceed.</p>
+</div>
+</li>
+<li>
+<p>Type 7 to set the correct time zone</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Type <code>r</code> to return to the Main menu.</p>
+</li>
+<li>
+<p>Type <code>2</code> to select <code>zimbra-imapd</code>.</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>Main menu
+
+1) Common Configuration:
+        +Hostname:                              localhost
+        +Ldap master host:                      ldap-1.example.com
+        +Ldap port:                             389
+        +Ldap Admin password:                   set
+        +LDAP Base DN:                          cn=zimbra
+        +Store ephemeral attributes outside Ldap: no
+        +Secure interprocess communications:    yes
+        +TimeZone:                              (GMT-08.00) Pacific Time (US &amp; Canada)
+        +IP Mode:                               ipv4
+        +Default SSL digest:                    sha256
+
+2) zimbra-imapd:                              Enabled
+s) Save config to file
+x) Expand menu
+q) Quit
+
+Select, or 'r' for previous menu [r] 2</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>The <strong>IMAPD Configuration</strong> menu displays. You can modify any of the
+values.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>By default the IMAPD service is enabled when it is selected for installation.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+No IMAP sessions will be routed to the IMAPD server unless it is added to the multi-valued
+<code>zimbraReverseProxyUpstreamImapServers</code> LDAP attribute.  This can be done using the <code>zmprov</code> command
+at any time after the server is installed and does not have to be done during installation.
+After adding the new IMAPD node to <code>zimbraReverseProxyUpstreamImapServers</code>, the globalconfig LDAP
+cache must be flushed on all servers acting as lookup targets in order for them to pick up the change.
+This can be done with the command <code>zmprov flushCache -a config</code>. To verify that this has taken effect,
+make sure that the new IMAPD node is listed in the output of <code>zmprov gacf zimbraReverseProxyUpstreamImapServers</code>,
+when run from a lookup target server.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>IMAPD configuration
+
+   1) Status:                                  Enabled
+   2) Add to upstream IMAP Servers?:           no</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Type <code>r</code> to return to the <em>Main</em> menu.</p>
+</li>
+<li>
+<p>When the imapd server is configured, return to the <em>Main</em> menu and
+type <code>a</code> to apply the configuration changes. Press <em>Enter</em> to save the
+configuration data.</p>
+</li>
+<li>
+<p>When <strong>Save Configuration data to a file</strong> appears, press <em>Enter</em>.</p>
+</li>
+<li>
+<p>The next request asks where to save the files. To accept the
+default, press <em>Enter</em>. To save the files to another directory, enter
+the directory and then press <em>Enter</em>.</p>
+</li>
+<li>
+<p>When <strong>The system will be modified - continue?</strong> appears, type <code>y</code> and
+press <em>Enter</em>.</p>
+</li>
+<li>
+<p>When <strong>Installation complete - press return to exit</strong> displays, press
+<em>Enter</em>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The installation of the imapd server is complete.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_installing_zimbra_archiving_package">Installing zimbra-archiving Package</h3>
 <div class="paragraph">
 <p>Installing the <code>zimbra-archiving</code> package is optional. This package
@@ -4751,6 +5114,7 @@ Install zimbra-proxy [N] N
 Install zimbra-archiving [N] <strong>Y</strong>
 Install zimbra-chat [Y] N
 Install zimbra-drive [Y] N
+Install zimbra-imapd [Y] N
 
 Installing:
     zimbra-core
@@ -5213,7 +5577,7 @@ guides are available from the Administration Console Help Desk.</p>
 <div class="sect3">
 <h4 id="_ephemeral_data_migration">Ephemeral Data Migration</h4>
 <div class="paragraph">
-<p>Versions of Zimbra prior to In-Development stored
+<p>Versions of Zimbra prior to 8.8.0 stored
 <em>ephemeral data</em> in <em>LDAP</em>.  Examples of <em>ephemeral data</em> include:</p>
 </div>
 <div class="ulist">
@@ -5230,7 +5594,7 @@ guides are available from the Administration Console Help Desk.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Zimbra Collaboration version In-Development introduced the ability to
+<p>Zimbra Collaboration version 8.8.0 introduced the ability to
 store <em>ephemeral data</em> in an external service such as
 <a href="http://ssdb.io/">SSDB</a>. This is an optional feature; however, it
 can improve <em>LDAP</em> performance and stability.</p>
@@ -7028,6 +7392,25 @@ additional space for mail storage. The other nodes require 100MB.</p>
 </div></div></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Network Edition and Open Source supported Cloud platforms</strong></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The following Cloud Platforms are supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Oracle Cloud</p>
+</li>
+<li>
+<p>VMware vCloud Director</p>
+</li>
+<li>
+<p>VMware vCloud Air</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Operating System (Network Edition)</strong></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>The following operating systems are supported:</p>
@@ -7053,11 +7436,14 @@ additional space for mail storage. The other nodes require 100MB.</p>
 <p>Oracle Linux 6.6</p>
 </li>
 <li>
+<p>Ubuntu 16.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.7.1 and above</p>
+</li>
+<li>
 <p>Ubuntu 14.04 LTS Server Edition (64-bit)</p>
 </li>
 <li>
 <p>Ubuntu 12.04.4 LTS Server Edition (64-bit) <strong>running the saucy (3.11) or
-later kernel is required</strong>.</p>
+later kernel is required. Deprecated starting Zimbra Collaboration 8.8</strong>.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -7359,8 +7745,7 @@ one of the following:</p>
 <p>The following operating system/browser combinations are supported:</p>
 </div>
 <div class="paragraph">
-<p>Windows XP with required updates, Vista, Windows 7, or Windows 8 with
-one of the following:</p>
+<p>Windows XP with required updates, Vista, Windows 7, Windows 8 or Windows 10 with one of the following:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -7379,6 +7764,9 @@ one of the following:</p>
 </li>
 </ul>
 </div>
+</li>
+<li>
+<p>Microsoft Edge, supported since ZCS 8.6 P4 and above</p>
 </li>
 <li>
 <p>The latest stable release of:</p>
@@ -7796,6 +8184,197 @@ that can be purchased or downloaded for free. An example of a free SSH
 client software is PuTTY, a software implementation of SSH for Win32 and
 Unix platforms. To download a copy go to <a href="http://putty.nl/">http://putty.nl</a></p>
 </div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Zimbra-Network-NG-Modules-first-steps-guide">Zimbra Network NG Modules: First Steps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This guides contains all information needed in order to switch to the new Zimbra Network NG modules from their legacy counterparts after upgrading to Zimbra 8.8.</p>
+</div>
+<div class="sect2">
+<h3 id="backup-ng">Switching to Backup NG</h3>
+<div class="paragraph">
+<p>Switching to the new Backup NG is a simple process that will initialize the
+new backup system on a dedicated path.
+Until the initialization is completed, the old backup engine will be active.
+Old backup files will not be removed and the old backup and restore tools are
+still available via the usual CLI commands.</p>
+</div>
+<div class="sect3">
+<h4 id="backup-path-limitations">Backup Path Limitations</h4>
+<div class="paragraph">
+<p>In order to hold Backup NG data, a storage must comply to the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The storage must have a mountpoint on the system.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The "zimbra" user must of course have r/w permission on the path.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The data must be stored on a case-sensitive filesystem.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Other than this, there are no hard limitations.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="backup-ng-initialisation">Backup NG Initialization</h4>
+<div class="paragraph">
+<p>Before initializing the Backup NG module, make sure you have enough space on
+the storage you wish to store the backup in. The average size of the backup is
+50-70% of the nominal total quota of all mailboxes.</p>
+</div>
+<div class="paragraph">
+<p>To initialize the Backup NG module:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Access the Zimbra Administration Console.</p>
+</li>
+<li>
+<p>Enter the "Network Modules NG" section on the left menu.</p>
+</li>
+<li>
+<p>Enter the "Backup" section.</p>
+</li>
+<li>
+<p>Set the "Backup Path" to whatever directory you wish to store your backup into.</p>
+</li>
+<li>
+<p>Click on the "Initialize" button</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mobile-ng">Switching to Mobile NG</h3>
+<div class="paragraph">
+<p>Switching to the new Mobile NG is a simple process that will activate the new
+mobile handlers, deactivate the old ones and switch the synchronization control
+over to Mobile NG from the legacy Zimbra Mobile.
+Until the initialization is completed, the old mobile engine will be active.</p>
+</div>
+<div class="sect3">
+<h4 id="what-happens-after-the-switch">What happens after the switch</h4>
+<div class="paragraph">
+<p>After switching to Mobile NG, all existing syncstates will be invalidated,
+and all connected devices will automatically re-synchronize all of their data
+through the new engine.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Since the switch will force all connected devices to re-synchonize all
+of their data, make sure to alert your users beforehand to make sure that they have
+wifi coverage or enough traffic on their mobile data plans.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The switch is completely transparent to end users, and no user interaction
+ will be prompted or required.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mobile-ng-initialisation">Mobile NG Initialization</h4>
+<div class="paragraph">
+<p>To initialize the Mobile NG module:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Access the Zimbra Administration Console.</p>
+</li>
+<li>
+<p>Enter the "Network Modules NG" section on the left menu.</p>
+</li>
+<li>
+<p>Enter the "Mobile" section.</p>
+</li>
+<li>
+<p>Click on the "Activate" button.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="hsm-ng">Switching to HSM NG</h3>
+<div class="paragraph">
+<p>The HSM NG module will become active as soon as the upgrade to Zimbra 8.8 is
+completed, and does not require any interaction.</p>
+</div>
+<div class="paragraph">
+<p>Any old HSM policy, volume and volume configuration will be maintained.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="admin-ng">Switching to Admin NG</h3>
+<div class="paragraph">
+<p>Switching to the new Admin NG module is a simple process that will migrate any
+relevant ACL information to the module&#8217;s own configuration manager, clearing
+existing ACLs and ACEs from the system.</p>
+</div>
+<div class="paragraph">
+<p>The Admin NG module is significantly different than the old Delegated Administration engine.
+Please make sure to read the product&#8217;s documentation and to only migrate to Admin NG if its feature set
+meets your needs.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Admin Migration is a one way only process. Once Admin NG is initialized
+it&#8217;s not possible to go back to the old engine, so if you have customized or complex
+ACLs/ACEs consider whether switching or not carefully.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="admin-ng-initialisation">Admin NG Initialization</h4>
+<div class="paragraph">
+<p>To initialize the Admin NG module:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Access the Zimbra Administration Console.</p>
+</li>
+<li>
+<p>Enter the "Network Modules NG" section on the left menu.</p>
+</li>
+<li>
+<p>Enter the "Admin" section.</p>
+</li>
+<li>
+<p>Click on the "Migrate" button.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -7803,7 +8382,7 @@ Unix platforms. To download a copy go to <a href="http://putty.nl/">http://putty
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-05-09 12:21:51 CDT
+Last updated 2017-07-28 12:11:57 CDT
 </div>
 </div>
 </body>
