@@ -19,8 +19,23 @@ performance in each JVM. The separation will improve the robustness of
 the system. However, this needs to be balanced against the additional
 overhead of communication between the JVMs.
 
+[NOTE]
+--
+If the `zimbra-imapd` package is selected for installation
+during an upgrade, it will be installed, but not configured to
+start. To enable it to start, you much update the following global
+configuration options:
+
+* `zimbraRemoteImapServerEnabled`
+* `zimbraRemoteImapSSLServerEnabled`
+
+----
+zmprov mcf zimbraRemoteImapServerEnabled TRUE
+zmprov mcf zimbraRemoteImapSSLServerEnabled TRUE
+zmimapdctl start
+----
+--
+
 Please refer to the _{product-admin-guide}_ for help with
 configuration.
-
-
 
