@@ -47,4 +47,8 @@ include::multi-server-ldap-replication.adoc[]
 
 include::systemrequirements.adoc[]
 
+<<<
+
+include::ng-installation.adoc[]
+
 :leveloffset: -1
