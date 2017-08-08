@@ -75,6 +75,10 @@ endif::networkeditiondoc[]
 | Select the sub-menu for
   <<proxy_config,Proxy configuration>>
 
+| zimbra-imapd
+| Select the sub-menu for
+  <<imapd_config,IMAPD configuration>>
+
 ifdef::networkeditiondoc[]
 | Enable VMware HA
 | Toggle whether **VMware HA** is enabled or not - defaults to **no** +
@@ -470,4 +474,27 @@ own independent server
 | HTTP proxy port | default 80
 | HTTPS proxy port | default 443
 | Proxy server mode | default https
+|========================
+
+[[imapd_config]]
+=== IMAPD configuration
+
+IMAPD is an external IMAP[S] service that may be used as a
+replacement for the embedded IMAP[S] service that runs inside of
+`mailboxd`.  It would normally not be required with a single-server
+installation.
+
+[cols="5,15,80a",options="header",]
+|========================
+|*Server Configured* |*Menu Item* |*Description*
+
+3+^|*zimbra-imapd*
+.1+.^|mailbox server or +
+independent server
+| Add to upstream IMAP Servers?: | default `no`.  If `yes`, the
+following global config settings will be applied:
+--
+- This server will be added to the list of `zimbraReverseProxyUpstreamImapServers`
+- Embedded IMAP[S] servers will be disabled.
+--
 |========================
