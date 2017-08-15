@@ -98,7 +98,7 @@ Linux zre-ubuntu12-64 3.11.0-17-generic #31~precise1-Ubuntu SMP Tue Feb 4
   can reach the Zimbra package servers.
 ====
 
-* Red Hat® Enterprise Linux® 7, AS/ES (64-bit) 
+* RedHat® Enterprise Linux® 7, AS/ES (64-bit)
 * CentOS Linux® 7 (64-bit)
 * Red Hat Enterprise Linux 6, AS/ES (64-bit), patch level 4 or later is required
 * CentOS Linux 6 (64-bit), patch level 4 or later is required
@@ -150,48 +150,49 @@ upgrading to onto the replica servers or onto the multi-master server
 before you upgrade to {product-abbrev} 8.0.4 and later.
 See https://bugzilla.zimbra.com/show_bug.cgi?id=81048[Bug 81048].
 
-.  On the master _LDAP_ server, perform a software installation only of
+  . On the master _LDAP_ server, perform a software installation only of
 {product-abbrev} 8.0.4 and later.
 +
 ----
 ./install.sh -s
 ----
 +
-. On each replica or additional master _LDAP_ server in MMR mode, as
+  . On each replica or additional master _LDAP_ server in MMR mode, as
 the `zimbra` user:
-.. Stop the server via one of the following commands:
-... `ldap stop`
-... `zmcontrol stop`
-.. Move the `zimbra` schema out of the way
+    .. Stop the server via one of the following commands:
+      ... `ldap stop`
+      ... `zmcontrol stop`
+    .. Move the `zimbra` schema out of the way
 +
 ----
 cd /opt/zimbra/data/ldap/config/cn=config/cn=schema
 mv cn={4}zimbra.ldif /opt/zimbra/data/ldap/cn={4}zimbra.ldif.dead
 ----
 +
-.. Copy the schema from the master _LDAP_ server.
+    .. Copy the schema from the master _LDAP_ server.
 +
 ----
 scp root@<master>:/opt/zimbra/openldap/etc/openldap/schema/zimbra.ldif cn={4}zimbra.ldif
 ----
 +
-.. Edit cn={4}zimbra.ldif to change the following two lines:
+    .. Edit cn={4}zimbra.ldif to change the following two lines:
 +
 ----
 dn: cn=zimbra,cn=schema,cn=config     ------->     dn: cn={4}zimbra
 cn: zimbra                            ------->     cn: {4}zimbra
 ----
 +
-.. Start the server via one of the following commands:
-... `ldap start`
-... `zmcontrol start`
-. On the master _LDAP_ server run:
+    .. Start the server via one of the following commands:
+      ... `ldap start`
+      ... `zmcontrol start`
+
+  . On the master _LDAP_ server run:
 +
 ----
 /opt/zimbra/libexec/zmsetup.pl
 ----
 +
-. On each replica server run:
+  . On each replica server run:
 +
 ----
  ./install.sh
@@ -318,13 +319,13 @@ include::upgrade-process-inc.adoc[]
 Upgrade the servers in the following order. Update each server one at
 a time, following the instructions under <<_process_2>> below.
 
-. _LDAP_ master server. The _LDAP_ master servers must all be upgraded
+  . _LDAP_ master server. The _LDAP_ master servers must all be upgraded
   before proceeding, and they must be running as you upgrade the other
   servers.
-. _LDAP_ replicas 
-. _MTA_ servers - see <<_using_lmdb_as_the_supported_back_end_for_on_disk_database_maps>>.
-. Proxy servers
-. Mailstore servers 
+  . _LDAP_ replicas
+  . _MTA_ servers - see <<_using_lmdb_as_the_supported_back_end_for_on_disk_database_maps>>.
+  . Proxy servers
+  . Mailstore servers
 
 include::upgrade-process-inc.adoc[]
 
@@ -345,9 +346,9 @@ modifications will be lost on upgrade.
 To restore the modifications post-upgrade, the following steps need to
 be performed:
 
-. Run postmap against the database input file to generate an LMDB
+  . Run postmap against the database input file to generate an LMDB
 database.
-. It will be necessary to iterate through the postconf keys that have
+  . It will be necessary to iterate through the postconf keys that have
 `hash:/path/to/db` values and update them in LDAP to use
 `lmdb:/path/to/db` values instead.
 
@@ -373,9 +374,9 @@ addressed.
   where `+++$$+++` is the process
   ID of the upgrade script. See https://bugzilla.zimbra.com/show_bug.cgi?id=81167[Bug 81167].
 * You should run `zmldapupgrade -b 66387` after upgrading.  The
-`zimbraAllowFromAddress` attribute cannot be set for internal accounts
- or distribution lists. Running this script will change
- `zimbraAllowFromAddress` values to grants.
+  `zimbraAllowFromAddress` attribute cannot be set for internal accounts
+  or distribution lists. Running this script will change
+  `zimbraAllowFromAddress` values to grants.
 +
 [NOTE]
 ====
@@ -402,7 +403,7 @@ To check for expired certificates, run the following command as the
 ----
 {product-name} requires a valid self-signed or commercial SSL
 certificate for communication between some components. The self-signed
-certificates that are automatically created by the 
+certificates that are automatically created by the
 {product-short} install have a default expiration.
 
 If you have a {product-name} installation that is over one year
