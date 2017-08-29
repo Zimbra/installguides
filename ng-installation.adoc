@@ -1,7 +1,7 @@
 [[Zimbra-Network-NG-Modules-first-steps-guide]]
 = Zimbra Network NG Modules: First Steps
 
-This guides contains all information needed in order to switch to the new Zimbra Network NG modules from their legacy counterparts after upgrading to Zimbra 8.8.
+This Guide contains all information needed to switch to the new Zimbra Network NG modules from their legacy counterparts after upgrading to Zimbra 8.8.
 
 [[backup-ng]]
 Switching to Backup NG
@@ -15,19 +15,17 @@ still available via the usual CLI commands.
 [[backup-path-limitations]]
 Backup Path Limitations
 ~~~~~~~~~~~~~~~~~~~~~~~
-In order to hold Backup NG data, a storage must comply to the following:
+To hold Backup NG data, a storage must comply to the following:
 
 * The storage must have a mountpoint on the system.
 ** The "zimbra" user must of course have r/w permission on the path.
 * The data must be stored on a case-sensitive filesystem.
 
-Other than this, there are no hard limitations.
-
 [[backup-ng-initialisation]]
 Backup NG Initialization
 ~~~~~~~~~~~~~~~~~~~~~~~~
 Before initializing the Backup NG module, make sure you have enough space on
-the storage you wish to store the backup in. The average size of the backup is
+the storage where you will store the backup. The average size of the backup is
 50-70% of the nominal total quota of all mailboxes.
 
 To initialize the Backup NG module:
@@ -35,19 +33,19 @@ To initialize the Backup NG module:
 * Access the Zimbra Administration Console.
 * Enter the "Network Modules NG" section on the left menu.
 * Enter the "Backup" section.
-* Set the "Backup Path" to whatever directory you wish to store your backup into.
-* Click on the "Initialize" button
+* Set the "Backup Path" to the directory where you will store your backup.
+* Click the "Initialize" button - this will trigger a SmartScan to initialize the Backup Path
 
 [[mobile-ng]]
 Switching to Mobile NG
 ----------------------
 Switching to the new Mobile NG is a simple process that will activate the new
-mobile handlers, deactivate the old ones and switch the synchronization control
+mobile handlers and deactivate the old ones. This will also switch the synchronization control
 over to Mobile NG from the legacy Zimbra Mobile.
-Until the initialization is completed, the old mobile engine will be active.
+Until the initialization is complete, the old mobile engine will be active.
 
 [[what-happens-after-the-switch]]
-What happens after the switch
+What Happens after the Switch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 After switching to Mobile NG, all existing syncstates will be invalidated,
 and all connected devices will automatically re-synchronize all of their data
@@ -64,41 +62,41 @@ The switch is completely transparent to end users, and no user interaction
 Mobile NG Initialization
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-To initialize the Mobile NG module:
+To initialize Mobile NG:
 
 * Access the Zimbra Administration Console.
 * Enter the "Network Modules NG" section on the left menu.
 * Enter the "Mobile" section.
-* Click on the "Activate" button.
+* Click the "Activate" button.
 
 [[hsm-ng]]
 Switching to HSM NG
 -------------------
 The HSM NG module will become active as soon as the upgrade to Zimbra 8.8 is
-completed, and does not require any interaction.
+complete, and does not require any interaction.
 
 Any old HSM policy, volume and volume configuration will be maintained.
 
 [[admin-ng]]
 Switching to Admin NG
 ---------------------
-Switching to the new Admin NG module is a simple process that will migrate any
+Switching to the new Admin NG is a simple process that will migrate any
 relevant ACL information to the module's own configuration manager, clearing
 existing ACLs and ACEs from the system.
 
-The Admin NG module is significantly different than the old Delegated Administration engine.
-Please make sure to read the product's documentation and to only migrate to Admin NG if its feature set
+Admin NG is significantly different than the old Delegated Administration engine.
+Please read the product's documentation and only migrate to Admin NG if its feature set
 meets your needs.
 
 WARNING: Admin Migration is a one way only process. Once Admin NG is initialized
 it's not possible to go back to the old engine, so if you have customized or complex
-ACLs/ACEs consider whether switching or not carefully.
+ACLs/ACEs carefully consider whether or not to switch.
 
 [[admin-ng-initialisation]]
 Admin NG Initialization
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-To initialize the Admin NG module:
+To initialize Admin NG:
 
 * Access the Zimbra Administration Console.
 * Enter the "Network Modules NG" section on the left menu.
