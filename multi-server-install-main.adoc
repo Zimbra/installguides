@@ -1396,8 +1396,9 @@ The installation of the proxy server is complete.
 
 == Installing Zimbra IMAPD
 
-Installing the `zimbra-imapd` package is optional, but recommended for
-scalable multi-server deployment. {product-short} imapd is normally installed
+Installing the new `zimbra-imapd` package is optional, and is available
+as an unsupported beta if you want to test this beta product targeted
+for scalable multi-server deployment. {product-short} imapd is normally installed
 on the mailbox server or can be configured on a separate server. {product-short}
 imapd can be installed on more than one server.
 
