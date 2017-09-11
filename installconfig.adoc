@@ -85,8 +85,8 @@ endif::networkeditiondoc[]
   be installed on every Zimbra Store Server that is part of the Zimbra configuration.
 
 | zimbra-drive
-| Installing the Zimbra-Chat package is optional.
-  If you choose to install Zimbra-Chat for point-to-point text chat, it should
+| Installing the Zimbra-Drive package is optional.
+  If you choose to install Zimbra-Drive for file sync-and-share, it should
   be installed on every Zimbra Store Server that is part of the Zimbra configuration.
   Please bear in mind you will need a third party server running ownCloud or Nextcloud.
 
