@@ -49,8 +49,8 @@ These are ports typically available to mail clients.
 |993| imaps| mailbox / proxy| IMAP over TLS
 |995| pop3s| mailbox / proxy| POP3 over TLS
 |3443| https| proxy| User Certificate Connection Port (optional)
-|5222| XMPP| mailbox| Default server port
-|5223| XMPP| mailbox| Default legacy SSL port
+|5222| xmpp| mailbox| Default server port
+|5223| xmpp| mailbox| Default legacy SSL port
 |9071| https| proxy admin console| HTTP over TLS (optional)
 |===
 
@@ -62,7 +62,7 @@ These are ports typically only used by the Zimbra system itself.
 |389|ldap|ldap|LC(ldap_bind_url)
 |636|ldaps|ldaps|if enabled via LC(ldap_bind_url)
 |3310|-|mta/clamd|zimbraClamAVBindAddress
-|5269|XMPP|mailbox|Server-to-Server communication. Used between servers on the same cluster.
+|5269|xmpp|mailbox|Server-to-Server communications between servers on the same cluster.
 |7025|lmtp|mailbox|local mail delivery; zimbraLmtpBindAddress
 |7026|milter|mailbox|zimbra-milter; zimbraMilterBindAddress
 |7047|http|conversion server|Accessed by localhost by default; binds to '*'
