@@ -109,7 +109,7 @@ license usage. To find out more about {product-short} Archiving and Discovery,
 contact {product-short} sales.
 endif::networkeditiondoc[]
 
-* *{product-short} Chat:* This package should be installed on at least one
+* *{product-short} Chat:* Installing this package is optional. This package should be installed on at least one
 *{product-short}-Store* server. *{product-short} Chat includes a server extension with all 
 the necessary modules to run an embedded XMPP Server, and an End-User Zimlet which connects
 to the server extension and offer to the users a rich point-to-point text-chat conversations.
@@ -120,7 +120,7 @@ The {product-short} Chat package must be installed on the different *{product-sh
 while having a multi-server environment.
 +
 
-* *{product-short} Drive:* This package should be installed on at least one
+* *{product-short} Drive:* Installing this package is optional.This package should be installed on at least one
 *{product-short}-Store* server. *{product-short} Drive includes a server extension with all 
 the necessary modules to connect and authenticate *{product-short} Users against a ownCloud or
 NextCloud Server, and an End-User Zimlet which allow users to perform actions to the their docu-
