@@ -326,7 +326,7 @@ Select from menu, or press 'a' to apply config (? - help) a
 ....
 --
 
-16. When Save Configuration data to file appears, type "Yes" and press _Enter_.
+15. When Save Configuration data to file appears, type "Yes" and press _Enter_.
 +
 --
 ....
@@ -334,7 +334,7 @@ Save configuration data to a file? [Yes]
 ....
 --
 
-17. The next request asks where to save the files. To accept the
+16. The next request asks where to save the files. To accept the
 default, press "Enter". To save the files to another directory, enter the
 directory and then press Enter
 +
@@ -345,7 +345,7 @@ Saving config in /opt/zimbra/config.16039...done.
 ....
 --
 
-18. When "The system will be modified - continue?" appears, type "Yes" and
+17. When "The system will be modified - continue?" appears, type "Yes" and
 press _Enter_.
 +
 The server is modified. Installing all the components and configuring
