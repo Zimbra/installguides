@@ -270,7 +270,7 @@ including:
 * Microsoft Outlook using Exchange ActiveSync (EAS)
 
 [[Zimbra_Touch_Client]]
-== {product-short} Touch Client ({product-edition-commercial} Only)
+== *Deprecated* {product-short} Touch Client ({product-edition-commercial} Only)
 
 '''
 
