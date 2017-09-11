@@ -89,7 +89,7 @@ The `nc` utility must be installed prior to installation or upgrading.
 For Ubuntu systems, disable *AppArmor* and verify that the
 AppArmor service is not running before installing {product-name}.
 
-For Red Hat Enterprise, Fedora Core and SUSE operating systems, the
+For Red Hat Enterprise operating systems, the
 server must also have the following installed:
 
 * **NPTL**. Native POSIX Thread Library
