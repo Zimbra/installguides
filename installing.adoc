@@ -81,7 +81,7 @@ displays, press `enter` to continue. Your system will be configured to add
 the {product-short} packaging repository for *yum* or *apt-get* as appropriate
 so it can install the {product-short} 3rd party packages. 
 *{product-short} IMAPD is meant to be installed on a multi-server environment, with
-hundred of thousands of users, and it's still as Beta. {product-short} recommends
+hundred of thousands of users, and it's still a Beta Release. {product-short} recommends
 to only install it for demo and evaluation purposes.*
 * If installing *{product-short} Network Edition*, you will have the modules Archiving
 and Convertd as an option to add to your {product-short} installation.
