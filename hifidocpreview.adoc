@@ -21,12 +21,6 @@ yum install libreoffice
 yum install libreoffice-headless
 ----
 
-* For SLES, install libreoffice:
-
-----
-yast2 -i libreoffice
-----
-
 * For Ubuntu, install libreoffice:
 
 ----
