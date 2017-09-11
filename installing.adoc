@@ -327,7 +327,11 @@ Select from menu, or press 'a' to apply config (? - help) a
 ....
 --
 
+<<<<<<< HEAD
 16. When Save Configuration data to file appears, type "Yes" and press _Enter_.
+=======
+15. When Save Configuration data to file appears, type `Yes` and press _Enter_.
+>>>>>>> origin/jorge-review
 +
 --
 ....
@@ -335,8 +339,13 @@ Save configuration data to a file? [Yes]
 ....
 --
 
+<<<<<<< HEAD
 17. The next request asks where to save the files. To accept the
 default, press "Enter". To save the files to another directory, enter the
+=======
+16. The next request asks where to save the files. To accept the
+default, press _Enter_. To save the files to another directory, enter the
+>>>>>>> origin/jorge-review
 directory and then press Enter
 +
 --
@@ -346,7 +355,11 @@ Saving config in /opt/zimbra/config.16039...done.
 ....
 --
 
+<<<<<<< HEAD
 18. When "The system will be modified - continue?" appears, type "Yes" and
+=======
+17. When `The system will be modified - continue?` appears, type `Yes` and
+>>>>>>> origin/jorge-review
 press _Enter_.
 +
 The server is modified. Installing all the components and configuring
