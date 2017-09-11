@@ -125,7 +125,7 @@ a|Administrator Computers +
 
 * The latest stable release of:
 ** Firefox
-** Safari 
+** Safari
 ** Google Chrome
 
 '''Mac OS X 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, 10.11 or 10.12 with one of the following:'''
@@ -167,7 +167,7 @@ The following operating system/browser combinations are supported:
 
 * The latest stable release of:
 ** Firefox
-** Safari 
+** Safari
 ** Google Chrome
 
 '''Mac OS X 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, 10.11 or 10.12 with one of the following:'''
