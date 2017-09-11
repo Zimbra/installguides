@@ -79,6 +79,17 @@ endif::networkeditiondoc[]
 | Select the sub-menu for
   <<imapd_config,IMAPD configuration>>
 
+| zimbra-chat
+| Installing the Zimbra-Chat package is optional.
+  If you choose to install Zimbra-Chat for point-to-point text chat, it should
+  be installed on every Zimbra Store Server that is part of the Zimbra configuration.
+
+| zimbra-drive
+| Installing the Zimbra-Chat package is optional.
+  If you choose to install Zimbra-Chat for point-to-point text chat, it should
+  be installed on every Zimbra Store Server that is part of the Zimbra configuration.
+  Please bear in mind you will need a third party server running ownCloud or Nextcloud.
+
 ifdef::networkeditiondoc[]
 | Enable VMware HA
 | Toggle whether **VMware HA** is enabled or not - defaults to **no** +
