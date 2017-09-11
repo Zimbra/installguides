@@ -68,6 +68,7 @@ https://www.zimbra.com.
 |*Virtualization ({product-edition-commercial})*
 |The following hypervisors are supported:
 
+* VMware vSphere 6.x
 * VMware vSphere 5.x
 * VMware vSphere 4.x
 * XenServer 6.5
@@ -85,7 +86,7 @@ https://www.zimbra.com.
 |Netcat (nc) is required on all operating systems using {product-name}.
 The `nc` utility must be installed prior to installation or upgrading.
 
-For SUSE and Ubuntu systems, disable *AppArmor* and verify that the
+For Ubuntu systems, disable *AppArmor* and verify that the
 AppArmor service is not running before installing {product-name}.
 
 For Red Hat Enterprise, Fedora Core and SUSE operating systems, the
@@ -115,31 +116,26 @@ a|Administrator Computers +
  Other configurations may work.
 |The following operating system/browser combinations are supported:
 
-// TODO this looks well out of date.  How about Windows 10?  Edge browser?
-Windows XP with required updates, Vista, Windows 7, or Windows 8 with
-one of the following:
+*Windows Vista SP 2, Windows 7, Windows 8 or Windows 10 with one of the following:*
 
-* Internet Explorer 8.0 and higher
-** IE8.x for XP
-** IE9.x and higher for Vista/Windows 7
-** IE10 and higher for Windows 8
-* The latest stable release of:
+* Microsoft support is only available for Internet Explorer 11 or Microsoft Edge
+** IE11 and higher for Vista SP 2/Windows 7
+** IE11 and higher for Windows 8
+** IE11 or Microsoft Edge (Supported since ZCS 8.6 P4 and above) for Windows 10 
+
+*The latest stable release of:
 ** Firefox
-** Safari
+** Safari 
 ** Google Chrome
 
-Mac OS X 10.5, 10.6, 10.7, or 10.8 with one of the following:
+'''Mac OS X 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, 10.11 or 10.12 with one of the following:'''
+* Firefox
+* Safari
+* Chrome
 
-* The latest stable release of:
-** Firefox
-** Safari
-** Google Chrome
-
-Linux (Red Hat, Ubuntu, Fedora, or SUSE) with one of the following:
-
-* The latest stable release of:
-** Firefox
-** Google Chrome
+'''Linux with the latest stable release of one of the following:'''
+* Firefox
+* Google Chrome
 
 |*Administrator Console Monitor*
 |Display minimum resolution 1024 x 768
@@ -162,31 +158,26 @@ Recommended
 
 The following operating system/browser combinations are supported:
 
-Windows XP with required updates, Vista, Windows 7, Windows 8 or Windows 10 with one of the following:
+*Windows Vista SP 2, Windows 7, Windows 8 or Windows 10 with one of the following:*
 
-* Internet Explorer 8.0 and higher
-** IE8.x for XP
-** IE9.x and higher for Vista/Windows 7
-** IE10 and higher for Windows 8
-* Microsoft Edge, supported since ZCS 8.6 P4 and above
-* The latest stable release of:
+* Microsoft support is only available for Internet Explorer 11 or Microsoft Edge
+** IE11 and higher for Vista SP 2/Windows 7
+** IE11 and higher for Windows 8
+** IE11 or Microsoft Edge (Supported since ZCS 8.6 P4 and above) for Windows 10 
+
+*The latest stable release of:
 ** Firefox
-** Safari
+** Safari 
 ** Google Chrome
 
-// TODO El Capitan is 10.11 and that isn't even the latest...
-Mac OS X 10.5, 10.6, 10.7, or 10.8 with one of the following:
+'''Mac OS X 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, 10.11 or 10.12 with one of the following:'''
+* Firefox
+* Safari
+* Chrome
 
-* The latest stable release of:
-** Firefox
-** Safari
-** Google Chrome
-
-Linux (Red Hat, Ubuntu, Fedora, or SUSE) with one of the following:
-
-* The latest stable release of:
-** Firefox
-** Google Chrome
+'''Linux with the latest stable release of one of the following:'''
+* Firefox
+* Google Chrome
 
 |*End User Computers Using Other Clients*
 |Minimum
@@ -201,10 +192,10 @@ Recommended
 
 Operating system POP/IMAP combinations
 
-* Windows XP SP 3, Vista SP 2, Windows 7 with Outlook Express 6, Outlook
-2003, (MAPI), Thunderbird
-* Fedora Core 4 or later with Thunderbird
-* Mac OS X 10.4 or later with Apple Mail
+Windows Vista SP 2, Windows 7, Windows 8 or Windows 10 with one of the following:* 
+* Microsoft Outlook 2010, 2013 or 2016
+* Any Linux distribution with Thunderbird
+* Mac OS X 10.x with Apple Mail
 
 *Accessibility and Screen Readers* {product-provider} recommends that customers
 requiring use of screen readers for accessibility leverage the use of
@@ -212,18 +203,18 @@ the Standard {product-short} Web Client (HTML). {product-provider} continues to 
 improving the accessibility of this interface.
 
 [TIP]
-If users are presently using IE 6, {product-provider} strongly recommends that they upgrade
+If users are presently using IE 9 or 10, {product-provider} strongly recommends that they upgrade
 to the latest version of Internet Explorer for optimal performance with ZWC.
 
 |*Exchange Web Services*
 |EWS Clients
 
-* Outlook 2011 (MAC only)
-* Apple Desktop Clients (OS X, 10.8+)
+* Outlook 2011/2016 (MAC only)
+* Apple Desktop Clients (OS X, 10.x)
 
 EWS Interoperability
 
-* Exchange 2007+
+* Exchange 2010, 2013 or 2016
 
 |*Monitor*
 |Display minimum resolution: 1024 x 768
@@ -243,22 +234,20 @@ ifdef::networkeditiondoc[]
 * Windows 8
 * Windows 7
 * Vista
-* Windows XP with required updates
 +
 [IMPORTANT]
-Windows XP is deprecated. The 8.x series of Zimbra Collaboration is the last release to support
+Windows XP is deprecated. The 8.0.x series of Zimbra Collaboration is the last release to support
 Microsoft Outlook 2003 and Microsoft Windows XP
 
 |*Microsoft Outlook* a|
 * Outlook 2016: 32-bit and 64-bit editions of Microsoft Outlook are supported.
 * Outlook 2013: 32-bit and 64-bit editions of Microsoft Outlook are supported.
-* Outlook 2010: 32-bit and 64-bit editions of Microsoft Outlook are supported.
-* Outlook 2007: Client computers must have Microsoft Office Outlook 2007
-SP3 or later installed.
-* Outlook 2003: Client computers must have Microsoft Office Outlook 2003 SP3 or later installed.
-+
+* Outlook 2010: Client computers must have Microsoft Office Outlook 2010 SP2 or later installed. Important: Outlook 2010 is deprecated: The 8.8 series of Zimbra Collaboration is the last release to support Microsoft Outlook 2010
+* Outlook 2007: Client computers must have Microsoft Office Outlook 2007 SP2 or later installed. Important: Outlook 2007 is deprecated: The 8.6 series of Zimbra Collaboration is the last release to support Microsoft Outlook 2007
+* Outlook 2003: Client computers must have Microsoft Office Outlook 2003 SP3 or later installed. Important: Outlook 2003 is deprecated: The 8.0.x series of Zimbra Collaboration is the last release to support Microsoft Outlook 2003
+
 [IMPORTANT]
-Outlook 2003 is deprecated. The 8.x series of Zimbra Collaboration is the last release to
+Outlook 2003 is deprecated. The 8.0.x series of Zimbra Collaboration is the last release to
 support Microsoft Outlook 2003 and Microsoft Windows XP.
 |=======================================================================
 endif::networkeditiondoc[]
@@ -275,10 +264,10 @@ including:
 
 *Smartphone Operating Systems*:
 
-* iOS6, iOS7, iOS8, iOS9
-* Android 2.3 and above
-* Windows Mobile 6.0 and above
-* Microsoft Outlook using the Exchange ActiveSync (EAS)
+* iOS6, iOS7, iOS8, iOS9, iOS10
+* Android 4.x, 5.x, 6.x, 7.x and 8.x
+* Windows OS
+* Microsoft Outlook using Exchange ActiveSync (EAS)
 
 [[Zimbra_Touch_Client]]
 == {product-short} Touch Client ({product-edition-commercial} Only)
@@ -294,7 +283,7 @@ endif::networkeditiondoc[]
 
 ifdef::networkeditiondoc[]
 [[BES]]
-== Zimbra Connector for BlackBerry Enterprise Server ({product-edition-commercial} Only)
+== *Deprecated* Zimbra Connector for BlackBerry Enterprise Server ({product-edition-commercial} Only)
 
 {product-provider} Connector for BlackBerry Enterprise Server (ZCB) provides seamless,
 real-time synchronization of Zimbra user mailbox data to BlackBerry devices.
@@ -331,9 +320,9 @@ English, Spanish, French, Italian, Japanese, German, Portuguese
 |English
 
 |{product-short} Connector for Microsoft Outlook |Installer + Application/UI
-|Arabic, Basque (EU), Chinese (Simplified PRC and Traditional HK),
+|Arabic, Basque (EU), Catalan (EU), Chinese (Simplified PRC, Traditional HK, Taiwan),
 Danish, Dutch, English (AU, UK, US), French, French Canadian, German,
-Hindi, Hungarian, Italian, Japanese, Korean, Malay, Polish, Portuguese
+Hindi, Hungarian, Italian, Japanese, Korean, Malay, Norwegian, Polish, Portuguese
 (Brazil), Portuguese (Portugal), Romanian, Russian, Spanish, Swedish,
 Thai, Turkish, Ukrainian
 
@@ -347,11 +336,11 @@ Documentation |English
 [cols="15,15,70",]
 |=======================================================================
 |*Component* |*Category* |*Languages*
-|{product-short} Admin Console |Application |Arabic, Basque (EU), Chinese
-(Simplified PRC and Traditional HK), Danish, Dutch, English (AU, UK,
-US), French, French Canadian, German, Hindi, Hungarian, Italian,
-Japanese, Korean, Malay, Polish, Portuguese (Brazil), Portuguese
-(Portugal), Romanian, Russian, Spanish, Swedish, Turkish, Ukrainian
+|{product-short} Admin Console |Application |Arabic, Basque (EU), Catalan (EU), Chinese (Simplified PRC, Traditional HK, Taiwan),
+Danish, Dutch, English (AU, UK, US), French, French Canadian, German,
+Hindi, Hungarian, Italian, Japanese, Korean, Malay, Norwegian, Polish, Portuguese
+(Brazil), Portuguese (Portugal), Romanian, Russian, Spanish, Swedish,
+Thai, Turkish, Ukrainian
 
 |{product-short} Admin Console Online Help (HTML) |Feature Documentation |English
 
