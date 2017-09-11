@@ -123,7 +123,7 @@ a|Administrator Computers +
 ** IE11 and higher for Windows 8
 ** IE11 or Microsoft Edge (Supported since ZCS 8.6 P4 and above) for Windows 10 
 
-*The latest stable release of:
+* The latest stable release of:
 ** Firefox
 ** Safari 
 ** Google Chrome
@@ -165,7 +165,7 @@ The following operating system/browser combinations are supported:
 ** IE11 and higher for Windows 8
 ** IE11 or Microsoft Edge (Supported since ZCS 8.6 P4 and above) for Windows 10 
 
-*The latest stable release of:
+* The latest stable release of:
 ** Firefox
 ** Safari 
 ** Google Chrome
