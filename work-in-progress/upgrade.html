@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6">
-<title>Zimbra Collaboration 8.8.1 Upgrade Steps</title>
+<title>Zimbra Collaboration 8.8.3 Upgrade Steps</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -519,7 +519,7 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Zimbra Collaboration 8.8.1 Upgrade Steps</h1>
+<h1>Zimbra Collaboration 8.8.3 Upgrade Steps</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
@@ -739,7 +739,7 @@ can reach the Zimbra package servers.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Red Hat® Enterprise Linux® 7, AS/ES (64-bit)</p>
+<p>RedHat® Enterprise Linux® 7, AS/ES (64-bit)</p>
 </li>
 <li>
 <p>CentOS Linux® 7 (64-bit)</p>
@@ -1221,7 +1221,7 @@ located in.</p>
 </li>
 <li>
 <p>After all <em>MTA</em> nodes are upgraded to Zimbra Collaboration
-8.8.1,
+8.8.3,
 the following commands may be run to fix the default globalconfig
 values, if necessary.</p>
 <div class="listingblock">
@@ -1387,7 +1387,7 @@ located in.</p>
 </li>
 <li>
 <p>After all <em>MTA</em> nodes are upgraded to Zimbra Collaboration
-8.8.1,
+8.8.3,
 the following commands may be run to fix the default globalconfig
 values, if necessary.</p>
 <div class="listingblock">
@@ -1501,8 +1501,8 @@ ID of the upgrade script. See <a href="https://bugzilla.zimbra.com/show_bug.cgi?
 <li>
 <p>You should run <code>zmldapupgrade -b 66387</code> after upgrading.  The
 <code>zimbraAllowFromAddress</code> attribute cannot be set for internal accounts
- or distribution lists. Running this script will change
- <code>zimbraAllowFromAddress</code> values to grants.</p>
+or distribution lists. Running this script will change
+<code>zimbraAllowFromAddress</code> values to grants.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1660,7 +1660,7 @@ httpclient_external_connmgr_tcp_nodelay</pre>
 <div class="sect2">
 <h3 id="_ephemeral_data_migration">Ephemeral Data Migration</h3>
 <div class="paragraph">
-<p>Versions of Zimbra prior to 8.8.1 stored
+<p>Versions of Zimbra prior to 8.8.3 stored
 <em>ephemeral data</em> in <em>LDAP</em>.  Examples of <em>ephemeral data</em> include:</p>
 </div>
 <div class="ulist">
@@ -1677,7 +1677,7 @@ httpclient_external_connmgr_tcp_nodelay</pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>Zimbra Collaboration version 8.8.1 introduced the ability to
+<p>Zimbra Collaboration version 8.8.3 introduced the ability to
 store <em>ephemeral data</em> in an external service such as
 <a href="http://ssdb.io/">SSDB</a>. This is an optional feature; however, it
 can improve <em>LDAP</em> performance and stability.</p>
@@ -1691,7 +1691,7 @@ performed after an install or upgrade has been completed.</p>
 <div class="sect2">
 <h3 id="_imapd_service">IMAPD Service</h3>
 <div class="paragraph">
-<p>Version 8.8.1 of Zimbra Collaboration introduced a new
+<p>Version 8.8.3 of Zimbra Collaboration introduced a new
 <code>zimbra-imapd</code> service that allows you to run the IMAP[S]
 endpoints outside of the <code>mailboxd</code> process. This new service may be
 deployed on your mailbox servers or on stand-alone machines and it
@@ -1852,7 +1852,7 @@ old skin. See <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=62523">Bug
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-07-28 12:18:01 CDT
+Last updated 2017-09-11 10:57:44 CDT
 </div>
 </div>
 </body>
