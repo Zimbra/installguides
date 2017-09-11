@@ -21,14 +21,14 @@ Open an SSH session to the {product-short} server and follow the steps below:
 --
 [source%nowrap,bash]
 ....
-root@mailhost:/tmp# tar xzvf zcs.tgz
-zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/
-zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/packages/
+root@mailhost:/tmp# tar xzvf zcs*.tgz
+zcs-NETWORK-8.8.3_GA_1872.UBUNTU16_64.20170905143325/
+zcs-NETWORK-8.8.3_GA_1872.UBUNTU16_64.20170905143325/packages/
 .
 .
 .
-zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/install.sh
-zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/README.txt
+zcs-NETWORK-8.8.3_GA_1872.UBUNTU16_64.20170905143325/install.sh
+zcs-NETWORK-8.8.3_GA_1872.UBUNTU16_64.20170905143325/README.txt
 ....
 --
 
@@ -44,14 +44,16 @@ but highly recommended.
 --
 [source%nowrap,bash]
 ....
-root@zimbraiop:/tmp/# cd zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/
-root@zimbraiop:/tmp/zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124# ./install.sh
+root@zimbraiop:/tmp/# cd zcs-NETWORK-8.8.3_GA_1872.UBUNTU16_64.20170905143325/
+root@zimbraiop:/tmp/zcs-NETWORK-8.8.3_GA_1872.UBUNTU16_64.20170905143325# ./install.sh
 
 Operations logged to /tmp/install.log.y1YeCSI5
 
 Checking for existing installation...
     zimbra-chat...NOT FOUND
     zimbra-drive...NOT FOUND
+    zimbra-imapd...NOT FOUND
+    zimbra-network-modules-ng...NOT FOUND
     zimbra-ldap...NOT FOUND
     zimbra-logger...NOT FOUND
     zimbra-mta...NOT FOUND
@@ -65,9 +67,7 @@ Checking for existing installation...
     zimbra-proxy...NOT FOUND
     zimbra-archiving...NOT FOUND
     zimbra-core...NOT FOUND
-    zimbra-imapd...NOT FOUND
-
-....
+    
 --
 
 3. The {product-short} software agreement displays. Read the agreement and when +
@@ -79,7 +79,14 @@ and you must accept each section of the license agreement.
 4. `Use {product-short}'s package repository [Y]` +
 displays, press `enter` to continue. Your system will be configured to add
 the {product-short} packaging repository for *yum* or *apt-get* as appropriate
-so it can install the {product-short} 3rd party packages.
+so it can install the {product-short} 3rd party packages. 
+*{product-short} IMAPD is meant to be installed on a multi-server environment, with
+hundred of thousands of users, and it's still as Beta. {product-short} recommends
+to only install it for demo and evaluation purposes.*
+* If installing *{product-short} Network Edition*, you will have the modules Archiving
+and Convertd as an option to add to your {product-short} installation.
+* {product-short}-dnscache is recommended to be installed on the MTA Servers only when
+is not another DNS Server like dnsmasq or bind running on the same Zimbra Server.
 +
 --
 [source%nowrap]
@@ -96,12 +103,13 @@ Found zimbra-store (local)
 Found zimbra-apache (local)
 Found zimbra-spell (local)
 Found zimbra-convertd (local)
-Found zimbra-imapd (local)
 Found zimbra-memcached (repo)
 Found zimbra-proxy (local)
 Found zimbra-archiving (local)
 Found zimbra-chat (repo)
 Found zimbra-drive (repo)
+Found zimbra-imapd (local)
+Found zimbra-network-modules-ng (local)
 
 
 Use Zimbra's package repository [Y] y
@@ -109,46 +117,56 @@ Use Zimbra's package repository [Y] y
 Use internal development repo [N] n
 Configuring package repository
 
-Select the packages to install
+Install zimbra-ldap [Y] y
 
-Install zimbra-ldap [Y] Y
+Install zimbra-logger [Y] y
 
-Install zimbra-logger [Y] N
+Install zimbra-mta [Y] y
 
-Install zimbra-mta [Y] N
+Install zimbra-dnscache [Y] n
 
-Install zimbra-dnscache [Y] N
+Install zimbra-snmp [Y] y
 
-Install zimbra-snmp [Y] N
+Install zimbra-store [Y] y
 
-Install zimbra-store [Y] N
+Install zimbra-apache [Y] y
 
-Install zimbra-apache [Y] N
+Install zimbra-spell [Y] y
 
-Install zimbra-spell [Y] N
+Install zimbra-convertd [Y] y
 
-Install zimbra-convertd [Y] N
+Install zimbra-memcached [Y] y
 
-Install zimbra-memcached [Y] N
+Install zimbra-proxy [Y] y
 
-Install zimbra-proxy [Y] N
+Install zimbra-archiving [N] y
 
-Install zimbra-archiving [N] N
+Install zimbra-chat [Y] y
 
-Install zimbra-chat [Y] N
+Install zimbra-drive [Y] y
 
-Install zimbra-drive [Y] N
+Install zimbra-imapd [Y] n            
 
-Install zimbra-imapd [Y] Y
+Install zimbra-network-modules-ng [Y] y
 
-.
-.
+###WARNING###
+
+Network Modules NG needs to bind on TCP ports 8735 and 8736 in order
+to operate, for inter-instance communication.
+Please verify no other service listens on these ports and that 
+ports 8735 and 8736 are properly filtered from public access 
+by your firewall.
+
+Please remember that the Backup NG module needs to be initialized in order
+to be functional. This is a one-time operation only that can be performed
+by clicking the 'Initialize' button within the Backup section of the
+Network NG Modules in the Administration Console or by running
+`zxsuite backup doSmartScan` as the zimbra user.
 
 Checking required space for zimbra-core
 Checking space for zimbra-store
 Checking required packages for zimbra-store
      MISSING: libreoffice
-     MISSING: libreoffice-headless
 
 ###WARNING###
 
@@ -160,14 +178,18 @@ Installing:
     zimbra-core
     zimbra-ldap
     zimbra-logger
-    zimbra-memcached
     zimbra-mta
-    zimbra-dnscache
     zimbra-snmp
     zimbra-store
-    zimbra-imapd
-   .
-   .
+    zimbra-apache
+    zimbra-spell
+    zimbra-convertd
+    zimbra-memcached
+    zimbra-proxy
+    zimbra-archiving
+    zimbra-chat
+    zimbra-drive
+    zimbra-network-modules-ng
 
 
 The system will be modified.  Continue? [N] y
@@ -218,47 +240,45 @@ Set the correct time zone.
 ....
 Main menu
 
-   1) Common Configuration:
-   2) zimbra-ldap:                             Enabled
-   3) zimbra-logger:                           Enabled
-   4) zimbra-mta:                              Enabled
-   5) zimbra-dnscache:                         Enabled
-   6) zimbra-snmp:                             Enabled
-   7) zimbra-store:                            Enabled
-        +Create Admin User:                    yes
-        +Admin user to create:                 admin@zmail.example.com
-******* +Admin Password                        UNSET
-        +Anti-virus quarantine user:           virus-quarantine.ws91yggvp@zmail.example.com
-        +Enable automated spam training:       yes
-        +Spam training user:                   spam.seewcbk6@zmail.example.com
-        +Non-spam(Ham) training user:          ham.h8qmkwft@zmail.example.com
-        +SMTP host:                            zmail.example.com
-        +Web server HTTP port:                 8080
-        +Web server HTTPS port:                8443
-        +Web server mode:                      https
-        +IMAP server port:                     7143
-        +IMAP server SSL port:                 7993
-        +POP server port:                      7110
-        +POP server SSL port:                  7995
-        +Use spell check server:               yes
-        +Spell server URL:                     http://zmail.example.com:7780/aspell.php
-        +Enable version update checks:         TRUE
-        +Enable version update notifications:  TRUE
-        +Version update notification email:    admin@zmail.example.com
-        +Version update source email:          admin@zmail.example.com
-        +Install mailstore (service webapp):   yes
-        +Install UI (zimbra,zimbraAdmin webapps): yes
-******* +License filename:                     UNSET
+   1) Common Configuration:                                                  
+   2) zimbra-ldap:                             Enabled                       
+   3) zimbra-logger:                           Enabled                       
+   4) zimbra-mta:                              Enabled                       
+   5) zimbra-snmp:                             Enabled                       
+   6) zimbra-store:                            Enabled                       
+        +Create Admin User:                    yes                           
+        +Admin user to create:                 admin@zimbra.io               
+******* +Admin Password                        UNSET                         
+        +Anti-virus quarantine user:           virus-quarantine.bcsk28oyoe@zimbra.io
+        +Enable automated spam training:       yes                           
+        +Spam training user:                   spam.dqxmkmf5tv@zimbra.io     
+        +Non-spam(Ham) training user:          ham.pcq8excwph@zimbra.io      
+        +SMTP host:                            z883.zimbra.io                
+        +Web server HTTP port:                 8080                          
+        +Web server HTTPS port:                8443                          
+        +Web server mode:                      https                         
+        +IMAP server port:                     7143                          
+        +IMAP server SSL port:                 7993                          
+        +POP server port:                      7110                          
+        +POP server SSL port:                  7995                          
+        +Use spell check server:               yes                           
+        +Spell server URL:                     http://z883.zimbra.io:7780/aspell.php
+        +Enable version update checks:         TRUE                          
+        +Enable version update notifications:  TRUE                          
+        +Version update notification email:    admin@zimbra.io               
+        +Version update source email:          admin@zimbra.io               
+        +Install mailstore (service webapp):   yes                           
+        +Install UI (zimbra,zimbraAdmin webapps): yes                           
+******* +License filename:                     UNSET                         
 
-   8) zimbra-spell:                            Enabled
-   9) zimbra-convertd:                         Enabled
-  10) zimbra-proxy:                            Enabled
-  11) zimbra-imapd:                            Enabled
-  12) Default Class of Service Configuration:
-  13) Enable default backup schedule:          yes
-   s) Save config to file
-   x) Expand menu
-   q) Quit
+   7) zimbra-spell:                            Enabled                       
+   8) zimbra-convertd:                         Enabled                       
+   9) zimbra-proxy:                            Enabled                       
+  10) Default Class of Service Configuration:                                
+  11) Enable default backup schedule:          yes                           
+   s) Save config to file                                                    
+   x) Expand menu                                                            
+   q) Quit                   
 
 Address unconfigured (**) items  (? - help)
 ....
@@ -266,17 +286,12 @@ Address unconfigured (**) items  (? - help)
 
 8. Type `r` to return to the Main menu.
 
-9. Enter `5` to select *zimbra-dnscache* from the Main menu.
+9. Type `r` to return to the Main menu.
 
-    * Select `1` to disable.
-    * Select `2` to configure the master DNS IP address(es).
-
-10. Type `r` to return to the Main menu.
-
-11. Enter `7` to select *zimbra-store* from the Main menu. The store
+10. Enter `7` to select *zimbra-store* from the Main menu. The store
 configuration menu displays.
 
-12. Select the following from the store configuration menu:
+11. Select the following from the store configuration menu:
 
     * Type `4` to set the Admin Password. The password must be six or more characters.
     Press _Enter_.
@@ -294,15 +309,15 @@ configuration menu displays.
     that is configured in `Version update notification email`. You can modify
     this later from the administration console.
 
-13. Type `r` to return to the Main menu.
+12. Type `r` to return to the Main menu.
 
-14. If you want to change the default Class of Service settings for new
+13. If you want to change the default Class of Service settings for new
 features that are listed here, type `12` for Default Class of Service
 Configuration. +
 Then type the appropriate number for the feature to be enabled or disabled.
 Changes you make here are reflected in the default COS configuration.
 
-15. If no other defaults need to be changed, type `a` to apply the
+14. If no other defaults need to be changed, type `a` to apply the
 configuration changes. Press _Enter_
 +
 --
