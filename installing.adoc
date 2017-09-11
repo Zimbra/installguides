@@ -144,7 +144,7 @@ Install zimbra-chat [Y] y
 
 Install zimbra-drive [Y] y
 
-Install zimbra-imapd [Y] n            
+Install zimbra-imapd [Y] n
 
 Install zimbra-network-modules-ng [Y] y
 
