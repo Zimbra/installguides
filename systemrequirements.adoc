@@ -320,11 +320,12 @@ English, Spanish, French, Italian, Japanese, German, Portuguese
 |English
 
 |{product-short} Connector for Microsoft Outlook |Installer + Application/UI
-|Arabic, Basque (EU), Catalan (EU), Chinese (Simplified PRC, Traditional HK, Taiwan),
-Danish, Dutch, English (AU, UK, US), French, French Canadian, German,
-Hindi, Hungarian, Italian, Japanese, Korean, Malay, Norwegian, Polish, Portuguese
-(Brazil), Portuguese (Portugal), Romanian, Russian, Spanish, Swedish,
-Thai, Turkish, Ukrainian
+|Arabic, Basque (EU), Chinese
+(Simplified PRC and Traditional HK), Danish, Dutch, English (AU, UK,
+US), French, French Canadian, German, Hindi, Hungarian, Italian,
+Japanese, Korean, Malay, Polish, Portuguese (Brazil), Portuguese
+(Portugal), Romanian, Russian, Spanish, Swedish, Thai, Turkish,
+Ukrainian
 
 |{product-short} Connector for Microsoft Outlook - End User Guide (PDF) |Feature
 Documentation |English
