@@ -81,12 +81,11 @@ displays, press `enter` to continue. Your system will be configured to add
 the {product-short} packaging repository for *yum* or *apt-get* as appropriate
 so it can install the {product-short} 3rd party packages. 
 {product-short} IMAPD is meant to be installed on a multi-server environment, with
-hundred of thousands of users, and it's still a Beta Release. {product-short} recommends
+hundreds of thousands of users, and it's still a Beta Release. {product-short} recommends
 to only install it for demo and evaluation purposes.*
 * If installing *{product-short} Network Edition*, you will have the modules Archiving
 and Convertd as an option to add to your {product-short} installation.
-* {product-short}-dnscache is recommended to be installed on the MTA Servers only when
-is not another DNS Server like dnsmasq or bind running on the same Zimbra Server.
+* It is recommended to only install {product-short}-dnscache on the MTA Servers when there are no other DNS servers (for example dnsmasq or bind) already installed and running on the same server.
 +
 --
 [source%nowrap]
