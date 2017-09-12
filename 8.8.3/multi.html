@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.5">
+<meta name="generator" content="Asciidoctor 1.5.6">
 <meta name="author" content="v8.8.3, 2017-09-07">
 <title>Zimbra Collaboration Multi-Server Installation Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
@@ -90,13 +90,12 @@ strong,b{font-weight:bold;line-height:inherit}
 small{font-size:60%;line-height:inherit}
 code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
 ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
-ul,ol,ul.no-bullet,ol.no-bullet{margin-left:1.5em}
+ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
 ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
 ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
-ul.no-bullet{list-style:none}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -132,7 +131,11 @@ strong strong{font-weight:400}
 kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
 .keyseq kbd:first-child{margin-left:0}
 .keyseq kbd:last-child{margin-right:0}
-.menuseq,.menu{color:rgba(0,0,0,.8)}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
 b.button:before,b.button:after{position:relative;top:-1px;font-weight:400}
 b.button:before{content:"[";padding:0 3px 0 2px}
 b.button:after{content:"]";padding:0 2px 0 3px}
@@ -199,7 +202,7 @@ table.tableblock>caption.title{white-space:nowrap;overflow:visible;max-width:0}
 table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inherit}
 .admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
 .admonitionblock>table td.icon{text-align:center;width:80px}
-.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon img{max-width:initial}
 .admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
@@ -255,13 +258,13 @@ table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
 table.tableblock{max-width:100%;border-collapse:separate}
 table.tableblock td>.paragraph:last-child p>p:last-child,table.tableblock th>p:last-child,table.tableblock td>p:last-child{margin-bottom:0}
 table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
-table.grid-all th.tableblock,table.grid-all td.tableblock{border-width:0 1px 1px 0}
-table.grid-all tfoot>tr>th.tableblock,table.grid-all tfoot>tr>td.tableblock{border-width:1px 1px 0 0}
-table.grid-cols th.tableblock,table.grid-cols td.tableblock{border-width:0 1px 0 0}
-table.grid-all *>tr>.tableblock:last-child,table.grid-cols *>tr>.tableblock:last-child{border-right-width:0}
-table.grid-rows th.tableblock,table.grid-rows td.tableblock{border-width:0 0 1px 0}
-table.grid-all tbody>tr:last-child>th.tableblock,table.grid-all tbody>tr:last-child>td.tableblock,table.grid-all thead:last-child>tr>th.tableblock,table.grid-rows tbody>tr:last-child>th.tableblock,table.grid-rows tbody>tr:last-child>td.tableblock,table.grid-rows thead:last-child>tr>th.tableblock{border-bottom-width:0}
-table.grid-rows tfoot>tr>th.tableblock,table.grid-rows tfoot>tr>td.tableblock{border-width:1px 0 0 0}
+table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
+table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
+table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
+table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px 0}
+table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0 0}
+table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
+table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
 table.frame-all{border-width:1px}
 table.frame-sides{border-width:0 1px}
 table.frame-topbot{border-width:1px 0}
@@ -282,10 +285,12 @@ ul li ol{margin-left:1.5em}
 dl dd{margin-left:1.125em}
 dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
 ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
-ul.unstyled,ol.unnumbered,ul.checklist,ul.none{list-style-type:none}
-ul.unstyled,ol.unnumbered,ul.checklist{margin-left:.625em}
-ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1em;font-size:.85em}
-ul.checklist li>p:first-child>input[type="checkbox"]:first-child{width:1em;position:relative;top:1px}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
 ul.inline{margin:0 auto .625em auto;margin-left:-1.375em;margin-right:0;padding:0;list-style:none;overflow:hidden}
 ul.inline>li{list-style:none;float:left;margin-left:1.375em;display:block}
 ul.inline>li>*{display:block}
@@ -302,7 +307,8 @@ ol.lowergreek{list-style-type:lower-greek}
 td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
 td.hdlist1{font-weight:bold;padding-bottom:1.25em}
 .literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
-.colist>table tr>td:first-of-type{padding:0 .75em;line-height:1}
+.colist>table tr>td:first-of-type{padding:.4em .75em 0 .75em;line-height:1;vertical-align:top}
+.colist>table tr>td:first-of-type img{max-width:initial}
 .colist>table tr>td:last-of-type{padding:.25em 0}
 .thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
 .imageblock.left,.imageblock[style*="float: left"]{margin:.25em .625em 1.25em 0}
@@ -365,6 +371,7 @@ div.unbreakable{page-break-inside:avoid}
 .yellow{color:#bfbf00}
 .yellow-background{background-color:#fafa00}
 span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
 .admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
 .admonitionblock td.icon .icon-note:before{content:"\f05a";color:#19407c}
 .admonitionblock td.icon .icon-tip:before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
@@ -701,8 +708,8 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel2">
 <li><a href="#Zimbra_Connector_for_Outlook">Zimbra Connector for Outlook (Network Edition Only)</a></li>
 <li><a href="#Zimbra_Mobile">Zimbra Mobile (Network Edition Only)</a></li>
-<li><a href="#Zimbra_Touch_Client">Zimbra Touch Client (Network Edition Only)</a></li>
-<li><a href="#BES">Zimbra Connector for BlackBerry Enterprise Server (Network Edition Only)</a></li>
+<li><a href="#Zimbra_Touch_Client"><strong>Deprecated</strong> Zimbra Touch Client (Network Edition Only)</a></li>
+<li><a href="#BES"><strong>Deprecated</strong> Zimbra Connector for BlackBerry Enterprise Server (Network Edition Only)</a></li>
 <li><a href="#Available_Languages">Available Languages</a>
 <ul class="sectlevel3">
 <li><a href="#end_user_translations">End User Translations</a></li>
@@ -1075,6 +1082,58 @@ used for both live and archive mailbox searches.</p>
 Using Archiving and Discovery can trigger additional mailbox
 license usage. To find out more about Zimbra Archiving and Discovery,
 contact Zimbra sales.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><strong>Zimbra Chat:</strong> Installing this package is optional. This package should be installed on at least one
+<strong>Zimbra-Store</strong> server. Zimbra Chat includes a server extension with all
+the necessary modules to run an embedded XMPP Server, and an End-User Zimlet which connects
+to the server extension and offer to the users a rich point-to-point text-chat conversations.
+Zimbra Chat is marked as GA and supported starting Zimbra Collaboration 8.8.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The Zimbra Chat package must be selected and installed on every <strong>Zimbra-Store</strong>.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><strong>Zimbra Drive:</strong> Installing this package is optional.This package should be installed on at least one
+<strong>Zimbra-Store</strong> server. *Zimbra Drive includes a server extension with all
+the necessary modules to connect and authenticate *Zimbra Users against a ownCloud or
+NextCloud Server, and an End-User Zimlet which allow users to perform actions to the their docu-
+ments stored on ownCloud or Nextcloud.
+Zimbra Drive is marked as GA and supported starting Zimbra Collaboration 8.8.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The Zimbra Drive package must be selected and installed on every <strong>Zimbra-Store</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Zimbra Drive provides only a connectivity to a ownCloud or NextCloud Server. And is the Customer
+responsibility to maintain, backup, and protect the data stored on this ownCloud or NextCloud Servers.
 </td>
 </tr>
 </table>
@@ -1459,6 +1518,19 @@ process. The table below describes the menu options.</p>
   <a href="#imapd_config">IMAPD configuration</a></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zimbra-chat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Installing the Zimbra-Chat package is optional.
+  If you choose to install Zimbra-Chat for point-to-point text chat, it should
+  be installed on every Zimbra Store Server that is part of the Zimbra configuration.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zimbra-drive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Installing the Zimbra-Drive package is optional.
+  If you choose to install Zimbra-Drive for file sync-and-share, it should
+  be installed on every Zimbra Store Server that is part of the Zimbra configuration.
+  Please bear in mind you will need a third party server running ownCloud or Nextcloud.</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enable VMware HA</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Toggle whether <strong>VMware HA</strong> is enabled or not - defaults to <strong>no</strong><br>
   VMware HA Clustering Heartbeat is only available when running within a
@@ -1490,16 +1562,15 @@ introduce new features to your users.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>s</strong>) Save config to file</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">At any time during the installation, you can save the configuration to file.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>c</strong>) Collapse menu</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Allows you to collapse the menu.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>x</strong>) Expand menu</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Expand menus to see the underlying options</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><strong>q</strong>) Quit</p>
+<p><strong>c</strong>) Collapse menu</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows you to collapse the menu.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>x</strong>) Expand menu</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Expand menus to see the underlying options</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2612,7 +2683,7 @@ this guide.</p>
 <h3 id="Modifying_Operating_System_Configurations">Modifying Operating System Configurations</h3>
 <div class="paragraph">
 <p>Zimbra Collaboration runs on one of several operating systems, including
-Ubuntu® LTS, Red Hat® Enterprise Linux, and SUSE® Linux Enterprise.</p>
+Ubuntu® LTS, Red Hat® Enterprise Linux, CentOS and Oracle Linux.</p>
 </div>
 <div class="paragraph">
 <p>A full default installation of the Linux distribution that you select is
@@ -2667,18 +2738,6 @@ yum install libreoffice-headless</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>For SLES, install libreoffice:</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>yast2 -i libreoffice</pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
 <p>For Ubuntu, install libreoffice:</p>
 </li>
 </ul>
@@ -2697,7 +2756,7 @@ LibreOffice to properly view documents and attachments. For example:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>If using Ubuntu 12.04 and viewing East Asian languages, be sure to install:</p>
+<p>If using Ubuntu 12.04 (<strong>deprecated</strong>) and viewing East Asian languages, be sure to install:</p>
 </li>
 </ul>
 </div>
@@ -2710,7 +2769,7 @@ apt-get install ttf-vlgothic</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>If using Ubuntu 14.04 and viewing East Asian languages, be sure to install:</p>
+<p>If using Ubuntu 14.04 or 16.04 and viewing East Asian languages, be sure to install:</p>
 </li>
 </ul>
 </div>
@@ -7474,6 +7533,9 @@ Open Source Edition. Check the Zimbra Open Source Downloads page on
 <div class="ulist">
 <ul>
 <li>
+<p>VMware vSphere 6.x</p>
+</li>
+<li>
 <p>VMware vSphere 5.x</p>
 </li>
 <li>
@@ -7517,11 +7579,11 @@ Open Source Edition. Check the Zimbra Open Source Downloads page on
 The <code>nc</code> utility must be installed prior to installation or upgrading.</p>
 </div>
 <div class="paragraph">
-<p>For SUSE and Ubuntu systems, disable <strong>AppArmor</strong> and verify that the
+<p>For Ubuntu systems, disable <strong>AppArmor</strong> and verify that the
 AppArmor service is not running before installing Zimbra Collaboration.</p>
 </div>
 <div class="paragraph">
-<p>For Red Hat Enterprise, Fedora Core and SUSE operating systems, the
+<p>For Red Hat Enterprise operating systems, the
 server must also have the following installed:</p>
 </div>
 <div class="ulist">
@@ -7600,23 +7662,22 @@ server must also have the following installed:</p>
 <p>The following operating system/browser combinations are supported:</p>
 </div>
 <div class="paragraph">
-<p>Windows XP with required updates, Vista, Windows 7, or Windows 8 with
-one of the following:</p>
+<p><strong>Windows Vista SP 2, Windows 7, Windows 8 or Windows 10 with one of the following:</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Internet Explorer 8.0 and higher</p>
+<p>Microsoft support is only available for Internet Explorer 11 or Microsoft Edge</p>
 <div class="ulist">
 <ul>
 <li>
-<p>IE8.x for XP</p>
+<p>IE11 and higher for Vista SP 2/Windows 7</p>
 </li>
 <li>
-<p>IE9.x and higher for Vista/Windows 7</p>
+<p>IE11 and higher for Windows 8</p>
 </li>
 <li>
-<p>IE10 and higher for Windows 8</p>
+<p>IE11 or Microsoft Edge (Supported since ZCS 8.6 P4 and above) for Windows 10</p>
 </li>
 </ul>
 </div>
@@ -7640,47 +7701,15 @@ one of the following:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Mac OS X 10.5, 10.6, 10.7, or 10.8 with one of the following:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The latest stable release of:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Firefox</p>
-</li>
-<li>
-<p>Safari</p>
-</li>
-<li>
-<p>Google Chrome</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+<p>'''Mac OS X 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, 10.11 or 10.12 with one of the following:'''
+* Firefox
+* Safari
+* Chrome</p>
 </div>
 <div class="paragraph">
-<p>Linux (Red Hat, Ubuntu, Fedora, or SUSE) with one of the following:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The latest stable release of:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Firefox</p>
-</li>
-<li>
-<p>Google Chrome</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+<p>'''Linux with the latest stable release of one of the following:'''
+* Firefox
+* Google Chrome</p>
 </div></div></td>
 </tr>
 <tr>
@@ -7739,28 +7768,25 @@ one of the following:</p>
 <p>The following operating system/browser combinations are supported:</p>
 </div>
 <div class="paragraph">
-<p>Windows XP with required updates, Vista, Windows 7, Windows 8 or Windows 10 with one of the following:</p>
+<p><strong>Windows Vista SP 2, Windows 7, Windows 8 or Windows 10 with one of the following:</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Internet Explorer 8.0 and higher</p>
+<p>Microsoft support is only available for Internet Explorer 11 or Microsoft Edge</p>
 <div class="ulist">
 <ul>
 <li>
-<p>IE8.x for XP</p>
+<p>IE11 and higher for Vista SP 2/Windows 7</p>
 </li>
 <li>
-<p>IE9.x and higher for Vista/Windows 7</p>
+<p>IE11 and higher for Windows 8</p>
 </li>
 <li>
-<p>IE10 and higher for Windows 8</p>
+<p>IE11 or Microsoft Edge (Supported since ZCS 8.6 P4 and above) for Windows 10</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Microsoft Edge, supported since ZCS 8.6 P4 and above</p>
 </li>
 <li>
 <p>The latest stable release of:</p>
@@ -7781,47 +7807,15 @@ one of the following:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Mac OS X 10.5, 10.6, 10.7, or 10.8 with one of the following:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The latest stable release of:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Firefox</p>
-</li>
-<li>
-<p>Safari</p>
-</li>
-<li>
-<p>Google Chrome</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+<p>'''Mac OS X 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, 10.11 or 10.12 with one of the following:'''
+* Firefox
+* Safari
+* Chrome</p>
 </div>
 <div class="paragraph">
-<p>Linux (Red Hat, Ubuntu, Fedora, or SUSE) with one of the following:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The latest stable release of:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Firefox</p>
-</li>
-<li>
-<p>Google Chrome</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
+<p>'''Linux with the latest stable release of one of the following:'''
+* Firefox
+* Google Chrome</p>
 </div></div></td>
 </tr>
 <tr>
@@ -7855,19 +7849,11 @@ one of the following:</p>
 <div class="paragraph">
 <p>Operating system POP/IMAP combinations</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Windows XP SP 3, Vista SP 2, Windows 7 with Outlook Express 6, Outlook
-2003, (MAPI), Thunderbird</p>
-</li>
-<li>
-<p>Fedora Core 4 or later with Thunderbird</p>
-</li>
-<li>
-<p>Mac OS X 10.4 or later with Apple Mail</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Windows Vista SP 2, Windows 7, Windows 8 or Windows 10 with one of the following:*
+* Microsoft Outlook 2010, 2013 or 2016
+* Any Linux distribution with Thunderbird
+* Mac OS X 10.x with Apple Mail</p>
 </div>
 <div class="paragraph">
 <p><strong>Accessibility and Screen Readers</strong> Zimbra recommends that customers
@@ -7882,7 +7868,7 @@ improving the accessibility of this interface.</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-If users are presently using IE 6, Zimbra strongly recommends that they upgrade
+If users are presently using IE 9 or 10, Zimbra strongly recommends that they upgrade
 to the latest version of Internet Explorer for optimal performance with ZWC.
 </td>
 </tr>
@@ -7897,10 +7883,10 @@ to the latest version of Internet Explorer for optimal performance with ZWC.
 <div class="ulist">
 <ul>
 <li>
-<p>Outlook 2011 (MAC only)</p>
+<p>Outlook 2011/2016 (MAC only)</p>
 </li>
 <li>
-<p>Apple Desktop Clients (OS X, 10.8+)</p>
+<p>Apple Desktop Clients (OS X, 10.x)</p>
 </li>
 </ul>
 </div>
@@ -7910,7 +7896,7 @@ to the latest version of Internet Explorer for optimal performance with ZWC.
 <div class="ulist">
 <ul>
 <li>
-<p>Exchange 2007+</p>
+<p>Exchange 2010, 2013 or 2016</p>
 </li>
 </ul>
 </div></div></td>
@@ -7952,9 +7938,6 @@ to the latest version of Internet Explorer for optimal performance with ZWC.
 </li>
 <li>
 <p>Vista</p>
-</li>
-<li>
-<p>Windows XP with required updates</p>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -7962,7 +7945,7 @@ to the latest version of Internet Explorer for optimal performance with ZWC.
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-Windows XP is deprecated. The 8.x series of Zimbra Collaboration is the last release to support
+Windows XP is deprecated. The 8.0.x series of Zimbra Collaboration is the last release to support
 Microsoft Outlook 2003 and Microsoft Windows XP
 </td>
 </tr>
@@ -7983,14 +7966,16 @@ Microsoft Outlook 2003 and Microsoft Windows XP
 <p>Outlook 2013: 32-bit and 64-bit editions of Microsoft Outlook are supported.</p>
 </li>
 <li>
-<p>Outlook 2010: 32-bit and 64-bit editions of Microsoft Outlook are supported.</p>
+<p>Outlook 2010: Client computers must have Microsoft Office Outlook 2010 SP2 or later installed. Important: Outlook 2010 is deprecated: The 8.8 series of Zimbra Collaboration is the last release to support Microsoft Outlook 2010</p>
 </li>
 <li>
-<p>Outlook 2007: Client computers must have Microsoft Office Outlook 2007
-SP3 or later installed.</p>
+<p>Outlook 2007: Client computers must have Microsoft Office Outlook 2007 SP2 or later installed. Important: Outlook 2007 is deprecated: The 8.6 series of Zimbra Collaboration is the last release to support Microsoft Outlook 2007</p>
 </li>
 <li>
-<p>Outlook 2003: Client computers must have Microsoft Office Outlook 2003 SP3 or later installed.</p>
+<p>Outlook 2003: Client computers must have Microsoft Office Outlook 2003 SP3 or later installed. Important: Outlook 2003 is deprecated: The 8.0.x series of Zimbra Collaboration is the last release to support Microsoft Outlook 2003</p>
+</li>
+</ul>
+</div>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -7998,14 +7983,11 @@ SP3 or later installed.</p>
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-Outlook 2003 is deprecated. The 8.x series of Zimbra Collaboration is the last release to
+Outlook 2003 is deprecated. The 8.0.x series of Zimbra Collaboration is the last release to
 support Microsoft Outlook 2003 and Microsoft Windows XP.
 </td>
 </tr>
 </table>
-</div>
-</li>
-</ul>
 </div></div></td>
 </tr>
 </tbody>
@@ -8025,22 +8007,22 @@ including:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>iOS6, iOS7, iOS8, iOS9</p>
+<p>iOS6, iOS7, iOS8, iOS9, iOS10</p>
 </li>
 <li>
-<p>Android 2.3 and above</p>
+<p>Android 4.x, 5.x, 6.x, 7.x and 8.x</p>
 </li>
 <li>
-<p>Windows Mobile 6.0 and above</p>
+<p>Windows OS</p>
 </li>
 <li>
-<p>Microsoft Outlook using the Exchange ActiveSync (EAS)</p>
+<p>Microsoft Outlook using Exchange ActiveSync (EAS)</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Zimbra_Touch_Client">Zimbra Touch Client (Network Edition Only)</h3>
+<h3 id="Zimbra_Touch_Client"><strong>Deprecated</strong> Zimbra Touch Client (Network Edition Only)</h3>
 <hr>
 <div class="paragraph">
 <p>Supported devices for the Zimbra Touch Client include:</p>
@@ -8058,7 +8040,7 @@ Samsung Galaxy S® III, Samsung Galaxy S® 4, Galaxy Nexus™</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="BES">Zimbra Connector for BlackBerry Enterprise Server (Network Edition Only)</h3>
+<h3 id="BES"><strong>Deprecated</strong> Zimbra Connector for BlackBerry Enterprise Server (Network Edition Only)</h3>
 <div class="paragraph">
 <p>Zimbra Connector for BlackBerry Enterprise Server (ZCB) provides seamless,
 real-time synchronization of Zimbra user mailbox data to BlackBerry devices.</p>
@@ -8093,12 +8075,11 @@ real-time synchronization of Zimbra user mailbox data to BlackBerry devices.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Web Client</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Application/UI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Chinese
-(Simplified PRC and Traditional HK), Danish, Dutch, English (AU, UK,
-US), French, French Canadian, German, Hindi, Hungarian, Italian,
-Japanese, Korean, Malay, Polish, Portuguese (Brazil), Portuguese
-(Portugal), Romanian, Russian, Spanish, Swedish, Thai, Turkish,
-Ukrainian</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Catalan (EU), Chinese (Simplified PRC, Traditional HK, Taiwan),
+Danish, Dutch, English (AU, UK, US), French, French Canadian, German,
+Hindi, Hungarian, Italian, Japanese, Korean, Malay, Norwegian, Polish, Portuguese
+(Brazil), Portuguese (Portugal), Romanian, Russian, Spanish, Swedish,
+Thai, Turkish, Ukrainian</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Web Client - Online Help (HTML)</p></td>
@@ -8115,9 +8096,9 @@ English, Spanish, French, Italian, Japanese, German, Portuguese
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Connector for Microsoft Outlook</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Installer + Application/UI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Chinese (Simplified PRC and Traditional HK),
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Catalan (EU), Chinese (Simplified PRC, Traditional HK, Taiwan),
 Danish, Dutch, English (AU, UK, US), French, French Canadian, German,
-Hindi, Hungarian, Italian, Japanese, Korean, Malay, Polish, Portuguese
+Hindi, Hungarian, Italian, Japanese, Korean, Malay, Norwegian, Polish, Portuguese
 (Brazil), Portuguese (Portugal), Romanian, Russian, Spanish, Swedish,
 Thai, Turkish, Ukrainian</p></td>
 </tr>
@@ -8147,11 +8128,11 @@ Documentation</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Admin Console</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Chinese
-(Simplified PRC and Traditional HK), Danish, Dutch, English (AU, UK,
-US), French, French Canadian, German, Hindi, Hungarian, Italian,
-Japanese, Korean, Malay, Polish, Portuguese (Brazil), Portuguese
-(Portugal), Romanian, Russian, Spanish, Swedish, Turkish, Ukrainian</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Catalan (EU), Chinese (Simplified PRC, Traditional HK, Taiwan),
+Danish, Dutch, English (AU, UK, US), French, French Canadian, German,
+Hindi, Hungarian, Italian, Japanese, Korean, Malay, Norwegian, Polish, Portuguese
+(Brazil), Portuguese (Portugal), Romanian, Russian, Spanish, Swedish,
+Thai, Turkish, Ukrainian</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Admin Console Online Help (HTML)</p></td>
@@ -8376,7 +8357,7 @@ ACLs/ACEs consider whether switching or not carefully.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-07 19:56:03 CDT
+Last updated 2017-09-12 13:30:35 CDT
 </div>
 </div>
 </body>
