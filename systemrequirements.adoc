@@ -115,20 +115,19 @@ a|Administrator Computers +
  Other configurations may work.
 |The following operating system/browser combinations are supported:
 
-// TODO this looks well out of date.  How about Windows 10?  Edge browser?
-Windows XP with required updates, Vista, Windows 7, or Windows 8 with
+Windows Vista SP 2, Windows 7, Windows 8 or Windows 10 with
 one of the following:
 
-* Internet Explorer 8.0 and higher
-** IE8.x for XP
-** IE9.x and higher for Vista/Windows 7
-** IE10 and higher for Windows 8
+* Microsoft support is only available for Internet Explorer 11 or Microsoft Edge
+** IE11 and higher for Vista SP 2/Windows 7
+** IE11 and higher for Windows 8
+** IE11 or Microsoft Edge (Supported since ZCS 8.6 P4 and above) for Windows 10 
 * The latest stable release of:
 ** Firefox
 ** Safari
 ** Google Chrome
 
-Mac OS X 10.5, 10.6, 10.7, or 10.8 with one of the following:
+Mac OS X 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, or 10.11 with one of the following:
 
 * The latest stable release of:
 ** Firefox
@@ -162,20 +161,19 @@ Recommended
 
 The following operating system/browser combinations are supported:
 
-Windows XP with required updates, Vista, Windows 7, Windows 8 or Windows 10 with one of the following:
+Windows Vista SP 2, Windows 7, Windows 8 or Windows 10 with
+one of the following:
 
-* Internet Explorer 8.0 and higher
-** IE8.x for XP
-** IE9.x and higher for Vista/Windows 7
-** IE10 and higher for Windows 8
-* Microsoft Edge, supported since ZCS 8.6 P4 and above
+* Microsoft support is only available for Internet Explorer 11 or Microsoft Edge
+** IE11 and higher for Vista SP 2/Windows 7
+** IE11 and higher for Windows 8
+** IE11 or Microsoft Edge (Supported since ZCS 8.6 P4 and above) for Windows 10 
 * The latest stable release of:
 ** Firefox
 ** Safari
 ** Google Chrome
 
-// TODO El Capitan is 10.11 and that isn't even the latest...
-Mac OS X 10.5, 10.6, 10.7, or 10.8 with one of the following:
+Mac OS X 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, or 10.11 with one of the following:
 
 * The latest stable release of:
 ** Firefox
@@ -201,8 +199,8 @@ Recommended
 
 Operating system POP/IMAP combinations
 
-* Windows XP SP 3, Vista SP 2, Windows 7 with Outlook Express 6, Outlook
-2003, (MAPI), Thunderbird
+* Windows Vista SP 2, Windows 7 with Outlook Express 6, Outlook
+2007 and above (MAPI), Thunderbird
 * Fedora Core 4 or later with Thunderbird
 * Mac OS X 10.4 or later with Apple Mail
 
@@ -218,7 +216,7 @@ to the latest version of Internet Explorer for optimal performance with ZWC.
 |*Exchange Web Services*
 |EWS Clients
 
-* Outlook 2011 (MAC only)
+* Outlook 2011/2016 (MAC only)
 * Apple Desktop Clients (OS X, 10.8+)
 
 EWS Interoperability
@@ -242,8 +240,7 @@ ifdef::networkeditiondoc[]
 * Windows 10
 * Windows 8
 * Windows 7
-* Vista
-* Windows XP with required updates
+* Vista with SP2
 +
 [IMPORTANT]
 Windows XP is deprecated. The 8.x series of Zimbra Collaboration is the last release to support
@@ -258,7 +255,9 @@ SP3 or later installed.
 * Outlook 2003: Client computers must have Microsoft Office Outlook 2003 SP3 or later installed.
 +
 [IMPORTANT]
-Outlook 2003 is deprecated. The 8.x series of Zimbra Collaboration is the last release to
+Outlook 2007 is deprecated. The 8.6 series of Zimbra Collaboration is the last release to
+support Microsoft Outlook 2007.
+Outlook 2003 is deprecated. The 8.0.x series of Zimbra Collaboration is the last release to
 support Microsoft Outlook 2003 and Microsoft Windows XP.
 |=======================================================================
 endif::networkeditiondoc[]
