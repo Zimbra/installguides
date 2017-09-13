@@ -109,6 +109,32 @@ license usage. To find out more about {product-short} Archiving and Discovery,
 contact {product-short} sales.
 endif::networkeditiondoc[]
 
+* *{product-short} Chat:* Installing this package is optional. This package should be installed on at least one
+*{product-short}-Store* server. {product-short} Chat includes a server extension with all 
+the necessary modules to run an embedded XMPP Server, and an End-User Zimlet which connects
+to the server extension and offer to the users a rich point-to-point text-chat conversations.
+{product-short} Chat is marked as GA and supported starting {product-name} 8.8.
++
+[NOTE]
+The {product-short} Chat package must be selected and installed on every *{product-short}-Store*.
++
+
+* *{product-short} Drive:* Installing this package is optional.This package should be installed on at least one
+*{product-short}-Store* server. *{product-short} Drive includes a server extension with all 
+the necessary modules to connect and authenticate *{product-short} Users against a ownCloud or
+NextCloud Server, and an End-User Zimlet which allow users to perform actions to the their docu-
+ments stored on ownCloud or Nextcloud.
+{product-short} Drive is marked as GA and supported starting {product-name} 8.8.
++
+[NOTE]
+The {product-short} Drive package must be selected and installed on every *{product-short}-Store*.
++
+
+[WARNING]
+Zimbra Drive provides only a connectivity to a ownCloud or NextCloud Server. And is the Customer
+responsibility to maintain, backup, and protect the data stored on this ownCloud or NextCloud Servers.
+
+
 The {product-short} server configuration is menu driven. The installation menu
 shows you the default configuration values. The menu displays the
 logical host name and email domain name [mailhost.example.com] as
