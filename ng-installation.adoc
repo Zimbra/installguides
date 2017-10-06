@@ -21,6 +21,8 @@ To hold Backup NG data, a storage must comply to the following:
 ** The "zimbra" user must of course have r/w permission on the path.
 * The data must be stored on a case-sensitive filesystem.
 
+TIP: Backup NG features a built-in scheduling system and does not rely on the system's cron service. At the end of the initialisation process, old backup-related crontab lines will be automatically removed.
+
 [[backup-ng-initialisation]]
 Backup NG Initialization
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -85,6 +87,9 @@ The HSM NG module will become active as soon as the upgrade to Zimbra 8.8 is
 complete, and does not require any interaction.
 
 Any old HSM policy, volume and volume configuration will be maintained.
+
+TIP: HSM NG features a built-in scheduling system and does not rely on the system's cron service. At the first start after the upgrade, old HSM-related crontab lines will be automatically removed.
+
 
 [[admin-ng]]
 Switching to Admin NG
