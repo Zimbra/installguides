@@ -28,7 +28,7 @@ Before initializing the Backup NG module, make sure you have enough space on
 the storage where you will store the backup. The average size of the backup is
 50-70% of the nominal total quota of all mailboxes.
 
-To initialize the Backup NG module:
+*To initialize the Backup NG module:*
 
 * Access the Zimbra Administration Console.
 * Enter the "Network Modules NG" section on the left menu.
@@ -48,21 +48,30 @@ Until the initialization is complete, the old mobile engine will be active.
 What Happens after the Switch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 After switching to Mobile NG, all existing syncstates will be invalidated,
-and all connected devices will automatically re-synchronize all of their data
+and all connected devices will automatically re-synchronise all of their data
 through the new engine.
 
-WARNING: Since the switch will force all connected devices to re-synchonize all
+WARNING: *Since the switch will force all connected devices to re-synchonise all
 of their data, make sure to alert your users beforehand to make sure that they have
 wifi coverage or enough traffic on their mobile data plans.
+ +
+ +
+Furthermore, the switch might lead to an abrupt increase in the number of connections to the server, and consequently its load, due to the resynchronisation of all devices.*
 
 The switch is completely transparent to end users, and no user interaction
- will be prompted or required.
+ should be prompted or required, but being the Exchange ActiveSync protocol mostly client-driven different behaviours might be experienced, such as:
+
+* Device not synchronising until user's action (e.g. opening the email client).
+* Device requiring a restart.
+* Device not synchronising until the user re-enter its username and password in the account's settings.
+
+_Albeit sporadic, such behaviours and the load impact on the system should be taken into account when planning to switch to Mobile NG._
 
 [[mobile-ng-initialisation]]
 Mobile NG Initialization
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-To initialize Mobile NG:
+*To initialize Mobile NG:*
 
 * Access the Zimbra Administration Console.
 * Enter the "Network Modules NG" section on the left menu.
@@ -88,15 +97,27 @@ Admin NG is significantly different than the old Delegated Administration engine
 Please read the product's documentation and only migrate to Admin NG if its feature set
 meets your needs.
 
-WARNING: Admin Migration is a one way only process. Once Admin NG is initialized
+WARNING: *Switching to Admin NG will remove all existing ACLs and ACEs from the server. This new module is extremely different from its legacy counterpart, so after the migration will not be able to recreate the very same admin roles and settings.* +
+ +
+*_This is a one way only process._* +
+ +
+*Once Admin NG is initialized
 it's not possible to go back to the old engine, so if you have customized or complex
-ACLs/ACEs carefully consider whether or not to switch.
+ACLs/ACEs carefully consider whether or not to switch.*
 
 [[admin-ng-initialisation]]
 Admin NG Initialization
 ~~~~~~~~~~~~~~~~~~~~~~~
+Admin NG is not enabled by default during upgrades from a version earlier than 8.8, so it must be enabled manually before migrating to it.
 
-To initialize Admin NG:
+*To enable Admin NG:*
+
+* Run the following command as the "zimbra" user on any mailbox server:
+
+  zmprov mcf zimbraNetworkAdminNGEnable TRUE
+
+
+*To initialize Admin NG:*
 
 * Access the Zimbra Administration Console.
 * Enter the "Network Modules NG" section on the left menu.
