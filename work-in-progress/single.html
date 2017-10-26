@@ -633,7 +633,7 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#mobile-ng">Switching to Mobile NG</a>
 <ul class="sectlevel3">
-<li><a href="#what-happens-after-the-switch">What happens after the switch</a></li>
+<li><a href="#what-happens-after-the-switch">What Happens after the Switch</a></li>
 <li><a href="#mobile-ng-initialisation">Mobile NG Initialization</a></li>
 </ul>
 </li>
@@ -1629,7 +1629,7 @@ contact Zimbra sales.
 </li>
 <li>
 <p><strong>Zimbra Chat:</strong> Installing this package is optional. This package should be installed on at least one
-<strong>Zimbra-Store</strong> server. *Zimbra Chat includes a server extension with all
+<strong>Zimbra-Store</strong> server. Zimbra Chat includes a server extension with all
 the necessary modules to run an embedded XMPP Server, and an End-User Zimlet which connects
 to the server extension and offer to the users a rich point-to-point text-chat conversations.
 Zimbra Chat is marked as GA and supported starting Zimbra Collaboration 8.8.</p>
@@ -1640,8 +1640,7 @@ Zimbra Chat is marked as GA and supported starting Zimbra Collaboration 8.8.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The Zimbra Chat package must be installed on the different <strong>Zimbra-Store</strong> server
-while having a multi-server environment.
+The Zimbra Chat package must be selected and installed on every <strong>Zimbra-Store</strong>.
 </td>
 </tr>
 </table>
@@ -1661,8 +1660,7 @@ Zimbra Drive is marked as GA and supported starting Zimbra Collaboration 8.8.</p
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The Zimbra Drive package must be installed on the different <strong>Zimbra-Store</strong> server
-while having a multi-server environment.
+The Zimbra Drive package must be selected and installed on every <strong>Zimbra-Store</strong>.
 </td>
 </tr>
 </table>
@@ -1675,7 +1673,7 @@ while having a multi-server environment.
 </td>
 <td class="content">
 Zimbra Drive provides only a connectivity to a ownCloud or NextCloud Server. And is the Customer
-responsibility to maintain, backup, and protect the data stored on this OC or NC Servers.
+responsibility to maintain, backup, and protect the data stored on this ownCloud or NextCloud Servers.
 </td>
 </tr>
 </table>
@@ -2062,8 +2060,8 @@ process. The table below describes the menu options.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">zimbra-drive</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Installing the Zimbra-Chat package is optional.
-  If you choose to install Zimbra-Chat for point-to-point text chat, it should
+<td class="tableblock halign-left valign-top"><p class="tableblock">Installing the Zimbra-Drive package is optional.
+  If you choose to install Zimbra-Drive for file sync-and-share, it should
   be installed on every Zimbra Store Server that is part of the Zimbra configuration.
   Please bear in mind you will need a third party server running ownCloud or Nextcloud.</p></td>
 </tr>
@@ -2940,7 +2938,7 @@ displays, press <code>enter</code> to continue. Your system will be configured t
 the Zimbra packaging repository for <strong>yum</strong> or <strong>apt-get</strong> as appropriate
 so it can install the Zimbra 3rd party packages.
 Zimbra IMAPD is meant to be installed on a multi-server environment, with
-hundred of thousands of users, and it&#8217;s still a Beta Release. Zimbra recommends
+hundreds of thousands of users, and it&#8217;s still a Beta Release. Zimbra recommends
 to only install it for demo and evaluation purposes.*</p>
 <div class="ulist">
 <ul>
@@ -2949,8 +2947,7 @@ to only install it for demo and evaluation purposes.*</p>
 and Convertd as an option to add to your Zimbra installation.</p>
 </li>
 <li>
-<p>Zimbra-dnscache is recommended to be installed on the MTA Servers only when
-is not another DNS Server like dnsmasq or bind running on the same Zimbra Server.</p>
+<p>It is recommended to only install Zimbra-dnscache on the MTA Servers when there are no other DNS servers (for example dnsmasq or bind) already installed and running on the same server.</p>
 <div class="openblock">
 <div class="content">
 <div class="listingblock">
@@ -3237,7 +3234,7 @@ Select from menu, or press 'a' to apply config (? - help) a</pre>
 </div>
 </li>
 <li>
-<p>When Save Configuration data to file appears, type <code>Yes</code> and press <em>Enter</em>.</p>
+<p>When Save Configuration data to file appears, type "Yes" and press <em>Enter</em>.</p>
 <div class="openblock">
 <div class="content">
 <div class="literalblock">
@@ -3250,7 +3247,7 @@ Select from menu, or press 'a' to apply config (? - help) a</pre>
 </li>
 <li>
 <p>The next request asks where to save the files. To accept the
-default, press <em>Enter</em>. To save the files to another directory, enter the
+default, press "Enter". To save the files to another directory, enter the
 directory and then press Enter</p>
 <div class="openblock">
 <div class="content">
@@ -3264,7 +3261,7 @@ Saving config in /opt/zimbra/config.16039...done.</pre>
 </div>
 </li>
 <li>
-<p>When <code>The system will be modified - continue?</code> appears, type <code>Yes</code> and
+<p>When "The system will be modified - continue?" appears, type "Yes" and
 press <em>Enter</em>.</p>
 <div class="paragraph">
 <p>The server is modified. Installing all the components and configuring
@@ -3990,7 +3987,7 @@ The <code>nc</code> utility must be installed prior to installation or upgrading
 AppArmor service is not running before installing Zimbra Collaboration.</p>
 </div>
 <div class="paragraph">
-<p>For Red Hat Enterprise, Fedora Core and SUSE operating systems, the
+<p>For Red Hat Enterprise operating systems, the
 server must also have the following installed:</p>
 </div>
 <div class="ulist">
@@ -4575,7 +4572,7 @@ Unix platforms. To download a copy go to <a href="http://putty.nl/">http://putty
 <h2 id="Zimbra-Network-NG-Modules-first-steps-guide">Zimbra Network NG Modules: First Steps</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This guides contains all information needed in order to switch to the new Zimbra Network NG modules from their legacy counterparts after upgrading to Zimbra 8.8.</p>
+<p>This Guide contains all information needed to switch to the new Zimbra Network NG modules from their legacy counterparts after upgrading to Zimbra 8.8.</p>
 </div>
 <div class="sect2">
 <h3 id="backup-ng">Switching to Backup NG</h3>
@@ -4589,7 +4586,7 @@ still available via the usual CLI commands.</p>
 <div class="sect3">
 <h4 id="backup-path-limitations">Backup Path Limitations</h4>
 <div class="paragraph">
-<p>In order to hold Backup NG data, a storage must comply to the following:</p>
+<p>To hold Backup NG data, a storage must comply to the following:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4608,19 +4605,28 @@ still available via the usual CLI commands.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>Other than this, there are no hard limitations.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Backup NG features a built-in scheduling system and does not rely on the system&#8217;s cron service. At the end of the initialisation process, old backup-related crontab lines will be automatically removed.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
 <h4 id="backup-ng-initialisation">Backup NG Initialization</h4>
 <div class="paragraph">
 <p>Before initializing the Backup NG module, make sure you have enough space on
-the storage you wish to store the backup in. The average size of the backup is
+the storage where you will store the backup. The average size of the backup is
 50-70% of the nominal total quota of all mailboxes.</p>
 </div>
 <div class="paragraph">
-<p>To initialize the Backup NG module:</p>
+<p><strong>To initialize the Backup NG module:</strong></p>
 </div>
 <div class="ulist">
 <ul>
@@ -4634,10 +4640,10 @@ the storage you wish to store the backup in. The average size of the backup is
 <p>Enter the "Backup" section.</p>
 </li>
 <li>
-<p>Set the "Backup Path" to whatever directory you wish to store your backup into.</p>
+<p>Set the "Backup Path" to the directory where you will store your backup.</p>
 </li>
 <li>
-<p>Click on the "Initialize" button</p>
+<p>Click the "Initialize" button - this will trigger a SmartScan to initialize the Backup Path</p>
 </li>
 </ul>
 </div>
@@ -4647,15 +4653,15 @@ the storage you wish to store the backup in. The average size of the backup is
 <h3 id="mobile-ng">Switching to Mobile NG</h3>
 <div class="paragraph">
 <p>Switching to the new Mobile NG is a simple process that will activate the new
-mobile handlers, deactivate the old ones and switch the synchronization control
+mobile handlers and deactivate the old ones. This will also switch the synchronization control
 over to Mobile NG from the legacy Zimbra Mobile.
-Until the initialization is completed, the old mobile engine will be active.</p>
+Until the initialization is complete, the old mobile engine will be active.</p>
 </div>
 <div class="sect3">
-<h4 id="what-happens-after-the-switch">What happens after the switch</h4>
+<h4 id="what-happens-after-the-switch">What Happens after the Switch</h4>
 <div class="paragraph">
 <p>After switching to Mobile NG, all existing syncstates will be invalidated,
-and all connected devices will automatically re-synchronize all of their data
+and all connected devices will automatically re-synchronise all of their data
 through the new engine.</p>
 </div>
 <div class="admonitionblock warning">
@@ -4665,22 +4671,41 @@ through the new engine.</p>
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Since the switch will force all connected devices to re-synchonize all
+<strong>Since the switch will force all connected devices to re-synchonise all
 of their data, make sure to alert your users beforehand to make sure that they have
 wifi coverage or enough traffic on their mobile data plans.
+<br>
+<br>
+Furthermore, the switch might lead to an abrupt increase in the number of connections to the server, and consequently its load, due to the resynchronisation of all devices.</strong>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
 <p>The switch is completely transparent to end users, and no user interaction
- will be prompted or required.</p>
+ should be prompted or required, but being the Exchange ActiveSync protocol mostly client-driven different behaviours might be experienced, such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Device not synchronising until user&#8217;s action (e.g. opening the email client).</p>
+</li>
+<li>
+<p>Device requiring a restart.</p>
+</li>
+<li>
+<p>Device not synchronising until the user re-enter its username and password in the account&#8217;s settings.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em>Albeit sporadic, such behaviours and the load impact on the system should be taken into account when planning to switch to Mobile NG.</em></p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="mobile-ng-initialisation">Mobile NG Initialization</h4>
 <div class="paragraph">
-<p>To initialize the Mobile NG module:</p>
+<p><strong>To initialize Mobile NG:</strong></p>
 </div>
 <div class="ulist">
 <ul>
@@ -4694,7 +4719,7 @@ wifi coverage or enough traffic on their mobile data plans.
 <p>Enter the "Mobile" section.</p>
 </li>
 <li>
-<p>Click on the "Activate" button.</p>
+<p>Click the "Activate" button.</p>
 </li>
 </ul>
 </div>
@@ -4704,22 +4729,34 @@ wifi coverage or enough traffic on their mobile data plans.
 <h3 id="hsm-ng">Switching to HSM NG</h3>
 <div class="paragraph">
 <p>The HSM NG module will become active as soon as the upgrade to Zimbra 8.8 is
-completed, and does not require any interaction.</p>
+complete, and does not require any interaction.</p>
 </div>
 <div class="paragraph">
 <p>Any old HSM policy, volume and volume configuration will be maintained.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+HSM NG features a built-in scheduling system and does not rely on the system&#8217;s cron service. At the first start after the upgrade, old HSM-related crontab lines will be automatically removed.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="admin-ng">Switching to Admin NG</h3>
 <div class="paragraph">
-<p>Switching to the new Admin NG module is a simple process that will migrate any
+<p>Switching to the new Admin NG is a simple process that will migrate any
 relevant ACL information to the module&#8217;s own configuration manager, clearing
 existing ACLs and ACEs from the system.</p>
 </div>
 <div class="paragraph">
-<p>The Admin NG module is significantly different than the old Delegated Administration engine.
-Please make sure to read the product&#8217;s documentation and to only migrate to Admin NG if its feature set
+<p>Admin NG is significantly different than the old Delegated Administration engine.
+Please read the product&#8217;s documentation and only migrate to Admin NG if its feature set
 meets your needs.</p>
 </div>
 <div class="admonitionblock warning">
@@ -4729,9 +4766,13 @@ meets your needs.</p>
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Admin Migration is a one way only process. Once Admin NG is initialized
+<strong>Switching to Admin NG will remove all existing ACLs and ACEs from the server. This new module is extremely different from its legacy counterpart, so after the migration will not be able to recreate the very same admin roles and settings.</strong><br>
+<br>
+<strong><em>This is a one way only process.</em></strong><br>
+<br>
+<strong>Once Admin NG is initialized
 it&#8217;s not possible to go back to the old engine, so if you have customized or complex
-ACLs/ACEs consider whether switching or not carefully.
+ACLs/ACEs carefully consider whether or not to switch.</strong>
 </td>
 </tr>
 </table>
@@ -4739,7 +4780,25 @@ ACLs/ACEs consider whether switching or not carefully.
 <div class="sect3">
 <h4 id="admin-ng-initialisation">Admin NG Initialization</h4>
 <div class="paragraph">
-<p>To initialize the Admin NG module:</p>
+<p>Admin NG is not enabled by default during upgrades from a version earlier than 8.8, so it must be enabled manually before migrating to it.</p>
+</div>
+<div class="paragraph">
+<p><strong>To enable Admin NG:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Run the following command as the "zimbra" user on any mailbox server:</p>
+<div class="literalblock">
+<div class="content">
+<pre>zmprov mcf zimbraNetworkAdminNGEnable TRUE</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>To initialize Admin NG:</strong></p>
 </div>
 <div class="ulist">
 <ul>
@@ -4764,7 +4823,7 @@ ACLs/ACEs consider whether switching or not carefully.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-11 10:57:44 CDT
+Last updated 2017-09-12 13:32:57 CDT
 </div>
 </div>
 </body>
