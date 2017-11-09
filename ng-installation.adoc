@@ -65,7 +65,7 @@ The switch is completely transparent to end users, and no user interaction
 
 * Device not synchronising until user's action (e.g. opening the email client).
 * Device requiring a restart.
-* Device not synchronising until the user re-enter its username and password in the account's settings.
+* Device not synchronising until the user re-enters their username and password in the account's settings.
 
 _Albeit sporadic, such behaviours and the load impact on the system should be taken into account when planning to switch to Mobile NG._
 
