@@ -53,6 +53,12 @@ default.
 Installing the {product-short} Proxy is required as of
 {product-abbrev} 8.7.
 
+[NOTE]
+By default {product-short} Proxy is configured to perform strict server name enforcement of the HTTP 'Host' header sent by clients for new installs.  Strict server name enforcement may be disabled during the
+post-install configuration process in the {product-short} Proxy
+configuration section or using the `zimbraReverseProxyStrictServerNameEnabled` configuration
+option. Please see the {product-short} Proxy section of the administration guide for more details.
+
 * *{product-short} Memcached:* This package is automatically selected when the
 *{product-short}-Proxy* package is installed and provides access to `Memcached`.
 +
@@ -110,7 +116,7 @@ contact {product-short} sales.
 endif::networkeditiondoc[]
 
 * *{product-short} Chat:* Installing this package is optional. This package should be installed on at least one
-*{product-short}-Store* server. {product-short} Chat includes a server extension with all 
+*{product-short}-Store* server. {product-short} Chat includes a server extension with all
 the necessary modules to run an embedded XMPP Server, and an End-User Zimlet which connects
 to the server extension and offer to the users a rich point-to-point text-chat conversations.
 {product-short} Chat is marked as GA and supported starting {product-name} 8.8.
@@ -120,7 +126,7 @@ The {product-short} Chat package must be selected and installed on every *{produ
 +
 
 * *{product-short} Drive:* Installing this package is optional.This package should be installed on at least one
-*{product-short}-Store* server. *{product-short} Drive includes a server extension with all 
+*{product-short}-Store* server. *{product-short} Drive includes a server extension with all
 the necessary modules to connect and authenticate *{product-short} Users against a ownCloud or
 NextCloud Server, and an End-User Zimlet which allow users to perform actions to the their docu-
 ments stored on ownCloud or Nextcloud.
