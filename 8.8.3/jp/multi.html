@@ -635,7 +635,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_ユーザーのメールボックスからデータをインポートする">ユーザーのメールボックスからデータをインポートする</a></li>
 </ul>
 </li>
-<li><a href="#_エフェメラルデータ移管">エフェメラルデータ移管</a></li>
+<li><a href="#_エフェメラルデータ移行">エフェメラルデータ移行</a></li>
 </ul>
 </li>
 <li><a href="#_zimbra_collaborationのアンインストール方法">Zimbra Collaborationのアンインストール方法</a></li>
@@ -833,9 +833,9 @@ www.zimbra.com または管理コンソールのヘルプデスクのページ�
 使用する手順が含まれております。</p>
 </li>
 <li>
-<p><strong>移管ウィザードのガイド</strong>. これらのガイドにはMicrosoft Exchangeや
+<p><strong>移行ウィザードのガイド</strong>. これらのガイドにはMicrosoft Exchangeや
 Lotus DominoのシステムにあるユーザーをZimbra Collaborationへ
-移管する方法が含まれています。</p>
+移行する方法が含まれています。</p>
 </li>
 </ul>
 </div>
@@ -4467,7 +4467,7 @@ Zimbra Proxyを複数のサーバーにインストールすることが可能�
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-Proxyを使用していない環境から移管している場合（例えばシングル
+Proxyを使用していない環境から移行している場合（例えばシングル
 サーバーからマルチサーバー）、メールボックスサーバーとProxy設定に必要な追加の
 手順があります。Proxyのインストールが完了したら、メールボックスサーバーを
 ZCSインストールガイドの  <em>Zimbra Proxy</em> 手順を参考に再設定してください。
@@ -5453,7 +5453,7 @@ Zimbra環境のメールボックスサーバーをリストします。COSを�
 <h4 id="_アカウントを作成する">アカウントを作成する</h4>
 <div class="paragraph">
 <p>新しいアカウント作成のウィザードでアカウントを1つずつで作成するか、
-アカウント移管ウィザードで複数のアカウントを一括で作成できます。</p>
+アカウント移行ウィザードで複数のアカウントを一括で作成できます。</p>
 </div>
 <div class="sect4">
 <h5 id="_1つのアカウントを設定する">1つのアカウントを設定する</h5>
@@ -5514,7 +5514,7 @@ Zimbra環境のメールボックスサーバーをリストします。COSを�
 <div class="sect4">
 <h5 id="_複数のアカウントを一括で設定する">複数のアカウントを一括で設定する</h5>
 <div class="paragraph">
-<p>管理コンソールの_アカウント移管ツール_を使用することで複数のアカウントを
+<p>管理コンソールの_アカウント移行ツール_を使用することで複数のアカウントを
 一括で作成できます。ウィザードではActive DirectoryかLDAPサーバーの外部
 ディレクトリのサーバーからアカウントをインポートする手順を案内します。
 ウィザードがご利用のディレクトリからアカウント情報をダウンロードし、
@@ -5527,17 +5527,17 @@ ZCS側にアカウントを作成します。</p>
 <div class="sect4">
 <h5 id="_ユーザーのメールボックスからデータをインポートする">ユーザーのメールボックスからデータをインポートする</h5>
 <div class="paragraph">
-<p>Zimbraの移管とインポートツールでは、ユーザーのメールメッセージ、
+<p>Zimbraの移行とインポートツールでは、ユーザーのメールメッセージ、
 カレンダー、および連絡先を古いメールサーバから Zimbra サーバのアカウントへ
 移動することが可能です。ユーザーのファイルをインポートした場合、同じ
-フォルダー階層に保管されます。これらの移管とインポートツールは、
+フォルダー階層に保管されます。これらの移行とインポートツールは、
 管理コンソールのダウンロードページからアクセスし、利用手順は管理コンソールの
 オンラインヘルプにて提供しています。</p>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_エフェメラルデータ移管">エフェメラルデータ移管</h4>
+<h4 id="_エフェメラルデータ移行">エフェメラルデータ移行</h4>
 <div class="paragraph">
 <p>Zimbraの8.8.3以前のバージョンでは、
 <em>エフェメラルデータ</em> は <em>LDAP</em> に保存されました。 <em>エフェメラルデータ</em> の実例として：</p>
@@ -5556,14 +5556,14 @@ ZCS側にアカウントを作成します。</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Zimbra Collaboration 8.8.3 により、_エフェメラルデータ_を外部のサービス、
+<p>Zimbra Collaboration 8.8.3 により、 <em>エフェメラルデータ</em> を外部のサービス、
 例えば
 <a href="http://ssdb.io/">SSDB</a>へ保存することが可能となりました。
-これは任意の機能ですが、_LDAP_のパフォーマンスと安定性が向上できる場合があります。</p>
+これは任意の機能ですが、 <em>LDAP</em> のパフォーマンスと安定性が向上できる場合があります。</p>
 </div>
 <div class="paragraph">
 <p>詳細につきましては <em>Zimbra Collaboration Administration Guide</em> を参照ください。
- <em>エフェメラルデータ_を _LDAP</em> から <em>SSDB</em> へ移管することはサポート対象バージョンの
+ <em>エフェメラルデータ</em> を <em>LDAP</em> から <em>SSDB</em> へ移行することはサポート対象バージョンの
 インストール、またはアップグレードが完了後にのみ行うことが可能です。</p>
 </div>
 </div>
@@ -8026,7 +8026,7 @@ Zimbraのウェブサイトを参照ください：
 <td class="tableblock halign-left valign-top"><p class="tableblock">英語</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ドキュメンテーション：インストールとアップグレード/管理ガイド/移管/リリースノート/システム条件</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ドキュメンテーション：インストールとアップグレード/管理ガイド/移行/リリースノート/システム条件</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ガイド</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">英語</p></td>
 </tr>
