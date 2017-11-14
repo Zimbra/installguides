@@ -985,6 +985,25 @@ ZCS 8.7.
 </table>
 </div>
 </li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+By default Zimbra Proxy is configured to perform strict server name enforcement of the HTTP 'Host' header sent by clients for new installs.  Strict server name enforcement may be disabled during the
+post-install configuration process in the Zimbra Proxy
+configuration section or using the <code>zimbraReverseProxyStrictServerNameEnabled</code> configuration
+option. Please see the Zimbra Proxy section of the administration guide for more details.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><strong>Zimbra Memcached:</strong> This package is automatically selected when the
 <strong>Zimbra-Proxy</strong> package is installed and provides access to <code>Memcached</code>.</p>
@@ -8419,7 +8438,7 @@ ACLs/ACEs carefully consider whether or not to switch.</strong>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-09 09:55:16 CST
+Last updated 2017-11-14 13:01:52 CST
 </div>
 </div>
 </body>
