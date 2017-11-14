@@ -557,7 +557,7 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#_アップグレード完了後の注意事項">アップグレード完了後の注意事項</a>
 <ul class="sectlevel2">
-<li><a href="#_エフェメラルデータ移管">エフェメラルデータ移管</a></li>
+<li><a href="#_エフェメラルデータ移行">エフェメラルデータ移行</a></li>
 <li><a href="#_imapd_サービス">IMAPD サービス</a></li>
 </ul>
 </li>
@@ -1504,10 +1504,10 @@ Zimbraが既存のデータベースのバックアップを取得する場合�
 インストーラのアップグレードに含まれません。</p>
 </li>
 <li>
-<p>移管コマンドにて`zimbraAllowFromAddress`  の値が設定している
-  アカウント数を確認し、移管が必要となったアカウント数も返答します。
-  すべてのアカウントが正常に移管されたことを確認するため、コマンドを
-  再度実行してください。合計は変更されませんが、移管されたアカウントは
+<p>移行コマンドにて`zimbraAllowFromAddress`  の値が設定している
+  アカウント数を確認し、移行が必要となったアカウント数も返答します。
+  すべてのアカウントが正常に移行されたことを確認するため、コマンドを
+  再度実行してください。合計は変更されませんが、移行されたアカウントは
   <code>0</code> になりません。詳細については、 <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=66387">Bug 66387</a> を
 　 参照ください。</p>
 </li>
@@ -1641,7 +1641,7 @@ httpclient_external_connmgr_tcp_nodelay</pre>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_エフェメラルデータ移管">エフェメラルデータ移管</h3>
+<h3 id="_エフェメラルデータ移行">エフェメラルデータ移行</h3>
 <div class="paragraph">
 <p>Zimbraの8.8.3以前のバージョンでは、
 <em>エフェメラルデータ</em> は <em>LDAP</em> に保存されました。 <em>エフェメラルデータ</em> の実例として：</p>
@@ -1660,14 +1660,14 @@ httpclient_external_connmgr_tcp_nodelay</pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>Zimbra Collaboration 8.8.3 により、_エフェメラルデータ_を外部のサービス、
+<p>Zimbra Collaboration 8.8.3 により、 <em>エフェメラルデータ</em> を外部のサービス、
 例えば
 <a href="http://ssdb.io/">SSDB</a>へ保存することが可能となりました。
-これは任意の機能ですが、_LDAP_のパフォーマンスと安定性が向上できる場合があります。</p>
+これは任意の機能ですが、 <em>LDAP</em> のパフォーマンスと安定性が向上できる場合があります。</p>
 </div>
 <div class="paragraph">
 <p>詳細につきましては <em>Zimbra Collaboration Administration Guide</em> を参照ください。
- <em>エフェメラルデータ_を _LDAP</em> から <em>SSDB</em> へ移管することはサポート対象バージョンの
+ <em>エフェメラルデータ</em> を <em>LDAP</em> から <em>SSDB</em> へ移行することはサポート対象バージョンの
 インストール、またはアップグレードが完了後にのみ行うことが可能です。</p>
 </div>
 </div>
@@ -1834,7 +1834,7 @@ Zimbra Collaboration 8.5.0で正常に機能しない可能性があります。
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-14 14:38:32 JST
+Last updated 2017-11-14 16:18:11 JST
 </div>
 </div>
 </body>

@@ -595,7 +595,7 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#Final_Set-Up_Optional">最終設定（任意）</a>
 <ul class="sectlevel2">
-<li><a href="#_エフェメラルデータ移管">エフェメラルデータ移管</a></li>
+<li><a href="#_エフェメラルデータ移行">エフェメラルデータ移行</a></li>
 </ul>
 </li>
 <li><a href="#Scanning_Attachments_in_Outgoing_Mail">送信メールの添付ファイルスキャン</a></li>
@@ -3486,10 +3486,10 @@ Syslogの設定ファイルを編集する必要があります。</p>
 <h2 id="Final_Set-Up_Optional">最終設定（任意）</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_エフェメラルデータ移管">エフェメラルデータ移管</h3>
+<h3 id="_エフェメラルデータ移行">エフェメラルデータ移行</h3>
 <div class="paragraph">
 <p>Zimbraの8.8.3以前のバージョンでは、
-_エフェメラルデータ_は_LDAP_に保存されました。_エフェメラルデータ_の実例として：</p>
+<em>エフェメラルデータ</em> は <em>LDAP</em> に保存されました。 <em>エフェメラルデータ</em> の実例として：</p>
 </div>
 <div class="ulist">
 <ul>
@@ -3505,14 +3505,14 @@ _エフェメラルデータ_は_LDAP_に保存されました。_エフェメ�
 </ul>
 </div>
 <div class="paragraph">
-<p>Zimbra Collaboration 8.8.3 により、_エフェメラルデータ_を外部のサービス、
+<p>Zimbra Collaboration 8.8.3 により、 <em>エフェメラルデータ</em> を外部のサービス、
 例えば
 <a href="http://ssdb.io/">SSDB</a>へ保存することが可能となりました。
-これは任意の機能ですが、_LDAP_のパフォーマンスと安定性が向上できる場合があります。</p>
+これは任意の機能ですが、 <em>LDAP</em> のパフォーマンスと安定性が向上できる場合があります。</p>
 </div>
 <div class="paragraph">
 <p>詳細につきましては <em>Zimbra Collaboration Administration Guide</em> を参照ください。
-_エフェメラルデータ_を_LDAP_から_SSDB_へ移管することはサポート対象バージョンの
+ <em>エフェメラルデータ</em> を <em>LDAP</em> から <em>SSDB</em> へ移行することはサポート対象バージョンの
 インストール、またはアップグレードが完了後にのみ行うことが可能です。</p>
 </div>
 <div style="page-break-after: always;"></div>
@@ -3601,7 +3601,7 @@ zmprov mcf zimbraAttachmentsScanEnabled TRUE</code></pre>
 <h3 id="Provision_accounts">アカウントを作成する</h3>
 <div class="paragraph">
 <p><strong>新しいアカウント作成のウィザード</strong> でアカウントを1つずつで作成するか、
-<strong>アカウント移管ウィザード</strong> で複数のアカウントをまとめて作成できます。</p>
+<strong>アカウント移行ウィザード</strong> で複数のアカウントをまとめて作成できます。</p>
 </div>
 </div>
 <div class="sect2">
@@ -3659,11 +3659,11 @@ zmprov mcf zimbraAttachmentsScanEnabled TRUE</code></pre>
 <h3 id="Importing_Content_from_User_Mailboxes">ユーザーのメールボックスからデータをインポートする</h3>
 <div class="paragraph">
 <p>ユーザーのメールメッセージ、カレンダー、および連絡先を古いメール
-サーバーからZimbraサーバーの新しいアカウントへ移管するために
+サーバーからZimbraサーバーの新しいアカウントへ移行するために
 Zimbraがさまざまなアプリケーションを開発しました。
 ユーザーのファイルをインポートしましたら、同じフォルダー階層に保管されます。
 Zimbra Collaborationのツールを利用することで、ユーザーのメールを正常に
- Zimbra Collaboration へ移管することが可能です。</p>
+ Zimbra Collaboration へ移行することが可能です。</p>
 </div>
 <div class="paragraph">
 <p>以下のアプリケーションは管理コンソールの <strong>ダウンロード</strong> ページよりアクセスし、
@@ -3681,12 +3681,12 @@ Zimbra サーバ名を入力してください。)</p>
 <li>
 <p><strong>Exchange用ZCS移行ウイザード</strong>. 本ツールは .exe ファイルです。
 Microsoft® Exchange server のメールアカウントを Zimbra サーバーのアカウントへ
-移管することが可能です。</p>
+移行することが可能です。</p>
 </li>
 <li>
 <p><strong>Domino用ZCS移行ウイザード</strong>. 本ツールは .exe ファイルです。
 Lotus Domino server メールアカウントを Zimbra サーバーのアカウントへ
-移管することが可能です。</p>
+移行することが可能です。</p>
 </li>
 <li>
 <p><strong>PSTインポートウイザード</strong> (User Instructions). 本ツールは .exe ファイルです。
@@ -4557,7 +4557,7 @@ Zimbraのウェブサイトを参照ください：
 <td class="tableblock halign-left valign-top"><p class="tableblock">英語</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ドキュメンテーション：インストールとアップグレード/管理ガイド/移管/リリースノート/システム条件</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ドキュメンテーション：インストールとアップグレード/管理ガイド/移行/リリースノート/システム条件</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ガイド</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">英語</p></td>
 </tr>
