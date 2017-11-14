@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.6">
-<title>Zimbra Collaboration 8.8.3 Upgrade Steps</title>
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Zimbra Collaboration 8.8.3 アップグレードする方法</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -519,64 +519,65 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Zimbra Collaboration 8.8.3 Upgrade Steps</h1>
+<h1>Zimbra Collaboration 8.8.3 アップグレードする方法</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_before_you_upgrade">Before you upgrade</a>
+<li><a href="#_アップグレード実行前の注意事項">アップグレード実行前の注意事項</a>
 <ul class="sectlevel2">
-<li><a href="#_database_integrity_checking">Database Integrity Checking</a></li>
-<li><a href="#_preparing_your_operating_system">Preparing your operating system</a>
+<li><a href="#_zimbra_データベースの整合性チェック">Zimbra データベースの整合性チェック</a></li>
+<li><a href="#_osの準備">OSの準備</a>
 <ul class="sectlevel3">
 <li><a href="#_ubuntu_os">Ubuntu OS</a></li>
 <li><a href="#_red_hat_enterprise_linux_centos_linux">Red Hat Enterprise Linux/CentOS Linux</a></li>
 </ul>
 </li>
-<li><a href="#_license_activation">License Activation</a></li>
-<li><a href="#_upgrading_ldap_replica_servers_or_multi_master_server">Upgrading LDAP Replica Servers or Multi-Master Server</a></li>
-<li><a href="#_disable_sslv3_support">Disable SSLv3 Support</a></li>
-<li><a href="#_update_default_proxy_ssl_ciphers_attribute">Update Default Proxy SSL Ciphers Attribute</a></li>
-<li><a href="#_customizing_zco_installations">Customizing ZCO Installations</a></li>
+<li><a href="#_ライセンスアクティベーションについて">ライセンスアクティベーションについて</a></li>
+<li><a href="#_ldapのレプリカサーバ_およびマルチマスターサーバ環境のアップグレード">LDAPのレプリカサーバ、およびマルチマスターサーバ環境のアップグレード</a></li>
+<li><a href="#_sslv3のサポートを無効化する">SSLv3のサポートを無効化する</a></li>
+<li><a href="#_デファルトのプロキシーssl暗号の値アップデート">デファルトのプロキシーSSL暗号の値アップデート</a></li>
+<li><a href="#_zcoインストールのカスタマイズについて">ZCOインストールのカスタマイズについて</a></li>
 </ul>
 </li>
-<li><a href="#_upgrade_instructions">Upgrade Instructions</a>
+<li><a href="#_アップグレードの手順">アップグレードの手順</a>
 <ul class="sectlevel2">
-<li><a href="#_download_the_software">Download the Software</a></li>
-<li><a href="#_single_server_upgrade_steps">Single Server Upgrade Steps</a>
+<li><a href="#_ソフトウェアをダウンロードする">ソフトウェアをダウンロードする</a></li>
+<li><a href="#_シングルサーバのアップグレード手順">シングルサーバのアップグレード手順</a>
 <ul class="sectlevel3">
-<li><a href="#_process">Process</a></li>
+<li><a href="#_プロセス">プロセス</a></li>
 </ul>
 </li>
-<li><a href="#_multi_server_environment_upgrade_steps">Multi-Server Environment Upgrade Steps</a>
+<li><a href="#_マルチサーバ構成のアップグレード手順">マルチサーバ構成のアップグレード手順</a>
 <ul class="sectlevel3">
-<li><a href="#_process_2">Process</a></li>
+<li><a href="#_プロセス_2">プロセス</a></li>
 </ul>
 </li>
-<li><a href="#_using_lmdb_as_the_supported_back_end_for_on_disk_database_maps">Using LMDB as the Supported Back-end for On-disk Database Maps</a></li>
+<li><a href="#_オンディスクのデータベースマップのサポート対象バックエンドとして_lmdbを利用する">オンディスクのデータベースマップのサポート対象バックエンドとして、LMDBを利用する</a></li>
 </ul>
 </li>
-<li><a href="#_after_the_upgrade_is_complete">After the Upgrade is Complete</a>
+<li><a href="#_アップグレード完了後の注意事項">アップグレード完了後の注意事項</a>
 <ul class="sectlevel2">
-<li><a href="#_ephemeral_data_migration">Ephemeral Data Migration</a></li>
-<li><a href="#_imapd_service">IMAPD Service</a></li>
+<li><a href="#_エフェメラルデータ移行">エフェメラルデータ移行</a></li>
+<li><a href="#_imapd_サービス">IMAPD サービス</a></li>
 </ul>
 </li>
-<li><a href="#_remove_current_version_and_perform_clean_install_of_zcs">Remove Current Version and Perform Clean Install of ZCS</a></li>
-<li><a href="#_status_of_your_customization_after_upgrade">Status of Your Customization after Upgrade</a></li>
-<li><a href="#_changes_to_customized_themes">Changes to Customized Themes</a></li>
+<li><a href="#_既存のバージョンを削除し_zcsをクリーンインストールする手順">既存のバージョンを削除し、ZCSをクリーンインストールする手順</a></li>
+<li><a href="#_カスタマイズしたzcsにアップグレード後の影響について">カスタマイズしたZCSにアップグレード後の影響について</a></li>
+<li><a href="#_カスタマイズしたテーマの変更について">カスタマイズしたテーマの変更について</a></li>
 </ul>
 </div>
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_before_you_upgrade">Before you upgrade</h2>
+<h2 id="_アップグレード実行前の注意事項">アップグレード実行前の注意事項</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The following tasks might need to be performed before you
-upgrade. After you review the tasks in this section, go to Upgrade
-Instructions. Be sure to read the
-<a href="https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0">release note</a>
-information before upgrading.</p>
+<p>アップグレードを実行する前に、以下のタスクの実行が必要となる
+可能性がございます。以下のタスクを参照いただきましたら、
+アップグレード手順をご確認ください。
+また、アップグレードする前に、最新の注意事項を確認するため、
+インストールするバージョンのリリースノートをご参照ください。
+<a href="https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0">release note</a></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -588,23 +589,23 @@ information before upgrading.</p>
 <div class="paragraph">
 <p><a href="https://bugzilla.zimbra.com/show_bug.cgi?id=105056">Bug
 105056</a>
-noted a problem that can occur during a rolling upgrade if two
-factor authentication (2FA) is enabled before all mailbox servers have
-been upgraded to 8.7.  In particular, pre-8.7 mailbox servers are not
-compatible with 2FA.</p>
+すべてのメールボックスサーバが8.7へのアップグレードが完了する前に
+二段階認証(2FA)を有効化した場合、アップグレードする環境に
+問題が発生することを確認しています。特に、8.7より前のメールボックス
+サーバは2FAとの互換性がありません。</p>
 </div>
 <div class="paragraph">
-<p>Accordingly, it is recommended that 2FA is not enabled until all
-mailbox servers have been upgraded to 8.7.</p>
+<p>そのため、すべてのメールボックスサーバが正常に 8.7 へのアップグレードが
+完了した後にのみ、2FAを有効化することを推奨しております。</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The following new services are available for installation at upgrade
-time. Please refer to the <em>Zimbra Collaboration Administration Guide</em> for more information
-and to determine if you wish to install them.</p>
+<p>アップグレード時に以下の新しいサービスをインストールすることが可能となりました。
+各サービスの詳細につきましては <em>Zimbra Collaboration Administration Guide</em> を参照し、インストールするか
+ご検討ください。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -620,18 +621,17 @@ and to determine if you wish to install them.</p>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_database_integrity_checking">Database Integrity Checking</h3>
+<h3 id="_zimbra_データベースの整合性チェック">Zimbra データベースの整合性チェック</h3>
 <div class="paragraph">
-<p>Some customers have had corrupted databases prior to upgrade, and the
-upgrade has in some of those cases exacerbated the problem. In order
-to detect any corrupted databases as early as possible, we have added
-an optional step to check the MariaDB database with
-<code>zmdbintegrityreport</code> prior to making any system changes. You are
-prompted to decide if you would like to run the zmdbintegrityreport.</p>
+<p>過去の事例では、データベースが既に破損しているユーザーがアップグレードを実行し、
+データベースの破損がさらに拡大し、問題が深刻化したことがあります。破損してる
+データベースを事前に確認するため、システムの変更を実行する前に <code>zmdbintegrityreport</code> では
+MariaDBのデータベースをチェックするオプションを追加しています。アップグレードを
+実行する際にzmdbintegrityreportを実行するかどうかを確認されます。</p>
 </div>
 <div class="paragraph">
-<p><code>zmdbintegrityreport</code> can take minutes to an hour to run,
-depending on your system size and disk bandwidth.</p>
+<p>システムのサイズやディスクの仕様により、<code>zmdbintegrityreport</code> が完了されるまで
+数分から数時間かかる場合があります。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -641,12 +641,12 @@ depending on your system size and disk bandwidth.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p><code>zmdbintegrityreport</code> is run on a weekly basis from cron on all
-zimbra-store nodes. Large sites can opt to disable this by setting
-<code>zmlocalconfig -e zmdbintegrityreport_disabled=TRUE</code>. If
-you choose to disable this, it is recommended that the integrity
-reports be run by hand during the your normal maintenance windows and
-prior to running any ZCS upgrades.</p>
+<p><code>zmdbintegrityreport</code> はすべてのZimbra-storeサーバにてCronにより毎週に自動的に
+実行されます。大規模システムでこの設定を無効化する場合、以下のコマンドを
+実行します。
+zmlocalconfig -e zmdbintegrityreport_disabled=TRUE
+無効化しますと、システムのメンテナンス期間でこの整合性レポートを手動での実行、
+ZCSのアップグレード前の手動での実行を推奨しております。</p>
 </div>
 </td>
 </tr>
@@ -654,10 +654,10 @@ prior to running any ZCS upgrades.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_preparing_your_operating_system">Preparing your operating system</h3>
+<h3 id="_osの準備">OSの準備</h3>
 <div class="paragraph">
-<p>Before you upgrade ZCS, Zimbra recommends that the operating system is
-updated with the latest patches that have been tested with ZCS.</p>
+<p>ZCSをアップグレードする前に、Zimbra は
+ご利用のOSに最新のパッチを適用することを推奨しております。</p>
 </div>
 <div class="sect3">
 <h4 id="_ubuntu_os">Ubuntu OS</h4>
@@ -670,8 +670,8 @@ updated with the latest patches that have been tested with ZCS.</p>
 <p>Ubuntu 14.04 LTS Server Edition (64-bit)</p>
 </li>
 <li>
-<p>Ubuntu 12.04.4 LTS Server Edition running the saucy (3.11) or later
-kernel is required.</p>
+<p>Ubuntu 12.04.4 LTS Server Edition *saucy (3.11) 以降のカーネルを
+導入する必要があります。</p>
 <div class="admonitionblock caution">
 <table>
 <tr>
@@ -680,17 +680,16 @@ kernel is required.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If the original install was done with Ubuntu 12.04.2 or earlier,
-manual intervention is required to switch to the saucy (3.11) or later
-kernel series. See <a href="https://wiki.ubuntu.com/Kernel/LTSEnablementStack" class="bare">https://wiki.ubuntu.com/Kernel/LTSEnablementStack</a>
-for further information.</p>
+<p>インストールされているのがUbuntu 12.04.2、またはそれ以前の場合、saucy (3.11)または
+それ以降のカーネルシリーズへ変更するため、手動での操作が必要となっています。
+詳細についてはこちらを参照ください： <a href="https://wiki.ubuntu.com/Kernel/LTSEnablementStack" class="bare">https://wiki.ubuntu.com/Kernel/LTSEnablementStack</a></p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>You can find your current kernel version by running:</p>
+<p>現在のカーネルバージョンを以下のコマンドで確認することが可能です。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -698,7 +697,7 @@ for further information.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>For example:</p>
+<p>実行例：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -723,12 +722,10 @@ Linux zre-ubuntu12-64 3.11.0-17-generic #31~precise1-Ubuntu SMP Tue Feb 4
 <div class="ulist">
 <ul>
 <li>
-<p>If running the RHEL linux distribution, you must have a current valid
-license from RedHat.</p>
+<p>RHEL Linux をご利用の場合、RedHat より有効なライセンスを適用している必要があります。</p>
 </li>
 <li>
-<p>The server must have a valid yum or apt-get configuration so that it
-can reach the Zimbra package servers.</p>
+<p>サーバは <code>yum</code> または <code>apt-get</code> でZimbraパッケージのサーバへ接続できる必要があります。</p>
 </li>
 </ul>
 </div>
@@ -745,17 +742,17 @@ can reach the Zimbra package servers.</p>
 <p>CentOS Linux® 7 (64-bit)</p>
 </li>
 <li>
-<p>Red Hat Enterprise Linux 6, AS/ES (64-bit), patch level 4 or later is required</p>
+<p>Red Hat Enterprise Linux 6, AS/ES (64-bit), パッチレベル4以降が必要</p>
 </li>
 <li>
-<p>CentOS Linux 6 (64-bit), patch level 4 or later is required</p>
+<p>CentOS Linux 6 (64-bit), パッチレベル4以降が必要</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_license_activation">License Activation</h3>
+<h3 id="_ライセンスアクティベーションについて">ライセンスアクティベーションについて</h3>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -766,19 +763,19 @@ can reach the Zimbra package servers.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>At the beginning of an upgrade installation, the existing license is
-validated as being current and qualifies for the upgrade. If your
-license is expired, an error message displays and the upgrade cannot
-be performed. Contact Zimbra Sales for a license renewal to continue
-your upgrade.</p>
+<p>アップグレードのインストール開始前に、既存のライセンスファイルが自動的に
+確認され、アップグレード可能なライセンスであるか判断されます。ライセンスの
+有効期限が満了している場合、エラーが表示し、アップグレードのインストールが
+停止されます。その場合、アップグレードするためにライセンスの更新手続きについて
+Zimbra 営業部門までご連絡ください。</p>
 </li>
 <li>
-<p>An upgrade installation will not proceed without automatic
-activation or a manually activated license file. License activations
-are limited to five activations per license file. If you have
-previously used all activations prior to upgrading your production
-system, you must contact Zimbra Sales to enable additional license
-activations.</p>
+<p>アップグレードのインストールは自動のアクティベーション、または既に手動で
+アクティベーションされたライセンスファイルが存在しない場合、アップグレードは
+開始されません。また、ライセンスファイルのアクティベーション回数は最大で
+5回となっております。ご利用中のシステムのアップグレードを実行する前にすべての
+アクティベーション回数を使用済みの場合、ライセンスアクティベーション回数を
+追加するためにZimbra 営業部門までご連絡ください。</p>
 </li>
 </ul>
 </div>
@@ -787,29 +784,30 @@ activations.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>All Network Edition installations require a valid license and license
-activation. New installs will have a 10 day grace period from the
-license issue date before requiring activation.</p>
+<p>すべての{product-edition-commercialのインストールにはライセンスの
+アクティベーションが必要となっております。新規にインストールした
+環境では、ライセンスの発行日より10日以内にアクティベーションを
+実行する必要があります。</p>
 </div>
 <div class="paragraph">
-<p>License activation is automatic during the install with systems that
-have external access to the Zimbra license servers. A means of
-creating manual activations will be provided for systems that do not
-have external access to the Zimbra license servers. See the
-<em>Zimbra Collaboration Administration Guide</em> for more information.</p>
+<p>アップグレードの場合、Zimbraライセンスサーバーへ外部接続が可能な
+システムについて、アクティベーションはアップグレード中に自動的に行われます。
+Zimbraライセンスサーバーへ外部接続が不可能のサーバについて、手動の
+アクティベーション方法を用意しております。詳細については
+{<em>Zimbra Collaboration Administration Guide</em> をご参照ください。</p>
 </div>
 <div class="paragraph">
-<p>When upgrading, the way in which ZCO and archiving licensing is
-enforced might have changed on the server if you are using an older
-version of Zimbra Collaboration. Older licenses might have
-<code>MAPIConnectorAccountsLimit</code> set to <code>0</code> or <code>ArchivingAccountsLimit</code> missing
-in the license. Contact Zimbra Sales for an updated license file prior
-to upgrading if you have licensed either of these features and your
-current license does not properly reflect the correct number.</p>
+<p>古いバージョンのZimbra Collaborationからアップグレードする場合、ZCOと
+アーカイブのライセンスの制限確認を実行する方法が変更された可能性があります。
+古いライセンスをご利用の場合、  <code>MAPIConnectorAccountsLimit</code> が「0」、
+または <code>ArchivingAccountsLimit</code> がライセンスに記載されていない場合があります。
+それらの機能を購入済み、およびご利用のライセンスに正常なアカウント制限が
+表示されていない場合、アップグレードする前にZimbra営業部門より更新された
+ライセンスのファイルを依頼してください。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_upgrading_ldap_replica_servers_or_multi_master_server">Upgrading LDAP Replica Servers or Multi-Master Server</h3>
+<h3 id="_ldapのレプリカサーバ_およびマルチマスターサーバ環境のアップグレード">LDAPのレプリカサーバ、およびマルチマスターサーバ環境のアップグレード</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -817,24 +815,23 @@ current license does not properly reflect the correct number.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-These instructions apply to ZCS 8.0.0, 8.0.1, 8.0.2 to ZCS
-8.0.4 and later.
+この手順は ZCS 8.0.0, 8.0.1, 8.0.2 から ZCS
+8.0.4 とそれ以降のバージョンのみ対象です。
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>If you have replica servers or are in multi-master mode, you have to
-install the Zimbra <em>LDAP</em> schema specific to the release you are
-upgrading to onto the replica servers or onto the multi-master server
-before you upgrade to ZCS 8.0.4 and later.
-See <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=81048">Bug 81048</a>.</p>
+<p>レプリカサーバ、またはマルチマスターのモードを使用している場合、
+ZCS 8.0.4とそで以降のバージョンへアップグレードする前に、
+アップグレードするバージョンのZimbra LDAPスキーマを
+各レプリカサーバ、またはマルチマスターのサーバへインストールする必要があります。
+詳細については <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=81048">Bug 81048</a> をご参照ください。</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>On the master <em>LDAP</em> server, perform a software installation only of
-ZCS 8.0.4 and later.</p>
+<p>マスターLDAPサーバにZCS8.0.4以降のソフトウェアのみインストールを実行します。</p>
 <div class="listingblock">
 <div class="content">
 <pre>./install.sh -s</pre>
@@ -842,12 +839,11 @@ ZCS 8.0.4 and later.</p>
 </div>
 </li>
 <li>
-<p>On each replica or additional master <em>LDAP</em> server in MMR mode, as
-the <code>zimbra</code> user:</p>
+<p>各レプリカ、またはMMRモードで追加マスターLDAPサーバをZimbraユーザーにて</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Stop the server via one of the following commands:</p>
+<p>以下のコマンドでサーバを停止する：</p>
 <div class="olist lowerroman">
 <ol class="lowerroman" type="i">
 <li>
@@ -860,7 +856,7 @@ the <code>zimbra</code> user:</p>
 </div>
 </li>
 <li>
-<p>Move the <code>zimbra</code> schema out of the way</p>
+<p>既存の`Zimbra`のスキーマを移動します：</p>
 <div class="listingblock">
 <div class="content">
 <pre>cd /opt/zimbra/data/ldap/config/cn=config/cn=schema
@@ -869,7 +865,7 @@ mv cn={4}zimbra.ldif /opt/zimbra/data/ldap/cn={4}zimbra.ldif.dead</pre>
 </div>
 </li>
 <li>
-<p>Copy the schema from the master <em>LDAP</em> server.</p>
+<p>マスターLDAPサーバからスキーマをコピーします：</p>
 <div class="listingblock">
 <div class="content">
 <pre>scp root@&lt;master&gt;:/opt/zimbra/openldap/etc/openldap/schema/zimbra.ldif cn={4}zimbra.ldif</pre>
@@ -877,7 +873,7 @@ mv cn={4}zimbra.ldif /opt/zimbra/data/ldap/cn={4}zimbra.ldif.dead</pre>
 </div>
 </li>
 <li>
-<p>Edit cn={4}zimbra.ldif to change the following two lines:</p>
+<p>cn={4}zimbra.ldif に以下の行を編集します：</p>
 <div class="listingblock">
 <div class="content">
 <pre>dn: cn=zimbra,cn=schema,cn=config     -------&gt;     dn: cn={4}zimbra
@@ -886,7 +882,7 @@ cn: zimbra                            -------&gt;     cn: {4}zimbra</pre>
 </div>
 </li>
 <li>
-<p>Start the server via one of the following commands:</p>
+<p>以下のコマンドでサーバを起動します:</p>
 <div class="olist lowerroman">
 <ol class="lowerroman" type="i">
 <li>
@@ -902,7 +898,7 @@ cn: zimbra                            -------&gt;     cn: {4}zimbra</pre>
 </div>
 </li>
 <li>
-<p>On the master <em>LDAP</em> server run:</p>
+<p>マスターLDAPサーバに以下を実行します:</p>
 <div class="listingblock">
 <div class="content">
 <pre>/opt/zimbra/libexec/zmsetup.pl</pre>
@@ -910,31 +906,31 @@ cn: zimbra                            -------&gt;     cn: {4}zimbra</pre>
 </div>
 </li>
 <li>
-<p>On each replica server run:</p>
+<p>各レプリカサーバにて以下を実行します:</p>
 <div class="listingblock">
 <div class="content">
 <pre> ./install.sh</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>To continue the upgrade, see <a href="#_multi_server_environment_upgrade_steps">Multi-Server Environment Upgrade Steps</a>.</p>
+<p>アップグレードを継続するには <a href="#_multi_server_environment_upgrade_steps">[_multi_server_environment_upgrade_steps]</a>を参照ください。</p>
 </div>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_disable_sslv3_support">Disable SSLv3 Support</h3>
+<h3 id="_sslv3のサポートを無効化する">SSLv3のサポートを無効化する</h3>
 <div class="paragraph">
-<p>If upgrading to ZCS 8.7.0, you need to completely disable SSLv3
-support after the upgrade. Disabling SSLv3 is recommended as a result
-of the SSLv3 vulnerability described in
+<p>ZCS 8.7.0へアップグレードする場合、アップグレード後に SSLv3 を
+完全に無効化する必要があります。以下の SSLv3 脆弱性により、SSLv3 を完全に
+無効化することを推奨しております。
 <a href="https://www.us-cert.gov/ncas/alerts/TA14-290A">Alert (TA14-290A)</a>.</p>
 </div>
 <div class="paragraph">
-<p>SSLv3 support has been deprecated by default in 8.6.0, although when
-upgrading from previous versions of ZCS, some protocols might still be
-enabled.</p>
+<p>なお、8.6.0 より SSLv3 のサポートは終了していますが、ZCSの古い
+バージョンからアップグレードする場合、対象のプロトコルが有効のままで
+設定されてしまう可能性がございます。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -946,10 +942,10 @@ enabled.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>New keys created in ZCS 8.7.0 (or later) have SSLv3 disabled by default.</p>
+<p>新しくインストールする ZCS 8.7.0 (とそれ以降) では SSLv3 がデフォルトで無効化されています。</p>
 </li>
 <li>
-<p>Pre-existing keys from earlier versions of ZCS will still have SSLv3 enabled.</p>
+<p>以前バージョンのZCSではSSLv3が有効化されている可能性があります。</p>
 </li>
 </ul>
 </div>
@@ -958,17 +954,17 @@ enabled.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>Follow the steps in the Zimbra wiki article
-<a href="https://wiki.zimbra.com/wiki/How_to_disable_SSLv3">How to Disable
-SSLv3</a> to disable SSLv3 after upgrading to ZCS 8.7.0.</p>
+<p>ZCS 8.7.0 へアップグレード後、Zimbra wiki記事 <a href="https://wiki.zimbra.com/wiki/How_to_disable_SSLv3">How to Disable
+SSLv3</a> の手順にて、
+SSLv3を無効化してください。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_update_default_proxy_ssl_ciphers_attribute">Update Default Proxy SSL Ciphers Attribute</h3>
+<h3 id="_デファルトのプロキシーssl暗号の値アップデート">デファルトのプロキシーSSL暗号の値アップデート</h3>
 <div class="paragraph">
-<p>Whenever upgrading, it is recommended that you check the values of the
-following attributes (<code>zmprov gcf &lt;attr&gt;</code>) and compare them
-with the current default values (<code>zmprov desc -a &lt;attr&gt;</code>).</p>
+<p>アップグレードする際、以下の属性値を確認(<code>zmprov gcf &lt;attr&gt;</code>)し、
+最新のデフォルト値 (<code>zmprov desc -a &lt;attr&gt;</code>)に座がないか調査することを
+推奨しています。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -985,20 +981,19 @@ zimbraMailboxdSSLProtocols</pre>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-If you have not performed any recent hardening of your settings,
-your config should already match the ZCS default; and no action would
-be required.
+設定の見直しが行われていない場合、ZCSのデフォルト
+設定と一致しますので、追加の修正は必要ございません。
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>In addition, it is recommended to make the following changes:</p>
+<p>また、以下の設定変更を推奨しております。</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Remove the following from <code>zimbraReverseProxySSLCiphers</code>:</p>
+<p><code>zimbraReverseProxySSLCiphers</code> から以下の暗号を削除する:</p>
 <div class="listingblock">
 <div class="content">
 <pre>ECDHE-RSA-RC4-SHA
@@ -1008,7 +1003,7 @@ RC4-SHA</pre>
 </div>
 </li>
 <li>
-<p>Add the following to <code>zimbraReverseProxySSLCiphers</code>:</p>
+<p><code>zimbraReverseProxySSLCiphers</code> に以下を追加する:</p>
 <div class="listingblock">
 <div class="content">
 <pre>!RC4</pre>
@@ -1021,8 +1016,9 @@ RC4-SHA</pre>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-See <a href="https://wiki.zimbra.com/wiki/Cipher_suites" class="bare">https://wiki.zimbra.com/wiki/Cipher_suites</a> for the most
-current information on cipher suite configuration.
+有効な暗号の設定に関する最新情報につきまして、
+以下の Wiki 記事をご参照ください。
+<a href="https://wiki.zimbra.com/wiki/Cipher_suites" class="bare">https://wiki.zimbra.com/wiki/Cipher_suites</a>
 </td>
 </tr>
 </table>
@@ -1032,28 +1028,28 @@ current information on cipher suite configuration.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_customizing_zco_installations">Customizing ZCO Installations</h3>
+<h3 id="_zcoインストールのカスタマイズについて">ZCOインストールのカスタマイズについて</h3>
 <div class="paragraph">
-<p>Administrators who want to customize the <em>ZCO</em> installation MSI should
-use the unsigned version of the MSI
-(<code>ZimbraConnectorOLK_n.n.n.nnnn_xnn-unsigned.msi</code>), available in the
-Zimbra download directory. The modified MSI should then replace the
-standard signed MSI (<code>ZimbraConnectorOLK_n.n.n.nnnn_xnn.msi</code>) in order
-to be available to end users from <code>/downloads/index.html</code> and the <em>ZCO</em>
-auto-upgrade process. (<a href="https://bugzilla.zimbra.com/show_bug.cgi?id=85067">Bug 85067</a>).</p>
+<p><em>ZCO</em> のインストールMSIのカスタマイズをご希望の管理者は、Zimbraの
+ダウンロードディレクトリにある、署名していないMSIバージョン
+(<code>ZimbraConnectorOLK_n.n.n.nnnn_xnn-unsigned.msi</code>)をご利用ください。
+エンドユーザー様へ <code>/downloads/index.html</code> や <em>ZCO</em> の自動アップグレードに
+カスタマイズされたMSIを提供するため、通常の署名されたMSI
+(<code>ZimbraConnectorOLK_n.n.n.nnnn_xnn.msi</code>) を上書きします。
+ (<a href="https://bugzilla.zimbra.com/show_bug.cgi?id=85067">Bug 85067</a>).</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_upgrade_instructions">Upgrade Instructions</h2>
+<h2 id="_アップグレードの手順">アップグレードの手順</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_download_the_software">Download the Software</h3>
+<h3 id="_ソフトウェアをダウンロードする">ソフトウェアをダウンロードする</h3>
 <div class="paragraph">
-<p>For Network Edition, go to
-<a href="http://www.zimbra.com/downloads/zimbra-collaboration" class="bare">http://www.zimbra.com/downloads/zimbra-collaboration</a> to access the
-software.</p>
+<p>Network Editionをアップグレードする場合、www.zimbra.com の
+ダウンロードページより最新版のソフトウェアを提供しています。
+<a href="http://www.zimbra.com/downloads/zimbra-collaboration" class="bare">http://www.zimbra.com/downloads/zimbra-collaboration</a></p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -1065,11 +1061,11 @@ software.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Before you begin the upgrade, make sure you have a good backup for
-all users!</p>
+<p>アップグレード実行前に、すべてのユーザーが含まれている有効な
+バックアップが存在することをご確認ください！</p>
 </li>
 <li>
-<p>Database reloads are performed on 7.x to any 8.x upgrade.</p>
+<p>7.xから8.xのアップグレードにデータベースのリロードが発生します。</p>
 </li>
 </ul>
 </div>
@@ -1078,10 +1074,10 @@ all users!</p>
 </table>
 </div>
 <div class="paragraph">
-<p>When you run the install script, if ZCS is already installed, you will
-be asked if you want to upgrade. Follow the instructions in this
-release note to perform the upgrade. For additional information, refer
-to the installation guide.</p>
+<p>インストールのスクリプトを実行する際、ZCSが既に
+インストールされている場合、アップグレードするかどうかが確認されます。
+アップグレードする際に、以下の手順を参照ください。この手順以外の
+詳細な情報についてはリリースノートを参照ください。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -1091,14 +1087,14 @@ to the installation guide.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Zimbra recommends that an install or upgrade session be run with a
-UNIX command such as <code>screen</code> to help prevent an install or upgrade
-session from terminating before it is completed. This is important
-when the upgrade includes restoring a configuration that has a large
-number of accounts.</p>
+<p>Zimbraでは、インストールやアップグレードのセッションが
+完了する前に、誤ってインストールを途中で停止しないため、UNIXコマンドの
+ <code>screen</code> などで実行することを推奨しています。大量のアカウントが
+存在している環境で、長時間に設定の復元が発生する可能性がございますので、
+これはデータの破損を回避するための重要な対策となります。</p>
 </div>
 <div class="paragraph">
-<p>Example command usage:</p>
+<p>コマンドの実行例：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1111,24 +1107,23 @@ number of accounts.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_single_server_upgrade_steps">Single Server Upgrade Steps</h3>
+<h3 id="_シングルサーバのアップグレード手順">シングルサーバのアップグレード手順</h3>
 <div class="paragraph">
-<p>You do not need to stop the services before upgrading. The upgrade
-process automatically stops and starts the services as required for
-the upgrade.</p>
+<p>アップグレードする前にサービスを停止する必要はありません。
+アップグレードのプロセスが自動的に必要なサービスの停止と起動が行います。</p>
 </div>
 <div class="sect3">
-<h4 id="_process">Process</h4>
+<h4 id="_プロセス">プロセス</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Log in as <code>root</code> to the Zimbra server and <code>cd</code> to the
-directory where the ZCS Network Edition archive tar file is saved.
-For example, <code>cd /var/tmp</code>. Then type the following commands:</p>
+<p>Zimbra サーバーへrootユーザでログインし、Zimbra Collaboration の
+Tarアーカイブファイルを保存したディレクトリへ移動します。
+例：cd /var/&lt;tmp&gt;。移動後、以下のコマンドを実行します。</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Unpack the file</p>
+<p>ファイルを展開する</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1136,7 +1131,7 @@ For example, <code>cd /var/tmp</code>. Then type the following commands:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Change to the correct directory.</p>
+<p>適切なディレクトリへ移動する</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1144,7 +1139,7 @@ For example, <code>cd /var/tmp</code>. Then type the following commands:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Begin the upgrade installation.</p>
+<p>インストールを開始する</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1155,9 +1150,9 @@ For example, <code>cd /var/tmp</code>. Then type the following commands:</p>
 </div>
 </li>
 <li>
-<p>The upgrade script checks if <code>proxy</code> and <code>memcached</code> are
-present. If both are found, the upgrade will proceed. If either are
-missing then the upgrade will abort and alert.</p>
+<p>アップグレード用のスクリプトは <code>proxy</code> と <code>memcached</code> がインストールされているか確認します。
+両方のプロセスがインストールしてる場合、アップグレードを行います。
+インストールされていない場合、アップグレードが停止し、警告メッセージが表示されます。</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1168,10 +1163,11 @@ missing then the upgrade will abort and alert.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>From 8.7.0 onwards proxy and memcached are required.</p>
+<p>8.7.0 とそれ以降のバージョンでは、proxy と memcached のインストールが
+必須となりました。</p>
 </li>
 <li>
-<p>See <a href="https://wiki.zimbra.com/wiki/Enabling_Zimbra_Proxy_and_memcached#Using_existing_servers">Enabling Zimbra Proxy and memcached</a></p>
+<p>詳細については <a href="https://wiki.zimbra.com/wiki/Enabling_Zimbra_Proxy_and_memcached#Using_existing_servers">Enabling Zimbra Proxy and memcached</a> をご参照ください。</p>
 </li>
 </ul>
 </div>
@@ -1181,49 +1177,45 @@ missing then the upgrade will abort and alert.</p>
 </div>
 </li>
 <li>
-<p>The Zimbra software agreement is displayed. Read this software
-license agreement and type <code>Y</code>.</p>
+<p>Zimbra のソフトウェア契約が表示します。契約を確認し、<code>Y</code> を
+入力してください。</p>
 </li>
 <li>
-<p>When <code>Use Zimbra&#8217;s packaging server [Y]</code> is displayed, press <code>enter</code>
-to continue. Your system will be configured to add the Zimbra
-packaging repository for '<em>yum'</em> or <em>apt-get</em> so it can install the
-Zimbra third party packages.</p>
+<p><code>Use Zimbra&#8217;s packaging server [Y]</code> が表示されたら、 <em>Enter</em> キーを
+押します。サードパーティ製のパッケージをインストールするため、ご利用システムにより
+Zimbra の <strong>yum</strong> または <strong>apt-get</strong> パッケージリポジトリが設定されます。</p>
 </li>
 <li>
-<p>When <code>Do you wish to upgrade? [Y]</code> is displayed, press <code>enter</code> to
-continue. The upgrade packages are unpacked.</p>
+<p><code>Do you wish to upgrade? [Y]</code> が表示されたら、 <em>Enter</em> キーを押します。
+アップグレードするパッケージが展開されます。</p>
 </li>
 <li>
-<p>The packages are listed. The installer also lists packages that are
-not installed. If you want to install the packages at this time, type
-<code>Y</code>; otherwise press <code>enter</code>. The upgrade checks that there is enough
-space to perform the upgrade. If there is not enough space, the
-upgrade stops.</p>
+<p>インストールするパッケージが一覧表示されます。また、インストーラはまだ
+インストールしていないパッケージも一覧表示します。追加でインストールを
+希望する場合、<code>Y</code> を入力しますが、変更しない場合は <em>Enter</em> キーを押します。
+インストーラが Zimbra をインストールできるディスクの
+空き容量を確認します。十分な空き容量がなかった場合、インストールが停止されます。</p>
 </li>
 <li>
-<p>When <code>The system will be modified. Continue? [N]</code> is displayed, type
-<code>Y</code> and press <code>enter</code>. The Zimbra server is stopped, and the older
-packages are removed. The upgrade process verifies which version of
-ZCS is being run and proceeds to upgrade the services, restores the
-existing configuration files, and restarts the server. If you have a
-configuration with a large number of accounts created, this can take a
-while.</p>
+<p><code>The system will be modified. Continue? [N]</code> が表示されたら、 <code>Y</code> を
+入力し、 <em>Enter</em> キーを押します。Zimbra サーバは停止し、古い
+パッケージが削除されます。アップグレードのプロセスが実行中の ZCS バージョンを
+確認し、サービスをアップグレードし、既存の設定ファイルを復元し、サーバを
+再起動します。なお、ご利用環境に大量のアカウントを登録している場合、
+このステップに時間がかかる可能性があります。</p>
 </li>
 <li>
-<p>If you have not set the time zone, you will be asked to set it. This
-sets the time zone in the default COS. The time zone that should be
-entered is the time zone that the majority of users in the COS will be
-located in.</p>
+<p>タイムゾーンを設定していない場合、設定するように要求されます。設定する
+タイムゾーンはデフォルトのCOSにも適用されます。そのため、COS にある
+主なユーザが利用してるタイムゾーンに指定することを推奨しています。</p>
 </li>
 <li>
-<p>When Configuration complete, press <code>enter</code>.</p>
+<p>設定が完了すると、 <em>enter</em> キーを押します。</p>
 </li>
 <li>
-<p>After all <em>MTA</em> nodes are upgraded to Zimbra Collaboration
-8.8.3,
-the following commands may be run to fix the default globalconfig
-values, if necessary.</p>
+<p>すべての <em>MTA</em> ノードが Zimbra Collaboration 8.8.3 へのアップグレードが
+完了したら、デフォルトの globalconfig 値を以下のコマンドで修正する必要が
+ある場合がございます。</p>
 <div class="listingblock">
 <div class="content">
 <pre>zmprov mcf zimbraMtaCommandDirectory /opt/zimbra/common/sbin
@@ -1237,8 +1229,9 @@ zmprov mcf zimbraMtaSendmailPath /opt/zimbra/common/sbin/sendmail</pre>
 </li>
 <li>
 <p><a href="https://bugzilla.zimbra.com/show_bug.cgi?id=104158">DSPAM is not
-longer shipped</a> starting <em>Zimbra Collaboration 8.7</em>. Please enter the
-following commands to disable it.</p>
+longer shipped</a> <em>Zimbra Collaboration 8.7</em> とそれ以降のバージョンでは、
+DSPAM は提供しておりません。そのため、以下のコマンドを実施し、
+無効化してください。</p>
 <div class="listingblock">
 <div class="content">
 <pre>zmprov ms `zmhostname` zimbraAmavisDSPAMEnabled FALSE
@@ -1248,53 +1241,53 @@ zmamavisdctl restart</pre>
 </div>
 </li>
 <li>
-<p>The upgrade is complete. It is recommended that you perform a full
-backup after performing a major upgrade, due to database schema
-changes.</p>
+<p>アップグレード完了です。データベースのスキーマ変更により、メジャーの
+バージョンへのアップグレードが完了後、完全バックアップを実施することを
+推奨しております。</p>
 </li>
 </ol>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_multi_server_environment_upgrade_steps">Multi-Server Environment Upgrade Steps</h3>
+<h3 id="_マルチサーバ構成のアップグレード手順">マルチサーバ構成のアップグレード手順</h3>
 <div class="paragraph">
-<p>Upgrade the servers in the following order. Update each server one at
-a time, following the instructions under <a href="#_process_2">Process</a> below.</p>
+<p>以下の順番でサーバをアップグレードします。以下の<a href="#_process_2">[_process_2]</a>に従い、
+各サーバを1台ずつアップグレードしてください。</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><em>LDAP</em> master server. The <em>LDAP</em> master servers must all be upgraded
-before proceeding, and they must be running as you upgrade the other
-servers.</p>
+<p>マスター <em>LDAP</em> サーバ　すべてのマスターLDAPサーバを最初に
+アップグレードする必要があり、他のサーバをアップグレードするためにも
+マスターLDAPサーバが正常に起動している状態でなければいけません。</p>
 </li>
 <li>
-<p><em>LDAP</em> replicas</p>
+<p>レプリカ <em>LDAP</em> サーバ</p>
 </li>
 <li>
-<p><em>MTA</em> servers - see <a href="#_using_lmdb_as_the_supported_back_end_for_on_disk_database_maps">Using LMDB as the Supported Back-end for On-disk Database Maps</a>.</p>
+<p><em>MTA</em> サーバ - ご参考： <a href="#_using_lmdb_as_the_supported_back_end_for_on_disk_database_maps">[_using_lmdb_as_the_supported_back_end_for_on_disk_database_maps]</a></p>
 </li>
 <li>
-<p>Proxy servers</p>
+<p>Proxy サーバ</p>
 </li>
 <li>
-<p>Mailstore servers</p>
+<p>メールストアサーバ</p>
 </li>
 </ol>
 </div>
 <div class="sect3">
-<h4 id="_process_2">Process</h4>
+<h4 id="_プロセス_2">プロセス</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Log in as <code>root</code> to the Zimbra server and <code>cd</code> to the
-directory where the ZCS Network Edition archive tar file is saved.
-For example, <code>cd /var/tmp</code>. Then type the following commands:</p>
+<p>Zimbra サーバーへrootユーザでログインし、Zimbra Collaboration の
+Tarアーカイブファイルを保存したディレクトリへ移動します。
+例：cd /var/&lt;tmp&gt;。移動後、以下のコマンドを実行します。</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Unpack the file</p>
+<p>ファイルを展開する</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1302,7 +1295,7 @@ For example, <code>cd /var/tmp</code>. Then type the following commands:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Change to the correct directory.</p>
+<p>適切なディレクトリへ移動する</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1310,7 +1303,7 @@ For example, <code>cd /var/tmp</code>. Then type the following commands:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Begin the upgrade installation.</p>
+<p>インストールを開始する</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1321,9 +1314,9 @@ For example, <code>cd /var/tmp</code>. Then type the following commands:</p>
 </div>
 </li>
 <li>
-<p>The upgrade script checks if <code>proxy</code> and <code>memcached</code> are
-present. If both are found, the upgrade will proceed. If either are
-missing then the upgrade will abort and alert.</p>
+<p>アップグレード用のスクリプトは <code>proxy</code> と <code>memcached</code> がインストールされているか確認します。
+両方のプロセスがインストールしてる場合、アップグレードを行います。
+インストールされていない場合、アップグレードが停止し、警告メッセージが表示されます。</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1334,10 +1327,11 @@ missing then the upgrade will abort and alert.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>From 8.7.0 onwards proxy and memcached are required.</p>
+<p>8.7.0 とそれ以降のバージョンでは、proxy と memcached のインストールが
+必須となりました。</p>
 </li>
 <li>
-<p>See <a href="https://wiki.zimbra.com/wiki/Enabling_Zimbra_Proxy_and_memcached#Using_existing_servers">Enabling Zimbra Proxy and memcached</a></p>
+<p>詳細については <a href="https://wiki.zimbra.com/wiki/Enabling_Zimbra_Proxy_and_memcached#Using_existing_servers">Enabling Zimbra Proxy and memcached</a> をご参照ください。</p>
 </li>
 </ul>
 </div>
@@ -1347,49 +1341,45 @@ missing then the upgrade will abort and alert.</p>
 </div>
 </li>
 <li>
-<p>The Zimbra software agreement is displayed. Read this software
-license agreement and type <code>Y</code>.</p>
+<p>Zimbra のソフトウェア契約が表示します。契約を確認し、<code>Y</code> を
+入力してください。</p>
 </li>
 <li>
-<p>When <code>Use Zimbra&#8217;s packaging server [Y]</code> is displayed, press <code>enter</code>
-to continue. Your system will be configured to add the Zimbra
-packaging repository for '<em>yum'</em> or <em>apt-get</em> so it can install the
-Zimbra third party packages.</p>
+<p><code>Use Zimbra&#8217;s packaging server [Y]</code> が表示されたら、 <em>Enter</em> キーを
+押します。サードパーティ製のパッケージをインストールするため、ご利用システムにより
+Zimbra の <strong>yum</strong> または <strong>apt-get</strong> パッケージリポジトリが設定されます。</p>
 </li>
 <li>
-<p>When <code>Do you wish to upgrade? [Y]</code> is displayed, press <code>enter</code> to
-continue. The upgrade packages are unpacked.</p>
+<p><code>Do you wish to upgrade? [Y]</code> が表示されたら、 <em>Enter</em> キーを押します。
+アップグレードするパッケージが展開されます。</p>
 </li>
 <li>
-<p>The packages are listed. The installer also lists packages that are
-not installed. If you want to install the packages at this time, type
-<code>Y</code>; otherwise press <code>enter</code>. The upgrade checks that there is enough
-space to perform the upgrade. If there is not enough space, the
-upgrade stops.</p>
+<p>インストールするパッケージが一覧表示されます。また、インストーラはまだ
+インストールしていないパッケージも一覧表示します。追加でインストールを
+希望する場合、<code>Y</code> を入力しますが、変更しない場合は <em>Enter</em> キーを押します。
+インストーラが Zimbra をインストールできるディスクの
+空き容量を確認します。十分な空き容量がなかった場合、インストールが停止されます。</p>
 </li>
 <li>
-<p>When <code>The system will be modified. Continue? [N]</code> is displayed, type
-<code>Y</code> and press <code>enter</code>. The Zimbra server is stopped, and the older
-packages are removed. The upgrade process verifies which version of
-ZCS is being run and proceeds to upgrade the services, restores the
-existing configuration files, and restarts the server. If you have a
-configuration with a large number of accounts created, this can take a
-while.</p>
+<p><code>The system will be modified. Continue? [N]</code> が表示されたら、 <code>Y</code> を
+入力し、 <em>Enter</em> キーを押します。Zimbra サーバは停止し、古い
+パッケージが削除されます。アップグレードのプロセスが実行中の ZCS バージョンを
+確認し、サービスをアップグレードし、既存の設定ファイルを復元し、サーバを
+再起動します。なお、ご利用環境に大量のアカウントを登録している場合、
+このステップに時間がかかる可能性があります。</p>
 </li>
 <li>
-<p>If you have not set the time zone, you will be asked to set it. This
-sets the time zone in the default COS. The time zone that should be
-entered is the time zone that the majority of users in the COS will be
-located in.</p>
+<p>タイムゾーンを設定していない場合、設定するように要求されます。設定する
+タイムゾーンはデフォルトのCOSにも適用されます。そのため、COS にある
+主なユーザが利用してるタイムゾーンに指定することを推奨しています。</p>
 </li>
 <li>
-<p>When Configuration complete, press <code>enter</code>.</p>
+<p>設定が完了すると、 <em>enter</em> キーを押します。</p>
 </li>
 <li>
-<p>After all <em>MTA</em> nodes are upgraded to Zimbra Collaboration
-8.8.3,
-the following commands may be run to fix the default globalconfig
-values, if necessary.</p>
+<p>すべての <em>MTA</em> ノードが Zimbra Collaboration 8.8.3 へのアップグレードが
+完了したら、デフォルトの globalconfig 値を以下のコマンドで修正する必要が
+ある場合がございます。</p>
 <div class="listingblock">
 <div class="content">
 <pre>zmprov mcf zimbraMtaCommandDirectory /opt/zimbra/common/sbin
@@ -1403,8 +1393,9 @@ zmprov mcf zimbraMtaSendmailPath /opt/zimbra/common/sbin/sendmail</pre>
 </li>
 <li>
 <p><a href="https://bugzilla.zimbra.com/show_bug.cgi?id=104158">DSPAM is not
-longer shipped</a> starting <em>Zimbra Collaboration 8.7</em>. Please enter the
-following commands to disable it.</p>
+longer shipped</a> <em>Zimbra Collaboration 8.7</em> とそれ以降のバージョンでは、
+DSPAM は提供しておりません。そのため、以下のコマンドを実施し、
+無効化してください。</p>
 <div class="listingblock">
 <div class="content">
 <pre>zmprov ms `zmhostname` zimbraAmavisDSPAMEnabled FALSE
@@ -1414,16 +1405,16 @@ zmamavisdctl restart</pre>
 </div>
 </li>
 <li>
-<p>The upgrade is complete. It is recommended that you perform a full
-backup after performing a major upgrade, due to database schema
-changes.</p>
+<p>アップグレード完了です。データベースのスキーマ変更により、メジャーの
+バージョンへのアップグレードが完了後、完全バックアップを実施することを
+推奨しております。</p>
 </li>
 </ol>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_using_lmdb_as_the_supported_back_end_for_on_disk_database_maps">Using LMDB as the Supported Back-end for On-disk Database Maps</h3>
+<h3 id="_オンディスクのデータベースマップのサポート対象バックエンドとして_lmdbを利用する">オンディスクのデータベースマップのサポート対象バックエンドとして、LMDBを利用する</h3>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -1432,53 +1423,48 @@ changes.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Starting with ZCS 8.5 and later, <em>Postfix</em> is linked to <em>LMDB</em>, the same
-back-end ZCS uses with <em>OpenLDAP</em>. Prior to ZCS 8.0, <em>Postfix</em> was linked
-to <em>Berkeley DB</em>.</p>
+<p>ZCS 8.5とそれ以降のバージョンについて、 <em>Postfix</em> はバックエンドとして
+<em>OpenLDAP</em> と同様に <em>LMDB</em> に関連付いています。ZCS 8.0とそれ以前では、
+<em>Postfix_は_Berkley DB</em> に関連付いています。</p>
 </div>
 <div class="paragraph">
-<p>ZCS has not officially supported using any <em>Postfix</em> on-disk database
-maps prior to ZCS 8.5. However, these have been used through custom
-non-preserved modifications to the <code>postconf</code> configuration. These
-modifications will be lost on upgrade.</p>
+<p>ZCS はZCS 8.5より以前のバージョンでは <em>Postfix</em> の
+オンディスクデータベースをサポートしていませんでした。しかしながら、カスタムマイズにより
+`postconf`の設定で編集することは可能でした。なお、これらの
+カスタム設定はアップグレード後に削除されます。</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>To restore the modifications post-upgrade, the following steps need to
-be performed:</p>
+<p>アップグレード後にカスタム設定を復元するには、以下の手順を実施する必要があります。</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Run postmap against the database input file to generate an LMDB
-database.</p>
+<p>データベースのインプットファイルへpostmapを実施し、LMDBデータベースを発行します。</p>
 </li>
 <li>
-<p>It will be necessary to iterate through the postconf keys that have
-<code>hash:/path/to/db</code> values and update them in LDAP to use
-<code>lmdb:/path/to/db</code> values instead.</p>
+<p>各postconfキーに <code>hash:/path/to/db</code> の値を <code>lmdb:/path/to/db</code> へ手動にLDAPで更新する
+必要があります。</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>Many previously unsupported features that could be used with on-disk
-database maps are now fully supported by ZCS. Check if your
-customizations are correctly carried forward when
-upgrading. See <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=77586">Bug
-77586</a>.</p>
+<p>以前にオンディスクのデータベースマップでしか利用できなかった機能は現在、
+ZCSで完全にサポート対象となりました。そのため、アップグレード後に
+カスタマイズした内容が正常に適用されるか検証してください。詳細については
+<a href="https://bugzilla.zimbra.com/show_bug.cgi?id=77586">Bug 77586</a> を参照ください。</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_after_the_upgrade_is_complete">After the Upgrade is Complete</h2>
+<h2 id="_アップグレード完了後の注意事項">アップグレード完了後の注意事項</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>After you completed the upgrade, the following might need to be
-addressed.</p>
+<p>アップグレード後、以下の項目について注意する必要がある場合があります。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1489,20 +1475,20 @@ addressed.</p>
 <p>Review <a href="https://wiki.zimbra.com/wiki/Cipher_suites">Cipher suites</a>.</p>
 </li>
 <li>
-<p>During the upgrade process, Zimbra might make a binary backup of
-existing databases when there are major structural changes occurring
-to the database format for ease of downgrading. Administrators will
-want to clean these up once they have confirmed a successful
-upgrade. For <em>LDAP</em> servers, these backups are in
-<code>/opt/zimbra/data/ldap</code>, and in the form of <code>&lt;dbname&gt;.prev.$$</code>
-where <code>$$</code> is the process
-ID of the upgrade script. See <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=81167">Bug 81167</a>.</p>
+<p>アップグレードのプロセスでデータベースのフォーマットに重要な変更がある場合、
+Zimbraが既存のデータベースのバックアップを取得する場合があります。
+アップグレードが成功していることを確認しましたら、管理者にて、この不要な
+バックアップファイルをクリーンアップすることが可能です 。<em>LDAP</em> サーバでは、
+これらのデータベースバックアップファイルは` /opt/zimbra/data/ldap` のパスに保存され、
+ファイル名が&lt;データベース名&gt;.prev.の形式になります。
+はアップグレードスクリプトのプロセスIDになります。
+詳細については、 <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=81167">Bug 81167</a> をご参照ください。</p>
 </li>
 <li>
-<p>You should run <code>zmldapupgrade -b 66387</code> after upgrading.  The
-<code>zimbraAllowFromAddress</code> attribute cannot be set for internal accounts
-or distribution lists. Running this script will change
-<code>zimbraAllowFromAddress</code> values to grants.</p>
+<p>アップグレード後、 <code>zmldapupgrade -b 66387</code> を実行することを推奨します。
+<code>zimbraAllowFromAddress</code> の属性値は内部アカウントや配布リストに設定できません。
+このスクリプトを実行することで、 <code>zimbraAllowFromAddress</code> の値がアクセス許可へ
+変更されます。</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1513,18 +1499,17 @@ or distribution lists. Running this script will change
 <div class="ulist">
 <ul>
 <li>
-<p>This step was not included into the installer-driven upgrade due to
-potentially long delay for sites that set <code>zimbraAllowFromAddress</code> on
-many accounts.</p>
+<p><code>zimbraAllowFromAddress</code> を大量のアカウントに設定されている環境に
+ 実行すると長時間かかる場合がありますので、このステップは
+インストーラのアップグレードに含まれません。</p>
 </li>
 <li>
-<p>The migration command reports how many accounts had the
-<code>zimbraAllowFromAddress</code> attribute set and how many of
-them needed migration. One way to verify all accounts got migrated
-is to run the command again. The total won&#8217;t change, and the number
-migrated should be 0. See
-<a href="https://bugzilla.zimbra.com/show_bug.cgi?id=66387">Bug 66387</a> for
-more information.</p>
+<p>移行コマンドにて`zimbraAllowFromAddress`  の値が設定している
+  アカウント数を確認し、移行が必要となったアカウント数も返答します。
+  すべてのアカウントが正常に移行されたことを確認するため、コマンドを
+  再度実行してください。合計は変更されませんが、移行されたアカウントは
+  <code>0</code> になりません。詳細については、 <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=66387">Bug 66387</a> を
+　 参照ください。</p>
 </li>
 </ul>
 </div>
@@ -1534,7 +1519,7 @@ more information.</p>
 </div>
 </li>
 <li>
-<p>If your self-signed SSL certificates have expired, update them.</p>
+<p>自己署名のSSL証明書の有効期限が切れている場合、更新してください。</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1543,8 +1528,8 @@ more information.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>To check for expired certificates, run the following command as the
-<code>zimbra</code> user:</p>
+<p>有効期限が切れている証明書を確認する場合、以下のコマンドを
+<code>zimbra</code> ユーザーとしてご実行ください。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1552,20 +1537,19 @@ more information.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Zimbra Collaboration requires a valid self-signed or commercial SSL
-certificate for communication between some components. The self-signed
-certificates that are automatically created by the
-Zimbra install have a default expiration.</p>
+<p>Zimbra Collaborationでは、内部機能のデータ通信などのコミュニケーションを
+行うため、有効な自己署名、または商用のSSL証明書が必要です。
+Zimbra Collaborationのインストールで自動的に作成される自己署名した
+証明書にデファルトの有効期限はあります。</p>
 </div>
 <div class="paragraph">
-<p>If you have a Zimbra Collaboration installation that is over one year
-old and are using self-signed certificates, your certificates will
-need to be updated either prior to the upgrade or immediately
-following the upgrade.</p>
+<p>ご利用のZCSシステムは自己署名した証明書を1年間以上に
+使用している場合、アップグレード前、またはアップグレードの直後に
+証明書を更新する必要性があります。</p>
 </div>
 <div class="paragraph">
-<p>After you upgrade, the following commands run as the zimbra user will
-regenerate the self-signed SSL certificates:</p>
+<p>アップグレード後、Zimbraユーザーで以下のコマンドで自己署名した
+証明書が新しく発行されます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1580,13 +1564,13 @@ sudo /opt/zimbra/bin/zmcertmgr deploycrt self -new</pre>
 </div>
 </li>
 <li>
-<p>If you were using <code>zmlogger</code> prior to ZCS 8.0.7, it is
-possible that numerous <code>rdd</code> files could be generated causing large
-amounts of disk space to be used. ZCS 8.0.7 and later
-contain a patch that prevents future additional growth of <code>rdd</code> files
-on the logger server. To clean up existing <code>rdd</code> files, use the
-following script to remove <code>rdd</code> files from your server.
-See <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=85222">Bug 85222</a>.</p>
+<p>ZCS 8.0.7より以前のバージョンでzmloggerを使用した場合、
+大量のrddファイルが作成され、大量のディスク容量を使用してる可能性があります。
+ZCS 8.0.7にはrddファイルの増加が発生しないためのパッチが
+含まれています。既存のrddファイルをクリーンアップするには、
+以下のスクリプトを使用し、rddファイルをサーバから削除します。
+詳細について、 <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=85222">Bug 85222</a> を
+参照ください。</p>
 <div class="listingblock">
 <div class="content">
 <pre>sudo su - zimbra
@@ -1607,12 +1591,11 @@ rm /opt/zimbra/logger/db/data/logger.sqlitedb.backup</pre>
 </div>
 </li>
 <li>
-<p>If you have configured the following keys, you will need to replace
-them as described here.</p>
+<p>以下の設定を使用している場合、新しい設定の値を設定し直す必要があります。</p>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>The following keys are deprecated:</p>
+<p>以下の設定値の使用は終了しております：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1628,7 +1611,7 @@ httpclient_connmgr_tcp_nodelay</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>They are replaced by the following keys:</p>
+<p>上記の設定は以下の設定値に更新されました：</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1658,10 +1641,10 @@ httpclient_external_connmgr_tcp_nodelay</pre>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="_ephemeral_data_migration">Ephemeral Data Migration</h3>
+<h3 id="_エフェメラルデータ移行">エフェメラルデータ移行</h3>
 <div class="paragraph">
-<p>Versions of Zimbra prior to 8.8.3 stored
-<em>ephemeral data</em> in <em>LDAP</em>.  Examples of <em>ephemeral data</em> include:</p>
+<p>Zimbraの8.8.3以前のバージョンでは、
+<em>エフェメラルデータ</em> は <em>LDAP</em> に保存されました。 <em>エフェメラルデータ</em> の実例として：</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1677,39 +1660,37 @@ httpclient_external_connmgr_tcp_nodelay</pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>Zimbra Collaboration version 8.8.3 introduced the ability to
-store <em>ephemeral data</em> in an external service such as
-<a href="http://ssdb.io/">SSDB</a>. This is an optional feature; however, it
-can improve <em>LDAP</em> performance and stability.</p>
+<p>Zimbra Collaboration 8.8.3 により、 <em>エフェメラルデータ</em> を外部のサービス、
+例えば
+<a href="http://ssdb.io/">SSDB</a>へ保存することが可能となりました。
+これは任意の機能ですが、 <em>LDAP</em> のパフォーマンスと安定性が向上できる場合があります。</p>
 </div>
 <div class="paragraph">
-<p>Please refer to the <em>Zimbra Collaboration Administration Guide</em> for more information.
-Migration of <em>ephemeral data</em> out of <em>LDAP</em> and into <em>SSDB</em>  must be
-performed after an install or upgrade has been completed.</p>
+<p>詳細につきましては <em>Zimbra Collaboration Administration Guide</em> を参照ください。
+ <em>エフェメラルデータ</em> を <em>LDAP</em> から <em>SSDB</em> へ移行することはサポート対象バージョンの
+インストール、またはアップグレードが完了後にのみ行うことが可能です。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_imapd_service">IMAPD Service</h3>
+<h3 id="_imapd_サービス">IMAPD サービス</h3>
 <div class="paragraph">
-<p>Version 8.8.3 of Zimbra Collaboration introduced a new
-<code>zimbra-imapd</code> service that allows you to run the IMAP[S]
-endpoints outside of the <code>mailboxd</code> process. This new service may be
-deployed on your mailbox servers or on stand-alone machines and it
-gives you the ability to scale IMAP separately from
-the mailboxes. This will also reduce the load on your mailbox servers.</p>
+<p>Zimbra Collaboration 8.8.3 より、<code>mailboxd</code> から独立した
+<code>zimbra-imapd</code> サービスでIMAP[S]を運用できる機能を提供しています。
+この新しいサービスをメールボックスサーバ、または独立したサーバに
+提供し、IMAPサービスをメールボックスと別にスケールすること可能がです。
+別のサーバに提供することも可能であるため、メールボックスサーバの
+負荷を減少できる可能性もあります。</p>
 </div>
 <div class="paragraph">
-<p>Although installation of the new <code>zimbra-imapd</code> is intended for larger
-multi-server installations, it is also fine to use with a
-single-server installation.</p>
+<p>新しい機能の <code>zimbra-imapd</code> は大規模なマルチサーバ環境向けに最適化していますが、
+シングルサーバ環境でも利用することが可能です。</p>
 </div>
 <div class="paragraph">
-<p>Using <code>zimbra-imapd</code> on a single server means that 2 different JVMs will
-be used to service IMAP[S] requests instead of one, which means that each
-of them will use less memory which may improve garbage collection
-performance in each JVM. The separation will improve the robustness of
-the system. However, this needs to be balanced against the additional
-overhead of communication between the JVMs.</p>
+<p>シングルサーバ環境に <code>zimbra-imapd</code> を使用することで、2つの異なるJVMは
+IMAP[S]リクエストを処理しますので、実際に利用するメモリ容量が減少し、
+各JVMのGarbage Collectionのパフォーマンスが向上する可能性があります。
+個別に処理をすることで、システムを強化します。ただし、JVM内のコミュニケーション
+通信オーバーヘッドの増加に対して適切なチューニングが必要となります。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1719,10 +1700,9 @@ overhead of communication between the JVMs.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If the <code>zimbra-imapd</code> package is selected for installation
-during an upgrade, it will be installed, but not configured to
-start. To enable it to start, you much update the following global
-configuration options:</p>
+<p>アップグレード時に <code>zimbra-imapd</code> のパッケージをインストールする場合、
+パッケージはインストールされますが、起動するよう設定されません。
+起動させるためには、以下のグローバル設定を手動で更新する必要があります。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1746,20 +1726,19 @@ zmimapdctl start</pre>
 </table>
 </div>
 <div class="paragraph">
-<p>Please refer to the <em>Zimbra Collaboration Administration Guide</em> for help with
-configuration.</p>
+<p>設定の詳細につきましては、 <em>Zimbra Collaboration Administration Guide</em> をご参照ください。</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_remove_current_version_and_perform_clean_install_of_zcs">Remove Current Version and Perform Clean Install of ZCS</h2>
+<h2 id="_既存のバージョンを削除し_zcsをクリーンインストールする手順">既存のバージョンを削除し、ZCSをクリーンインストールする手順</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you do not want to upgrade, but prefer to install Zimbra Collaboration
-Network Edition as a new installation, when you run the
-Zimbra Collaboration Network Edition install script, enter <code>N</code> when asked
-<code>Do you wish to upgrade?</code></p>
+<p>アップグレードせずに、Zimbra CollaborationNetwork Editionを新規の
+インストールで実行したい場合、Zimbra CollaborationNetwork Editionの
+インストールスクリプトを実行した際に 、<code>Do you wish to upgrade?</code> に <code>N (no)</code> を
+入力してください。</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1768,11 +1747,10 @@ Zimbra Collaboration Network Edition install script, enter <code>N</code> when a
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-A warning displays asking if you want to delete all existing
-users and mail. If you enter <code>Yes</code>, all users, mail, and
-previous files are removed before proceeding with the new
-installation. Refer to the installation guides for installation
-instructions.
+すべての既存ユーザーとメールを削除する警告が表示されます。 <code>Yes</code> を
+入力すると、インストールする前にすべてのユーザー情報、メール、および既存の
+ファイルが削除されます。インストール方法につきまして、本ガイドにあるインストール
+手順を参照ください。
 </td>
 </tr>
 </table>
@@ -1780,21 +1758,27 @@ instructions.
 </div>
 </div>
 <div class="sect1">
-<h2 id="_status_of_your_customization_after_upgrade">Status of Your Customization after Upgrade</h2>
+<h2 id="_カスタマイズしたzcsにアップグレード後の影響について">カスタマイズしたZCSにアップグレード後の影響について</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Upgrading to the newest release does not delete your accounts or
-change your configuration.  Configuration settings stored in <em>LDAP</em> and
-<em>localconfig</em> are preserved during upgrades. Any files installed by
-Zimbra Collaboration might be deprecated and/or overwritten during
-upgrades, removing any customizations. This includes customized
-themes, logo branding changes, and crontab changes.  Only the core
-Zimlets are enabled after the upgrade. Zimlets that you customized
-and/or deployed are preserved during the upgrade but will be
-disabled. As upgrading of customized Zimlets cannot be tested before
-the release, Zimbra recommends that you verify that your customized
-Zimlets work correctly before re-enabling them for your end-users
-after the upgrade.</p>
+<p>最新版のリリースへアップグレードすることで、既存のアカウントの削除や設定の
+変更が発生することはありません。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> _LDAP_ と _Localconfig_ に保存した設定はアップグレード中は保護されます。
+しかしながら、{product-abbrev}でインストールするファイルは削除される、
+または上書きされる場合がありますので、追加したカスタマイズ内容が消失する
+可能性があります。たとえば、カスタマイズしたテーマ、ロゴの変更、および
+crontabの変更が消失の可能性があるカスタマイズ内容です。</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>また、アップグレード後、コアのZimletのみが有効の状態になります。
+カスタマイズしたZimletやコア以外にインストールしたZimletはアップグレードで
+削除されませんが、無効化されます。カスタマイズZimletをリリース前に
+テストできないため、エンドユーザーへ再度提供する前に、Zimletの動作確認を
+十分に実行いただくことを推奨しています。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1803,45 +1787,43 @@ after the upgrade.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-When upgrading to Zimbra Collaboration 8.5.x and later from a
-previous major ZCS version, the upgrade step disables Zimlets that are
-not the core Zimlets for ZCS in all COSs. If you have enabled other
-Zimlets at the account level, you might need to manually disable these
-Zimlets. See <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=77836">Bug 77836</a>.
+以前のメジャーバージョンからZCS8.5.0とそれ以降のバージョンへ
+アップグレードする際、コアZimlet以外のZimletはすべてのCOSに無効化されます。
+しかし、各アカウントにてZimletを手動に有効化している場合、それらのZimletを
+各アカウント設定で手動に無効化する必要となる可能性があります。詳細については
+<a href="https://bugzilla.zimbra.com/show_bug.cgi?id=77836">Bug 77836</a>を参照ください。
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>All entries between the designated comments in the Zimbra
-crontab file are overwritten with new defaults upon
-upgrade. Customized backup schedules stored in the Zimbra crontab and
-customizations to the crontab entry outside the designated comments
-are preserved.</p>
+<p>ZimbraのCrontabファイルに指定したコメント内の内容はアップグレード後に
+デフォルトの値へ上書きされます。カスタマイズしたバックアップのスケジュール、
+およびカスタマイズ内容の入力を禁止するコメント範囲外に入力した内容は
+上書きされません。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_changes_to_customized_themes">Changes to Customized Themes</h2>
+<h2 id="_カスタマイズしたテーマの変更について">カスタマイズしたテーマの変更について</h2>
 <div class="sectionbody">
-<div class="admonitionblock warning">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>In Zimbra Collaboration 8.5.x and later, a new design for default skins was
-implemented. Custom skins created for Zimbra 7.x might not
-work as intended with Zimbra Collaboration 8.5.x and later. Depending on
-what is in the skin, the issues might range from simple things such as
-colors being used in the wrong places to larger issues like functional
-components being hidden or placed in inaccessible areas of the
-screen. The proper fix for this is to take an existing 8.5.x or later
-skin, duplicate it, and update the skin to meet the same needs as the
-old skin. See <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=62523">Bug
-62523</a>.</p>
+<p>Zimbra Collaboration 8.5.0とそれ以降にて、新しいデファルトスキンのデザインが
+適用されました。そのため、Zimbra Collaboration 7.xで作成したカスタムスキンが
+Zimbra Collaboration 8.5.0で正常に機能しない可能性があります。スキンに含まれている
+内容によりますが、違う場所に指定されている色が使われるといった小さな問題や、
+必要なコンポーネントが非表示またはアクセスできない範囲へ設置されるなどの
+大きな問題が発生する可能性があります。
+修正するには、既存の8.5.0スキンをコピーし、コピーしたスキンを編集し、
+問題のスキンの機能を追加する必要があります。
+詳細については <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=62523">Bug 62523</a>を参照ください。</p>
 </div>
 </td>
 </tr>
@@ -1852,7 +1834,7 @@ old skin. See <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=62523">Bug
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-12 13:30:35 CDT
+Last updated 2017-11-14 16:18:11 JST
 </div>
 </div>
 </body>
