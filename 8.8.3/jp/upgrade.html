@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Zimbra Collaboration 8.8.3 アップグレードする方法</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
+/* Remove comment around @import statement below when using as a custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
+audio,canvas,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+[hidden],template{display:none}
+script{display:none!important}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:transparent}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+dfn{font-style:italic}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}
+input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*:before,*:after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.spread{width:100%}
+p.lead,.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{font-size:1.21875em;line-height:1.6}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:none}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #ddddd8;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite:before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media only screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table thead,table tfoot{background:#f7f8f7;font-weight:bold}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt,table tr:nth-of-type(even){background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.clearfix:before,.clearfix:after,.float-group:before,.float-group:after{content:" ";display:table}
+.clearfix:after,.float-group:after{clear:both}
+*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+*:not(pre)>code.nobreak{word-wrap:normal}
+*:not(pre)>code.nowrap{white-space:nowrap}
+pre,pre>code{line-height:1.45;color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;text-rendering:optimizeSpeed}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button:before,b.button:after{position:relative;top:-1px;font-weight:400}
+b.button:before{content:"[";padding:0 3px 0 2px}
+b.button:after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header:before,#header:after,#content:before,#content:after,#footnotes:before,#footnotes:after,#footer:before,#footer:after{content:" ";display:table}
+#header:after,#content:after,#footnotes:after,#footer:after{clear:both}
+#content{margin-top:1.25em}
+#content:before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #ddddd8}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #ddddd8;padding-bottom:8px}
+#header .details{border-bottom:1px solid #ddddd8;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span:before{content:"\00a0\2013\00a0"}
+#header .details br+span.author:before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark:before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber:after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #ddddd8;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #efefed;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media only screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #efefed;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #efefed;left:auto;right:0}}
+@media only screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:100%;background-color:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+.sect1{padding-bottom:.625em}
+@media only screen and (min-width:768px){.sect1{padding-bottom:1.25em}}
+.sect1+.sect1{border-top:1px solid #efefed}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor:before,h2>a.anchor:before,h3>a.anchor:before,#toctitle>a.anchor:before,.sidebarblock>.content>.title>a.anchor:before,h4>a.anchor:before,h5>a.anchor:before,h6>a.anchor:before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock>caption.title{white-space:nowrap;overflow:visible;max-width:0}
+.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:initial}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock pre:not(.highlight),.listingblock pre[class="highlight"],.listingblock pre[class^="highlight "],.listingblock pre.CodeRay,.listingblock pre.prettyprint{background:#f7f7f8}
+.sidebarblock .literalblock pre,.sidebarblock .listingblock pre:not(.highlight),.sidebarblock .listingblock pre[class="highlight"],.sidebarblock .listingblock pre[class^="highlight "],.sidebarblock .listingblock pre.CodeRay,.sidebarblock .listingblock pre.prettyprint{background:#f2f1f1}
+.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;padding:1em;font-size:.8125em}
+.literalblock pre.nowrap,.literalblock pre[class].nowrap,.listingblock pre.nowrap,.listingblock pre[class].nowrap{overflow-x:auto;white-space:pre;word-wrap:normal}
+@media only screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}
+@media only screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}
+.literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]:before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:#999}
+.listingblock:hover code[data-lang]:before{display:block}
+.listingblock.terminal pre .command:before{content:attr(data-prompt);padding-right:.5em;color:#999}
+.listingblock.terminal pre .command:not([data-prompt]):before{content:"$"}
+table.pyhltable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0;line-height:1.45}
+table.pyhltable td.code{padding-left:.75em;padding-right:0}
+pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #ddddd8}
+pre.pygments .lineno{display:inline-block;margin-right:.25em}
+table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock blockquote p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote:before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.5em;margin-right:.5ex;text-align:right}
+.quoteblock .quoteblock{margin-left:0;margin-right:0;padding:.5em 0;border-left:3px solid rgba(0,0,0,.6)}
+.quoteblock .quoteblock blockquote{padding:0 0 0 .75em}
+.quoteblock .quoteblock blockquote:before{display:none}
+.verseblock{margin:0 1em 1.25em 1em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract{margin:0 0 1.25em 0;display:block}
+.quoteblock.abstract blockquote,.quoteblock.abstract blockquote p{text-align:left;word-spacing:0}
+.quoteblock.abstract blockquote:before,.quoteblock.abstract blockquote p:first-of-type:before{display:none}
+table.tableblock{max-width:100%;border-collapse:separate}
+table.tableblock td>.paragraph:last-child p>p:last-child,table.tableblock th>p:last-child,table.tableblock td>p:last-child{margin-bottom:0}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
+table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
+table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
+table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px 0}
+table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0 0}
+table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
+table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.frame-all{border-width:1px}
+table.frame-sides{border-width:0 1px}
+table.frame-topbot{border-width:1px 0}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+td>div.verse{white-space:pre}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{margin:0 auto .625em auto;margin-left:-1.375em;margin-right:0;padding:0;list-style:none;overflow:hidden}
+ul.inline>li{list-style:none;float:left;margin-left:1.375em;display:block}
+ul.inline>li>*{display:block}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist>table tr>td:first-of-type{padding:.4em .75em 0 .75em;line-height:1;vertical-align:top}
+.colist>table tr>td:first-of-type img{max-width:initial}
+.colist>table tr>td:last-of-type{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left,.imageblock[style*="float: left"]{margin:.25em .625em 1.25em 0}
+.imageblock.right,.imageblock[style*="float: right"]{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em 0;border-width:1px 0 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;text-indent:-1.05em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background-color:#00fafa}
+.black{color:#000}
+.black-background{background-color:#000}
+.blue{color:#0000bf}
+.blue-background{background-color:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background-color:#fa00fa}
+.gray{color:#606060}
+.gray-background{background-color:#7d7d7d}
+.green{color:#006000}
+.green-background{background-color:#007d00}
+.lime{color:#00bf00}
+.lime-background{background-color:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background-color:#7d0000}
+.navy{color:#000060}
+.navy-background{background-color:#00007d}
+.olive{color:#606000}
+.olive-background{background-color:#7d7d00}
+.purple{color:#600060}
+.purple-background{background-color:#7d007d}
+.red{color:#bf0000}
+.red-background{background-color:#fa0000}
+.silver{color:#909090}
+.silver-background{background-color:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background-color:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background-color:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background-color:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note:before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip:before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning:before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution:before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important:before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background-color:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]:after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background-color:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@media print{@page{margin:1.25cm .75cm}
+*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare):after,a[href^="https:"]:not(.bare):after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]:after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #ddddd8!important;padding-bottom:0!important}
+.sect1{padding-bottom:0!important}
+.sect1+.sect1{border:0!important}
+#header>h1:first-child{margin-top:1.25rem}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em 0}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span:before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]:before{display:block}
+#footer{background:none!important;padding:0 .9375em}
+#footer-text{color:rgba(0,0,0,.6)!important;font-size:.9em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<style>
+/* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
+/*pre.CodeRay {background-color:#f7f7f8;}*/
+.CodeRay .line-numbers{border-right:1px solid #d8d8d8;padding:0 0.5em 0 .25em}
+.CodeRay span.line-numbers{display:inline-block;margin-right:.5em;color:rgba(0,0,0,.3)}
+.CodeRay .line-numbers strong{color:rgba(0,0,0,.4)}
+table.CodeRay{border-collapse:separate;border-spacing:0;margin-bottom:0;border:0;background:none}
+table.CodeRay td{vertical-align: top;line-height:1.45}
+table.CodeRay td.line-numbers{text-align:right}
+table.CodeRay td.line-numbers>pre{padding:0;color:rgba(0,0,0,.3)}
+table.CodeRay td.code{padding:0 0 0 .5em}
+table.CodeRay td.code>pre{padding:0}
+.CodeRay .debug{color:#fff !important;background:#000080 !important}
+.CodeRay .annotation{color:#007}
+.CodeRay .attribute-name{color:#000080}
+.CodeRay .attribute-value{color:#700}
+.CodeRay .binary{color:#509}
+.CodeRay .comment{color:#998;font-style:italic}
+.CodeRay .char{color:#04d}
+.CodeRay .char .content{color:#04d}
+.CodeRay .char .delimiter{color:#039}
+.CodeRay .class{color:#458;font-weight:bold}
+.CodeRay .complex{color:#a08}
+.CodeRay .constant,.CodeRay .predefined-constant{color:#008080}
+.CodeRay .color{color:#099}
+.CodeRay .class-variable{color:#369}
+.CodeRay .decorator{color:#b0b}
+.CodeRay .definition{color:#099}
+.CodeRay .delimiter{color:#000}
+.CodeRay .doc{color:#970}
+.CodeRay .doctype{color:#34b}
+.CodeRay .doc-string{color:#d42}
+.CodeRay .escape{color:#666}
+.CodeRay .entity{color:#800}
+.CodeRay .error{color:#808}
+.CodeRay .exception{color:inherit}
+.CodeRay .filename{color:#099}
+.CodeRay .function{color:#900;font-weight:bold}
+.CodeRay .global-variable{color:#008080}
+.CodeRay .hex{color:#058}
+.CodeRay .integer,.CodeRay .float{color:#099}
+.CodeRay .include{color:#555}
+.CodeRay .inline{color:#000}
+.CodeRay .inline .inline{background:#ccc}
+.CodeRay .inline .inline .inline{background:#bbb}
+.CodeRay .inline .inline-delimiter{color:#d14}
+.CodeRay .inline-delimiter{color:#d14}
+.CodeRay .important{color:#555;font-weight:bold}
+.CodeRay .interpreted{color:#b2b}
+.CodeRay .instance-variable{color:#008080}
+.CodeRay .label{color:#970}
+.CodeRay .local-variable{color:#963}
+.CodeRay .octal{color:#40e}
+.CodeRay .predefined{color:#369}
+.CodeRay .preprocessor{color:#579}
+.CodeRay .pseudo-class{color:#555}
+.CodeRay .directive{font-weight:bold}
+.CodeRay .type{font-weight:bold}
+.CodeRay .predefined-type{color:inherit}
+.CodeRay .reserved,.CodeRay .keyword {color:#000;font-weight:bold}
+.CodeRay .key{color:#808}
+.CodeRay .key .delimiter{color:#606}
+.CodeRay .key .char{color:#80f}
+.CodeRay .value{color:#088}
+.CodeRay .regexp .delimiter{color:#808}
+.CodeRay .regexp .content{color:#808}
+.CodeRay .regexp .modifier{color:#808}
+.CodeRay .regexp .char{color:#d14}
+.CodeRay .regexp .function{color:#404;font-weight:bold}
+.CodeRay .string{color:#d20}
+.CodeRay .string .string .string{background:#ffd0d0}
+.CodeRay .string .content{color:#d14}
+.CodeRay .string .char{color:#d14}
+.CodeRay .string .delimiter{color:#d14}
+.CodeRay .shell{color:#d14}
+.CodeRay .shell .delimiter{color:#d14}
+.CodeRay .symbol{color:#990073}
+.CodeRay .symbol .content{color:#a60}
+.CodeRay .symbol .delimiter{color:#630}
+.CodeRay .tag{color:#008080}
+.CodeRay .tag-special{color:#d70}
+.CodeRay .variable{color:#036}
+.CodeRay .insert{background:#afa}
+.CodeRay .delete{background:#faa}
+.CodeRay .change{color:#aaf;background:#007}
+.CodeRay .head{color:#f8f;background:#505}
+.CodeRay .insert .insert{color:#080}
+.CodeRay .delete .delete{color:#800}
+.CodeRay .change .change{color:#66f}
+.CodeRay .head .head{color:#f4f}
+</style>
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<h1>Zimbra Collaboration 8.8.3 アップグレードする方法</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_アップグレード実行前の注意事項">アップグレード実行前の注意事項</a>
+<ul class="sectlevel2">
+<li><a href="#_zimbra_データベースの整合性チェック">Zimbra データベースの整合性チェック</a></li>
+<li><a href="#_osの準備">OSの準備</a>
+<ul class="sectlevel3">
+<li><a href="#_ubuntu_os">Ubuntu OS</a></li>
+<li><a href="#_red_hat_enterprise_linux_centos_linux">Red Hat Enterprise Linux/CentOS Linux</a></li>
+</ul>
+</li>
+<li><a href="#_ライセンスアクティベーションについて">ライセンスアクティベーションについて</a></li>
+<li><a href="#_ldapのレプリカサーバ_およびマルチマスターサーバ環境のアップグレード">LDAPのレプリカサーバ、およびマルチマスターサーバ環境のアップグレード</a></li>
+<li><a href="#_sslv3のサポートを無効化する">SSLv3のサポートを無効化する</a></li>
+<li><a href="#_デファルトのプロキシーssl暗号の値アップデート">デファルトのプロキシーSSL暗号の値アップデート</a></li>
+<li><a href="#_zcoインストールのカスタマイズについて">ZCOインストールのカスタマイズについて</a></li>
+</ul>
+</li>
+<li><a href="#_アップグレードの手順">アップグレードの手順</a>
+<ul class="sectlevel2">
+<li><a href="#_ソフトウェアをダウンロードする">ソフトウェアをダウンロードする</a></li>
+<li><a href="#_シングルサーバのアップグレード手順">シングルサーバのアップグレード手順</a>
+<ul class="sectlevel3">
+<li><a href="#_プロセス">プロセス</a></li>
+</ul>
+</li>
+<li><a href="#_マルチサーバ構成のアップグレード手順">マルチサーバ構成のアップグレード手順</a>
+<ul class="sectlevel3">
+<li><a href="#_プロセス_2">プロセス</a></li>
+</ul>
+</li>
+<li><a href="#_オンディスクのデータベースマップのサポート対象バックエンドとして_lmdbを利用する">オンディスクのデータベースマップのサポート対象バックエンドとして、LMDBを利用する</a></li>
+</ul>
+</li>
+<li><a href="#_アップグレード完了後の注意事項">アップグレード完了後の注意事項</a>
+<ul class="sectlevel2">
+<li><a href="#_エフェメラルデータ移管">エフェメラルデータ移管</a></li>
+<li><a href="#_imapd_サービス">IMAPD サービス</a></li>
+</ul>
+</li>
+<li><a href="#_既存のバージョンを削除し_zcsをクリーンインストールする手順">既存のバージョンを削除し、ZCSをクリーンインストールする手順</a></li>
+<li><a href="#_カスタマイズしたzcsにアップグレード後の影響について">カスタマイズしたZCSにアップグレード後の影響について</a></li>
+<li><a href="#_カスタマイズしたテーマの変更について">カスタマイズしたテーマの変更について</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_アップグレード実行前の注意事項">アップグレード実行前の注意事項</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>アップグレードを実行する前に、以下のタスクの実行が必要となる
+可能性がございます。以下のタスクを参照いただきましたら、
+アップグレード手順をご確認ください。
+また、アップグレードする前に、最新の注意事項を確認するため、
+インストールするバージョンのリリースノートをご参照ください。
+<a href="https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0">release note</a></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><a href="https://bugzilla.zimbra.com/show_bug.cgi?id=105056">Bug
+105056</a>
+すべてのメールボックスサーバが8.7へのアップグレードが完了する前に
+二段階認証(2FA)を有効化した場合、アップグレードする環境に
+問題が発生することを確認しています。特に、8.7より前のメールボックス
+サーバは2FAとの互換性がありません。</p>
+</div>
+<div class="paragraph">
+<p>そのため、すべてのメールボックスサーバが正常に 8.7 へのアップグレードが
+完了した後にのみ、2FAを有効化することを推奨しております。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>アップグレード時に以下の新しいサービスをインストールすることが可能となりました。
+各サービスの詳細につきましては <em>Zimbra Collaboration Administration Guide</em> を参照し、インストールするか
+ご検討ください。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>zimbra-chat</code></p>
+</li>
+<li>
+<p><code>zimbra-drive</code></p>
+</li>
+<li>
+<p><code>zimbra-imapd</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_zimbra_データベースの整合性チェック">Zimbra データベースの整合性チェック</h3>
+<div class="paragraph">
+<p>過去の事例では、データベースが既に破損しているユーザーがアップグレードを実行し、
+データベースの破損がさらに拡大し、問題が深刻化したことがあります。破損してる
+データベースを事前に確認するため、システムの変更を実行する前に <code>zmdbintegrityreport</code> では
+MariaDBのデータベースをチェックするオプションを追加しています。アップグレードを
+実行する際にzmdbintegrityreportを実行するかどうかを確認されます。</p>
+</div>
+<div class="paragraph">
+<p>システムのサイズやディスクの仕様により、<code>zmdbintegrityreport</code> が完了されるまで
+数分から数時間かかる場合があります。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>zmdbintegrityreport</code> はすべてのZimbra-storeサーバにてCronにより毎週に自動的に
+実行されます。大規模システムでこの設定を無効化する場合、以下のコマンドを
+実行します。
+zmlocalconfig -e zmdbintegrityreport_disabled=TRUE
+無効化しますと、システムのメンテナンス期間でこの整合性レポートを手動での実行、
+ZCSのアップグレード前の手動での実行を推奨しております。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_osの準備">OSの準備</h3>
+<div class="paragraph">
+<p>ZCSをアップグレードする前に、Zimbra は
+ご利用のOSに最新のパッチを適用することを推奨しております。</p>
+</div>
+<div class="sect3">
+<h4 id="_ubuntu_os">Ubuntu OS</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Ubuntu 16.04 LTS Server Edition (64-bit)</p>
+</li>
+<li>
+<p>Ubuntu 14.04 LTS Server Edition (64-bit)</p>
+</li>
+<li>
+<p>Ubuntu 12.04.4 LTS Server Edition *saucy (3.11) 以降のカーネルを
+導入する必要があります。</p>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>インストールされているのがUbuntu 12.04.2、またはそれ以前の場合、saucy (3.11)または
+それ以降のカーネルシリーズへ変更するため、手動での操作が必要となっています。
+詳細についてはこちらを参照ください： <a href="https://wiki.ubuntu.com/Kernel/LTSEnablementStack" class="bare">https://wiki.ubuntu.com/Kernel/LTSEnablementStack</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>現在のカーネルバージョンを以下のコマンドで確認することが可能です。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>uname -a</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>実行例：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>build@zre-ubuntu12-64:~$ uname -a
+Linux zre-ubuntu12-64 3.11.0-17-generic #31~precise1-Ubuntu SMP Tue Feb 4
+21:25:43 UTC 2014 x86_64 x86_64 x86_64 GNU/Linux</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_red_hat_enterprise_linux_centos_linux">Red Hat Enterprise Linux/CentOS Linux</h4>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>RHEL Linux をご利用の場合、RedHat より有効なライセンスを適用している必要があります。</p>
+</li>
+<li>
+<p>サーバは <code>yum</code> または <code>apt-get</code> でZimbraパッケージのサーバへ接続できる必要があります。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>RedHat® Enterprise Linux® 7, AS/ES (64-bit)</p>
+</li>
+<li>
+<p>CentOS Linux® 7 (64-bit)</p>
+</li>
+<li>
+<p>Red Hat Enterprise Linux 6, AS/ES (64-bit), パッチレベル4以降が必要</p>
+</li>
+<li>
+<p>CentOS Linux 6 (64-bit), パッチレベル4以降が必要</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ライセンスアクティベーションについて">ライセンスアクティベーションについて</h3>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>アップグレードのインストール開始前に、既存のライセンスファイルが自動的に
+確認され、アップグレード可能なライセンスであるか判断されます。ライセンスの
+有効期限が満了している場合、エラーが表示し、アップグレードのインストールが
+停止されます。その場合、アップグレードするためにライセンスの更新手続きについて
+Zimbra 営業部門までご連絡ください。</p>
+</li>
+<li>
+<p>アップグレードのインストールは自動のアクティベーション、または既に手動で
+アクティベーションされたライセンスファイルが存在しない場合、アップグレードは
+開始されません。また、ライセンスファイルのアクティベーション回数は最大で
+5回となっております。ご利用中のシステムのアップグレードを実行する前にすべての
+アクティベーション回数を使用済みの場合、ライセンスアクティベーション回数を
+追加するためにZimbra 営業部門までご連絡ください。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>すべての{product-edition-commercialのインストールにはライセンスの
+アクティベーションが必要となっております。新規にインストールした
+環境では、ライセンスの発行日より10日以内にアクティベーションを
+実行する必要があります。</p>
+</div>
+<div class="paragraph">
+<p>アップグレードの場合、Zimbraライセンスサーバーへ外部接続が可能な
+システムについて、アクティベーションはアップグレード中に自動的に行われます。
+Zimbraライセンスサーバーへ外部接続が不可能のサーバについて、手動の
+アクティベーション方法を用意しております。詳細については
+{<em>Zimbra Collaboration Administration Guide</em> をご参照ください。</p>
+</div>
+<div class="paragraph">
+<p>古いバージョンのZimbra Collaborationからアップグレードする場合、ZCOと
+アーカイブのライセンスの制限確認を実行する方法が変更された可能性があります。
+古いライセンスをご利用の場合、  <code>MAPIConnectorAccountsLimit</code> が「0」、
+または <code>ArchivingAccountsLimit</code> がライセンスに記載されていない場合があります。
+それらの機能を購入済み、およびご利用のライセンスに正常なアカウント制限が
+表示されていない場合、アップグレードする前にZimbra営業部門より更新された
+ライセンスのファイルを依頼してください。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ldapのレプリカサーバ_およびマルチマスターサーバ環境のアップグレード">LDAPのレプリカサーバ、およびマルチマスターサーバ環境のアップグレード</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+この手順は ZCS 8.0.0, 8.0.1, 8.0.2 から ZCS
+8.0.4 とそれ以降のバージョンのみ対象です。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>レプリカサーバ、またはマルチマスターのモードを使用している場合、
+ZCS 8.0.4とそで以降のバージョンへアップグレードする前に、
+アップグレードするバージョンのZimbra LDAPスキーマを
+各レプリカサーバ、またはマルチマスターのサーバへインストールする必要があります。
+詳細については <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=81048">Bug 81048</a> をご参照ください。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>マスターLDAPサーバにZCS8.0.4以降のソフトウェアのみインストールを実行します。</p>
+<div class="listingblock">
+<div class="content">
+<pre>./install.sh -s</pre>
+</div>
+</div>
+</li>
+<li>
+<p>各レプリカ、またはMMRモードで追加マスターLDAPサーバをZimbraユーザーにて</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>以下のコマンドでサーバを停止する：</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>ldap stop</code></p>
+</li>
+<li>
+<p><code>zmcontrol stop</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>既存の`Zimbra`のスキーマを移動します：</p>
+<div class="listingblock">
+<div class="content">
+<pre>cd /opt/zimbra/data/ldap/config/cn=config/cn=schema
+mv cn={4}zimbra.ldif /opt/zimbra/data/ldap/cn={4}zimbra.ldif.dead</pre>
+</div>
+</div>
+</li>
+<li>
+<p>マスターLDAPサーバからスキーマをコピーします：</p>
+<div class="listingblock">
+<div class="content">
+<pre>scp root@&lt;master&gt;:/opt/zimbra/openldap/etc/openldap/schema/zimbra.ldif cn={4}zimbra.ldif</pre>
+</div>
+</div>
+</li>
+<li>
+<p>cn={4}zimbra.ldif に以下の行を編集します：</p>
+<div class="listingblock">
+<div class="content">
+<pre>dn: cn=zimbra,cn=schema,cn=config     -------&gt;     dn: cn={4}zimbra
+cn: zimbra                            -------&gt;     cn: {4}zimbra</pre>
+</div>
+</div>
+</li>
+<li>
+<p>以下のコマンドでサーバを起動します:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>ldap start</code></p>
+</li>
+<li>
+<p><code>zmcontrol start</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>マスターLDAPサーバに以下を実行します:</p>
+<div class="listingblock">
+<div class="content">
+<pre>/opt/zimbra/libexec/zmsetup.pl</pre>
+</div>
+</div>
+</li>
+<li>
+<p>各レプリカサーバにて以下を実行します:</p>
+<div class="listingblock">
+<div class="content">
+<pre> ./install.sh</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>アップグレードを継続するには <a href="#_multi_server_environment_upgrade_steps">[_multi_server_environment_upgrade_steps]</a>を参照ください。</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sslv3のサポートを無効化する">SSLv3のサポートを無効化する</h3>
+<div class="paragraph">
+<p>ZCS 8.7.0へアップグレードする場合、アップグレード後に SSLv3 を
+完全に無効化する必要があります。以下の SSLv3 脆弱性により、SSLv3 を完全に
+無効化することを推奨しております。
+<a href="https://www.us-cert.gov/ncas/alerts/TA14-290A">Alert (TA14-290A)</a>.</p>
+</div>
+<div class="paragraph">
+<p>なお、8.6.0 より SSLv3 のサポートは終了していますが、ZCSの古い
+バージョンからアップグレードする場合、対象のプロトコルが有効のままで
+設定されてしまう可能性がございます。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>新しくインストールする ZCS 8.7.0 (とそれ以降) では SSLv3 がデフォルトで無効化されています。</p>
+</li>
+<li>
+<p>以前バージョンのZCSではSSLv3が有効化されている可能性があります。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>ZCS 8.7.0 へアップグレード後、Zimbra wiki記事 <a href="https://wiki.zimbra.com/wiki/How_to_disable_SSLv3">How to Disable
+SSLv3</a> の手順にて、
+SSLv3を無効化してください。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_デファルトのプロキシーssl暗号の値アップデート">デファルトのプロキシーSSL暗号の値アップデート</h3>
+<div class="paragraph">
+<p>アップグレードする際、以下の属性値を確認(<code>zmprov gcf &lt;attr&gt;</code>)し、
+最新のデフォルト値 (<code>zmprov desc -a &lt;attr&gt;</code>)に座がないか調査することを
+推奨しています。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>zimbraReverseProxySSLCiphers
+zimbraReverseProxySSLProtocols
+zimbraSSLExcludeCipherSuites
+zimbraMailboxdSSLProtocols</pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+設定の見直しが行われていない場合、ZCSのデフォルト
+設定と一致しますので、追加の修正は必要ございません。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>また、以下の設定変更を推奨しております。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>zimbraReverseProxySSLCiphers</code> から以下の暗号を削除する:</p>
+<div class="listingblock">
+<div class="content">
+<pre>ECDHE-RSA-RC4-SHA
+ECDHE-ECDSA-RC4-SHA
+RC4-SHA</pre>
+</div>
+</div>
+</li>
+<li>
+<p><code>zimbraReverseProxySSLCiphers</code> に以下を追加する:</p>
+<div class="listingblock">
+<div class="content">
+<pre>!RC4</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+有効な暗号の設定に関する最新情報につきまして、
+以下の Wiki 記事をご参照ください。
+<a href="https://wiki.zimbra.com/wiki/Cipher_suites" class="bare">https://wiki.zimbra.com/wiki/Cipher_suites</a>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zcoインストールのカスタマイズについて">ZCOインストールのカスタマイズについて</h3>
+<div class="paragraph">
+<p><em>ZCO</em> のインストールMSIのカスタマイズをご希望の管理者は、Zimbraの
+ダウンロードディレクトリにある、署名していないMSIバージョン
+(<code>ZimbraConnectorOLK_n.n.n.nnnn_xnn-unsigned.msi</code>)をご利用ください。
+エンドユーザー様へ <code>/downloads/index.html</code> や <em>ZCO</em> の自動アップグレードに
+カスタマイズされたMSIを提供するため、通常の署名されたMSI
+(<code>ZimbraConnectorOLK_n.n.n.nnnn_xnn.msi</code>) を上書きします。
+ (<a href="https://bugzilla.zimbra.com/show_bug.cgi?id=85067">Bug 85067</a>).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_アップグレードの手順">アップグレードの手順</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_ソフトウェアをダウンロードする">ソフトウェアをダウンロードする</h3>
+<div class="paragraph">
+<p>Network Editionをアップグレードする場合、www.zimbra.com の
+ダウンロードページより最新版のソフトウェアを提供しています。
+<a href="http://www.zimbra.com/downloads/zimbra-collaboration" class="bare">http://www.zimbra.com/downloads/zimbra-collaboration</a></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>アップグレード実行前に、すべてのユーザーが含まれている有効な
+バックアップが存在することをご確認ください！</p>
+</li>
+<li>
+<p>7.xから8.xのアップグレードにデータベースのリロードが発生します。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>インストールのスクリプトを実行する際、ZCSが既に
+インストールされている場合、アップグレードするかどうかが確認されます。
+アップグレードする際に、以下の手順を参照ください。この手順以外の
+詳細な情報についてはリリースノートを参照ください。</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Zimbraでは、インストールやアップグレードのセッションが
+完了する前に、誤ってインストールを途中で停止しないため、UNIXコマンドの
+ <code>screen</code> などで実行することを推奨しています。大量のアカウントが
+存在している環境で、長時間に設定の復元が発生する可能性がございますので、
+これはデータの破損を回避するための重要な対策となります。</p>
+</div>
+<div class="paragraph">
+<p>コマンドの実行例：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>screen ./install.sh</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_シングルサーバのアップグレード手順">シングルサーバのアップグレード手順</h3>
+<div class="paragraph">
+<p>アップグレードする前にサービスを停止する必要はありません。
+アップグレードのプロセスが自動的に必要なサービスの停止と起動が行います。</p>
+</div>
+<div class="sect3">
+<h4 id="_プロセス">プロセス</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Zimbra サーバーへrootユーザでログインし、Zimbra Collaboration の
+Tarアーカイブファイルを保存したディレクトリへ移動します。
+例：cd /var/&lt;tmp&gt;。移動後、以下のコマンドを実行します。</p>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>ファイルを展開する</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>tar xzvf zcs.tgz</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>適切なディレクトリへ移動する</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cd &lt;expanded-directory&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>インストールを開始する</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>./install.sh</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>アップグレード用のスクリプトは <code>proxy</code> と <code>memcached</code> がインストールされているか確認します。
+両方のプロセスがインストールしてる場合、アップグレードを行います。
+インストールされていない場合、アップグレードが停止し、警告メッセージが表示されます。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>8.7.0 とそれ以降のバージョンでは、proxy と memcached のインストールが
+必須となりました。</p>
+</li>
+<li>
+<p>詳細については <a href="https://wiki.zimbra.com/wiki/Enabling_Zimbra_Proxy_and_memcached#Using_existing_servers">Enabling Zimbra Proxy and memcached</a> をご参照ください。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Zimbra のソフトウェア契約が表示します。契約を確認し、<code>Y</code> を
+入力してください。</p>
+</li>
+<li>
+<p><code>Use Zimbra&#8217;s packaging server [Y]</code> が表示されたら、 <em>Enter</em> キーを
+押します。サードパーティ製のパッケージをインストールするため、ご利用システムにより
+Zimbra の <strong>yum</strong> または <strong>apt-get</strong> パッケージリポジトリが設定されます。</p>
+</li>
+<li>
+<p><code>Do you wish to upgrade? [Y]</code> が表示されたら、 <em>Enter</em> キーを押します。
+アップグレードするパッケージが展開されます。</p>
+</li>
+<li>
+<p>インストールするパッケージが一覧表示されます。また、インストーラはまだ
+インストールしていないパッケージも一覧表示します。追加でインストールを
+希望する場合、<code>Y</code> を入力しますが、変更しない場合は <em>Enter</em> キーを押します。
+インストーラが Zimbra をインストールできるディスクの
+空き容量を確認します。十分な空き容量がなかった場合、インストールが停止されます。</p>
+</li>
+<li>
+<p><code>The system will be modified. Continue? [N]</code> が表示されたら、 <code>Y</code> を
+入力し、 <em>Enter</em> キーを押します。Zimbra サーバは停止し、古い
+パッケージが削除されます。アップグレードのプロセスが実行中の ZCS バージョンを
+確認し、サービスをアップグレードし、既存の設定ファイルを復元し、サーバを
+再起動します。なお、ご利用環境に大量のアカウントを登録している場合、
+このステップに時間がかかる可能性があります。</p>
+</li>
+<li>
+<p>タイムゾーンを設定していない場合、設定するように要求されます。設定する
+タイムゾーンはデフォルトのCOSにも適用されます。そのため、COS にある
+主なユーザが利用してるタイムゾーンに指定することを推奨しています。</p>
+</li>
+<li>
+<p>設定が完了すると、 <em>enter</em> キーを押します。</p>
+</li>
+<li>
+<p>すべての <em>MTA</em> ノードが Zimbra Collaboration 8.8.3 へのアップグレードが
+完了したら、デフォルトの globalconfig 値を以下のコマンドで修正する必要が
+ある場合がございます。</p>
+<div class="listingblock">
+<div class="content">
+<pre>zmprov mcf zimbraMtaCommandDirectory /opt/zimbra/common/sbin
+zmprov mcf zimbraMtaDaemonDirectory /opt/zimbra/common/libexec
+zmprov mcf zimbraMtaMailqPath /opt/zimbra/common/sbin/mailq
+zmprov mcf zimbraMtaManpageDirectory /opt/zimbra/common/share/man
+zmprov mcf zimbraMtaNewaliasesPath /opt/zimbra/common/sbin/newaliases
+zmprov mcf zimbraMtaSendmailPath /opt/zimbra/common/sbin/sendmail</pre>
+</div>
+</div>
+</li>
+<li>
+<p><a href="https://bugzilla.zimbra.com/show_bug.cgi?id=104158">DSPAM is not
+longer shipped</a> <em>Zimbra Collaboration 8.7</em> とそれ以降のバージョンでは、
+DSPAM は提供しておりません。そのため、以下のコマンドを実施し、
+無効化してください。</p>
+<div class="listingblock">
+<div class="content">
+<pre>zmprov ms `zmhostname` zimbraAmavisDSPAMEnabled FALSE
+zmlocalconfig -e amavis_dspam_enabled=false
+zmamavisdctl restart</pre>
+</div>
+</div>
+</li>
+<li>
+<p>アップグレード完了です。データベースのスキーマ変更により、メジャーの
+バージョンへのアップグレードが完了後、完全バックアップを実施することを
+推奨しております。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_マルチサーバ構成のアップグレード手順">マルチサーバ構成のアップグレード手順</h3>
+<div class="paragraph">
+<p>以下の順番でサーバをアップグレードします。以下の<a href="#_process_2">[_process_2]</a>に従い、
+各サーバを1台ずつアップグレードしてください。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>マスター <em>LDAP</em> サーバ　すべてのマスターLDAPサーバを最初に
+アップグレードする必要があり、他のサーバをアップグレードするためにも
+マスターLDAPサーバが正常に起動している状態でなければいけません。</p>
+</li>
+<li>
+<p>レプリカ <em>LDAP</em> サーバ</p>
+</li>
+<li>
+<p><em>MTA</em> サーバ - ご参考： <a href="#_using_lmdb_as_the_supported_back_end_for_on_disk_database_maps">[_using_lmdb_as_the_supported_back_end_for_on_disk_database_maps]</a></p>
+</li>
+<li>
+<p>Proxy サーバ</p>
+</li>
+<li>
+<p>メールストアサーバ</p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="_プロセス_2">プロセス</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Zimbra サーバーへrootユーザでログインし、Zimbra Collaboration の
+Tarアーカイブファイルを保存したディレクトリへ移動します。
+例：cd /var/&lt;tmp&gt;。移動後、以下のコマンドを実行します。</p>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>ファイルを展開する</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>tar xzvf zcs.tgz</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>適切なディレクトリへ移動する</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cd &lt;expanded-directory&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>インストールを開始する</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>./install.sh</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>アップグレード用のスクリプトは <code>proxy</code> と <code>memcached</code> がインストールされているか確認します。
+両方のプロセスがインストールしてる場合、アップグレードを行います。
+インストールされていない場合、アップグレードが停止し、警告メッセージが表示されます。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>8.7.0 とそれ以降のバージョンでは、proxy と memcached のインストールが
+必須となりました。</p>
+</li>
+<li>
+<p>詳細については <a href="https://wiki.zimbra.com/wiki/Enabling_Zimbra_Proxy_and_memcached#Using_existing_servers">Enabling Zimbra Proxy and memcached</a> をご参照ください。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Zimbra のソフトウェア契約が表示します。契約を確認し、<code>Y</code> を
+入力してください。</p>
+</li>
+<li>
+<p><code>Use Zimbra&#8217;s packaging server [Y]</code> が表示されたら、 <em>Enter</em> キーを
+押します。サードパーティ製のパッケージをインストールするため、ご利用システムにより
+Zimbra の <strong>yum</strong> または <strong>apt-get</strong> パッケージリポジトリが設定されます。</p>
+</li>
+<li>
+<p><code>Do you wish to upgrade? [Y]</code> が表示されたら、 <em>Enter</em> キーを押します。
+アップグレードするパッケージが展開されます。</p>
+</li>
+<li>
+<p>インストールするパッケージが一覧表示されます。また、インストーラはまだ
+インストールしていないパッケージも一覧表示します。追加でインストールを
+希望する場合、<code>Y</code> を入力しますが、変更しない場合は <em>Enter</em> キーを押します。
+インストーラが Zimbra をインストールできるディスクの
+空き容量を確認します。十分な空き容量がなかった場合、インストールが停止されます。</p>
+</li>
+<li>
+<p><code>The system will be modified. Continue? [N]</code> が表示されたら、 <code>Y</code> を
+入力し、 <em>Enter</em> キーを押します。Zimbra サーバは停止し、古い
+パッケージが削除されます。アップグレードのプロセスが実行中の ZCS バージョンを
+確認し、サービスをアップグレードし、既存の設定ファイルを復元し、サーバを
+再起動します。なお、ご利用環境に大量のアカウントを登録している場合、
+このステップに時間がかかる可能性があります。</p>
+</li>
+<li>
+<p>タイムゾーンを設定していない場合、設定するように要求されます。設定する
+タイムゾーンはデフォルトのCOSにも適用されます。そのため、COS にある
+主なユーザが利用してるタイムゾーンに指定することを推奨しています。</p>
+</li>
+<li>
+<p>設定が完了すると、 <em>enter</em> キーを押します。</p>
+</li>
+<li>
+<p>すべての <em>MTA</em> ノードが Zimbra Collaboration 8.8.3 へのアップグレードが
+完了したら、デフォルトの globalconfig 値を以下のコマンドで修正する必要が
+ある場合がございます。</p>
+<div class="listingblock">
+<div class="content">
+<pre>zmprov mcf zimbraMtaCommandDirectory /opt/zimbra/common/sbin
+zmprov mcf zimbraMtaDaemonDirectory /opt/zimbra/common/libexec
+zmprov mcf zimbraMtaMailqPath /opt/zimbra/common/sbin/mailq
+zmprov mcf zimbraMtaManpageDirectory /opt/zimbra/common/share/man
+zmprov mcf zimbraMtaNewaliasesPath /opt/zimbra/common/sbin/newaliases
+zmprov mcf zimbraMtaSendmailPath /opt/zimbra/common/sbin/sendmail</pre>
+</div>
+</div>
+</li>
+<li>
+<p><a href="https://bugzilla.zimbra.com/show_bug.cgi?id=104158">DSPAM is not
+longer shipped</a> <em>Zimbra Collaboration 8.7</em> とそれ以降のバージョンでは、
+DSPAM は提供しておりません。そのため、以下のコマンドを実施し、
+無効化してください。</p>
+<div class="listingblock">
+<div class="content">
+<pre>zmprov ms `zmhostname` zimbraAmavisDSPAMEnabled FALSE
+zmlocalconfig -e amavis_dspam_enabled=false
+zmamavisdctl restart</pre>
+</div>
+</div>
+</li>
+<li>
+<p>アップグレード完了です。データベースのスキーマ変更により、メジャーの
+バージョンへのアップグレードが完了後、完全バックアップを実施することを
+推奨しております。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_オンディスクのデータベースマップのサポート対象バックエンドとして_lmdbを利用する">オンディスクのデータベースマップのサポート対象バックエンドとして、LMDBを利用する</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>ZCS 8.5とそれ以降のバージョンについて、 <em>Postfix</em> はバックエンドとして
+<em>OpenLDAP</em> と同様に <em>LMDB</em> に関連付いています。ZCS 8.0とそれ以前では、
+<em>Postfix_は_Berkley DB</em> に関連付いています。</p>
+</div>
+<div class="paragraph">
+<p>ZCS はZCS 8.5より以前のバージョンでは <em>Postfix</em> の
+オンディスクデータベースをサポートしていませんでした。しかしながら、カスタムマイズにより
+`postconf`の設定で編集することは可能でした。なお、これらの
+カスタム設定はアップグレード後に削除されます。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>アップグレード後にカスタム設定を復元するには、以下の手順を実施する必要があります。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>データベースのインプットファイルへpostmapを実施し、LMDBデータベースを発行します。</p>
+</li>
+<li>
+<p>各postconfキーに <code>hash:/path/to/db</code> の値を <code>lmdb:/path/to/db</code> へ手動にLDAPで更新する
+必要があります。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>以前にオンディスクのデータベースマップでしか利用できなかった機能は現在、
+ZCSで完全にサポート対象となりました。そのため、アップグレード後に
+カスタマイズした内容が正常に適用されるか検証してください。詳細については
+<a href="https://bugzilla.zimbra.com/show_bug.cgi?id=77586">Bug 77586</a> を参照ください。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_アップグレード完了後の注意事項">アップグレード完了後の注意事項</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>アップグレード後、以下の項目について注意する必要がある場合があります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Review <a href="https://wiki.zimbra.com/wiki/How_to_disable_SSLv3">How to disable SSLv3</a>.</p>
+</li>
+<li>
+<p>Review <a href="https://wiki.zimbra.com/wiki/Cipher_suites">Cipher suites</a>.</p>
+</li>
+<li>
+<p>アップグレードのプロセスでデータベースのフォーマットに重要な変更がある場合、
+Zimbraが既存のデータベースのバックアップを取得する場合があります。
+アップグレードが成功していることを確認しましたら、管理者にて、この不要な
+バックアップファイルをクリーンアップすることが可能です 。<em>LDAP</em> サーバでは、
+これらのデータベースバックアップファイルは` /opt/zimbra/data/ldap` のパスに保存され、
+ファイル名が&lt;データベース名&gt;.prev.の形式になります。
+はアップグレードスクリプトのプロセスIDになります。
+詳細については、 <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=81167">Bug 81167</a> をご参照ください。</p>
+</li>
+<li>
+<p>アップグレード後、 <code>zmldapupgrade -b 66387</code> を実行することを推奨します。
+<code>zimbraAllowFromAddress</code> の属性値は内部アカウントや配布リストに設定できません。
+このスクリプトを実行することで、 <code>zimbraAllowFromAddress</code> の値がアクセス許可へ
+変更されます。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>zimbraAllowFromAddress</code> を大量のアカウントに設定されている環境に
+ 実行すると長時間かかる場合がありますので、このステップは
+インストーラのアップグレードに含まれません。</p>
+</li>
+<li>
+<p>移管コマンドにて`zimbraAllowFromAddress`  の値が設定している
+  アカウント数を確認し、移管が必要となったアカウント数も返答します。
+  すべてのアカウントが正常に移管されたことを確認するため、コマンドを
+  再度実行してください。合計は変更されませんが、移管されたアカウントは
+  <code>0</code> になりません。詳細については、 <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=66387">Bug 66387</a> を
+　 参照ください。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>自己署名のSSL証明書の有効期限が切れている場合、更新してください。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>有効期限が切れている証明書を確認する場合、以下のコマンドを
+<code>zimbra</code> ユーザーとしてご実行ください。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>/opt/zimbra/libexec/zmcheckexpiredcerts -days 1 -verbose</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Zimbra Collaborationでは、内部機能のデータ通信などのコミュニケーションを
+行うため、有効な自己署名、または商用のSSL証明書が必要です。
+Zimbra Collaborationのインストールで自動的に作成される自己署名した
+証明書にデファルトの有効期限はあります。</p>
+</div>
+<div class="paragraph">
+<p>ご利用のZCSシステムは自己署名した証明書を1年間以上に
+使用している場合、アップグレード前、またはアップグレードの直後に
+証明書を更新する必要性があります。</p>
+</div>
+<div class="paragraph">
+<p>アップグレード後、Zimbraユーザーで以下のコマンドで自己署名した
+証明書が新しく発行されます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>sudo /opt/zimbra/bin/zmcertmgr createca -new
+sudo /opt/zimbra/bin/zmcertmgr deployca
+sudo /opt/zimbra/bin/zmcertmgr deploycrt self -new</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>ZCS 8.0.7より以前のバージョンでzmloggerを使用した場合、
+大量のrddファイルが作成され、大量のディスク容量を使用してる可能性があります。
+ZCS 8.0.7にはrddファイルの増加が発生しないためのパッチが
+含まれています。既存のrddファイルをクリーンアップするには、
+以下のスクリプトを使用し、rddファイルをサーバから削除します。
+詳細について、 <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=85222">Bug 85222</a> を
+参照ください。</p>
+<div class="listingblock">
+<div class="content">
+<pre>sudo su - zimbra
+zmloggerctl stop
+cd /opt/zimbra/logger/db/data
+
+for nhostid in $(sqlite3 /opt/zimbra/logger/db/data/logger.sqlitedb 'select
+id from hosts'); do for ID in $(sqlite3 logger.sqlitedb "select rrd_file, col_name_19 from rrds Where csv_file == 'imap.csv' and host_id == ${nhostid}" | egrep "__[0-9]+$" | cut -d'|' -f1 | sort -n | uniq); do mv rrds/${nhostid}-$ID.rrd /opt/zimbra/logger/db/data/wrong_rrds/; done ; done
+
+for mon in {1..12}; do MON=$(LANG=en_US; date +%b -d 2013-${mon}-01); sqlite3 logger.sqlitedb "DELETE FROM rrds WHERE col_name_19 LIKE '${MON}_%'"; done
+
+sqlite3 logger.sqlitedb "VACUUM;"
+
+zmloggerctl start
+rm -R /opt/zimbra/logger/db/data/wrong_rrds
+rm /opt/zimbra/logger/db/data/logger.sqlitedb.backup</pre>
+</div>
+</div>
+</li>
+<li>
+<p>以下の設定を使用している場合、新しい設定の値を設定し直す必要があります。</p>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>以下の設定値の使用は終了しております：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>httpclient_client_connection_timeout
+httpclient_connmgr_connection_timeout
+httpclient_connmgr_idle_reaper_connection_timeout
+httpclient_connmgr_idle_reaper_sleep_interval
+httpclient_connmgr_keepalive_connections
+httpclient_connmgr_max_host_connections
+httpclient_connmgr_max_total_connections
+httpclient_connmgr_so_timeout
+httpclient_connmgr_tcp_nodelay</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>上記の設定は以下の設定値に更新されました：</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>httpclient_internal_client_connection_timeout
+httpclient_internal_connmgr_connection_timeout
+httpclient_internal_connmgr_idle_reaper_connection_timeout
+httpclient_internal_connmgr_idle_reaper_sleep_interval
+httpclient_internal_connmgr_keepalive_connections
+httpclient_internal_connmgr_max_host_connections
+httpclient_internal_connmgr_max_total_connections
+httpclient_internal_connmgr_so_timeout
+httpclient_internal_connmgr_tcp_nodelay
+httpclient_external_client_connection_timeout
+httpclient_external_connmgr_connection_timeout
+httpclient_external_connmgr_idle_reaper_connection_timeout
+httpclient_external_connmgr_idle_reaper_sleep_interval
+httpclient_external_connmgr_keepalive_connections
+httpclient_external_connmgr_max_host_connections
+httpclient_external_connmgr_max_total_connections
+httpclient_external_connmgr_so_timeout
+httpclient_external_connmgr_tcp_nodelay</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_エフェメラルデータ移管">エフェメラルデータ移管</h3>
+<div class="paragraph">
+<p>Zimbraの8.8.3以前のバージョンでは、
+<em>エフェメラルデータ</em> は <em>LDAP</em> に保存されました。 <em>エフェメラルデータ</em> の実例として：</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>zimbraAuthTokens</code></p>
+</li>
+<li>
+<p><code>zimbraCsrfTokenData</code></p>
+</li>
+<li>
+<p><code>zimbraLastLogonTimestamp</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Zimbra Collaboration 8.8.3 により、_エフェメラルデータ_を外部のサービス、
+例えば
+<a href="http://ssdb.io/">SSDB</a>へ保存することが可能となりました。
+これは任意の機能ですが、_LDAP_のパフォーマンスと安定性が向上できる場合があります。</p>
+</div>
+<div class="paragraph">
+<p>詳細につきましては <em>Zimbra Collaboration Administration Guide</em> を参照ください。
+ <em>エフェメラルデータ_を _LDAP</em> から <em>SSDB</em> へ移管することはサポート対象バージョンの
+インストール、またはアップグレードが完了後にのみ行うことが可能です。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_imapd_サービス">IMAPD サービス</h3>
+<div class="paragraph">
+<p>Zimbra Collaboration 8.8.3 より、<code>mailboxd</code> から独立した
+<code>zimbra-imapd</code> サービスでIMAP[S]を運用できる機能を提供しています。
+この新しいサービスをメールボックスサーバ、または独立したサーバに
+提供し、IMAPサービスをメールボックスと別にスケールすること可能がです。
+別のサーバに提供することも可能であるため、メールボックスサーバの
+負荷を減少できる可能性もあります。</p>
+</div>
+<div class="paragraph">
+<p>新しい機能の <code>zimbra-imapd</code> は大規模なマルチサーバ環境向けに最適化していますが、
+シングルサーバ環境でも利用することが可能です。</p>
+</div>
+<div class="paragraph">
+<p>シングルサーバ環境に <code>zimbra-imapd</code> を使用することで、2つの異なるJVMは
+IMAP[S]リクエストを処理しますので、実際に利用するメモリ容量が減少し、
+各JVMのGarbage Collectionのパフォーマンスが向上する可能性があります。
+個別に処理をすることで、システムを強化します。ただし、JVM内のコミュニケーション
+通信オーバーヘッドの増加に対して適切なチューニングが必要となります。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>アップグレード時に <code>zimbra-imapd</code> のパッケージをインストールする場合、
+パッケージはインストールされますが、起動するよう設定されません。
+起動させるためには、以下のグローバル設定を手動で更新する必要があります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>zimbraRemoteImapServerEnabled</code></p>
+</li>
+<li>
+<p><code>zimbraRemoteImapSSLServerEnabled</code></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>zmprov mcf zimbraRemoteImapServerEnabled TRUE
+zmprov mcf zimbraRemoteImapSSLServerEnabled TRUE
+zmimapdctl start</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>設定の詳細につきましては、 <em>Zimbra Collaboration Administration Guide</em> をご参照ください。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_既存のバージョンを削除し_zcsをクリーンインストールする手順">既存のバージョンを削除し、ZCSをクリーンインストールする手順</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>アップグレードせずに、Zimbra CollaborationNetwork Editionを新規の
+インストールで実行したい場合、Zimbra CollaborationNetwork Editionの
+インストールスクリプトを実行した際に 、<code>Do you wish to upgrade?</code> に <code>N (no)</code> を
+入力してください。</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+すべての既存ユーザーとメールを削除する警告が表示されます。 <code>Yes</code> を
+入力すると、インストールする前にすべてのユーザー情報、メール、および既存の
+ファイルが削除されます。インストール方法につきまして、本ガイドにあるインストール
+手順を参照ください。
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_カスタマイズしたzcsにアップグレード後の影響について">カスタマイズしたZCSにアップグレード後の影響について</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>最新版のリリースへアップグレードすることで、既存のアカウントの削除や設定の
+変更が発生することはありません。</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre> _LDAP_ と _Localconfig_ に保存した設定はアップグレード中は保護されます。
+しかしながら、{product-abbrev}でインストールするファイルは削除される、
+または上書きされる場合がありますので、追加したカスタマイズ内容が消失する
+可能性があります。たとえば、カスタマイズしたテーマ、ロゴの変更、および
+crontabの変更が消失の可能性があるカスタマイズ内容です。</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>また、アップグレード後、コアのZimletのみが有効の状態になります。
+カスタマイズしたZimletやコア以外にインストールしたZimletはアップグレードで
+削除されませんが、無効化されます。カスタマイズZimletをリリース前に
+テストできないため、エンドユーザーへ再度提供する前に、Zimletの動作確認を
+十分に実行いただくことを推奨しています。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+以前のメジャーバージョンからZCS8.5.0とそれ以降のバージョンへ
+アップグレードする際、コアZimlet以外のZimletはすべてのCOSに無効化されます。
+しかし、各アカウントにてZimletを手動に有効化している場合、それらのZimletを
+各アカウント設定で手動に無効化する必要となる可能性があります。詳細については
+<a href="https://bugzilla.zimbra.com/show_bug.cgi?id=77836">Bug 77836</a>を参照ください。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>ZimbraのCrontabファイルに指定したコメント内の内容はアップグレード後に
+デフォルトの値へ上書きされます。カスタマイズしたバックアップのスケジュール、
+およびカスタマイズ内容の入力を禁止するコメント範囲外に入力した内容は
+上書きされません。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_カスタマイズしたテーマの変更について">カスタマイズしたテーマの変更について</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Zimbra Collaboration 8.5.0とそれ以降にて、新しいデファルトスキンのデザインが
+適用されました。そのため、Zimbra Collaboration 7.xで作成したカスタムスキンが
+Zimbra Collaboration 8.5.0で正常に機能しない可能性があります。スキンに含まれている
+内容によりますが、違う場所に指定されている色が使われるといった小さな問題や、
+必要なコンポーネントが非表示またはアクセスできない範囲へ設置されるなどの
+大きな問題が発生する可能性があります。
+修正するには、既存の8.5.0スキンをコピーし、コピーしたスキンを編集し、
+問題のスキンの機能を追加する必要があります。
+詳細については <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=62523">Bug 62523</a>を参照ください。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2017-11-14 14:38:32 JST
+</div>
+</div>
+</body>
+</html>
