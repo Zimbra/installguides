@@ -86,16 +86,16 @@ answer for your configuration._
 [source%nowrap,bash]
 ....
 root@mailhost:/tmp# tar xzvf zcs.tgz
-zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/
-zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/packages/
+zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/
+zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/packages/
 .
 .
 .
-zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/install.sh
-zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/README.txt
+zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/install.sh
+zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/README.txt
 
-root@zimbraiop:/tmp/# cd zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/
-root@zimbraiop:/tmp/zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124# ./install.sh
+root@zimbraiop:/tmp/# cd zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/
+root@zimbraiop:/tmp/zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615# ./install.sh
 
 Operations logged to /tmp/install.log.y1YeCSI5
 .
@@ -115,7 +115,7 @@ Operations logged to /tmp/install.log.y1YeCSI5
 --
 [source%nowrap,bash]
 ....
-root@zimbraiop:/tmp/zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124# ./install.sh
+root@zimbraiop:/tmp/zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615# ./install.sh
 
 
 Operations logged to /tmp/install.log.y1YeCSI5
@@ -123,6 +123,7 @@ Checking for existing installation...
     zimbra-chat...NOT FOUND
     zimbra-drive...NOT FOUND
     zimbra-imapd...NOT FOUND
+    zimbra-network-modules-ng...NOT FOUND
     zimbra-ldap...NOT FOUND
     zimbra-logger...NOT FOUND
     zimbra-mta...NOT FOUND
@@ -177,10 +178,10 @@ Found zimbra-convertd (local)
 Found zimbra-memcached (repo)
 Found zimbra-proxy (local)
 Found zimbra-archiving (local)
-Found zimbra-imapd (local)
 Found zimbra-chat (repo)
 Found zimbra-drive (repo)
-
+Found zimbra-imapd (local)
+Found zimbra-network-modules-ng (local)
 
 
 Use Zimbra's package repository [Y] y
@@ -260,6 +261,8 @@ Install zimbra-chat [Y] N
 Install zimbra-drive [Y] N
 
 Install zimbra-imapd [Y] N
+
+Install zimbra-network-modules-ng [Y] N
 
 Checking required space for zimbra-core
 
@@ -565,6 +568,22 @@ Install zimbra-drive [Y] Y
 
 Install zimbra-imapd [Y] N
 
+Install zimbra-network-modules-ng [Y] y
+
+###WARNING###
+
+Network Modules NG needs to bind on TCP ports 8735 and 8736 in order
+to operate, for inter-instance communication.
+Please verify no other service listens on these ports and that 
+ports 8735 and 8736 are properly filtered from public access 
+by your firewall.
+
+Please remember that the Backup NG module needs to be initialized in order
+to be functional. This is a one-time operation only that can be performed
+by clicking the 'Initialize' button within the Backup section of the
+Network NG Modules in the Administration Console or by running
+`zxsuite backup doSmartScan` as the zimbra user.
+
 Checking required space for zimbra-core
 Checking space for zimbra-store
 Checking required packages for zimbra-store
@@ -582,6 +601,7 @@ Installing:
     zimbra-archiving
     zimbra-chat
     zimbra-drive
+    zimbra-network-modules-ng
 
 The system will be modified.  Continue? [N]
 ....
@@ -1740,21 +1760,6 @@ For *rsyslog* on _RHEL_ or _CentOS_:
 #$ModLoad imtcp
 #$InputTCPServerRun 514
 ----
-
-For *syslog-ng* on `SuSE`:
-
-Uncomment the following from `/etc/syslog-ng/syslog-ng.conf`:
-
-----
-#
-# uncomment to process log messages from network:
-#
-#udp(ip("0.0.0.0") port(514));
-----
-
---
-+
-
 
 === Spam/Ham Training on MTA servers
 

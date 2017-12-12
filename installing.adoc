@@ -22,13 +22,13 @@ Open an SSH session to the {product-short} server and follow the steps below:
 [source%nowrap,bash]
 ....
 root@mailhost:/tmp# tar xzvf zcs*.tgz
-zcs-NETWORK-8.8.3_GA_1872.UBUNTU16_64.20170905143325/
-zcs-NETWORK-8.8.3_GA_1872.UBUNTU16_64.20170905143325/packages/
+zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/
+zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/packages/
 .
 .
 .
-zcs-NETWORK-8.8.3_GA_1872.UBUNTU16_64.20170905143325/install.sh
-zcs-NETWORK-8.8.3_GA_1872.UBUNTU16_64.20170905143325/README.txt
+zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/install.sh
+zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/README.txt
 ....
 --
 
@@ -44,8 +44,8 @@ but highly recommended.
 --
 [source%nowrap,bash]
 ....
-root@zimbraiop:/tmp/# cd zcs-NETWORK-8.8.3_GA_1872.UBUNTU16_64.20170905143325/
-root@zimbraiop:/tmp/zcs-NETWORK-8.8.3_GA_1872.UBUNTU16_64.20170905143325# ./install.sh
+root@zimbraiop:/tmp/# cd zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/
+root@zimbraiop:/tmp/zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615# ./install.sh
 
 Operations logged to /tmp/install.log.y1YeCSI5
 
