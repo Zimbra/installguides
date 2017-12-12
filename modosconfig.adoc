@@ -3,7 +3,7 @@
 :toc:
 
 {product-name} runs on one of several operating systems, including
-Ubuntu® LTS, Red Hat® Enterprise Linux, and SUSE® Linux Enterprise.
+Ubuntu® LTS, Red Hat® Enterprise Linux, CentOS and Oracle Linux.
 
 // TODO the 8.7 Multi-Server Installation guide included this text:
 // Installation modifications for frequently used operating systems

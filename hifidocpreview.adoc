@@ -21,12 +21,6 @@ yum install libreoffice
 yum install libreoffice-headless
 ----
 
-* For SLES, install libreoffice:
-
-----
-yast2 -i libreoffice
-----
-
 * For Ubuntu, install libreoffice:
 
 ----
@@ -39,14 +33,14 @@ apt-get install libreoffice
 Confirm you have the appropriate language packs or fonts installed for
 LibreOffice to properly view documents and attachments. For example:
 
-* If using Ubuntu 12.04 and viewing East Asian languages, be sure to install:
+* If using Ubuntu 12.04 (*deprecated*) and viewing East Asian languages, be sure to install:
 
 ----
 apt-get install libreoffice-l10n-*
 apt-get install ttf-vlgothic
 ----
 
-* If using Ubuntu 14.04 and viewing East Asian languages, be sure to install:
+* If using Ubuntu 14.04 or 16.04 and viewing East Asian languages, be sure to install:
 
 ----
 apt-get install libreoffice-l10n-*
