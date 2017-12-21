@@ -584,7 +584,7 @@ table.CodeRay td.code>pre{padding:0}
 </td>
 <td class="content">
 <div class="paragraph">
-<p>すべてのメールボックスサーバーにおいて、8.7 にアップグレードされる前に２段階認証 (2FA) が有効になっていた場合、ローリングアップグレード中に
+<p>すべてのメールボックスサーバーにおいて、8.7 にアップグレードされる前に２要素認証 (2FA) が有効になっていた場合、ローリングアップグレード中に
 <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=105056">Bug 105056</a>
 に記述されている問題が発生する可能性があります。特に、8.7より前のメールボックスサーバーは 2FA 機能と互換性がありません。</p>
 </div>
@@ -676,7 +676,7 @@ table.CodeRay td.code>pre{padding:0}
 </table>
 </div>
 <div class="paragraph">
-<p>カーネルのバージョンを調べるためには以下のコマンドを実行して下さい:</p>
+<p>カーネルのバージョンを調べるためには以下のコマンドを実行して下さい。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -815,7 +815,7 @@ ZCS  8.0.0, 8.0.1, 8.0.2 から、8.0.4 以降へのアップグレード方法�
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>以下のどちらかのコマンドを使ってサーバーを停止して下さい:</p>
+<p>以下のどちらかのコマンドを使ってサーバーを停止して下さい。</p>
 <div class="olist lowerroman">
 <ol class="lowerroman" type="i">
 <li>
@@ -828,7 +828,7 @@ ZCS  8.0.0, 8.0.1, 8.0.2 から、8.0.4 以降へのアップグレード方法�
 </div>
 </li>
 <li>
-<p><code>zimbra</code> スキーマを別名で保管します</p>
+<p><code>zimbra</code> スキーマを別名で保管します。</p>
 <div class="listingblock">
 <div class="content">
 <pre>cd /opt/zimbra/data/ldap/config/cn=config/cn=schema
@@ -845,7 +845,7 @@ mv cn={4}zimbra.ldif /opt/zimbra/data/ldap/cn={4}zimbra.ldif.dead</pre>
 </div>
 </li>
 <li>
-<p>cn={4}zimbra.ldif を編集し、以下の2行を変更します:</p>
+<p>cn={4}zimbra.ldif を編集し、以下の2行を変更します。</p>
 <div class="listingblock">
 <div class="content">
 <pre>dn: cn=zimbra,cn=schema,cn=config     -------&gt;     dn: cn={4}zimbra
@@ -854,7 +854,7 @@ cn: zimbra                            -------&gt;     cn: {4}zimbra</pre>
 </div>
 </li>
 <li>
-<p>以下のどちらかのコマンドを使ってサーバーを起動して下さい:</p>
+<p>以下のどちらかのコマンドを使ってサーバーを起動して下さい。</p>
 <div class="olist lowerroman">
 <ol class="lowerroman" type="i">
 <li>
@@ -870,7 +870,7 @@ cn: zimbra                            -------&gt;     cn: {4}zimbra</pre>
 </div>
 </li>
 <li>
-<p>マスター <em>LDAP</em> サーバーで実行します:</p>
+<p>マスター <em>LDAP</em> サーバーで実行します。</p>
 <div class="listingblock">
 <div class="content">
 <pre>/opt/zimbra/libexec/zmsetup.pl</pre>
@@ -878,7 +878,7 @@ cn: zimbra                            -------&gt;     cn: {4}zimbra</pre>
 </div>
 </li>
 <li>
-<p>レプリカサーバーで実行します:</p>
+<p>レプリカサーバーで実行します。</p>
 <div class="listingblock">
 <div class="content">
 <pre> ./install.sh</pre>
@@ -957,12 +957,12 @@ zimbraMailboxdSSLProtocols</pre>
 </table>
 </div>
 <div class="paragraph">
-<p>加えて、以下の変更を行うことを奨励します:</p>
+<p>加えて、以下の変更を行うことを奨励します。</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>以下の値を <code>zimbraReverseProxySSLCiphers</code> から削除して下さい:</p>
+<p>以下の値を <code>zimbraReverseProxySSLCiphers</code> から削除して下さい。</p>
 <div class="listingblock">
 <div class="content">
 <pre>ECDHE-RSA-RC4-SHA
@@ -972,7 +972,7 @@ RC4-SHA</pre>
 </div>
 </li>
 <li>
-<p>以下の値を <code>zimbraReverseProxySSLCiphers</code> に追加して下さい:</p>
+<p>以下の値を <code>zimbraReverseProxySSLCiphers</code> に追加して下さい。</p>
 <div class="listingblock">
 <div class="content">
 <pre>!RC4</pre>
@@ -1413,8 +1413,8 @@ ZCSでサポートされます。アップグレードの際に、カスタマ�
 <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=81167">Bug 81167</a> を参照して下さい。</p>
 </li>
 <li>
-<p>アップグレード後、`zmldapupgrade -b 66387`を実行して下さい。 `zimbraAllowFromAddress
-属性は内部アカウントおよび配布リストに対しては設定できません。このスクリプトを実行すると、`zimbraAllowFromAddress`の属性値を変更し、アクセス権を付与します。</p>
+<p>アップグレード後、<code>zmldapupgrade -b 66387</code> を実行して下さい。 <code>zimbraAllowFromAddress</code>
+属性は内部アカウントおよび配布リストに対しては設定できません。このスクリプトを実行すると、<code>zimbraAllowFromAddress</code> の属性値を変更し、アクセス権を付与します。</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1451,7 +1451,7 @@ ZCSでサポートされます。アップグレードの際に、カスタマ�
 </td>
 <td class="content">
 <div class="paragraph">
-<p>証明書の有効期限を確認するために、以下のコマンドを <code>zimbra</code> ユーザーにて実行して下さい:</p>
+<p>証明書の有効期限を確認するために、以下のコマンドを <code>zimbra</code> ユーザーにて実行して下さい。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1467,7 +1467,7 @@ ZCSでサポートされます。アップグレードの際に、カスタマ�
 の場合、アップグレード前あるいはアップグレードしたら直ちに証明書を更新する必要があります。</p>
 </div>
 <div class="paragraph">
-<p>アップグレード後、次のコマンドを <code>zimbra</code> ユーザーで実行して自己署名 SSL 証明書を再生成して下さい:</p>
+<p>アップグレード後、次のコマンドを <code>zimbra</code> ユーザーで実行して自己署名 SSL 証明書を再生成して下さい。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1511,7 +1511,7 @@ rm /opt/zimbra/logger/db/data/logger.sqlitedb.backup</pre>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>以下のキーは廃止予定です:</p>
+<p>以下のキーは廃止予定です。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1527,7 +1527,7 @@ httpclient_connmgr_tcp_nodelay</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>上に挙げたキーは、以下のキーに置き換わります:</p>
+<p>上に挙げたキーは、以下のキーに置き換わります。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1725,7 +1725,7 @@ Zimlet を手動で無効化することを検討して下さい。詳しくは
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-12-08 16:30:28 JST
+Last updated 2017-12-21 16:38:22 JST
 </div>
 </div>
 </body>
