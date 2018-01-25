@@ -71,3 +71,109 @@ feedback and suggestions.
 If you encounter problems with this software, visit
 https://bugzilla.zimbra.com and submit a bug report.
 Make sure you provide enough detail so that the bug can be easily duplicated.
+
+== {product-short} Port Mapping
+
+=== External access ===
+These are ports typically available to mail clients.
+
+|===
+|Port|Protocol|Zimbra Service|Description
+|25| smtp| mta| incoming mail to postfix
+|80| http| mailbox / proxy| web mail client (disabled by default in 8.0)
+|110| pop3| mailbox / proxy| POP3
+|143| imap| mailbox / proxy| IMAP
+|443| https| mailbox / proxy - web mail client| HTTP over TLS
+|465| smtps| mta| Incoming mail to postfix over TLS (Legacy Outlook only? If possible, use 587 instead)
+|587| smtp| mta| Mail submission over TLS
+|993| imaps| mailbox / proxy| IMAP over TLS
+|995| pop3s| mailbox / proxy| POP3 over TLS
+|3443| https| proxy| User Certificate Connection Port (optional)
+|5222| xmpp| mailbox| Default server port
+|5223| xmpp| mailbox| Default legacy SSL port
+|9071| https| proxy admin console| HTTP over TLS (optional)
+|===
+
+=== Internal access ===
+These are ports typically only used by the Zimbra system itself.
+
+|===
+|Port|Protocol|Zimbra Service|Description
+|389|ldap|ldap|LC(ldap_bind_url)
+|636|ldaps|ldaps|if enabled via LC(ldap_bind_url)
+|3310|-|mta/clamd|zimbraClamAVBindAddress
+|5269|xmpp|mailbox|Server-to-Server communications between servers on the same cluster.
+|7025|lmtp|mailbox|local mail delivery; zimbraLmtpBindAddress
+|7026|milter|mailbox|zimbra-milter; zimbraMilterBindAddress
+|7047|http|conversion server|Accessed by localhost by default; binds to '*'
+|7071|https|mailbox|admin console HTTP over TLS; zimbraAdminBindAddress
+|7072|http|mailbox|ZCS nginx lookup - backend http service for nginx lookup/authentication
+|7073|http|mailbox|ZCS saslauthd lookup - backend http service for SASL lookup/authentication (added in ZCS 8.7)
+|7110|pop3|mailbox|Backend POP3 (if proxy configured); zimbraPop3BindAddress
+|7143|imap|mailbox|Backend IMAP (if proxy configured); zimbraImapBindAddress
+|7171|-|zmconfigd|configuration daemon; localhost
+|7306|mysql|mailbox|LC(mysql_bind_address); localhost
+|7307|mysql|logger|logger (removed in ZCS 7)
+|7780|http|mailbox|spell check
+|7993|imaps|mailbox|Backend IMAP over TLS (if proxy configured); zimbraImapSSLBindAddress
+|7995|pop3s|mailbox|Backend POP3 over TLS (if proxy configured); zimbraPop3SSLBindAddress
+|8080|http|mailbox|Backend HTTP (if proxy configured on same host); zimbraMailBindAddress
+|8443|https|mailbox|Backend HTTPS (if proxy configured on same host); zimbraMailSSLBindAddress
+|8465|milter|mta/opendkim|OpenDKIM milter service; localhost
+|8735|zextras|mailbox|internal mailbox to mailbox communication.
+|8736|zextras|mailbox|distributed configuration
+|10024|smtp|mta/amavisd|to amavis from postfix; localhost
+|10025|smtp|mta/master|opendkim; localhost
+|10026|smtp|mta/amavisd|"ORIGINATING" policy; localhost
+|10027|smtp|mta/master|postjournal
+|10028|smtp|mta/master|content_filter=scan via opendkim; localhost
+|10029|smtp|mta/master|"postfix/archive"; localhost
+|10030|smtp|mta/master|10032; localhost
+|10031|milter|mta/cbpolicyd|cluebringer policyd
+|10032|smtp|mta/amavisd|(antispam) "ORIGINATING_POST" policy
+|10663|-|logger|LC(logger_zmrrdfetch_port); localhost
+|23232|-|mta/amavisd|amavis-services / msg-forwarder (zeromq); localhost
+|23233|-|mta/amavisd|snmp-responder; localhost
+|11211|memcached|memcached|nginx route lookups, mbox cache (calendar, folders, sync, tags); zimbraMemcachedBindAddress
+|===
+
+=== System Access and Intra-Node Communication ===
+In a multi-node environment the typical communication between nodes required includes:
+
+|===
+|Destination|Source(s)|Description
+|*ALL*||
+|22|ALL|SSH (system & zmrcd): host management
+|udp/53|ALL|DNS (system ¦ dnscache): name resolution
+|*Logger*||
+|udp/514|ALL|	syslog: system and application logging
+|*LDAP*||
+|389|ALL|all nodes talk to LDAP server(s)
+|*MTA*||
+|25|ldap|sent email (cron jobs)
+|25|mbox|sent email (web client, cron, etc.)
+|*antivirus*||
+|3310|mbox|zimbraAttachmentsScanURL (not set by default)
+|*memcached*||
+|11211|mbox|mbox metadata data cache
+|11211|proxy|backend mailbox route cache
+|*Mailbox (mbox)*||
+|80|proxy|backend proxy http
+|110|proxy|backend proxy pop3
+|143|proxy|backend proxy imap
+|443|proxy|backend proxy https
+|993|proxy|backend proxy imaps
+|995|proxy|backend proxy pop3s
+|7025|mta|all mta talk to any mbox (LMTP)
+|7047|mbox|localhost by default; zimbraConvertdURL
+|7071|mbox|all mbox talk to any mbox (Admin)
+|7072|proxy|zmlookup; zimbraReverseProxyLookupTarget
+|7073|mta|sasl auth; zimbraMtaAuthTarget (since ZCS 8.7)
+|===
+
+**Important:** You cannot have any other web server, database, _LDAP_,
+or _MTA_ server running, when you install {product-name}. If you have
+installed any of those applications before you install {product-short}
+software, disable them.  During {product-name} installation,
+{product-short} makes global system changes that may break
+applications that are on your server.

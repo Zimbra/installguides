@@ -5,7 +5,7 @@
 :product-family: Zimbra
 :product-provider: Zimbra
 :product-abbrev: ZCS
-:product-version: 8.8.5
+:product-version: 8.8.6
 :product-release-date: 2017-11-09
 :product-admin-guide: {product-name} Administration Guide
 :icons: font
