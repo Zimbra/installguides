@@ -17,7 +17,7 @@ information about setting up your environment.
 
 == Downloading the Zimbra Software
 
-For the latest {product-name} software download, go to 
+For the latest {product-name} software download, go to
 https://www.zimbra.com/downloads/.
 Save the {product-name} download file to the computer from which you will
 install the software.
@@ -26,7 +26,7 @@ When {product-name} is installed, the following Zimbra
 applications are saved to the Zimbra server.
 // Looks to be some text missing here
 
-You can access these download files from your Administration Console + 
+You can access these download files from your Administration Console +
 *Tools and Migration > Download* page.
 
 Instruction guides are available from the Help Center page or from
@@ -66,10 +66,10 @@ modification is necessary.
 Benefits for using the Zimbra Proxy include:
 
 * Centralizes access to Mailbox servers
-* Load Balancing 
-* Security 
+* Load Balancing
+* Security
 * Authentication
-* SSL Termination 
+* SSL Termination
 * Caching
 * Centralized Logging and Auditing
 * URLRewriting
@@ -147,7 +147,7 @@ Zimbra actively suggests using the Proxy server on the edge (either on
 an independent server or on the same server running LDAP/MTA) with
 mailbox servers behind it. In the case of multiple proxies, an external
 load balancer can be placed in front to distribute the load evenly among
-the proxy servers. 
+the proxy servers.
 
 [NOTE]
 The Zimbra Proxy package does not act as a firewall and needs to be behind
@@ -187,7 +187,7 @@ components with the following default configuration.
 
 [NOTE]
 The following ports are used either by Zimbra Proxy or by Zimbra Mailbox
-(if Proxy is not configured). + 
+(if Proxy is not configured). +
 **If you have any other services running on these ports, turn them off.**
 
 End clients connect directly to Zimbra Proxy, using the Zimbra Proxy
@@ -226,7 +226,7 @@ You can configure multiple virtual hostnames to host more than one
 domain name on a server. When you create a virtual host, users can log
 in without having to specify the domain name as part of their user name.
 
-Virtual hosts are configured from the administration console + 
+Virtual hosts are configured from the administration console +
 *Configure>Domains>Virtual Hosts* +
 page. The virtual host requires a valid DNS configuration with an A record.
 

@@ -574,8 +574,8 @@ Install zimbra-network-modules-ng [Y] y
 
 Network Modules NG needs to bind on TCP ports 8735 and 8736 in order
 to operate, for inter-instance communication.
-Please verify no other service listens on these ports and that 
-ports 8735 and 8736 are properly filtered from public access 
+Please verify no other service listens on these ports and that
+ports 8735 and 8736 are properly filtered from public access
 by your firewall.
 
 Please remember that the Backup NG module needs to be initialized in order
