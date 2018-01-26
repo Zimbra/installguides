@@ -490,10 +490,11 @@ own independent server
 [[imapd_config]]
 === IMAPD configuration
 
-IMAPD is an external IMAP[S] service that may be used as a
-replacement for the embedded IMAP[S] service that runs inside of
-`mailboxd`.  It would normally not be required with a single-server
-installation.
+IMAPD is an external IMAP[S] service that may be used as a replacement
+for the embedded IMAP[S] service that runs inside of `mailboxd`. It is
+recommended for use when the IMAP(S) traffic for a given installation
+is overloading the mailbox servers and is not recommended with a
+single-server installation.
 
 [cols="5,15,80a",options="header",]
 |========================
@@ -502,7 +503,7 @@ installation.
 3+^|*zimbra-imapd*
 .1+.^|mailbox server or +
 independent server
-| Add to upstream IMAP Servers?: | default `no`.  If `yes`, the
+| Add to upstream IMAP Servers? | default `no`.  If `yes`, the
 following global config settings will be applied:
 --
 - This server will be added to the list of `zimbraReverseProxyUpstreamImapServers`
