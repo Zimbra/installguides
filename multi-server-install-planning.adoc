@@ -193,6 +193,8 @@ The following ports are used either by Zimbra Proxy or by Zimbra Mailbox
 End clients connect directly to Zimbra Proxy, using the Zimbra Proxy
 Ports. Zimbra Proxy connects to the Route Lookup Handler/NLE (which
 resides on Zimbra Mailbox server) using the Zimbra Mailbox Ports.
+The proxy also optionally connects to the IMAPD service on the Zimbra IMAPD ports
+if IMAPD is installed and configured at the global level or for a specific set of mailbox servers.
 
 *Zimbra Proxy Port Mapping*
 
