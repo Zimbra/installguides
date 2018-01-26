@@ -220,6 +220,15 @@ resides on Zimbra Mailbox server) using the Zimbra Mailbox Ports.
 |IMAPS Backend (if Proxy configured) |7993
 |========================
 
+[cols=",",options="header",]
+|========================
+2+|Zimbra IMAPD Ports (Internal to {product-name})
+
+|IMAP Backend (if Proxy configured) |8143
+|IMAPS Backend (if Proxy configured) |8993
+|========================
+
+
 == Configuring for Virtual Hosting
 
 You can configure multiple virtual hostnames to host more than one
