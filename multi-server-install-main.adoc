@@ -1568,6 +1568,10 @@ This can be done with the command `zmprov flushCache -a config`. To verify that 
 make sure that the new IMAPD node is listed in the output of `zmprov gacf zimbraReverseProxyUpstreamImapServers`,
 when run from a lookup target server.
 
+NOTE: If you are installing new IMAPD nodes into a running cluster be sure and
+     upgrade all of the mailbox nodes to the same version of {product-short}
+     prior to enabling routing to the IMAPD nodes.
+
 ----
 IMAPD configuration
 
