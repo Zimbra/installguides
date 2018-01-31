@@ -194,7 +194,7 @@ End clients connect directly to {product-short} Proxy, using the {product-short}
 Ports. {product-short} Proxy connects to the Route Lookup Handler/NLE (which
 resides on {product-short} Mailbox server) using the {product-short} Mailbox Ports.
 The proxy also optionally connects to the IMAPD service on the {product-short} IMAPD ports
-if IMAPD is installed and configured at the global level or for a specific set of mailbox servers.
+if IMAPD is installed and configured at the global level or on a specific set of mailbox servers.
 
 *{product-short} Proxy Port Mapping*
 
