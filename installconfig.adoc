@@ -503,7 +503,7 @@ single-server installation.
 3+^|*zimbra-imapd*
 .1+.^|mailbox server or +
 independent server
-| Add to upstream IMAP Servers? | default `no`.  If `yes`, the
+| Add to upstream IMAP Servers? | default *no*.  If *yes*, the
 following global config settings will be applied:
 --
 - This server will be added to the list of `zimbraReverseProxyUpstreamImapServers`
