@@ -441,7 +441,7 @@ default is **TRUE**.
 
 | *Enable version update notifications.*
 a| This enables automatic notification when updates are available
-when this is set to TRUE. +
+when this is set to *TRUE*. +
 [NOTE]
 The software update information can be viewed from the Administration
 Console Tools Overview pane.
