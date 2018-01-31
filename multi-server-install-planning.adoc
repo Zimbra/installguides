@@ -41,7 +41,7 @@ include::scanningattachments.adoc[]
 
 == Overview of the Zimbra Proxy Server
 
-Zimbra Proxy (Nginx-Zimbra) is a high-performance reverse proxy server
+{product-short} Proxy (Nginx-Zimbra) is a high-performance reverse proxy server
 that passes **IMAP[S]/POP[S]/HTTP[S]** client requests to other internal
 {product-name} services.  A reverse proxy server is an Internet-facing server
 that protects and manages client connections to your internal services.  It
@@ -49,7 +49,7 @@ can also provide functions like: GSSAPI authentication, throttle
 control, SSL connection with different certificates for different
 virtual host names, and other features.
 
-In a typical use case, Zimbra Proxy extracts user login information
+In a typical use case, {product-short} Proxy extracts user login information
 (such as account id or user name) and then fetches the route to the
 upstream mail server or web server's address from the **Nginx Lookup
 Extension**, and finally proxies the interactions between clients and
@@ -58,12 +58,12 @@ memcached is introduced, which caches the lookup result.  The subsequent login
 with the same username is directly proxied without looking up in Nginx Lookup
 Extension.
 
-You can install the Zimbra Proxy package on a mailbox server, MTA
-server, or on its own independent server.  When the Zimbra Proxy package
+You can install the {product-short} Proxy package on a mailbox server, MTA
+server, or on its own independent server.  When the {product-short} Proxy package
 is installed, the proxy feature is enabled.  In most cases, no
 modification is necessary.
 
-Benefits for using the Zimbra Proxy include:
+Benefits for using the {product-short} Proxy include:
 
 * Centralizes access to Mailbox servers
 * Load Balancing
@@ -77,15 +77,15 @@ Benefits for using the Zimbra Proxy include:
 For more information, see the wiki page
 https://wiki.zimbra.com/wiki/Zimbra_Proxy_Guide
 
-=== Zimbra Proxy Components and Memcached
+=== {product-short} Proxy Components and Memcached
 
-Zimbra Proxy is designed to provide a HTTP[S]/POP[S]/IMAP[S] reverse
-proxy that is quick, reliable, and scalable. Zimbra Proxy includes the
+{product-short} Proxy is designed to provide a HTTP[S]/POP[S]/IMAP[S] reverse
+proxy that is quick, reliable, and scalable. {product-short} Proxy includes the
 following:
 
 * **Nginx**. A high performance HTTP[S]/POP[S]/IMAP[S] proxy server which
   handles all incoming HTTP[S]/POP[S]/IMAP[S] requests.
-* **Zimbra Proxy Route Lookup Handler**. This is a servlet (also named as
+* **{product-short} Proxy Route Lookup Handler**. This is a servlet (also named as
   Nginx Lookup Extension or NLE) located on the {product-name} mailbox server.
   This servlet handles queries for the user account route information
   (the server and port number where the user account resides).
@@ -95,12 +95,12 @@ Route information is cached for further use in order to increase performance.
 **zimbra-memcached** is a separate package that is recommended to be
 installed along with zimbra-proxy.
 
-=== Zimbra Proxy Architecture and Flow
+=== {product-short} Proxy Architecture and Flow
 
 The following sequence explains the architecture and the login flow when an
-end client connects to Zimbra Proxy.
+end client connects to {product-short} Proxy.
 
-1. End clients connect to Zimbra Proxy using HTTP[S]/POP[S]/IMAP[S] ports.
+1. End clients connect to {product-short} Proxy using HTTP[S]/POP[S]/IMAP[S] ports.
 
 2. Proxy attempts to contact a memcached server (elected from the available
    memcached servers, using a round-robin algorithm) if available and with
@@ -112,30 +112,30 @@ end client connects to Zimbra Proxy.
    Mailbox server right away and initiates a web/mail proxy session for
    this client. The memcached component stores the route information for
    the configured period of time (configurable and one hour by default).
-   Zimbra proxy uses this route information instead of querying the Zimbra
+   {product-short} proxy uses this route information instead of querying the Zimbra
    Proxy Route Lookup Handler/NLE until the default period of time has
    expired.
 
 4. If the route information is not present in memcached, then this will be
-   a **cache-miss** case, so Zimbra Proxy will proceed sending an HTTP request
-   to an available Zimbra Proxy Route Lookup Handler/NLE (elected by
+   a **cache-miss** case, so {product-short} Proxy will proceed sending an HTTP request
+   to an available {product-short} Proxy Route Lookup Handler/NLE (elected by
    round-robin), to look up the upstream mailbox server where this user
    account resides.
 
-5. Zimbra Proxy Route Lookup Handler/NLE locates the route information from
-   LDAP for the account being accessed and returns this back to Zimbra Proxy.
+5. {product-short} Proxy Route Lookup Handler/NLE locates the route information from
+   LDAP for the account being accessed and returns this back to {product-short} Proxy.
 
-6. Zimbra Proxy uses this route information to connect to the
-   corresponding Zimbra Mailbox server and initiates a web/mail proxy
+6. {product-short} Proxy uses this route information to connect to the
+   corresponding {product-short} Mailbox server and initiates a web/mail proxy
    session. It also caches this route information into a memcached server
    so that the next time this user logs in, the memcached server has the
-   upstream information available in its cache, and Zimbra Proxy will not
+   upstream information available in its cache, and {product-short} Proxy will not
    need to contact NLE.The end client is transparent to this and behaves as
-   if it is connecting directly to the Zimbra Mailbox server.
+   if it is connecting directly to the {product-short} Mailbox server.
 
-=== Zimbra Proxy Position in {product-name} Runtime
+=== {product-short} Proxy Position in {product-name} Runtime
 
-The following figure displays the positions of Zimbra Proxy and its
+The following figure displays the positions of {product-short} Proxy and its
 relationships to other components of {product-name}.
 
 image:images/zimbra-proxy.png[Proxy place in network]
@@ -143,14 +143,14 @@ image:images/zimbra-proxy.png[Proxy place in network]
 === Deployment Strategy
 
 The deployment strategy and position with respect to non-proxy hosts,
-Zimbra actively suggests using the Proxy server on the edge (either on
+{product-short} actively suggests using the Proxy server on the edge (either on
 an independent server or on the same server running LDAP/MTA) with
 mailbox servers behind it. In the case of multiple proxies, an external
 load balancer can be placed in front to distribute the load evenly among
 the proxy servers.
 
 [NOTE]
-The Zimbra Proxy package does not act as a firewall and needs to be behind
+The {product-short} Proxy package does not act as a firewall and needs to be behind
 the firewall in customer deployments.
 
 === Configuration during installation
@@ -183,24 +183,24 @@ components with the following default configuration.
       11) Proxy server mode:                       https
 ....
 
-=== Zimbra Proxy Ports
+=== {product-short} Proxy Ports
 
 [NOTE]
-The following ports are used either by Zimbra Proxy or by Zimbra Mailbox
+The following ports are used either by {product-short} Proxy or by {product-short} Mailbox
 (if Proxy is not configured). +
 **If you have any other services running on these ports, turn them off.**
 
-End clients connect directly to Zimbra Proxy, using the Zimbra Proxy
-Ports. Zimbra Proxy connects to the Route Lookup Handler/NLE (which
-resides on Zimbra Mailbox server) using the Zimbra Mailbox Ports.
-The proxy also optionally connects to the IMAPD service on the Zimbra IMAPD ports
+End clients connect directly to {product-short} Proxy, using the {product-short} Proxy
+Ports. {product-short} Proxy connects to the Route Lookup Handler/NLE (which
+resides on {product-short} Mailbox server) using the {product-short} Mailbox Ports.
+The proxy also optionally connects to the IMAPD service on the {product-short} IMAPD ports
 if IMAPD is installed and configured at the global level or for a specific set of mailbox servers.
 
-*Zimbra Proxy Port Mapping*
+*{product-short} Proxy Port Mapping*
 
 [cols=",",options="header",]
 |========================
-2+|Zimbra Proxy Ports (External to {product-name})
+2+|{product-short} Proxy Ports (External to {product-name})
 |HTTP |80
 |HTTPS |443
 |POP3 |110
@@ -211,7 +211,7 @@ if IMAPD is installed and configured at the global level or for a specific set o
 
 [cols=",",options="header",]
 |========================
-2+|Zimbra Mailbox Ports (Internal to {product-name})
+2+|{product-short} Mailbox Ports (Internal to {product-name})
 
 |Route Lookup Handler |7072
 |HTTP Backend (if Proxy configured) |8080
@@ -224,7 +224,7 @@ if IMAPD is installed and configured at the global level or for a specific set o
 
 [cols=",",options="header",]
 |========================
-2+|Zimbra IMAPD Ports (Internal to {product-name})
+2+|{product-short} IMAPD Ports (Internal to {product-name})
 
 |IMAP Backend (if Proxy configured) |8143
 |IMAPS Backend (if Proxy configured) |8993
@@ -242,7 +242,7 @@ Virtual hosts are configured from the administration console +
 page. The virtual host requires a valid DNS configuration with an A record.
 
 When users log in, they enter the virtual host name in the browser. For
-example, **https://mail.example.com**. When the Zimbra logon screen
+example, **https://mail.example.com**. When the {product-short} logon screen
 displays, users enter only their user name and password. The
 authentication request searches for a domain with that virtual host
 name. When the virtual host is found, the authentication is completed
