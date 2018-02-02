@@ -326,6 +326,7 @@ a time, following the instructions under <<_process_2>> below.
   . _MTA_ servers - see <<_using_lmdb_as_the_supported_back_end_for_on_disk_database_maps>>.
   . Proxy servers
   . Mailstore servers
+  . Optionally install any new IMAPD servers
 
 include::upgrade-process-inc.adoc[]
 

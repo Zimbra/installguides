@@ -21,7 +21,7 @@ displayed.
         *** a Zimbra mailstore server (mailstore server)
         *** a Zimbra webapp server (UI server)
 5. {product-abbrev} IMAPD server(s)
-
+    ** Optional standalone IMAP server
 
 [NOTE]
 Zimbra-proxy is normally installed on the MTA server or you can install it on its own server.
@@ -574,8 +574,8 @@ Install zimbra-network-modules-ng [Y] y
 
 Network Modules NG needs to bind on TCP ports 8735 and 8736 in order
 to operate, for inter-instance communication.
-Please verify no other service listens on these ports and that 
-ports 8735 and 8736 are properly filtered from public access 
+Please verify no other service listens on these ports and that
+ports 8735 and 8736 are properly filtered from public access
 by your firewall.
 
 Please remember that the Backup NG module needs to be initialized in order
@@ -1449,6 +1449,10 @@ Select, or 'r' for previous menu [r] 2
 . Type `1` to disable the IMAPD process on this machine.
 . Type `2` to add the server to the upstream IMAP Servers list.
 
+NOTE: If you are installing new IMAPD nodes into a running cluster be sure and
+     upgrade all of the mailbox nodes to the same version of {product-short}
+     prior to installing the IMAPD nodes.
+
 Return to <<_install_zimbra_mailbox_services>>, step 12,
 to continue the server installation.
 
@@ -1563,6 +1567,10 @@ cache must be flushed on all servers acting as lookup targets in order for them 
 This can be done with the command `zmprov flushCache -a config`. To verify that this has taken effect,
 make sure that the new IMAPD node is listed in the output of `zmprov gacf zimbraReverseProxyUpstreamImapServers`,
 when run from a lookup target server.
+
+NOTE: If you are installing new IMAPD nodes into a running cluster be sure and
+     upgrade all of the mailbox nodes to the same version of {product-short}
+     prior to enabling routing to the IMAPD nodes.
 
 ----
 IMAPD configuration
