@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.6">
-<meta name="author" content="v8.8.3, 2017-09-07">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<meta name="author" content="v8.8.6, 2017-11-09">
 <title>Zimbra Collaboration Multi-Server Installation Guide</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -522,7 +522,7 @@ table.CodeRay td.code>pre{padding:0}
 <div id="header">
 <h1>Zimbra Collaboration Multi-Server Installation Guide</h1>
 <div class="details">
-<span id="author" class="author">v8.8.3, 2017-09-07</span><br>
+<span id="author" class="author">v8.8.6, 2017-11-09</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -534,6 +534,13 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#Intro_license">Zimbra Collaboration License</a></li>
 <li><a href="#For_More_Information">For More Information</a></li>
 <li><a href="#Support_and_Contact_Information">Support and Contact Information</a></li>
+<li><a href="#_zimbra_port_mapping">Zimbra Port Mapping</a>
+<ul class="sectlevel3">
+<li><a href="#_external_access">External access</a></li>
+<li><a href="#_internal_access">Internal access</a></li>
+<li><a href="#_system_access_and_intra_node_communication">System Access and Intra-Node Communication</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#planning">Planning for the Installation</a>
@@ -620,122 +627,6 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel3">
 <li><a href="#_set_up_the_ssh_keys">Set Up the SSH Keys</a></li>
 <li><a href="#_enabling_server_statistics_display">Enabling Server Statistics Display</a></li>
-<li><a href="#_spam_ham_training_on_mta_servers">Spam/Ham Training on MTA servers</a></li>
-</ul>
-</li>
-<li><a href="#_verifying_server_configuration">Verifying Server Configuration</a></li>
-<li><a href="#_logging_on_to_the_administration_console">Logging on to the Administration Console</a></li>
-<li><a href="#_post_installation_tasks">Post Installation Tasks</a>
-<ul class="sectlevel3">
-<li><a href="#_defining_classes_of_service">Defining Classes of Service</a></li>
-<li><a href="#_provisioning_accounts">Provisioning Accounts</a>
-<ul class="sectlevel4">
-<li><a href="#_configuring_one_account">Configuring One Account</a></li>
-<li><a href="#_configuring_many_accounts_at_once">Configuring Many Accounts at Once</a></li>
-<li><a href="#_import_the_content_of_users_mailboxes">Import the Content of Users’ Mailboxes</a></li>
-</ul>
-</li>
-<li><a href="#_ephemeral_data_migration">Ephemeral Data Migration</a></li>
-</ul>
-</li>
-<li><a href="#_uninstalling_zimbra_collaboration">Uninstalling Zimbra Collaboration</a></li>
-</ul>
-</li>
-<li><a href="#multi-server-adding-mailbox">Adding a Mailbox Server to a Single Server Configuration</a>
-<ul class="sectlevel2">
-<li><a href="#_setup_requirements_for_adding_a_mailbox_server">Setup Requirements For Adding a Mailbox Server</a></li>
-<li><a href="#_overview_of_process">Overview of Process</a></li>
-<li><a href="#_configuring_the_mailbox_server">Configuring the Mailbox Server</a></li>
-<li><a href="#_adding_customized_features">Adding Customized Features</a></li>
-<li><a href="#_testing_the_configuration">Testing the Configuration</a></li>
-<li><a href="#_move_mailboxes">Move Mailboxes</a>
-<ul class="sectlevel3">
-<li><a href="#_move_mailboxes_using_cli_zmmboxmove">Move Mailboxes Using CLI zmmboxmove</a></li>
-</ul>
-</li>
-<li><a href="#_turn_off_mailbox_server_on_single_server_node">Turn Off Mailbox Server on Single-Server Node</a></li>
-</ul>
-</li>
-<li><a href="#multi-master-replication">Configuring Multi-Master Replication</a>
-<ul class="sectlevel2">
-<li><a href="#_managing_multiple_master_ldap_servers">Managing Multiple Master LDAP Servers</a></li>
-<li><a href="#_installing_a_secondary_master_ldap_server">Installing a Secondary Master LDAP Server</a>
-<ul class="sectlevel3">
-<li><a href="#_passwords_required_to_install_the_secondary_master">Passwords Required to Install the Secondary Master</a></li>
-<li><a href="#_setting_up_a_secondary_master_ldap_server">Setting Up a Secondary Master LDAP Server</a></li>
-</ul>
-</li>
-<li><a href="#_promote_existing_replicas_to_multi_master_ldap_servers">Promote Existing Replicas to Multi-Master LDAP Servers</a></li>
-<li><a href="#_deleting_a_multi_master_replication_node">Deleting a Multi-Master Replication Node</a>
-<ul class="sectlevel3">
-<li><a href="#_example_of_deleting_an_mmr_node">Example of Deleting an MMR Node</a></li>
-</ul>
-</li>
-<li><a href="#_monitoring_multiple_ldap_master_status">Monitoring Multiple LDAP Master Status</a>
-<ul class="sectlevel3">
-<li><a href="#_feature_requirement">Feature Requirement</a></li>
-<li><a href="#_error_codes_and_status_explanations">Error Codes and Status Explanations</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#ldap-replication">Configuring LDAP Replication</a>
-<ul class="sectlevel2">
-<li><a href="#_configuring_ldap_replication_overview">Configuring LDAP Replication Overview</a></li>
-<li><a href="#_installing_zimbra_master_ldap_server">Installing Zimbra Master LDAP Server</a></li>
-<li><a href="#_enable_replication_on_the_ldap_master">Enable Replication on the LDAP Master</a></li>
-<li><a href="#_installing_a_replica_ldap_server">Installing a Replica LDAP Server</a>
-<ul class="sectlevel3">
-<li><a href="#_test_the_replica">Test the Replica</a></li>
-</ul>
-</li>
-<li><a href="#_configuring_zimbra_servers_to_use_ldap_replica">Configuring Zimbra Servers to Use LDAP Replica</a></li>
-<li><a href="#_uninstalling_an_ldap_replica_server">Uninstalling an LDAP Replica Server</a>
-<ul class="sectlevel3">
-<li><a href="#_remove_ldap_replica_from_all_active_servers">Remove LDAP Replica from All Active Servers</a></li>
-<li><a href="#_disable_ldap_on_the_replica">Disable LDAP on the Replica</a></li>
-</ul>
-</li>
-<li><a href="#_monitoring_ldap_replication_status">Monitoring LDAP Replication Status</a>
-<ul class="sectlevel3">
-<li><a href="#_feature_requirement_2">Feature Requirement</a></li>
-<li><a href="#_error_codes_and_status_explanations_2">Error Codes and Status Explanations</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#System_Requirements">System Requirements for Zimbra Collaboration</a>
-<ul class="sectlevel2">
-<li><a href="#Zimbra_Connector_for_Outlook">Zimbra Connector for Outlook (Network Edition Only)</a></li>
-<li><a href="#Zimbra_Mobile">Zimbra Mobile (Network Edition Only)</a></li>
-<li><a href="#Zimbra_Touch_Client"><strong>Deprecated</strong> Zimbra Touch Client (Network Edition Only)</a></li>
-<li><a href="#BES"><strong>Deprecated</strong> Zimbra Connector for BlackBerry Enterprise Server (Network Edition Only)</a></li>
-<li><a href="#Available_Languages">Available Languages</a>
-<ul class="sectlevel3">
-<li><a href="#end_user_translations">End User Translations</a></li>
-<li><a href="#admin_translations">Administrator Translations</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#Zimbra-Network-NG-Modules-first-steps-guide">Zimbra Network NG Modules: First Steps</a>
-<ul class="sectlevel2">
-<li><a href="#backup-ng">Switching to Backup NG</a>
-<ul class="sectlevel3">
-<li><a href="#backup-path-limitations">Backup Path Limitations</a></li>
-<li><a href="#backup-ng-initialisation">Backup NG Initialization</a></li>
-</ul>
-</li>
-<li><a href="#mobile-ng">Switching to Mobile NG</a>
-<ul class="sectlevel3">
-<li><a href="#what-happens-after-the-switch">What Happens after the Switch</a></li>
-<li><a href="#mobile-ng-initialisation">Mobile NG Initialization</a></li>
-</ul>
-</li>
-<li><a href="#hsm-ng">Switching to HSM NG</a></li>
-<li><a href="#admin-ng">Switching to Admin NG</a>
-<ul class="sectlevel3">
-<li><a href="#admin-ng-initialisation">Admin NG Initialization</a></li>
 </ul>
 </li>
 </ul>
@@ -787,7 +678,7 @@ functioning email system based on Zimbra’s messaging technology.</p>
 </div>
 <div class="paragraph">
 <p>This guide covers the installation of
-Zimbra Collaboration Network Edition 8.8.3.</p>
+Zimbra Collaboration Network Edition 8.8.6.</p>
 </div>
 <div class="sect2">
 <h3 id="Audience">Audience</h3>
@@ -880,7 +771,523 @@ If you prefer, post your ideas to the Zimbra Forum.</p>
 <a href="https://bugzilla.zimbra.com" class="bare">https://bugzilla.zimbra.com</a> and submit a bug report.
 Make sure you provide enough detail so that the bug can be easily duplicated.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_zimbra_port_mapping">Zimbra Port Mapping</h3>
+<div class="sect3">
+<h4 id="_external_access">External access</h4>
+<div class="paragraph">
+<p>These are ports typically available to mail clients.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Port</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Protocol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">smtp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mta</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">incoming mail to postfix</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">http</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox / proxy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">web mail client (disabled by default in 8.0)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">110</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pop3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox / proxy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">POP3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">143</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">imap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox / proxy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IMAP</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">443</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">https</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox / proxy - web mail client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP over TLS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">465</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">smtps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mta</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Incoming mail to postfix over TLS (Legacy Outlook only? If possible, use 587 instead)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">587</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">smtp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mta</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mail submission over TLS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">993</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">imaps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox / proxy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IMAP over TLS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">995</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pop3s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox / proxy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">POP3 over TLS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3443</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">https</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">proxy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User Certificate Connection Port (optional)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5222</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">xmpp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default server port</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5223</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">xmpp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default legacy SSL port</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9071</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">https</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">proxy admin console</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP over TLS (optional)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_internal_access">Internal access</h4>
+<div class="paragraph">
+<p>These are ports typically only used by the Zimbra system itself.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Port</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Protocol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">389</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ldap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ldap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LC(ldap_bind_url)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">636</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ldaps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ldaps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">if enabled via LC(ldap_bind_url)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3310</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mta/clamd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zimbraClamAVBindAddress</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5269</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">xmpp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Server-to-Server communications between servers on the same cluster.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7025</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lmtp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">local mail delivery; zimbraLmtpBindAddress</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7026</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">milter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zimbra-milter; zimbraMilterBindAddress</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7047</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">http</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">conversion server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accessed by localhost by default; binds to '*'</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7071</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">https</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">admin console HTTP over TLS; zimbraAdminBindAddress</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7072</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">http</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ZCS nginx lookup - backend http service for nginx lookup/authentication</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7073</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">http</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ZCS saslauthd lookup - backend http service for SASL lookup/authentication (added in ZCS 8.7)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7110</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pop3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Backend POP3 (if proxy configured); zimbraPop3BindAddress</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7143</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">imap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Backend IMAP (if proxy configured); zimbraImapBindAddress</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7171</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zmconfigd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">configuration daemon; localhost</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7306</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mysql</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LC(mysql_bind_address); localhost</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7307</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mysql</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">logger</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">logger (removed in ZCS 7)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7780</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">http</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">spell check</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7993</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">imaps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Backend IMAP over TLS (if proxy configured); zimbraImapSSLBindAddress</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7995</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pop3s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Backend POP3 over TLS (if proxy configured); zimbraPop3SSLBindAddress</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8080</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">http</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Backend HTTP (if proxy configured on same host); zimbraMailBindAddress</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8143</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">imap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">imapd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IMAP server running independent of the mailboxd process</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8443</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">https</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Backend HTTPS (if proxy configured on same host); zimbraMailSSLBindAddress</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8465</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">milter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mta/opendkim</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenDKIM milter service; localhost</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8735</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zextras</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">internal mailbox to mailbox communication.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8736</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zextras</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">distributed configuration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8993</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">imap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">imapd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IMAP over TLS via IMAPD server running independent of the mailboxd process</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10024</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">smtp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mta/amavisd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">to amavis from postfix; localhost</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10025</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">smtp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mta/master</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">opendkim; localhost</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10026</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">smtp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mta/amavisd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"ORIGINATING" policy; localhost</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10027</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">smtp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mta/master</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">postjournal</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10028</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">smtp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mta/master</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">content_filter=scan via opendkim; localhost</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10029</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">smtp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mta/master</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"postfix/archive"; localhost</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10030</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">smtp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mta/master</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10032; localhost</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10031</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">milter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mta/cbpolicyd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cluebringer policyd</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10032</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">smtp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mta/amavisd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(antispam) "ORIGINATING_POST" policy</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10663</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">logger</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LC(logger_zmrrdfetch_port); localhost</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23232</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mta/amavisd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">amavis-services / msg-forwarder (zeromq); localhost</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23233</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mta/amavisd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">snmp-responder; localhost</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11211</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">memcached</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">memcached</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nginx route lookups, mbox cache (calendar, folders, sync, tags); zimbraMemcachedBindAddress</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_system_access_and_intra_node_communication">System Access and Intra-Node Communication</h4>
+<div class="paragraph">
+<p>In a multi-node environment the typical communication between nodes required includes:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Destination</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source(s)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>ALL</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ALL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SSH (system &amp; zmrcd): host management</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">udp/53</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ALL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DNS (system ¦ dnscache): name resolution</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Logger</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">udp/514</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ALL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">syslog: system and application logging</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>LDAP</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">389</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ALL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all nodes talk to LDAP server(s)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>MTA</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ldap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sent email (cron jobs)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sent email (web client, cron, etc.)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>antivirus</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3310</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zimbraAttachmentsScanURL (not set by default)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>memcached</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11211</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mbox metadata data cache</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11211</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">proxy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">backend mailbox route cache</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mailbox (mbox)</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">proxy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">backend proxy http</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">110</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">proxy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">backend proxy pop3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">143</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">proxy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">backend proxy imap</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">443</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">proxy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">backend proxy https</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">993</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">proxy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">backend proxy imaps</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">995</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">proxy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">backend proxy pop3s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7025</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mta</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all mta talk to any mbox (LMTP)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7047</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">localhost by default; zimbraConvertdURL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7071</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all mbox talk to any mbox (Admin)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7072</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">proxy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zmlookup; zimbraReverseProxyLookupTarget</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7073</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mta</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sasl auth; zimbraMtaAuthTarget (since ZCS 8.7)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Important:</strong> You cannot have any other web server, database, <em>LDAP</em>,
+or <em>MTA</em> server running, when you install Zimbra Collaboration. If you have
+installed any of those applications before you install Zimbra
+software, disable them.  During Zimbra Collaboration installation,
+Zimbra makes global system changes that may break
+applications that are on your server.</p>
+</div>
 <div style="page-break-after: always;"></div>
+</div>
 </div>
 </div>
 </div>
@@ -985,6 +1392,25 @@ ZCS 8.7.
 </table>
 </div>
 </li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+By default Zimbra Proxy is configured to perform strict server name enforcement of the HTTP 'Host' header sent by clients for new installs.  Strict server name enforcement may be disabled during the
+post-install configuration process in the Zimbra Proxy
+configuration section or using the <code>zimbraReverseProxyStrictServerNameEnabled</code> configuration
+option. Please see the Zimbra Proxy section of the administration guide for more details.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><strong>Zimbra Memcached:</strong> This package is automatically selected when the
 <strong>Zimbra-Proxy</strong> package is installed and provides access to <code>Memcached</code>.</p>
@@ -2130,7 +2556,7 @@ default is <strong>TRUE</strong>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Enable version update notifications.</strong></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>This enables automatic notification when updates are available
-when this is set to TRUE.<br></p>
+when this is set to <strong>TRUE</strong>.<br></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2240,10 +2666,11 @@ own independent server</p></td>
 <div class="sect4">
 <h5 id="imapd_config">IMAPD configuration</h5>
 <div class="paragraph">
-<p>IMAPD is an external IMAP[S] service that may be used as a
-replacement for the embedded IMAP[S] service that runs inside of
-<code>mailboxd</code>.  It would normally not be required with a single-server
-installation.</p>
+<p>IMAPD is an external IMAP[S] service that may be used as a replacement
+for the embedded IMAP[S] service that runs inside of <code>mailboxd</code>. It is
+recommended for use when the IMAP(S) traffic for a given installation
+is overloading the mailbox servers and is not recommended with a
+single-server installation.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -2265,9 +2692,9 @@ installation.</p>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">mailbox server or<br>
 independent server</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add to upstream IMAP Servers?:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add to upstream IMAP Servers?</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>default <code>no</code>.  If <code>yes</code>, the
+<p>default <strong>no</strong>.  If <strong>yes</strong>, the
 following global config settings will be applied:</p>
 </div>
 <div class="openblock">
@@ -2540,7 +2967,9 @@ The following ports are used either by Zimbra Proxy or by Zimbra Mailbox
 <div class="paragraph">
 <p>End clients connect directly to Zimbra Proxy, using the Zimbra Proxy
 Ports. Zimbra Proxy connects to the Route Lookup Handler/NLE (which
-resides on Zimbra Mailbox server) using the Zimbra Mailbox Ports.</p>
+resides on Zimbra Mailbox server) using the Zimbra Mailbox Ports.
+The proxy also optionally connects to the IMAPD service on the Zimbra IMAPD ports
+if IMAPD is installed and configured at the global level or on a specific set of mailbox servers.</p>
 </div>
 <div class="paragraph">
 <p><strong>Zimbra Proxy Port Mapping</strong></p>
@@ -2620,6 +3049,27 @@ resides on Zimbra Mailbox server) using the Zimbra Mailbox Ports.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">IMAPS Backend (if Proxy configured)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">7993</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="2">Zimbra IMAPD Ports (Internal to Zimbra Collaboration)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IMAP Backend (if Proxy configured)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8143</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IMAPS Backend (if Proxy configured)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8993</p></td>
 </tr>
 </tbody>
 </table>
@@ -2899,6 +3349,13 @@ webapp services (mailstore server + UI server)</p>
 </li>
 <li>
 <p>ZCS IMAPD server(s)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Optional standalone IMAP server</p>
+</li>
+</ul>
+</div>
 </li>
 </ol>
 </div>
@@ -3040,16 +3497,16 @@ answer for your configuration.</em>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="bash">root@mailhost:/tmp# tar xzvf zcs.tgz
-zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/
-zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/packages/
+zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/
+zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/packages/
 .
 .
 .
-zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/install.sh
-zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/README.txt
+zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/install.sh
+zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/README.txt
 
-root@zimbraiop:/tmp/# cd zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124/
-root@zimbraiop:/tmp/zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124# ./install.sh
+root@zimbraiop:/tmp/# cd zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/
+root@zimbraiop:/tmp/zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615# ./install.sh
 
 Operations logged to /tmp/install.log.y1YeCSI5
 .
@@ -3072,7 +3529,7 @@ Disabling <strong>MySQL</strong> and <strong>MariaDB</strong> is <strong>optiona
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="bash">root@zimbraiop:/tmp/zcs-NETWORK-8.7.6_GA_1776.UBUNTU16_64.20170326144124# ./install.sh
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">root@zimbraiop:/tmp/zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615# ./install.sh
 
 
 Operations logged to /tmp/install.log.y1YeCSI5
@@ -3080,6 +3537,7 @@ Checking for existing installation...
     zimbra-chat...NOT FOUND
     zimbra-drive...NOT FOUND
     zimbra-imapd...NOT FOUND
+    zimbra-network-modules-ng...NOT FOUND
     zimbra-ldap...NOT FOUND
     zimbra-logger...NOT FOUND
     zimbra-mta...NOT FOUND
@@ -3148,10 +3606,10 @@ Found zimbra-convertd (local)
 Found zimbra-memcached (repo)
 Found zimbra-proxy (local)
 Found zimbra-archiving (local)
-Found zimbra-imapd (local)
 Found zimbra-chat (repo)
 Found zimbra-drive (repo)
-
+Found zimbra-imapd (local)
+Found zimbra-network-modules-ng (local)
 
 
 Use Zimbra's package repository [Y] y
@@ -3266,6 +3724,8 @@ Install zimbra-chat [Y] N
 Install zimbra-drive [Y] N
 
 Install zimbra-imapd [Y] N
+
+Install zimbra-network-modules-ng [Y] N
 
 Checking required space for zimbra-core
 
@@ -3697,6 +4157,22 @@ Install zimbra-drive [Y] Y
 
 Install zimbra-imapd [Y] N
 
+Install zimbra-network-modules-ng [Y] y
+
+###WARNING###
+
+Network Modules NG needs to bind on TCP ports 8735 and 8736 in order
+to operate, for inter-instance communication.
+Please verify no other service listens on these ports and that
+ports 8735 and 8736 are properly filtered from public access
+by your firewall.
+
+Please remember that the Backup NG module needs to be initialized in order
+to be functional. This is a one-time operation only that can be performed
+by clicking the 'Initialize' button within the Backup section of the
+Network NG Modules in the Administration Console or by running
+`zxsuite backup doSmartScan` as the zimbra user.
+
 Checking required space for zimbra-core
 Checking space for zimbra-store
 Checking required packages for zimbra-store
@@ -3714,6 +4190,7 @@ Installing:
     zimbra-archiving
     zimbra-chat
     zimbra-drive
+    zimbra-network-modules-ng
 
 The system will be modified.  Continue? [N]</code></pre>
 </div>
@@ -4912,6 +5389,20 @@ Select, or 'r' for previous menu [r] 2</pre>
 </li>
 </ol>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you are installing new IMAPD nodes into a running cluster be sure and
+     upgrade all of the mailbox nodes to the same version of Zimbra
+     prior to installing the IMAPD nodes.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Return to <a href="#_install_zimbra_mailbox_services">Install Zimbra Mailbox Services</a>, step 12,
 to continue the server installation.</p>
@@ -5075,6 +5566,20 @@ cache must be flushed on all servers acting as lookup targets in order for them 
 This can be done with the command <code>zmprov flushCache -a config</code>. To verify that this has taken effect,
 make sure that the new IMAPD node is listed in the output of <code>zmprov gacf zimbraReverseProxyUpstreamImapServers</code>,
 when run from a lookup target server.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you are installing new IMAPD nodes into a running cluster be sure and
+     upgrade all of the mailbox nodes to the same version of Zimbra
+     prior to enabling routing to the IMAPD nodes.
 </td>
 </tr>
 </table>
@@ -5377,27 +5882,8 @@ $UDPServerRun 514</pre>
 </ol>
 </div>
 <div class="paragraph">
-<p>For <strong>syslog-ng</strong> on <code>SuSE</code>:</p>
+<p>=== Spam/Ham Training on MTA servers</p>
 </div>
-<div class="paragraph">
-<p>Uncomment the following from <code>/etc/syslog-ng/syslog-ng.conf</code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>#
-# uncomment to process log messages from network:
-#
-#udp(ip("0.0.0.0") port(514));</pre>
-</div>
-</div>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_spam_ham_training_on_mta_servers">Spam/Ham Training on MTA servers</h4>
 <div class="paragraph">
 <p>New installs of ZCS limit spam/ham training to the first MTA
 installed. If you uninstall or move this MTA, you will need to enable
@@ -5405,10 +5891,9 @@ spam/ham training on another MTA, as one host should have this enabled
 to run <code>zmtrainsa --cleanup</code>. To do this, set <code>zmlocalconfig -e
 zmtrainsa_cleanup_host=TRUE</code>.</p>
 </div>
+<div class="paragraph">
+<p>== Verifying Server Configuration</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_verifying_server_configuration">Verifying Server Configuration</h3>
 <div class="paragraph">
 <p>When <strong>Configuration complete - press return to exit</strong> is displayed, the
 installation is finished and the server has been started. Before going
@@ -5447,9 +5932,9 @@ the CLI command appendix in the Zimbra Collaboration Administration Guide for mo
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>== Logging on to the Administration Console</p>
 </div>
-<div class="sect2">
-<h3 id="_logging_on_to_the_administration_console">Logging on to the Administration Console</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -5507,17 +5992,18 @@ installation process. Enter the user name as <strong>admin@example.com</strong>.
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>== Post Installation Tasks</p>
 </div>
-<div class="sect2">
-<h3 id="_post_installation_tasks">Post Installation Tasks</h3>
 <div class="paragraph">
 <p>Once Zimbra Collaboration is installed, if you installed the
 Zimbra license, you can log on to the administration console and
 configure additional domains, create Classes of Service, and provision
 accounts. See the Zimbra Collaboration Administration Guide.</p>
 </div>
-<div class="sect3">
-<h4 id="_defining_classes_of_service">Defining Classes of Service</h4>
+<div class="paragraph">
+<p>=== Defining Classes of Service</p>
+</div>
 <div class="paragraph">
 <p>A default <em>Class of Service</em> (COS) is automatically created during the
 installation of Zimbra software. The COS controls mailbox quotas,
@@ -5537,16 +6023,17 @@ mailboxes to any available server.</p>
 <p>To create or modify a COS, from the administration console,
 click COS. If you have questions, refer to the Help section.</p>
 </div>
+<div class="paragraph">
+<p>=== Provisioning Accounts</p>
 </div>
-<div class="sect3">
-<h4 id="_provisioning_accounts">Provisioning Accounts</h4>
 <div class="paragraph">
 <p>You can configure one account at a time with the New Account Wizard or
 you can create many accounts at once using the Account Migration
 Wizard.</p>
 </div>
-<div class="sect4">
-<h5 id="_configuring_one_account">Configuring One Account</h5>
+<div class="paragraph">
+<p>==== Configuring One Account</p>
+</div>
 <div class="paragraph">
 <p>The administration console <em>New Account Wizard</em> steps you through the
 account information to be completed.</p>
@@ -5600,9 +6087,9 @@ send and receive emails.</p>
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>==== Configuring Many Accounts at Once</p>
 </div>
-<div class="sect4">
-<h5 id="_configuring_many_accounts_at_once">Configuring Many Accounts at Once</h5>
 <div class="paragraph">
 <p>You can provision multiple accounts at once using the <em>Account
 Migration</em> tool from the administration console. The wizard guides you
@@ -5614,9 +6101,9 @@ accounts in ZCS.</p>
 <div class="paragraph">
 <p>Refer to the Zimbra Collaboration Administration Guide to learn more about provisioning accounts.</p>
 </div>
+<div class="paragraph">
+<p>==== Import the Content of Users’ Mailboxes</p>
 </div>
-<div class="sect4">
-<h5 id="_import_the_content_of_users_mailboxes">Import the Content of Users’ Mailboxes</h5>
 <div class="paragraph">
 <p>Zimbra’s migration and import tools can be used to move users’ email
 messages, calendars, and contacts from their old email servers to
@@ -5625,12 +6112,11 @@ imported, the folder hierarchy is maintained. These tools can be
 accessed from the administration console Download page and instruction
 guides are available from the Administration Console Help Desk.</p>
 </div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_ephemeral_data_migration">Ephemeral Data Migration</h4>
 <div class="paragraph">
-<p>Versions of Zimbra prior to 8.8.3 stored
+<p>= Ephemeral Data Migration</p>
+</div>
+<div class="paragraph">
+<p>Versions of Zimbra prior to 8.8.6 stored
 <em>ephemeral data</em> in <em>LDAP</em>.  Examples of <em>ephemeral data</em> include:</p>
 </div>
 <div class="ulist">
@@ -5647,7 +6133,7 @@ guides are available from the Administration Console Help Desk.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Zimbra Collaboration version 8.8.3 introduced the ability to
+<p>Zimbra Collaboration version 8.8.6 introduced the ability to
 store <em>ephemeral data</em> in an external service such as
 <a href="http://ssdb.io/">SSDB</a>. This is an optional feature; however, it
 can improve <em>LDAP</em> performance and stability.</p>
@@ -5657,10 +6143,9 @@ can improve <em>LDAP</em> performance and stability.</p>
 Migration of <em>ephemeral data</em> out of <em>LDAP</em> and into <em>SSDB</em>  must be
 performed after an install or upgrade has been completed.</p>
 </div>
+<div class="paragraph">
+<p>== Uninstalling Zimbra Collaboration</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_uninstalling_zimbra_collaboration">Uninstalling Zimbra Collaboration</h3>
 <div class="paragraph">
 <p>To uninstall servers, run the install script with the <code>-u</code> option.
 Then delete the <code>/opt/zimbra</code> directory and remove the ZCS tgz file on the
@@ -5700,12 +6185,9 @@ directories, and the <code>/opt/zimbra</code> directory are removed.</p>
 </ol>
 </div>
 <div style="page-break-after: always;"></div>
+<div id="multi-server-adding-mailbox" class="paragraph">
+<p>= Adding a Mailbox Server to a Single Server Configuration</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="multi-server-adding-mailbox">Adding a Mailbox Server to a Single Server Configuration</h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>In the Zimbra Collaboration (ZCS) single server environment,
 the LDAP, MTA, and mailbox services are on one machine. This chapter
@@ -5713,8 +6195,9 @@ explains how to add a new machine that is configured as a mailbox
 server to a single server configuration and how to remove the mailbox
 server from the single server node.</p>
 </div>
-<div class="sect2">
-<h3 id="_setup_requirements_for_adding_a_mailbox_server">Setup Requirements For Adding a Mailbox Server</h3>
+<div class="paragraph">
+<p>== Setup Requirements For Adding a Mailbox Server</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -5741,9 +6224,9 @@ the new mailbox server. See <a href="#_installing_zimbra_proxy">Installing Zimbr
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>== Overview of Process</p>
 </div>
-<div class="sect2">
-<h3 id="_overview_of_process">Overview of Process</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -5766,9 +6249,9 @@ server is stopped on the single server machine.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>== Configuring the Mailbox Server</p>
 </div>
-<div class="sect2">
-<h3 id="_configuring_the_mailbox_server">Configuring the Mailbox Server</h3>
 <div class="paragraph">
 <p>The host name and zmhostname configured on the mailbox server are the
 same as on the single server.</p>
@@ -5837,8 +6320,11 @@ Zimbra software.</p>
 </li>
 <li>
 <p>Type <code>Y</code> for each package you are installing.</p>
-<div class="openblock">
-<div class="content">
+</li>
+</ol>
+</div>
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -5860,6 +6346,9 @@ install <code>zimbra-archiving</code> on the new mailbox server.</p>
 </li>
 </ul>
 </div>
+</li>
+</ol>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -5873,9 +6362,10 @@ used, it is installed on every Zimbra server.
 </tr>
 </table>
 </div>
-</div>
-</div>
-</li>
+<div class="openblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Type <code>Y</code>, and press <em>Enter</em> to modify the system. The selected packages
 are installed on the server.</p>
@@ -5909,8 +6399,11 @@ single- server node.
 </tr>
 </table>
 </div>
-<div class="openblock">
-<div class="content">
+</li>
+</ol>
+</div>
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -5934,24 +6427,24 @@ LDAP server. If it cannot contact the server, you cannot proceed.
 </tr>
 </table>
 </div>
-</div>
-</div>
+<div class="openblock">
+<div class="content">
 <div class="ulist">
 <ul>
 <li>
 <p>Type <code>6</code> to set the correct time zone.</p>
-</li>
-</ul>
-</div>
-</li>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Type <code>r</code> to return to the Main menu.</p>
 </li>
 <li>
 <p>From the Main menu, type <code>2</code> to go to the Store configuration
 menu.</p>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p>Type <code>2</code> to set <strong>Create Admin User</strong> to <code>No</code>.</p>
 </li>
@@ -5970,8 +6463,11 @@ corresponding number to enable the servers.</p>
 <li>
 <p>If the <code>zimbra-proxy</code> is used and is installed on another server,
 configure the following menu options</p>
-<div class="openblock">
-<div class="content">
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -5995,9 +6491,10 @@ Set either or both of these to TRUE if you are going to set up
 </tr>
 </table>
 </div>
-</div>
-</div>
-</li>
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
 <li>
 <p>Type the corresponding menu number to install the Zimbra Collaboration license
 file. Enter the location of the license file. For example, if you
@@ -6009,10 +6506,8 @@ saved the license file to the tmp directory, you would type
  to enable the servers. When you enable these, IMAP/POP/HTTP server
  port numbers and proxy port numbers are automatically changed. See
 <a href="#_configuration_during_installation">Configuration during installation</a>.</p>
-</li>
-</ul>
-</div>
-</li>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>When the mailbox server is configured, return to the Main menu and
 type a to apply the configuration changes. Press <em>Enter</em> to save the
@@ -6052,30 +6547,33 @@ starting the servers, among other processes.
 </li>
 </ol>
 </div>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p>The installation of the mailbox server is complete.</p>
 </div>
+<div class="paragraph">
+<p>== Adding Customized Features</p>
 </div>
-<div class="sect2">
-<h3 id="_adding_customized_features">Adding Customized Features</h3>
 <div class="paragraph">
 <p>Any customizing of themes, or Zimlets, and any signed certificates
 stored on the single-server must be added to the new mailbox
 server. See the Zimbra Collaboration Administration Guide for information about adding the
 customized features.</p>
 </div>
+<div class="paragraph">
+<p>== Testing the Configuration</p>
 </div>
-<div class="sect2">
-<h3 id="_testing_the_configuration">Testing the Configuration</h3>
 <div class="paragraph">
 <p>To make sure that the new mail store server is correctly configured,
 create a new user on the new mailbox server and log into the account
 to verify that your configuration is correct. See
-<a href="#_provisioning_accounts">Provisioning Accounts</a>.</p>
+<a href="#_provisioning_accounts">[_provisioning_accounts]</a>.</p>
 </div>
+<div class="paragraph">
+<p>== Move Mailboxes</p>
 </div>
-<div class="sect2">
-<h3 id="_move_mailboxes">Move Mailboxes</h3>
 <div class="paragraph">
 <p>The command, <code>zmmboxmove</code>, is run to move user accounts from the mailbox
 server on the single-sever node to the new mailbox server.</p>
@@ -6115,8 +6613,9 @@ mailbox, move the archival mailboxes as well.
 </tr>
 </table>
 </div>
-<div class="sect3">
-<h4 id="_move_mailboxes_using_cli_zmmboxmove">Move Mailboxes Using CLI zmmboxmove</h4>
+<div class="paragraph">
+<p>=== Move Mailboxes Using CLI zmmboxmove</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -6143,10 +6642,9 @@ that the account’s content is displayed and can be opened.</p>
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>== Turn Off Mailbox Server on Single-Server Node</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_turn_off_mailbox_server_on_single_server_node">Turn Off Mailbox Server on Single-Server Node</h3>
 <div class="paragraph">
 <p>When all mailboxes have moved from the single-server node to the new
 mailbox server node, disable the Mailbox services on the original
@@ -6157,8 +6655,11 @@ single-server machine.</p>
 <li>
 <p>On the original single-server node, disable the following mailbox
 server components:</p>
-<div class="openblock">
-<div class="content">
+</li>
+</ol>
+</div>
+</div>
+</div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 10%;">
@@ -6195,9 +6696,10 @@ server components:</p>
 <pre>zmprov -l ms &lt;singleserver.com&gt; -- -zimbraServiceEnabled archiving</pre>
 </div>
 </div>
-</div>
-</div>
-</li>
+<div class="openblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>After the mailbox services are disabled, verify that antispam,
 antivirus, ldap, mta, snmp, proxy, and memcached are the only services
@@ -6211,12 +6713,9 @@ on the original single-server node.</p>
 </ol>
 </div>
 <div style="page-break-after: always;"></div>
+<div id="multi-master-replication" class="paragraph">
+<p>= Configuring Multi-Master Replication</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="multi-master-replication">Configuring Multi-Master Replication</h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>Set up multi-master LDAP replication to have a copy of the LDAP
 database saved on each server in a group of LDAP servers identified
@@ -6233,8 +6732,9 @@ to the multi- master group.</p>
 <div class="paragraph">
 <p>You can also promote an existing replica to be part of the multi-master group.</p>
 </div>
-<div class="sect2">
-<h3 id="_managing_multiple_master_ldap_servers">Managing Multiple Master LDAP Servers</h3>
+<div class="paragraph">
+<p>== Managing Multiple Master LDAP Servers</p>
+</div>
 <div class="paragraph">
 <p>When you enable multi-master replication, you assign a server ID to
 each master server to identify them in the group. This is used to
@@ -6312,16 +6812,17 @@ LDAP servers to a group.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>== Installing a Secondary Master LDAP Server</p>
 </div>
-<div class="sect2">
-<h3 id="_installing_a_secondary_master_ldap_server">Installing a Secondary Master LDAP Server</h3>
 <div class="paragraph">
 <p>The master LDAP server must be running when you install the secondary
 LDAP servers. You run the ZCS install program on the
 secondary master LDAP servers to install the LDAP package.</p>
 </div>
-<div class="sect3">
-<h4 id="_passwords_required_to_install_the_secondary_master">Passwords Required to Install the Secondary Master</h4>
+<div class="paragraph">
+<p>=== Passwords Required to Install the Secondary Master</p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -6364,9 +6865,9 @@ passwords:</p>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>=== Setting Up a Secondary Master LDAP Server</p>
 </div>
-<div class="sect3">
-<h4 id="_setting_up_a_secondary_master_ldap_server">Setting Up a Secondary Master LDAP Server</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -6482,10 +6983,9 @@ this new master as the <em>first</em> master in the list.</p>
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>== Promote Existing Replicas to Multi-Master LDAP Servers</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_promote_existing_replicas_to_multi_master_ldap_servers">Promote Existing Replicas to Multi-Master LDAP Servers</h3>
 <div class="paragraph">
 <p>In an existing ZCS setup where there is already a single master and
 multiple replicas, you can promote an existing replica to become a
@@ -6547,9 +7047,9 @@ list.</p>
 server ID. It is automatically configured to be a paired master with
 the master it was previously replicating from.</p>
 </div>
+<div class="paragraph">
+<p>== Deleting a Multi-Master Replication Node</p>
 </div>
-<div class="sect2">
-<h3 id="_deleting_a_multi_master_replication_node">Deleting a Multi-Master Replication Node</h3>
 <div class="paragraph">
 <p>To delete a multi-master replication (MMR) node, use the following
 steps.</p>
@@ -6601,8 +7101,9 @@ and confirm it is no longer receiving modification traffic.</p>
 </li>
 </ol>
 </div>
-<div class="sect3">
-<h4 id="_example_of_deleting_an_mmr_node">Example of Deleting an MMR Node</h4>
+<div class="paragraph">
+<p>=== Example of Deleting an MMR Node</p>
+</div>
 <div class="paragraph">
 <p>The following is an example of using <code>zmldapmmrtool</code>.</p>
 </div>
@@ -6646,10 +7147,9 @@ rid: 100 URI: ldap://ldap-2.example.com:389/ TLS: critical zimbra@ldap-1:/tmp/mm
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>== Monitoring Multiple LDAP Master Status</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_monitoring_multiple_ldap_master_status">Monitoring Multiple LDAP Master Status</h3>
 <div class="paragraph">
 <p>The <em>Monitoring LDAP Replication Status</em> feature monitors the change
 sequence number (CSN) values between an LDAP master server and an LDAP
@@ -6658,8 +7158,9 @@ master server. If the servers become out of sync, the monitoring
 feature indicates the problem. The out of sync time period is
 typically five minutes, although this value is configurable.</p>
 </div>
-<div class="sect3">
-<h4 id="_feature_requirement">Feature Requirement</h4>
+<div class="paragraph">
+<p>=== Feature Requirement</p>
+</div>
 <div class="paragraph">
 <p>Run the script <code>zmreplchk</code> located in <code>/opt/zimbra/libexec</code>.</p>
 </div>
@@ -6677,9 +7178,9 @@ servers.
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>=== Error Codes and Status Explanations</p>
 </div>
-<div class="sect3">
-<h4 id="_error_codes_and_status_explanations">Error Codes and Status Explanations</h4>
 <div class="paragraph">
 <p>The following monitoring error codes and status explanations are given
 with this feature:</p>
@@ -6759,15 +7260,12 @@ Master: ldap://ldap-5.example.com:389 Code: 4 Status: Server down</pre>
 </div>
 </div>
 <div style="page-break-after: always;"></div>
+<div id="ldap-replication" class="paragraph">
+<p>= Configuring LDAP Replication</p>
 </div>
+<div class="paragraph">
+<p>== Configuring LDAP Replication Overview</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="ldap-replication">Configuring LDAP Replication</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_configuring_ldap_replication_overview">Configuring LDAP Replication Overview</h3>
 <div class="paragraph">
 <p>Setting up LDAP replication lets you distribute Zimbra server
 queries to specific replica LDAP servers. Only one master LDAP server
@@ -6808,27 +7306,27 @@ server instead of the master LDAP server.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>== Installing Zimbra Master LDAP Server</p>
 </div>
-<div class="sect2">
-<h3 id="_installing_zimbra_master_ldap_server">Installing Zimbra Master LDAP Server</h3>
 <div class="paragraph">
 <p>You must install the master LDAP server before you can install replica
 LDAP servers. Refer to <a href="#install_ldap_master">Installing Zimbra LDAP Master Server</a>
 for master LDAP server installation instructions. After the
 installation of the master LDAP server has completed, continue
-to <a href="#_enable_replication_on_the_ldap_master">Enable Replication on the LDAP Master</a>.</p>
+to <a href="#_enable_replication_on_the_ldap_master">[_enable_replication_on_the_ldap_master]</a>.</p>
 </div>
+<div class="paragraph">
+<p>== Enable Replication on the LDAP Master</p>
 </div>
-<div class="sect2">
-<h3 id="_enable_replication_on_the_ldap_master">Enable Replication on the LDAP Master</h3>
 <div class="paragraph">
 <p>On the master LDAP server, as the <code>zimbra</code> user, type:
 <code>/opt/zimbra/libexec/ zmldapenablereplica</code> and press <em>Enter</em>. This enables
 replication on the LDAP Master.</p>
 </div>
+<div class="paragraph">
+<p>== Installing a Replica LDAP Server</p>
 </div>
-<div class="sect2">
-<h3 id="_installing_a_replica_ldap_server">Installing a Replica LDAP Server</h3>
 <div class="paragraph">
 <p>The master LDAP server must be running when you install the replica
 server. You run the ZCS install program on the replica
@@ -7026,8 +7524,9 @@ of the master LDAP directory is copied to the replica LDAP server.</p>
 </li>
 </ol>
 </div>
-<div class="sect3">
-<h4 id="_test_the_replica">Test the Replica</h4>
+<div class="paragraph">
+<p>=== Test the Replica</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -7066,10 +7565,9 @@ following command for account creation.</p>
 <pre>zmprov ca &lt;name@domain&gt; &lt;password&gt; zimbraMailTransport &lt;where_to_deliver&gt;</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>== Configuring Zimbra Servers to Use LDAP Replica</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_configuring_zimbra_servers_to_use_ldap_replica">Configuring Zimbra Servers to Use LDAP Replica</h3>
 <div class="paragraph">
 <p>To use the replica LDAP server instead of the master LDAP server, you
 must update the <code>ldap_url</code> value on the Zimbra servers that will query
@@ -7128,9 +7626,9 @@ configuration with the updated <code>ldap_url</code>.</p>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>== Uninstalling an LDAP Replica Server</p>
 </div>
-<div class="sect2">
-<h3 id="_uninstalling_an_ldap_replica_server">Uninstalling an LDAP Replica Server</h3>
 <div class="paragraph">
 <p>If you do not want to use an LDAP replica server, follow these steps
 to disable it.</p>
@@ -7148,8 +7646,9 @@ master LDAP server.
 </tr>
 </table>
 </div>
-<div class="sect3">
-<h4 id="_remove_ldap_replica_from_all_active_servers">Remove LDAP Replica from All Active Servers</h4>
+<div class="paragraph">
+<p>=== Remove LDAP Replica from All Active Servers</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -7181,9 +7680,9 @@ at the end of the <code>ldap_url</code> string value.
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>=== Disable LDAP on the Replica</p>
 </div>
-<div class="sect3">
-<h4 id="_disable_ldap_on_the_replica">Disable LDAP on the Replica</h4>
 <div class="paragraph">
 <p>To disable LDAP on the replica server:</p>
 </div>
@@ -7223,10 +7722,9 @@ Postfix configuration with the updated <code>ldap_url</code>.</p>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>== Monitoring LDAP Replication Status</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_monitoring_ldap_replication_status">Monitoring LDAP Replication Status</h3>
 <div class="paragraph">
 <p>The <em>Monitoring LDAP Replication Status</em> feature monitors the change
 sequence number (CSN) values between an LDAP master server and an LDAP
@@ -7235,8 +7733,9 @@ master server. If the servers become out of sync, the monitoring
 feature indicates the problem. The out of sync time period is
 typically five minutes, although this value is configurable.</p>
 </div>
-<div class="sect3">
-<h4 id="_feature_requirement_2">Feature Requirement</h4>
+<div class="paragraph">
+<p>=== Feature Requirement</p>
+</div>
 <div class="paragraph">
 <p>Run the script <code>zmreplchk</code> located in <code>/opt/zimbra/libexec</code>.</p>
 </div>
@@ -7254,9 +7753,9 @@ servers and ends with the master server.
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>=== Error Codes and Status Explanations</p>
 </div>
-<div class="sect3">
-<h4 id="_error_codes_and_status_explanations_2">Error Codes and Status Explanations</h4>
 <div class="paragraph">
 <p>The following monitoring error codes and status explanations are given
 with this feature:</p>
@@ -7346,13 +7845,10 @@ Replica: ldap://ldap-4.example.com:389 Code: 6 Status: 0w 0d 0h 14m 42s behind</
 </div>
 </div>
 <div style="page-break-after: always;"></div>
+<div id="System_Requirements" class="paragraph">
+<p>= System Requirements for Zimbra Collaboration
+:toc:</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="System_Requirements">System Requirements for Zimbra Collaboration</h2>
-<div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -7533,9 +8029,6 @@ Open Source Edition. Check the Zimbra Open Source Downloads page on
 <div class="ulist">
 <ul>
 <li>
-<p>VMware vSphere 6.x</p>
-</li>
-<li>
 <p>VMware vSphere 5.x</p>
 </li>
 <li>
@@ -7579,11 +8072,11 @@ Open Source Edition. Check the Zimbra Open Source Downloads page on
 The <code>nc</code> utility must be installed prior to installation or upgrading.</p>
 </div>
 <div class="paragraph">
-<p>For Ubuntu systems, disable <strong>AppArmor</strong> and verify that the
+<p>For SUSE and Ubuntu systems, disable <strong>AppArmor</strong> and verify that the
 AppArmor service is not running before installing Zimbra Collaboration.</p>
 </div>
 <div class="paragraph">
-<p>For Red Hat Enterprise operating systems, the
+<p>For Red Hat Enterprise, Fedora Core and SUSE operating systems, the
 server must also have the following installed:</p>
 </div>
 <div class="ulist">
@@ -7662,7 +8155,8 @@ server must also have the following installed:</p>
 <p>The following operating system/browser combinations are supported:</p>
 </div>
 <div class="paragraph">
-<p><strong>Windows Vista SP 2, Windows 7, Windows 8 or Windows 10 with one of the following:</strong></p>
+<p>Windows Vista SP 2, Windows 7, Windows 8 or Windows 10 with
+one of the following:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -7701,15 +8195,47 @@ server must also have the following installed:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>'''Mac OS X 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, 10.11 or 10.12 with one of the following:'''
-* Firefox
-* Safari
-* Chrome</p>
+<p>Mac OS X 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, or 10.11 with one of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The latest stable release of:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Firefox</p>
+</li>
+<li>
+<p>Safari</p>
+</li>
+<li>
+<p>Google Chrome</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>'''Linux with the latest stable release of one of the following:'''
-* Firefox
-* Google Chrome</p>
+<p>Linux (Red Hat, Ubuntu, Fedora, or SUSE) with one of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The latest stable release of:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Firefox</p>
+</li>
+<li>
+<p>Google Chrome</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div></div></td>
 </tr>
 <tr>
@@ -7768,7 +8294,8 @@ server must also have the following installed:</p>
 <p>The following operating system/browser combinations are supported:</p>
 </div>
 <div class="paragraph">
-<p><strong>Windows Vista SP 2, Windows 7, Windows 8 or Windows 10 with one of the following:</strong></p>
+<p>Windows Vista SP 2, Windows 7, Windows 8 or Windows 10 with
+one of the following:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -7807,15 +8334,47 @@ server must also have the following installed:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>'''Mac OS X 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, 10.11 or 10.12 with one of the following:'''
-* Firefox
-* Safari
-* Chrome</p>
+<p>Mac OS X 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, or 10.11 with one of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The latest stable release of:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Firefox</p>
+</li>
+<li>
+<p>Safari</p>
+</li>
+<li>
+<p>Google Chrome</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>'''Linux with the latest stable release of one of the following:'''
-* Firefox
-* Google Chrome</p>
+<p>Linux (Red Hat, Ubuntu, Fedora, or SUSE) with one of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The latest stable release of:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Firefox</p>
+</li>
+<li>
+<p>Google Chrome</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div></div></td>
 </tr>
 <tr>
@@ -7849,11 +8408,19 @@ server must also have the following installed:</p>
 <div class="paragraph">
 <p>Operating system POP/IMAP combinations</p>
 </div>
-<div class="paragraph">
-<p>Windows Vista SP 2, Windows 7, Windows 8 or Windows 10 with one of the following:*
-* Microsoft Outlook 2010, 2013 or 2016
-* Any Linux distribution with Thunderbird
-* Mac OS X 10.x with Apple Mail</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Windows Vista SP 2, Windows 7 with Outlook Express 6, Outlook
+2007 and above (MAPI), Thunderbird</p>
+</li>
+<li>
+<p>Fedora Core 4 or later with Thunderbird</p>
+</li>
+<li>
+<p>Mac OS X 10.4 or later with Apple Mail</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p><strong>Accessibility and Screen Readers</strong> Zimbra recommends that customers
@@ -7868,7 +8435,7 @@ improving the accessibility of this interface.</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-If users are presently using IE 9 or 10, Zimbra strongly recommends that they upgrade
+If users are presently using IE 6, Zimbra strongly recommends that they upgrade
 to the latest version of Internet Explorer for optimal performance with ZWC.
 </td>
 </tr>
@@ -7886,7 +8453,7 @@ to the latest version of Internet Explorer for optimal performance with ZWC.
 <p>Outlook 2011/2016 (MAC only)</p>
 </li>
 <li>
-<p>Apple Desktop Clients (OS X, 10.x)</p>
+<p>Apple Desktop Clients (OS X, 10.8+)</p>
 </li>
 </ul>
 </div>
@@ -7896,7 +8463,7 @@ to the latest version of Internet Explorer for optimal performance with ZWC.
 <div class="ulist">
 <ul>
 <li>
-<p>Exchange 2010, 2013 or 2016</p>
+<p>Exchange 2007+</p>
 </li>
 </ul>
 </div></div></td>
@@ -7915,8 +8482,9 @@ to the latest version of Internet Explorer for optimal performance with ZWC.
 </tr>
 </tbody>
 </table>
-<div class="sect2">
-<h3 id="Zimbra_Connector_for_Outlook">Zimbra Connector for Outlook (Network Edition Only)</h3>
+<div id="Zimbra_Connector_for_Outlook" class="paragraph">
+<p>== Zimbra Connector for Outlook (Network Edition Only)</p>
+</div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 20%;">
@@ -7937,7 +8505,7 @@ to the latest version of Internet Explorer for optimal performance with ZWC.
 <p>Windows 7</p>
 </li>
 <li>
-<p>Vista</p>
+<p>Vista with SP2</p>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -7945,7 +8513,7 @@ to the latest version of Internet Explorer for optimal performance with ZWC.
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-Windows XP is deprecated. The 8.0.x series of Zimbra Collaboration is the last release to support
+Windows XP is deprecated. The 8.x series of Zimbra Collaboration is the last release to support
 Microsoft Outlook 2003 and Microsoft Windows XP
 </td>
 </tr>
@@ -7966,16 +8534,14 @@ Microsoft Outlook 2003 and Microsoft Windows XP
 <p>Outlook 2013: 32-bit and 64-bit editions of Microsoft Outlook are supported.</p>
 </li>
 <li>
-<p>Outlook 2010: Client computers must have Microsoft Office Outlook 2010 SP2 or later installed. Important: Outlook 2010 is deprecated: The 8.8 series of Zimbra Collaboration is the last release to support Microsoft Outlook 2010</p>
+<p>Outlook 2010: 32-bit and 64-bit editions of Microsoft Outlook are supported.</p>
 </li>
 <li>
-<p>Outlook 2007: Client computers must have Microsoft Office Outlook 2007 SP2 or later installed. Important: Outlook 2007 is deprecated: The 8.6 series of Zimbra Collaboration is the last release to support Microsoft Outlook 2007</p>
+<p>Outlook 2007: Client computers must have Microsoft Office Outlook 2007
+SP3 or later installed.</p>
 </li>
 <li>
-<p>Outlook 2003: Client computers must have Microsoft Office Outlook 2003 SP3 or later installed. Important: Outlook 2003 is deprecated: The 8.0.x series of Zimbra Collaboration is the last release to support Microsoft Outlook 2003</p>
-</li>
-</ul>
-</div>
+<p>Outlook 2003: Client computers must have Microsoft Office Outlook 2003 SP3 or later installed.</p>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -7983,18 +8549,23 @@ Microsoft Outlook 2003 and Microsoft Windows XP
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
+Outlook 2007 is deprecated. The 8.6 series of Zimbra Collaboration is the last release to
+support Microsoft Outlook 2007.
 Outlook 2003 is deprecated. The 8.0.x series of Zimbra Collaboration is the last release to
 support Microsoft Outlook 2003 and Microsoft Windows XP.
 </td>
 </tr>
 </table>
+</div>
+</li>
+</ul>
 </div></div></td>
 </tr>
 </tbody>
 </table>
+<div id="Zimbra_Mobile" class="paragraph">
+<p>== Zimbra Mobile (Network Edition Only)</p>
 </div>
-<div class="sect2">
-<h3 id="Zimbra_Mobile">Zimbra Mobile (Network Edition Only)</h3>
 <hr>
 <div class="paragraph">
 <p>Network Edition Mobile (MobileSync) provides mobile data access to email,
@@ -8007,22 +8578,22 @@ including:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>iOS6, iOS7, iOS8, iOS9, iOS10</p>
+<p>iOS6, iOS7, iOS8, iOS9</p>
 </li>
 <li>
-<p>Android 4.x, 5.x, 6.x, 7.x and 8.x</p>
+<p>Android 2.3 and above</p>
 </li>
 <li>
-<p>Windows OS</p>
+<p>Windows Mobile 6.0 and above</p>
 </li>
 <li>
-<p>Microsoft Outlook using Exchange ActiveSync (EAS)</p>
+<p>Microsoft Outlook using the Exchange ActiveSync (EAS)</p>
 </li>
 </ul>
 </div>
+<div id="Zimbra_Touch_Client" class="paragraph">
+<p>== Zimbra Touch Client (Network Edition Only)</p>
 </div>
-<div class="sect2">
-<h3 id="Zimbra_Touch_Client"><strong>Deprecated</strong> Zimbra Touch Client (Network Edition Only)</h3>
 <hr>
 <div class="paragraph">
 <p>Supported devices for the Zimbra Touch Client include:</p>
@@ -8038,9 +8609,9 @@ Samsung Galaxy S® III, Samsung Galaxy S® 4, Galaxy Nexus™</p>
 </li>
 </ul>
 </div>
+<div id="BES" class="paragraph">
+<p>== Zimbra Connector for BlackBerry Enterprise Server (Network Edition Only)</p>
 </div>
-<div class="sect2">
-<h3 id="BES"><strong>Deprecated</strong> Zimbra Connector for BlackBerry Enterprise Server (Network Edition Only)</h3>
 <div class="paragraph">
 <p>Zimbra Connector for BlackBerry Enterprise Server (ZCB) provides seamless,
 real-time synchronization of Zimbra user mailbox data to BlackBerry devices.</p>
@@ -8048,16 +8619,17 @@ real-time synchronization of Zimbra user mailbox data to BlackBerry devices.</p>
 <div class="paragraph">
 <p>See <a href="https://www.zimbra.com/products/blackberry-enterprise-server.html" class="bare">https://www.zimbra.com/products/blackberry-enterprise-server.html</a> for more information.</p>
 </div>
+<div id="Available_Languages" class="paragraph">
+<p>== Available Languages</p>
 </div>
-<div class="sect2">
-<h3 id="Available_Languages">Available Languages</h3>
 <div class="paragraph">
 <p>This section includes information about available languages, including
 <a href="#end_user_translations">End User Translations</a> and
 <a href="#admin_translations">Administrator Translations</a>.</p>
 </div>
-<div class="sect3">
-<h4 id="end_user_translations">End User Translations</h4>
+<div id="end_user_translations" class="paragraph">
+<p>=== End User Translations</p>
+</div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 15%;">
@@ -8075,11 +8647,12 @@ real-time synchronization of Zimbra user mailbox data to BlackBerry devices.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Web Client</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Application/UI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Catalan (EU), Chinese (Simplified PRC, Traditional HK, Taiwan),
-Danish, Dutch, English (AU, UK, US), French, French Canadian, German,
-Hindi, Hungarian, Italian, Japanese, Korean, Malay, Norwegian, Polish, Portuguese
-(Brazil), Portuguese (Portugal), Romanian, Russian, Spanish, Swedish,
-Thai, Turkish, Ukrainian</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Chinese
+(Simplified PRC and Traditional HK), Danish, Dutch, English (AU, UK,
+US), French, French Canadian, German, Hindi, Hungarian, Italian,
+Japanese, Korean, Malay, Polish, Portuguese (Brazil), Portuguese
+(Portugal), Romanian, Russian, Spanish, Swedish, Thai, Turkish,
+Ukrainian</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Web Client - Online Help (HTML)</p></td>
@@ -8096,9 +8669,9 @@ English, Spanish, French, Italian, Japanese, German, Portuguese
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Connector for Microsoft Outlook</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Installer + Application/UI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Catalan (EU), Chinese (Simplified PRC, Traditional HK, Taiwan),
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Chinese (Simplified PRC and Traditional HK),
 Danish, Dutch, English (AU, UK, US), French, French Canadian, German,
-Hindi, Hungarian, Italian, Japanese, Korean, Malay, Norwegian, Polish, Portuguese
+Hindi, Hungarian, Italian, Japanese, Korean, Malay, Polish, Portuguese
 (Brazil), Portuguese (Portugal), Romanian, Russian, Spanish, Swedish,
 Thai, Turkish, Ukrainian</p></td>
 </tr>
@@ -8110,9 +8683,9 @@ Documentation</p></td>
 </tr>
 </tbody>
 </table>
+<div id="admin_translations" class="paragraph">
+<p>=== Administrator Translations</p>
 </div>
-<div class="sect3">
-<h4 id="admin_translations">Administrator Translations</h4>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 15%;">
@@ -8128,11 +8701,11 @@ Documentation</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Admin Console</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Catalan (EU), Chinese (Simplified PRC, Traditional HK, Taiwan),
-Danish, Dutch, English (AU, UK, US), French, French Canadian, German,
-Hindi, Hungarian, Italian, Japanese, Korean, Malay, Norwegian, Polish, Portuguese
-(Brazil), Portuguese (Portugal), Romanian, Russian, Spanish, Swedish,
-Thai, Turkish, Ukrainian</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Chinese
+(Simplified PRC and Traditional HK), Danish, Dutch, English (AU, UK,
+US), French, French Canadian, German, Hindi, Hungarian, Italian,
+Japanese, Korean, Malay, Polish, Portuguese (Brazil), Portuguese
+(Portugal), Romanian, Russian, Spanish, Swedish, Turkish, Ukrainian</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Admin Console Online Help (HTML)</p></td>
@@ -8160,103 +8733,63 @@ client software is PuTTY, a software implementation of SSH for Win32 and
 Unix platforms. To download a copy go to <a href="http://putty.nl/">http://putty.nl</a></p>
 </div>
 <div style="page-break-after: always;"></div>
+<div id="Zimbra-Network-NG-Modules-first-steps-guide" class="paragraph">
+<p>= Zimbra Network NG Modules: First Steps</p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="Zimbra-Network-NG-Modules-first-steps-guide">Zimbra Network NG Modules: First Steps</h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>This Guide contains all information needed to switch to the new Zimbra Network NG modules from their legacy counterparts after upgrading to Zimbra 8.8.</p>
 </div>
-<div class="sect2">
-<h3 id="backup-ng">Switching to Backup NG</h3>
-<div class="paragraph">
-<p>Switching to the new Backup NG is a simple process that will initialize the
+<div id="backup-ng" class="paragraph">
+<p>Switching to Backup NG</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Switching to the new Backup NG is a simple process that will initialize the
 new backup system on a dedicated path.
 Until the initialization is completed, the old backup engine will be active.
 Old backup files will not be removed and the old backup and restore tools are
-still available via the usual CLI commands.</p>
-</div>
-<div class="sect3">
-<h4 id="backup-path-limitations">Backup Path Limitations</h4>
-<div class="paragraph">
-<p>To hold Backup NG data, a storage must comply to the following:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The storage must have a mountpoint on the system.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The "zimbra" user must of course have r/w permission on the path.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>The data must be stored on a case-sensitive filesystem.</p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Backup NG features a built-in scheduling system and does not rely on the system&#8217;s cron service. At the end of the initialisation process, old backup-related crontab lines will be automatically removed.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="backup-ng-initialisation">Backup NG Initialization</h4>
-<div class="paragraph">
-<p>Before initializing the Backup NG module, make sure you have enough space on
+still available via the usual CLI commands.
+
+[[backup-path-limitations]]
+Backup Path Limitations
+~~~~~~~~~~~~~~~~~~~~~~~
+To hold Backup NG data, a storage must comply to the following:
+
+* The storage must have a mountpoint on the system.
+** The "zimbra" user must of course have r/w permission on the path.
+* The data must be stored on a case-sensitive filesystem.
+
+TIP: Backup NG features a built-in scheduling system and does not rely on the system's cron service. At the end of the initialisation process, old backup-related crontab lines will be automatically removed.
+
+[[backup-ng-initialisation]]
+Backup NG Initialization
+~~~~~~~~~~~~~~~~~~~~~~~~
+Before initializing the Backup NG module, make sure you have enough space on
 the storage where you will store the backup. The average size of the backup is
-50-70% of the nominal total quota of all mailboxes.</p>
-</div>
-<div class="paragraph">
-<p><strong>To initialize the Backup NG module:</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Access the Zimbra Administration Console.</p>
-</li>
-<li>
-<p>Enter the "Network Modules NG" section on the left menu.</p>
-</li>
-<li>
-<p>Enter the "Backup" section.</p>
-</li>
-<li>
-<p>Set the "Backup Path" to the directory where you will store your backup.</p>
-</li>
-<li>
-<p>Click the "Initialize" button - this will trigger a SmartScan to initialize the Backup Path</p>
-</li>
-</ul>
+50-70% of the nominal total quota of all mailboxes.
+
+*To initialize the Backup NG module:*
+
+* Access the Zimbra Administration Console.
+* Enter the "Network Modules NG" section on the left menu.
+* Enter the "Backup" section.
+* Set the "Backup Path" to the directory where you will store your backup.
+* Click the "Initialize" button - this will trigger a SmartScan to initialize the Backup Path
+
+[[mobile-ng]]
+Switching to Mobile NG</pre>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="mobile-ng">Switching to Mobile NG</h3>
 <div class="paragraph">
 <p>Switching to the new Mobile NG is a simple process that will activate the new
 mobile handlers and deactivate the old ones. This will also switch the synchronization control
 over to Mobile NG from the legacy Zimbra Mobile.
 Until the initialization is complete, the old mobile engine will be active.</p>
 </div>
-<div class="sect3">
-<h4 id="what-happens-after-the-switch">What Happens after the Switch</h4>
-<div class="paragraph">
-<p>After switching to Mobile NG, all existing syncstates will be invalidated,
+<div id="what-happens-after-the-switch" class="paragraph">
+<p>What Happens after the Switch
+<sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub>~~
+After switching to Mobile NG, all existing syncstates will be invalidated,
 and all connected devices will automatically re-synchronise all of their data
 through the new engine.</p>
 </div>
@@ -8290,16 +8823,17 @@ Furthermore, the switch might lead to an abrupt increase in the number of connec
 <p>Device requiring a restart.</p>
 </li>
 <li>
-<p>Device not synchronising until the user re-enter its username and password in the account&#8217;s settings.</p>
+<p>Device not synchronising until the user re-enters their username and password in the account&#8217;s settings.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p><em>Albeit sporadic, such behaviours and the load impact on the system should be taken into account when planning to switch to Mobile NG.</em></p>
 </div>
+<div id="mobile-ng-initialisation" class="paragraph">
+<p>Mobile NG Initialization
+<sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub><sub>~</sub></p>
 </div>
-<div class="sect3">
-<h4 id="mobile-ng-initialisation">Mobile NG Initialization</h4>
 <div class="paragraph">
 <p><strong>To initialize Mobile NG:</strong></p>
 </div>
@@ -8319,98 +8853,61 @@ Furthermore, the switch might lead to an abrupt increase in the number of connec
 </li>
 </ul>
 </div>
+<div id="hsm-ng" class="paragraph">
+<p>Switching to HSM NG</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="hsm-ng">Switching to HSM NG</h3>
-<div class="paragraph">
-<p>The HSM NG module will become active as soon as the upgrade to Zimbra 8.8 is
-complete, and does not require any interaction.</p>
-</div>
-<div class="paragraph">
-<p>Any old HSM policy, volume and volume configuration will be maintained.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-HSM NG features a built-in scheduling system and does not rely on the system&#8217;s cron service. At the first start after the upgrade, old HSM-related crontab lines will be automatically removed.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="admin-ng">Switching to Admin NG</h3>
-<div class="paragraph">
-<p>Switching to the new Admin NG is a simple process that will migrate any
-relevant ACL information to the module&#8217;s own configuration manager, clearing
-existing ACLs and ACEs from the system.</p>
-</div>
-<div class="paragraph">
-<p>Admin NG is significantly different than the old Delegated Administration engine.
-Please read the product&#8217;s documentation and only migrate to Admin NG if its feature set
-meets your needs.</p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<strong>Switching to Admin NG will remove all existing ACLs and ACEs from the server. This new module is extremely different from its legacy counterpart, so after the migration will not be able to recreate the very same admin roles and settings.</strong><br>
-<br>
-<strong><em>This is a one way only process.</em></strong><br>
-<br>
-<strong>Once Admin NG is initialized
-it&#8217;s not possible to go back to the old engine, so if you have customized or complex
-ACLs/ACEs carefully consider whether or not to switch.</strong>
-</td>
-</tr>
-</table>
-</div>
-<div class="sect3">
-<h4 id="admin-ng-initialisation">Admin NG Initialization</h4>
-<div class="paragraph">
-<p>Admin NG is not enabled by default during upgrades from a version earlier than 8.8, so it must be enabled manually before migrating to it.</p>
-</div>
-<div class="paragraph">
-<p><strong>To enable Admin NG:</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Run the following command as the "zimbra" user on any mailbox server:</p>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre>zmprov mcf zimbraNetworkAdminNGEnable TRUE</pre>
+<pre>The HSM NG module will become active as soon as the upgrade to Zimbra 8.8 is
+complete, and does not require any interaction.
+
+Any old HSM policy, volume and volume configuration will be maintained.
+
+TIP: HSM NG features a built-in scheduling system and does not rely on the system's cron service. At the first start after the upgrade, old HSM-related crontab lines will be automatically removed.
+
+
+[[admin-ng]]
+Switching to Admin NG
+---------------------
+Switching to the new Admin NG is a simple process that will migrate any
+relevant ACL information to the module's own configuration manager, clearing
+existing ACLs and ACEs from the system.
+
+Admin NG is significantly different than the old Delegated Administration engine.
+Please read the product's documentation and only migrate to Admin NG if its feature set
+meets your needs.
+
+WARNING: *Switching to Admin NG will remove all existing ACLs and ACEs from the server. This new module is extremely different from its legacy counterpart, so after the migration will not be able to recreate the very same admin roles and settings.* +
+ +
+*_This is a one way only process._* +
+ +
+*Once Admin NG is initialized
+it's not possible to go back to the old engine, so if you have customized or complex
+ACLs/ACEs carefully consider whether or not to switch.*
+
+[[admin-ng-initialisation]]
+Admin NG Initialization
+~~~~~~~~~~~~~~~~~~~~~~~
+Admin NG is not enabled by default during upgrades from a version earlier than 8.8, so it must be enabled manually before migrating to it.
+
+*To enable Admin NG:*
+
+* Run the following command as the "zimbra" user on any mailbox server:
+
+  zmprov mcf zimbraNetworkAdminNGEnable TRUE
+
+
+*To initialize Admin NG:*
+
+* Access the Zimbra Administration Console.
+* Enter the "Network Modules NG" section on the left menu.
+* Enter the "Admin" section.
+* Click on the "Migrate" button.
+
+:leveloffset: -1</pre>
 </div>
 </div>
-</li>
-</ul>
 </div>
-<div class="paragraph">
-<p><strong>To initialize Admin NG:</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Access the Zimbra Administration Console.</p>
-</li>
-<li>
-<p>Enter the "Network Modules NG" section on the left menu.</p>
-</li>
-<li>
-<p>Enter the "Admin" section.</p>
-</li>
-<li>
-<p>Click on the "Migrate" button.</p>
-</li>
-</ul>
 </div>
 </div>
 </div>
@@ -8419,7 +8916,7 @@ ACLs/ACEs carefully consider whether or not to switch.</strong>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-12 13:32:57 CDT
+Last updated 2018-01-25 17:04:41 CST
 </div>
 </div>
 </body>

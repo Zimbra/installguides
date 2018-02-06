@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.6">
-<meta name="author" content="v8.8.3, 2017-09-07">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<meta name="author" content="v8.8.6, 2017-11-09">
 <title>Zimbra Collaboration Performing a Single-Server Installation</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
@@ -522,7 +522,7 @@ table.CodeRay td.code>pre{padding:0}
 <div id="header">
 <h1>Zimbra Collaboration Performing a Single-Server Installation</h1>
 <div class="details">
-<span id="author" class="author">v8.8.3, 2017-09-07</span><br>
+<span id="author" class="author">v8.8.6, 2017-11-09</span><br>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -613,8 +613,8 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel2">
 <li><a href="#Zimbra_Connector_for_Outlook">Zimbra Connector for Outlook (Network Edition Only)</a></li>
 <li><a href="#Zimbra_Mobile">Zimbra Mobile (Network Edition Only)</a></li>
-<li><a href="#Zimbra_Touch_Client"><strong>Deprecated</strong> Zimbra Touch Client (Network Edition Only)</a></li>
-<li><a href="#BES"><strong>Deprecated</strong> Zimbra Connector for BlackBerry Enterprise Server (Network Edition Only)</a></li>
+<li><a href="#Zimbra_Touch_Client">Zimbra Touch Client (Network Edition Only)</a></li>
+<li><a href="#BES">Zimbra Connector for BlackBerry Enterprise Server (Network Edition Only)</a></li>
 <li><a href="#Available_Languages">Available Languages</a>
 <ul class="sectlevel3">
 <li><a href="#end_user_translations">End User Translations</a></li>
@@ -1525,6 +1525,25 @@ ZCS 8.7.
 </table>
 </div>
 </li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+By default Zimbra Proxy is configured to perform strict server name enforcement of the HTTP 'Host' header sent by clients for new installs.  Strict server name enforcement may be disabled during the
+post-install configuration process in the Zimbra Proxy
+configuration section or using the <code>zimbraReverseProxyStrictServerNameEnabled</code> configuration
+option. Please see the Zimbra Proxy section of the administration guide for more details.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><strong>Zimbra Memcached:</strong> This package is automatically selected when the
 <strong>Zimbra-Proxy</strong> package is installed and provides access to <code>Memcached</code>.</p>
@@ -2665,7 +2684,7 @@ default is <strong>TRUE</strong>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Enable version update notifications.</strong></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
 <p>This enables automatic notification when updates are available
-when this is set to TRUE.<br></p>
+when this is set to <strong>TRUE</strong>.<br></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2775,10 +2794,11 @@ own independent server</p></td>
 <div class="sect3">
 <h4 id="imapd_config">IMAPD configuration</h4>
 <div class="paragraph">
-<p>IMAPD is an external IMAP[S] service that may be used as a
-replacement for the embedded IMAP[S] service that runs inside of
-<code>mailboxd</code>.  It would normally not be required with a single-server
-installation.</p>
+<p>IMAPD is an external IMAP[S] service that may be used as a replacement
+for the embedded IMAP[S] service that runs inside of <code>mailboxd</code>. It is
+recommended for use when the IMAP(S) traffic for a given installation
+is overloading the mailbox servers and is not recommended with a
+single-server installation.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -2800,9 +2820,9 @@ installation.</p>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">mailbox server or<br>
 independent server</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add to upstream IMAP Servers?:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add to upstream IMAP Servers?</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>default <code>no</code>.  If <code>yes</code>, the
+<p>default <strong>no</strong>.  If <strong>yes</strong>, the
 following global config settings will be applied:</p>
 </div>
 <div class="openblock">
@@ -2869,13 +2889,13 @@ the following commands:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="bash">root@mailhost:/tmp# tar xzvf zcs*.tgz
-zcs-NETWORK-8.8.3_GA_1872.UBUNTU16_64.20170905143325/
-zcs-NETWORK-8.8.3_GA_1872.UBUNTU16_64.20170905143325/packages/
+zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/
+zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/packages/
 .
 .
 .
-zcs-NETWORK-8.8.3_GA_1872.UBUNTU16_64.20170905143325/install.sh
-zcs-NETWORK-8.8.3_GA_1872.UBUNTU16_64.20170905143325/README.txt</code></pre>
+zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/install.sh
+zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/README.txt</code></pre>
 </div>
 </div>
 </div>
@@ -2897,8 +2917,8 @@ but highly recommended.
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="bash">root@zimbraiop:/tmp/# cd zcs-NETWORK-8.8.3_GA_1872.UBUNTU16_64.20170905143325/
-root@zimbraiop:/tmp/zcs-NETWORK-8.8.3_GA_1872.UBUNTU16_64.20170905143325# ./install.sh
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">root@zimbraiop:/tmp/# cd zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/
+root@zimbraiop:/tmp/zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615# ./install.sh
 
 Operations logged to /tmp/install.log.y1YeCSI5
 
@@ -3473,7 +3493,7 @@ setting, <code>SYSLOGD_options="-r -m 0"</code></p>
 <div class="sect2">
 <h3 id="_ephemeral_data_migration">Ephemeral Data Migration</h3>
 <div class="paragraph">
-<p>Versions of Zimbra prior to 8.8.3 stored
+<p>Versions of Zimbra prior to 8.8.6 stored
 <em>ephemeral data</em> in <em>LDAP</em>.  Examples of <em>ephemeral data</em> include:</p>
 </div>
 <div class="ulist">
@@ -3490,7 +3510,7 @@ setting, <code>SYSLOGD_options="-r -m 0"</code></p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Zimbra Collaboration version 8.8.3 introduced the ability to
+<p>Zimbra Collaboration version 8.8.6 introduced the ability to
 store <em>ephemeral data</em> in an external service such as
 <a href="http://ssdb.io/">SSDB</a>. This is an optional feature; however, it
 can improve <em>LDAP</em> performance and stability.</p>
@@ -3937,9 +3957,6 @@ Open Source Edition. Check the Zimbra Open Source Downloads page on
 <div class="ulist">
 <ul>
 <li>
-<p>VMware vSphere 6.x</p>
-</li>
-<li>
 <p>VMware vSphere 5.x</p>
 </li>
 <li>
@@ -3983,11 +4000,11 @@ Open Source Edition. Check the Zimbra Open Source Downloads page on
 The <code>nc</code> utility must be installed prior to installation or upgrading.</p>
 </div>
 <div class="paragraph">
-<p>For Ubuntu systems, disable <strong>AppArmor</strong> and verify that the
+<p>For SUSE and Ubuntu systems, disable <strong>AppArmor</strong> and verify that the
 AppArmor service is not running before installing Zimbra Collaboration.</p>
 </div>
 <div class="paragraph">
-<p>For Red Hat Enterprise operating systems, the
+<p>For Red Hat Enterprise, Fedora Core and SUSE operating systems, the
 server must also have the following installed:</p>
 </div>
 <div class="ulist">
@@ -4066,7 +4083,8 @@ server must also have the following installed:</p>
 <p>The following operating system/browser combinations are supported:</p>
 </div>
 <div class="paragraph">
-<p><strong>Windows Vista SP 2, Windows 7, Windows 8 or Windows 10 with one of the following:</strong></p>
+<p>Windows Vista SP 2, Windows 7, Windows 8 or Windows 10 with
+one of the following:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4105,15 +4123,47 @@ server must also have the following installed:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>'''Mac OS X 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, 10.11 or 10.12 with one of the following:'''
-* Firefox
-* Safari
-* Chrome</p>
+<p>Mac OS X 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, or 10.11 with one of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The latest stable release of:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Firefox</p>
+</li>
+<li>
+<p>Safari</p>
+</li>
+<li>
+<p>Google Chrome</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>'''Linux with the latest stable release of one of the following:'''
-* Firefox
-* Google Chrome</p>
+<p>Linux (Red Hat, Ubuntu, Fedora, or SUSE) with one of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The latest stable release of:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Firefox</p>
+</li>
+<li>
+<p>Google Chrome</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div></div></td>
 </tr>
 <tr>
@@ -4172,7 +4222,8 @@ server must also have the following installed:</p>
 <p>The following operating system/browser combinations are supported:</p>
 </div>
 <div class="paragraph">
-<p><strong>Windows Vista SP 2, Windows 7, Windows 8 or Windows 10 with one of the following:</strong></p>
+<p>Windows Vista SP 2, Windows 7, Windows 8 or Windows 10 with
+one of the following:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4211,15 +4262,47 @@ server must also have the following installed:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>'''Mac OS X 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, 10.11 or 10.12 with one of the following:'''
-* Firefox
-* Safari
-* Chrome</p>
+<p>Mac OS X 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, or 10.11 with one of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The latest stable release of:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Firefox</p>
+</li>
+<li>
+<p>Safari</p>
+</li>
+<li>
+<p>Google Chrome</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>'''Linux with the latest stable release of one of the following:'''
-* Firefox
-* Google Chrome</p>
+<p>Linux (Red Hat, Ubuntu, Fedora, or SUSE) with one of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The latest stable release of:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Firefox</p>
+</li>
+<li>
+<p>Google Chrome</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div></div></td>
 </tr>
 <tr>
@@ -4253,11 +4336,19 @@ server must also have the following installed:</p>
 <div class="paragraph">
 <p>Operating system POP/IMAP combinations</p>
 </div>
-<div class="paragraph">
-<p>Windows Vista SP 2, Windows 7, Windows 8 or Windows 10 with one of the following:*
-* Microsoft Outlook 2010, 2013 or 2016
-* Any Linux distribution with Thunderbird
-* Mac OS X 10.x with Apple Mail</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Windows Vista SP 2, Windows 7 with Outlook Express 6, Outlook
+2007 and above (MAPI), Thunderbird</p>
+</li>
+<li>
+<p>Fedora Core 4 or later with Thunderbird</p>
+</li>
+<li>
+<p>Mac OS X 10.4 or later with Apple Mail</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p><strong>Accessibility and Screen Readers</strong> Zimbra recommends that customers
@@ -4272,7 +4363,7 @@ improving the accessibility of this interface.</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-If users are presently using IE 9 or 10, Zimbra strongly recommends that they upgrade
+If users are presently using IE 6, Zimbra strongly recommends that they upgrade
 to the latest version of Internet Explorer for optimal performance with ZWC.
 </td>
 </tr>
@@ -4290,7 +4381,7 @@ to the latest version of Internet Explorer for optimal performance with ZWC.
 <p>Outlook 2011/2016 (MAC only)</p>
 </li>
 <li>
-<p>Apple Desktop Clients (OS X, 10.x)</p>
+<p>Apple Desktop Clients (OS X, 10.8+)</p>
 </li>
 </ul>
 </div>
@@ -4300,7 +4391,7 @@ to the latest version of Internet Explorer for optimal performance with ZWC.
 <div class="ulist">
 <ul>
 <li>
-<p>Exchange 2010, 2013 or 2016</p>
+<p>Exchange 2007+</p>
 </li>
 </ul>
 </div></div></td>
@@ -4341,7 +4432,7 @@ to the latest version of Internet Explorer for optimal performance with ZWC.
 <p>Windows 7</p>
 </li>
 <li>
-<p>Vista</p>
+<p>Vista with SP2</p>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -4349,7 +4440,7 @@ to the latest version of Internet Explorer for optimal performance with ZWC.
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-Windows XP is deprecated. The 8.0.x series of Zimbra Collaboration is the last release to support
+Windows XP is deprecated. The 8.x series of Zimbra Collaboration is the last release to support
 Microsoft Outlook 2003 and Microsoft Windows XP
 </td>
 </tr>
@@ -4370,16 +4461,14 @@ Microsoft Outlook 2003 and Microsoft Windows XP
 <p>Outlook 2013: 32-bit and 64-bit editions of Microsoft Outlook are supported.</p>
 </li>
 <li>
-<p>Outlook 2010: Client computers must have Microsoft Office Outlook 2010 SP2 or later installed. Important: Outlook 2010 is deprecated: The 8.8 series of Zimbra Collaboration is the last release to support Microsoft Outlook 2010</p>
+<p>Outlook 2010: 32-bit and 64-bit editions of Microsoft Outlook are supported.</p>
 </li>
 <li>
-<p>Outlook 2007: Client computers must have Microsoft Office Outlook 2007 SP2 or later installed. Important: Outlook 2007 is deprecated: The 8.6 series of Zimbra Collaboration is the last release to support Microsoft Outlook 2007</p>
+<p>Outlook 2007: Client computers must have Microsoft Office Outlook 2007
+SP3 or later installed.</p>
 </li>
 <li>
-<p>Outlook 2003: Client computers must have Microsoft Office Outlook 2003 SP3 or later installed. Important: Outlook 2003 is deprecated: The 8.0.x series of Zimbra Collaboration is the last release to support Microsoft Outlook 2003</p>
-</li>
-</ul>
-</div>
+<p>Outlook 2003: Client computers must have Microsoft Office Outlook 2003 SP3 or later installed.</p>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -4387,11 +4476,16 @@ Microsoft Outlook 2003 and Microsoft Windows XP
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
+Outlook 2007 is deprecated. The 8.6 series of Zimbra Collaboration is the last release to
+support Microsoft Outlook 2007.
 Outlook 2003 is deprecated. The 8.0.x series of Zimbra Collaboration is the last release to
 support Microsoft Outlook 2003 and Microsoft Windows XP.
 </td>
 </tr>
 </table>
+</div>
+</li>
+</ul>
 </div></div></td>
 </tr>
 </tbody>
@@ -4411,22 +4505,22 @@ including:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>iOS6, iOS7, iOS8, iOS9, iOS10</p>
+<p>iOS6, iOS7, iOS8, iOS9</p>
 </li>
 <li>
-<p>Android 4.x, 5.x, 6.x, 7.x and 8.x</p>
+<p>Android 2.3 and above</p>
 </li>
 <li>
-<p>Windows OS</p>
+<p>Windows Mobile 6.0 and above</p>
 </li>
 <li>
-<p>Microsoft Outlook using Exchange ActiveSync (EAS)</p>
+<p>Microsoft Outlook using the Exchange ActiveSync (EAS)</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Zimbra_Touch_Client"><strong>Deprecated</strong> Zimbra Touch Client (Network Edition Only)</h3>
+<h3 id="Zimbra_Touch_Client">Zimbra Touch Client (Network Edition Only)</h3>
 <hr>
 <div class="paragraph">
 <p>Supported devices for the Zimbra Touch Client include:</p>
@@ -4444,7 +4538,7 @@ Samsung Galaxy S® III, Samsung Galaxy S® 4, Galaxy Nexus™</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="BES"><strong>Deprecated</strong> Zimbra Connector for BlackBerry Enterprise Server (Network Edition Only)</h3>
+<h3 id="BES">Zimbra Connector for BlackBerry Enterprise Server (Network Edition Only)</h3>
 <div class="paragraph">
 <p>Zimbra Connector for BlackBerry Enterprise Server (ZCB) provides seamless,
 real-time synchronization of Zimbra user mailbox data to BlackBerry devices.</p>
@@ -4479,11 +4573,12 @@ real-time synchronization of Zimbra user mailbox data to BlackBerry devices.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Web Client</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Application/UI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Catalan (EU), Chinese (Simplified PRC, Traditional HK, Taiwan),
-Danish, Dutch, English (AU, UK, US), French, French Canadian, German,
-Hindi, Hungarian, Italian, Japanese, Korean, Malay, Norwegian, Polish, Portuguese
-(Brazil), Portuguese (Portugal), Romanian, Russian, Spanish, Swedish,
-Thai, Turkish, Ukrainian</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Chinese
+(Simplified PRC and Traditional HK), Danish, Dutch, English (AU, UK,
+US), French, French Canadian, German, Hindi, Hungarian, Italian,
+Japanese, Korean, Malay, Polish, Portuguese (Brazil), Portuguese
+(Portugal), Romanian, Russian, Spanish, Swedish, Thai, Turkish,
+Ukrainian</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Web Client - Online Help (HTML)</p></td>
@@ -4500,9 +4595,9 @@ English, Spanish, French, Italian, Japanese, German, Portuguese
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Connector for Microsoft Outlook</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Installer + Application/UI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Catalan (EU), Chinese (Simplified PRC, Traditional HK, Taiwan),
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Chinese (Simplified PRC and Traditional HK),
 Danish, Dutch, English (AU, UK, US), French, French Canadian, German,
-Hindi, Hungarian, Italian, Japanese, Korean, Malay, Norwegian, Polish, Portuguese
+Hindi, Hungarian, Italian, Japanese, Korean, Malay, Polish, Portuguese
 (Brazil), Portuguese (Portugal), Romanian, Russian, Spanish, Swedish,
 Thai, Turkish, Ukrainian</p></td>
 </tr>
@@ -4532,11 +4627,11 @@ Documentation</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Admin Console</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Catalan (EU), Chinese (Simplified PRC, Traditional HK, Taiwan),
-Danish, Dutch, English (AU, UK, US), French, French Canadian, German,
-Hindi, Hungarian, Italian, Japanese, Korean, Malay, Norwegian, Polish, Portuguese
-(Brazil), Portuguese (Portugal), Romanian, Russian, Spanish, Swedish,
-Thai, Turkish, Ukrainian</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Arabic, Basque (EU), Chinese
+(Simplified PRC and Traditional HK), Danish, Dutch, English (AU, UK,
+US), French, French Canadian, German, Hindi, Hungarian, Italian,
+Japanese, Korean, Malay, Polish, Portuguese (Brazil), Portuguese
+(Portugal), Romanian, Russian, Spanish, Swedish, Turkish, Ukrainian</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Zimbra Admin Console Online Help (HTML)</p></td>
@@ -4694,7 +4789,7 @@ Furthermore, the switch might lead to an abrupt increase in the number of connec
 <p>Device requiring a restart.</p>
 </li>
 <li>
-<p>Device not synchronising until the user re-enter its username and password in the account&#8217;s settings.</p>
+<p>Device not synchronising until the user re-enters their username and password in the account&#8217;s settings.</p>
 </li>
 </ul>
 </div>
@@ -4823,7 +4918,7 @@ ACLs/ACEs carefully consider whether or not to switch.</strong>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-12 13:32:57 CDT
+Last updated 2018-01-25 17:04:41 CST
 </div>
 </div>
 </body>
