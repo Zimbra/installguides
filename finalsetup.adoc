@@ -67,7 +67,6 @@ for more information
 = Final Set-Up (optional)
 :toc:
 
-:leveloffset: +1
-include::ephemeral.adoc[]
-:leveloffset: -1
+include::ephemeral.adoc[leveloffset=+1]
 
+include::zimbra-x-webclient.adoc[leveloffset=+1]
