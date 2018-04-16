@@ -5,10 +5,10 @@ Below are the steps to setup {product-short} X Webclient on {product-short}
 
 . Run {product-short} X Webclient on any of the mailbox server
 
-	* Make sure latest version of `NodeJS` and `NPM` is installed
+	* Make sure latest version of **NodeJS** and **NPM** is installed
 	* In case of multinode environment make sure you are selecting a node which is currently working as a mailbox node
 	* Clone respository of {product-short} X Webclient by executing `git clone https://github.com/Zimbra/zm-x-web.git`
-	* If you want to do any customizations on top of {product-short} X Webclient then you can do as shown here https://github.com/Zimbra/zm-x-web/wiki/Customisation
+	* If you want to do any customizations on top of {product-short} X Webclient then you can do as shown here https://github.com/Zimbra/zm-x-web/wiki/Customising-Zimbra-X-Webclient[Customising-Zimbra-X-Webclient]
 	* Install npm modules by executing `npm install`
 	* Create a production build by executing `npm run build`
 	* `PORT=9090 npm run serve` (We are specifying port 9090 to make sure it doesn't conflict with other used ports in {product-short})
