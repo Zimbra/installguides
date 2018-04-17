@@ -3,14 +3,14 @@
 Optionally you can install {product-short} X Webclient, which is currently in beta stage and you can provide early feedback to {product-short}.
 Below are the steps to setup {product-short} X Webclient on {product-short}
 
-. Run {product-short} X Webclient on any of the mailbox server
+. Run {product-short} X Webclient on any of the mailbox servers
 
 	* Make sure latest version of **NodeJS** and **NPM** is installed
 	* In case of multinode environment make sure you are selecting a node which is currently working as a mailbox node
 	* Clone respository of {product-short} X Webclient by executing `git clone https://github.com/Zimbra/zm-x-web.git`
 	* If you want to do any customizations on top of {product-short} X Webclient then you can do as shown here https://github.com/Zimbra/zm-x-web/wiki/Customising-Zimbra-X-Webclient[Customising-Zimbra-X-Webclient]
 	* Install npm modules by executing `npm install`
-	* Create a production build by executing `npm run build`
+	* Create a production build by executing `npm run build`, if someone wants to use a different client or a customised client directory then it should be specified by using `CLIENT=client_name` before the command to make sure customisations are included in build
 	* `PORT=9090 npm run serve` (We are specifying port 9090 to make sure it doesn't conflict with other used ports in {product-short})
 
 . Configure nginx to route requests properly
@@ -26,13 +26,26 @@ Below are the steps to setup {product-short} X Webclient on {product-short}
 		zmauth;
 	}
 	
-	* Navigate to `conf/nginx/includes/` to directory
+	* Navigate to the `conf/nginx/includes/` directory
 	* Copy `nginx.conf.web.admin.default` to same directory and name it as `nginx.conf.web.zimbrax.default`
-	* Remove all location blocks from `nginx.conf.web.zimbrax.default` file, and add location blocks shown below
-	* After this restart proxy by `zmproxyctl restart`
-	* Check if {product-short} X Webclient is working on https://<hostname_of_proxy>:9090/
+	* Remove all location blocks from `nginx.conf.web.zimbrax.default` file, and add location blocks shown in <<location_blocks>>
 
-[source%nowrap,bash]
+. There are two ways from which {product-short} X Webclient can be configured for access
+
+	* Use PORT number to access {product-short} X Webclient
+		- make sure selected port is not conflicting with proxy's open ports as described in https://wiki.zimbra.com/wiki/Ports[Proxy Ports Wiki]), to be on safer side it is recommended to use `9090` port
+		- Update port number in listen block on second line of server block to `9090` (or any selected port)
+		- Restart proxy by `zmproxyctl restart`
+		- Check if {product-short} X Webclient is working on https://<hostname_of_proxy>:9090/
+
+	* Use subdomain to access {product-short} X Webclient
+		- Update port number in listen block on second line of server block to `443`, this will make sure subdomain is listening on default ssl port
+		- add `server_name` directive under listen directive and specify subdomain which we need to use to listen to requests `server_name     <subdomain>.<hostname_of_proxy>`
+		- Restart proxy by `zmproxyctl restart`
+		- Check if {product-short} X Webclient is working on https://<subdomain>.<hostname_of_proxy>/
+
+[[location_blocks]]
+[source%nowrap]
 ----
 	location /
 	{
