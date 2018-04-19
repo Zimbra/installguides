@@ -13,8 +13,8 @@ Below are the steps to setup {product-short} X Webclient on {product-short}
 	* Create a production build by executing `npm run build`.  If customisations were made in a client directory other that `default`, e.g. in the `client/foo` directory, then specify the client directory name as an environment variable on the command line like `CLIENT=foo npm run build`
 	* `PORT=9090 npm run serve` (We are specifying port 9090 to make sure it doesn't conflict with other used ports in {product-short})
 
-. Configure nginx to route requests properly
-	* add below line in `conf/nginx/templates/nginx.conf.web.template` file at the end of file where other files are getting included
+. Configure nginx to route requests properly on proxy server
+	* add below line in `/opt/zimbra/conf/nginx/templates/nginx.conf.web.template` file at the end of file where other files are getting included
 
 	${web.https.enabled}include ${core.includes}/${core.cprefix}.web.zimbrax.default;
 
@@ -26,7 +26,7 @@ Below are the steps to setup {product-short} X Webclient on {product-short}
 		zmauth;
 	}
 	
-	* Navigate to the `conf/nginx/includes/` directory
+	* Navigate to the `/opt/zimbra/conf/nginx/includes/` directory
 	* Copy `nginx.conf.web.admin.default` to same directory and name it as `nginx.conf.web.zimbrax.default`
 	* Remove all location blocks from `nginx.conf.web.zimbrax.default` file, and add location blocks shown in <<location_blocks>>
 
@@ -43,6 +43,9 @@ Below are the steps to setup {product-short} X Webclient on {product-short}
 		- add `server_name` directive under listen directive and specify subdomain which we need to use to listen to requests `server_name     <subdomain>.<hostname_of_proxy>`
 		- Restart proxy by `zmproxyctl restart`
 		- Check if {product-short} X Webclient is working on https://<subdomain>.<hostname_of_proxy>/
+
+[IMPORTANT]
+Do not access {product-short} X Webclient using mailbox node url, as it will not work. Users should access it using proxy url only.
 
 [[location_blocks]]
 [source%nowrap]
