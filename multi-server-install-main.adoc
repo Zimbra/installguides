@@ -1728,7 +1728,6 @@ display statistics.
 . On the logger monitor host, you must enable either *syslog* or *rsyslog*
 to log statistics from remote machines:
 +
---
 
 For *syslog*:
 
@@ -1907,10 +1906,9 @@ accessed from the administration console Download page and instruction
 guides are available from the Administration Console Help Desk.
 
 
-:leveloffset: +2
-include::ephemeral.adoc[]
-:leveloffset: -2
+include::ephemeral.adoc[leveloffset=+2]
 
+include::zimbra-x-webclient.adoc[leveloffset=+2]
 
 == Uninstalling Zimbra Collaboration
 

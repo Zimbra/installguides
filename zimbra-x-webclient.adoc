@@ -1,0 +1,109 @@
+= Installing {product-short} X Webclient
+
+Optionally you can install {product-short} X Webclient, which is currently in beta stage and you can provide early feedback to {product-short}.
+Below are the steps to setup {product-short} X Webclient on {product-short}
+
+. Run {product-short} X Webclient on any of the mailbox servers
+
+	* Make sure latest version of **NodeJS** and **NPM** is installed
+	* In case of multinode environment make sure you are selecting a node which is currently working as a mailbox node
+	* Clone respository of {product-short} X Webclient by executing `git clone https://github.com/Zimbra/zm-x-web.git`
+	* If you want to do any customizations on top of {product-short} X Webclient then you can do as shown here https://github.com/Zimbra/zm-x-web/wiki/Customising-Zimbra-X-Webclient[Customising-Zimbra-X-Webclient]
+	* Install npm modules by executing `npm install`
+	* Create a production build by executing `npm run build`.  If customisations were made in a client directory other that `default`, e.g. in the `client/foo` directory, then specify the client directory name as an environment variable on the command line like `CLIENT=foo npm run build`
+	* `PORT=9090 npm run serve` (We are specifying port 9090 to make sure it doesn't conflict with other used ports in {product-short})
+
+. Configure nginx to route requests properly on proxy server
+	* add below line in `/opt/zimbra/conf/nginx/templates/nginx.conf.web.template` file at the end of file where other files are getting included
+
+	${web.https.enabled}include ${core.includes}/${core.cprefix}.web.zimbrax.default;
+
+	* add below block as an extra upstream block, this should contain hostname of mailbox node which contains zm-x-web, make sure to give correct port which was used when executing npm run serve command above
+
+	upstream zimbra_x_webclient
+	{
+		server    <hostname_of_mailbox_which_hosts_zimbra_x_webclient>:9090 fail_timeout=10s version=8.8.8_GA_1231;
+		zmauth;
+	}
+	
+	* Navigate to the `/opt/zimbra/conf/nginx/includes/` directory
+	* Copy `nginx.conf.web.admin.default` to same directory and name it as `nginx.conf.web.zimbrax.default`
+	* Remove all location blocks from `nginx.conf.web.zimbrax.default` file, and add location blocks shown in <<location_blocks>>
+
+. There are two ways from which {product-short} X Webclient can be configured for access
+
+	* Use PORT number to access {product-short} X Webclient
+		- make sure selected port is not conflicting with proxy's open ports as described in https://wiki.zimbra.com/wiki/Ports[Proxy Ports Wiki]), to be on safer side it is recommended to use `9090` port
+		- Update port number in listen block on second line of server block to `9090` (or any selected port)
+		- Restart proxy by `zmproxyctl restart`
+		- Check if {product-short} X Webclient is working on https://<hostname_of_proxy>:9090/
+
+	* Use subdomain to access {product-short} X Webclient
+		- Update port number in listen block on second line of server block to `443`, this will make sure subdomain is listening on default ssl port
+		- add `server_name` directive under listen directive and specify subdomain which we need to use to listen to requests `server_name     <subdomain>.<hostname_of_proxy>`
+		- Restart proxy by `zmproxyctl restart`
+		- Check if {product-short} X Webclient is working on https://<subdomain>.<hostname_of_proxy>/
+
+[IMPORTANT]
+Do not access {product-short} X Webclient using mailbox node url, as it will not work. Users should access it using proxy url only.
+
+[[location_blocks]]
+[source%nowrap]
+----
+	location /
+	{
+		# Rewrite url for favicon icon
+		rewrite ^/favicon.ico$ /assets/favicon.ico break;
+
+		# Proxy to Zimbra X Webclient Upstream
+		proxy_pass          https://zimbra_x_webclient;
+
+		# Cache only specific files listed below
+		expires off;
+
+		# Cache assets for 10 mins
+		location /assets/**
+		{
+			expires 10m;
+		}
+
+		# Cache chunks for max time as chunk number changes on every new build
+		location /**/*.chunk.*
+		{
+			expires max;
+		}
+
+		# For audit
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+		set $relhost $host;
+		if ($host = '') {
+			set $relhost $server_addr;
+		}
+		proxy_set_header Host            $relhost:9090;
+	}
+
+	location ^~ /@zimbra
+	{
+		# Rewrite url to remove @zimbra token
+		rewrite ^/@zimbra/(.*)$ /$1 break;
+
+		# Proxy to Zimbra Upstream
+		proxy_pass          https://zimbra_ssl;
+
+		# Don't cache data requests
+		expires off;
+
+		# For audit
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+		# Remove referer header, as csrf check fails with different referer
+		proxy_set_header Referer "";
+
+		set $relhost $host;
+		if ($host = '') {
+			set $relhost $server_addr;
+		}
+		proxy_set_header Host            $relhost;
+	}
+----
