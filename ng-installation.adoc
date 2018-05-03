@@ -119,7 +119,7 @@ Admin NG is not enabled by default during upgrades from a version earlier than 8
 
 * Run the following command as the "zimbra" user on any mailbox server:
 
-  zmprov mcf zimbraNetworkAdminNGEnable TRUE
+  zmprov mcf zimbraNetworkAdminNGEnabled TRUE
 
 
 *To initialize Admin NG:*
