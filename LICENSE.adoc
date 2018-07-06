@@ -1,7 +1,7 @@
 
-image:https://i.creativecommons.org/l/by-sa/4.0/88x31.png[CC BY-SA] Synacor, Inc., 2016-2017
+image:https://i.creativecommons.org/l/by-sa/4.0/88x31.png[CC BY-SA] Synacor, Inc., 2016-{copyright-year}
 
-(C) 2016-2017 by Synacor, Inc.
+(C) 2016-{copyright-year} by Synacor, Inc.
 
 This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
 International License unless another license agreement between you and
