@@ -68,10 +68,6 @@ feedback and suggestions.
   about the product and what you would like to see in the product.
   If you prefer, post your ideas to the Zimbra Forum.
 
-If you encounter problems with this software, visit
-https://bugzilla.zimbra.com and submit a bug report.
-Make sure you provide enough detail so that the bug can be easily duplicated.
-
 == {product-short} Port Mapping
 
 === External access ===
