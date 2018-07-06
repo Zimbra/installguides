@@ -111,8 +111,15 @@ For Ubuntu 14 and Ubuntu 12:
 
 a|Administrator Computers +
  +
+// HACK because including a NOTE in a narrow table column causes problems for
+// the prawn layout engine for PDFs.
+ifdef::backend-pdf[]
+NOTE: Other configurations may work.
+endif::[]
+ifndef::backend-pdf[]
 [NOTE]
- Other configurations may work.
+Other configurations may work.
+endif::[]
 |The following operating system/browser combinations are supported:
 
 Windows 7 SP1, Windows 8 or Windows 10 with
@@ -145,8 +152,15 @@ Linux (Red Hat, Ubuntu, Fedora, or SUSE) with one of the following:
 
 a|*End User Computers using {product-short} Web Client* +
  +
+// HACK because including a NOTE in a narrow table column causes problems for
+// the prawn layout engine for PDFs.
+ifdef::backend-pdf[]
+NOTE: Other configurations may work.
+endif::[]
+ifndef::backend-pdf[]
 [NOTE]
- Other configurations may work.
+Other configurations may work.
+endif::[]
 |*For {product-short} Web Client - Advanced & Standard version*
 
 Minimum
