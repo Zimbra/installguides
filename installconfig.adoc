@@ -20,7 +20,7 @@ process. The table below describes the menu options.
 
 3+^|*Main Menu*
 
-.16+.^|All
+.19+.^|All
 | Common Configuration
 | Select the sub-menu for
   <<common_config_options,Common Configuration Options>>
