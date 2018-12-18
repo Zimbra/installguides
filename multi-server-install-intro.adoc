@@ -68,10 +68,6 @@ feedback and suggestions.
   about the product and what you would like to see in the product.
   If you prefer, post your ideas to the Zimbra Forum.
 
-If you encounter problems with this software, visit
-https://bugzilla.zimbra.com and submit a bug report.
-Make sure you provide enough detail so that the bug can be easily duplicated.
-
 == {product-short} Port Mapping
 
 === External access ===
@@ -118,10 +114,12 @@ These are ports typically only used by the Zimbra system itself.
 |7993|imaps|mailbox|Backend IMAP over TLS (if proxy configured); zimbraImapSSLBindAddress
 |7995|pop3s|mailbox|Backend POP3 over TLS (if proxy configured); zimbraPop3SSLBindAddress
 |8080|http|mailbox|Backend HTTP (if proxy configured on same host); zimbraMailBindAddress
+|8143|imap|imapd|IMAP server running independent of the mailboxd process
 |8443|https|mailbox|Backend HTTPS (if proxy configured on same host); zimbraMailSSLBindAddress
 |8465|milter|mta/opendkim|OpenDKIM milter service; localhost
 |8735|zextras|mailbox|internal mailbox to mailbox communication.
 |8736|zextras|mailbox|distributed configuration
+|8993|imap|imapd|IMAP over TLS via IMAPD server running independent of the mailboxd process
 |10024|smtp|mta/amavisd|to amavis from postfix; localhost
 |10025|smtp|mta/master|opendkim; localhost
 |10026|smtp|mta/amavisd|"ORIGINATING" policy; localhost

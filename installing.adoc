@@ -67,7 +67,7 @@ Checking for existing installation...
     zimbra-proxy...NOT FOUND
     zimbra-archiving...NOT FOUND
     zimbra-core...NOT FOUND
-    
+....    
 --
 
 3. The {product-short} software agreement displays. Read the agreement and when +
@@ -79,7 +79,7 @@ and you must accept each section of the license agreement.
 4. `Use {product-short}'s package repository [Y]` +
 displays, press `enter` to continue. Your system will be configured to add
 the {product-short} packaging repository for *yum* or *apt-get* as appropriate
-so it can install the {product-short} 3rd party packages. 
+so it can install the {product-short} 3rd party packages.
 {product-short} IMAPD is meant to be installed on a multi-server environment, with
 hundreds of thousands of users, and it's still a Beta Release. {product-short} recommends
 to only install it for demo and evaluation purposes.*
@@ -152,8 +152,8 @@ Install zimbra-network-modules-ng [Y] y
 
 Network Modules NG needs to bind on TCP ports 8735 and 8736 in order
 to operate, for inter-instance communication.
-Please verify no other service listens on these ports and that 
-ports 8735 and 8736 are properly filtered from public access 
+Please verify no other service listens on these ports and that
+ports 8735 and 8736 are properly filtered from public access
 by your firewall.
 
 Please remember that the Backup NG module needs to be initialized in order
@@ -239,45 +239,45 @@ Set the correct time zone.
 ....
 Main menu
 
-   1) Common Configuration:                                                  
-   2) zimbra-ldap:                             Enabled                       
-   3) zimbra-logger:                           Enabled                       
-   4) zimbra-mta:                              Enabled                       
-   5) zimbra-snmp:                             Enabled                       
-   6) zimbra-store:                            Enabled                       
-        +Create Admin User:                    yes                           
-        +Admin user to create:                 admin@zimbra.io               
-******* +Admin Password                        UNSET                         
+   1) Common Configuration:
+   2) zimbra-ldap:                             Enabled
+   3) zimbra-logger:                           Enabled
+   4) zimbra-mta:                              Enabled
+   5) zimbra-snmp:                             Enabled
+   6) zimbra-store:                            Enabled
+        +Create Admin User:                    yes
+        +Admin user to create:                 admin@zimbra.io
+******* +Admin Password                        UNSET
         +Anti-virus quarantine user:           virus-quarantine.bcsk28oyoe@zimbra.io
-        +Enable automated spam training:       yes                           
-        +Spam training user:                   spam.dqxmkmf5tv@zimbra.io     
-        +Non-spam(Ham) training user:          ham.pcq8excwph@zimbra.io      
-        +SMTP host:                            z883.zimbra.io                
-        +Web server HTTP port:                 8080                          
-        +Web server HTTPS port:                8443                          
-        +Web server mode:                      https                         
-        +IMAP server port:                     7143                          
-        +IMAP server SSL port:                 7993                          
-        +POP server port:                      7110                          
-        +POP server SSL port:                  7995                          
-        +Use spell check server:               yes                           
+        +Enable automated spam training:       yes
+        +Spam training user:                   spam.dqxmkmf5tv@zimbra.io
+        +Non-spam(Ham) training user:          ham.pcq8excwph@zimbra.io
+        +SMTP host:                            z883.zimbra.io
+        +Web server HTTP port:                 8080
+        +Web server HTTPS port:                8443
+        +Web server mode:                      https
+        +IMAP server port:                     7143
+        +IMAP server SSL port:                 7993
+        +POP server port:                      7110
+        +POP server SSL port:                  7995
+        +Use spell check server:               yes
         +Spell server URL:                     http://z883.zimbra.io:7780/aspell.php
-        +Enable version update checks:         TRUE                          
-        +Enable version update notifications:  TRUE                          
-        +Version update notification email:    admin@zimbra.io               
-        +Version update source email:          admin@zimbra.io               
-        +Install mailstore (service webapp):   yes                           
-        +Install UI (zimbra,zimbraAdmin webapps): yes                           
-******* +License filename:                     UNSET                         
+        +Enable version update checks:         TRUE
+        +Enable version update notifications:  TRUE
+        +Version update notification email:    admin@zimbra.io
+        +Version update source email:          admin@zimbra.io
+        +Install mailstore (service webapp):   yes
+        +Install UI (zimbra,zimbraAdmin webapps): yes
+******* +License filename:                     UNSET
 
-   7) zimbra-spell:                            Enabled                       
-   8) zimbra-convertd:                         Enabled                       
-   9) zimbra-proxy:                            Enabled                       
-  10) Default Class of Service Configuration:                                
-  11) Enable default backup schedule:          yes                           
-   s) Save config to file                                                    
-   x) Expand menu                                                            
-   q) Quit                   
+   7) zimbra-spell:                            Enabled
+   8) zimbra-convertd:                         Enabled
+   9) zimbra-proxy:                            Enabled
+  10) Default Class of Service Configuration:
+  11) Enable default backup schedule:          yes
+   s) Save config to file
+   x) Expand menu
+   q) Quit
 
 Address unconfigured (**) items  (? - help)
 ....

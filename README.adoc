@@ -40,6 +40,13 @@ document.
 asciidoctor -b html5 -o {version}/multi.html multi-server-install.adoc
 ----
 
+==== PDF
+
+[source,bash]
+----
+asciidoctor-pdf -a allow-uri-read -o {version}/multi-server-install.pdf multi-server-install.adoc
+----
+
 
 === Zimbra Collaboration - Performing a Single-Server Installation
 
@@ -58,7 +65,7 @@ asciidoctor -b html5 -o {version}/single.html index-single-server-install.adoc
 
 [source,bash]
 ----
-asciidoctor-pdf -a allow-uri-read -o single-server-install.pdf index-single-server-install.adoc
+asciidoctor-pdf -a allow-uri-read -o {version}/single-server-install.pdf index-single-server-install.adoc
 ----
 
 
@@ -97,7 +104,7 @@ License
 -------
 image:https://i.creativecommons.org/l/by-sa/4.0/88x31.png[CC BY-SA] Synacor, Inc., 2016-2017
 
-(C) 2016-2017 by Synacor, Inc.
+(C) 2016-2018 by Synacor, Inc.
 
 This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
 International License unless another license agreement between you and
