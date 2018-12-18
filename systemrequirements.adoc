@@ -49,15 +49,7 @@ additional space for mail storage. The other nodes require 100MB.
 * Oracle Linux 7.2
 * Oracle Linux 6.6
 * Ubuntu 16.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.7.1 and above
-* Ubuntu 14.04 LTS Server Edition (64-bit)
-* Ubuntu 12.04.4 LTS Server Edition (64-bit) *running the saucy (3.11) or
-later kernel is required. Deprecated starting Zimbra Collaboration 8.8*.
 +
-[NOTE]
-If the original install was done with
-Ubuntu 12.04.2 or earlier, manual intervention is required to switch to
-the saucy (3.11) or later kernel series.
-See https://wiki.ubuntu.com/Kernel/LTSEnablementStack for further information.
 
 |*Operating System (Open Source Edition)*
 |In addition to supporting the operating systems listed above for the
@@ -68,6 +60,7 @@ https://www.zimbra.com.
 |*Virtualization ({product-edition-commercial})*
 |The following hypervisors are supported:
 
+* VMware vSphere 6.x
 * VMware vSphere 5.x
 * VMware vSphere 4.x
 * XenServer 6.5
@@ -96,7 +89,7 @@ server must also have the following installed:
 * **libidn**. For internationalizing domain names in applications (IDNA)
 * **GMP**. GNU Multiple-Precision Library.
 
-For Ubuntu 14 and Ubuntu 12:
+For Ubuntu 16:
 
 * Sudo
 * libidn11
@@ -122,19 +115,19 @@ Other configurations may work.
 endif::[]
 |The following operating system/browser combinations are supported:
 
-Windows 7 SP1, Windows 8 or Windows 10 with
+Windows 7 SP1, Windows 8.1or Windows 10 with
 one of the following:
 
 * Microsoft support is only available for Internet Explorer 11 or Microsoft Edge
 ** IE11 and higher for Windows 7 SP1
-** IE11 and higher for Windows 8
-** IE11 or Microsoft Edge (Supported since ZCS 8.6 P4 and above) for Windows 10
+** IE11 and higher for Windows 8.1
+** IE11 or Microsoft Edge for Windows 10
 * The latest stable release of:
 ** Firefox
 ** Safari
 ** Google Chrome
 
-Mac OS X 10.6, 10.7, 10.8, 10.9, 10.10, or 10.11 with one of the following:
+MacOS 10.12 or 10.13, 10.14 with one of the following:
 
 * The latest stable release of:
 ** Firefox
@@ -175,20 +168,19 @@ Recommended
 
 The following operating system/browser combinations are supported:
 
-Windows 7 SP1, Windows 8 or Windows 10 with
+Windows 7 SP1, Windows 8.1or Windows 10 with
 one of the following:
 
 * Microsoft support is only available for Internet Explorer 11 or Microsoft Edge
 ** IE11 and higher for Windows 7 SP1
-** IE11 and higher for Windows 8
-** IE11 or Microsoft Edge (Supported since ZCS 8.6 P4 and above) for Windows 10
+** IE11 and higher for Windows 8.1
+** IE11 or Microsoft Edge for Windows 10
 * The latest stable release of:
 ** Firefox
 ** Safari
 ** Google Chrome
 
-Mac OS X 10.6, 10.7, 10.8, 10.9, 10.10, or 10.11 with one of the following:
-
+MacOS 10.12 or 10.13, 10.14 with one of the following:
 * The latest stable release of:
 ** Firefox
 ** Safari
@@ -231,7 +223,7 @@ to the latest version of Internet Explorer for optimal performance with ZWC.
 |EWS Clients
 
 * Outlook 2011/2016 (MAC only)
-* Apple Desktop Clients (OS X, 10.8+)
+* Apple Desktop Clients (MacOS 10.12+)
 
 EWS Interoperability
 
@@ -252,7 +244,7 @@ ifdef::networkeditiondoc[]
 |=======================================================================
 |*Operating System* a|
 * Windows 10
-* Windows 8
+* Windows 8.1
 * Windows 7 SP1
 +
 [IMPORTANT]
@@ -260,14 +252,11 @@ Windows 7 SP1 is in its Extended Support period until January 14, 2020. {product
 is the last release to support Microsoft Outlook 2010 and Microsoft Windows 7 SP1.
 
 |*Microsoft Outlook* a|
-* Outlook 2016: 32-bit and 64-bit editions of Microsoft Outlook are supported.
-* Outlook 2013: 32-bit and 64-bit editions of Microsoft Outlook are supported.
-* Outlook 2010: 32-bit and 64-bit editions of Microsoft Outlook are supported.
-* Office365: Click-to-run versions of Microsoft Outlook are supported. (BETA)
-+
-[IMPORTANT]
-Outlook 2007 is deprecated. The 8.6 series of Zimbra Collaboration is the last release to
-support Microsoft Outlook 2007. Support for 8.6 ends in September 2018.
+* Outlook 2019: 32-bit and 64-bit editions of Microsoft Office (new in 8.8.11), including Click to run.
+* Outlook 2016: 32-bit and 64-bit editions of Microsoft Office, including Office365 (New in 8.8.10) and Click to run versions.
+* Outlook 2013: 32-bit and 64-bit editions of Microsoft Office.
+* Outlook 2010: 32-bit and 64-bit editions of Microsoft Office (End of life: October 13, 2020.)
+
 |=======================================================================
 endif::networkeditiondoc[]
 
@@ -283,19 +272,21 @@ including:
 
 *Smartphone Operating Systems*:
 
-* iOS6, iOS7, iOS8, iOS9
+* iOS9, iOS10, iOS11
 * Android 2.3 and above
 * Windows Mobile 6.0 and above
-* Microsoft Outlook using the Exchange ActiveSync (EAS)
+* Microsoft Outlook using Exchange ActiveSync (EAS)
 
 [[Zimbra_Touch_Client]]
 == {product-short} Touch Client ({product-edition-commercial} Only)
 
 '''
+IMPORTANT: Support for the {product-short} Touch Client has ended.
+The software will continue to be available without support.
 
 Supported devices for the {product-short} Touch Client include:
 
-* iOS6+: iPad®, iPad mini®, iPhone®, iPod touch®
+* iOS9+: iPad®, iPad mini®, iPhone®, iPod touch®
 * Android 4.0+: Nexus 7, Nexus 10, Samsung Galaxy Tab™,
   Samsung Galaxy S® III, Samsung Galaxy S® 4, Galaxy Nexus™
 endif::networkeditiondoc[]
