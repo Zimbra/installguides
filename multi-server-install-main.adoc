@@ -1908,7 +1908,9 @@ guides are available from the Administration Console Help Desk.
 
 include::ephemeral.adoc[leveloffset=+2]
 
+ifdef::zimbra-x[]
 include::zimbra-x-webclient.adoc[leveloffset=+2]
+endif::zimbra-x[]
 
 == Uninstalling Zimbra Collaboration
 
