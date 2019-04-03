@@ -601,7 +601,6 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#Final_Set-Up_Optional">Final Set-Up (optional)</a>
 <ul class="sectlevel2">
 <li><a href="#_ephemeral_data_migration">Ephemeral Data Migration</a></li>
-<li><a href="#_installing_zimbra_x_webclient">Installing Zimbra X Webclient</a></li>
 </ul>
 </li>
 <li><a href="#Scanning_Attachments_in_Outgoing_Mail">Scanning Attachments in Outgoing Mail</a></li>
@@ -3523,198 +3522,6 @@ can improve <em>LDAP</em> performance and stability.</p>
 Migration of <em>ephemeral data</em> out of <em>LDAP</em> and into <em>SSDB</em>  must be
 performed after an install or upgrade has been completed.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_installing_zimbra_x_webclient">Installing Zimbra X Webclient</h3>
-<div class="paragraph">
-<p>Optionally you can install Zimbra X Webclient, which is currently in beta stage and you can provide early feedback to Zimbra.
-Below are the steps to setup Zimbra X Webclient on Zimbra</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Run Zimbra X Webclient on any of the mailbox servers</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Make sure latest version of <strong>NodeJS</strong> and <strong>NPM</strong> is installed</p>
-</li>
-<li>
-<p>In case of multinode environment make sure you are selecting a node which is currently working as a mailbox node</p>
-</li>
-<li>
-<p>Clone respository of Zimbra X Webclient by executing <code>git clone <a href="https://github.com/Zimbra/zm-x-web.git" class="bare">https://github.com/Zimbra/zm-x-web.git</a></code></p>
-</li>
-<li>
-<p>If you want to do any customizations on top of Zimbra X Webclient then you can do as shown here <a href="https://github.com/Zimbra/zm-x-web/wiki/Customising-Zimbra-X-Webclient">Customising-Zimbra-X-Webclient</a></p>
-</li>
-<li>
-<p>Install npm modules by executing <code>npm install</code></p>
-</li>
-<li>
-<p>Create a production build by executing <code>npm run build</code>.  If customisations were made in a client directory other that <code>default</code>, e.g. in the <code>client/foo</code> directory, then specify the client directory name as an environment variable on the command line like <code>CLIENT=foo npm run build</code></p>
-</li>
-<li>
-<p><code>PORT=9090 npm run serve</code> (We are specifying port 9090 to make sure it doesn&#8217;t conflict with other used ports in Zimbra)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Configure nginx to route requests properly on proxy server</p>
-<div class="ulist">
-<ul>
-<li>
-<p>add below line in <code>/opt/zimbra/conf/nginx/templates/nginx.conf.web.template</code> file at the end of file where other files are getting included</p>
-<div class="literalblock">
-<div class="content">
-<pre>${web.https.enabled}include ${core.includes}/${core.cprefix}.web.zimbrax.default;</pre>
-</div>
-</div>
-</li>
-<li>
-<p>add below block as an extra upstream block, this should contain hostname of mailbox node which contains zm-x-web, make sure to give correct port which was used when executing npm run serve command above</p>
-<div class="literalblock">
-<div class="content">
-<pre>upstream zimbra_x_webclient
-{
-	server    &lt;hostname_of_mailbox_which_hosts_zimbra_x_webclient&gt;:9090 fail_timeout=10s version=8.8.8_GA_1231;
-	zmauth;
-}</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Navigate to the <code>/opt/zimbra/conf/nginx/includes/</code> directory</p>
-</li>
-<li>
-<p>Copy <code>nginx.conf.web.admin.default</code> to same directory and name it as <code>nginx.conf.web.zimbrax.default</code></p>
-</li>
-<li>
-<p>Remove all location blocks from <code>nginx.conf.web.zimbrax.default</code> file, and add location blocks shown in <a href="#location_blocks">[location_blocks]</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>There are two ways from which Zimbra X Webclient can be configured for access</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Use PORT number to access Zimbra X Webclient</p>
-<div class="ulist">
-<ul>
-<li>
-<p>make sure selected port is not conflicting with proxy&#8217;s open ports as described in <a href="https://wiki.zimbra.com/wiki/Ports">Proxy Ports Wiki</a>), to be on safer side it is recommended to use <code>9090</code> port</p>
-</li>
-<li>
-<p>Update port number in listen block on second line of server block to <code>9090</code> (or any selected port)</p>
-</li>
-<li>
-<p>Restart proxy by <code>zmproxyctl restart</code></p>
-</li>
-<li>
-<p>Check if Zimbra X Webclient is working on <a href="https://&lt;hostname_of_proxy&gt;:9090/" class="bare">https://&lt;hostname_of_proxy&gt;:9090/</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Use subdomain to access Zimbra X Webclient</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Update port number in listen block on second line of server block to <code>443</code>, this will make sure subdomain is listening on default ssl port</p>
-</li>
-<li>
-<p>add <code>server_name</code> directive under listen directive and specify subdomain which we need to use to listen to requests <code>server_name     &lt;subdomain&gt;.&lt;hostname_of_proxy&gt;</code></p>
-</li>
-<li>
-<p>Restart proxy by <code>zmproxyctl restart</code></p>
-</li>
-<li>
-<p>Check if Zimbra X Webclient is working on <a href="https://&lt;subdomain&gt;.&lt;hostname_of_proxy&gt;/" class="bare">https://&lt;subdomain&gt;.&lt;hostname_of_proxy&gt;/</a></p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ol>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Do not access Zimbra X Webclient using mailbox node url, as it will not work. Users should access it using proxy url only.
-</td>
-</tr>
-</table>
-</div>
-<div id="location_blocks" class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code>	location /
-	{
-		# Rewrite url for favicon icon
-		rewrite ^/favicon.ico$ /assets/favicon.ico break;
-
-		# Proxy to Zimbra X Webclient Upstream
-		proxy_pass          https://zimbra_x_webclient;
-
-		# Cache only specific files listed below
-		expires off;
-
-		# Cache assets for 10 mins
-		location /assets/**
-		{
-			expires 10m;
-		}
-
-		# Cache chunks for max time as chunk number changes on every new build
-		location /**/*.chunk.*
-		{
-			expires max;
-		}
-
-		# For audit
-		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-
-		set $relhost $host;
-		if ($host = '') {
-			set $relhost $server_addr;
-		}
-		proxy_set_header Host            $relhost:9090;
-	}
-
-	location ^~ /@zimbra
-	{
-		# Rewrite url to remove @zimbra token
-		rewrite ^/@zimbra/(.*)$ /$1 break;
-
-		# Proxy to Zimbra Upstream
-		proxy_pass          https://zimbra_ssl;
-
-		# Don't cache data requests
-		expires off;
-
-		# For audit
-		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-
-		# Remove referer header, as csrf check fails with different referer
-		proxy_set_header Referer "";
-
-		set $relhost $host;
-		if ($host = '') {
-			set $relhost $server_addr;
-		}
-		proxy_set_header Host            $relhost;
-	}</code></pre>
-</div>
-</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -5062,7 +4869,7 @@ ACLs/ACEs carefully consider whether or not to switch.</strong>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-29 10:22:07 EDT
+Last updated 2019-04-02 20:34:47 EDT
 </div>
 </div>
 </body>
