@@ -49,6 +49,7 @@ additional space for mail storage. The other nodes require 100MB.
 * Oracle Linux 7.2
 * Oracle Linux 6.6
 * Ubuntu 16.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.7.1 and above
+* Ubuntu 18.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.8.12 and above (Beta)
 +
 
 |*Operating System (Open Source Edition)*
@@ -89,7 +90,7 @@ server must also have the following installed:
 * **libidn**. For internationalizing domain names in applications (IDNA)
 * **GMP**. GNU Multiple-Precision Library.
 
-For Ubuntu 16:
+For Ubuntu 16 and 18:
 
 * Sudo
 * libidn11

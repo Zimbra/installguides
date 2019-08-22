@@ -59,10 +59,10 @@ updated with the latest patches that have been tested with {product-abbrev}.
 
 ==== Ubuntu OS
 
+* Ubuntu 18.04 LTS Server Edition (64-bit) (Beta beginning with 8.8.12)
 * Ubuntu 16.04 LTS Server Edition (64-bit)
 * Ubuntu 14.04 LTS Server Edition (64-bit)
-* Ubuntu 12.04.4 LTS Server Edition running the saucy (3.11) or later
-  kernel is required.
+
 +
 [CAUTION]
 ====
