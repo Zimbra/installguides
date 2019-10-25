@@ -9,7 +9,7 @@
 
 * Intel/AMD 64-bit CPU 1.5 GHz
 * RAM requirements:
-** For single server installations, a minimum of 8GB of RAM is required.
+** For single server installations, {product-short} requires a minimum of 8GB of RAM.
 ** For multi-server installations, contact {product-provider} sales for recommendations.
 * 5 GB free disk space for software and logs
 * Temp file space for installs and upgrades*
@@ -19,7 +19,7 @@
 
 * Intel/AMD 2.0 GHZ+ 64-bit CPU
 * RAM requirements:
-** For single server installations, a minimum of 8GB of RAM is required.
+** For single server installations, {product-short} requires a minimum of 8GB of RAM.
 ** For multi-server installations, contact {product-provider} sales for recommendations.
 * Temp file space for installs and upgrades*
 * 10 GB free disk space for software and logs (SATA or SCSI for
@@ -30,8 +30,8 @@ additional space for mail storage. The other nodes require 100MB.
 
 *General Requirements*
 
-* Firewall Configuration should be set to “No firewall”.
-* RAID-5 is not recommended for installations with more than 100 accounts.
+* Set the firewall configuration to *No firewall*.
+* We do not recommend RAID-5 for installations with more than 100 accounts.
 |*Network Edition and Open Source supported Cloud platforms*
 |The following Cloud Platforms are supported:
 
@@ -76,8 +76,8 @@ https://www.zimbra.com.
 * *NFS* for backup only
 
 |*Other Dependencies*
-|Netcat (nc) is required on all operating systems using {product-name}.
-The `nc` utility must be installed prior to installation or upgrading.
+|Netcat (`nc`) is required on all operating systems using {product-name}.
+Install the `nc` utility before installation or upgrading.
 
 For SUSE and Ubuntu systems, disable *AppArmor* and verify that the
 AppArmor service is not running before installing {product-name}.
@@ -103,7 +103,7 @@ For Ubuntu 16 and 18:
 * Valid DNS configured with an A record and MX record.
 * Servers should be configured to run Network Time Protocol (NTP) on a scheduled basis.
 
-a|Administrator Computers +
+a|*Administrator Computers* +
  +
 // HACK because including a NOTE in a narrow table column causes problems for
 // the prawn layout engine for PDFs.
@@ -127,6 +127,8 @@ one of the following:
 ** Firefox
 ** Safari
 ** Google Chrome
+
+IMPORTANT: IE11 is not supported when using {product-short} Connect. {product-short} Connect requires webRTC support which IE doesn't provide yet. 
 
 MacOS 10.12 or 10.13, 10.14 with one of the following:
 
@@ -169,7 +171,7 @@ Recommended
 
 The following operating system/browser combinations are supported:
 
-Windows 7 SP1, Windows 8.1or Windows 10 with
+Windows 7 SP1, Windows 8.1 or Windows 10 with
 one of the following:
 
 * Microsoft support is only available for Internet Explorer 11 or Microsoft Edge
@@ -180,6 +182,8 @@ one of the following:
 ** Firefox
 ** Safari
 ** Google Chrome
+
+IMPORTANT: IE11 is not supported when using {product-short} Connect. {product-short} Connect requires webRTC support which IE doesn't provide yet. 
 
 MacOS 10.12 or 10.13, 10.14 with one of the following:
 * The latest stable release of:
@@ -212,19 +216,18 @@ Operating system POP/IMAP combinations
 * Mac OS X 10.6 or later with Apple Mail
 
 *Accessibility and Screen Readers* {product-provider} recommends that customers
-requiring use of screen readers for accessibility leverage the use of
+requiring the use of screen readers for accessibility leverage the use of
 the Standard {product-short} Web Client (HTML). {product-provider} continues to invest in
 improving the accessibility of this interface.
 
 [TIP]
-If users are presently using IE 10 or older, {product-provider} strongly recommends that they upgrade
-to the latest version of Internet Explorer for optimal performance with ZWC.
+If users are presently using IE 10 or older {product-provider} strongly recommends that they upgrade to the latest version of Internet Explorer for optimal performance with ZWC.
 
 |*Exchange Web Services*
 |EWS Clients
 
 * Outlook 2011/2016 (MAC only)
-* Apple Desktop Clients (MacOS 10.12+)
+* Apple Desktop Clients (macOS 10.12+)
 
 EWS Interoperability
 
@@ -265,8 +268,6 @@ ifdef::networkeditiondoc[]
 [[Zimbra_Mobile]]
 == {product-short} Mobile ({product-edition-commercial} Only)
 
-'''
-
 {product-edition-commercial} Mobile (MobileSync) provides mobile data access to email,
 calendar, and contacts for users of selected mobile operating systems,
 including:
@@ -281,9 +282,8 @@ including:
 [[Zimbra_Touch_Client]]
 == {product-short} Touch Client ({product-edition-commercial} Only)
 
-'''
 IMPORTANT: Support for the {product-short} Touch Client has ended.
-The software will continue to be available without support.
+The software is available without support.
 
 Supported devices for the {product-short} Touch Client include:
 
@@ -353,7 +353,7 @@ Install + Configuration Guide |English
 |=======================================================================
 
 Note: To find SSH client software, go to Download.com at
-http://www.download.com/ and search for SSH. The list displays software
+http://www.download.com/, and search for SSH. The list displays software
 that can be purchased or downloaded for free. An example of a free SSH
 client software is PuTTY, a software implementation of SSH for Win32 and
 Unix platforms. To download a copy go to http://putty.nl/[http://putty.nl]
