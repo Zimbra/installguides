@@ -172,7 +172,7 @@ mv cn={4}zimbra.ldif /opt/zimbra/data/ldap/cn={4}zimbra.ldif.dead
     .. Copy the schema from the master _LDAP_ server.
 +
 ----
-scp root@<master>:/opt/zimbra/openldap/etc/openldap/schema/zimbra.ldif cn={4}zimbra.ldif
+scp root@<master>:/opt/zimbra/common/etc/openldap/zimbra/schema/zimbra.ldif cn={4}zimbra.ldif
 ----
 +
     .. Edit cn={4}zimbra.ldif to change the following two lines:
