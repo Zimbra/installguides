@@ -1,0 +1,92 @@
+//Content of settings.adoc
+:product-name: Zimbra Collaboration
+:product-edition-commercial: Network Edition
+//:product-edition-foss: Open Source Edition
+:product-short: Zimbra
+:product-family: Zimbra
+:product-provider: Zimbra
+:product-abbrev: ZCS
+:product-version: 9.0.0
+:product-release-date: March, 2020
+:copyright-year: 2020
+:product-admin-guide: {product-name} Administration Guide
+:icons: font
+:title-logo-image: images/zimbra-logo-non-interlaced.png
+:showlinks:
+:source-highlighter: coderay
+:toc: left
+:toclevels: 3
+//Zimbra 9 Documentation (Pass z9 in build argument e.g. asciidoctor -a z9 zimbra-9-install.adoc)
+ifdef::z9[]
+:web-client: Classic Web Client
+:modern: Modern Web Client
+endif::z9[]
+ifndef::z9[]
+:web-client: Web Client
+endif::z9[]
+
+
+
+//From index-single-server-install.adoc
+:document-title: Performing a Single-Server Installation
+// This is intended to allow excluding certain text for a FOSS only manual
+// At present it is only partially implemented
+:networkeditiondoc: TRUE
+= {product-name} {document-title}
+v{product-version}, {product-release-date}
+:leveloffset: +1
+
+<<<
+
+include::legal.adoc[] 
+//no changes for z9
+
+<<<
+
+include::introduction.adoc[]
+
+<<<
+
+include::prepareserver.adoc[]
+
+<<<
+
+include::overviewinstallprocess.adoc[]
+
+<<<
+
+include::licenserequirements.adoc[]
+
+<<<
+
+include::basicconfig.adoc[]
+
+<<<
+
+include::installing.adoc[]
+
+<<<
+
+include::finalsetup.adoc[]
+
+<<<
+
+include::scanningattachments.adoc[]
+
+<<<
+
+include::provisionaccounts.adoc[]
+
+<<<
+
+include::uninstalling.adoc[]
+
+<<<
+
+include::systemrequirements.adoc[]
+
+<<<
+
+include::ng-installation.adoc[]
+
+:leveloffset: -1
