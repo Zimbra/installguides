@@ -87,7 +87,7 @@ the administration console will not display.
 ====
 
 * *{product-short} Spell:* This package is optional.  It provides the open source
-spell checker `Aspell` used by the {product-short} {web-client}.
+spell checker `Aspell` used by the {product-short} Web Client.
 
 * *{product-short} Apache:* This package is installed automatically when *{product-short}
 Spell*
