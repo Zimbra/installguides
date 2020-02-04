@@ -1,5 +1,14 @@
 include::settings.adoc[]
+
+ifdef::z9[]
+:product-version: 9.0.0
+:product-release-date: March, 2020
+:copyright-year: 2020
+endif::z9[]
+
 = {product-name} {product-version} Upgrade Steps
+
+ifndef::z9[]
 
 == Before you upgrade
 
@@ -29,6 +38,34 @@ and to determine if you wish to install them.
 - `zimbra-connect`
 - `zimbra-drive`
 - `zimbra-imapd`
+endif::z9[]
+
+//Before you upgrade instructions for Zimbra 9
+ifdef::z9[]
+== Before you upgrade
+
+Please review the following information to decide if {product-name} {product-version}
+is suitable for you.
+
+* Zimbra Touch Client, Zimbra Mobile Client, Zimbra HTML (Standard) Client have been removed from {product-name} {product-version}
+* {product-name} {product-version} currently does not support Rolling Upgrades
+* {product-name} {product-version} introduces two versions of {product-short} Web Client, namely, Modern and Classic
+** A {product-short} license is required in order to use the Modern Web Client in
+the {product-edition-commercial} of {product-name}.
+** To know more about highlights of the Modern Web Client, please refer to the *What's New* document for {product-name} {product-version}
+** Classic Web Client offers the same functionalities as offered by the Advanced Web Client in  {product-name} 8.8.15 version
+** Modern Web Client does not currently support some features like Personas, Briefcase and Dumpster. Some of these features will be added during upcoming releases. To view the detailed comparison of features supported in Modern Web Client, please refer to *Web Client Comparison* document
+** Existing customized themes, logo branding changes, and crontab changes will not work with Modern Web Client. Branding needs to be re-configured to work with the Modern Web Client. Themes are currently not supported for Modern Web Client.
+** Zimlets are supported on both the Web Clients. 
+*** Existing Zimlets will continue to work in the Classic Web Client, however they will not work on Modern Web Client. There is no way to migrate the zimlets from Classic to Modern Web Client or vice-versa. 
+*** Zimbra Connect zimlet, Zimbra Drive zimlet and Zimbra Docs zimlet, are available for both the web clients. Seperate versions of these services need to be installed for Classic Web Client and Modern Web Client
+
+The following tasks might need to be performed before you
+upgrade. After you review the tasks in this section, go to Upgrade
+Instructions. Be sure to read the
+https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0[release note]
+information before upgrading.
+endif::z9[]
 
 === Database Integrity Checking
 
@@ -203,7 +240,7 @@ To continue the upgrade, see <<_multi_server_environment_upgrade_steps>>.
 
 === Disable SSLv3 Support
 
-If upgrading to {product-abbrev} 8.7.0, you need to completely disable SSLv3
+If upgrading to {product-abbrev} 8.7.0 and above, you need to completely disable SSLv3
 support after the upgrade. Disabling SSLv3 is recommended as a result
 of the SSLv3 vulnerability described in
 https://www.us-cert.gov/ncas/alerts/TA14-290A[Alert (TA14-290A)].
@@ -520,13 +557,25 @@ change your configuration.  Configuration settings stored in _LDAP_ and
 _localconfig_ are preserved during upgrades. Any files installed by
 {product-name} might be deprecated and/or overwritten during
 upgrades, removing any customizations. This includes customized
-themes, logo branding changes, and crontab changes.  Only the core
+themes, logo branding changes, and crontab changes.  
+
+ifdef::z9[]
+[IMPORTANT]
+Branding needs to be re-configured to work with the Modern Web Client. Themes are currently not supported on Modern Web Client.
+endif::z9[]
+
+Only the core
 Zimlets are enabled after the upgrade. Zimlets that you customized
 and/or deployed are preserved during the upgrade but will be
 disabled. As upgrading of customized Zimlets cannot be tested before
 the release, {product-provider} recommends that you verify that your customized
 Zimlets work correctly before re-enabling them for your end-users
 after the upgrade.
+
+ifdef::z9[]
+[IMPORTANT]
+Zimlets are supported on both Classic and Modern Web Clients. However, Zimlets used for Classic Web Client are not compatible with Modern Web Client. There is no way to migrate the zimlets from Classic to Modern Web Client or vice-versa. Existing zimlets need to be re-developed in order for them to work on Modern Web Client.
+endif::z9[]
 
 NOTE: When upgrading to {product-name} 8.5.x and later from a
 previous major {product-abbrev} version, the upgrade step disables Zimlets that are
