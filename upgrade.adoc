@@ -26,7 +26,7 @@ The following new services are available for installation at upgrade
 time. Please refer to the _{product-admin-guide}_ for more information
 and to determine if you wish to install them.
 
-- `zimbra-chat`
+- `zimbra-connect`
 - `zimbra-drive`
 - `zimbra-imapd`
 

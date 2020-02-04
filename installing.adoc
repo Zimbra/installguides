@@ -50,7 +50,7 @@ root@zimbraiop:/tmp/zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615# ./inst
 Operations logged to /tmp/install.log.y1YeCSI5
 
 Checking for existing installation...
-    zimbra-chat...NOT FOUND
+    zimbra-connect...NOT FOUND
     zimbra-drive...NOT FOUND
     zimbra-imapd...NOT FOUND
     zimbra-network-modules-ng...NOT FOUND
@@ -105,7 +105,7 @@ Found zimbra-convertd (local)
 Found zimbra-memcached (repo)
 Found zimbra-proxy (local)
 Found zimbra-archiving (local)
-Found zimbra-chat (repo)
+Found zimbra-Connect (repo)
 Found zimbra-drive (repo)
 Found zimbra-imapd (local)
 Found zimbra-network-modules-ng (local)
@@ -140,7 +140,7 @@ Install zimbra-proxy [Y] y
 
 Install zimbra-archiving [N] y
 
-Install zimbra-chat [Y] y
+Install zimbra-connect [Y] y
 
 Install zimbra-drive [Y] y
 
@@ -186,7 +186,7 @@ Installing:
     zimbra-memcached
     zimbra-proxy
     zimbra-archiving
-    zimbra-chat
+    zimbra-connect
     zimbra-drive
     zimbra-network-modules-ng
 

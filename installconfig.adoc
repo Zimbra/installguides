@@ -79,9 +79,9 @@ endif::networkeditiondoc[]
 | Select the sub-menu for
   <<imapd_config,IMAPD configuration>>
 
-| zimbra-chat
-| Installing the Zimbra-Chat package is optional.
-  If you choose to install Zimbra-Chat for point-to-point text chat, it should
+| zimbra-connect
+| Installing the Zimbra-Connect package is optional.
+  If you choose to install Zimbra-Connect for point-to-point text chat, it should
   be installed on every Zimbra Store Server that is part of the Zimbra configuration.
 
 | zimbra-drive
