@@ -48,9 +48,10 @@ Please review the following information to decide if {product-name} {product-ver
 is suitable for you.
 
 * Zimbra Touch Client, Zimbra Mobile Client, and Zimbra HTML (Standard) Client are no longer a part of {product-name} {product-version}.
-* {product-name} {product-version} currently does not support Rolling Upgrades
+* {product-name} {product-version} currently does not support Rolling Upgrades. It will be supported in the upcoming releases.
 * {product-name} {product-version} introduces two versions of {product-short} Web Client -- Modern and Classic.
 ** A {product-short} license is required to use the Modern Web Client in {product-name}'s {product-edition-commercial}.
+** It is recommended that {modern} is set as the default web client. Even after selecting a default, {modern} and {web-client} can be used simultaneously by users as per their choice.
 ** To know more about highlights of the Modern Web Client, please refer to the *What's New* document for {product-name} {product-version}
 ** Classic Web Client offers the same functionalities as offered by the Advanced Web Client in  {product-name} 8.8.15 version
 ** Modern Web Client does not currently support features like Personas, Briefcase, and Dumpster. Some of these features are part of upcoming releases. To view the detailed comparison of features supported in Modern Web Client, please refer to *Web Client Comparison* document.
