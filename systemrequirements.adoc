@@ -52,11 +52,13 @@ additional space for mail storage. The other nodes require 100MB.
 * Ubuntu 18.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.8.12 and above (Beta)
 +
 
+ifndef::z9[]
 |*Operating System (Open Source Edition)*
 |In addition to supporting the operating systems listed above for the
 {product-edition-commercial}, other operating system versions are available for the
 {product-edition-foss}. Check the {product-provider} Open Source Downloads page on
 https://www.zimbra.com.
+endif::z9[]
 
 |*Virtualization ({product-edition-commercial})*
 |The following hypervisors are supported:

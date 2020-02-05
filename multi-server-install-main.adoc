@@ -510,6 +510,11 @@ You can have more than one of the above configurations.
 In a web application server split environment, you must have at least
 one mailstore server and one UI server in your configuration.
 
+ifdef::z9[]
+[IMPORTANT]
+{modern} UI does not currently support Zimbra Web Application Server Split configuration.
+ifdef::z9[]
+
 [IMPORTANT]
 A web application server split environment must have proxy and
 memcached installed.
