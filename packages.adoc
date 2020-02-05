@@ -59,6 +59,10 @@ post-install configuration process in the {product-short} Proxy
 configuration section or using the `zimbraReverseProxyStrictServerNameEnabled` configuration
 option. Please see the {product-short} Proxy section of the administration guide for more details.
 
+ifdef::z9[]
+* *{product-short} {modern}:* This package includes the assets of {product-short} {modern}. This package is automatically installed on each server.
+endif::z9[]
+
 * *{product-short} Memcached:* This package is automatically selected when the
 *{product-short}-Proxy* package is installed and provides access to `Memcached`.
 +

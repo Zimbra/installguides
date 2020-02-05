@@ -18,8 +18,8 @@ can have the touch client mobile feature enabled.
 ifdef::z9[]
 +
 [IMPORTANT]
-Mobile and Touch clients have been removed from {product-name} {product-version}.
-endif::z9[]
+Mobile and Touch clients are no longer a part of {product-name} {product-version}.
+endif::[]
 
 * **MAPI accounts limit**. The maximum number of accounts that can use
 {product-short} Connector for Microsoft Outlook (ZCO).
@@ -39,8 +39,8 @@ A {product-short} license is required in order to create accounts in
 the {product-edition-commercial} of {product-name}.
 
 [IMPORTANT]
-A {product-short} license is required in order to use the {modern} in
-the {product-edition-commercial} of {product-name}.
+A {product-short} license is required to use the {modern} in
+{product-name}'s {product-edition-commercial}.
 
 Several types of licenses are available:
 
