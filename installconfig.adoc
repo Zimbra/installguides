@@ -102,7 +102,7 @@ endif::networkeditiondoc[]
 a|This menu section lists major new features for the {product-name}
 release and whether the feature is enabled or not. When you change the
 feature setting during {product-name} installation, you change the
-default COS settings Having this control, lets you decide when to
+default COS settings. Having this control, lets you decide when to
 introduce new features to your users.
 
 ifdef::networkeditiondoc[]

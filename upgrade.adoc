@@ -52,10 +52,11 @@ is suitable for you.
 * {product-name} {product-version} introduces two versions of {product-short} Web Client -- Modern and Classic.
 ** A {product-short} license is required to use the Modern Web Client in {product-name}'s {product-edition-commercial}.
 ** It is recommended that {modern} is set as the default web client. Even after selecting a default, {modern} and {web-client} can be used simultaneously by users as per their choice.
-** To know more about highlights of the Modern Web Client, please refer to the *What's New* document for {product-name} {product-version}
-** Classic Web Client offers the same functionalities as offered by the Advanced Web Client in  {product-name} 8.8.15 version
+** To know more about highlights of the Modern Web Client, please refer to the *What's New* document for {product-name} {product-version}.
+** Classic Web Client offers the same functionalities as offered by the Advanced Web Client in  {product-name} 8.8.15 version.
 ** Modern Web Client does not currently support features like Personas, Briefcase, and Dumpster. Some of these features are part of upcoming releases. To view the detailed comparison of features supported in Modern Web Client, please refer to *Web Client Comparison* document.
 ** Existing customized themes, logo branding changes, and crontab changes are incompatible with, and hence do not reflect in, the Modern Web Client. Branding needs to be re-configured to work with the Modern Web Client. The web client also does not currently support themes.
+** Currently supported languages in the application UI for the {modern} are - Chinese (China), English (US), French (France), German, Hindi, Indonesian, Italian, Japanese, Portuguese (Portugal), Spanish and Thai. 
 ** Zimlets are supported on both the Web Clients. 
 *** Existing Zimlets work with Classic Web Client; however, they are incompatible with Modern Web Client. Currently, there is no way to migrate the zimlets from Classic to Modern Web Client or vice-versa. 
 *** Zimbra Connect zimlet, Zimbra Drive zimlet, and Zimbra Docs zimlet, are available for both the web clients. You can install separate versions of these services for Classic Web Client and Modern Web Client.
@@ -63,7 +64,7 @@ is suitable for you.
 You might need to perform the following tasks before you
 upgrade. After you review the tasks in this section, please go to Upgrade
 Instructions. Be sure to read the
-https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0[release note]
+https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0[release notes]
 information before upgrading.
 endif::z9[]
 

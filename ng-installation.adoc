@@ -1,7 +1,7 @@
 [[Zimbra-Network-NG-Modules-first-steps-guide]]
 = Zimbra Network NG Modules: First Steps
 
-This Guide contains all information needed to switch to the new Zimbra Network NG modules from their legacy counterparts after upgrading to Zimbra 8.8.
+This Guide contains all information needed to switch to the new Zimbra Network NG modules from their legacy counterparts after upgrading to Zimbra 8.8 and beyond.
 
 [[backup-ng]]
 Switching to Backup NG

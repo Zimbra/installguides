@@ -180,6 +180,7 @@ Recommended
 
 The following operating system/browser combinations are supported:
 
+ifndef::z9[]
 Windows 7 SP1, Windows 8.1 or Windows 10 with
 one of the following:
 
@@ -187,11 +188,6 @@ one of the following:
 ** IE11 and higher for Windows 7 SP1
 ** IE11 and higher for Windows 8.1
 ** IE11 or Microsoft Edge for Windows 10
-
-ifdef::z9[]
-[IMPORTANT]
-IE is not supported by {product-name} {modern}
-endif::z9[]
 
 * The latest stable release of:
 ** Firefox
@@ -211,6 +207,45 @@ Linux (Red Hat, Ubuntu, Fedora, or SUSE) with one of the following:
 * The latest stable release of:
 ** Firefox
 ** Google Chrome
+endif::z9[]
+
+ifdef::z9[]
+Windows 8.1 or Windows 10 with the latest stable release of one of the following:
+
+** Google Chrome
+** Firefox
+** Microsoft Edge
+
+MacOS 10.13 or newer with the latest stable release of one of the following:
+
+** Google Chrome
+** Firefox
+** Safari
+
+Linux (Red Hat, Ubuntu, Fedora, or SUSE) with the latest stable release of one of the following:
+
+** Google Chrome
+** Firefox
+
+a|*Mobile Devices using {product-short} Web Client* +
+ +
+
+|{product-short} {product-version} supports mobile web browsers using the *{modern} only*. 
+
+The following operating system/browser combinations are supported:
+
+Apple-supported iPhone and iPad models with their latest iOS version and with the latest stable release of one of the following:
+
+** Safari
+** Chrome
+** Firefox
+
+Phones or tablets running an up-to-date version of Android still supported by Google with the latest stable release of one of the following:
+
+** Android Browser
+** Chrome
+** Firefox
+endif::z9[]
 
 |*End User Computers Using Other Clients*
 |Minimum

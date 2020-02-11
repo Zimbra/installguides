@@ -80,7 +80,7 @@ These are ports typically available to mail clients.
 |110| pop3| mailbox / proxy| POP3
 |143| imap| mailbox / proxy| IMAP
 |443| https| mailbox / proxy - web mail client| HTTP over TLS
-|465| smtps| mta| Incoming mail to postfix over TLS (Legacy Outlook only? If possible, use 587 instead)
+|465| smtps| mta| Incoming mail to postfix over TLS (Legacy Outlook only. If possible, use 587 instead)
 |587| smtp| mta| Mail submission over TLS
 |993| imaps| mailbox / proxy| IMAP over TLS
 |995| pop3s| mailbox / proxy| POP3 over TLS

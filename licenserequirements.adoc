@@ -10,15 +10,13 @@ following is a summary of the feature attributes of a {product-name}
 
 * *Accounts limit.* The maximum number of accounts you can create and
 the number of accounts created are shown.
+
+ifndef::z9[]
++
 * *Mobile accounts limit.* The maximum number of accounts that can have
 the native mail mobile feature enabled.
 * **Touch Client accounts limit**. The maximum number of accounts that
 can have the touch client mobile feature enabled.
-
-ifdef::z9[]
-+
-[IMPORTANT]
-Mobile and Touch clients are no longer a part of {product-name} {product-version}.
 endif::[]
 
 * **MAPI accounts limit**. The maximum number of accounts that can use

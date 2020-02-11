@@ -176,6 +176,7 @@ Found zimbra-apache (local)
 Found zimbra-spell (local)
 Found zimbra-convertd (local)
 Found zimbra-memcached (repo)
+Found zimbra-modern-ui (repo)
 Found zimbra-proxy (local)
 Found zimbra-archiving (local)
 Found zimbra-connect (repo)
@@ -602,6 +603,7 @@ Installing:
     zimbra-store
     zimbra-apache
     zimbra-spell
+    zimbra-modern-ui
     zimbra-convertd
     zimbra-archiving
     zimbra-connect
