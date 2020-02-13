@@ -1,7 +1,7 @@
 include::settings.adoc[]
 
 ifdef::z9[]
-:product-version: 9.0.0
+:product-version: 9.0.0 (Beta)
 :product-release-date: March, 2020
 :copyright-year: 2020
 endif::z9[]
@@ -59,7 +59,7 @@ is suitable for you.
 ** Currently supported languages in the application UI for the {modern} are - Chinese (China), English (US), French (France), German, Hindi, Indonesian, Italian, Japanese, Portuguese (Portugal), Spanish and Thai. 
 ** Zimlets are supported on both the Web Clients. 
 *** Existing Zimlets work with Classic Web Client; however, they are incompatible with Modern Web Client. Currently, there is no way to migrate the zimlets from Classic to Modern Web Client or vice-versa. 
-*** Zimbra Connect zimlet, Zimbra Drive zimlet, and Zimbra Docs zimlet, are available for both the web clients. You can install separate versions of these services for Classic Web Client and Modern Web Client.
+*** Zimbra Drive zimlet and Zimbra Docs zimlet, are available for both the web clients. You can install separate versions of these services for Classic Web Client and Modern Web Client.
 
 You might need to perform the following tasks before you
 upgrade. After you review the tasks in this section, please go to Upgrade
@@ -534,9 +534,11 @@ httpclient_external_connmgr_tcp_nodelay
 include::ephemeral.adoc[]
 :leveloffset: -2
 
+ifdef::z9[]
 :leveloffset: +2
 include::imapd.adoc[]
 :leveloffset: -2
+endif::z9[]
 
 == Remove Current Version and Perform Clean Install of ZCS
 

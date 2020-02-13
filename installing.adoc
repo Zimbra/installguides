@@ -52,7 +52,9 @@ Operations logged to /tmp/install.log.y1YeCSI5
 Checking for existing installation...
     zimbra-connect...NOT FOUND
     zimbra-drive...NOT FOUND
+ifndef::z9[]
     zimbra-imapd...NOT FOUND
+endif::z9[]
     zimbra-network-modules-ng...NOT FOUND
     zimbra-ldap...NOT FOUND
     zimbra-logger...NOT FOUND
@@ -79,10 +81,14 @@ and you must accept each section of the license agreement.
 4. `Use {product-short}'s package repository [Y]` +
 displays, press `enter` to continue. Your system will be configured to add
 the {product-short} packaging repository for *yum* or *apt-get* as appropriate
-so it can install the {product-short} 3rd party packages.
+so it can install the {product-short} 3rd party packages. 
++
+ifndef::z9[]
 {product-short} IMAPD is meant to be installed on a multi-server environment, with
 hundreds of thousands of users, and it's still a Beta Release. {product-short} recommends
-to only install it for demo and evaluation purposes.*
+to only install it for demo and evaluation purposes.
+endif::z9[]
+
 * If installing *{product-short} Network Edition*, you will have the modules Archiving
 and Convertd as an option to add to your {product-short} installation.
 * It is recommended to only install {product-short}-dnscache on the MTA Servers when there are no other DNS servers (for example dnsmasq or bind) already installed and running on the same server.
@@ -103,12 +109,16 @@ Found zimbra-apache (local)
 Found zimbra-spell (local)
 Found zimbra-convertd (local)
 Found zimbra-memcached (repo)
+ifdef::z9[]
 Found zimbra-modern-ui (repo)
+endif::z9[]
 Found zimbra-proxy (local)
 Found zimbra-archiving (local)
 Found zimbra-Connect (repo)
 Found zimbra-drive (repo)
+ifndef::z9[]
 Found zimbra-imapd (local)
+endif::z9[]
 Found zimbra-network-modules-ng (local)
 
 
@@ -145,7 +155,9 @@ Install zimbra-connect [Y] y
 
 Install zimbra-drive [Y] y
 
+ifndef::z9[]
 Install zimbra-imapd [Y] n
+endif::z9[]
 
 Install zimbra-network-modules-ng [Y] y
 
@@ -185,7 +197,9 @@ Installing:
     zimbra-spell
     zimbra-convertd
     zimbra-memcached
+ifdef::z9[]
     zimbra-modern-ui
+endif::z9[]
     zimbra-proxy
     zimbra-archiving
     zimbra-connect

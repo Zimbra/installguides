@@ -36,9 +36,11 @@ that can be created. The archive feature must be installed.
 A {product-short} license is required in order to create accounts in
 the {product-edition-commercial} of {product-name}.
 
+ifdef::z9[]
 [IMPORTANT]
 A {product-short} license is required to use the {modern} in
 {product-name}'s {product-edition-commercial}.
+endif::z9[]
 
 Several types of licenses are available:
 

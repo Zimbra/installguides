@@ -23,32 +23,32 @@ process. The table below describes the menu options.
 .19+.^|All
 | Common Configuration
 | Select the sub-menu for
-  <<common_config_options,Common Configuration Options>>
+  <<common_config_options,**Common Configuration Options**>>
 
 | zimbra-ldap
 | Select the sub-menu for
-  <<ldap_config,Ldap configuration>>
+  <<ldap_config,**Ldap configuration**>>
 
 | zimbra-logger
 | Toggle whether <<zimbra_logger,**zimbra-logger**>> is enabled or not.
 
 | zimbra-mta
 | Select the sub-menu for
-  <<mta_config,Mta configuration>>
+  <<mta_config,**Mta configuration**>>.
   Postfix is the open source mail transfer agent (MTA) that receives email
   via SMTP and routes each message to the appropriate Zimbra mailbox server
   using Local Mail Transfer Protocol (LMTP).
-  The Zimbra MTA also includes the anti-virus and anti- spam components.
+  The Zimbra MTA also includes the anti-virus and anti-spam components.
 
 | zimbra-dnscache
 | Select the sub-menu for
-  <<dns_cache,DNS Cache>>
+  <<dns_cache,**DNS Cache**>>.
   Intended primarily on MTAs for optimized DNS and RBL lookups.
   Can also be installed on mailstores and proxy servers.
 
 | zimbra-snmp
 | Select the sub-menu for
-  <<snmp_config,Snmp configuration>>
+  <<snmp_config,**Snmp configuration**>>.
   Installing the Zimbra-SNMP package is optional.
   If you choose to install Zimbra-SNMP for monitoring, the package should
   be run on every server (Zimbra server, Zimbra LDAP, Zimbra MTA) that is
@@ -57,7 +57,7 @@ process. The table below describes the menu options.
 
 | zimbra-store
 | Select the sub-menu for
-  <<store_config,Store configuration>>
+  <<store_config,**Store configuration**>>
 
 | zimbra-spell
 | Toggle whether **zimbra-spell** is enabled or not.
@@ -73,11 +73,13 @@ endif::networkeditiondoc[]
 
 | zimbra-proxy
 | Select the sub-menu for
-  <<proxy_config,Proxy configuration>>
+  <<proxy_config,**Proxy configuration**>>
 
+ifndef::z9[]
 | zimbra-imapd
 | Select the sub-menu for
-  <<imapd_config,IMAPD configuration>>
+  <<imapd_config,**IMAPD configuration**>>
+endif::z9[]
 
 | zimbra-connect
 | Installing the Zimbra-Connect package is optional.
@@ -487,6 +489,7 @@ own independent server
 | Proxy server mode | default https
 |========================
 
+ifndef::z9[]
 [[imapd_config]]
 === IMAPD configuration
 
@@ -510,3 +513,4 @@ following global config settings will be applied:
 - Embedded IMAP[S] servers will be disabled.
 --
 |========================
+endif::z9[]

@@ -124,19 +124,15 @@ license usage. To find out more about {product-short} Archiving and Discovery,
 please refer to {product-short} Admin Guide.
 endif::networkeditiondoc[]
 
-* *{product-short} Connect:* Installing this package is optional. This package should be installed on at least one
-*{product-short}-Store* server. {product-short} Connect includes a server extension with all
+ifndef::z9[]
+* *{product-short} Connect:* Installing this package is optional. This package should be installed on at least one *{product-short}-Store* server. {product-short} Connect includes a server extension with all
 the necessary modules to run an embedded XMPP Server, and an End-User Zimlet which connects
 to the server extension and offer to the users a rich point-to-point text-chat conversations.
 {product-short} Connect is marked as GA and supported starting {product-name} 8.8.
 +
+
 [NOTE]
 The {product-short} Connect package must be selected and installed on every *{product-short}-Store*.
-+
-ifdef::z9[]
-[IMPORTANT]
-{product-short} Connect is currently not available for {modern}.
-endif::z9[]
 
 * *{product-short} Drive:* Installing this package is optional.This package should be installed on at least one
 *{product-short}-Store* server. {product-short} Drive includes a server extension with all
@@ -152,7 +148,7 @@ The {product-short} Drive package must be selected and installed on every *{prod
 [WARNING]
 Zimbra Drive only provides connectivity to a ownCloud or NextCloud Server. It is the Customer's
 responsibility to maintain, backup, and protect the data stored on ownCloud or NextCloud Servers.
-
+endif::z9[]
 
 The {product-short} server configuration is menu driven. The installation menu
 shows you the default configuration values. The menu displays the

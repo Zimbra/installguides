@@ -24,7 +24,7 @@ endif::z9[]
 ifdef::z9[]
 :web-client: Classic Web Client
 :modern: Modern Web Client
-:product-version: 9.0.0
+:product-version: 9.0.0 (Beta)
 :product-release-date: March, 2020
 :copyright-year: 2020
 endif::z9[]

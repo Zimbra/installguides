@@ -176,7 +176,11 @@ Found zimbra-apache (local)
 Found zimbra-spell (local)
 Found zimbra-convertd (local)
 Found zimbra-memcached (repo)
+
+ifdef::z9[]
 Found zimbra-modern-ui (repo)
+endif::z9[]
+
 Found zimbra-proxy (local)
 Found zimbra-archiving (local)
 Found zimbra-connect (repo)
@@ -603,7 +607,11 @@ Installing:
     zimbra-store
     zimbra-apache
     zimbra-spell
+
+    ifdef::z9[]
     zimbra-modern-ui
+    endif::z9[]
+
     zimbra-convertd
     zimbra-archiving
     zimbra-connect
@@ -1699,7 +1707,7 @@ the following functions must be configured:
 * {product-name} ships a default `zimbra` user with a disabled
   password. {product-abbrev} requires access to this account via ssh public key
   authentication. On most operating systems this combination is okay,
-  but if you have modified pam rules to disallow any ssh access to
+  but if you have modified spam rules to disallow any ssh access to
   disabled accounts then you must define a password for the `zimbra`
   UNIX account. This will allow ssh key authentication for checking
   remote queues. See
