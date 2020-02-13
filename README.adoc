@@ -101,9 +101,9 @@ IMPORTANT: Windows users need to launch Command Prompt with administrator privil
 mklink /D latest {product-version}
 -----
 
-TIP:The above command does not overwrite the existing symlink, hence first rename it.
+TIP: The above command does not overwrite the existing symlink, hence first rename it.
 
-Finally, the `index.html' file in the root folder needs to be updated to include appropriate links for the new version's documents.
+Finally, the `index.html` file in the root folder needs to be updated to include appropriate links for the new version's documents.
 Use your favorite text editor to complete this task before committing and pushing the updated `gh-pages` branch to the repo.
 
 Additional Information
