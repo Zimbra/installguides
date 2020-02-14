@@ -47,6 +47,7 @@ ifdef::z9[]
 Please review the following information to decide if {product-name} {product-version}
 is suitable for you.
 
+* {product-name} {product-version} is a beta release, it is not recommended to install or upgrade this release in a production environment. The beta release is for demo and evaluation purposes. 
 * Zimbra Touch Client, Zimbra Mobile Client, and Zimbra HTML (Standard) Client are no longer a part of {product-name} {product-version}.
 * {product-name} {product-version} currently does not support Rolling Upgrades. It will be supported in the upcoming releases.
 * {product-name} {product-version} introduces two versions of {product-short} Web Client -- Modern and Classic.
