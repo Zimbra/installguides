@@ -7,7 +7,7 @@
 |*Servers*
 |*Evaluation and Testing*
 
-* Intel/AMD w/ PassMark CPU Mark > 7,000 (e.g., Dual Intel Xeon E5-2407 @ 2.2GHz = 7,303)
+* Intel/AMD w/ PassMark CPU Mark > 7,500 (e.g., Intel Xeon E-224G @ 3.5GHz = 9,913)
 * RAM requirements:
 ** For single server installations, {product-short} requires a minimum of 8GB of RAM.
 ** For multi-server installations, contact {product-provider} sales for recommendations.
@@ -17,7 +17,7 @@
 
 *Production environments*
 
-* Intel/AMD w/ PassMark CPU Mark > 15,000 (e.g., Quad AMD Opteron 6276 @ 2.2GHz = 7,303)
+* Intel/AMD w/ PassMark CPU Mark > 15,000 (e.g., AMD EPYC 7401P @ 2.0GHz = 18,199)
 * RAM requirements:
 ** For single server installations, {product-short} requires a minimum of 8GB of RAM.
 ** For multi-server installations, contact {product-provider} sales for recommendations.
@@ -48,8 +48,8 @@ additional space for mail storage. The other nodes require 100MB.
 * CentOS Linux 6 (64-bit), *patch level 4 or later is required*
 * Oracle Linux 7.2
 * Oracle Linux 6.6
-* Ubuntu 16.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.7.1 and above
-* Ubuntu 18.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.8.15 and above
+* Ubuntu 16.04 LTS Server Edition (64-bit)
+* Ubuntu 18.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.8.12 and above
 +
 
 ifndef::z9[]
