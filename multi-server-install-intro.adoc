@@ -21,7 +21,7 @@ database management.
 [[Intro_license]]
 == {product-name} License
 
-A Zimbra license is required in order to create accounts in
+A Zimbra license is required to create accounts in
 {product-name} Network Edition. You cannot install {product-name}
 Network Edition without a license. For more information about licenses,
 see <<Zimbra_License_Requirements,Zimbra License Requirements>>

@@ -91,7 +91,7 @@ following:
   (the server and port number where the user account resides).
 
 **Memcached** is a high performance, distributed memory object caching system.
-Route information is cached for further use in order to increase performance.
+Route information is cached for further use to increase performance.
 **zimbra-memcached** is a separate package that is recommended to be
 installed along with zimbra-proxy.
 

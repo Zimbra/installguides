@@ -33,7 +33,7 @@ that can be created. The archive feature must be installed.
 [[Zimbra_License_Requirements]]
 == {product-short} License Requirements
 
-A {product-short} license is required in order to create accounts in
+A {product-short} license is required to create accounts in
 the {product-edition-commercial} of {product-name}.
 
 ifdef::z9[]

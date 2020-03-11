@@ -26,7 +26,7 @@ versions installed have been tested and configured to work with {product-short}
 software. See the {product-name} Administrator Guide for a complete
 list of software.
 
-A {product-short} license is required in order to create accounts on
+A {product-short} license is required to create accounts on
 servers running {product-name} {product-edition-commercial}.
 You cannot install {product-name} Network Edition without a license.
 

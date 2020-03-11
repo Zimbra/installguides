@@ -2,7 +2,7 @@
 = Preparing Your Server Environment
 :toc:
 
-In order to successfully install and run {product-name}, ensure
+To successfully install and run {product-name}, ensure
 your system meets the requirements described in this section. System
 administrators should be familiar with installing and managing email
 systems.
