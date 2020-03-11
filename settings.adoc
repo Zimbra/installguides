@@ -15,8 +15,8 @@
 ifndef::z9[]
 :web-client: Web Client
 :product-edition-foss: Open Source Edition
-:product-version: 8.8.12
-:product-release-date: March, 2019
+:product-version: 8.8.15
+:product-release-date: July, 2019
 :copyright-year: 2019
 endif::z9[]
 
@@ -24,7 +24,7 @@ endif::z9[]
 ifdef::z9[]
 :web-client: Classic Web Client
 :modern: Modern Web Client
-:product-version: 9.0.0 (Beta)
+:product-version: 9.0.0
 :product-release-date: March, 2020
 :copyright-year: 2020
 endif::z9[]

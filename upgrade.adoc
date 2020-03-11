@@ -1,11 +1,5 @@
 include::settings.adoc[]
 
-ifdef::z9[]
-:product-version: 9.0.0 (Beta)
-:product-release-date: March, 2020
-:copyright-year: 2020
-endif::z9[]
-
 = {product-name} {product-version} Upgrade Steps
 
 ifndef::z9[]
