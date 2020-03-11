@@ -511,7 +511,7 @@ one mailstore server and one UI server in your configuration.
 
 ifdef::z9[]
 [IMPORTANT]
-{modern} UI does not currently support Zimbra Web Application Server Split configuration.
+The {modern-client} does not currently support Zimbra Web Application Server Split configuration.
 ifdef::z9[]
 
 [IMPORTANT]

@@ -60,7 +60,7 @@ configuration section or using the `zimbraReverseProxyStrictServerNameEnabled` c
 option. Please see the {product-short} Proxy section of the administration guide for more details.
 
 ifdef::z9[]
-* *{product-short} {modern}:* This package includes the assets of {product-short} {modern}. This package is automatically installed on each server.
+* *{product-short} {modern-client}:* This package includes the assets of the {product-short} {modern-client}. This package is automatically installed on each server.
 endif::z9[]
 
 * *{product-short} Memcached:* This package is automatically selected when the

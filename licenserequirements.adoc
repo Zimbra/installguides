@@ -38,7 +38,7 @@ the {product-edition-commercial} of {product-name}.
 
 ifdef::z9[]
 [IMPORTANT]
-A {product-short} license is required to use the {modern} in
+A {product-short} license is required to use the {modern-client} in
 {product-name}'s {product-edition-commercial}.
 endif::z9[]
 

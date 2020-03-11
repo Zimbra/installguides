@@ -230,7 +230,7 @@ Linux (Red Hat, Ubuntu, Fedora, or SUSE) with the latest stable release of one o
 a|*Mobile Devices using {product-short} Web Client* +
  +
 
-|{product-short} {product-version} supports mobile web browsers using the *{modern} only*. 
+|{product-short} {product-version} supports mobile web browsers using the *{modern-client} only*. 
 
 The following operating system/browser combinations are supported:
 
@@ -369,7 +369,7 @@ Japanese, Korean, Malay, Polish, Portuguese (Brazil), Portuguese
 Ukrainian
 
 ifdef::z9[]
-|{product-short} {modern} |Application/UI |Chinese
+|{product-short} {modern-client} |Application/UI |Chinese
 (China), English (US), French (France), German, 
 Hindi, Indonesian, Italian,
 Japanese, Portuguese (Portugal), Spanish, Thai 
@@ -380,7 +380,7 @@ English, Spanish, French, Italian, Japanese, German, Portuguese
 (Brazil), Chinese (Simplified PRC and Traditional HK), Russian
 
 ifdef::z9[]
-|{product-short} {modern} - Online End User Guide (HTML) |Feature Documentation |
+|{product-short} {modern-client} - Online End User Guide (HTML) |Feature Documentation |
 English
 endif::z9[]
 
