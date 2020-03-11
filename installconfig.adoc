@@ -75,12 +75,6 @@ endif::networkeditiondoc[]
 | Select the sub-menu for
   <<proxy_config,**Proxy configuration**>>
 
-ifndef::z9[]
-| zimbra-imapd
-| Select the sub-menu for
-  <<imapd_config,**IMAPD configuration**>>
-endif::z9[]
-
 | zimbra-connect
 | Installing the Zimbra-Connect package is optional.
   If you choose to install Zimbra-Connect for point-to-point text chat, it should
@@ -489,28 +483,3 @@ own independent server
 | Proxy server mode | default https
 |========================
 
-ifndef::z9[]
-[[imapd_config]]
-=== IMAPD configuration
-
-IMAPD is an external IMAP[S] service that may be used as a replacement
-for the embedded IMAP[S] service that runs inside of `mailboxd`. It is
-recommended for use when the IMAP(S) traffic for a given installation
-is overloading the mailbox servers and is not recommended with a
-single-server installation.
-
-[cols="5,15,80a",options="header",]
-|========================
-|*Server Configured* |*Menu Item* |*Description*
-
-3+^|*zimbra-imapd*
-.1+.^|mailbox server or +
-independent server
-| Add to upstream IMAP Servers? | default *no*.  If *yes*, the
-following global config settings will be applied:
---
-- This server will be added to the list of `zimbraReverseProxyUpstreamImapServers`
-- Embedded IMAP[S] servers will be disabled.
---
-|========================
-endif::z9[]

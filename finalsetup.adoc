@@ -68,7 +68,3 @@ for more information
 :toc:
 
 include::ephemeral.adoc[leveloffset=+1]
-
-ifdef::zimbra-x[]
-include::zimbra-x-webclient.adoc[leveloffset=+1]
-endif::zimbra-x[]
