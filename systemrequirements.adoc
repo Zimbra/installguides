@@ -49,7 +49,7 @@ additional space for mail storage. The other nodes require 100MB.
 * Oracle Linux 7.2
 * Oracle Linux 6.6
 * Ubuntu 16.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.7.1 and above
-* Ubuntu 18.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.8.12 and above (Beta)
+* Ubuntu 18.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.8.15 and above
 +
 
 ifndef::z9[]
@@ -118,7 +118,6 @@ endif::[]
 Windows 8.1 or Windows 10 with one of the following:
 
 * Microsoft support is only available for Internet Explorer 11 or Microsoft Edge
-** IE11 and higher for Windows 7 SP1
 ** IE11 and higher for Windows 8.1
 ** IE11 or Microsoft Edge for Windows 10
 * The latest stable release of:
