@@ -116,11 +116,10 @@ Other configurations may work.
 endif::[]
 |The following operating system/browser combinations are supported:
 
-Windows 7 SP1, Windows 8.1or Windows 10 with
+Windows 8.1 or Windows 10 with
 one of the following:
 
 * Microsoft support is only available for Internet Explorer 11 or Microsoft Edge
-** IE11 and higher for Windows 7 SP1
 ** IE11 and higher for Windows 8.1
 ** IE11 or Microsoft Edge for Windows 10
 * The latest stable release of:
@@ -171,11 +170,10 @@ Recommended
 
 The following operating system/browser combinations are supported:
 
-Windows 7 SP1, Windows 8.1 or Windows 10 with
+Windows 8.1 or Windows 10 with
 one of the following:
 
 * Microsoft support is only available for Internet Explorer 11 or Microsoft Edge
-** IE11 and higher for Windows 7 SP1
 ** IE11 and higher for Windows 8.1
 ** IE11 or Microsoft Edge for Windows 10
 * The latest stable release of:
@@ -209,9 +207,7 @@ Recommended
 * 512MB RAM
 
 Operating system POP/IMAP combinations
-
-* Windows 7 SP1 with Outlook Express 6, Outlook
-2007 and above (MAPI), Thunderbird
+* Windows 8.1 (or later) with Outlook 2010 and above (MAPI) or Thunderbird
 * Fedora Core 4 or later with Thunderbird
 * Mac OS X 10.6 or later with Apple Mail
 
@@ -249,11 +245,6 @@ ifdef::networkeditiondoc[]
 |*Operating System* a|
 * Windows 10
 * Windows 8.1
-* Windows 7 SP1
-+
-[IMPORTANT]
-Windows 7 SP1 is in its Extended Support period until January 14, 2020. {product-name} 8.8.x
-is the last release to support Microsoft Outlook 2010 and Microsoft Windows 7 SP1.
 
 |*Microsoft Outlook* a|
 * Outlook 2019: 32-bit and 64-bit editions of Microsoft Office (new in 8.8.11), including Click to run.
