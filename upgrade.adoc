@@ -1,34 +1,55 @@
 include::settings.adoc[]
+
 = {product-name} {product-version} Upgrade Steps
+
+ifndef::z9[]
 
 == Before you upgrade
 
 The following tasks might need to be performed before you
-upgrade. After you review the tasks in this section, go to Upgrade
-Instructions. Be sure to read the
+upgrade. After you review the tasks in this section, go to <<Upgrade Instructions>>. Be sure to read the
 https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0[release note]
 information before upgrading.
-
-[NOTE]
-====
-https://bugzilla.zimbra.com/show_bug.cgi?id=105056[Bug
-105056]
-noted a problem that can occur during a rolling upgrade if two
-factor authentication (2FA) is enabled before all mailbox servers have
-been upgraded to 8.7.  In particular, pre-8.7 mailbox servers are not
-compatible with 2FA.
-
-Accordingly, it is recommended that 2FA is not enabled until all
-mailbox servers have been upgraded to 8.7.
-====
 
 The following new services are available for installation at upgrade
 time. Please refer to the _{product-admin-guide}_ for more information
 and to determine if you wish to install them.
 
-- `zimbra-chat`
+- `zimbra-connect`
 - `zimbra-drive`
-- `zimbra-imapd`
+endif::z9[]
+
+//Before you upgrade instructions for Zimbra 9
+ifdef::z9[]
+== Before you upgrade
+
+Please review the following information to decide if {product-name} {product-version}
+is suitable for you.
+
+* Zimbra Touch Client, Zimbra Mobile Client, and Zimbra HTML (Standard) Client are no longer a part of {product-name} beginning from Version 9.0.0.
+* If you are currently on {product-name} V8.8.15 Patch 7, update all ZeXtras packages before upgrading to {product-name} {product-version}.
+* If you are using Zimbra Connect, do not select Zimbra Talk (`zimbra-talk`) when upgrading to {product-name} {product-version}.
+* {product-name} {product-version} currently does not support rolling upgrades.
+* {product-name} {product-version} introduces two versions of {product-short} Web Client -- Modern and Classic.
+** A {product-short} license is required to use the {modern-client} in {product-name}'s {product-edition-commercial}.
+** It is recommended that the {modern-client} is set as the default web client. Even after selecting a default, the {modern-client} and the {web-client} can be used simultaneously by users as per their choice.
+** To know more about highlights of the {modern-client}, please refer to the *https://zimbra.github.io/zimbra-9-beta/Whats%20New%20in%20Zimbra%20MWC.pdf[What's New]* document for {product-name} {product-version}.
+** The {web-client} offers the same functionality as the Advanced Web Client in {product-name} version 8.8.15.
+** The {modern-client} does not currently support features like Personas, Briefcase, and Dumpster.
+// Some of these features are part of upcoming releases.
+// To view the detailed comparison of features supported in the {modern-client}, please refer to *Web Client Comparison* document.
+** Existing customized themes, logo branding changes, and crontab changes are incompatible with, and hence do not reflect in, the {modern-client}. Branding needs to be re-configured to work with the {modern-client}. The web client also does not currently support themes.
+** Currently supported languages in the application UI for the {modern-client} are - Chinese (China), English (US), French (France), German, Hindi, Indonesian, Italian, Japanese, Portuguese (Portugal), Spanish and Thai. 
+** Zimlets are supported on both the Web Clients. 
+*** Zimlets that work with Zimbra 8.8 will work with the {web-client}; however, they are incompatible with the {modern-client}.
+Due to technology changes, there is no way to migrate the Zimlets from the {web-client} to the {modern-client} or vice-versa. 
+*** The Zimlets for Zimbra Drive and Zimbra Docs are available for both the web clients. You can install separate versions of these services for the {web-client} and the {modern-client}.
+
+You might need to perform the following tasks before you upgrade.
+After you review the tasks in this section, please go to <<Upgrade Instructions>>. Be sure to read the
+https://zimbra.github.io/zimbra-9-beta/release-notes.html[release notes]
+information before upgrading.
+endif::z9[]
 
 === Database Integrity Checking
 
@@ -59,7 +80,7 @@ updated with the latest patches that have been tested with {product-abbrev}.
 
 ==== Ubuntu OS
 
-* Ubuntu 18.04 LTS Server Edition (64-bit) (Beta beginning with 8.8.12)
+* Ubuntu 18.04 LTS Server Edition (64-bit)
 * Ubuntu 16.04 LTS Server Edition (64-bit)
 * Ubuntu 14.04 LTS Server Edition (64-bit)
 
@@ -203,7 +224,7 @@ To continue the upgrade, see <<_multi_server_environment_upgrade_steps>>.
 
 === Disable SSLv3 Support
 
-If upgrading to {product-abbrev} 8.7.0, you need to completely disable SSLv3
+If upgrading to {product-abbrev} 8.7.0 and above, you need to completely disable SSLv3
 support after the upgrade. Disabling SSLv3 is recommended as a result
 of the SSLv3 vulnerability described in
 https://www.us-cert.gov/ncas/alerts/TA14-290A[Alert (TA14-290A)].
@@ -326,7 +347,6 @@ a time, following the instructions under <<_process_2>> below.
   . _MTA_ servers - see <<_using_lmdb_as_the_supported_back_end_for_on_disk_database_maps>>.
   . Proxy servers
   . Mailstore servers
-  . Optionally install any new IMAPD servers
 
 include::upgrade-process-inc.adoc[]
 
@@ -496,10 +516,6 @@ httpclient_external_connmgr_tcp_nodelay
 include::ephemeral.adoc[]
 :leveloffset: -2
 
-:leveloffset: +2
-include::imapd.adoc[]
-:leveloffset: -2
-
 == Remove Current Version and Perform Clean Install of ZCS
 
 If you do not want to upgrade, but prefer to install {product-name}
@@ -520,13 +536,25 @@ change your configuration.  Configuration settings stored in _LDAP_ and
 _localconfig_ are preserved during upgrades. Any files installed by
 {product-name} might be deprecated and/or overwritten during
 upgrades, removing any customizations. This includes customized
-themes, logo branding changes, and crontab changes.  Only the core
+themes, logo branding changes, and crontab changes.  
+
+ifdef::z9[]
+[IMPORTANT]
+Branding needs to be re-configured to work with the {modern-client}. And the {modern-client} currently does not support themes.
+endif::z9[]
+
+Only the core
 Zimlets are enabled after the upgrade. Zimlets that you customized
 and/or deployed are preserved during the upgrade but will be
 disabled. As upgrading of customized Zimlets cannot be tested before
 the release, {product-provider} recommends that you verify that your customized
 Zimlets work correctly before re-enabling them for your end-users
 after the upgrade.
+
+ifdef::z9[]
+[IMPORTANT]
+Zimlets are supported on both the {web-client} and the {modern-client}. However, Zimlets used for Classic Web Client are not compatible with the {modern-client}. Currently, there is no way to migrate the zimlets from Classic to the {modern-client} or vice-versa. Existing zimlets need to be re-developed for them to work on the {modern-client}.
+endif::z9[]
 
 NOTE: When upgrading to {product-name} 8.5.x and later from a
 previous major {product-abbrev} version, the upgrade step disables Zimlets that are

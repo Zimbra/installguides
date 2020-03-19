@@ -5,11 +5,22 @@ include::settings.adoc[]
 // At present it is only partially implemented
 :networkeditiondoc: TRUE
 :multiserverdoc: TRUE
+
+ifndef::z9[]
 = {product-name} {document-title}
 v{product-version}, {product-release-date}
+endif::z9[]
+
+ifdef::z9[]
+= {product-name} {document-title}
+{product-release-date}
+{product-short} {product-edition-commercial} V {product-version}
+endif::z9[]
+
 :toclevels: 4
 
 :leveloffset: +1
+
 
 <<<
 

@@ -68,6 +68,7 @@ this account, proceed through the dialog before you click Finish.
 
 When the accounts are provisioned, you can send and receive emails.
 
+ifndef::z9[]
 [[Importing_Content_from_User_Mailboxes]]
 == Importing Content from User Mailboxes
 
@@ -99,6 +100,7 @@ users run this utility, {product-provider} recommends that they run the Outlook
 Inbox Repair tool, `scanpst.exe`, on their .pst files, to clean up any
 errors in their file. For more information about this tool, go to
 http://support.microsoft.com/kb/287497.
+endif::[]
 
 [[Administrators_Account]]
 == Administrator Account

@@ -24,7 +24,7 @@ password.
 {product-name} requires access to this account via
 **ssh public key authentication**.
 On most operating systems this combination is okay, but if you have
-modified pam rules to disallow any ssh access to disabled accounts
+modified spam rules to disallow any ssh access to disabled accounts
 then you must define a password for the `zimbra` UNIX account.
 This will allow ssh key authentication for checking remote
 queues. See the Zimbra wiki article,
@@ -68,7 +68,3 @@ for more information
 :toc:
 
 include::ephemeral.adoc[leveloffset=+1]
-
-ifdef::zimbra-x[]
-include::zimbra-x-webclient.adoc[leveloffset=+1]
-endif::zimbra-x[]

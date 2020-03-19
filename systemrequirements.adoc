@@ -7,22 +7,22 @@
 |*Servers*
 |*Evaluation and Testing*
 
-* Intel/AMD 64-bit CPU 1.5 GHz
+* Intel/AMD w/ PassMark CPU Mark > 7,500 (e.g., Intel Xeon E-224G @ 3.5GHz = 9,913)
 * RAM requirements:
 ** For single server installations, {product-short} requires a minimum of 8GB of RAM.
 ** For multi-server installations, contact {product-provider} sales for recommendations.
-* 5 GB free disk space for software and logs
+* 50 GB free disk space for software and logs
 * Temp file space for installs and upgrades*
 * Additional disk space for mail storage
 
 *Production environments*
 
-* Intel/AMD 2.0 GHZ+ 64-bit CPU
+* Intel/AMD w/ PassMark CPU Mark > 15,000 (e.g., AMD EPYC 7401P @ 2.0GHz = 18,199)
 * RAM requirements:
 ** For single server installations, {product-short} requires a minimum of 8GB of RAM.
 ** For multi-server installations, contact {product-provider} sales for recommendations.
 * Temp file space for installs and upgrades*
-* 10 GB free disk space for software and logs (SATA or SCSI for
+* 100 GB free disk space for software and logs (SATA or SCSI for
 performance, and RAID/Mirroring for redundancy)
 * Additional disk space for mail storage
 * Temp files space: The zimbra-store requires 5GB for `/opt/zimbra`, plus
@@ -48,24 +48,23 @@ additional space for mail storage. The other nodes require 100MB.
 * CentOS Linux 6 (64-bit), *patch level 4 or later is required*
 * Oracle Linux 7.2
 * Oracle Linux 6.6
-* Ubuntu 16.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.7.1 and above
-* Ubuntu 18.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.8.15 and above
+* Ubuntu 16.04 LTS Server Edition (64-bit)
+* Ubuntu 18.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.8.12 and above
 +
 
+ifndef::z9[]
 |*Operating System (Open Source Edition)*
 |In addition to supporting the operating systems listed above for the
 {product-edition-commercial}, other operating system versions are available for the
 {product-edition-foss}. Check the {product-provider} Open Source Downloads page on
 https://www.zimbra.com.
+endif::z9[]
 
 |*Virtualization ({product-edition-commercial})*
 |The following hypervisors are supported:
 
-* VMware vSphere 6.x
-* VMware vSphere 5.x
-* VMware vSphere 4.x
-* XenServer 6.5
-* XenServer 6.2
+* VMware vSphere 6.5 or 6.7 (to March 2020)
+* Citrix Hypervisor (XenServer) 7.1 LTSR, 8.0
 * KVM
 
 |*File Systems*
@@ -116,8 +115,7 @@ Other configurations may work.
 endif::[]
 |The following operating system/browser combinations are supported:
 
-Windows 8.1 or Windows 10 with
-one of the following:
+Windows 8.1 or Windows 10 with one of the following:
 
 * Microsoft support is only available for Internet Explorer 11 or Microsoft Edge
 ** IE11 and higher for Windows 8.1
@@ -129,7 +127,7 @@ one of the following:
 
 IMPORTANT: IE11 is not supported when using {product-short} Connect. {product-short} Connect requires webRTC support which IE doesn't provide yet. 
 
-MacOS 10.12 or 10.13, 10.14 with one of the following:
+MacOS 10.12 or later with one of the following:
 
 * The latest stable release of:
 ** Firefox
@@ -156,26 +154,35 @@ ifndef::backend-pdf[]
 [NOTE]
 Other configurations may work.
 endif::[]
+
+ifndef::z9[]
 |*For {product-short} Web Client - Advanced & Standard version*
+endif::z9[]
+
+ifdef::z9[]
+|*For {product-short} Web Client - Classic & Modern version*
+endif::z9[]
 
 Minimum
 
-* Intel/AMD/Power PC CPU 750MHz
-* 256MB RAM
+* Intel/AMD w/ PassMark CPU Mark > 2,000 (e.g., Intel Core i3-7020U @ 2.30GHz = 2,434)
+* 2GB RAM
 
 Recommended
 
-* Intel/AMD/Power PC CPU 1.5GHz
-* 512MB RAM
+* Intel/AMD w/ PassMark CPU Mark > 4,000
+* 4GB RAM
 
 The following operating system/browser combinations are supported:
 
+ifndef::z9[]
 Windows 8.1 or Windows 10 with
 one of the following:
 
 * Microsoft support is only available for Internet Explorer 11 or Microsoft Edge
 ** IE11 and higher for Windows 8.1
 ** IE11 or Microsoft Edge for Windows 10
+
 * The latest stable release of:
 ** Firefox
 ** Safari
@@ -194,35 +201,67 @@ Linux (Red Hat, Ubuntu, Fedora, or SUSE) with one of the following:
 * The latest stable release of:
 ** Firefox
 ** Google Chrome
+endif::z9[]
+
+ifdef::z9[]
+Windows 8.1 or Windows 10 with the latest stable release of one of the following:
+
+** Google Chrome
+** Firefox
+** Microsoft Edge
+
+MacOS 10.13 or newer with the latest stable release of one of the following:
+
+** Google Chrome
+** Firefox
+** Safari
+
+Linux (Red Hat, Ubuntu, Fedora, or SUSE) with the latest stable release of one of the following:
+
+** Google Chrome
+** Firefox
+
+a|*Mobile Devices using {product-short} Web Client* +
+ +
+
+|{product-short} {product-version} supports mobile web browsers using the *{modern-client} only*. 
+
+The following operating system/browser combinations are supported:
+
+Apple-supported iPhone and iPad models with their latest iOS version and with the latest stable release of one of the following:
+
+** Safari
+** Chrome
+** Firefox
+
+Phones or tablets running an up-to-date version of Android still supported by Google with the latest stable release of one of the following:
+
+** Android Browser
+** Chrome
+** Firefox
+endif::z9[]
 
 |*End User Computers Using Other Clients*
 |Minimum
 
-* Intel/AMD/Power PC CPU 750MHz
-* 256MB RAM
+* Intel/AMD w/ PassMark CPU Mark > 2,000
+* 2G RAM
 
 Recommended
 
-* Intel/AMD/Power PC CPU 1.5GHz
-* 512MB RAM
+* Intel/AMD w/ PassMark CPU Mark > 4,000
+* 4GB RAM
 
 Operating system POP/IMAP combinations
-* Windows 8.1 (or later) with Outlook 2010 and above (MAPI) or Thunderbird
-* Fedora Core 4 or later with Thunderbird
-* Mac OS X 10.6 or later with Apple Mail
 
-*Accessibility and Screen Readers* {product-provider} recommends that customers
-requiring the use of screen readers for accessibility leverage the use of
-the Standard {product-short} Web Client (HTML). {product-provider} continues to invest in
-improving the accessibility of this interface.
-
-[TIP]
-If users are presently using IE 10 or older {product-provider} strongly recommends that they upgrade to the latest version of Internet Explorer for optimal performance with ZWC.
+* Windows 10 with Windows Mail, Outlook 2016 and above (MAPI), or the latest stable Thunderbird
+* Fedora 31 or later with the latest stable Thunderbird
+* MacOS 10.12 or later with Apple Mail
 
 |*Exchange Web Services*
 |EWS Clients
 
-* Outlook 2011/2016 (MAC only)
+* Outlook 2016/2019 (MAC only)
 * Apple Desktop Clients (macOS 10.12+)
 
 EWS Interoperability
@@ -233,7 +272,7 @@ EWS Interoperability
 |Display minimum resolution: 1024 x 768
 
 |*Internet Connection Speed*
-|128 kbps or higher
+|1 mbps or higher
 |===
 
 ifdef::networkeditiondoc[]
@@ -244,13 +283,10 @@ ifdef::networkeditiondoc[]
 |=======================================================================
 |*Operating System* a|
 * Windows 10
-* Windows 8.1
 
 |*Microsoft Outlook* a|
-* Outlook 2019: 32-bit and 64-bit editions of Microsoft Office (new in 8.8.11), including Click to run.
-* Outlook 2016: 32-bit and 64-bit editions of Microsoft Office, including Office365 (New in 8.8.10) and Click to run versions.
-* Outlook 2013: 32-bit and 64-bit editions of Microsoft Office.
-* Outlook 2010: 32-bit and 64-bit editions of Microsoft Office (End of life: October 13, 2020.)
+* Outlook 2019: 32-bit and 64-bit editions of Microsoft Office, including Click to run.
+* Outlook 2016: 32-bit and 64-bit editions of Microsoft Office, including Office365 and Click to run versions.
 
 |=======================================================================
 endif::networkeditiondoc[]
@@ -265,11 +301,11 @@ including:
 
 *Smartphone Operating Systems*:
 
-* iOS9, iOS10, iOS11
-* Android 2.3 and above
-* Windows Mobile 6.0 and above
-* Microsoft Outlook using Exchange ActiveSync (EAS)
+* iOS versions currently supported by Apple; as of March 2020 those are iOS12 & iOS13
+* Android versions currently supported by Google; as of March 2020 those are 8.0 and above
+* Windows Mobile no longer supported (EOL 10 December 2019)
 
+ifndef::z9[]
 [[Zimbra_Touch_Client]]
 == {product-short} Touch Client ({product-edition-commercial} Only)
 
@@ -281,6 +317,7 @@ Supported devices for the {product-short} Touch Client include:
 * iOS9+: iPad®, iPad mini®, iPhone®, iPod touch®
 * Android 4.0+: Nexus 7, Nexus 10, Samsung Galaxy Tab™,
   Samsung Galaxy S® III, Samsung Galaxy S® 4, Galaxy Nexus™
+endif::z9[]
 endif::networkeditiondoc[]
 
 [[Available_Languages]]
@@ -297,18 +334,30 @@ This section includes information about available languages, including
 |=======================================================================
 |*Component* |*Category* |*Languages*
 
-|{product-short} Web Client |Application/UI |Arabic, Basque (EU), Chinese
+|{product-short} {web-client} |Application/UI |Arabic, Basque (EU), Chinese
 (Simplified PRC and Traditional HK), Danish, Dutch, English (AU, UK,
 US), French, French Canadian, German, Hindi, Hungarian, Italian,
 Japanese, Korean, Malay, Polish, Portuguese (Brazil), Portuguese
 (Portugal), Romanian, Russian, Spanish, Swedish, Thai, Turkish,
 Ukrainian
 
-|{product-short} Web Client - Online Help (HTML) |Feature Documentation |Dutch,
+ifdef::z9[]
+|{product-short} {modern-client} |Application/UI |Chinese
+(China), English (US), French (France), German, 
+Hindi, Indonesian, Italian,
+Japanese, Portuguese (Portugal), Spanish, Thai 
+endif::z9[]
+
+|{product-short} {web-client} - Online Help (HTML) |Feature Documentation |Dutch,
 English, Spanish, French, Italian, Japanese, German, Portuguese
 (Brazil), Chinese (Simplified PRC and Traditional HK), Russian
 
-|{product-short} Web Client - End User Guide (PDF) |Feature Documentation
+ifdef::z9[]
+|{product-short} {modern-client} - Online End User Guide (HTML) |Feature Documentation |
+English
+endif::z9[]
+
+|{product-short} {web-client} - End User Guide (PDF) |Feature Documentation
 |English
 
 |{product-short} Connector for Microsoft Outlook |Installer + Application/UI

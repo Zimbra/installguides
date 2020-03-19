@@ -10,10 +10,15 @@ following is a summary of the feature attributes of a {product-name}
 
 * *Accounts limit.* The maximum number of accounts you can create and
 the number of accounts created are shown.
+
+ifndef::z9[]
++
 * *Mobile accounts limit.* The maximum number of accounts that can have
 the native mail mobile feature enabled.
 * **Touch Client accounts limit**. The maximum number of accounts that
 can have the touch client mobile feature enabled.
+endif::[]
+
 * **MAPI accounts limit**. The maximum number of accounts that can use
 {product-short} Connector for Microsoft Outlook (ZCO).
 * *Exchange Web Services (EWS) accounts limit.* The maximum number of
@@ -28,8 +33,14 @@ that can be created. The archive feature must be installed.
 [[Zimbra_License_Requirements]]
 == {product-short} License Requirements
 
-A {product-short} license is required in order to create accounts in
+A {product-short} license is required to create accounts in
 the {product-edition-commercial} of {product-name}.
+
+ifdef::z9[]
+[IMPORTANT]
+A {product-short} license is required to use the {modern-client} in
+{product-name}'s {product-edition-commercial}.
+endif::z9[]
 
 Several types of licenses are available:
 

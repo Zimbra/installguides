@@ -14,9 +14,18 @@ Change to the correct directory.
 cd <expanded-directory>
 ----
 Begin the upgrade installation.
+
+ifndef::z9[]
 ----
 ./install.sh
 ----
+endif::z9[]
+
+ifdef::z9[]
+----
+./install.sh --beta-support
+----
+endif::z9[]
 ====
 +
   . The upgrade script checks if `proxy` and `memcached` are

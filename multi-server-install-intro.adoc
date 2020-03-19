@@ -21,7 +21,7 @@ database management.
 [[Intro_license]]
 == {product-name} License
 
-A Zimbra license is required in order to create accounts in
+A Zimbra license is required to create accounts in
 {product-name} Network Edition. You cannot install {product-name}
 Network Edition without a license. For more information about licenses,
 see <<Zimbra_License_Requirements,Zimbra License Requirements>>
@@ -80,7 +80,7 @@ These are ports typically available to mail clients.
 |110| pop3| mailbox / proxy| POP3
 |143| imap| mailbox / proxy| IMAP
 |443| https| mailbox / proxy - web mail client| HTTP over TLS
-|465| smtps| mta| Incoming mail to postfix over TLS (Legacy Outlook only? If possible, use 587 instead)
+|465| smtps| mta| Incoming mail to postfix over TLS (Legacy Outlook only. If possible, use 587 instead)
 |587| smtp| mta| Mail submission over TLS
 |993| imaps| mailbox / proxy| IMAP over TLS
 |995| pop3s| mailbox / proxy| POP3 over TLS
@@ -114,12 +114,10 @@ These are ports typically only used by the Zimbra system itself.
 |7993|imaps|mailbox|Backend IMAP over TLS (if proxy configured); zimbraImapSSLBindAddress
 |7995|pop3s|mailbox|Backend POP3 over TLS (if proxy configured); zimbraPop3SSLBindAddress
 |8080|http|mailbox|Backend HTTP (if proxy configured on same host); zimbraMailBindAddress
-|8143|imap|imapd|IMAP server running independent of the mailboxd process
 |8443|https|mailbox|Backend HTTPS (if proxy configured on same host); zimbraMailSSLBindAddress
 |8465|milter|mta/opendkim|OpenDKIM milter service; localhost
 |8735|zextras|mailbox|internal mailbox to mailbox communication.
 |8736|zextras|mailbox|distributed configuration
-|8993|imap|imapd|IMAP over TLS via IMAPD server running independent of the mailboxd process
 |10024|smtp|mta/amavisd|to amavis from postfix; localhost
 |10025|smtp|mta/master|opendkim; localhost
 |10026|smtp|mta/amavisd|"ORIGINATING" policy; localhost
