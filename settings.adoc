@@ -6,7 +6,8 @@
 :product-abbrev: ZCS
 :product-admin-guide: {product-name} Administration Guide
 :icons: font
-:title-logo-image: images/zimbra-logo-non-interlaced.png
+:title-page:
+:title-logo-image: images/zimbra-logo.svg
 :showlinks:
 :source-highlighter: coderay
 :toc: left
@@ -22,6 +23,7 @@ endif::z9[]
 
 //Zimbra 9 Documentation (Pass z9 in build argument e.g. asciidoctor -a z9 zimbra-9-install.adoc)
 ifdef::z9[]
+:title-logo-image: image:images/zimbra-9-logo.svg[]
 :web-client: Classic Web App
 :modern-client: Modern Web App
 :product-version: 9.0.0
