@@ -42,7 +42,7 @@ The web app also does not currently support themes.
 ** Zimlets are supported on both the Web Clients.
 *** Zimlets that work with Zimbra 8.8 will work with the {web-client}; however, they are incompatible with the {modern-client}.
 Due to technology changes, there is no way to migrate the Zimlets from the {web-client} to the {modern-client} or vice-versa.
-*** The Zimlets for Zimbra Drive and Zimbra Docs are available for both the web clients.
+*** The Zimlets for Zimbra Drive, Zimbra Connect, and Zimbra Docs are available for both the web clients.
 You can install separate versions of these services for the {web-client} and the {modern-client}.
 
 You might need to perform the following tasks before you upgrade.
