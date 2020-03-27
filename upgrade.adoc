@@ -33,7 +33,7 @@ is suitable for you.
 * {product-name} {product-version} introduces two versions of {product-short} Web Client -- Modern and Classic.
 ** A {product-short} license is required to use the {modern-client} in {product-name}'s {product-edition-commercial}.
 ** It is recommended that the {modern-client} is set as the default web client. Even after selecting a default, the {modern-client} and the {web-client} can be used simultaneously by users as per their choice.
-** To know more about highlights of the {modern-client}, please refer to the *https://zimbra.github.io/zimbra-9-beta/Whats%20New%20in%20Zimbra%20MWC.pdf[What's New]* document for {product-name} {product-version}.
+** To know more about highlights of the {modern-client}, please refer to the *https://zimbra.github.io/zimbra-9/Whats%20New%20in%20Zimbra%20MWC.pdf[What's New]* document for {product-name} {product-version}.
 ** The {web-client} offers the same functionality as the Advanced Web Client in {product-name} version 8.8.15.
 ** The {modern-client} does not currently support features like Personas, Briefcase, and Dumpster.
 // Some of these features are part of upcoming releases.
@@ -47,7 +47,7 @@ Due to technology changes, there is no way to migrate the Zimlets from the {web-
 
 You might need to perform the following tasks before you upgrade.
 After you review the tasks in this section, please go to <<Upgrade Instructions>>. Be sure to read the
-https://zimbra.github.io/zimbra-9-beta/release-notes.html[release notes]
+https://zimbra.github.io/zimbra-9/release-notes.html[release notes]
 information before upgrading.
 endif::z9[]
 
