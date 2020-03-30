@@ -23,7 +23,7 @@ endif::z9[]
 
 ifdef::z9[]
 ----
-./install.sh --beta-support
+./install.sh
 ----
 endif::z9[]
 ====
