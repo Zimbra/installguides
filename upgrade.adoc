@@ -29,21 +29,19 @@ is suitable for you.
 * Zimbra Touch Client, Zimbra Mobile Client, and Zimbra HTML (Standard) Client are no longer a part of {product-name} beginning from Version 9.0.0.
 * If you are currently on {product-name} V8.8.15 Patch 7, update all ZeXtras packages before upgrading to {product-name} {product-version}.
 * If you are using Zimbra Connect, do not select Zimbra Talk (`zimbra-talk`) when upgrading to {product-name} {product-version}.
-* {product-name} {product-version} currently does not support rolling upgrades.
 * {product-name} {product-version} introduces two versions of {product-short} Web Client -- Modern and Classic.
 ** A {product-short} license is required to use the {modern-client} in {product-name}'s {product-edition-commercial}.
 ** It is recommended that the {modern-client} is set as the default web client. Even after selecting a default, the {modern-client} and the {web-client} can be used simultaneously by users as per their choice.
 ** To know more about highlights of the {modern-client}, please refer to the *https://zimbra.github.io/zimbra-9/Whats%20New%20in%20Zimbra%20MWC.pdf[What's New]* document for {product-name} {product-version}.
 ** The {web-client} offers the same functionality as the Advanced Web Client in {product-name} version 8.8.15.
-** The {modern-client} does not currently support features like Personas, Briefcase, and Dumpster.
-// Some of these features are part of upcoming releases.
-// To view the detailed comparison of features supported in the {modern-client}, please refer to *Web Client Comparison* document.
-** Existing customized themes, logo branding changes, and crontab changes are incompatible with, and hence do not reflect in, the {modern-client}. Branding needs to be re-configured to work with the {modern-client}. The web client also does not currently support themes.
+** The {modern-client} does not currently support features like Personas, Distribution Lists, and Dumpster.
+** Briefcase cannot be used with {modern-client}. Though users may continue to use Briefcase with {web-client}, it is recommended that existing users of Briefcase migrate to Zimbra Drive.
+** Existing customized themes, logo branding changes, and crontab changes are incompatible with, and hence do not reflect in, the {modern-client}. Branding needs to be re-configured to work with the {modern-client}. The {modern-client} does not currently support themes. Please refer to the 'Customizing Modern Web App' section of Admin Guide for more information related to configuration.
 ** Currently supported languages in the application UI for the {modern-client} are - Chinese (China), English (US), French (France), German, Hindi, Indonesian, Italian, Japanese, Portuguese (Portugal), Spanish and Thai. 
 ** Zimlets are supported on both the Web Clients. 
 *** Zimlets that work with Zimbra 8.8 will work with the {web-client}; however, they are incompatible with the {modern-client}.
 Due to technology changes, there is no way to migrate the Zimlets from the {web-client} to the {modern-client} or vice-versa. 
-*** The Zimlets for Zimbra Drive and Zimbra Docs are available for both the web clients. You can install separate versions of these services for the {web-client} and the {modern-client}.
+*** The Zimlets for Zimbra Drive, Zimbra Connect and Zimbra Docs are available for both the web clients. You can install separate versions of these services for the {web-client} and the {modern-client}.
 
 You might need to perform the following tasks before you upgrade.
 After you review the tasks in this section, please go to <<Upgrade Instructions>>. Be sure to read the
