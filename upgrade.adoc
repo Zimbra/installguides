@@ -24,7 +24,7 @@ ifdef::z9[]
 Please review the following information to decide if {product-name} {product-version} is suitable for you.
 
 * Zimbra Touch Client, Zimbra Mobile Client, and Zimbra HTML (Standard) Client are no longer a part of {product-name} starting from Version 9.0.0.
-* If you are currently on {product-name} V8.8.15 Patch 7, update all ZeXtras packages before upgrading to {product-name} {product-version}.
+* If you are currently on {product-name} V8.8.15 Patch 7, update all NG Modules before upgrading to {product-name} {product-version}.
 * If you are using Zimbra Connect, do not select Zimbra Talk (`zimbra-talk`) when upgrading to {product-name} {product-version}.
 * {product-name} {product-version} introduces two versions of {product-short} Web Client -- Modern and Classic.
 ** A {product-short} {product-edition-commercial} license is required to use the {modern-client} in {product-name}'s {product-edition-commercial}.
