@@ -8,7 +8,7 @@ ifndef::z9[]
 
 The following tasks might need to be performed before you upgrade.
 After you review the tasks in this section, go to <<Upgrade Instructions>>.
-Be sure to read the https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0[release note] information before upgrading.
+Be sure to read the link:https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0[release note] information before upgrading.
 
 The following new services are available for installation at upgrade time.
 Please refer to the _{product-admin-guide}_ for more information and to determine if you wish to install them.
@@ -23,27 +23,22 @@ ifdef::z9[]
 
 Please review the following information to decide if {product-name} {product-version} is suitable for you.
 
-* Zimbra Touch Client, Zimbra Mobile Client, and Zimbra HTML (Standard) Client are no longer a part of {product-name} starting from Version 9.0.0.
-* If you are currently on {product-name} V8.8.15 Patch 7, update all NG Modules before upgrading to {product-name} {product-version}.
-* If you are using Zimbra Connect, do not select Zimbra Talk (`zimbra-talk`) when upgrading to {product-name} {product-version}.
-* {product-name} {product-version} introduces two versions of {product-short} Web Client -- Modern and Classic.
-** A {product-short} {product-edition-commercial} license is required to use the {modern-client} in {product-name}'s {product-edition-commercial}.
-** It is recommended that the {modern-client} is set as the default web client.
-Even after selecting a default, the {modern-client} and the {web-client} can be used simultaneously by users as per their choice.
-** To know more about highlights of the {modern-client}, please refer to the *https://zimbra.github.io/zimbra-9/Whats%20New%20in%20Zimbra%20MWC.pdf[What's New]* document for {product-name} {product-version}.
-** The {web-client} offers the same functionality as the Advanced Web Client in {product-name} version 8.8.15.
-** The {modern-client} does not currently support features like Personas, Distribution Lists, and Dumpster.
-** Briefcase cannot be used with {modern-client}. Though users may continue to use Briefcase with {web-client}, it is recommended that existing users of Briefcase migrate to Zimbra Drive.
-** Existing customized themes, logo branding changes, and crontab changes are incompatible with, and hence do not reflect in, the {modern-client}. Branding needs to be re-configured to work with the {modern-client}. The {modern-client} does not currently support themes. Please refer to the 'Customizing Modern Web App' section of Admin Guide for more information related to configuration.
-** Currently supported languages in the application UI for the {modern-client} are - Chinese (China), English (US), French (France), German, Hindi, Indonesian, Italian, Japanese, Portuguese (Portugal), Spanish and Thai. 
-** Zimlets are supported on both the Web Clients. 
-*** Zimlets that work with Zimbra 8.8 will work with the {web-client}; however, they are incompatible with the {modern-client}.
-Due to technology changes, there is no way to migrate the Zimlets from the {web-client} to the {modern-client} or vice-versa. 
-*** The Zimlets for Zimbra Drive, Zimbra Connect and Zimbra Docs are available for both the web clients. You can install separate versions of these services for the {web-client} and the {modern-client}.
+* Zimbra Touch Client, Zimbra Mobile Client, and Zimbra HTML (Standard) Client are no longer a part of Zimbra starting from Version 9.0.0.
+* If you are currently on Zimbra V8.8.15 Patch 7, update all NG modules before upgrading to Zimbra 9.0.0.
+* Zimbra 9.0.0 introduces two versions of Zimbra Web Client -- Modern and Classic.
+* A Zimbra Network Edition license is required to use the Modern Web App.
+* It is recommended that the Modern Web App is set as the default web client. Even after selecting a default, the Modern Web App and the Classic Web App can be used simultaneously by users as per their choice.
+* To know more about highlights of the Modern Web App, please refer to Introducing the Modern Web Application.
+* The Classic Web App offers the same functionality as the Advanced Web Client in Zimbra version 8.8.15.
+* The Modern Web App is actively under development, with some features not yet available. Refer to link:https://zimbra.github.io/adminguide/latest/index.html#table_email_features[Email Features] (e.g., Personas, link:https://zimbra.github.io/adminguide/latest/index.html#_working_with_distribution_lists[System Distribution Lists], and Dumpster.
+* Briefcase cannot be used with Modern Web App. Though users may continue to use Briefcase with Classic Web App, it is recommended that existing users of Briefcase migrate to Zimbra Drive.
+* Existing customized themes, logo branding changes, and crontab changes are incompatible with, and hence do not reflect in the Modern Web App. Branding needs to be re-configured to work with the Modern Web App. The Modern Web App does not currently support themes. Please refer to the link:https://zimbra.github.io/zimbra-9/adminguide.html#_customizing_modern_web_app[Customizing Modern Web App] section of Admin Guide for more information related to configuration.
+* Currently supported languages in the application UI for the Modern Web App are - Chinese (China), English (US), French (France), German, Hindi, Indonesian, Italian, Japanese, Portuguese (Portugal), Spanish and Thai.
+* Zimlets are supported on both the Web Clients.
+** Zimlets that work with Zimbra 8.8 will work with the Classic Web App; however, they are incompatible with the Modern Web App. Due to technology changes, there is no way to migrate the Zimlets from the Classic Web App to the Modern Web App or vice-versa.
+** The Zimlets for Zimbra Drive, Zimbra Connect and Zimbra Docs are available for both web applications.
 
-You might need to perform the following tasks before you upgrade.
-After you review the tasks in this section, please go to <<Upgrade Instructions>>.
-Be sure to read the https://zimbra.github.io/zimbra-9/release-notes.html[release notes] information before upgrading.
+Be sure to read the link:https://wiki.zimbra.com/wiki/Zimbra_Releases/9.0.0[release notes] information before upgrading.
 endif::z9[]
 
 === Database Integrity Checking
