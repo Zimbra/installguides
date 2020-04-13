@@ -24,7 +24,7 @@ ifdef::z9[]
 Please review the following information to decide if {product-name} {product-version} is suitable for you.
 
 * Zimbra Touch Client, Zimbra Mobile Client, and Zimbra HTML (Standard) Client are no longer a part of Zimbra starting from Version 9.0.0.
-* If you are currently on Zimbra V8.8.15 Patch 7, update all NG modules before upgrading to Zimbra 9.0.0.
+* If you are currently on Zimbra V8.8.15 Patch 8, update all NG modules before upgrading to Zimbra 9.0.0.
 * Zimbra 9.0.0 introduces two versions of Zimbra Web Client -- Modern and Classic.
 * A Zimbra Network Edition license is required to use the Modern Web App.
 * It is recommended that the Modern Web App is set as the default web client. Even after selecting a default, the Modern Web App and the Classic Web App can be used simultaneously by users as per their choice.

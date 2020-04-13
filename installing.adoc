@@ -416,9 +416,9 @@ Configuration complete - press return to exit
 
 ifdef::z9[]
 
-== Installing CloudSuite Zimlets for {modern-client}
+== Installing Modern Zimlets for {modern-client}
 
-These five CloudSuite zimlets are available.
+These five Modern zimlets are available.
 
 * Dropbox
 * Onedrive
@@ -442,8 +442,8 @@ Ubuntu:: `apt-get install zimbra-zimlet-dropbox`
 
 [source, bash]
 ----
-su - zimbra #switch user to zimbra
-zmmailboxdctl restart #Restart mailbox service as a Zimbra user
+su - zimbra
+zmmailboxdctl restart
 ----
 
 === Onedrive
@@ -459,8 +459,8 @@ Ubuntu:: `apt-get install zimbra-zimlet-onedrive`
 
 [source, bash]
 ----
-su - zimbra #switch user to zimbra
-zmmailboxdctl restart #Restart mailbox service as a Zimbra user
+su - zimbra
+zmmailboxdctl restart
 ----
 
 === Google Drive
@@ -476,8 +476,8 @@ Ubuntu:: `apt-get install zimbra-zimlet-google-drive`
 
 [source, bash]
 ----
-su - zimbra #switch user to zimbra
-zmmailboxdctl restart #Restart mailbox service as a Zimbra user
+su - zimbra
+zmmailboxdctl restart
 ----
 
 === Zoom
@@ -493,8 +493,8 @@ Ubuntu:: `apt-get install zimbra-zimlet-zoom`
 
 [source, bash]
 ----
-su - zimbra #switch user to zimbra
-zmmailboxdctl restart #Restart mailbox service as a Zimbra user
+su - zimbra
+zmmailboxdctl restart
 ----
 
 === Slack
@@ -510,8 +510,8 @@ Ubuntu:: `apt-get install zimbra-zimlet-slack`
 
 [source, bash]
 ----
-su - zimbra #switch user to zimbra
-zmmailboxdctl restart #Restart mailbox service as a Zimbra user
+su - zimbra
+zmmailboxdctl restart
 ----
 
 Please visit link:https://zimbra.github.io/zimbra-9/adminguide.html#_configuring_zimlets_for_modern_web_app[Configuring Zimlets for Modern Web App] for instructions for on how to configure zimlets for {modern-client} users.
