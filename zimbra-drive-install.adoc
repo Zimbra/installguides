@@ -1,4 +1,9 @@
 == Install/Upgrade Zimbra Drive NG
+
+====
+Performing these step installs/updates `zimbra-docs` as well.
+====
+
 * As `root` run the below command:
 
 RHEL:: `yum install zimbra-drive-ng`
