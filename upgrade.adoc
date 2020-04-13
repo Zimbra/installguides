@@ -420,8 +420,16 @@ httpclient_external_connmgr_tcp_nodelay
 ====
 +
 
+ifdef::z9[]
 
-:leveloffset: +2
+:leveloffset: +1
+include::zimbra-drive-install.adoc[]
+
+include::zimlets-install.adoc[]
+
+endif::z9[]
+
+:leveloffset: +1
 include::ephemeral.adoc[]
 :leveloffset: -2
 

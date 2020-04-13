@@ -1,0 +1,100 @@
+== Installing Zimlets for {modern-client}
+
+These five zimlets are available.
+
+* Slack
+* Zoom
+* Dropbox
+* Google Drive
+* Onedrive
+
+You have to install and configure them for users to integrate and use these zimlets.
+Once you are done installing the zimlet(s), you need to restart the mailbox service before configuring them.
+
+
+=== Slack
+
+* As `root` run the below command:
+
+RHEL:: `yum install zimbra-zimlet-slack`
+
+Ubuntu:: `apt-get install zimbra-zimlet-slack`
+
+
+* Restart mailbox service as a `zimbra` user:
+
+[source, bash]
+----
+su - zimbra
+zmmailboxdctl restart
+----
+
+=== Zoom
+
+* As `root` run the below command:
+
+RHEL:: `yum install zimbra-zimlet-zoom`
+
+Ubuntu:: `apt-get install zimbra-zimlet-zoom`
+
+
+* Restart mailbox service as a `zimbra` user:
+
+[source, bash]
+----
+su - zimbra
+zmmailboxdctl restart
+----
+
+=== Dropbox
+
+* As `root` run the below command:
+
+RHEL:: `yum install zimbra-zimlet-dropbox`
+
+Ubuntu:: `apt-get install zimbra-zimlet-dropbox`
+
+
+* Restart mailbox service as a `zimbra` user:
+
+[source, bash]
+----
+su - zimbra
+zmmailboxdctl restart
+----
+
+=== Google Drive
+
+* As `root` run the below command:
+
+RHEL:: `yum install zimbra-zimlet-google-drive`
+
+Ubuntu:: `apt-get install zimbra-zimlet-google-drive`
+
+
+* Restart mailbox service as a `zimbra` user:
+
+[source, bash]
+----
+su - zimbra
+zmmailboxdctl restart
+----
+
+=== Onedrive
+
+* As `root` run the below command:
+
+RHEL:: `yum install zimbra-zimlet-onedrive`
+
+Ubuntu:: `apt-get install zimbra-zimlet-onedrive`
+
+
+* Restart mailbox service as a `zimbra` user:
+
+[source, bash]
+----
+su - zimbra
+zmmailboxdctl restart
+----
+
+Please visit link:https://zimbra.github.io/zimbra-9/adminguide.html#_configuring_zimlets_for_modern_web_app[Configuring Zimlets for Modern Web App] for instructions for on how to configure zimlets for {modern-client} users.

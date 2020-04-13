@@ -196,9 +196,7 @@ Installing:
     zimbra-spell
     zimbra-convertd
     zimbra-memcached
-ifdef::z9[]
     zimbra-modern-ui
-endif::z9[]
     zimbra-proxy
     zimbra-archiving
     zimbra-connect
@@ -429,109 +427,6 @@ Configuration complete - press return to exit
 ....
 --
 
-ifdef::z9[]
-
 include::zimbra-drive-install.adoc[]
 
-== Installing Zimlets for {modern-client}
-
-These five zimlets are available.
-
-* Slack
-* Zoom
-* Dropbox
-* Google Drive
-* Onedrive
-
-You have to install and configure them for users to integrate and use these zimlets.
-Once you are done installing the zimlet(s), you need to restart the mailbox service before configuring them.
-
-
-=== Slack
-
-* As `root` run the below command:
-
-RHEL:: `yum install zimbra-zimlet-slack`
-
-Ubuntu:: `apt-get install zimbra-zimlet-slack`
-
-
-* Restart mailbox service as a `zimbra` user:
-
-[source, bash]
-----
-su - zimbra #switch user to zimbra
-zmmailboxdctl restart #Restart mailbox service as a Zimbra user
-----
-
-=== Zoom
-
-* As `root` run the below command:
-
-RHEL:: `yum install zimbra-zimlet-zoom`
-
-Ubuntu:: `apt-get install zimbra-zimlet-zoom`
-
-
-* Restart mailbox service as a `zimbra` user:
-
-[source, bash]
-----
-su - zimbra #switch user to zimbra
-zmmailboxdctl restart #Restart mailbox service as a Zimbra user
-----
-
-=== Dropbox
-
-* As `root` run the below command:
-
-RHEL:: `yum install zimbra-zimlet-dropbox`
-
-Ubuntu:: `apt-get install zimbra-zimlet-dropbox`
-
-
-* Restart mailbox service as a `zimbra` user:
-
-[source, bash]
-----
-su - zimbra #switch user to zimbra
-zmmailboxdctl restart #Restart mailbox service as a Zimbra user
-----
-
-=== Google Drive
-
-* As `root` run the below command:
-
-RHEL:: `yum install zimbra-zimlet-google-drive`
-
-Ubuntu:: `apt-get install zimbra-zimlet-google-drive`
-
-
-* Restart mailbox service as a `zimbra` user:
-
-[source, bash]
-----
-su - zimbra #switch user to zimbra
-zmmailboxdctl restart #Restart mailbox service as a Zimbra user
-----
-
-=== Onedrive
-
-* As `root` run the below command:
-
-RHEL:: `yum install zimbra-zimlet-onedrive`
-
-Ubuntu:: `apt-get install zimbra-zimlet-onedrive`
-
-
-* Restart mailbox service as a `zimbra` user:
-
-[source, bash]
-----
-su - zimbra #switch user to zimbra
-zmmailboxdctl restart #Restart mailbox service as a Zimbra user
-----
-
-Please visit link:https://zimbra.github.io/zimbra-9/adminguide.html#_configuring_zimlets_for_modern_web_app[Configuring Zimlets for Modern Web App] for instructions for on how to configure zimlets for {modern-client} users.
-
-endif::z9[]
+include::zimlets-install.adoc[]

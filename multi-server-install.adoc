@@ -40,9 +40,17 @@ include::prepareserver.adoc[]
 
 <<<
 
+ifndef::z9[]
 include::multi-server-install-main.adoc[]
 
 <<<
+endif::z9[]
+
+ifdef::z9[]
+include::multi-server-install-main-z9.adoc[]
+
+<<<
+endif::z9[]
 
 include::multi-server-adding-mailbox.adoc[]
 
