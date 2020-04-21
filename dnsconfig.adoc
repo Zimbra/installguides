@@ -2,28 +2,17 @@
 == DNS Configuration Requirement
 :toc:
 
-When you create a domain during the installation process, {product-name} checks
-to see if you have an MX record correctly configured for that domain.
-If it is not, an error is displayed suggesting that the domain name have
-an MX record configured in DNS.
+When you create a domain during the installation process, {product-name} checks to see if you have an MX record correctly configured for that domain.
+If it is not, an error is displayed suggesting that the domain name have an MX record configured in DNS.
 
-To send and receive email, the {product-short} MTA must be configured in
-DNS with both A and MX records. For sending mail, the MTA uses DNS to
-resolve hostnames and email-routing information. To receive mail, the MX
-record must be configured correctly to route the message to the mail
-server.
-
-During the installation process, {product-name} checks to see if
-you have an MX record correctly configured. If it is not, an error is
-displayed suggesting that the domain name have an MX record configured
-in DNS.
+To send and receive email, the {product-short} MTA must be configured in DNS with both A and MX records.
+For sending mail, the MTA uses DNS to resolve hostnames and email-routing information.
+To receive mail, the MX record must be configured correctly to route the message to the mail server.
 
 You must configure a relay host if you do not enable DNS. After {product-name} is installed, go to the *administration console*'s
-*Global Settings>MTA* tab and:
+*Global Settings -> MTA* tab and:
 
 * Uncheck *Enable DNS lookups*.
 * Enter the *relay MTA address* to use for external delivery.
 
-NOTE: Even if a relay host is configured, an MX record is still
-required if the {product-name} server is going to receive email
-from the Internet.
+NOTE: Even if a relay host is configured, an MX record is still required if the {product-name} server is going to receive email from the Internet.

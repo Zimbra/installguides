@@ -22,13 +22,13 @@ Open an SSH session to the {product-short} server and follow the steps below:
 [source%nowrap,bash]
 ....
 root@mailhost:/tmp# tar xzvf zcs*.tgz
-zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/
-zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/packages/
+zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/
+zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/packages/
 .
 .
 .
-zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/install.sh
-zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/README.txt
+zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/install.sh
+zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/README.txt
 ....
 --
 
@@ -44,15 +44,26 @@ but highly recommended.
 --
 [source%nowrap,bash]
 ....
-root@zimbraiop:/tmp/# cd zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/
-root@zimbraiop:/tmp/zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615# ./install.sh
+root@zimbraiop:/tmp/# cd zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/
+root@zimbraiop:/tmp/zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031# ./install.sh
 
 Operations logged to /tmp/install.log.y1YeCSI5
 
 Checking for existing installation...
-    zimbra-connect...NOT FOUND
     zimbra-drive...NOT FOUND
+    zimbra-imapd...NOT FOUND
+    zimbra-modern-ui...NOT FOUND
+    zimbra-modern-zimlets...NOT FOUND
+    zimbra-patch...NOT FOUND
+    zimbra-mta-patch...NOT FOUND
+    zimbra-proxy-patch...NOT FOUND
+    zimbra-license-tools...NOT FOUND
+    zimbra-license-extension...NOT FOUND
+    zimbra-network-store...NOT FOUND
     zimbra-network-modules-ng...NOT FOUND
+    zimbra-chat...NOT FOUND
+    zimbra-connect...NOT FOUND
+    zimbra-talk...NOT FOUND
     zimbra-ldap...NOT FOUND
     zimbra-logger...NOT FOUND
     zimbra-mta...NOT FOUND
@@ -80,8 +91,7 @@ displays, press `enter` to continue. Your system will be configured to add
 the {product-short} packaging repository for *yum* or *apt-get* as appropriate
 so it can install the {product-short} 3rd party packages. 
 
-* If installing *{product-short} Network Edition*, you will have the modules Archiving
-and Convertd as an option to add to your {product-short} installation.
+* If installing *{product-short}*, you will have the modules Archiving and Convertd as an option to add to your {product-short} installation.
 * It is recommended to only install {product-short}-dnscache on the MTA Servers when there are no other DNS servers (for example dnsmasq or bind) already installed and running on the same server.
 +
 --
@@ -100,51 +110,55 @@ Found zimbra-apache (local)
 Found zimbra-spell (local)
 Found zimbra-convertd (local)
 Found zimbra-memcached (repo)
-ifdef::z9[]
-Found zimbra-modern-ui (repo)
-endif::z9[]
 Found zimbra-proxy (local)
 Found zimbra-archiving (local)
-Found zimbra-Connect (repo)
 Found zimbra-drive (repo)
+Found zimbra-imapd (local)
+Found zimbra-modern-ui (repo)
+Found zimbra-modern-zimlets (repo)
+Found zimbra-patch (repo)
+Found zimbra-mta-patch (repo)
+Found zimbra-proxy-patch (repo)
+Found zimbra-license-tools (local)
+Found zimbra-license-extension (local)
+Found zimbra-network-store (local)
 Found zimbra-network-modules-ng (local)
 
 
-Use Zimbra's package repository [Y] y
 
-Use internal development repo [N] n
-Configuring package repository
+Select the packages to install
 
-Install zimbra-ldap [Y] y
+Install zimbra-ldap [Y] 
 
-Install zimbra-logger [Y] y
+Install zimbra-logger [Y] 
 
-Install zimbra-mta [Y] y
+Install zimbra-mta [Y] 
 
 Install zimbra-dnscache [Y] n
 
-Install zimbra-snmp [Y] y
+Install zimbra-snmp [Y] 
 
-Install zimbra-store [Y] y
+Install zimbra-store [Y] 
 
-Install zimbra-apache [Y] y
+Install zimbra-apache [Y] 
 
-Install zimbra-spell [Y] y
+Install zimbra-spell [Y] 
 
-Install zimbra-convertd [Y] y
+Install zimbra-convertd [Y] 
 
-Install zimbra-memcached [Y] y
+Install zimbra-memcached [Y] 
 
-Install zimbra-proxy [Y] y
+Install zimbra-proxy [Y] 
 
-Install zimbra-archiving [N] y
+Install zimbra-archiving [N] 
 
-Install zimbra-connect [Y] y
+Install zimbra-drive [Y] 
 
-Install zimbra-drive [Y] y
+Install zimbra-imapd (BETA - for evaluation only) [N] 
 
-Install zimbra-network-modules-ng [Y] y
+Install zimbra-network-modules-ng [Y] 
 
+Install zimbra-connect [Y] 
 ###WARNING###
 
 Network Modules NG needs to bind on TCP ports 8735 and 8736 in order
@@ -181,9 +195,7 @@ Installing:
     zimbra-spell
     zimbra-convertd
     zimbra-memcached
-ifdef::z9[]
     zimbra-modern-ui
-endif::z9[]
     zimbra-proxy
     zimbra-archiving
     zimbra-connect
@@ -414,106 +426,6 @@ Configuration complete - press return to exit
 ....
 --
 
-ifdef::z9[]
+include::zimbra-drive-install.adoc[]
 
-== Installing Modern Zimlets for {modern-client}
-
-These five Modern zimlets are available.
-
-* Dropbox
-* Onedrive
-* Google Drive
-* Zoom
-* Slack
-
-You have to install and configure them for users to integrate and use these zimlets.
-Once you are done installing the zimlet(s), you need to restart the mailbox service before configuring them.
-
-=== Dropbox
-
-* As `root` run the below command:
-
-RHEL:: `yum install zimbra-zimlet-dropbox`
-
-Ubuntu:: `apt-get install zimbra-zimlet-dropbox`
-
-
-* Restart mailbox service as a `zimbra` user:
-
-[source, bash]
-----
-su - zimbra
-zmmailboxdctl restart
-----
-
-=== Onedrive
-
-* As `root` run the below command:
-
-RHEL:: `yum install zimbra-zimlet-onedrive`
-
-Ubuntu:: `apt-get install zimbra-zimlet-onedrive`
-
-
-* Restart mailbox service as a `zimbra` user:
-
-[source, bash]
-----
-su - zimbra
-zmmailboxdctl restart
-----
-
-=== Google Drive
-
-* As `root` run the below command:
-
-RHEL:: `yum install zimbra-zimlet-google-drive`
-
-Ubuntu:: `apt-get install zimbra-zimlet-google-drive`
-
-
-* Restart mailbox service as a `zimbra` user:
-
-[source, bash]
-----
-su - zimbra
-zmmailboxdctl restart
-----
-
-=== Zoom
-
-* As `root` run the below command:
-
-RHEL:: `yum install zimbra-zimlet-zoom`
-
-Ubuntu:: `apt-get install zimbra-zimlet-zoom`
-
-
-* Restart mailbox service as a `zimbra` user:
-
-[source, bash]
-----
-su - zimbra
-zmmailboxdctl restart
-----
-
-=== Slack
-
-* As `root` run the below command:
-
-RHEL:: `yum install zimbra-zimlet-slack`
-
-Ubuntu:: `apt-get install zimbra-zimlet-slack`
-
-
-* Restart mailbox service as a `zimbra` user:
-
-[source, bash]
-----
-su - zimbra
-zmmailboxdctl restart
-----
-
-Please visit link:https://zimbra.github.io/zimbra-9/adminguide.html#_configuring_zimlets_for_modern_web_app[Configuring Zimlets for Modern Web App] for instructions for on how to configure zimlets for {modern-client} users.
-
-endif::z9[]
+include::zimlets-install.adoc[]

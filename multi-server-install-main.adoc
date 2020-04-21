@@ -2,12 +2,9 @@
 = Multiple-Server Installation
 
 The multiple-server installation is straight-forward and easy to run.
-You run the same installation script on each server, select the
-component(s) to install, and use the menu to configure the system.
+You run the same installation script on each server, select the component(s) to install, and use the menu to configure the system.
 
-When the server installation is complete after final set-up and server
-configuration steps are run, the servers are started and the status is
-displayed.
+When the server installation is complete after final set-up and server configuration steps are run, the servers are started and the status is displayed.
 
 *Order of Installation*
 
@@ -15,102 +12,80 @@ displayed.
 2. {product-abbrev} MTA server(s)
 3. {product-abbrev} Proxy server(s)
 4. {product-abbrev} Mailbox server(s) options:
-    ** Zimbra Mailbox Server, which includes the mailstore services and
-       webapp services (mailstore server + UI server)
-    ** Zimbra Web Application Server Split mode, which includes:
-        *** a Zimbra mailstore server (mailstore server)
-        *** a Zimbra webapp server (UI server)
+** Zimbra Mailbox Server, which includes the mailstore services and webapp services (mailstore server + UI server)
+** Zimbra Web Application Server Split mode, which includes:
+*** a Zimbra mailstore server (mailstore server)
+*** a Zimbra webapp server (UI server)
 
 NOTE: Zimbra-proxy is normally installed on the MTA server or you can install it on its own server.
 
-[IMPORTANT]
-Do not manually create the user ‘zimbra’ before running the {product-abbrev}
-installation. The installation automatically creates this user and sets up
-its environment.
+IMPORTANT: Do not manually create the user ‘zimbra’ before running the {product-abbrev} installation.
+The installation automatically creates this user and sets up its environment.
 
-[IMPORTANT]
-Before you start, verify that the system clocks are synced on all servers.
+IMPORTANT: Before you start, verify that the system clocks are synced on all servers.
 
 [[starting_multiple_server_install]]
 == Starting the Installation Process
 
-[IMPORTANT]
+IMPORTANT: 
 ====
 _Before you begin, make sure to:_
 
-ifdef::networkeditiondoc[]
-* Store your license in a directory folder on your server as it is needed to
-  complete your installation of {product-name}. For more information about
-  licenses, see <<Intro_license, {product-name} License>> and
-  <<Zimbra_License_Requirements,Zimbra License Requirements>>
-  ({product-edition-commercial} only)
-endif::networkeditiondoc[]
-* Confirm you have the latest system requirements and prerequisites for
-  installing {product-name}, as described in
-  <<System_Requirements, System Requirements for {product-name}>>
+* Store your license in a directory folder on your server as it is needed to complete your installation of {product-name}.
+For more information about licenses, see <<Intro_license, {product-name} License>> and <<Zimbra_License_Requirements, Zimbra License Requirements>>
+
+* Confirm you have the latest system requirements and prerequisites for installing {product-name}, as described in  <<System_Requirements, System Requirements for {product-name}>>
 ====
 
-For the latest {product-name} software downloads, go to
-https://www.zimbra.com. +
-Save the {product-name} *tar* file to the computer from which you are
-installing the software.
+For the latest {product-name} software downloads, go to https://www.zimbra.com.
+Save the {product-name} *tar* file to the computer from which you are installing the software.
 
-NOTE: _The screen shots are examples of the {product-name} installation
-script. The actual script may be different._
+NOTE: _The screen shots are examples of the {product-name} installation script. The actual script may be different._
 
 Step 1 through step 4 are performed for each server to be installed.
 
 Open an SSH session to the {product-short} server and follow the steps below:
 
-1.  Log in as *root* to the {product-name} server and *cd* to the
-    directory where the {product-name} archive file is saved
-    (cd /var/<tmp>). Type the following commands.
+1. Log in as *root* to the {product-name} server and *cd* to the directory where the {product-name} archive file is saved (`cd /var/<tmp>`). Type the following commands.
 +
 --
-    ** `tar xzvf [zcs.tgz]` to unpack the file
-    ** `cd [zcs filename]` to change to the correct directory. The file
-       name includes the release and build date.
-    ** `./install.sh` to begin the installation.
---
-+
---
-NOTE: _As the installation proceeds, press_ *Enter* _to accept the
-defaults that are shown in brackets_ [ ] _or enter the appropriate
-answer for your configuration._
+** `tar xzvf [zcs.tgz]` to unpack the file
+** `cd [zcs filename]` to change to the correct directory. The filename includes the release and build date.
+** `./install.sh` to begin the installation.
+
+NOTE: _As the installation proceeds, press_ *Enter* _to accept the defaults that are shown in brackets_ `[ ]` _or enter the appropriate answer (`Y`/`N`) for your configuration._
 
 [source%nowrap,bash]
-....
+----
 root@mailhost:/tmp# tar xzvf zcs.tgz
-zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/
-zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/packages/
+zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/
+zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/packages/
 .
 .
 .
-zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/install.sh
-zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/README.txt
+zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/install.sh
+zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/README.txt
 
-root@zimbraiop:/tmp/# cd zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/
-root@zimbraiop:/tmp/zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615# ./install.sh
+root@zimbraiop:/tmp/# cd zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/
+root@zimbraiop:/tmp/zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031# ./install.sh
 
 Operations logged to /tmp/install.log.y1YeCSI5
 .
 .
 .
-....
+----
 --
 
-2. The *install.sh* script reviews the installation software to verify that the
-   {product-short} packages are available. +
-   The installation process checks to see whether any of the applications
-   *Sendmail*, *Postfix*, *MySQL* or *MariaDB* are running. +
-   If any of these applications are running, you are asked to disable them. +
-   Disabling *MySQL* and *MariaDB* is *optional* but highly recommended. +
-   *Sendmail* and *Postfix* *MUST* be disabled for {product-name} to start correctly.
+2. The *install.sh* script reviews the installation software to verify that the {product-short} packages are available.
+The installation process checks to see whether any of the applications *Sendmail*, *Postfix*, *MySQL* or *MariaDB* are running.
+If any of these applications are running, you are asked to disable them.
+Disabling *MySQL* and *MariaDB* is *optional* but highly recommended.
+*Sendmail* and *Postfix* *MUST* be disabled for {product-name} to start correctly.
 +
 --
 [source%nowrap,bash]
-....
-root@zimbraiop:/tmp/zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615# ./install.sh
+----
+root@zimbraiop:/tmp/zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031# ./install.sh
 
 
 Operations logged to /tmp/install.log.y1YeCSI5
@@ -135,28 +110,21 @@ Checking for existing installation...
 .
 .
 .
-....
+----
 --
 
-3. The {product-short} software agreement displays. Read the agreement and when +
-`Do you agree with the terms of the software license agreement? [N]` +
-displays, enter `Y` to continue.
+3. The {product-short} software agreement displays. Press `Y` to accept and `N` to decline.
 +
 --
-[IMPORTANT]
-The license agreement displays in multiple sections,
-and you must accept each section of the license agreement.
+IMPORTANT: The license agreement displays in multiple sections, and you must accept each section of the license agreement.
 --
 
-
-4. `Use {product-short}'s package repository [Y]` +
-displays, press `enter` to continue. Your system will be configured to add
-the {product-short} packaging repository for *yum* or *apt-get* as appropriate
-so it can install the {product-short} 3rd party packages.
+4. `Use {product-short}'s package repository [Y]` displays, press `enter` to continue. Your system will be configured to add
+the {product-short} packaging repository for *yum* or *apt-get* as appropriate so it can install the {product-short} 3rd party packages.
 +
 --
 [source%nowrap]
-....
+----
 Checking for installable packages
 
 Found zimbra-core (local)
@@ -170,11 +138,7 @@ Found zimbra-apache (local)
 Found zimbra-spell (local)
 Found zimbra-convertd (local)
 Found zimbra-memcached (repo)
-
-ifdef::z9[]
 Found zimbra-modern-ui (repo)
-endif::z9[]
-
 Found zimbra-proxy (local)
 Found zimbra-archiving (local)
 Found zimbra-connect (repo)
@@ -184,29 +148,24 @@ Found zimbra-network-modules-ng (local)
 
 Use Zimbra's package repository [Y] y
 Configuring package repository
-....
+----
 --
 
 5. Next, select the packages to be installed on this server.
 +
---
-NOTE: For the cross mailbox search feature, install the {product-short} Archive
-package. To use the archiving and discovery feature, contact {product-provider}
-sales.
---
-+
+
+NOTE: For the cross mailbox search feature, install the {product-short} Archive package.
+To use the archiving and discovery feature, contact {product-provider} sales.
+
 The installer verifies that there is enough room to install {product-short}.
 
-6. Next, the installer checks to see that the prerequisite packages are
-   installed as listed in the Other Dependencies section of the
-   <<System_Requirements, System Requirements for {product-name}>>
+6. Next, the installer checks to see that the prerequisite packages are installed as listed in the Other Dependencies section of the <<System_Requirements, System Requirements for {product-name}>>
 +
---
+
 NOTE: _Before the Main menu is displayed, the installer checks to see if the
 hostname is resolvable via DNS and if there is an error asks
 you if would like to change the hostname. The domain name should have an
 MX record configured in DNS._
---
 
 [[install_ldap_master]]
 == Installing {product-short} LDAP Master Server
@@ -217,17 +176,13 @@ master LDAP server and replica LDAP servers, either configuring all LDAP
 servers now or after you set up the initial {product-name} servers. See the
 section on <<ldap-replication,Configuring LDAP Replication>>
 
-1. Follow steps 1 through 4 in
-   <<starting_multiple_server_install,Starting the Installation Process>>
-   to open an SSH session to the LDAP server, log on to the server as *root*,
-   and unpack the {product-abbrev} software.
-2. Type `y` and press _Enter_ to install the `zimbra-ldap` package. +
-   The `zimbra-mta`, `zimbra-store` and `zimbra-logger` packages should be
-   marked `n`.
+1. Follow steps 1 through 4 in <<starting_multiple_server_install,Starting the Installation Process>> to open an SSH session to the LDAP server, log on to the server as *root*, and unpack the {product-abbrev} software.
+2. Type `y` and press _Enter_ to install the `zimbra-ldap` package.
+The `zimbra-mta`, `zimbra-store` and `zimbra-logger` packages should be marked `n`.
 +
 --
 [source%nowrap]
-....
+----
 Install zimbra-ldap [Y] Y
 
 Install zimbra-logger [Y] N
@@ -265,30 +220,22 @@ Installing:
     zimbra-ldap
 
 The system will be modified.  Continue? [N]
-....
+----
 --
 
-3. Type `Y`, and press _Enter_ to modify the system. The selected
-   packages are installed on the server.
-+
-The Main menu displays the default entries for the Zimbra component you
-are installing. +
-To expand the menu to see the configuration values, type `x` and press _Enter_. +
-The main menu expands to display configuration details for the package
-being installed.
+3. Type `Y`, and press _Enter_ to modify the system. The selected packages are installed on the server.
+The Main menu displays the default entries for the Zimbra component you are installing.
+To expand the menu to see the configuration values, type `x` and press _Enter_.
+The main menu expands to display configuration details for the package being installed.
 +
 --
 NOTE: Values that require further configuration are marked with asterisks (`*`).
---
-+
-To navigate the Main menu, select the menu item to change. You can
-modify any of the values. See the section
-<<main_menu_options,Main Menu options>>
-for a description of the Main menu.
-+
---
-[source%nowrap]
-....
+
+To navigate the Main menu, select the menu item to change.
+You can modify any of the values.
+See the section <<main_menu_options,Main Menu options>> for a description of the Main menu.
+
+----
 Main menu
 
    1) Common Configuration:
@@ -300,14 +247,14 @@ Main menu
 
 *** CONFIGURATION COMPLETE - press 'a' to apply
 Select from menu, or press 'a' to apply config (? - help)
-....
+----
 --
 
 4.  Type `1` to display the *Common Configuration* submenu.
 +
 --
 [source%nowrap]
-....
+----
 Common configuration
 
    1) Hostname:                                ldap-1.example.com
@@ -321,18 +268,18 @@ Common configuration
    9) Default SSL digest:                      sha256
 
 Select, or 'r' for previous menu [r]
-....
+----
 --
 
 5.  Type `4` to display the automatically generated LDAP admin password.
 +
 --
 [source%nowrap]
-....
+----
 Select, or 'r' for previous menu [r] 4
 
 Password for ldap admin user (min 6 characters): [bEyMZxNxq]
-....
+----
 --
 +
 --
@@ -340,11 +287,11 @@ You can change this password. +
 Write down the LDAP password, the LDAP host name and the LDAP port.
 
 [source%nowrap]
-....
+----
 LDAP Admin Password _______________________
 LDAP Host name      _______________________
 LDAP Port           _______________________
-....
+----
 --
 NOTE: You must configure this information when you install the mailbox servers
 and the MTA servers.
@@ -353,7 +300,7 @@ and the MTA servers.
 +
 --
 [source%nowrap]
-....
+----
 1 Africa/Algiers
 .
 .
@@ -365,17 +312,16 @@ and the MTA servers.
 109 Pacific/Tongatapu
 110 UTC
 Enter the number for the local timezone: [110] 94
-....
+----
 --
 
 7. Type `r` to return to the Main menu.
 
-8.  From the Main menu, type `2` for *zimbra-ldap* to view the
-    *Ldap configuration* settings.
+8.  From the Main menu, type `2` for *zimbra-ldap* to view the *Ldap configuration* settings.
 +
 --
 [source%nowrap]
-....
+----
 Ldap configuration
 
    1) Status:                                  Enabled
@@ -389,27 +335,23 @@ Ldap configuration
    9) Ldap Bes Searcher password:              set
 
 Select, or 'r' for previous menu [r]
-....
+----
 --
 
-9. Type `3` for *Domain to create* to change the default domain name to
-   the main domain name you want to use for your network, (e.g. *example.com*).
+9. Type `3` for *Domain to create* to change the default domain name to the main domain name you want to use for your network, (e.g. *example.com*).
 
-10. The passwords listed in the *LDAP configuration* menu are automatically
-    generated.
+10. The passwords listed in the *LDAP configuration* menu are automatically generated.
 +
 --
-If you want to change the passwords for LDAP root, LDAP replication,
-LDAP Postfix, LDAP Amavis, and LDAP Nginx, enter the
-corresponding number `4` through `8` and change the passwords.
+If you want to change the passwords for LDAP root, LDAP replication, LDAP Postfix, LDAP Amavis, and LDAP Nginx, enter the corresponding number `4` through `8` and change the passwords.
 
 [source%nowrap]
-....
+----
 Ldap replication password _____________________
 Ldap postfix password     _____________________
 Ldap amavis password      _____________________
 Ldap nginx password       _____________________
-....
+----
 
 NOTE: You need these passwords when configuring the MTA and the LDAP
 replica servers. Write them down.
@@ -419,26 +361,23 @@ replica servers. Write them down.
 +
 --
 [source%nowrap]
-....
+----
 *** CONFIGURATION COMPLETE - press 'a' to apply
 Select from menu, or press 'a' to apply config (? - help) a
 Save configuration data to a file? [Yes]
 Save config in file: [/opt/zimbra/config.8381]
 Saving config in /opt/zimbra/config.8381...done
-....
+----
 --
 
-    ** enter `r` to return to the main menu.
-    ** Type `a` to apply the configuration changes.
-    ** When `Save configuration data to file` appears, +
-       type `Yes` and press _Enter_.
-    ** The next request asks where to save the files. +
-       To accept the default, press _Enter_. +
-       To save the files to another directory, enter the directory
-       and press _Enter_.
+** enter `r` to return to the main menu.
+** Type `a` to apply the configuration changes.
+** When `Save configuration data to file` appears, type `Yes` and press _Enter_.
+** The next request asks where to save the files.
+To accept the default, press _Enter_.
+To save the files to another directory, enter the directory and press _Enter_.
 
-12. When `The system will be modified - continue? [No]` appears, +
-    type `y` and press _Enter_.
+12. When `The system will be modified - continue? [No]` appears, type `y` and press _Enter_.
 +
 --
 The server is modified. Installing all the components and configuring
@@ -453,7 +392,7 @@ other processes.
 +
 --
 [source%nowrap]
-....
+----
 *** CONFIGURATION COMPLETE - press 'a' to apply
 Select from menu, or press 'a' to apply config (? - help) a
 Save configuration data to a file? [Yes]
@@ -474,7 +413,7 @@ Moving /tmp/zmsetup.20170302-133132.log to /opt/zimbra/log
 
 
 Configuration complete - press return to exit
-....
+----
 
 The installation of the LDAP server is complete.
 --
@@ -498,41 +437,29 @@ or
 ** UI server providing the web UI functionality (static html/js/css content)
 
 You can have more than one of the above configurations.
-In a web application server split environment, you must have at least
-one mailstore server and one UI server in your configuration.
+In a web application server split environment, you must have at least one mailstore server and one UI server in your configuration.
 
-ifdef::z9[]
-[IMPORTANT]
-The {modern-client} does not currently support Zimbra Web Application Server Split configuration.
-ifdef::z9[]
+IMPORTANT: The {modern-client} does not currently support Zimbra Web Application Server Split configuration.
 
-[IMPORTANT]
-A web application server split environment must have proxy and
-memcached installed.
+IMPORTANT: A web application server split environment must have proxy and memcached installed.
 
-The Zimbra license file can be installed on one of the mailbox
-servers during the installation.
-If you do not have a license file, you can install it from the
-administration console when the {product-name} install is complete.
+The Zimbra license file can be installed on one of the mailbox servers during the installation.
+If you do not have a license file, you can install it from the administration console when the {product-name} install is complete.
 See <<Zimbra_License_Requirements,Zimbra License Requirements>>
 
 === Install Zimbra Mailbox Services
 
-1. Follow steps 1 through 4 in
-   <<starting_multiple_server_install,Starting the Installation Process>>
-   to open an SSH session to the Mailbox server, log on to the server as
-   *root*, and unpack the {product-abbrev} software.
+1. Follow steps 1 through 4 in <<starting_multiple_server_install,Starting the Installation Process>> to open an SSH session to the Mailbox server, log on to the server as *root*, and unpack the {product-abbrev} software.
 
-2. Type `y` and press _Enter_ to install the *zimbra-logger* package
-   (optional and only on one mail server) and *zimbra-store*.
-   In the following screen shot example, the packages to be installed are emphasized.
+2. Type `y` and press _Enter_ to install the *zimbra-logger* package (optional and only on one mail server) and *zimbra-store*.
+In the following screen shot example, the packages to be installed are emphasized.
 +
 --
 NOTE: _If SNMP is being used, the SNMP package is installed on every
 {product-short} server. Mark_ `y`
 
 [source%nowrap]
-....
+----
 Install zimbra-ldap [Y] N
 
 Install zimbra-logger [Y] Y
@@ -590,11 +517,7 @@ Installing:
     zimbra-store
     zimbra-apache
     zimbra-spell
-
-    ifdef::z9[]
     zimbra-modern-ui
-    endif::z9[]
-
     zimbra-convertd
     zimbra-archiving
     zimbra-connect
@@ -602,30 +525,25 @@ Installing:
     zimbra-network-modules-ng
 
 The system will be modified.  Continue? [N]
-....
+----
 --
 
-3. Type `Y`, and press _Enter_ to modify the system. The selected
-   packages are installed on the server.
+3. Type `Y`, and press _Enter_ to modify the system.
+The selected packages are installed on the server.
+The Main menu displays the default entries for the Zimbra component you are installing.
+To expand the menu to see the configuration values, type `x` and press _Enter_.
+The main menu expands to display configuration details for the package being installed.
 +
-The Main menu displays the default entries for the Zimbra component you
-are installing. +
-To expand the menu to see the configuration values, type `x` and press _Enter_. +
-The main menu expands to display configuration details for the package
-being installed.
-+
---
+
 NOTE: Values that require further configuration are marked with asterisks (`*`).
---
-+
-To navigate the Main menu, select the menu item to change. You can
-modify any of the values. See the section
-<<main_menu_options,Main Menu options>>
-for a description of the Main menu.
+
+To navigate the Main menu, select the menu item to change.
+You can modify any of the values.
+See the section <<main_menu_options,Main Menu options>> for a description of the Main menu.
 +
 --
 [source%nowrap]
-....
+----
 Main menu
 
    1) Common Configuration:
@@ -677,14 +595,14 @@ Main menu
    q) Quit
 
 Address unconfigured (**) items  (? - help)
-....
+----
 --
 
 4.  Type `1` to display the *Common Configuration* submenu.
 +
 --
 [source%nowrap]
-....
+----
 Common configuration
 
    1) Hostname:                                mailstore-1.example.com
@@ -697,24 +615,22 @@ Common configuration
    8) TimeZone:                                UTC
    9) IP Mode:                                 ipv4
   10) Default SSL digest:                      sha256
-....
+----
 
 The mailbox server hostname is displayed.
 
-[IMPORTANT]
-You must change the LDAP master host name and password to be the
+IMPORTANT: You must change the LDAP master host name and password to be the
 values configured on the LDAP server.
 
 ** Type `2`, press _Enter_, and type the LDAP host name.
-   (*ldap-1.example.com* in this example.)
-** Type `4`, press _Enter_, and type the LDAP password. +
-   To obtain the LDAP password, you will need to log on to the
-   LDAP server as the `zimbra` user, and run the following command:
+(*ldap-1.example.com* in this example.)
+** Type `4`, press _Enter_, and type the LDAP password.
+To obtain the LDAP password, you will need to log on to the LDAP server as the `zimbra` user, and run the following command:
 
 [source%nowrap,bash]
-....
+----
 zmlocalconfig -s zimbra_ldap_password
-....
+----
 
 After you set these values, the server immediately contacts the LDAP
 server. If it cannot contact the server, you cannot proceed.
@@ -724,7 +640,7 @@ server. If it cannot contact the server, you cannot proceed.
 +
 --
 [source%nowrap]
-....
+----
 1 Africa/Algiers
 .
 .
@@ -736,7 +652,7 @@ server. If it cannot contact the server, you cannot proceed.
 109 Pacific/Tongatapu
 110 UTC
 Enter the number for the local timezone: [110] 94
-....
+----
 --
 
 6. Type `r` to return to the Main menu.
@@ -746,7 +662,7 @@ Enter the number for the local timezone: [110] 94
 +
 --
 [source%nowrap]
-....
+----
 Store configuration
 
    1) Status:                                  Enabled
@@ -784,7 +700,7 @@ Store configuration
 **33) License filename:                        UNSET
 
 Select, or 'r' for previous menu [r]
-....
+----
 --
 
 8. Type `4` and set the password for the administrator account.
@@ -893,9 +809,9 @@ for installing a split node environment.
 20. When Save Configuration data to file appears, type `Yes` and press _Enter_.
 +
 --
-....
+----
 Save configuration data to a file? [Yes]
-....
+----
 --
 
 21. The next request asks where to save the files. To accept the
@@ -903,10 +819,10 @@ default, press _Enter_. To save the files to another directory, enter the
 directory and then press Enter
 +
 --
-....
+----
 Save config in file: [/opt/zimbra/config.16039]
 Saving config in /opt/zimbra/config.16039...done.
-....
+----
 --
 
 22. When `The system will be modified - continue?` appears, type `Yes` and
@@ -919,7 +835,7 @@ and common zimlets, setting time zone preferences, backup schedules
 and starting the servers, among other processes.
 +
 --
-....
+----
 The system will be modified - continue? [No] y
 Operations logged to /tmp/zmsetup.20160711-234517.log
 Setting local config values...done.
@@ -927,7 +843,7 @@ Setting local config values...done.
 .
 .
 Configuration complete - press return to exit
-....
+----
 --
 
 23. When `Configuration complete - press return to exit` displays,
@@ -957,7 +873,7 @@ NOTE: _If SNMP is being used, the SNMP package is installed on every
 {product-short} server. Mark_ `y`
 
 [source%nowrap]
-....
+----
 Select the packages to install
 
 Install zimbra-ldap [Y] n
@@ -988,22 +904,17 @@ Installing:
 
 The system will be modified.  Continue? [N] y
 Installing packages
-....
+----
 --
 
-3. Type `Y`, and press _Enter_ to modify the system. The selected
-   packages are installed on the server.
-+
-The Main menu displays the default entries for the Zimbra component you
-are installing. +
-To expand the menu to see the configuration values, type `x` and press _Enter_. +
-The main menu expands to display configuration details for the package
-being installed.
-+
---
+3. Type `Y`, and press _Enter_ to modify the system. The selected packages are installed on the server.
+The Main menu displays the default entries for the Zimbra component you are installing.
+To expand the menu to see the configuration values, type `x` and press _Enter_.
+The main menu expands to display configuration details for the package being installed.
+
 NOTE: Values that require further configuration are marked with asterisks (`*`).
---
 +
+
 To navigate the Main menu, select the menu item to change. You can
 modify any of the values. See the section
 <<main_menu_options,Main Menu options>>
@@ -1011,7 +922,7 @@ for a description of the Main menu.
 +
 --
 [source%nowrap]
-....
+----
 Main menu
 
    1) Common Configuration:
@@ -1040,14 +951,14 @@ Main menu
    q) Quit
 
 Address unconfigured (**) items  (? - help)
-....
+----
 --
 
 4.  Type `1` to display the *Common Configuration* submenu.
 +
 --
 [source%nowrap]
-....
+----
 Common configuration
 
    1) Hostname:                                mta-1.example.com
@@ -1060,12 +971,11 @@ Common configuration
    8) TimeZone:                                Africa/Monrovia
    9) IP Mode:                                 ipv4
   10) Default SSL digest:                      sha256
-....
+----
 
 The mta server hostname is displayed.
 
-[IMPORTANT]
-You must change the LDAP master host name and password to be the
+IMPORTANT: You must change the LDAP master host name and password to be the
 values configured on the LDAP server.
 
 ** Type `2`, press _Enter_, and type the LDAP host name.
@@ -1075,9 +985,9 @@ values configured on the LDAP server.
    LDAP server as the `zimbra` user, and run the following command:
 
 [source%nowrap,bash]
-....
+----
 zmlocalconfig -s zimbra_ldap_password
-....
+----
 
 After you set these values, the server immediately contacts the LDAP
 server. If it cannot contact the server, you cannot proceed.
@@ -1087,7 +997,7 @@ server. If it cannot contact the server, you cannot proceed.
 +
 --
 [source%nowrap]
-....
+----
 1 Africa/Algiers
 .
 .
@@ -1099,7 +1009,7 @@ server. If it cannot contact the server, you cannot proceed.
 109 Pacific/Tongatapu
 110 UTC
 Enter the number for the local timezone: [110] 94
-....
+----
 --
 
 
@@ -1109,7 +1019,7 @@ Enter the number for the local timezone: [110] 94
 +
 --
 [source%nowrap]
-....
+----
 Mta configuration
 
    1) Status:                                  Enabled
@@ -1121,7 +1031,7 @@ Mta configuration
 ** 7) Bind password for amavis ldap user:      UNSET
 
 Select, or 'r' for previous menu [r]
-....
+----
 --
 
 8.  You can change the `Notification address for AV alerts`.  This should be
@@ -1198,26 +1108,17 @@ default port is `11211` and is controlled by the
 === Installing on the MTA Server
 
 
-If you are installing `zimbra-proxy` on the MTA server, select the
-`zimbra-proxy` package and the `zimbra-memcached` package. Follow the
-installation process for <<_installing_zimbra_mta_on_a_server>>.
+If you are installing `zimbra-proxy` on the MTA server, select the `zimbra-proxy` package and the `zimbra-memcached` package. Follow the installation process for <<_installing_zimbra_mta_on_a_server>>.
 After Step 11, configure the Zimbra-proxy.
 
-. On the MTA server, select to install the `zimbra-proxy` and
-`zimbra-memcached` packages, type `y` and press *Enter* to install the selected
-package.
-. The _Main_ menu displays the default entries for the {product-short} component
-you are installing. Select *Proxy Configuration* menu. You can modify
-any of the values.
-+
---
-The *Bind password for Nginx ldap user* was configured when the LDAP
-server was installed. This is set when the MTA connected to the LDAP
-server. This is not used unless the Kerberos5 authenticating mechanism
-is enabled.
+. On the MTA server, select to install the `zimbra-proxy` and `zimbra-memcached` packages, type `y` and press *Enter* to install the selected package.
+. The _Main_ menu displays the default entries for the {product-short} component you are installing. Select *Proxy Configuration* menu. You can modify any of the values.
 
-NOTE: Setting the password even though GSSAPI auth/proxy
-is not set up does not cause any issues.
+The *Bind password for Nginx ldap user* was configured when the LDAP server was installed.
+This is set when the MTA connected to the LDAP server.
+This is not used unless the Kerberos5 authenticating mechanism is enabled.
+
+NOTE: Setting the password even though GSSAPI auth/proxy is not set up does not cause any issues.
 
 ----
 Proxy configuration
@@ -1234,8 +1135,7 @@ Proxy configuration
       10) HTTPS proxy port:                     443
       11) Proxy server mode:                    https
 ----
---
-+
+
 Return to <<_installing_zimbra_mta_on_a_server>>, step 12,
 to continue the MTA server installation.
 
@@ -1257,9 +1157,7 @@ shown in the following screen shot example.
 --
 NOTE: If SNMP is used, the `zimbra-snmp` package must also be
 installed.
---
-+
---
+
 [subs="quotes"]
 ----
 Select the packages to install
@@ -1284,7 +1182,6 @@ This system will be modified. Continue [N] *Y*
 Configuration section
 ----
 --
-+
 . Type `Y`, and press _Enter_ to install the selected package.
 . The _Main_ menu displays. Type `1` and press _Enter_ to go to the *Common
 Configuration* menu.
@@ -1297,10 +1194,10 @@ server.
 ** Type `2`, press _Enter_, and type the LDAP host
    name. (`ldap-1.example.com`, in this example.)
 ** Type `4`, press _Enter_, and type the LDAP password.
-+
+
 After you set these values, the server immediately contacts the LDAP
 server. If it cannot contact the server, you cannot proceed.
-+
+
 ** Type 7 to set the correct time zone
 --
 +
@@ -1623,11 +1520,13 @@ after switching `zimbraReverseProxyAdminEnabled` to `TRUE` and
 restarting the proxy.
 The default value of `zimbraAdminProxyPort` is `9071`.
 +
-NOTE: * The administration console address must be typed with `https`, even if you configured only `http`.
+NOTE: ====
+* The administration console address must be typed with `https`, even if you configured only `http`.
 * The first time you log on, a certificate authority (CA) alert may be
 displayed. Click *Accept this certificate permanently* to accept the
 certificate and be able connect to the Zimbra administration console.
 Then click *OK*.
+====
 +
 . Enter the admin user name and password configured during the
 installation process. Enter the user name as *admin@example.com*.
@@ -1710,7 +1609,11 @@ accessed from the administration console Download page and instruction
 guides are available from the Administration Console Help Desk.
 
 
-include::ephemeral.adoc[leveloffset=+2]
+include::zimbra-drive-install.adoc[]
+
+include::zimlets-install.adoc[]
+
+include::ephemeral.adoc[leveloffset=+1]
 
 == Uninstalling Zimbra Collaboration
 

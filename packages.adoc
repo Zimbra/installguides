@@ -40,10 +40,8 @@ NOTE: By default {product-short} Proxy is configured to perform strict server na
 Strict server name enforcement may be disabled during the post-install configuration process in the {product-short} Proxy configuration section or using the `zimbraReverseProxyStrictServerNameEnabled` configuration option.
 Please see the {product-short} Proxy section of the administration guide for more details.
 
-ifdef::z9[]
 {product-short} {modern-client}:: This package includes the assets of the {product-short} {modern-client}.
 This package is automatically installed on each server.
-endif::z9[]
 
 {product-short} Memcached:: This package is automatically selected when the *{product-short}-Proxy* package is installed and provides access to `Memcached`.
 +
@@ -66,63 +64,24 @@ NOTE:
 * The *{product-short} Logger* package must be installed at the same time as the *{product-short} Store* package.
 ====
 
-{product-short} Spell:: This package is optional.  It provides the open source
-spell checker `Aspell` used by the {product-short} Web Client.
+{product-short} Spell:: This package is optional.  It provides the open source spell checker `Aspell` used by the {product-short} Web Client.
 
-ifdef::z9[]
-{product-short} Spell:: This package is optional.  It provides the open source
-spell checker `Aspell` used by the {product-short} {web-client}.
-endif::z9[]
+{product-short} Spell:: This package is optional.  It provides the open source spell checker `Aspell` used by the {product-short} {web-client}.
 
-{product-short} Apache:: This package is installed automatically when *{product-short}
-Spell*
-ifdef::networkeditiondoc[]
-or *{product-short} Convertd*
-endif::networkeditiondoc[]
-is installed.
+{product-short} Apache:: This package is installed automatically when *{product-short} Spell* or *{product-short} Convertd* is installed.
 
-{product-short} Convertd:: This package should be installed on at least one
-*{product-short}-Store* server. Only one *{product-short}-Convertd* package needs to be
-present in the {product-name} environment. The default is to install one
-*{product-short}-Convertd* on each *{product-short}-Store* server.
+{product-short} Convertd:: This package should be installed on at least one *{product-short}-Store* server. Only one *{product-short}-Convertd* package needs to be present in the {product-name} environment. The default is to install one *{product-short}-Convertd* on each *{product-short}-Store* server.
 
-ifdef::networkeditiondoc[]
-{product-short} Archiving:: The {product-short} Archiving and Discovery feature is an
-optional feature for {product-name} *{product-edition-commercial}*. +
-Archiving and Discovery offers the ability to store and search all messages
-that were delivered to or sent by {product-name}. +
-This package includes the *cross mailbox search* function which can be
-used for both live and archive mailbox searches.
+{product-short} Archiving:: The {product-short} Archiving and Discovery feature is an optional feature for {product-name} *{product-edition-commercial}*.
+Archiving and Discovery offers the ability to store and search all messages that were delivered to or sent by {product-name}.
+This package includes the *cross mailbox search* function which can be used for both live and archive mailbox searches.
 +
 [WARNING]
-Using Archiving and Discovery can trigger additional mailbox
-license usage. To find out more about {product-short} Archiving and Discovery,
-please refer to {product-short} Admin Guide.
-endif::networkeditiondoc[]
-
-ifndef::z9[]
-{product-short} Connect:: Installing this package is optional. This package should be installed on at least one *{product-short}-Store* server. {product-short} Connect includes a server extension with all
-the necessary modules to run an embedded XMPP Server, and an End-User Zimlet which connects
-to the server extension and offer to the users a rich point-to-point text-chat conversations.
-{product-short} Connect is marked as GA and supported starting {product-name} 8.8.
-+
-
-NOTE: The {product-short} Connect package must be selected and installed on every *{product-short}-Store*.
-endif::z9[]
+Using Archiving and Discovery can trigger additional mailbox license usage. To find out more about {product-short} Archiving and Discovery, please refer to {product-short} Admin Guide.
 
 {product-short} Drive:: Installing this package is optional.This package should be installed on at least one
 *{product-short}-Store* server.
 {product-short} Drive is marked as GA and supported starting {product-name} 8.8.
-
-ifndef::z9[]
-{product-short} Drive includes a server extension with all the necessary modules to connect and authenticate {product-short} users against a ownCloud or NextCloud Server, and an End-User Zimlet which allow users to perform actions to the their documents stored on ownCloud or Nextcloud.
-
-NOTE: The {product-short} Drive package must be selected and installed on every *{product-short}-Store*.
-
-[WARNING]
-Zimbra Drive only provides connectivity to a ownCloud or NextCloud Server. It is the Customer's
-responsibility to maintain, backup, and protect the data stored on ownCloud or NextCloud Servers.
-endif::z9[]
 
 The {product-short} server configuration is menu driven. The installation menu
 shows you the default configuration values. The menu displays the

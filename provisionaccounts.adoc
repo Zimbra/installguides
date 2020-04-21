@@ -68,40 +68,6 @@ this account, proceed through the dialog before you click Finish.
 
 When the accounts are provisioned, you can send and receive emails.
 
-ifndef::z9[]
-[[Importing_Content_from_User_Mailboxes]]
-== Importing Content from User Mailboxes
-
-{product-provider} developed different applications to facilitate moving a user’s
-email messages, calendars, and contacts from their old email servers to
-their accounts on the {product-short} server. When the user’s files are imported,
-the folder hierarchy is maintained. Use one of the {product-name}
-utilities to move user mail to {product-name} to guarantee that
-all information is imported correctly.
-
-The following applications can be accessed from the administration
-console **Download page**, and instruction guides are available from the
-Help Desk page or from the {product-provider} Website, Documentation page.
-
-Alternatively, you can download the following applications from
-https://example.com/downloads/index.html (with “example.com” being your
-{product-short} server name).
-
-* **{product-name} Migration Wizard for Exchange**. Format is an .exe
-file. You can migrate users from Microsoft® Exchange server email
-accounts to {product-short} server accounts.
-* **{product-name} Migration Wizard for Domino**. Format is an .exe
-file. You can migrate users from Lotus Domino server email accounts to
-{product-short} server accounts.
-* **PST Import Wizard** (User Instructions). Format is an .exe file. Users
-download the Import Wizard to their computers and run the executable
-file to import their Outlook .pst files to the {product-short} server. Before
-users run this utility, {product-provider} recommends that they run the Outlook
-Inbox Repair tool, `scanpst.exe`, on their .pst files, to clean up any
-errors in their file. For more information about this tool, go to
-http://support.microsoft.com/kb/287497.
-endif::[]
-
 [[Administrators_Account]]
 == Administrator Account
 

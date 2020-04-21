@@ -17,9 +17,7 @@ As part of the installation process, {product-name} bundles and installs various
 The versions installed have been tested and configured to work with {product-short} software.
 See the {product-name} Administrator Guide for a complete list of software.
 
-ifndef::z9[A {product-short} license is required to create accounts on servers running {product-name} {product-edition-commercial}. You cannot install {product-name} Network Edition without a license.]
-
-ifdef::z9[You cannot install {product-name} {product-version} without a license.]
+You cannot install {product-name} {product-version} without a license.
 
 The following table shows the default port settings when {product-name} is installed.
 

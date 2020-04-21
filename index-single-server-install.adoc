@@ -3,21 +3,11 @@ include::settings.adoc[]
 :document-title: Performing a Single-Server Installation
 // This is intended to allow excluding certain text for a FOSS only manual
 // At present it is only partially implemented
-:networkeditiondoc: TRUE
-//= {product-name} {document-title}
 
-ifndef::z9[]
-= {product-name} {document-title}
-v{product-version}, {product-release-date}
-:leveloffset: +1
-endif::z9[]
-
-ifdef::z9[]
 = {product-name} {document-title}
 {product-release-date}
 {product-short} {product-edition-commercial} V {product-version}
 :leveloffset: +1
-endif::z9[]
 
 <<<
 
@@ -44,17 +34,10 @@ include::licenserequirements.adoc[]
 include::basicconfig.adoc[]
 
 <<<
-ifndef::z9[]
-include::installing.adoc[]
 
-<<<
-endif::z9[]
-
-ifdef::z9[]
 include::installing-z9.adoc[]
 
 <<<
-endif::z9[]
 
 include::finalsetup.adoc[]
 

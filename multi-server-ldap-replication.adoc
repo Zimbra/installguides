@@ -141,8 +141,7 @@ NOTE: All passwords must be set to match the master ldap admin user
 password. To determine this value on the master LDAP server, run
 `zmlocalconfig -s ldap_replication_password`
 +
-[IMPORTANT]
-====
+IMPORTANT: ====
 If you have installed {product-short} MTA on the LDAP
 server, configure the Amavis and the Postfix passwords. To find these
 values, issue the following commands:
@@ -252,7 +251,7 @@ zmlocalconfig -e ldap_master_url=ldap://<masterhost>:port
 
 
 
-[IMPORTANT]
+IMPORTANT: 
 ====
 Additional Steps for MTA hosts. After updating the `ldap_url`, rerun
 `/opt/zimbra/ libexec/zmmtainit`.  This rewrites the Postfix
@@ -300,7 +299,7 @@ zmprov -l ms <zmhostname> -zimbraServiceEnabled ldap
 . Type `zmcontrol start` to start other current {product-short} services on the
 server.
 
-[IMPORTANT]
+IMPORTANT: 
 ====
 Additional steps for MTA host. After updating the `ldap_url` with
 `zmlocalconfig`, rerun `/opt/zimbra/libexec/zmmtainit`. This rewrites the

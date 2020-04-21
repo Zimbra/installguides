@@ -2,65 +2,57 @@
 = Final Set-Up (required)
 :toc:
 
-After the {product-name} servers are configured, the following functions
-must be configured.
+After the {product-name} servers are configured, the following functions must be configured.
 
-IMPORTANT: {product-name} supports the default syslog of a
-supported operating system. Depending on your operating system, the
-steps contained in this section might not be correct. See your
-operating system documentation for specific information about how to
-enable syslog.
+IMPORTANT: {product-name} supports the default syslog of a supported operating system. Depending on your operating system, the steps contained in this section might not be correct.
+See your operating system documentation for specific information on how to enable syslog.
 
-If *zimbra-logger* is installed, set up the **syslog** configuration files
-to enable server statistics to display on the administration console, and
-enable the logger monitor host. The server statistics includes
-information about the message count, message volume, and anti-spam and
-anti-virus activity.
+If *zimbra-logger* is installed, set up the **syslog** configuration files to enable server statistics to display on the administration console, and enable the logger monitor host.
+The server statistics includes information about the message count, message volume, and anti-spam and anti-virus activity.
 
 == Access to the 'zimbra' user
 
-{product-name} ships a default `zimbra` user with a disabled
-password.
-{product-name} requires access to this account via
-**ssh public key authentication**.
-On most operating systems this combination is okay, but if you have
-modified spam rules to disallow any ssh access to disabled accounts
-then you must define a password for the `zimbra` UNIX account.
-This will allow ssh key authentication for checking remote
-queues. See the Zimbra wiki article,
-https://wiki.zimbra.com/wiki/Mail_Queue_Monitoring[Mail Queue Monitoring].
+{product-name} ships a default `zimbra` user with a disabled password.
+{product-name} requires access to this account via **ssh public key authentication**.
+On most operating systems this combination is okay, but if you have modified spam rules to disallow any ssh access to disabled accounts then you must define a password for the `zimbra` UNIX account.
+This will allow ssh key authentication for checking remote queues.
+See the Zimbra wiki article, https://wiki.zimbra.com/wiki/Mail_Queue_Monitoring[Mail Queue Monitoring].
 
-*Set up the ssh keys.* To populate the ssh keys
+Set up the ssh keys:: To populate the ssh keys
++
 
 [source%nowrap,bash]
-....
-sudo -u zimbra -i # if not already logged in as the zimbra user
+----
+sudo -u zimbra -i
 zmupdateauthkeys
-....
+----
 
 The key is updated on `/opt/zimbra/.ssh/authorized_keys`
 
-*Enabling Server Statistics Display.* In order for the server statistics
-to display on the administration console, the syslog configuration files
-must be modified.
-NOTE: Note, your system may use a different provider for the syslog service.
-See the Wiki article
-https://wiki.zimbra.com/wiki/Configuring-Logger-Host[Configuring Logger Host]
-for more information
+Enabling Server Statistics Display:: In order for the server statistics to display on the administration console, the syslog configuration files must be modified.
++
 
-1. As **root**, type the following command to enable the server to display
-   statistics - `/opt/zimbra/libexec/zmsyslogsetup`
-2. You must enable syslog to log statistics from remote machines.
-    RedHat Systems::
-        * Edit the `/etc/sysconfig/syslog` file to add -r to the SYSLOGD_OPTIONS
-        setting, `SYSLOGD_options="-r -m 0"`
-        * Stop the syslog daemon - `/etc/init.d/syslog stop`
-        * Start the syslog daemon - `/etc/init.d/syslog start`
-    Debian and Ubuntu Systems::
-        * Edit the `/etc/default/syslogd` file to add -r to the SYSLOGD_OPTIONS
-        setting, `SYSLOGD_options="-r -m 0"`
-        * Stop the syslog daemon -  `/etc/init.d/sysklogd stop`
-        * Start the syslog daemon - `/etc/init.d/sysklogd start`
+NOTE: Note, your system may use a different provider for the syslog service.
+See the Wiki article https://wiki.zimbra.com/wiki/Configuring-Logger-Host[Configuring Logger Host] for more information
+
+. As **root**, type the following command to enable the server to display statistics - `/opt/zimbra/libexec/zmsyslogsetup`.
+. You must enable syslog to log statistics from remote machines.
+
+RedHat Systems::
++
+
+* Edit the `/etc/sysconfig/syslog` file to add -r to the SYSLOGD_OPTIONS
+setting, `SYSLOGD_options="-r -m 0"`
+* Stop the syslog daemon - `/etc/init.d/syslog stop`
+* Start the syslog daemon - `/etc/init.d/syslog start`
+
+Debian and Ubuntu Systems::
++
+
+* Edit the `/etc/default/syslogd` file to add -r to the SYSLOGD_OPTIONS
+setting, `SYSLOGD_options="-r -m 0"`
+* Stop the syslog daemon -  `/etc/init.d/sysklogd stop`
+* Start the syslog daemon - `/etc/init.d/sysklogd start`
 
 [[Final_Set-Up_Optional]]
 = Final Set-Up (optional)

@@ -2,9 +2,6 @@
 = Basic Configuration
 :toc:
 
-The default configuration installs {product-short}-LDAP, {product-short}-MTA with
-anti-virus and anti-spam protection, the {product-short} mailbox server, SNMP
-monitoring tools (optional), {product-short}-spell (optional), the logger tool
-(optional), and the {product-short} proxy (optional) on one server.
+The default configuration installs {product-short}-LDAP, {product-short}-MTA with anti-virus and anti-spam protection, the {product-short} mailbox server, SNMP monitoring tools (optional), {product-short}-spell (optional), the logger tool (optional), and the {product-short} proxy (optional) on one server.
 
 include::installconfig.adoc[]

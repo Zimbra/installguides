@@ -5,6 +5,11 @@ image:https://www.zimbra.com/wp-content/uploads/2016/06/zimbra-logo-color-282-1.
 This repository contains the code necessary to build the Zimbra
 Installation Guides.
 
+====
+Use branch `8.8.15` for 8.8.15 documentation
+Use branch `9.0.0` for 9.0.0 documentation
+====
+
 These guides are intended for system administrators responsible for
 installing, maintaining, and supporting the server deployment of
 Zimbra.

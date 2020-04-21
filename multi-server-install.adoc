@@ -4,19 +4,11 @@ include::settings.adoc[]
 :document-title: Multi-Server Installation Guide
 // This is intended to allow excluding certain text for a FOSS only manual
 // At present it is only partially implemented
-:networkeditiondoc: TRUE
 :multiserverdoc: TRUE
 
-ifndef::z9[]
-= {product-name} {document-title}
-v{product-version}, {product-release-date}
-endif::z9[]
-
-ifdef::z9[]
 = {product-name} {document-title}
 {product-release-date}
 {product-name} V {product-version}
-endif::z9[]
 
 :toclevels: 4
 
@@ -41,17 +33,9 @@ include::prepareserver.adoc[]
 
 <<<
 
-ifndef::z9[]
 include::multi-server-install-main.adoc[]
 
 <<<
-endif::z9[]
-
-ifdef::z9[]
-include::multi-server-install-main-z9.adoc[]
-
-<<<
-endif::z9[]
 
 include::multi-server-adding-mailbox.adoc[]
 

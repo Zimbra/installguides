@@ -2,31 +2,9 @@
 == Modifying Operating System Configurations
 :toc:
 
-{product-name} runs on one of several operating systems, including
-Ubuntu® LTS, Red Hat® Enterprise Linux, CentOS and Oracle Linux.
+{product-name} runs on one of several operating systems, including Ubuntu® LTS, Red Hat® Enterprise Linux, CentOS and Oracle Linux.
 
-// TODO the 8.7 Multi-Server Installation guide included this text:
-// Installation modifications for frequently used operating systems
-// are described in individual configuration documents found on the
-// {product-abbrev} documentation website, such as Installation Modifications
-// for ZCS with Ubuntu LTS, or Installation Modifications for ZCS
-// with Red Hat. Other operating systems may require similar
-// modifications, and you can use the information contained in these
-// documents as a reference to gauge whether your operating system
-// might need to be modified.
-// No such documentation exists for 8.7.  Hence commenting out this
-// whole section as it doesn't make sense without that.
-// However, in the archive documentation for release 7.2 at
-// https://www.zimbra.com/documentation/zimbra-collaboration-network-edition/
-// you can find:
-// https://files.zimbra.com/website/docs/7.2/ZCS_Ubuntu_Server_Config.pdf
-// https://files.zimbra.com/website/docs/7.2/ZCS_RedHat_Server_Config.pdf
+A full default installation of the Linux distribution that you select is required.
 
-A full default installation of the Linux distribution that you select is
-required.
-
-[IMPORTANT]
-{product-provider} recommends that the operating systems you use are updated
-with the latest patches that have been tested with {product-name}.
-See the latest release notes to see the operating systems patch list
-that has been tested with {product-name}.
+IMPORTANT: {product-provider} recommends that the operating systems you use are updated with the latest patches that have been tested with {product-name}.
+See the latest release notes to see the operating systems patch list that has been tested with {product-name}.

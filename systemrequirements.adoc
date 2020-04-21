@@ -52,14 +52,6 @@ additional space for mail storage. The other nodes require 100MB.
 * Ubuntu 18.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.8.12 and above
 +
 
-ifndef::z9[]
-|*Operating System (Open Source Edition)*
-|In addition to supporting the operating systems listed above for the
-{product-edition-commercial}, other operating system versions are available for the
-{product-edition-foss}. Check the {product-provider} Open Source Downloads page on
-https://www.zimbra.com.
-endif::z9[]
-
 |*Virtualization ({product-edition-commercial})*
 |The following hypervisors are supported:
 
@@ -106,12 +98,7 @@ a|*Administrator Computers* +
  +
 // HACK because including a NOTE in a narrow table column causes problems for
 // the prawn layout engine for PDFs.
-ifdef::backend-pdf[]
 NOTE: Other configurations may work.
-endif::[]
-ifndef::backend-pdf[]
-NOTE: Other configurations may work.
-endif::[]
 |The following operating system/browser combinations are supported:
 
 Windows 8.1 or Windows 10 with one of the following:
@@ -146,20 +133,9 @@ a|*End User Computers using {product-short} Web Client* +
  +
 // HACK because including a NOTE in a narrow table column causes problems for
 // the prawn layout engine for PDFs.
-ifdef::backend-pdf[]
 NOTE: Other configurations may work.
-endif::[]
-ifndef::backend-pdf[]
-NOTE: Other configurations may work.
-endif::[]
 
-ifndef::z9[]
-|*For {product-short} Web Client - Advanced & Standard version*
-endif::z9[]
-
-ifdef::z9[]
 |*For {product-short} Web Client - Classic & Modern version*
-endif::z9[]
 
 Minimum
 
@@ -173,35 +149,6 @@ Recommended
 
 The following operating system/browser combinations are supported:
 
-ifndef::z9[]
-Windows 8.1 or Windows 10 with
-one of the following:
-
-* Microsoft support is only available for Internet Explorer 11 or Microsoft Edge
-** IE11 and higher for Windows 8.1
-** IE11 or Microsoft Edge for Windows 10
-
-* The latest stable release of:
-** Firefox
-** Safari
-** Google Chrome
-
-IMPORTANT: IE11 is not supported when using {product-short} Connect. {product-short} Connect requires webRTC support which IE doesn't provide yet. 
-
-MacOS 10.12 or 10.13, 10.14 with one of the following:
-* The latest stable release of:
-** Firefox
-** Safari
-** Google Chrome
-
-Linux (Red Hat, Ubuntu, Fedora, or SUSE) with one of the following:
-
-* The latest stable release of:
-** Firefox
-** Google Chrome
-endif::z9[]
-
-ifdef::z9[]
 Windows 8.1 or Windows 10 with the latest stable release of one of the following:
 
 ** Google Chrome
@@ -237,7 +184,6 @@ Phones or tablets running an up-to-date version of Android still supported by Go
 ** Android Browser
 ** Chrome
 ** Firefox
-endif::z9[]
 
 |*End User Computers Using Other Clients*
 |Minimum
@@ -273,7 +219,6 @@ EWS Interoperability
 |1 mbps or higher
 |===
 
-ifdef::networkeditiondoc[]
 [[Zimbra_Connector_for_Outlook]]
 == {product-short} Connector for Outlook ({product-edition-commercial} Only)
 
@@ -287,9 +232,7 @@ ifdef::networkeditiondoc[]
 * Outlook 2016: 32-bit and 64-bit editions of Microsoft Office, including Office365 and Click to run versions.
 
 |=======================================================================
-endif::networkeditiondoc[]
 
-ifdef::networkeditiondoc[]
 [[Zimbra_Mobile]]
 == {product-short} Mobile ({product-edition-commercial} Only)
 
@@ -302,21 +245,6 @@ including:
 * iOS versions currently supported by Apple; as of March 2020 those are iOS12 & iOS13
 * Android versions currently supported by Google; as of March 2020 those are 8.0 and above
 * Windows Mobile no longer supported (EOL 10 December 2019)
-
-ifndef::z9[]
-[[Zimbra_Touch_Client]]
-== {product-short} Touch Client ({product-edition-commercial} Only)
-
-IMPORTANT: Support for the {product-short} Touch Client has ended.
-The software is available without support.
-
-Supported devices for the {product-short} Touch Client include:
-
-* iOS9+: iPad®, iPad mini®, iPhone®, iPod touch®
-* Android 4.0+: Nexus 7, Nexus 10, Samsung Galaxy Tab™,
-  Samsung Galaxy S® III, Samsung Galaxy S® 4, Galaxy Nexus™
-endif::z9[]
-endif::networkeditiondoc[]
 
 [[Available_Languages]]
 == Available Languages
@@ -339,21 +267,17 @@ Japanese, Korean, Malay, Polish, Portuguese (Brazil), Portuguese
 (Portugal), Romanian, Russian, Spanish, Swedish, Thai, Turkish,
 Ukrainian
 
-ifdef::z9[]
 |{product-short} {modern-client} |Application/UI |Chinese
 (China), English (US), French (France), German, 
 Hindi, Indonesian, Italian,
 Japanese, Portuguese (Portugal), Spanish, Thai 
-endif::z9[]
 
 |{product-short} {web-client} - Online Help (HTML) |Feature Documentation |Dutch,
 English, Spanish, French, Italian, Japanese, German, Portuguese
 (Brazil), Chinese (Simplified PRC and Traditional HK), Russian
 
-ifdef::z9[]
 |{product-short} {modern-client} - Online End User Guide (HTML) |Feature Documentation |
 English
-endif::z9[]
 
 |{product-short} {web-client} - End User Guide (PDF) |Feature Documentation
 |English
