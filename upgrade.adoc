@@ -9,26 +9,12 @@ Instructions. Be sure to read the
 https://wiki.zimbra.com/index.php?title=Zimbra_Releases/8.7.0[release note]
 information before upgrading.
 
-[NOTE]
-====
-https://bugzilla.zimbra.com/show_bug.cgi?id=105056[Bug
-105056]
-noted a problem that can occur during a rolling upgrade if two
-factor authentication (2FA) is enabled before all mailbox servers have
-been upgraded to 8.7.  In particular, pre-8.7 mailbox servers are not
-compatible with 2FA.
-
-Accordingly, it is recommended that 2FA is not enabled until all
-mailbox servers have been upgraded to 8.7.
-====
-
 The following new services are available for installation at upgrade
 time. Please refer to the _{product-admin-guide}_ for more information
 and to determine if you wish to install them.
 
-- `zimbra-chat`
+- `zimbra-connect`
 - `zimbra-drive`
-- `zimbra-imapd`
 
 === Database Integrity Checking
 
@@ -59,7 +45,7 @@ updated with the latest patches that have been tested with {product-abbrev}.
 
 ==== Ubuntu OS
 
-* Ubuntu 18.04 LTS Server Edition (64-bit) (Beta beginning with 8.8.12)
+* Ubuntu 18.04 LTS Server Edition (64-bit)
 * Ubuntu 16.04 LTS Server Edition (64-bit)
 * Ubuntu 14.04 LTS Server Edition (64-bit)
 
@@ -326,7 +312,6 @@ a time, following the instructions under <<_process_2>> below.
   . _MTA_ servers - see <<_using_lmdb_as_the_supported_back_end_for_on_disk_database_maps>>.
   . Proxy servers
   . Mailstore servers
-  . Optionally install any new IMAPD servers
 
 include::upgrade-process-inc.adoc[]
 
@@ -494,10 +479,6 @@ httpclient_external_connmgr_tcp_nodelay
 
 :leveloffset: +2
 include::ephemeral.adoc[]
-:leveloffset: -2
-
-:leveloffset: +2
-include::imapd.adoc[]
 :leveloffset: -2
 
 == Remove Current Version and Perform Clean Install of ZCS

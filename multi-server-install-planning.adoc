@@ -91,7 +91,7 @@ following:
   (the server and port number where the user account resides).
 
 **Memcached** is a high performance, distributed memory object caching system.
-Route information is cached for further use in order to increase performance.
+Route information is cached for further use to increase performance.
 **zimbra-memcached** is a separate package that is recommended to be
 installed along with zimbra-proxy.
 
@@ -193,8 +193,6 @@ The following ports are used either by {product-short} Proxy or by {product-shor
 End clients connect directly to {product-short} Proxy, using the {product-short} Proxy
 Ports. {product-short} Proxy connects to the Route Lookup Handler/NLE (which
 resides on {product-short} Mailbox server) using the {product-short} Mailbox Ports.
-The proxy also optionally connects to the IMAPD service on the {product-short} IMAPD ports
-if IMAPD is installed and configured at the global level or on a specific set of mailbox servers.
 
 *{product-short} Proxy Port Mapping*
 
@@ -220,14 +218,6 @@ if IMAPD is installed and configured at the global level or on a specific set of
 |POP3S Backend (if Proxy configured) |7995
 |IMAP Backend (if Proxy configured) |7143
 |IMAPS Backend (if Proxy configured) |7993
-|========================
-
-[cols=",",options="header",]
-|========================
-2+|{product-short} IMAPD Ports (Internal to {product-name})
-
-|IMAP Backend (if Proxy configured) |8143
-|IMAPS Backend (if Proxy configured) |8993
 |========================
 
 

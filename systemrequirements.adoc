@@ -7,22 +7,22 @@
 |*Servers*
 |*Evaluation and Testing*
 
-* Intel/AMD 64-bit CPU 1.5 GHz
+* Intel/AMD w/ PassMark CPU Mark > 7,000 (e.g., Dual Intel Xeon E5-2407 @ 2.2GHz = 7,303)
 * RAM requirements:
 ** For single server installations, {product-short} requires a minimum of 8GB of RAM.
 ** For multi-server installations, contact {product-provider} sales for recommendations.
-* 5 GB free disk space for software and logs
+* 50 GB free disk space for software and logs
 * Temp file space for installs and upgrades*
 * Additional disk space for mail storage
 
 *Production environments*
 
-* Intel/AMD 2.0 GHZ+ 64-bit CPU
+* Intel/AMD w/ PassMark CPU Mark > 15,000 (e.g., Quad AMD Opteron 6276 @ 2.2GHz = 7,303)
 * RAM requirements:
 ** For single server installations, {product-short} requires a minimum of 8GB of RAM.
 ** For multi-server installations, contact {product-provider} sales for recommendations.
 * Temp file space for installs and upgrades*
-* 10 GB free disk space for software and logs (SATA or SCSI for
+* 100 GB free disk space for software and logs (SATA or SCSI for
 performance, and RAID/Mirroring for redundancy)
 * Additional disk space for mail storage
 * Temp files space: The zimbra-store requires 5GB for `/opt/zimbra`, plus
@@ -49,7 +49,7 @@ additional space for mail storage. The other nodes require 100MB.
 * Oracle Linux 7.2
 * Oracle Linux 6.6
 * Ubuntu 16.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.7.1 and above
-* Ubuntu 18.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.8.12 and above (Beta)
+* Ubuntu 18.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.8.15 and above
 +
 
 |*Operating System (Open Source Edition)*
@@ -61,11 +61,8 @@ https://www.zimbra.com.
 |*Virtualization ({product-edition-commercial})*
 |The following hypervisors are supported:
 
-* VMware vSphere 6.x
-* VMware vSphere 5.x
-* VMware vSphere 4.x
-* XenServer 6.5
-* XenServer 6.2
+* VMware vSphere 6.5 or 6.7 (to March 2020)
+* Citrix Hypervisor (XenServer) 7.1 LTSR, 8.0
 * KVM
 
 |*File Systems*
@@ -116,11 +113,9 @@ Other configurations may work.
 endif::[]
 |The following operating system/browser combinations are supported:
 
-Windows 7 SP1, Windows 8.1or Windows 10 with
-one of the following:
+Windows 8.1 or Windows 10 with one of the following:
 
 * Microsoft support is only available for Internet Explorer 11 or Microsoft Edge
-** IE11 and higher for Windows 7 SP1
 ** IE11 and higher for Windows 8.1
 ** IE11 or Microsoft Edge for Windows 10
 * The latest stable release of:
@@ -130,7 +125,7 @@ one of the following:
 
 IMPORTANT: IE11 is not supported when using {product-short} Connect. {product-short} Connect requires webRTC support which IE doesn't provide yet. 
 
-MacOS 10.12 or 10.13, 10.14 with one of the following:
+MacOS 10.12 or later with one of the following:
 
 * The latest stable release of:
 ** Firefox
@@ -161,21 +156,19 @@ endif::[]
 
 Minimum
 
-* Intel/AMD/Power PC CPU 750MHz
+* Intel/AMD w/ PassMark CPU Mark > 2,000 (e.g., Intel Core i3-7020U @ 2.30GHz = 2,434)
 * 256MB RAM
 
 Recommended
 
-* Intel/AMD/Power PC CPU 1.5GHz
+* Intel/AMD w/ PassMark CPU Mark > 4,000
 * 512MB RAM
 
 The following operating system/browser combinations are supported:
 
-Windows 7 SP1, Windows 8.1 or Windows 10 with
-one of the following:
+Windows 8.1 or Windows 10 with one of the following:
 
 * Microsoft support is only available for Internet Explorer 11 or Microsoft Edge
-** IE11 and higher for Windows 7 SP1
 ** IE11 and higher for Windows 8.1
 ** IE11 or Microsoft Edge for Windows 10
 * The latest stable release of:
@@ -200,33 +193,24 @@ Linux (Red Hat, Ubuntu, Fedora, or SUSE) with one of the following:
 |*End User Computers Using Other Clients*
 |Minimum
 
-* Intel/AMD/Power PC CPU 750MHz
-* 256MB RAM
+* Intel/AMD w/ PassMark CPU Mark > 2,000
+* 2G RAM
 
 Recommended
 
-* Intel/AMD/Power PC CPU 1.5GHz
-* 512MB RAM
+* Intel/AMD w/ PassMark CPU Mark > 4,000
+* 4GB RAM
 
 Operating system POP/IMAP combinations
 
-* Windows 7 SP1 with Outlook Express 6, Outlook
-2007 and above (MAPI), Thunderbird
-* Fedora Core 4 or later with Thunderbird
-* Mac OS X 10.6 or later with Apple Mail
-
-*Accessibility and Screen Readers* {product-provider} recommends that customers
-requiring the use of screen readers for accessibility leverage the use of
-the Standard {product-short} Web Client (HTML). {product-provider} continues to invest in
-improving the accessibility of this interface.
-
-[TIP]
-If users are presently using IE 10 or older {product-provider} strongly recommends that they upgrade to the latest version of Internet Explorer for optimal performance with ZWC.
+* Windows 10 with Windows Mail, Outlook 2016 and above (MAPI), or the latest stable Thunderbird
+* Fedora 31 or later with the latest stable Thunderbird
+* MacOS 10.12 or later with Apple Mail
 
 |*Exchange Web Services*
 |EWS Clients
 
-* Outlook 2011/2016 (MAC only)
+* Outlook 2016/2019 (MAC only)
 * Apple Desktop Clients (macOS 10.12+)
 
 EWS Interoperability
@@ -237,7 +221,7 @@ EWS Interoperability
 |Display minimum resolution: 1024 x 768
 
 |*Internet Connection Speed*
-|128 kbps or higher
+|1 Mbps or higher
 |===
 
 ifdef::networkeditiondoc[]
@@ -248,18 +232,10 @@ ifdef::networkeditiondoc[]
 |=======================================================================
 |*Operating System* a|
 * Windows 10
-* Windows 8.1
-* Windows 7 SP1
-+
-[IMPORTANT]
-Windows 7 SP1 is in its Extended Support period until January 14, 2020. {product-name} 8.8.x
-is the last release to support Microsoft Outlook 2010 and Microsoft Windows 7 SP1.
 
 |*Microsoft Outlook* a|
-* Outlook 2019: 32-bit and 64-bit editions of Microsoft Office (new in 8.8.11), including Click to run.
-* Outlook 2016: 32-bit and 64-bit editions of Microsoft Office, including Office365 (New in 8.8.10) and Click to run versions.
-* Outlook 2013: 32-bit and 64-bit editions of Microsoft Office.
-* Outlook 2010: 32-bit and 64-bit editions of Microsoft Office (End of life: October 13, 2020.)
+* Outlook 2019: 32-bit and 64-bit editions of Microsoft Office, including Click to run.
+* Outlook 2016: 32-bit and 64-bit editions of Microsoft Office, including Office365 and Click to run versions.
 
 |=======================================================================
 endif::networkeditiondoc[]
@@ -274,10 +250,9 @@ including:
 
 *Smartphone Operating Systems*:
 
-* iOS9, iOS10, iOS11
-* Android 2.3 and above
-* Windows Mobile 6.0 and above
-* Microsoft Outlook using Exchange ActiveSync (EAS)
+* iOS versions currently supported by Apple; as of March 2020 those are iOS12 & iOS13
+* Android versions currently supported by Google; as of March 2020 those are 8.0 and above
+* Windows Mobile no longer supported (EOL 10 December 2019)
 
 [[Zimbra_Touch_Client]]
 == {product-short} Touch Client ({product-edition-commercial} Only)
