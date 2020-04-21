@@ -110,8 +110,7 @@ ifdef::backend-pdf[]
 NOTE: Other configurations may work.
 endif::[]
 ifndef::backend-pdf[]
-[NOTE]
-Other configurations may work.
+NOTE: Other configurations may work.
 endif::[]
 |The following operating system/browser combinations are supported:
 
@@ -151,8 +150,7 @@ ifdef::backend-pdf[]
 NOTE: Other configurations may work.
 endif::[]
 ifndef::backend-pdf[]
-[NOTE]
-Other configurations may work.
+NOTE: Other configurations may work.
 endif::[]
 
 ifndef::z9[]

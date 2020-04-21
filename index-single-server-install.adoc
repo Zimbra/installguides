@@ -44,10 +44,17 @@ include::licenserequirements.adoc[]
 include::basicconfig.adoc[]
 
 <<<
-
+ifndef::z9[]
 include::installing.adoc[]
 
 <<<
+endif::z9[]
+
+ifdef::z9[]
+include::installing-z9.adoc[]
+
+<<<
+endif::z9[]
 
 include::finalsetup.adoc[]
 

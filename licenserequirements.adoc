@@ -99,8 +99,7 @@ administration console by selecting +
 then clicking *Activate License* in the toolbar. You can also
 activate your license from the command line interface.
 
-[NOTE]
-Upgraded {product-name} versions require an immediate activation of a
+NOTE: Upgraded {product-name} versions require an immediate activation of a
 valid license to maintain network feature functionality.
 
 [[Automatic_License_Activation]]

@@ -77,8 +77,7 @@ secondary master LDAP servers to install the LDAP package.
 
 === Passwords Required to Install the Secondary Master
 
-[NOTE]
-====
+NOTE: ====
 Before you install a secondary master, you must know the following
 passwords:
 

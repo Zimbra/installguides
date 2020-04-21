@@ -1,34 +1,25 @@
 [[introduction]]
 = Introduction
 
-{product-name} includes the {product-provider} _MTA_, the
-{product-provider} _LDAP_ server, and the {product-provider} _mailbox_
-server.  In a single-server installation, all components are installed
-on one server and require no additional manual configuration.
+{product-name} includes the {product-provider} _MTA_, the {product-provider} _LDAP_ server, and the {product-provider} _mailbox_
+server.
+In a single-server installation, all components are installed on one server and require no additional manual configuration.
 
-This installation guide is a quick start guide that describes the
-basic steps needed to install and configure {product-name} in a direct
-network connect environment. In this environment, the {product-short}
-server is assigned a domain for which it receives mail, and a direct
-network connection to the Internet.  When {product-name} is installed,
-you will be able to log on to the {product-short} administration
-console to manage the domain and provision accounts.  The accounts you
-create are able to send and receive external email.
+This installation guide is a quick start guide that describes the basic steps needed to install and configure {product-name} in a direct network connect environment.
+In this environment, the {product-short} server is assigned a domain for which it receives mail, and a direct network connection to the Internet.
+When {product-name} is installed, you will be able to log on to the {product-short} administration console to manage the domain and provision accounts.
+The accounts you create are able to send and receive external email.
 
 == Important Notice About Single Server Installations
 
-{product-name} is designed to be the only application suite installed
-on the server.  As part of the installation process, {product-name}
-bundles and installs various other third party and open source
-software, including http://www.eclipse.org/jetty/[Eclipse Jetty],
-http://www.postfix.org/[Postfix], and https://www.openldap.org/[OpenLDAP®].  The
-versions installed have been tested and configured to work with {product-short}
-software. See the {product-name} Administrator Guide for a complete
-list of software.
+{product-name} is designed to be the only application suite installed on the server.
+As part of the installation process, {product-name} bundles and installs various other third party and open source software, including http://www.eclipse.org/jetty/[Eclipse Jetty], http://www.postfix.org/[Postfix], and https://www.openldap.org/[OpenLDAP®.
+The versions installed have been tested and configured to work with {product-short} software.
+See the {product-name} Administrator Guide for a complete list of software.
 
-A {product-short} license is required to create accounts on
-servers running {product-name} {product-edition-commercial}.
-You cannot install {product-name} Network Edition without a license.
+ifndef::z9[A {product-short} license is required to create accounts on servers running {product-name} {product-edition-commercial}. You cannot install {product-name} Network Edition without a license.]
+
+ifdef::z9[You cannot install {product-name} {product-version} without a license.]
 
 The following table shows the default port settings when {product-name} is installed.
 

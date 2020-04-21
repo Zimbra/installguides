@@ -43,8 +43,7 @@ The key is updated on `/opt/zimbra/.ssh/authorized_keys`
 *Enabling Server Statistics Display.* In order for the server statistics
 to display on the administration console, the syslog configuration files
 must be modified.
-[NOTE]
-Note, your system may use a different provider for the syslog service.
+NOTE: Note, your system may use a different provider for the syslog service.
 See the Wiki article
 https://wiki.zimbra.com/wiki/Configuring-Logger-Host[Configuring Logger Host]
 for more information

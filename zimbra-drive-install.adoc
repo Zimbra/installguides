@@ -1,0 +1,20 @@
+== Install/Upgrade Zimbra Drive NG
+
+====
+Performing these step installs/updates `zimbra-docs` as well.
+====
+
+* As `root` run the below command:
+
+RHEL:: `yum install zimbra-drive-ng`
+
+Ubuntu:: `apt-get install zimbra-drive-ng`
+
+
+* Restart mailbox service as a `zimbra` user:
+
+[source, bash]
+----
+su - zimbra
+zmmailboxdctl restart
+----

@@ -81,16 +81,16 @@ answer for your configuration._
 [source%nowrap,bash]
 ....
 root@mailhost:/tmp# tar xzvf zcs.tgz
-zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/
-zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/packages/
+zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/
+zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/packages/
 .
 .
 .
-zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/install.sh
-zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/README.txt
+zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/install.sh
+zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/README.txt
 
-root@zimbraiop:/tmp/# cd zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615/
-root@zimbraiop:/tmp/zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615# ./install.sh
+root@zimbraiop:/tmp/# cd zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/
+root@zimbraiop:/tmp/zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031# ./install.sh
 
 Operations logged to /tmp/install.log.y1YeCSI5
 .
@@ -110,7 +110,7 @@ Operations logged to /tmp/install.log.y1YeCSI5
 --
 [source%nowrap,bash]
 ....
-root@zimbraiop:/tmp/zcs-NETWORK-8.8.5_GA_1894.UBUNTU16_64.20171026035615# ./install.sh
+root@zimbraiop:/tmp/zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031# ./install.sh
 
 
 Operations logged to /tmp/install.log.y1YeCSI5
@@ -170,11 +170,7 @@ Found zimbra-apache (local)
 Found zimbra-spell (local)
 Found zimbra-convertd (local)
 Found zimbra-memcached (repo)
-
-ifdef::z9[]
 Found zimbra-modern-ui (repo)
-endif::z9[]
-
 Found zimbra-proxy (local)
 Found zimbra-archiving (local)
 Found zimbra-connect (repo)
@@ -501,10 +497,8 @@ You can have more than one of the above configurations.
 In a web application server split environment, you must have at least
 one mailstore server and one UI server in your configuration.
 
-ifdef::z9[]
 [IMPORTANT]
 The {modern-client} does not currently support Zimbra Web Application Server Split configuration.
-ifdef::z9[]
 
 [IMPORTANT]
 A web application server split environment must have proxy and
@@ -590,11 +584,7 @@ Installing:
     zimbra-store
     zimbra-apache
     zimbra-spell
-
-    ifdef::z9[]
     zimbra-modern-ui
-    endif::z9[]
-
     zimbra-convertd
     zimbra-archiving
     zimbra-connect
@@ -1623,11 +1613,13 @@ after switching `zimbraReverseProxyAdminEnabled` to `TRUE` and
 restarting the proxy.
 The default value of `zimbraAdminProxyPort` is `9071`.
 +
-NOTE: * The administration console address must be typed with `https`, even if you configured only `http`.
+NOTE: ====
+* The administration console address must be typed with `https`, even if you configured only `http`.
 * The first time you log on, a certificate authority (CA) alert may be
 displayed. Click *Accept this certificate permanently* to accept the
 certificate and be able connect to the Zimbra administration console.
 Then click *OK*.
+====
 +
 . Enter the admin user name and password configured during the
 installation process. Enter the user name as *admin@example.com*.
@@ -1710,7 +1702,11 @@ accessed from the administration console Download page and instruction
 guides are available from the Administration Console Help Desk.
 
 
-include::ephemeral.adoc[leveloffset=+2]
+include::zimbra-drive-install.adoc[]
+
+include::zimlets-install.adoc[]
+
+include::ephemeral.adoc[leveloffset=+1]
 
 == Uninstalling Zimbra Collaboration
 

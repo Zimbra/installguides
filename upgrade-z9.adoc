@@ -24,7 +24,7 @@ ifdef::z9[]
 Please review the following information to decide if {product-name} {product-version} is suitable for you.
 
 * Zimbra Touch Client, Zimbra Mobile Client, and Zimbra HTML (Standard) Client are no longer a part of Zimbra starting from Version 9.0.0.
-* If you are currently on Zimbra V8.8.15 Patch 8, update all NG modules before upgrading to Zimbra 9.0.0.
+* If you are currently on Zimbra V8.8.15 Patch 7, update all NG modules before upgrading to Zimbra 9.0.0.
 * Zimbra 9.0.0 introduces two versions of Zimbra Web Client -- Modern and Classic.
 * A Zimbra Network Edition license is required to use the Modern Web App.
 * It is recommended that the Modern Web App is set as the default web client. Even after selecting a default, the Modern Web App and the Classic Web App can be used simultaneously by users as per their choice.
@@ -49,7 +49,7 @@ You are prompted to decide if you would like to run the `zmdbintegrityreport`.
 
 `zmdbintegrityreport` can take minutes to an hour to run, depending on your system size and disk bandwidth.
 
-====
+NOTE: ====
 `zmdbintegrityreport` is run on a weekly basis from cron on all zimbra-store nodes.
 Large sites can opt to disable this by setting `zmlocalconfig -e zmdbintegrityreport_disabled=TRUE`.
 If you choose to disable this, it is recommended that the integrity reports be run by hand during your normal maintenance windows and prior to running any {product-abbrev} upgrades.
@@ -189,10 +189,9 @@ of the SSLv3 vulnerability described in https://www.us-cert.gov/ncas/alerts/TA14
 
 SSLv3 support has been deprecated by default in 8.6.0, although when upgrading from previous versions of {product-abbrev}, some protocols might still be enabled.
 
-====
 * New keys created in {product-abbrev} 8.7.0 (or later) have SSLv3 disabled by default.
 * Pre-existing keys from earlier versions of {product-abbrev} will still have SSLv3 enabled.
-====
+
 
 Follow the steps in the {product-provider} wiki article https://wiki.zimbra.com/wiki/How_to_disable_SSLv3[How to Disable SSLv3] to disable SSLv3 after upgrading to ZCS 8.7.0.
 
@@ -228,6 +227,7 @@ RC4-SHA
 +
 
 NOTE: See https://wiki.zimbra.com/wiki/Cipher_suites for the most current information on cipher suite configuration.
+
 
 === Customizing ZCO Installations
 
@@ -319,18 +319,12 @@ See https://bugzilla.zimbra.com/show_bug.cgi?id=81167[Bug 81167].
 * You should run `zmldapupgrade -b 66387` after upgrading.
 The `zimbraAllowFromAddress` attribute cannot be set for internal accounts or distribution lists.
 Running this script will change `zimbraAllowFromAddress` values to grants.
-+
-
-====
-* This step was not included into the installer-driven upgrade due to potentially long delay for sites that set `zimbraAllowFromAddress` on many accounts.
-* The migration command reports how many accounts had the `zimbraAllowFromAddress` attribute set and how many of them needed migration.
+** This step was not included into the installer-driven upgrade due to potentially long delay for sites that set `zimbraAllowFromAddress` on many accounts.
+** The migration command reports how many accounts had the `zimbraAllowFromAddress` attribute set and how many of them needed migration.
 One way to verify all accounts got migrated is to run the command again.
 The total won't change, and the number migrated should be 0.
 See https://bugzilla.zimbra.com/show_bug.cgi?id=66387[Bug 66387] for more information.
-====
-+
-
-* If your self-signed SSL certificates have expired, update them.
+** If your self-signed SSL certificates have expired, update them.
 +
 
 ====
@@ -418,14 +412,112 @@ httpclient_external_connmgr_tcp_nodelay
 
 ifdef::z9[]
 
-:leveloffset: +1
 include::zimbra-drive-install.adoc[]
 
-include::zimlets-install.adoc[]
+== Installing Zimlets for {modern-client}
+
+These five zimlets are available.
+
+* Slack
+* Zoom
+* Dropbox
+* Google Drive
+* Onedrive
+
+You have to install and configure them for users to integrate and use these zimlets.
+Once you are done installing the zimlet(s), you need to restart the mailbox service before configuring them.
+
+
+=== Slack
+
+* As `root` run the below command:
+
+RHEL:: `yum install zimbra-zimlet-slack`
+
+Ubuntu:: `apt-get install zimbra-zimlet-slack`
+
+
+* Restart mailbox service as a `zimbra` user:
+
+[source, bash]
+----
+su - zimbra #switch user to zimbra
+zmmailboxdctl restart #Restart mailbox service as a Zimbra user
+----
+
+=== Zoom
+
+* As `root` run the below command:
+
+RHEL:: `yum install zimbra-zimlet-zoom`
+
+Ubuntu:: `apt-get install zimbra-zimlet-zoom`
+
+
+* Restart mailbox service as a `zimbra` user:
+
+[source, bash]
+----
+su - zimbra #switch user to zimbra
+zmmailboxdctl restart #Restart mailbox service as a Zimbra user
+----
+
+=== Dropbox
+
+* As `root` run the below command:
+
+RHEL:: `yum install zimbra-zimlet-dropbox`
+
+Ubuntu:: `apt-get install zimbra-zimlet-dropbox`
+
+
+* Restart mailbox service as a `zimbra` user:
+
+[source, bash]
+----
+su - zimbra #switch user to zimbra
+zmmailboxdctl restart #Restart mailbox service as a Zimbra user
+----
+
+=== Google Drive
+
+* As `root` run the below command:
+
+RHEL:: `yum install zimbra-zimlet-google-drive`
+
+Ubuntu:: `apt-get install zimbra-zimlet-google-drive`
+
+
+* Restart mailbox service as a `zimbra` user:
+
+[source, bash]
+----
+su - zimbra #switch user to zimbra
+zmmailboxdctl restart #Restart mailbox service as a Zimbra user
+----
+
+=== Onedrive
+
+* As `root` run the below command:
+
+RHEL:: `yum install zimbra-zimlet-onedrive`
+
+Ubuntu:: `apt-get install zimbra-zimlet-onedrive`
+
+
+* Restart mailbox service as a `zimbra` user:
+
+[source, bash]
+----
+su - zimbra #switch user to zimbra
+zmmailboxdctl restart #Restart mailbox service as a Zimbra user
+----
+
+Please visit link:https://zimbra.github.io/zimbra-9/adminguide.html#_configuring_zimlets_for_modern_web_app[Configuring Zimlets for Modern Web App] for instructions for on how to configure zimlets for {modern-client} users.
 
 endif::z9[]
 
-:leveloffset: +1
+:leveloffset: +2
 include::ephemeral.adoc[]
 :leveloffset: -2
 
