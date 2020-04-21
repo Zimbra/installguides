@@ -1,5 +1,4 @@
 :product-name: Zimbra Collaboration
-:product-edition-commercial: Network Edition
 :product-short: Zimbra
 :product-family: Zimbra
 :product-provider: Zimbra
@@ -15,14 +14,16 @@
 :copyright-year: 2020
 
 ifndef::z9[]
+:product-edition-commercial: Zimbra Collaboration Network Edition
 :web-client: Web Client
-:product-edition-foss: Open Source Edition
+:product-edition-foss: Zimbra Collaboration Open Source Edition
 :product-version: 8.8.15
 :product-release-date: July, 2019
 endif::z9[]
 
 //Zimbra 9 Documentation (Pass z9 in build argument e.g. asciidoctor -a z9 zimbra-9-install.adoc)
 ifdef::z9[]
+:product-edition-commercial: Zimbra Collaboration 9.0.0
 :title-logo-image: image:images/zimbra-9-logo.svg[]
 :web-client: Classic Web App
 :modern-client: Modern Web App

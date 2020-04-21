@@ -2,71 +2,52 @@
 = Introduction
 :toc:
 
-Information in this guide is intended for persons responsible for
-installing {product-name}. This guide will help you plan and
-perform all installation procedures necessary to deploy a fully
-functioning email system based on Zimbra’s messaging technology.
+Information in this guide is intended for people responsible for installing {product-edition-commercial}.
+This guide will help you plan and perform all installation procedures necessary to deploy a fully functioning email system based on {product-name}’s messaging technology.
 
-This guide covers the installation of
-{product-name} Network Edition {product-version}.
+====
+This guide covers the installation of {product-edition-commercial} only.
+====
 
 [[Audience]]
 == Audience
 
-This installation guide assumes you have a thorough understanding of
-system administration concepts and tasks and are familiar with email
-communication standards, security concepts, directory services, and
-database management.
+This installation guide assumes you have a thorough understanding of system administration concepts and tasks and are familiar with email communication standards, security concepts, directory services, and database management.
 
 [[Intro_license]]
-== {product-name} License
+== {product-edition-commercial} License
 
-A Zimbra license is required to create accounts in
-{product-name} Network Edition. You cannot install {product-name}
-Network Edition without a license. For more information about licenses,
-see <<Zimbra_License_Requirements,Zimbra License Requirements>>
+A {product-edition-commercial} license is required to create accounts in {product-edition-commercial.
+You cannot install {product-edition-commercial} without a license.
+For more information about licenses, see <<Zimbra_License_Requirements, {product-name} License Requirements>>
 
-If you do not have a license, go to Zimbra’s website
-https://www.zimbra.com to obtain a license from the Network Downloads area.
+If you do not have a license, go to {product-short}’s website https://www.zimbra.com to obtain a license from the Network Downloads area.
 
 [[For_More_Information]]
 == For More Information
 
-Zimbra documentation, including a readme text file, the administrator
-guide, and other Zimbra guides are copied to the servers during the
-installation. The major documentation types are listed below.
-You can access all the documents on the Zimbra website,
-https://www.zimbra.com and from the administration console, Help Desk page.
+{product-name} documentation, including a readme text file, the administrator guide, and other {product-short} guides are copied to the servers during the installation.
+The major documentation types are listed below.
+You can access all the documents on the {product-short} website, https://www.zimbra.com and from the administration console, Help Desk page.
 
-* **Administrator Guide**. This guide describes product architecture,
-  server functionality, administration tasks, configuration options,
-  and backup and restore procedures.
-* **Administrator Help**. The administrator Help provides instructions
-  about how to add and maintain your servers, domains, and user
-  accounts from the admin console.
-* **Web Client Help**. The Web Client Help provides instructions about
-  how to use the Zimbra Web Client features.
-* **Migration Wizard Guides**. These guides describe how to migrate
-  users that are on Microsoft Exchange or Lotus Domino systems to
-  the Zimbra Collaboration.
+Administrator Guide:: This guide describes product architecture, server functionality, administration tasks, configuration options, and backup and restore procedures.
+Administrator Help:: The administrator Help provides instructions about how to add and maintain your servers, domains, and user accounts from the admin console.
+Web Client Help:: The Web Client Help provides instructions on how to use the {product-short} Web Client features.
+Migration Wizard Guides:: These guides describe how to migrate users that are on Microsoft Exchange or Lotus Domino systems to the {product-name} {product-version}.
 
 [[Support_and_Contact_Information]]
 == Support and Contact Information
 
-Visit https://www.zimbra.com to join the community and to be a part of
-building the best open source messaging solution.  We appreciate your
-feedback and suggestions.
+ifdef::product-edition-foss[]
+Visit https://www.zimbra.com to join the community and to be a part of building the best open source messaging solution.  We appreciate your feedback and suggestions.
+endif::product-edition-foss[]
 
-* Contact Zimbra Sales to purchase Zimbra Collaboration.
-* Network Edition customers can contact support at
-  **support@zimbra.com**.
-* Explore the https://forums.zimbra.org/[Zimbra Forums] for answers to
-  installation or configuration problems.
-* Join the Zimbra Community Forum, to participate and learn more about
-  {product-name}.
-* Send an email to **feedback@zimbra.com** to let us know what you like
-  about the product and what you would like to see in the product.
-  If you prefer, post your ideas to the Zimbra Forum.
+* Contact {product-short} Sales to purchase {product-name} {product-version}.
+* {product-edition-commercial} customers can contact support at **support@zimbra.com**.
+* Explore the https://forums.zimbra.org/[{product-short} Forums] for answers to installation or configuration problems.
+* Join the {product-short} Community Forum, to participate and learn more about {product-name}.
+* Send an email to **feedback@zimbra.com** to let us know what you like about the product and what you would like to see in the product.
+  If you prefer, post your ideas to the {product-short} Forum.
 
 == {product-short} Port Mapping
 
@@ -74,7 +55,7 @@ feedback and suggestions.
 These are ports typically available to mail clients.
 
 |===
-|Port|Protocol|Zimbra Service|Description
+|Port|Protocol|{product-short} Service|Description
 |25| smtp| mta| incoming mail to postfix
 |80| http| mailbox / proxy| web mail client (disabled by default in 8.0)
 |110| pop3| mailbox / proxy| POP3
@@ -91,10 +72,10 @@ These are ports typically available to mail clients.
 |===
 
 === Internal access ===
-These are ports typically only used by the Zimbra system itself.
+These are ports typically only used by the {product-short} system itself.
 
 |===
-|Port|Protocol|Zimbra Service|Description
+|Port|Protocol|{product-short} Service|Description
 |389|ldap|ldap|LC(ldap_bind_url)
 |636|ldaps|ldaps|if enabled via LC(ldap_bind_url)
 |3310|-|mta/clamd|zimbraClamAVBindAddress
@@ -167,9 +148,5 @@ In a multi-node environment the typical communication between nodes required inc
 |7073|mta|sasl auth; zimbraMtaAuthTarget (since ZCS 8.7)
 |===
 
-**Important:** You cannot have any other web server, database, _LDAP_,
-or _MTA_ server running, when you install {product-name}. If you have
-installed any of those applications before you install {product-short}
-software, disable them.  During {product-name} installation,
-{product-short} makes global system changes that may break
-applications that are on your server.
+IMPORTANT: You cannot have any other web server, database, _LDAP_, or _MTA_ server running, when you install {product-name}. If you have installed any of those applications before you install {product-short} software, disable them.
+During {product-name} installation, {product-short} makes global system changes that may break applications that are on your server.

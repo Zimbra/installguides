@@ -21,8 +21,7 @@ displayed.
         *** a Zimbra mailstore server (mailstore server)
         *** a Zimbra webapp server (UI server)
 
-[NOTE]
-Zimbra-proxy is normally installed on the MTA server or you can install it on its own server.
+NOTE: Zimbra-proxy is normally installed on the MTA server or you can install it on its own server.
 
 [IMPORTANT]
 Do not manually create the user ‘zimbra’ before running the {product-abbrev}
@@ -56,8 +55,7 @@ https://www.zimbra.com. +
 Save the {product-name} *tar* file to the computer from which you are
 installing the software.
 
-[NOTE]
-_The screen shots are examples of the {product-name} installation
+NOTE: _The screen shots are examples of the {product-name} installation
 script. The actual script may be different._
 
 Step 1 through step 4 are performed for each server to be installed.
@@ -76,8 +74,7 @@ Open an SSH session to the {product-short} server and follow the steps below:
 --
 +
 --
-[NOTE]
-_As the installation proceeds, press_ *Enter* _to accept the
+NOTE: _As the installation proceeds, press_ *Enter* _to accept the
 defaults that are shown in brackets_ [ ] _or enter the appropriate
 answer for your configuration._
 
@@ -189,8 +186,7 @@ Configuring package repository
 5. Next, select the packages to be installed on this server.
 +
 --
-[NOTE]
-For the cross mailbox search feature, install the {product-short} Archive
+NOTE: For the cross mailbox search feature, install the {product-short} Archive
 package. To use the archiving and discovery feature, contact {product-provider}
 sales.
 --
@@ -202,8 +198,7 @@ The installer verifies that there is enough room to install {product-short}.
    <<System_Requirements, System Requirements for {product-name}>>
 +
 --
-[NOTE]
-_Before the Main menu is displayed, the installer checks to see if the
+NOTE: _Before the Main menu is displayed, the installer checks to see if the
 hostname is resolvable via DNS and if there is an error asks
 you if would like to change the hostname. The domain name should have an
 MX record configured in DNS._
@@ -279,8 +274,7 @@ The main menu expands to display configuration details for the package
 being installed.
 +
 --
-[NOTE]
-Values that require further configuration are marked with asterisks (`*`).
+NOTE: Values that require further configuration are marked with asterisks (`*`).
 --
 +
 To navigate the Main menu, select the menu item to change. You can
@@ -348,8 +342,7 @@ LDAP Host name      _______________________
 LDAP Port           _______________________
 ....
 --
-[NOTE]
-You must configure this information when you install the mailbox servers
+NOTE: You must configure this information when you install the mailbox servers
 and the MTA servers.
 
 6. Type `7` to set the correct time zone.
@@ -414,8 +407,7 @@ Ldap amavis password      _____________________
 Ldap nginx password       _____________________
 ....
 
-[NOTE]
-You need these passwords when configuring the MTA and the LDAP
+NOTE: You need these passwords when configuring the MTA and the LDAP
 replica servers. Write them down.
 --
 
@@ -530,8 +522,7 @@ See <<Zimbra_License_Requirements,Zimbra License Requirements>>
    In the following screen shot example, the packages to be installed are emphasized.
 +
 --
-[NOTE]
-_If SNMP is being used, the SNMP package is installed on every
+NOTE: _If SNMP is being used, the SNMP package is installed on every
 {product-short} server. Mark_ `y`
 
 [source%nowrap]
@@ -614,8 +605,7 @@ The main menu expands to display configuration details for the package
 being installed.
 +
 --
-[NOTE]
-Values that require further configuration are marked with asterisks (`*`).
+NOTE: Values that require further configuration are marked with asterisks (`*`).
 --
 +
 To navigate the Main menu, select the menu item to change. You can
@@ -794,8 +784,7 @@ Select, or 'r' for previous menu [r]
    administration console with this password.
 +
 --
-[NOTE]
-_By default, the domain name portions of the email addresses for the
+NOTE: _By default, the domain name portions of the email addresses for the
 Admin user, Anti-virus quarantine user, Spam training user and Non-spam(Ham)
 training user, are set to be the zimbra mailstore server address.
 You may want to change these to be the {product-name} primary domain address
@@ -874,8 +863,7 @@ to TRUE.
    `Install UI (zimbra,zimbraAdmin webapps)` +
    are both set to `yes`.  The default is `yes`.
 
-[NOTE]
-See the release notes for additional configuration information
+NOTE: See the release notes for additional configuration information
 for installing a split node environment.
 --
 
@@ -955,8 +943,7 @@ complete the installation.
    In the following screen shot example, the packages to be installed are emphasized.
 +
 --
-[NOTE]
-_If SNMP is being used, the SNMP package is installed on every
+NOTE: _If SNMP is being used, the SNMP package is installed on every
 {product-short} server. Mark_ `y`
 
 [source%nowrap]
@@ -1004,8 +991,7 @@ The main menu expands to display configuration details for the package
 being installed.
 +
 --
-[NOTE]
-Values that require further configuration are marked with asterisks (`*`).
+NOTE: Values that require further configuration are marked with asterisks (`*`).
 --
 +
 To navigate the Main menu, select the menu item to change. You can
@@ -1132,8 +1118,7 @@ Select, or 'r' for previous menu [r]
     an address on the domain, such as the admin address. (*admin@example.com*)
 +
 --
-[NOTE]
-If you enter an address other than the admin address, you must provision an
+NOTE: If you enter an address other than the admin address, you must provision an
 account with that address after the installation is complete.
 --
 
@@ -1148,8 +1133,7 @@ account with that address after the installation is complete.
 11. Type `r` to return to the *Main* menu.
 +
 --
-[NOTE]
-If you are installing the {product-short}-proxy package, see
+NOTE: If you are installing the {product-short}-proxy package, see
 <<_installing_zimbra_proxy>> before continuing.
 --
 
@@ -1629,8 +1613,7 @@ after switching `zimbraReverseProxyAdminEnabled` to `TRUE` and
 restarting the proxy.
 The default value of `zimbraAdminProxyPort` is `9071`.
 +
-[NOTE]
-====
+NOTE: ====
 * The administration console address must be typed with `https`, even if you configured only `http`.
 * The first time you log on, a certificate authority (CA) alert may be
 displayed. Click *Accept this certificate permanently* to accept the

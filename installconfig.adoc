@@ -68,7 +68,9 @@ ifdef::networkeditiondoc[]
   The default is to install one zimbra-convertd on each zimbra-store server.
   But only one zimbra-convertd needs to be present in a deployment depending
   on size of ZCS environment. +
-  **(Network Edition only)**
+
+ifndef::z9[**(Network Edition only)**]
+
 endif::networkeditiondoc[]
 
 | zimbra-proxy
@@ -91,7 +93,7 @@ ifdef::networkeditiondoc[]
 | Toggle whether **VMware HA** is enabled or not - defaults to **no** +
   VMware HA Clustering Heartbeat is only available when running within a
   virtual machine running vmware-tools. +
-  **(Network Edition only)**
+ifndef::z9[**(Network Edition only)**]
 endif::networkeditiondoc[]
 
 | Default Class of Service Configuration
@@ -104,12 +106,8 @@ introduce new features to your users.
 ifdef::networkeditiondoc[]
 | Enable default backup schedule
 a| Toggle whether **VMware HA** is enabled or not - defaults to **yes** +
-   The Zimbra Archiving and Discovery package is an optional feature for
-   Zimbra Network Edition. Archiving and Discovery offers the ability to
-   store and search all messages that were delivered to or sent by Zimbra.
-   This package includes the cross mailbox search function which can be
-   used for both live and archive mailbox searches. +
-   **(Network Edition only)**
+The Zimbra Archiving and Discovery package is an optional feature for Zimbra. Archiving and Discovery offers the ability to store and search all messages that were delivered to or sent by Zimbra. This package includes the cross mailbox search function which can be used for both live and archive mailbox searches. +
+ifndef::z9[**(Network Edition only)**]
 endif::networkeditiondoc[]
 
 | **s**) Save config to file
@@ -225,8 +223,7 @@ created a valid mail domain on your DNS server, enter it here.
 a|This password is automatically generated and is used by the *nginx* user
  to identify itself to the LDAP server and must be the same password on
  the LDAP master server and on the MTA server.
-[NOTE]
-This option is displayed only if the zimbra-proxy package is installed.
+NOTE: This option is displayed only if the zimbra-proxy package is installed.
 
 |LDAP Bes Searcher password
 |This password is automatically generated and is used by the ldap
@@ -279,8 +276,7 @@ a|Sets the notification address for AV alerts.
 You can either accept the default or create a new address.
 If you create a new address, remember to provision this address
 from the admin console.
-[NOTE]
-If the virus notification address does not exist and your
+NOTE: If the virus notification address does not exist and your
 host name is the same as the domain name on the Zimbra server,
 the virus notifications remain queued in the Zimbra MTA server
 cannot be delivered.
@@ -296,8 +292,7 @@ identify itself to the LDAP server and must be configured on the MTA
 server to be the same as the **amavis** password on the master LDAP server.
 |========================
 
-[NOTE]
-New installs of ZCS limit spam/ham training to the first MTA installed.
+NOTE: New installs of ZCS limit spam/ham training to the first MTA installed.
 If you uninstall or move this MTA, you will need to enable spam/ham training
 on another MTA, as one host should have this enabled to run
 `zmtrainsa --cleanup`. To do this on that host, do: +
@@ -438,8 +433,7 @@ default is **TRUE**.
 | *Enable version update notifications.*
 a| This enables automatic notification when updates are available
 when this is set to *TRUE*. +
-[NOTE]
-The software update information can be viewed from the Administration
+NOTE: The software update information can be viewed from the Administration
 Console Tools Overview pane.
 
 | *Version update notification email.*

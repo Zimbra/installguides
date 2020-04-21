@@ -49,8 +49,7 @@ You are prompted to decide if you would like to run the `zmdbintegrityreport`.
 
 `zmdbintegrityreport` can take minutes to an hour to run, depending on your system size and disk bandwidth.
 
-[NOTE]
-====
+NOTE: ====
 `zmdbintegrityreport` is run on a weekly basis from cron on all zimbra-store nodes.
 Large sites can opt to disable this by setting `zmlocalconfig -e zmdbintegrityreport_disabled=TRUE`.
 If you choose to disable this, it is recommended that the integrity reports be run by hand during your normal maintenance windows and prior to running any {product-abbrev} upgrades.
@@ -190,11 +189,9 @@ of the SSLv3 vulnerability described in https://www.us-cert.gov/ncas/alerts/TA14
 
 SSLv3 support has been deprecated by default in 8.6.0, although when upgrading from previous versions of {product-abbrev}, some protocols might still be enabled.
 
-[NOTE]
-====
 * New keys created in {product-abbrev} 8.7.0 (or later) have SSLv3 disabled by default.
 * Pre-existing keys from earlier versions of {product-abbrev} will still have SSLv3 enabled.
-====
+
 
 Follow the steps in the {product-provider} wiki article https://wiki.zimbra.com/wiki/How_to_disable_SSLv3[How to Disable SSLv3] to disable SSLv3 after upgrading to ZCS 8.7.0.
 
@@ -229,10 +226,8 @@ RC4-SHA
 ----
 +
 
-[NOTE]
-====
-See https://wiki.zimbra.com/wiki/Cipher_suites for the most current information on cipher suite configuration.
-====
+NOTE: See https://wiki.zimbra.com/wiki/Cipher_suites for the most current information on cipher suite configuration.
+
 
 === Customizing ZCO Installations
 
@@ -324,19 +319,14 @@ See https://bugzilla.zimbra.com/show_bug.cgi?id=81167[Bug 81167].
 * You should run `zmldapupgrade -b 66387` after upgrading.
 The `zimbraAllowFromAddress` attribute cannot be set for internal accounts or distribution lists.
 Running this script will change `zimbraAllowFromAddress` values to grants.
-+
-[NOTE]
-====
-* This step was not included into the installer-driven upgrade due to potentially long delay for sites that set `zimbraAllowFromAddress` on many accounts.
-* The migration command reports how many accounts had the `zimbraAllowFromAddress` attribute set and how many of them needed migration.
+** This step was not included into the installer-driven upgrade due to potentially long delay for sites that set `zimbraAllowFromAddress` on many accounts.
+** The migration command reports how many accounts had the `zimbraAllowFromAddress` attribute set and how many of them needed migration.
 One way to verify all accounts got migrated is to run the command again.
 The total won't change, and the number migrated should be 0.
 See https://bugzilla.zimbra.com/show_bug.cgi?id=66387[Bug 66387] for more information.
-====
+** If your self-signed SSL certificates have expired, update them.
 +
-* If your self-signed SSL certificates have expired, update them.
-+
-[NOTE]
+
 ====
 To check for expired certificates, run the following command as the `zimbra` user:
 ----

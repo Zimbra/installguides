@@ -48,9 +48,7 @@ single server node, type:
 zmlocalconfig -s zimbra_ldap_password
 ----
 
-[NOTE]
-====
-If you are installing the {product-short} proxy or _MTA_ on the
+NOTE: If you are installing the {product-short} proxy or _MTA_ on the
 new node, you will also need to record the following:
 
 * Bind password for postfix ldap user

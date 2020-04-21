@@ -49,7 +49,6 @@ You are prompted to decide if you would like to run the `zmdbintegrityreport`.
 
 `zmdbintegrityreport` can take minutes to an hour to run, depending on your system size and disk bandwidth.
 
-[NOTE]
 ====
 `zmdbintegrityreport` is run on a weekly basis from cron on all zimbra-store nodes.
 Large sites can opt to disable this by setting `zmlocalconfig -e zmdbintegrityreport_disabled=TRUE`.
@@ -190,7 +189,6 @@ of the SSLv3 vulnerability described in https://www.us-cert.gov/ncas/alerts/TA14
 
 SSLv3 support has been deprecated by default in 8.6.0, although when upgrading from previous versions of {product-abbrev}, some protocols might still be enabled.
 
-[NOTE]
 ====
 * New keys created in {product-abbrev} 8.7.0 (or later) have SSLv3 disabled by default.
 * Pre-existing keys from earlier versions of {product-abbrev} will still have SSLv3 enabled.
@@ -229,10 +227,7 @@ RC4-SHA
 ----
 +
 
-[NOTE]
-====
-See https://wiki.zimbra.com/wiki/Cipher_suites for the most current information on cipher suite configuration.
-====
+NOTE: See https://wiki.zimbra.com/wiki/Cipher_suites for the most current information on cipher suite configuration.
 
 === Customizing ZCO Installations
 
@@ -325,7 +320,7 @@ See https://bugzilla.zimbra.com/show_bug.cgi?id=81167[Bug 81167].
 The `zimbraAllowFromAddress` attribute cannot be set for internal accounts or distribution lists.
 Running this script will change `zimbraAllowFromAddress` values to grants.
 +
-[NOTE]
+
 ====
 * This step was not included into the installer-driven upgrade due to potentially long delay for sites that set `zimbraAllowFromAddress` on many accounts.
 * The migration command reports how many accounts had the `zimbraAllowFromAddress` attribute set and how many of them needed migration.
@@ -334,9 +329,10 @@ The total won't change, and the number migrated should be 0.
 See https://bugzilla.zimbra.com/show_bug.cgi?id=66387[Bug 66387] for more information.
 ====
 +
+
 * If your self-signed SSL certificates have expired, update them.
 +
-[NOTE]
+
 ====
 To check for expired certificates, run the following command as the `zimbra` user:
 ----

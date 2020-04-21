@@ -2,8 +2,7 @@
 = Planning for the Installation
 :toc:
 
-This chapter describes the components that are installed and reviews the
-configuration options that can be made when you install
+This chapter describes the components that are installed and reviews the configuration options that you can make when installing
 {product-name} ({product-abbrev}).
 
 include::packages.adoc[]
@@ -149,8 +148,7 @@ mailbox servers behind it. In the case of multiple proxies, an external
 load balancer can be placed in front to distribute the load evenly among
 the proxy servers.
 
-[NOTE]
-The {product-short} Proxy package does not act as a firewall and needs to be behind
+NOTE: The {product-short} Proxy package does not act as a firewall and needs to be behind
 the firewall in customer deployments.
 
 === Configuration during installation
@@ -185,8 +183,7 @@ components with the following default configuration.
 
 === {product-short} Proxy Ports
 
-[NOTE]
-The following ports are used either by {product-short} Proxy or by {product-short} Mailbox
+NOTE: The following ports are used either by {product-short} Proxy or by {product-short} Mailbox
 (if Proxy is not configured). +
 **If you have any other services running on these ports, turn them off.**
 
