@@ -9,6 +9,8 @@ These guides are intended for system administrators responsible for
 installing, maintaining, and supporting the server deployment of
 Zimbra.
 
+IMPORTANT: 8.8.15 and 9.0.0 documentation have their own branches to build documentation
+
 Building the Documentation
 --------------------------
 
