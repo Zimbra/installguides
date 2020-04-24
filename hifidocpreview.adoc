@@ -1,5 +1,5 @@
 [[Configuring_High-Fidelity_Document_Preview]]
-== Configuring High-Fidelity Document Preview ({product-edition-commercial} Only)
+== Configuring High-Fidelity Document Preview
 :toc:
 
 The high-fidelity document preview feature requires the installation of LibreOffice or the LibreOffice-headless package, depending on the operating system you are running.

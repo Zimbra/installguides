@@ -39,7 +39,7 @@ additional space for mail storage. The other nodes require 100MB.
 * VMware vCloud Director
 * VMware vCloud Air
 
-|*Operating System ({product-edition-commercial})*
+|*Operating System*
 |The following operating systems are supported:
 
 * Red Hat® Enterprise Linux® 7 (64-bit)
@@ -52,7 +52,7 @@ additional space for mail storage. The other nodes require 100MB.
 * Ubuntu 18.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.8.12 and above
 +
 
-|*Virtualization ({product-edition-commercial})*
+|*Virtualization*
 |The following hypervisors are supported:
 
 * VMware vSphere 6.5 or 6.7 (to March 2020)
@@ -220,7 +220,7 @@ EWS Interoperability
 |===
 
 [[Zimbra_Connector_for_Outlook]]
-== {product-short} Connector for Outlook ({product-edition-commercial} Only)
+== {product-short} Connector for Outlook
 
 [width="100%",cols="20%,80%",]
 |=======================================================================
@@ -234,9 +234,9 @@ EWS Interoperability
 |=======================================================================
 
 [[Zimbra_Mobile]]
-== {product-short} Mobile ({product-edition-commercial} Only)
+== {product-short} Mobile
 
-{product-edition-commercial} Mobile (MobileSync) provides mobile data access to email,
+Mobile (MobileSync) provides mobile data access to email,
 calendar, and contacts for users of selected mobile operating systems,
 including:
 

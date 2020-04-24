@@ -20,7 +20,7 @@ You can set up LDAP replication, configuring a master LDAP server and replica LD
 {product-short} Store:: This package includes the components for the *mailbox server*, including *Jetty*, which is the servlet container the {product-short} software runs within.
 The {product-short} *mailbox server* includes the following components:
 
-Data store:: The data store is a *MariaDB^©^* database.
+Data store:: The data store is a *MariaDB^®^* database.
 Message store:: The message store is where all email messages and file attachments reside.
 Index store::  Index and search technology is provided through `Lucene`.
 Index files are maintained for each mailbox.
@@ -58,35 +58,31 @@ It is installed on one mailbox server.
 It provides tools for `syslog` aggregation and reporting.
 +
 
-NOTE: 
+[NOTE]
 ====
 * If you do not install *{product-short} Logger*, the server statistics section of the administration console will not display.
 * The *{product-short} Logger* package must be installed at the same time as the *{product-short} Store* package.
 ====
 
-{product-short} Spell:: This package is optional.  It provides the open source spell checker `Aspell` used by the {product-short} Web Client.
-
-{product-short} Spell:: This package is optional.  It provides the open source spell checker `Aspell` used by the {product-short} {web-client}.
+{product-short} Spell:: This package is optional.  It provides the open source spell checker `Aspell` used by the {product-short}'s web app.
 
 {product-short} Apache:: This package is installed automatically when *{product-short} Spell* or *{product-short} Convertd* is installed.
 
 {product-short} Convertd:: This package should be installed on at least one *{product-short}-Store* server. Only one *{product-short}-Convertd* package needs to be present in the {product-name} environment. The default is to install one *{product-short}-Convertd* on each *{product-short}-Store* server.
 
-{product-short} Archiving:: The {product-short} Archiving and Discovery feature is an optional feature for {product-name} *{product-edition-commercial}*.
+{product-short} Archiving:: The {product-short} Archiving and Discovery feature is an optional feature for {product-name}.
 Archiving and Discovery offers the ability to store and search all messages that were delivered to or sent by {product-name}.
 This package includes the *cross mailbox search* function which can be used for both live and archive mailbox searches.
 +
 [WARNING]
-Using Archiving and Discovery can trigger additional mailbox license usage. To find out more about {product-short} Archiving and Discovery, please refer to {product-short} Admin Guide.
+Using Archiving and Discovery can trigger additional mailbox license usage. To find out more about {product-short} Archiving and Discovery, please refer to {product-admin-guide}.
 
 {product-short} Drive:: Installing this package is optional.This package should be installed on at least one
 *{product-short}-Store* server.
 {product-short} Drive is marked as GA and supported starting {product-name} 8.8.
 
-The {product-short} server configuration is menu driven. The installation menu
-shows you the default configuration values. The menu displays the
-logical host name and email domain name [mailhost.example.com] as
-configured on the computer. You can change any of the values. For single
-server installs, you must define the administrator’s password, which you
-use to log on to the administration console, and you specify the
-location of the {product-short} license xml file.
+The {product-short} server configuration is menu driven.
+The installation menu shows you the default configuration values.
+The menu displays the logical host name and email domain name [mailhost.example.com] as configured on the computer.
+You can change any of the values.
+For single server installs, you must define the administrator’s password, which you use to log on to the administration console, and you specify the location of the {product-short} license xml file.

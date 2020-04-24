@@ -1,21 +1,21 @@
 :product-name: Zimbra Collaboration
-:product-short: Zimbra
+:product-short: Zimbra 9
 :product-family: Zimbra
 :product-provider: Zimbra
 :product-abbrev: ZCS
-:product-admin-guide: {product-name} Administration Guide
+:product-admin-guide: https://zimbra.github.io/zimbra-9/adminguide.html[{product-name} Administration Guide]
 :icons: font
 :title-page:
-:title-logo-image: images/zimbra-logo.svg
 :showlinks:
 :source-highlighter: coderay
 :toc: left
 :toclevels: 3
 :copyright-year: 2020
 
-:product-edition-commercial: Zimbra Collaboration 9.0.0
 :title-logo-image: image:images/zimbra-9-logo.svg[]
 :web-client: Classic Web App
 :modern-client: Modern Web App
 :product-version: 9.0.0
 :product-release-date: March, 2020
+
+:experimental:

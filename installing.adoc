@@ -4,23 +4,22 @@
 
 *Important:* Before you begin, make sure to:
 
-* ({product-edition-commercial} Only) Store your license in a directory folder on
-your server as it is needed to complete your installation of {product-name}
-* Confirm you have the latest system requirements and prerequisites for
-installing {product-name}.
+* Store your license in a directory folder on your server as it is needed to complete your installation of {product-name}.
+* Confirm you have the latest system requirements and prerequisites for installing {product-name}.
 
 Open an SSH session to the {product-short} server and follow the steps below:
 
-1. Log in as root to the {product-short} server and cd to the directory where
-   the {product-name} archive tar file is saved (cd /var/<tmp>). Type
-   the following commands:
-   * Unpack the file: `tar xvzf [zcsfullfilename.tgz]`
-   * Change to the correct directory: `cd [zcsfullfilename]`
-   * Begin the installation: `./install.sh`
+1. Log in as root to the {product-short} server and cd to the directory where the {product-name} archive tar file is saved (`cd /var/<tmp>`).
+Run the following commands:
++
+
+Unpack the file:: `tar xvzf [zcsfullfilename.tgz]`
+Change to the correct directory:: `cd [zcsfullfilename]`
+Begin the installation:: `./install.sh`
 +
 --
 [source%nowrap,bash]
-....
+----
 root@mailhost:/tmp# tar xzvf zcs*.tgz
 zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/
 zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/packages/
@@ -29,21 +28,18 @@ zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/packages/
 .
 zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/install.sh
 zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/README.txt
-....
+----
 --
 
-2. The *install.sh* script reviews the installation software to verify that the
-{product-short} packages are available. +
-The installation process checks to see whether any of the applications
-*Sendmail*, *Postfix*, *MySQL* or *MariaDB* are running.
-If any of these applications are running,
-you are asked to disable them. Disabling *MySQL* and *MariaDB* is *optional*
-but highly recommended.
+2. The *install.sh* script reviews the installation software to verify that the {product-short} packages are available.
+The installation process checks to see whether any of the applications *Sendmail*, *Postfix*, *MySQL* or *MariaDB* are running.
+If any of these applications are running, you are asked to disable them.
+Disabling *MySQL* and *MariaDB* is *optional* but highly recommended.
 *Sendmail* and *Postfix must* be disabled for {product-name} to start correctly.
 +
 --
 [source%nowrap,bash]
-....
+----
 root@zimbraiop:/tmp/# cd zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031/
 root@zimbraiop:/tmp/zcs-NETWORK-9.0.0_GA_3924.UBUNTU18_64.2020033101031# ./install.sh
 
@@ -77,26 +73,23 @@ Checking for existing installation...
     zimbra-proxy...NOT FOUND
     zimbra-archiving...NOT FOUND
     zimbra-core...NOT FOUND
-....    
+----
 --
 
-3. The {product-short} software agreement displays. Read the agreement and when +
-`Do you agree with the terms of the software license agreement? [N]` +
-displays, enter `Y` to continue. +
-*Important:* The license agreement displays in multiple sections,
-and you must accept each section of the license agreement.
+3. The {product-short} software agreement displays. Press `Y` to accept and `N` to decline.
++
+--
+IMPORTANT: The license agreement displays in multiple sections, and you must accept each section of the license agreement.
+--
 
-4. `Use {product-short}'s package repository [Y]` +
-displays, press `enter` to continue. Your system will be configured to add
-the {product-short} packaging repository for *yum* or *apt-get* as appropriate
-so it can install the {product-short} 3rd party packages. 
-
-* If installing *{product-short}*, you will have the modules Archiving and Convertd as an option to add to your {product-short} installation.
-* It is recommended to only install {product-short}-dnscache on the MTA Servers when there are no other DNS servers (for example dnsmasq or bind) already installed and running on the same server.
+4. `Use {product-short}'s package repository [Y]` displays, press `enter` to continue. Your system will be configured to add
+the {product-short} packaging repository for *yum* or *apt-get* as appropriate so it can install the {product-short} 3rd party packages.
+** If installing *{product-short}*, you will have the modules Archiving and Convertd as an option to add to your {product-short} installation.
+** It is recommended to only install {product-short}-dnscache on the MTA Servers when there are no other DNS servers (for example dnsmasq or bind) already installed and running on the same server.
 +
 --
 [source%nowrap]
-....
+----
 Checking for installable packages
 
 Found zimbra-core (local)
@@ -204,51 +197,42 @@ Installing:
 
 
 The system will be modified.  Continue? [N] y
-....
---
-+
---
-Also select the services to be installed on this server. To install
-{product-name} on a single server, enter `Y` for the ldap, logger,
-mta, snmp, store, and spell packages. If you use IMAP/POP Proxy, enter
-`Y` for the Zimbra proxy package and the Zimbra Memcached package.
+----
 
-*Note:* Ensure that the `zimbra-memcached` package is installed on at least one of the nodes in the system
+Also select the services to be installed on this server.
+To install {product-name} on a single server, enter `Y` for the ldap, logger, mta, snmp, store, and spell packages.
+If you use IMAP/POP Proxy, enter `Y` for the Zimbra proxy package and the Zimbra Memcached package.
+
+NOTE: Ensure that the `zimbra-memcached` package is installed on at least one of the nodes in the system
 if the Proxy is installed.
 
-*Note:* For the cross mailbox search feature, install the Zimbra Archive
-package. To use the archiving and discovery feature, contact {product-provider}
-sales.
-
+NOTE: For the cross mailbox search feature, install the Zimbra Archive package.
+To use the archiving and discovery feature, contact {product-provider} sales.
 The installer verifies that there is enough room to install {product-short}.
 --
 
-5. Next, type `Y` and press _Enter_ to modify the system.
-+
---
-* Selected packages are installed on the server.
-* Checks to see if MX record is configured in DNS. The installer checks
-to see if the hostname is resolvable via DNS. If there is an error, the
-installer asks if you would like to change the hostname. We recommend
-that the domain name have an MX record configured in DNS.
-* Checks for port conflict.
---
+5. Next, type `Y` and press kbd:[Enter] to modify the system.
+{product-short} performs the following checks.
+** Selected packages are installed on the server.
+** Checks to see if MX record is configured in DNS.
+The installer checks to see if the hostname is resolvable via DNS.
+If there is an error, the installer asks if you would like to change the hostname.
+We recommend that the domain name have an MX record configured in DNS.
+** Checks for port conflict.
 
-6. At this point, the Main menu displays showing the default entries
-for the {product-short} components you are installing. To expand the menu to see
-the configuration values, type `X` and press _Enter_. The Main menu
-expands to display configuration details for the packages being
-installed. Values that require further configuration are marked with
-asterisks (pass:[******]) to their left. To navigate the Main menu, select the
-menu item to change. You can modify any of the defaults. For a quick
-installation, accepting all the defaults, you only need to do the
-following:
+6. At this point, the Main menu displays showing the default entries for the {product-short} components you are installing.
+To expand the menu to see the configuration values, type `X` and press kbd:[Enter].
+The Main menu expands to display configuration details for the packages being installed.
+Values that require further configuration are marked with asterisks (pass:[******]) to their left.
+To navigate the Main menu, select the menu item to change.
+You can modify any of the defaults.
+For a quick installation, accepting all the defaults, you only need to do the following:
 
 7. To set the appropriate time zone, enter `1` to select Common Configuration and then enter `7` for TimeZone.
 Set the correct time zone.
 +
 --
-....
+----
 Main menu
 
    1) Common Configuration:
@@ -292,7 +276,7 @@ Main menu
    q) Quit
 
 Address unconfigured (**) items  (? - help)
-....
+----
 --
 
 8. Type `r` to return to the Main menu.
@@ -304,69 +288,62 @@ configuration menu displays.
 
 11. Select the following from the store configuration menu:
 
-    * Type `4` to set the Admin Password. The password must be six or more characters.
-    Press _Enter_.
+    * Type `4` to set the Admin Password.
+    The password must be six or more characters.
+    Press kbd:[Enter].
 
-    * ({product-edition-commercial} only) Type `33` for *License filename* and type the
-    directory and file name for the Zimbra license.
-    For example, if you saved to the `/tmp` directory, you
-    would type `/tmp/ZimbraLicense.xml`. If you do not have the license, you
-    cannot proceed. See the section on
-    <<Zimbra_License_Requirements,Zimbra License Requirements>>
+    * Type `33` for *License filename* and type the directory and file name for the Zimbra license.
+    For example, if you saved to the `/tmp` directory, you type `/tmp/ZimbraLicense.xml`.
+    If you do not have a license, you cannot proceed.
+    See the section on <<Zimbra_License_Requirements,Zimbra License Requirements>>
 
-    * Enable version update checks and Enable version update notifications. +
-    If these are set to TRUE. {product-name} automatically checks for the
-    latest {product-name} software updates and notifies the account
-    that is configured in `Version update notification email`. You can modify
-    this later from the administration console.
+    * Enable version update checks and Enable version update notifications.
+    If these are set to `TRUE`, {product-name} automatically checks for the latest {product-name} software updates and notifies the account that is configured in `Version update notification email`.
+    You can modify this later from the administration console.
 
 12. Type `r` to return to the Main menu.
 
-13. If you want to change the default Class of Service settings for new
-features that are listed here, type `12` for Default Class of Service
-Configuration. +
+13. If you want to change the default Class of Service settings for new features that are listed here, type `12` for Default Class of Service
+Configuration.
 Then type the appropriate number for the feature to be enabled or disabled.
 Changes you make here are reflected in the default COS configuration.
 
-14. If no other defaults need to be changed, type `a` to apply the
-configuration changes. Press _Enter_
+14. If no other defaults need to be changed, type `a` to apply the configuration changes.
+Press kbd:[Enter]
 +
 --
-....
+----
 *** CONFIGURATION COMPLETE - press 'a' to apply
 Select from menu, or press 'a' to apply config (? - help) a
-....
+----
 --
 
-15. When Save Configuration data to file appears, type "Yes" and press _Enter_.
+15. When Save Configuration data to file appears, type "Yes" and press kbd:[Enter].
 +
 --
-....
+----
 Save configuration data to a file? [Yes]
-....
+----
 --
 
 16. The next request asks where to save the files. To accept the
 default, press "Enter". To save the files to another directory, enter the
-directory and then press Enter
+directory and then press kbd:[Enter].
 +
 --
-....
+----
 Save config in file: [/opt/zimbra/config.16039]
 Saving config in /opt/zimbra/config.16039...done.
-....
+----
 --
 
-17. When "The system will be modified - continue?" appears, type "Yes" and
-press _Enter_.
+17. When "The system will be modified - continue?" appears, type "Yes" and press kbd:[Enter].
 +
-The server is modified. Installing all the components and configuring
-the server can take several minutes. Components that are installed
-include spam training and documents, (wiki) accounts, time zone
-preferences, backup schedules, licenses, as well as common Zimlets.
+The server is modified. Installing all the components and configuring the server can take several minutes.
+Components that are installed include spam training and documents, (wiki) accounts, time zone preferences, backup schedules, licenses, as well as common Zimlets.
 +
 --
-....
+----
 The system will be modified - continue? [No] y
 Operations logged to /tmp/zmsetup.20160711-234517.log
 Setting local config values...done.
@@ -423,7 +400,7 @@ Moving /tmp/zmsetup.20160711-234517.log to /opt/zimbra/log
 
 
 Configuration complete - press return to exit
-....
+----
 --
 
 include::zimbra-drive-install.adoc[]

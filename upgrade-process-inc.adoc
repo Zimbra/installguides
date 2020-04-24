@@ -1,6 +1,6 @@
 ==== Process
 
-. Log in as `root` to the {product-short} server and `cd` to the directory where the {product-abbrev} {product-edition-commercial} archive tar file is saved. For example, `cd /var/tmp`. Then type the following commands:
+. Log in as `root` to the {product-short} server and `cd` to the directory where the {product-abbrev} {product-version} archive tar file is saved. For example, `cd /var/tmp`. Then type the following commands:
 +
 ====
 Unpack the file
@@ -26,7 +26,8 @@ Begin the upgrade installation.
 . The upgrade script checks if `proxy` and `memcached` are present. If both are found, the upgrade will proceed. If either are missing then the upgrade will abort and alert.
 +
 
-NOTE: ====
+[NOTE]
+====
 * From 8.7.0 onwards proxy and memcached are required.
 * See https://wiki.zimbra.com/wiki/Enabling_Zimbra_Proxy_and_memcached#Using_existing_servers[Enabling Zimbra Proxy and memcached]
 ====

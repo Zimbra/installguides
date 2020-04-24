@@ -40,7 +40,7 @@ to <<_enable_replication_on_the_ldap_master>>.
 == Enable Replication on the LDAP Master
 
 On the master LDAP server, as the `zimbra` user, type:
-`/opt/zimbra/libexec/ zmldapenablereplica` and press _Enter_. This enables
+`/opt/zimbra/libexec/ zmldapenablereplica` and press kbd:[Enter]. This enables
 replication on the LDAP Master.
 
 == Installing a Replica LDAP Server
@@ -53,7 +53,7 @@ Follow steps 1 through 4 in <<starting_multiple_server_install>>
 to open a SSH session to the LDAP server, log on to the server
 as root, and unpack the {product-short} software.
 
-. Type `Y` and press _Enter_ to install the `zimbra-ldap` package. In the
+. Type `Y` and press kbd:[Enter] to install the `zimbra-ldap` package. In the
 screen shot below, the package to be installed is emphasized.
 +
 [subs="quotes"]
@@ -76,9 +76,9 @@ zimbra-ldap
 This system will be modified. Continue [N] *Y*
 ----
 +
-. Type `Y`, and press _Enter_ to modify the system. The selected packages
+. Type `Y`, and press kbd:[Enter] to modify the system. The selected packages
 are installed. The Main menu shows the default entries for the LDAP
-replica server. To expand the menu type `X` and press _Enter_.
+replica server. To expand the menu type `X` and press kbd:[Enter].
 +
 ----
 Main menu
@@ -141,7 +141,8 @@ NOTE: All passwords must be set to match the master ldap admin user
 password. To determine this value on the master LDAP server, run
 `zmlocalconfig -s ldap_replication_password`
 +
-IMPORTANT: ====
+[IMPORTANT]
+====
 If you have installed {product-short} MTA on the LDAP
 server, configure the Amavis and the Postfix passwords. To find these
 values, issue the following commands:
@@ -153,7 +154,7 @@ zmlocalconfig -s ldap_postfix_password
 ====
 +
 . When the LDAP server is configured, type `a` to apply the
-  configuration changes. Press _Enter_ to save the configuration data.
+  configuration changes. Press kbd:[Enter] to save the configuration data.
 +
 ----
 Select, or press 'a' to apply config (? - help) a
@@ -168,9 +169,9 @@ Operations logged to /tmp/zmsetup.log.2843
 Installation complete - press return to exit
 ----
 +
-. When *Save Configuration data to a file* appears, press _Enter_.
+. When *Save Configuration data to a file* appears, press kbd:[Enter].
 . When *The system will be modified - continue?* appears, type `y` and press
-_Enter_.
+kbd:[Enter].
 +
 ----
 The server is modified. Installing all the components and configuring the
@@ -178,7 +179,7 @@ server can take a few minutes.
 ----
 +
 . When *Installation complete - press return to exit* displays, press
-_Enter_.
+kbd:[Enter].
 +
 ====
 The installation on the replica LDAP server is complete. The content

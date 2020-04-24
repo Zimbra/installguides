@@ -6,7 +6,7 @@ include::settings.adoc[]
 
 = {product-name} {document-title}
 {product-release-date}
-{product-short} {product-edition-commercial} V {product-version}
+{product-name} {product-version}, revised {localdate}
 :leveloffset: +1
 
 <<<
@@ -35,7 +35,7 @@ include::basicconfig.adoc[]
 
 <<<
 
-include::installing-z9.adoc[]
+include::installing.adoc[]
 
 <<<
 

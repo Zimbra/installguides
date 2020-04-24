@@ -2,7 +2,7 @@
 = Introduction
 :toc:
 
-Information in this guide is intended for people responsible for installing {product-edition-commercial}.
+Information in this guide is intended for people responsible for installing {product-name} {peoduct-version}.
 This guide will help you plan and perform all installation procedures necessary to deploy a fully functioning email system based on {product-name}’s messaging technology.
 
 [[Audience]]
@@ -11,10 +11,10 @@ This guide will help you plan and perform all installation procedures necessary 
 This installation guide assumes you have a thorough understanding of system administration concepts and tasks and are familiar with email communication standards, security concepts, directory services, and database management.
 
 [[Intro_license]]
-== {product-edition-commercial} License
+== {product-name} {product-version} License
 
-A {product-edition-commercial} license is required to create accounts in {product-edition-commercial.
-You cannot install {product-edition-commercial} without a license.
+A {product-name} license is required in order to create accounts.
+When you purchase, renew, or change the {product-name} license, you update the {product-short} server with the new license information.
 For more information about licenses, see <<Zimbra_License_Requirements, {product-name} License Requirements>>
 
 If you do not have a license, go to {product-short}’s website https://www.zimbra.com to obtain a license from the Network Downloads area.
@@ -35,7 +35,7 @@ Migration Wizard Guides:: These guides describe how to migrate users that are on
 == Support and Contact Information
 
 * Contact {product-short} Sales to purchase {product-name} {product-version}.
-* {product-edition-commercial} customers can contact support at **support@zimbra.com**.
+* {product-name} customers can contact support at **support@zimbra.com**.
 * Explore the https://forums.zimbra.org/[{product-short} Forums] for answers to installation or configuration problems.
 * Join the {product-short} Community Forum, to participate and learn more about {product-name}.
 * Send an email to **feedback@zimbra.com** to let us know what you like about the product and what you would like to see in the product.

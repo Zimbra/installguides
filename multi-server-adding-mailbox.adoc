@@ -57,18 +57,18 @@ If you are moving all mailboxes to this server from the original single server, 
 
 NOTE: If SNMP is being used, type `Y` for `zimbra-snmp`. If SNMP is used, it is installed on every {product-short} server.
 
-. Type `Y`, and press _Enter_ to modify the system. The selected packages are installed on the server.
+. Type `Y`, and press kbd:[Enter] to modify the system. The selected packages are installed on the server.
 +
 
 NOTE: The _Main_ menu displays the default entries for the {product-short} component you are installing.
 
-. Type `1` and press _Enter_ to go to the *Common Configuration* menu.
+. Type `1` and press kbd:[Enter] to go to the *Common Configuration* menu.
 +
 
 NOTE: The mailbox server hostname is displayed. You must change the LDAP master host name and password to be the values configured on the single- server node.
 
-** Type `2`, press _Enter_, and type the LDAP host name.
-** Type `4`, press _Enter_, and type the LDAP password.
+** Type `2`, press kbd:[Enter], and type the LDAP host name.
+** Type `4`, press kbd:[Enter], and type the LDAP password.
 +
 
 NOTE: After you set these values, the server immediately contacts the LDAP server. If it cannot contact the server, you cannot proceed.
@@ -91,15 +91,15 @@ NOTE: Set either or both of these to TRUE if you are going to set up `zimbra-pro
 Enter the location of the license file. For example, if you saved the license file to the tmp directory, you would type `/tmp/ZCSLicense.xml`.
 You cannot proceed without a license file.
 ** If you are setting up proxy servers, type the corresponding number to enable the servers. When you enable these, IMAP/POP/HTTP server port numbers and proxy port numbers are automatically changed. See <<_configuration_during_installation>>.
-. When the mailbox server is configured, return to the Main menu and type a to apply the configuration changes. Press _Enter_ to save the configuration data.
-. When *Save Configuration data to a file* appears, press _Enter_.
-. The next request asks where to save the files. To accept the default, press _Enter_. To save the files to another directory, enter the directory and then press _Enter_.
-. When *The system will be modified - continue?* appears, type `y` and press _Enter_.
+. When the mailbox server is configured, return to the Main menu and type a to apply the configuration changes. Press kbd:[Enter] to save the configuration data.
+. When *Save Configuration data to a file* appears, press kbd:[Enter].
+. The next request asks where to save the files. To accept the default, press kbd:[Enter]. To save the files to another directory, enter the directory and then press kbd:[Enter].
+. When *The system will be modified - continue?* appears, type `y` and press kbd:[Enter].
 +
 
 NOTE: The server is modified. Installing all the components and configuring the mailbox server can take a few minutes. This includes installing SSL certificates, setting passwords, setting ports, installing skins and Zimlets, setting time zone preferences, and starting the servers, among other processes.
 +
-. When *Configuration complete - press return to exit* displays, press _Enter_.
+. When *Configuration complete - press return to exit* displays, press kbd:[Enter].
 
 The installation of the mailbox server is complete.
 

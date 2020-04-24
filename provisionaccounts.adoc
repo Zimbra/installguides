@@ -22,7 +22,7 @@ Enter the admin user name and password configured during the
 installation process. Enter the name as `admin@mailhost.example.com`
 
 [[Activate_License]]
-== Activate the {product-name} license ({product-edition-commercial} Only)
+== Activate the {product-name} {product-version} license
 
 Admin Console: ::
 After you log on, a dialog displays stating your license is not

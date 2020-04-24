@@ -77,7 +77,8 @@ secondary master LDAP servers to install the LDAP package.
 
 === Passwords Required to Install the Secondary Master
 
-NOTE: ====
+[NOTE]
+====
 Before you install a secondary master, you must know the following
 passwords:
 
@@ -99,8 +100,8 @@ zmlocalconfig -s | grep passw | grep ldap
 . Follow steps 1 through 4 in <<starting_multiple_server_install>>
 to open a SSH session to the LDAP server, log on to the server
 as root, and unpack the {product-short} software.
-. Type `Y` and press _Enter_ to install the `zimbra-ldap` package.
-. Type `Y`, and press _Enter_ to modify the system. The selected packages are
+. Type `Y` and press kbd:[Enter] to install the `zimbra-ldap` package.
+. Type `Y`, and press kbd:[Enter] to modify the system. The selected packages are
 installed. The Main menu shows the default entries for the LDAP
 server.
 . Type `1` to display the _Common Configuration_ submenu.
@@ -124,17 +125,17 @@ to match the passwords on the _master-1_ LDAP server.
 .. Type `9` to change the _LDAP amavis password_.
 .. Type `10` to change the _LDAP NGINX password_.
 .. Type `r` to return to the main menu.
-. Type `a` to apply the configuration changes. Press _Enter_ to save
+. Type `a` to apply the configuration changes. Press kbd:[Enter] to save
 the configuration data.
-. When *Save Configuration data to a file* appears, press _Enter_.
+. When *Save Configuration data to a file* appears, press kbd:[Enter].
 . When *The system will be modified - continue?* appears, type `y` and press
-_Enter_.
+kbd:[Enter].
 +
 NOTE: The server is modified. Installing all the components and configuring the
 server can take a few minutes.
 +
 . When *Installation complete - press return to exit* displays, press
-_Enter_. The installation is complete.
+kbd:[Enter]. The installation is complete.
 . Update the `ldap_master_url` attribute to contain both masters, enter
 this new master as the _first_ master in the list.
 +
