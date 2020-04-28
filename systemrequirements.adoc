@@ -19,7 +19,7 @@
 
 * Intel/AMD w/ PassMark CPU Mark > 15,000 (e.g., AMD EPYC 7401P @ 2.0GHz = 18,199)
 * RAM requirements:
-** For single server installations, {product-short} requires a minimum of 8GB of RAM.
+** For single server installations, {product-short} requires a minimum of 16GB of RAM.
 ** For multi-server installations, contact {product-provider} sales for recommendations.
 * Temp file space for installs and upgrades*
 * 100 GB free disk space for software and logs (SATA or SCSI for
