@@ -1,16 +1,16 @@
 [[multi-server-adding-mailbox]]
 = Adding a Mailbox Server to a Single Server Configuration
 
-In the {product-name} ({product-abbrev}) single server environment, the LDAP, MTA, and mailbox services are on one machine.
+In the {product-name} single server environment, the LDAP, MTA, and mailbox services are on one machine.
 This chapter explains how to add a new machine that is configured as a mailbox server to a single server configuration and how to remove the mailbox server from the single server node.
 
 == Setup Requirements For Adding a Mailbox Server
 
 * The new machine you are adding must have the same operating system, including the latest version and patch levels, as installed on the single server.
 * The system clock must be configured with the same time on both machines.
-* You must install the same version of the {product-abbrev} software that is installed on the single server node.
-* A copy of the {product-abbrev} license needs to be added to a directory on the new machine.
-* You are adding {product-short} Proxy to {product-abbrev}, this should be installed on the existing single-server before you set up the new mailbox server. See <<_installing_zimbra_proxy>>.
+* You must install the same version of the {product-name} software that is installed on the single server node.
+* A copy of the {product-name} license needs to be added to a directory on the new machine.
+* You are adding a proxy to {product-name}, this should be installed on the existing single-server before you set up the new mailbox server. See <<_installing_zimbra_proxy>>.
 
 
 == Overview of Process
@@ -47,7 +47,7 @@ zmlocalconfig -s | grep -E '(amavis|nginx|postfix)_password'
 IMPORTANT: Before you begin make sure you have an up-to-date backup!
 
 . Follow steps 1 through 4 in <<starting_multiple_server_install>> to log on to the server as root and unpack the {product-short} software.
-. Type `Y` for each package you are installing.
+. Type kbd:[Y] for each package you are installing.
 ** Install `zimbra-store`, and `zimbra-spell` (optional) packages. When `zimbra-spell` is installed, the `zimbra-apache` package also is installed.
 ** If `zimbra-proxy` is configured, install `memcached`.
 ** The `zimbra-logger` package is installed only on one mailbox server.
@@ -55,28 +55,28 @@ If you are moving all mailboxes to this server from the original single server, 
 ** If _Archive and Discovery_ is installed on the single-server node, install `zimbra-archiving` on the new mailbox server.
 +
 
-NOTE: If SNMP is being used, type `Y` for `zimbra-snmp`. If SNMP is used, it is installed on every {product-short} server.
+NOTE: If SNMP is being used, type kbd:[Y] for `zimbra-snmp`. If SNMP is used, it is installed on every {product-short} server.
 
-. Type `Y`, and press kbd:[Enter] to modify the system. The selected packages are installed on the server.
+. Type kbd:[Y], and press kbd:[Enter] to modify the system. The selected packages are installed on the server.
 +
 
 NOTE: The _Main_ menu displays the default entries for the {product-short} component you are installing.
 
-. Type `1` and press kbd:[Enter] to go to the *Common Configuration* menu.
+. Type kbd:[1] and press kbd:[Enter] to go to the *Common Configuration* menu.
 +
 
 NOTE: The mailbox server hostname is displayed. You must change the LDAP master host name and password to be the values configured on the single- server node.
 
-** Type `2`, press kbd:[Enter], and type the LDAP host name.
-** Type `4`, press kbd:[Enter], and type the LDAP password.
+** Type kbd:[2], press kbd:[Enter], and type the LDAP host name.
+** Type kbd:[4], press kbd:[Enter], and type the LDAP password.
 +
 
 NOTE: After you set these values, the server immediately contacts the LDAP server. If it cannot contact the server, you cannot proceed.
 
-** Type `6` to set the correct time zone.
-. Type `r` to return to the Main menu.
-. From the Main menu, type `2` to go to the Store configuration menu.
-** Type `2` to set **Create Admin User** to `No`.
+** Type kbd:[6] to set the correct time zone.
+. Type kbd:[r] to return to the Main menu.
+. From the Main menu, type kbd:[2] to go to the Store configuration menu.
+** Type kbd:[2] to set **Create Admin User** to `No`.
 ** Type the corresponding number to set the SMTP host. This is the `mta-server` host name.
 ** Type the corresponding number if you want to change the default web server mode.
 ** If you are setting up IMAP/POP proxy servers, type the corresponding number to enable the servers.
@@ -94,7 +94,7 @@ You cannot proceed without a license file.
 . When the mailbox server is configured, return to the Main menu and type a to apply the configuration changes. Press kbd:[Enter] to save the configuration data.
 . When *Save Configuration data to a file* appears, press kbd:[Enter].
 . The next request asks where to save the files. To accept the default, press kbd:[Enter]. To save the files to another directory, enter the directory and then press kbd:[Enter].
-. When *The system will be modified - continue?* appears, type `y` and press kbd:[Enter].
+. When *The system will be modified - continue?* appears, type kbd:[y] and press kbd:[Enter].
 +
 
 NOTE: The server is modified. Installing all the components and configuring the mailbox server can take a few minutes. This includes installing SSL certificates, setting passwords, setting ports, installing skins and Zimlets, setting time zone preferences, and starting the servers, among other processes.

@@ -66,7 +66,7 @@ process. The table below describes the menu options.
 | Toggle whether **zimbra-convertd** is enabled or not - defaults to **yes** +
   The default is to install one zimbra-convertd on each zimbra-store server.
   But only one zimbra-convertd needs to be present in a deployment depending
-  on size of ZCS environment. +
+  on size of {product-short} environment. +
 
 | zimbra-proxy
 | Select the sub-menu for
@@ -281,7 +281,7 @@ identify itself to the LDAP server and must be configured on the MTA
 server to be the same as the **amavis** password on the master LDAP server.
 |========================
 
-NOTE: New installs of ZCS limit spam/ham training to the first MTA installed.
+NOTE: New installs of {product-short} limit spam/ham training to the first MTA installed.
 If you uninstall or move this MTA, you will need to enable spam/ham training
 on another MTA, as one host should have this enabled to run
 `zmtrainsa --cleanup`. To do this on that host, do: +
@@ -439,7 +439,7 @@ notification. The default is the admin’s account.
 === Proxy configuration
 
 Zimbra Proxy (Nginx-Zimbra) is a high-performance reverse proxy server that
-passes IMAP[S]/POP[S]/HTTP[S] client requests to other internal ZCS services.
+passes IMAP[S]/POP[S]/HTTP[S] client requests to other internal {product-short} services.
 
 It requires the separate package **Zimbra Memcached** which is
 automatically selected when the **zimbra-proxy** package is installed.

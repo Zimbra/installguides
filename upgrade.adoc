@@ -35,12 +35,12 @@ You are prompted to decide if you would like to run the `zmdbintegrityreport`.
 ====
 `zmdbintegrityreport` is run on a weekly basis from cron on all zimbra-store nodes.
 Large sites can opt to disable this by setting `zmlocalconfig -e zmdbintegrityreport_disabled=TRUE`.
-If you choose to disable this, it is recommended that the integrity reports be run by hand during your normal maintenance windows and prior to running any {product-abbrev} upgrades.
+If you choose to disable this, it is recommended that the integrity reports be run by hand during your normal maintenance windows and prior to running any {product-short} upgrades.
 ====
 
 === Preparing your operating system
 
-Before you upgrade {product-abbrev}, {product-provider} recommends that the operating system is updated with the latest patches that have been tested with {product-abbrev}.
+Before you upgrade, {product-provider} recommends that the operating system is updated with the latest patches that have been tested with {product-name}.
 
 ==== Ubuntu OS
 
@@ -101,18 +101,26 @@ A means of creating manual activations will be provided for systems that do not 
 See the {product-admin-guide} for more information.
 
 When upgrading, the way in which ZCO and archiving licensing is enforced might have changed on the server if you are using an older version of {product-name}.
-Older licenses might have `MAPIConnectorAccountsLimit` set to `0` or `ArchivingAccountsLimit` missing in the license.
+Older licenses might have `MAPIConnectorAccountsLimit` set to kbd:[0] or `ArchivingAccountsLimit` missing in the license.
 Contact {product-provider} sales for an updated license file prior to upgrading if you have licensed either of these features and your current license does not properly reflect the correct number.
 
 === Upgrading LDAP Replica Servers or Multi-Master Server
 
-NOTE: These instructions apply to {product-abbrev} 8.0.0, 8.0.1, 8.0.2 to {product-abbrev}
+<<<<<<< HEAD
+<<<<<<< HEAD
+NOTE: These instructions apply to {product-name} 8.0.0 and later.
+=======
+NOTE: These instructions apply to {product-name} 8.0.0, 8.0.1, 8.0.2 to {product-abbrev}
 8.0.4 and later.
+>>>>>>> 61cde18... Replaced references
+=======
+NOTE: These instructions apply to {product-name} 8.0.0 and later.
+>>>>>>> be4fd51... removed references to product-abbrev and ZCS
 
-If you have replica servers or are in multi-master mode, you have to install the {product-short} _LDAP_ schema specific to the release you are upgrading to onto the replica servers or onto the multi-master server before you upgrade to {product-abbrev} 8.0.4 and later.
+If you have replica servers or are in multi-master mode, you have to install the {product-short} _LDAP_ schema specific to the release you are upgrading to onto the replica servers or onto the multi-master server before you upgrade to {product-name} 8.0.4 and later.
 See https://bugzilla.zimbra.com/show_bug.cgi?id=81048[Bug 81048].
 
-. On the master _LDAP_ server, perform a software installation only of {product-abbrev} 8.0.4 and later.
+. On the master _LDAP_ server, perform a software installation only of {product-name} 8.0.4 and later.
 +
 ----
 ./install.sh -s
@@ -163,18 +171,18 @@ To continue the upgrade, see <<_multi_server_environment_upgrade_steps>>.
 
 === Disable SSLv3 Support
 
-If upgrading to {product-abbrev} 8.7.0 and above, you need to completely disable SSLv3 support after the upgrade.
+If upgrading to {product-name} 8.7.0 and above, you need to completely disable SSLv3 support after the upgrade.
 Disabling SSLv3 is recommended as a result
 of the SSLv3 vulnerability described in https://www.us-cert.gov/ncas/alerts/TA14-290A[Alert (TA14-290A)].
 
 
-SSLv3 support has been deprecated by default in 8.6.0, although when upgrading from previous versions of {product-abbrev}, some protocols might still be enabled.
+SSLv3 support has been deprecated by default in 8.6.0, although when upgrading from previous versions of {product-name}, some protocols might still be enabled.
 
-* New keys created in {product-abbrev} 8.7.0 (or later) have SSLv3 disabled by default.
-* Pre-existing keys from earlier versions of {product-abbrev} will still have SSLv3 enabled.
+* New keys created in {product-name} 8.7.0 (or later) have SSLv3 disabled by default.
+* Pre-existing keys from earlier versions of {product-short} will still have SSLv3 enabled.
 
 
-Follow the steps in the {product-provider} wiki article https://wiki.zimbra.com/wiki/How_to_disable_SSLv3[How to Disable SSLv3] to disable SSLv3 after upgrading to ZCS 8.7.0.
+Follow the steps in the {product-provider} wiki article https://wiki.zimbra.com/wiki/How_to_disable_SSLv3[How to Disable SSLv3] to disable SSLv3 after upgrading to {product-name} 8.7.0.
 
 === Update Default Proxy SSL Ciphers Attribute
 
@@ -188,7 +196,7 @@ zimbraMailboxdSSLProtocols
 ----
 
 TIP: If you have not performed any recent hardening of your settings,
-your config should already match the {product-abbrev} default; and no action would be required.
+your config should already match the {product-short} default; and no action would be required.
 
 In addition, it is recommended to make the following changes:
 
@@ -228,7 +236,7 @@ Go to http://www.zimbra.com/downloads/zimbra-collaboration to access the downloa
 * Database reloads are performed on 7.x to any 8.x upgrade.
 ====
 
-When you run the install script and {product-abbrev} is already installed, a prompt appears asking if you want to upgrade.
+When you run the install script and {product-short} is already installed, a prompt appears asking if you want to upgrade.
 Follow the instructions in this release note to perform the upgrade.
 For additional information, refer to the installation guide.
 
@@ -270,10 +278,10 @@ include::upgrade-process-inc.adoc[]
 
 [WARNING]
 ====
-Starting with {product-abbrev} 8.5 and later, _Postfix_ is linked to _LMDB_, the same back-end {product-abbrev} uses with _OpenLDAP_.
-Prior to {product-abbrev} 8.0, _Postfix_ was linked to _Berkeley DB_.
+Starting with {product-name} 8.5 and later, _Postfix_ is linked to _LMDB_, the same back-end {product-short} uses with _OpenLDAP_.
+Prior to {product-name} 8.0, _Postfix_ was linked to _Berkeley DB_.
 
-{product-abbrev} has not officially supported using any _Postfix_ on-disk database maps prior to {product-abbrev} 8.5.
+{product-short} has not officially supported using any _Postfix_ on-disk database maps prior to {product-name} 8.5.
 However, these have been used through custom non-preserved modifications to the `postconf` configuration.
 These modifications will be lost on upgrade.
 ====
@@ -283,7 +291,7 @@ To restore the modifications post-upgrade, the following steps need to be perfor
   . Run postmap against the database input file to generate an LMDB database.
   . It will be necessary to iterate through the postconf keys that have `hash:/path/to/db` values and update them in LDAP to use `lmdb:/path/to/db` values instead.
 
-Many previously unsupported features that could be used with on-disk database maps are now fully supported by {product-abbrev}.
+Many previously unsupported features that could be used with on-disk database maps are now fully supported by {product-short}.
 Check if your customizations are correctly carried forward when upgrading.
 See https://bugzilla.zimbra.com/show_bug.cgi?id=77586[Bug 77586].
 
@@ -326,8 +334,8 @@ sudo /opt/zimbra/bin/zmcertmgr deploycrt self -new
 ----
 --
 +
-5. If you were using `zmlogger` prior to {product-abbrev} 8.0.7, it is possible that numerous `rdd` files could be generated causing large amounts of disk space to be used.
-{product-abbrev} 8.0.7 and later contain a patch that prevents future additional growth of `rdd` files on the logger server.
+5. If you were using `zmlogger` prior to {product-name} 8.0.7, it is possible that numerous `rdd` files could be generated causing large amounts of disk space to be used.
+{product-name} 8.0.7 and later contain a patch that prevents future additional growth of `rdd` files on the logger server.
 To clean up existing `rdd` files, use the following script.
 See https://bugzilla.zimbra.com/show_bug.cgi?id=85222[Bug 85222].
 +
@@ -496,9 +504,9 @@ Please visit link:https://zimbra.github.io/zimbra-9/adminguide.html#_configuring
 include::ephemeral.adoc[]
 :leveloffset: -2
 
-== Remove Current Version and Perform Clean Install of ZCS
+== Remove Current Version and Perform Clean Install of {product-short}
 
-If you do not want to upgrade, but prefer to install {product-name} {product-version} as a new installation, when you run the {product-name} {product-version} install script, enter `N` when asked `Do you wish to upgrade?`
+If you do not want to upgrade, but prefer to install {product-name} {product-version} as a new installation, when you run the {product-name} {product-version} install script, enter kbd:[N] when asked `Do you wish to upgrade?`
 
 WARNING: A warning displays asking if you want to delete all existing users and mail.
 If you enter `Yes`, all users, mail, and previous files are removed before proceeding with the new installation.
@@ -523,7 +531,7 @@ However, Zimlets used for Classic Web Client are not compatible with the {modern
 Currently, there is no way to migrate the zimlets from Classic to the {modern-client} or vice-versa.
 Existing zimlets need to be re-developed for them to work on the {modern-client}.
 
-NOTE: When upgrading to {product-name} 8.5.x and later from a previous major {product-abbrev} version, the upgrade step disables Zimlets that are not the core Zimlets for {product-abbrev} in all COSs.
+NOTE: When upgrading to {product-name} 8.5.x and later from a previous major {product-short} version, the upgrade step disables Zimlets that are not the core Zimlets for {product-short} in all COSs.
 If you have enabled other Zimlets at the account level, you might need to manually disable these Zimlets.
 See https://bugzilla.zimbra.com/show_bug.cgi?id=77836[Bug 77836].
 

@@ -32,7 +32,7 @@ additional space for mail storage. The other nodes require 100MB.
 
 * Set the firewall configuration to *No firewall*.
 * We do not recommend RAID-5 for installations with more than 100 accounts.
-|*Network Edition and Open Source supported Cloud platforms*
+|*Cloud platforms*
 |The following Cloud Platforms are supported:
 
 * Oracle Cloud

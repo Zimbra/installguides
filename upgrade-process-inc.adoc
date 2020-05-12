@@ -1,6 +1,6 @@
 ==== Process
 
-. Log in as `root` to the {product-short} server and `cd` to the directory where the {product-abbrev} {product-version} archive tar file is saved. For example, `cd /var/tmp`. Then type the following commands:
+. Log in as `root` to the {product-short} server and `cd` to the directory where the {product-name} {product-version} archive tar file is saved. For example, `cd /var/tmp`. Then type the following commands:
 +
 ====
 Unpack the file
@@ -32,12 +32,24 @@ Begin the upgrade installation.
 * See https://wiki.zimbra.com/wiki/Enabling_Zimbra_Proxy_and_memcached#Using_existing_servers[Enabling Zimbra Proxy and memcached]
 ====
 
-. The {product-short} software agreement is displayed. Read this software license agreement and type `Y`.
-. When `Use Zimbra's packaging server [Y]` is displayed, press `enter` to continue. Your system will be configured to add the Zimbra
-packaging repository for `yum` or `apt-get` so it can install the Zimbra third party packages.
-. When `Do you wish to upgrade? [Y]` is displayed, press `enter` to continue. The upgrade packages are unpacked.
-. The packages are listed. The installer also lists packages that are not installed. If you want to install the packages at this time, type `Y`; otherwise press `enter`. The upgrade checks that there is enough space to perform the upgrade. If there is not enough space, the upgrade stops.
-. When `The system will be modified. Continue? [N]` is displayed, type `Y` and press `enter`. The {product-short} server is stopped, and the older packages are removed. The upgrade process verifies which version of ZCS is being run and proceeds to upgrade the services, restores the existing configuration files, and restarts the server. If you have a configuration with a large number of accounts created, this can take a while.
+. The {product-short} software agreement is displayed. Read this software license agreement and type kbd:[Y].
+. When `Use Zimbra's packaging server [Y]` is displayed, press `enter` to continue.
+Your system will be configured to add the Zimbra packaging repository for `yum` or `apt-get` so it can install the Zimbra third party packages.
+. When `Do you wish to upgrade? [Y]` is displayed, press `enter` to continue.
+The upgrade packages are unpacked.
+. Type kbd:[Y] when `Install zimbra-connect [Y]` appears.
++
+
+IMPORTANT: `zimbra-connect` replaces `zimbra-talk` in {product-short}.
+However, to make this transition seamless it is important that you install `zimbra-connect` when prompted, as `zimbra-talk` is removed later during the installation. 
+
+. The packages are listed.
+The installer also lists packages that are not installed.
+If you want to install the packages at this time, type kbd:[Y]; otherwise press `enter`.
+The upgrade checks that there is enough space to perform the upgrade. If there is not enough space, the upgrade stops.
+. When `The system will be modified. Continue? [N]` is displayed, type kbd:[Y] and press kbd:[enter].
+The {product-short} server is stopped, and the older packages are removed.
+The upgrade process verifies which version of {product-short} is being run and proceeds to upgrade the services, restores the existing configuration files, and restarts the server. If you have a configuration with a large number of accounts created, this can take a while.
 . If you have not set the time zone, you will be asked to set it. This sets the time zone in the default COS. The time zone that should be entered is the time zone that the majority of users in the COS will be located in.
 . When the Configuration completes, press `enter`.
 . Once all the MTA nodes are upgraded to {product-name} {product-version}, the following commands may be run to fix the default `globalconfig` values, if necessary.

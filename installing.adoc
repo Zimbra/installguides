@@ -76,7 +76,7 @@ Checking for existing installation...
 ----
 --
 
-3. The {product-short} software agreement displays. Press `Y` to accept and `N` to decline.
+3. The {product-short} software agreement displays. Press kbd:[Y] to accept and kbd:[N] to decline.
 +
 --
 IMPORTANT: The license agreement displays in multiple sections, and you must accept each section of the license agreement.
@@ -200,8 +200,8 @@ The system will be modified.  Continue? [N] y
 ----
 
 Also select the services to be installed on this server.
-To install {product-name} on a single server, enter `Y` for the ldap, logger, mta, snmp, store, and spell packages.
-If you use IMAP/POP Proxy, enter `Y` for the Zimbra proxy package and the Zimbra Memcached package.
+To install {product-name} on a single server, enter kbd:[Y] for the ldap, logger, mta, snmp, store, and spell packages.
+If you use IMAP/POP Proxy, enter kbd:[Y] for the Zimbra proxy package and the Zimbra Memcached package.
 
 NOTE: Ensure that the `zimbra-memcached` package is installed on at least one of the nodes in the system
 if the Proxy is installed.
@@ -211,7 +211,7 @@ To use the archiving and discovery feature, contact {product-provider} sales.
 The installer verifies that there is enough room to install {product-short}.
 --
 
-5. Next, type `Y` and press kbd:[Enter] to modify the system.
+5. Next, type kbd:[Y] and press kbd:[Enter] to modify the system.
 {product-short} performs the following checks.
 ** Selected packages are installed on the server.
 ** Checks to see if MX record is configured in DNS.
@@ -221,14 +221,14 @@ We recommend that the domain name have an MX record configured in DNS.
 ** Checks for port conflict.
 
 6. At this point, the Main menu displays showing the default entries for the {product-short} components you are installing.
-To expand the menu to see the configuration values, type `X` and press kbd:[Enter].
+To expand the menu to see the configuration values, type kbd:[X] and press kbd:[Enter].
 The Main menu expands to display configuration details for the packages being installed.
 Values that require further configuration are marked with asterisks (pass:[******]) to their left.
 To navigate the Main menu, select the menu item to change.
 You can modify any of the defaults.
 For a quick installation, accepting all the defaults, you only need to do the following:
 
-7. To set the appropriate time zone, enter `1` to select Common Configuration and then enter `7` for TimeZone.
+7. To set the appropriate time zone, enter kbd:[1] to select Common Configuration and then enter kbd:[7] for TimeZone.
 Set the correct time zone.
 +
 --
@@ -279,16 +279,16 @@ Address unconfigured (**) items  (? - help)
 ----
 --
 
-8. Type `r` to return to the Main menu.
+8. Type kbd:[r] to return to the Main menu.
 
-9. Type `r` to return to the Main menu.
+9. Type kbd:[r] to return to the Main menu.
 
-10. Enter `7` to select *zimbra-store* from the Main menu. The store
+10. Enter kbd:[7] to select *zimbra-store* from the Main menu. The store
 configuration menu displays.
 
 11. Select the following from the store configuration menu:
 
-    * Type `4` to set the Admin Password.
+    * Type kbd:[4] to set the Admin Password.
     The password must be six or more characters.
     Press kbd:[Enter].
 
@@ -301,14 +301,14 @@ configuration menu displays.
     If these are set to `TRUE`, {product-name} automatically checks for the latest {product-name} software updates and notifies the account that is configured in `Version update notification email`.
     You can modify this later from the administration console.
 
-12. Type `r` to return to the Main menu.
+12. Type kbd:[r] to return to the Main menu.
 
 13. If you want to change the default Class of Service settings for new features that are listed here, type `12` for Default Class of Service
 Configuration.
 Then type the appropriate number for the feature to be enabled or disabled.
 Changes you make here are reflected in the default COS configuration.
 
-14. If no other defaults need to be changed, type `a` to apply the configuration changes.
+14. If no other defaults need to be changed, type kbd:[a] to apply the configuration changes.
 Press kbd:[Enter]
 +
 --

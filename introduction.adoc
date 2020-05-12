@@ -56,13 +56,13 @@ These are ports typically only used by the Zimbra system itself.
 |7026|milter|mailbox|zimbra-milter; zimbraMilterBindAddress
 |7047|http|conversion server|Accessed by localhost by default; binds to '*'
 |7071|https|mailbox|admin console HTTP over TLS; zimbraAdminBindAddress
-|7072|http|mailbox|ZCS nginx lookup - backend http service for nginx lookup/authentication
-|7073|http|mailbox|ZCS saslauthd lookup - backend http service for SASL lookup/authentication (added in ZCS 8.7)
+|7072|http|mailbox|{product-short} nginx lookup - backend http service for nginx lookup/authentication
+|7073|http|mailbox|{product-short} saslauthd lookup - backend http service for SASL lookup/authentication (added in {product-name} 8.7)
 |7110|pop3|mailbox|Backend POP3 (if proxy configured); zimbraPop3BindAddress
 |7143|imap|mailbox|Backend IMAP (if proxy configured); zimbraImapBindAddress
 |7171|-|zmconfigd|configuration daemon; localhost
 |7306|mysql|mailbox|LC(mysql_bind_address); localhost
-|7307|mysql|logger|logger (removed in ZCS 7)
+|7307|mysql|logger|logger (removed in {product-name} 7)
 |7780|http|mailbox|spell check
 |7993|imaps|mailbox|Backend IMAP over TLS (if proxy configured); zimbraImapSSLBindAddress
 |7995|pop3s|mailbox|Backend POP3 over TLS (if proxy configured); zimbraPop3SSLBindAddress
@@ -117,7 +117,7 @@ In a multi-node environment the typical communication between nodes required inc
 |7047|mbox|localhost by default; zimbraConvertdURL
 |7071|mbox|all mbox talk to any mbox (Admin)
 |7072|proxy|zmlookup; zimbraReverseProxyLookupTarget
-|7073|mta|sasl auth; zimbraMtaAuthTarget (since ZCS 8.7)
+|7073|mta|sasl auth; zimbraMtaAuthTarget (since {product-name} 8.7)
 |===
 
 **Important:** You cannot have any other web server, database, _LDAP_,

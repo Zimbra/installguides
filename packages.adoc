@@ -34,7 +34,7 @@ The {product-short} MTA also includes *anti-virus* and *anti-spam* components.
 This package is normally installed on the MTA server(s) or on its own independent server(s).
 When the *zimbra-proxy* package is installed, the proxy feature is enabled by default.
 +
-NOTE: Installing the {product-short} Proxy is required as of {product-abbrev} 8.7.
+NOTE: Installing the {product-short} Proxy is required as of {product-name} 8.7.
 
 NOTE: By default {product-short} Proxy is configured to perform strict server name enforcement of the HTTP 'Host' header sent by clients for new installs.
 Strict server name enforcement may be disabled during the post-install configuration process in the {product-short} Proxy configuration section or using the `zimbraReverseProxyStrictServerNameEnabled` configuration option.

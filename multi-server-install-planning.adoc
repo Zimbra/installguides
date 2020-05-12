@@ -2,8 +2,7 @@
 = Planning for the Installation
 :toc:
 
-This chapter describes the components that are installed and reviews the configuration options that you can make when installing
-{product-name} ({product-abbrev}).
+This chapter describes the components that are installed and reviews the configuration options that you can make when installing {product-name}.
 
 include::packages.adoc[]
 

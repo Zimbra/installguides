@@ -8,10 +8,10 @@ When the server installation is complete after final set-up and server configura
 
 *Order of Installation*
 
-1. {product-abbrev} LDAP server(s)
-2. {product-abbrev} MTA server(s)
-3. {product-abbrev} Proxy server(s)
-4. {product-abbrev} Mailbox server(s) options:
+1. LDAP server(s)
+2. MTA server(s)
+3. Proxy server(s)
+4. Mailbox server(s) options:
 ** Zimbra Mailbox Server, which includes the mailstore services and webapp services (mailstore server + UI server)
 ** Zimbra Web Application Server Split mode, which includes:
 *** a Zimbra mailstore server (mailstore server)
@@ -19,7 +19,7 @@ When the server installation is complete after final set-up and server configura
 
 NOTE: Zimbra-proxy is normally installed on the MTA server or you can install it on its own server.
 
-IMPORTANT: Do not manually create the user ‘zimbra’ before running the {product-abbrev} installation.
+IMPORTANT: Do not manually create the user ‘zimbra’ before running the {product-short} installation.
 The installation automatically creates this user and sets up its environment.
 
 IMPORTANT: Before you start, verify that the system clocks are synced on all servers.
@@ -53,7 +53,7 @@ Open an SSH session to the {product-short} server and follow the steps below:
 ** `cd [zcs filename]` to change to the correct directory. The filename includes the release and build date.
 ** `./install.sh` to begin the installation.
 
-NOTE: _As the installation proceeds, press_ *Enter* _to accept the defaults that are shown in brackets_ `[ ]` _or enter the appropriate answer (`Y`/`N`) for your configuration._
+NOTE: _As the installation proceeds, press_ *Enter* _to accept the defaults that are shown in brackets_ `[ ]` _or enter the appropriate answer (kbd:[Y]/kbd:[N]) for your configuration._
 
 [source%nowrap,bash]
 ----
@@ -113,7 +113,7 @@ Checking for existing installation...
 ----
 --
 
-3. The {product-short} software agreement displays. Press `Y` to accept and `N` to decline.
+3. The {product-short} software agreement displays. Press kbd:[Y] to accept and kbd:[N] to decline.
 +
 --
 IMPORTANT: The license agreement displays in multiple sections, and you must accept each section of the license agreement.
@@ -169,15 +169,13 @@ The domain name should have an MX record configured in DNS.
 [[install_ldap_master]]
 == Installing {product-short} LDAP Master Server
 
-You must configure the {product-abbrev} LDAP Master server before you can install
-other {product-abbrev} servers. You can set up LDAP replication, configuring a
-master LDAP server and replica LDAP servers, either configuring all LDAP
-servers now or after you set up the initial {product-name} servers. See the
-section on <<ldap-replication,Configuring LDAP Replication>>
+You must configure the LDAP Master server before you can install other {product-short} servers.
+You can set up LDAP replication, configuring a master LDAP server and replica LDAP servers, either configuring all LDAP servers now or after you set up the initial {product-name} servers.
+See the section on <<ldap-replication,Configuring LDAP Replication>>
 
-1. Follow steps 1 through 4 in <<starting_multiple_server_install,Starting the Installation Process>> to open an SSH session to the LDAP server, log on to the server as *root*, and unpack the {product-abbrev} software.
-2. Type `y` and press kbd:[Enter] to install the `zimbra-ldap` package.
-The `zimbra-mta`, `zimbra-store` and `zimbra-logger` packages should be marked `n`.
+1. Follow steps 1 through 4 in <<starting_multiple_server_install,Starting the Installation Process>> to open an SSH session to the LDAP server, log on to the server as *root*, and unpack the {product-name} software.
+2. Type kbd:[y] and press kbd:[Enter] to install the `zimbra-ldap` package.
+The `zimbra-mta`, `zimbra-store` and `zimbra-logger` packages should be marked kbd:[n].
 +
 --
 [source%nowrap]
@@ -222,9 +220,9 @@ The system will be modified.  Continue? [N]
 ----
 --
 
-3. Type `Y`, and press kbd:[Enter] to modify the system. The selected packages are installed on the server.
+3. Type kbd:[Y], and press kbd:[Enter] to modify the system. The selected packages are installed on the server.
 The Main menu displays the default entries for the Zimbra component you are installing.
-To expand the menu to see the configuration values, type `x` and press kbd:[Enter].
+To expand the menu to see the configuration values, type kbd:[x] and press kbd:[Enter].
 The main menu expands to display configuration details for the package being installed.
 +
 --
@@ -249,7 +247,7 @@ Select from menu, or press 'a' to apply config (? - help)
 ----
 --
 
-4.  Type `1` to display the *Common Configuration* submenu.
+4.  Type kbd:[1] to display the *Common Configuration* submenu.
 +
 --
 [source%nowrap]
@@ -270,7 +268,7 @@ Select, or 'r' for previous menu [r]
 ----
 --
 
-5.  Type `4` to display the automatically generated LDAP admin password.
+5.  Type kbd:[4] to display the automatically generated LDAP admin password.
 +
 --
 [source%nowrap]
@@ -295,7 +293,7 @@ LDAP Port           _______________________
 NOTE: You must configure this information when you install the mailbox servers
 and the MTA servers.
 
-6. Type `7` to set the correct time zone.
+6. Type kbd:[7] to set the correct time zone.
 A list of timezones appears, choose the relevant timezone by typing its number.
 In the below snapshot, we have selected `Europe/London` by typing `94`.
 +
@@ -316,9 +314,9 @@ Enter the number for the local timezone: [110] 94
 ----
 --
 
-7. Type `r` to return to the Main menu.
+7. Type kbd:[r] to return to the Main menu.
 
-8.  From the Main menu, type `2` for *zimbra-ldap* to view the *Ldap configuration* settings.
+8.  From the Main menu, type kbd:[2] for *zimbra-ldap* to view the *Ldap configuration* settings.
 +
 --
 [source%nowrap]
@@ -339,12 +337,12 @@ Select, or 'r' for previous menu [r]
 ----
 --
 
-9. Type `3` for *Domain to create* to change the default domain name to the main domain name you want to use for your network, (e.g. *example.com*).
+9. Type kbd:[3] for *Domain to create* to change the default domain name to the main domain name you want to use for your network, (e.g. *example.com*).
 
 10. The passwords listed in the *LDAP configuration* menu are automatically generated.
 +
 --
-If you want to change the passwords for LDAP root, LDAP replication, LDAP Postfix, LDAP Amavis, and LDAP Nginx, enter the corresponding number `4` through `8` and change the passwords.
+If you want to change the passwords for LDAP root, LDAP replication, LDAP Postfix, LDAP Amavis, and LDAP Nginx, enter the corresponding number kbd:[4] through kbd:[8] and change the passwords.
 
 [source%nowrap]
 ----
@@ -371,14 +369,14 @@ Saving config in /opt/zimbra/config.8381...done
 ----
 --
 
-** enter `r` to return to the main menu.
-** Type `a` to apply the configuration changes.
+** enter kbd:[r] to return to the main menu.
+** Type kbd:[a] to apply the configuration changes.
 ** When `Save configuration data to file` appears, type `Yes` and press kbd:[Enter].
 ** The next request asks where to save the files.
 To accept the default, press kbd:[Enter].
 To save the files to another directory, enter the directory and press kbd:[Enter].
 
-12. When `The system will be modified - continue? [No]` appears, type `y` and press kbd:[Enter].
+12. When `The system will be modified - continue? [No]` appears, type kbd:[y] and press kbd:[Enter].
 +
 --
 The server is modified. Installing all the components and configuring
@@ -450,14 +448,13 @@ See <<Zimbra_License_Requirements,Zimbra License Requirements>>
 
 === Install Zimbra Mailbox Services
 
-1. Follow steps 1 through 4 in <<starting_multiple_server_install,Starting the Installation Process>> to open an SSH session to the Mailbox server, log on to the server as *root*, and unpack the {product-abbrev} software.
+1. Follow steps 1 through 4 in <<starting_multiple_server_install,Starting the Installation Process>> to open an SSH session to the Mailbox server, log on to the server as *root*, and unpack the {product-short} software.
 
-2. Type `y` and press kbd:[Enter] to install the *zimbra-logger* package (optional and only on one mail server) and *zimbra-store*.
+2. Type kbd:[Y] and press kbd:[Enter] to install the *zimbra-logger* package (optional and only on one mail server) and *zimbra-store*.
 In the following screen shot example, the packages to be installed are emphasized.
 +
 --
-NOTE: _If SNMP is being used, the SNMP package is installed on every
-{product-short} server. Mark_ `y`
+NOTE: If SNMP is being used, the SNMP package is installed on every {product-short} server. Mark kbd:[Y].
 
 [source%nowrap]
 ----
@@ -529,10 +526,10 @@ The system will be modified.  Continue? [N]
 ----
 --
 
-3. Type `Y`, and press kbd:[Enter] to modify the system.
+3. Type kbd:[Y], and press kbd:[Enter] to modify the system.
 The selected packages are installed on the server.
 The Main menu displays the default entries for the Zimbra component you are installing.
-To expand the menu to see the configuration values, type `x` and press kbd:[Enter].
+To expand the menu to see the configuration values, type kbd:[x] and press kbd:[Enter].
 The main menu expands to display configuration details for the package being installed.
 +
 --
@@ -598,7 +595,7 @@ Address unconfigured (**) items  (? - help)
 ----
 --
 
-4.  Type `1` to display the *Common Configuration* submenu.
+4.  Type kbd:[1] to display the *Common Configuration* submenu.
 +
 --
 [source%nowrap]
@@ -622,9 +619,9 @@ The mailbox server hostname is displayed.
 IMPORTANT: You must change the LDAP master host name and password to be the
 values configured on the LDAP server.
 
-** Type `2`, press kbd:[Enter], and type the LDAP host name.
+** Type kbd:[2], press kbd:[Enter], and type the LDAP host name.
 (*ldap-1.example.com* in this example.)
-** Type `4`, press kbd:[Enter], and type the LDAP password.
+** Type kbd:[4], press kbd:[Enter], and type the LDAP password.
 To obtain the LDAP password, you will need to log on to the LDAP server as the `zimbra` user, and run the following command:
 
 [source%nowrap,bash]
@@ -636,7 +633,7 @@ After you set these values, the server immediately contacts the LDAP server.
 If it cannot contact the server, you cannot proceed.
 --
 
-5. Type `8` to set the correct time zone.
+5. Type kbd:[8] to set the correct time zone.
 A list of timezones appears, choose the relevant timezone by typing its number.
 In the below snapshot, we have selected `Europe/London` by typing `94`.
 +
@@ -657,9 +654,9 @@ Enter the number for the local timezone: [110] 94
 ----
 --
 
-6. Type `r` to return to the Main menu.
+6. Type kbd:[r] to return to the Main menu.
 
-7.  From the Main menu, type `4` for *zimbra-store* to view the *Store configuration* settings.
+7.  From the Main menu, type kbd:[4] for *zimbra-store* to view the *Store configuration* settings.
 +
 --
 [source%nowrap]
@@ -704,7 +701,7 @@ Select, or 'r' for previous menu [r]
 ----
 --
 
-8. Type `4` and set the password for the administrator account.
+8. Type kbd:[4] and set the password for the administrator account.
 The password is case sensitive and must be a minimum of six characters.
 The install process provisions the admin account on the mailbox store server.
 You log on to the administration console with this password.
@@ -764,7 +761,7 @@ The default is `yes`.
 NOTE: See the release notes for additional configuration information for installing a split node environment.
 --
 
-17. Type `r` to return to the Main menu.
+17. Type kbd:[r] to return to the Main menu.
 
 18. Review the Default Class of Service Configuration settings.
 If you want to change the COS default configuration of these features,
@@ -772,7 +769,7 @@ If you want to change the COS default configuration of these features,
 .. Type the corresponding number for the feature to be enabled or disabled. +
 The default COS settings are adjusted to match.
 
-19.  When the mailbox server is configured, return to the Main menu and type `a` to apply the configuration changes. +
+19.  When the mailbox server is configured, return to the Main menu and type kbd:[a] to apply the configuration changes. +
 Press kbd:[Enter] to save the configuration data.
 
 20. When Save Configuration data to file appears, type `Yes` and press kbd:[Enter].
@@ -818,15 +815,15 @@ The installation of the mailbox server is complete.
 When {product-short}-mta is installed, the LDAP host name and the {product-short} LDAP password must be known to the MTA server.
 If not, the MTA cannot contact the LDAP server and is not able to complete the installation.
 
-1. Follow steps 1 through 4 in <<starting_multiple_server_install,Starting the Installation Process>> to open an SSH session to the MTA server, log on to the server as *root*, and unpack the {product-abbrev} software.
+1. Follow steps 1 through 4 in <<starting_multiple_server_install,Starting the Installation Process>> to open an SSH session to the MTA server, log on to the server as *root*, and unpack the {product-name} software.
 
-2. Type `y` and press kbd:[Enter] to install the *zimbra-mta* and *zimbra-dnscache* packages.
-The other packages should be marked `n`.
+2. Type kbd:[y] and press kbd:[Enter] to install the *zimbra-mta* and *zimbra-dnscache* packages.
+The other packages should be marked kbd:[n].
 In the following screen shot example, the packages to be installed are emphasized.
 +
 --
 NOTE: If SNMP is being used, the SNMP package is installed on every {product-short} server.
-Mark `y`.
+Mark kbd:[y].
 
 [source%nowrap]
 ----
@@ -863,9 +860,9 @@ Installing packages
 ----
 --
 
-3. Type `Y`, and press kbd:[Enter] to modify the system. The selected packages are installed on the server.
+3. Type kbd:[Y], and press kbd:[Enter] to modify the system. The selected packages are installed on the server.
 The Main menu displays the default entries for the Zimbra component you are installing.
-To expand the menu to see the configuration values, type `x` and press kbd:[Enter].
+To expand the menu to see the configuration values, type kbd:[x] and press kbd:[Enter].
 The main menu expands to display configuration details for the package being installed.
 +
 --
@@ -908,7 +905,7 @@ Address unconfigured (**) items  (? - help)
 ----
 --
 
-4.  Type `1` to display the *Common Configuration* submenu.
+4.  Type kbd:[1] to display the *Common Configuration* submenu.
 +
 --
 [source%nowrap]
@@ -932,9 +929,9 @@ The mta server hostname is displayed.
 IMPORTANT: You must change the LDAP master host name and password to be the
 values configured on the LDAP server.
 
-** Type `2`, press kbd:[Enter], and type the LDAP host name.
+** Type kbd:[2], press kbd:[Enter], and type the LDAP host name.
    (*ldap-1.example.com* in this example.)
-** Type `4`, press kbd:[Enter], and type the LDAP password. +
+** Type kbd:[4], press kbd:[Enter], and type the LDAP password. +
    To obtain the LDAP password, you will need to log on to the
    LDAP server as the `zimbra` user, and run the following command:
 
@@ -947,7 +944,7 @@ After you set these values, the server immediately contacts the LDAP
 server. If it cannot contact the server, you cannot proceed.
 --
 
-5. Type `8` to set the correct time zone.
+5. Type kbd:[8] to set the correct time zone.
 A list of timezones appears, choose the relevant timezone by typing its number.
 In the below snapshot, we have selected `Europe/London` by typing `94`.
 +
@@ -969,9 +966,9 @@ Enter the number for the local timezone: [110] 94
 --
 
 
-6. Type `r` to return to the *Main* menu.
+6. Type kbd:[r] to return to the *Main* menu.
 
-7. Type `2` to got to the *Mta configuration* menu.
+7. Type kbd:[2] to got to the *Mta configuration* menu.
 +
 --
 [source%nowrap]
@@ -1003,12 +1000,12 @@ You must use the same value for this as is configured on the LDAP master server.
 10.  Select the menu number for `Bind password for amavis ldap user`.
 You must use the same value for this as is configured on the LDAP master server.
 
-11. Type `r` to return to the *Main* menu.
+11. Type kbd:[r] to return to the *Main* menu.
 +
 
 NOTE: If you are installing the {product-short}-proxy package, see <<_installing_zimbra_proxy>> before continuing.
 
-12. When the MTA server is configured, return to the Main menu and type `a` to apply the configuration changes.
+12. When the MTA server is configured, return to the Main menu and type kbd:[a] to apply the configuration changes.
 Press kbd:[Enter] to save the configuration data.
 
 13. When `Save configuration data to file` appears, type `Yes` and press kbd:[Enter].
@@ -1048,7 +1045,7 @@ If you are installing `zimbra-proxy` on the MTA server, select the `zimbra-proxy
 Follow the installation process for <<_installing_zimbra_mta_on_a_server>>.
 After Step 11, configure the Zimbra-proxy.
 
-. On the MTA server, select to install the `zimbra-proxy` and `zimbra-memcached` packages, type `y` and press *Enter* to install the selected package.
+. On the MTA server, select to install the `zimbra-proxy` and `zimbra-memcached` packages, type kbd:[y] and press *Enter* to install the selected package.
 . The _Main_ menu displays the default entries for the {product-short} component you are installing. Select *Proxy Configuration* menu. You can modify any of the values.
 
 The *Bind password for Nginx ldap user* was configured when the LDAP server was installed.
@@ -1083,7 +1080,7 @@ If not, the proxy server cannot contact the LDAP server and the installation fai
 
 . Follow steps 1 through 4 in <<starting_multiple_server_install>> to open a SSH session to the server, log on to the server as root, and unpack the {product-short} software.
 . Select to install the `zimbra-proxy` package and the `zimbra-memcached` package.
-The other packages should be marked `N`.
+The other packages should be marked kbd:[N].
 If you have not installed `zimbra-proxy` on another server, you must have at least one instance of `zimbra-memcached` installed to cache the data for NGINX, as
 shown in the following screen shot example.
 +
@@ -1115,15 +1112,15 @@ This system will be modified. Continue [N] *Y*
 Configuration section
 ----
 --
-. Type `Y`, and press kbd:[Enter] to install the selected package.
-. The _Main_ menu displays. Type `1` and press kbd:[Enter] to go to the *Common Configuration* menu.
+. Type kbd:[Y], and press kbd:[Enter] to install the selected package.
+. The _Main_ menu displays. Type kbd:[1] and press kbd:[Enter] to go to the *Common Configuration* menu.
 +
 --
 The mailbox server hostname is displayed.
 You must change the LDAP master host name and password to be the values configured on the LDAP server.
 
-** Type `2`, press kbd:[Enter], and type the LDAP host name. (`ldap-1.example.com`, in this example.)
-** Type `4`, press kbd:[Enter], and type the LDAP password.
+** Type kbd:[2], press kbd:[Enter], and type the LDAP host name. (`ldap-1.example.com`, in this example.)
+** Type kbd:[4], press kbd:[Enter], and type the LDAP password.
 
 After you set these values, the server immediately contacts the LDAP server.
 If it cannot contact the server, you cannot proceed.
@@ -1131,8 +1128,8 @@ If it cannot contact the server, you cannot proceed.
 ** Type 7 to set the correct time zone
 --
 +
-. Type `r` to return to the Main menu.
-. Type `2` to select `zimbra-proxy`.
+. Type kbd:[r] to return to the Main menu.
+. Type kbd:[2] to select `zimbra-proxy`.
 +
 --
 
@@ -1213,13 +1210,13 @@ Proxy configuration
 
 --
 +
-. Type `r` to return to the _Main_ menu.
-. When the proxy server is configured, return to the _Main_ menu and type `a` to apply the configuration changes.
+. Type kbd:[r] to return to the _Main_ menu.
+. When the proxy server is configured, return to the _Main_ menu and type kbd:[a] to apply the configuration changes.
 Press kbd:[Enter] to save the configuration data.
 . When *Save Configuration data to a file* appears, press kbd:[Enter].
 . The next request asks where to save the files.
 To accept the default, press kbd:[Enter]. To save the files to another directory, enter the directory and then press kbd:[Enter].
-. When *The system will be modified - continue?* appears, type `y` and press kbd:[Enter].
+. When *The system will be modified - continue?* appears, type kbd:[y] and press kbd:[Enter].
 . When *Installation complete - press return to exit* displays, press kbd:[Enter].
 
 
@@ -1231,11 +1228,11 @@ The installation of the proxy server is complete.
 Installing the `zimbra-archiving` package is optional.
 This package enables {product-name} Archiving and Discovery, which offers:
 
-* Archiving, the ability to archive messages that were delivered to or sent by {product-abbrev}.
+* Archiving, the ability to archive messages that were delivered to or sent by {product-short}.
 * Discovery, the ability to search across mailboxes.
 
 The prerequisite to enabling archiving and discovery is the installation and configuration of the `zimbra-archiving` package on at least one mailbox server.
-The installation of this package provides the {product-abbrev} discovery (also known as cross mailbox) search tool and sets the attributes that allow archiving to be enabled on the {product-short} MTAs.
+The installation of this package provides discovery (also known as cross mailbox) search tool and sets the attributes that allow archiving to be enabled on the {product-short} MTAs.
 
 To enable archiving and discovery, select the `zimbra-store` and `zimbra-archiving` packages during your installation process.
 The `zimbra-core` package is installed by default.
@@ -1303,7 +1300,7 @@ See <<_set_up_the_ssh_keys>>.
 The server statistics includes information about the message count, message volume, and anti-spam and anti-virus activity.
 See <<_enabling_server_statistics_display>>.
 * {product-name} ships a default `zimbra` user with a disabled password.
-{product-abbrev} requires access to this account via ssh public key authentication.
+It requires access to this account via ssh public key authentication.
 On most operating systems this combination is okay, but if you have modified spam rules to disallow any ssh access to disabled accounts then you must define a password for the `zimbra` UNIX account.
 This will allow ssh key authentication for checking remote queues.
 See https://wiki.zimbra.com/wiki/Mail_Queue_Monitoring[Mail queue monitoring].
@@ -1372,7 +1369,7 @@ Uncomment the following lines in `/etc/rsyslog.conf`.
 
 === Spam/Ham Training on MTA servers
 
-New installs of {product-abbrev} limit spam/ham training to the first MTA installed.
+New installs of {product-short} limit spam/ham training to the first MTA installed.
 If you uninstall or move this MTA, you will need to enable spam/ham training on another MTA, as one host should have this enabled to run `zmtrainsa --cleanup`.
 To do this, set `zmlocalconfig -e zmtrainsa_cleanup_host=TRUE`.
 
@@ -1477,7 +1474,7 @@ Migration_ tool from the administration console. The wizard guides you
 through the steps to import accounts from an external directory
 server, either Active Directory or an LDAP server. The wizard
 downloads account information from your directory and creates the
-accounts in {product-abbrev}.
+accounts in {product-short}.
 
 Refer to the {product-admin-guide} to learn more about provisioning accounts.
 
@@ -1500,8 +1497,7 @@ include::ephemeral.adoc[leveloffset=+1]
 == Uninstalling Zimbra Collaboration
 
 To uninstall servers, run the install script with the `-u` option.
-Then delete the `/opt/zimbra` directory and remove the {product-abbrev} tgz file on the
-servers.
+Then delete the `/opt/zimbra` directory and remove the {product-short} `tgz` file on the servers.
 
 . Change directories to the original install directory for the zcs
 files.

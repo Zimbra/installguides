@@ -2,7 +2,6 @@
 :product-short: Zimbra 9
 :product-family: Zimbra
 :product-provider: Zimbra
-:product-abbrev: ZCS
 :product-admin-guide: https://zimbra.github.io/zimbra-9/adminguide.html[{product-name} Administration Guide]
 :icons: font
 :title-page:

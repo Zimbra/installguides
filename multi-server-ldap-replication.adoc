@@ -14,7 +14,7 @@ the replica servers.
 The {product-short} install program is used to configure a master LDAP
 server and additional read-only replica LDAP servers. The master LDAP
 server is installed and configured first, following the normal
-{product-abbrev} installation options. The LDAP replica server
+{product-short} installation options. The LDAP replica server
 installation is modified to point the replica server to the LDAP
 master host.
 
@@ -46,14 +46,14 @@ replication on the LDAP Master.
 == Installing a Replica LDAP Server
 
 The master LDAP server must be running when you install the replica
-server. You run the {product-abbrev} install program on the replica
+server. You run the {product-short} install program on the replica
 server to install the LDAP package.
 
 Follow steps 1 through 4 in <<starting_multiple_server_install>>
 to open a SSH session to the LDAP server, log on to the server
 as root, and unpack the {product-short} software.
 
-. Type `Y` and press kbd:[Enter] to install the `zimbra-ldap` package. In the
+. Type kbd:[Y] and press kbd:[Enter] to install the `zimbra-ldap` package. In the
 screen shot below, the package to be installed is emphasized.
 +
 [subs="quotes"]
@@ -76,9 +76,9 @@ zimbra-ldap
 This system will be modified. Continue [N] *Y*
 ----
 +
-. Type `Y`, and press kbd:[Enter] to modify the system. The selected packages
+. Type kbd:[Y], and press kbd:[Enter] to modify the system. The selected packages
 are installed. The Main menu shows the default entries for the LDAP
-replica server. To expand the menu type `X` and press kbd:[Enter].
+replica server. To expand the menu type kbd:[X] and press kbd:[Enter].
 +
 ----
 Main menu
@@ -98,7 +98,7 @@ Main menu
 Select from menu, or press 'a' to apply config (? - help)
 ----
 +
-. Type `1` to display the _Common Configuration_ submenus.
+. Type kbd:[1] to display the _Common Configuration_ submenus.
 +
 ----
 Common Configuration:
@@ -112,13 +112,13 @@ Common Configuration:
   7) TimeZone:                                  (GMT-08.00) Pacific Time (US & Canada)
 ----
 +
-. Type `2` to change the *Ldap Master host* name to the name of the
+. Type kbd:[2] to change the *Ldap Master host* name to the name of the
 Master LDAP host.
-. Type `3`, to change the *Ldap port* to the same port as configured
+. Type kbd:[3], to change the *Ldap port* to the same port as configured
 for the Master LDAP server.
-. Type `4` and change the *Ldap Admin password* to the
-Master LDAP admin password, then type `r` to return to the main menu.
-. Type `2` to display the _LDAP configuration_ submenu.
+. Type kbd:[4] and change the *Ldap Admin password* to the
+Master LDAP admin password, then type kbd:[r] to return to the main menu.
+. Type kbd:[2] to display the _LDAP configuration_ submenu.
 +
 ----
 Ldap configuration
@@ -132,8 +132,8 @@ Ldap configuration
   7) Ldap Nginx password:                       set
 ----
 +
-.. Type `2` and change *Create Domain* to `no`.
-.. Type `4` for *LDAP replication password* and enter the same password to
+.. Type kbd:[2] and change *Create Domain* to `no`.
+.. Type kbd:[4] for *LDAP replication password* and enter the same password to
 match the value on the Master LDAP Admin user password for this local
 config variable.
 +
@@ -153,7 +153,7 @@ zmlocalconfig -s ldap_postfix_password
 ----
 ====
 +
-. When the LDAP server is configured, type `a` to apply the
+. When the LDAP server is configured, type kbd:[a] to apply the
   configuration changes. Press kbd:[Enter] to save the configuration data.
 +
 ----
@@ -170,7 +170,7 @@ Installation complete - press return to exit
 ----
 +
 . When *Save Configuration data to a file* appears, press kbd:[Enter].
-. When *The system will be modified - continue?* appears, type `y` and press
+. When *The system will be modified - continue?* appears, type kbd:[y] and press
 kbd:[Enter].
 +
 ----
@@ -274,7 +274,7 @@ master LDAP server.
 value. Type	`zmlocalconfig [ldap_url]`.
 . Remove the disabled LDAP replica server URL from `zmlocalconfig`. Do
 this by modifying the `ldap_url` to only include enabled
-{product-abbrev} LDAP servers.
+{product-short} LDAP servers.
 +
 IMPORTANT: The master LDAP server should always be
 at the end of the `ldap_url` string value.
@@ -320,7 +320,7 @@ typically five minutes, although this value is configurable.
 
 Run the script `zmreplchk` located in `/opt/zimbra/libexec`.
 
-IMPORTANT: This script must be run on a {product-abbrev} server that has a
+IMPORTANT: This script must be run on a {product-short} server that has a
 `localconfig` value set for `ldap_url` that includes all of the replica
 servers and ends with the master server.
 

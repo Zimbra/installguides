@@ -26,7 +26,7 @@ ID’s that are unique to that specific server. Other LDAP master
 server can use the same replication ID, but within the server, these
 replication IDs must be unique.
 
-You can run the {product-abbrev} multiple master CLI,
+You can run the {product-short} multiple master CLI,
 `zmldapquery-mmr` from a specific master to see the server ID for that
 master and all multi-master servers that are in the group and to see
 the replication ID values for those masters.
@@ -47,7 +47,7 @@ run the command again.
 When `zmlocalconfig` is run the first time, the master LDAP servers
 are configured as follows:
 
-* The first master LDAP server ID is set to `1`.
+* The first master LDAP server ID is set to kbd:[1].
 * The master LDAP server is put in a group with a secondary master
 that is listening to LDAP on port `389`.
 * The replication ID is set to `100` by default on the secondary
@@ -72,7 +72,7 @@ zmlocalconfig -e ldap_master_url="ldap://<<master-1.example.com>>:389 ldap://<<m
 == Installing a Secondary Master LDAP Server
 
 The master LDAP server must be running when you install the secondary
-LDAP servers. You run the {product-abbrev} install program on the
+LDAP servers. You run the {product-short} install program on the
 secondary master LDAP servers to install the LDAP package.
 
 === Passwords Required to Install the Secondary Master
@@ -88,7 +88,7 @@ passwords:
 * Amavis LDAP password
 * Postfix LDAP password
 
-To find these passwords, on the {product-abbrev} server run:
+To find these passwords, on the {product-short} server run:
 
 ----
 zmlocalconfig -s | grep passw | grep ldap
@@ -100,35 +100,35 @@ zmlocalconfig -s | grep passw | grep ldap
 . Follow steps 1 through 4 in <<starting_multiple_server_install>>
 to open a SSH session to the LDAP server, log on to the server
 as root, and unpack the {product-short} software.
-. Type `Y` and press kbd:[Enter] to install the `zimbra-ldap` package.
-. Type `Y`, and press kbd:[Enter] to modify the system. The selected packages are
+. Type kbd:[Y] and press kbd:[Enter] to install the `zimbra-ldap` package.
+. Type kbd:[Y], and press kbd:[Enter] to modify the system. The selected packages are
 installed. The Main menu shows the default entries for the LDAP
 server.
-. Type `1` to display the _Common Configuration_ submenu.
-.. Type `2` to change the *LDAP Master host* name to the name of the
+. Type kbd:[1] to display the _Common Configuration_ submenu.
+.. Type kbd:[2] to change the *LDAP Master host* name to the name of the
 primary master's hostname; e.g., _master-1.example.com_.
-.. Type `4` to change the *LDAP admin password* to the {product-short} admin
+.. Type kbd:[4] to change the *LDAP admin password* to the {product-short} admin
 password of the primary master.
-.. Type `r` to return to the main menu.
-. Type `2` to display the _LDAP configuration_ submenu.
-.. Type `4` to change the type to `mmr`.
+.. Type kbd:[r] to return to the main menu.
+. Type kbd:[2] to display the _LDAP configuration_ submenu.
+.. Type kbd:[4] to change the type to `mmr`.
 +
-NOTE: Item `5`, _LDAP Server ID_, is set to `2`. If this is the second
-master, leave it unchanged. If it the third or later master, select `5`
+NOTE: Item kbd:[5], _LDAP Server ID_, is set to kbd:[2]. If this is the second
+master, leave it unchanged. If it the third or later master, select kbd:[5]
 and update the server ID accordingly.
 +
 The next four steps are to change the default passwords on this server
 to match the passwords on the _master-1_ LDAP server.
 +
-.. Type `7` to change the _LDAP replication password_.
-.. Type `8` to change the _LDAP postfix password_.
-.. Type `9` to change the _LDAP amavis password_.
+.. Type kbd:[7] to change the _LDAP replication password_.
+.. Type kbd:[8] to change the _LDAP postfix password_.
+.. Type kbd:[9] to change the _LDAP amavis password_.
 .. Type `10` to change the _LDAP NGINX password_.
-.. Type `r` to return to the main menu.
-. Type `a` to apply the configuration changes. Press kbd:[Enter] to save
+.. Type kbd:[r] to return to the main menu.
+. Type kbd:[a] to apply the configuration changes. Press kbd:[Enter] to save
 the configuration data.
 . When *Save Configuration data to a file* appears, press kbd:[Enter].
-. When *The system will be modified - continue?* appears, type `y` and press
+. When *The system will be modified - continue?* appears, type kbd:[y] and press
 kbd:[Enter].
 +
 NOTE: The server is modified. Installing all the components and configuring the
@@ -147,7 +147,7 @@ zmlocalconfig -e ldap_master_url="ldap://<<master-2.example.com>>:389 ldap://<<m
 
 == Promote Existing Replicas to Multi-Master LDAP Servers
 
-In an existing {product-abbrev} setup where there is already a single master and
+In an existing {product-short} setup where there is already a single master and
 multiple replicas, you can promote an existing replica to become a
 secondary master.
 
@@ -164,7 +164,7 @@ same as the first master LDAP server.
 ** LDAP postfix password = `zmldappasswd -p <password>`
 ** LDAP amavis password = `zmldappasswd -a <password>`
 ** LDAP NGINX password = `zmldappasswd -n <password>`
-. Assign the next Server ID to this master. This example is `3`
+. Assign the next Server ID to this master. This example is kbd:[3]
 +
 ----
 /opt/zimbra/libexec/zmldappromote-replica-mmr -s 3
@@ -190,8 +190,7 @@ the master it was previously replicating from.
 To delete a multi-master replication (MMR) node, use the following
 steps.
 
-NOTE: Deleting an MMR node can only be performed in {product-abbrev}
-8.0.7 and later.
+NOTE: Deleting an MMR node can only be performed in {product-name} 8.0.7 and later.
 
 . Update the `ldap_master_url` and `ldap_url` on every node, removing the
 LDAP MMR node that will be shut down.
@@ -251,7 +250,7 @@ typically five minutes, although this value is configurable.
 
 Run the script `zmreplchk` located in `/opt/zimbra/libexec`.
 
-IMPORTANT: This script must be run on a {product-abbrev} server that has a
+IMPORTANT: This script must be run on a {product-short} server that has a
 `localconfig` value set for `ldap_url` that includes all of the master
 servers.
 
