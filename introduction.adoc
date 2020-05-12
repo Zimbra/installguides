@@ -13,7 +13,7 @@ The accounts you create are able to send and receive external email.
 == Important Notice About Single Server Installations
 
 {product-name} is designed to be the only application suite installed on the server.
-As part of the installation process, {product-name} bundles and installs various other third party and open source software, including http://www.eclipse.org/jetty/[Eclipse Jetty], http://www.postfix.org/[Postfix], and https://www.openldap.org/[OpenLDAP®.
+As part of the installation process, {product-name} bundles and installs various other third party and open source software, including http://www.eclipse.org/jetty/[Eclipse Jetty], http://www.postfix.org/[Postfix], and https://www.openldap.org/[OpenLDAP®].
 The versions installed have been tested and configured to work with {product-short} software.
 See the {product-name} Administrator Guide for a complete list of software.
 
