@@ -119,7 +119,7 @@ Checking for existing installation...
 IMPORTANT: The license agreement displays in multiple sections, and you must accept each section of the license agreement.
 --
 
-4. `Use {product-short}'s package repository [Y]` displays, press `enter` to continue. Your system will be configured to add
+4. `Use {product-short}'s package repository [Y]` displays, press kbd:[Enter] to continue. Your system will be configured to add
 the {product-short} packaging repository for *yum* or *apt-get* as appropriate so it can install the {product-short} 3rd party packages.
 +
 --

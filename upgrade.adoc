@@ -7,6 +7,10 @@ include::settings.adoc[]
 Please review the following information to decide if {product-name} {product-version} is suitable for you.
 
 * Zimbra Touch Client, Zimbra Mobile Client, and Zimbra HTML (Standard) Client are no longer a part of Zimbra starting from Version 9.0.0.
++
+
+IMPORTANT:  *Zimbra Connect replaces Zimbra Talk* during the upgrade process. You must choose to install `zimbra-connect` when prompted as `zimbra-talk` is removed later during the upgrade process.
+
 * If you are currently on Zimbra V8.8.15 Patch 7, update all NG modules before upgrading to Zimbra 9.0.0.
 * Zimbra 9.0.0 introduces two versions of Zimbra Web Client -- Modern and Classic.
 * A Zimbra Network Edition license is required to use the Modern Web App.
@@ -106,16 +110,7 @@ Contact {product-provider} sales for an updated license file prior to upgrading 
 
 === Upgrading LDAP Replica Servers or Multi-Master Server
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 NOTE: These instructions apply to {product-name} 8.0.0 and later.
-=======
-NOTE: These instructions apply to {product-name} 8.0.0, 8.0.1, 8.0.2 to {product-abbrev}
-8.0.4 and later.
->>>>>>> 61cde18... Replaced references
-=======
-NOTE: These instructions apply to {product-name} 8.0.0 and later.
->>>>>>> be4fd51... removed references to product-abbrev and ZCS
 
 If you have replica servers or are in multi-master mode, you have to install the {product-short} _LDAP_ schema specific to the release you are upgrading to onto the replica servers or onto the multi-master server before you upgrade to {product-name} 8.0.4 and later.
 See https://bugzilla.zimbra.com/show_bug.cgi?id=81048[Bug 81048].
