@@ -54,7 +54,7 @@ A {product-short} license is required to use the {modern-client} in {product-nam
 endif::z9[]
 
 To try out {product-name}, you can obtain trial versions free of charge.
-Once your system is installed in a production environment, you will need to purchase a subscription or a perpetual license.
+Once you are ready to install a production environment, you need to purchase a subscription or a perpetual license.
 
 [cols="25,75",options="header",grid="rows"]
 |=======================================================================
@@ -67,7 +67,7 @@ It expires in 60 days.
 
 |Trial extended |
 You can obtain a Trial Extended license from {product-provider} Sales by contacting sales@zimbra.com or calling 1-972-407-0688.
-This license allows you to create up to 50 users and is valid for an extended period of time.
+This license allows you to create up to 50 users and is valid for an extended period.
 
 |Subscription |
 A {product-short} Subscription license can only be obtained through purchase.
@@ -130,7 +130,7 @@ IMPORTANT: Upgraded {product-name} versions require an immediate activation to m
 == Automatic License Activation
 
 Licenses are automatically activated if the {product-name} server has a connection to the Internet and can communicate with the {product-short} License server.
-If you are unable to activate your license automatically, see the next section on <<Manual_License_Activation,Manual License Activation>>.
+If you are unable to activate your license this way, see the next section on <<Manual_License_Activation,Manual License Activation>>.
 
 [[Manual_License_Activation]]
 == Manual License Activation
@@ -145,7 +145,7 @@ If you have problems accessing the Support Portal, contact Zimbra Sales at sales
 [[License_Not_Installed_or_Activated]]
 == When Licenses are not Installed or Activated
 
-If you fail to install or activate your {product-name} server license, the following scenarios describe how your {product-name} server will be impacted.
+If you fail to install or activate your {product-name} server license, the following scenarios describe the impact on your {product-name} server.
 
 [cols="25,75",options="header",grid="rows"]
 |=======================================================================
@@ -178,11 +178,11 @@ If the license ending date has passed and the 30 day grace period expired, the {
 Go to the {product-provider} Website https://www.zimbra.com to obtain a trial license from the Network Downloads area.
 Contact {product-provider} sales regarding a trial extended license, or to purchase a subscription license or perpetual license, by emailing sales@zimbra.com or calling 1-972-407-0688.
 
-The subscription and perpetual license can only install on the {product-name} system identified during purchase.
+A subscription or perpetual license can only install on the {product-name} system identified during purchase.
 Only one {product-short} license is required for your {product-name} environment.
 This license sets the maximum number of accounts on the system.
 
-Current license information, including the number of accounts purchased, the number of accounts used, and the expiration date, can be viewed in the Admin Console.
+View current license information, including the number of purchased accounts, the number of accounts used, and the expiration date, in the Admin Console.
 
 Admin Console: ::
 *Home -> Configure -> Global Settings -> License*.
