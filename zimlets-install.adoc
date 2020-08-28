@@ -1,12 +1,13 @@
 == Installing Zimlets for {modern-client}
 
-These five zimlets are available.
+These six zimlets are available.
 
 * Slack
 * Zoom
 * Dropbox
 * Google Drive
 * Onedrive
+* Jitsi
 
 You have to install and configure them for users to integrate and use these zimlets.
 Once you are done installing the zimlet(s), you need to restart the mailbox service before configuring them.
@@ -87,6 +88,23 @@ zmmailboxdctl restart
 RHEL:: `yum install zimbra-zimlet-onedrive`
 
 Ubuntu:: `apt-get install zimbra-zimlet-onedrive`
+
+
+* Restart mailbox service as a `zimbra` user:
+
+[source, bash]
+----
+su - zimbra
+zmmailboxdctl restart
+----
+
+=== Jitsi
+
+* As `root` run the below command:
+
+RHEL:: `yum install zimbra-zimlet-jitsi`
+
+Ubuntu:: `apt-get install zimbra-zimlet-jitsi`
 
 
 * Restart mailbox service as a `zimbra` user:
