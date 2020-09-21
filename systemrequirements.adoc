@@ -42,6 +42,8 @@ additional space for mail storage. The other nodes require 100MB.
 |*Operating System*
 |The following operating systems are supported:
 
+* Red Hat® Enterprise Linux® 8 (64-bit)
+* CentOS Linux® 8 (64-bit)
 * Red Hat® Enterprise Linux® 7 (64-bit)
 * CentOS Linux® 7 (64-bit)
 * Red Hat Enterprise Linux 6 (64-bit), *patch level 4 or later is required*
