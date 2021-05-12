@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>Zimbra Collaboration 9.0.0 Upgrade Steps</title>
+<link rel="stylesheet" href="./stylesheets/asciidoctor-custom.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<h1>Zimbra Collaboration 9.0.0 Upgrade Steps</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_before_you_upgrade">Before you upgrade</a>
+<ul class="sectlevel2">
+<li><a href="#_database_integrity_checking">Database Integrity Checking</a></li>
+<li><a href="#_preparing_your_operating_system">Preparing your operating system</a>
+<ul class="sectlevel3">
+<li><a href="#_ubuntu_os">Ubuntu OS</a></li>
+<li><a href="#_red_hat_enterprise_linuxcentos_linux">Red Hat Enterprise Linux/CentOS Linux</a></li>
+</ul>
+</li>
+<li><a href="#_license_activation">License Activation</a></li>
+<li><a href="#_upgrading_ldap_replica_servers_or_multi_master_server">Upgrading LDAP Replica Servers or Multi-Master Server</a></li>
+<li><a href="#_disable_sslv3_support">Disable SSLv3 Support</a></li>
+<li><a href="#_update_default_proxy_ssl_ciphers_attribute">Update Default Proxy SSL Ciphers Attribute</a></li>
+<li><a href="#_customizing_zco_installations">Customizing ZCO Installations</a></li>
+</ul>
+</li>
+<li><a href="#_upgrade_instructions">Upgrade Instructions</a>
+<ul class="sectlevel2">
+<li><a href="#_download_the_software">Download the Software</a></li>
+<li><a href="#_single_server_upgrade_steps">Single Server Upgrade Steps</a>
+<ul class="sectlevel3">
+<li><a href="#_process">Process</a></li>
+</ul>
+</li>
+<li><a href="#_multi_server_environment_upgrade_steps">Multi-Server Environment Upgrade Steps</a>
+<ul class="sectlevel3">
+<li><a href="#_process_2">Process</a></li>
+</ul>
+</li>
+<li><a href="#_using_lmdb_as_the_supported_back_end_for_on_disk_database_maps">Using LMDB as the Supported Back-end for On-disk Database Maps</a></li>
+</ul>
+</li>
+<li><a href="#_after_the_upgrade_is_complete">After the Upgrade is Complete</a></li>
+<li><a href="#_installupgrade_zimbra_drive_ng">Install/Upgrade Zimbra Drive NG</a></li>
+<li><a href="#_installing_zimlets_for_modern_web_app">Installing Zimlets for Modern Web App</a>
+<ul class="sectlevel2">
+<li><a href="#_slack">Slack</a></li>
+<li><a href="#_zoom">Zoom</a></li>
+<li><a href="#_dropbox">Dropbox</a></li>
+<li><a href="#_google_drive">Google Drive</a></li>
+<li><a href="#_onedrive">Onedrive</a></li>
+<li><a href="#_ephemeral_data_migration">Ephemeral Data Migration</a></li>
+</ul>
+</li>
+<li><a href="#_remove_current_version_and_perform_clean_install_of_zimbra_9">Remove Current Version and Perform Clean Install of Zimbra 9</a></li>
+<li><a href="#_status_of_your_customization_after_upgrade">Status of Your Customization after Upgrade</a></li>
+<li><a href="#_changes_to_customized_themes">Changes to Customized Themes</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_before_you_upgrade">Before you upgrade</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Please review the following information to decide if Zimbra Collaboration 9.0.0 is suitable for you.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Zimbra Touch Client, Zimbra Mobile Client, and Zimbra HTML (Standard) Client are no longer a part of Zimbra starting from Version 9.0.0.</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<strong>Zimbra Connect replaces Zimbra Talk</strong> during the upgrade process. You must choose to install <code>zimbra-connect</code> when prompted as <code>zimbra-talk</code> is removed later during the upgrade process.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>If you are currently on Zimbra V8.8.15 Patch 7, update all NG modules before upgrading to Zimbra 9.0.0.</p>
+</li>
+<li>
+<p>Zimbra 9.0.0 introduces two versions of Zimbra Web Client&#8201;&#8212;&#8201;Modern and Classic.</p>
+</li>
+<li>
+<p>A Zimbra Network Edition license is required to use the Modern Web App.</p>
+</li>
+<li>
+<p>It is recommended that the Modern Web App is set as the default web client. Even after selecting a default, the Modern Web App and the Classic Web App can be used simultaneously by users as per their choice.</p>
+</li>
+<li>
+<p>To know more about highlights of the Modern Web App, please refer to Introducing the Modern Web Application.</p>
+</li>
+<li>
+<p>The Classic Web App offers the same functionality as the Advanced Web Client in Zimbra version 8.8.15.</p>
+</li>
+<li>
+<p>The Modern Web App is actively under development, with some features not yet available. Refer to <a href="https://zimbra.github.io/adminguide/latest/index.html#table_email_features">Email Features</a> (e.g., Personas, <a href="https://zimbra.github.io/adminguide/latest/index.html#_working_with_distribution_lists">System Distribution Lists</a>, and Dumpster.</p>
+</li>
+<li>
+<p>Briefcase cannot be used with Modern Web App. Though users may continue to use Briefcase with Classic Web App, it is recommended that existing users of Briefcase migrate to Zimbra Drive.</p>
+</li>
+<li>
+<p>Existing customized themes, logo branding changes, and crontab changes are incompatible with, and hence do not reflect in the Modern Web App. Branding needs to be re-configured to work with the Modern Web App. The Modern Web App does not currently support themes. Please refer to the <a href="https://zimbra.github.io/zimbra-9/adminguide.html#_customizing_modern_web_app">Customizing Modern Web App</a> section of Admin Guide for more information related to configuration.</p>
+</li>
+<li>
+<p>Currently supported languages in the application UI for the Modern Web App are - Chinese (China), English (US), French (France), German, Hindi, Indonesian, Italian, Japanese, Portuguese (Portugal), Spanish and Thai.</p>
+</li>
+<li>
+<p>Zimlets are supported on both the Web Clients.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Zimlets that work with Zimbra 8.8 will work with the Classic Web App; however, they are incompatible with the Modern Web App. Due to technology changes, there is no way to migrate the Zimlets from the Classic Web App to the Modern Web App or vice-versa.</p>
+</li>
+<li>
+<p>The Zimlets for Zimbra Drive, Zimbra Connect and Zimbra Docs are available for both web applications.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Be sure to read the <a href="https://wiki.zimbra.com/wiki/Zimbra_Releases/9.0.0">release notes</a> information before upgrading.</p>
+</div>
+<div class="sect2">
+<h3 id="_database_integrity_checking">Database Integrity Checking</h3>
+<div class="paragraph">
+<p>Some customers have had corrupted databases prior to upgrade, and the upgrade has in some of those cases exacerbated the problem.
+In order to detect any corrupted databases as early as possible, we have added an optional step to check the MariaDB database with <code>zmdbintegrityreport</code> prior to making any system changes.
+You are prompted to decide if you would like to run the <code>zmdbintegrityreport</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>zmdbintegrityreport</code> can take minutes to an hour to run, depending on your system size and disk bandwidth.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>zmdbintegrityreport</code> is run on a weekly basis from cron on all zimbra-store nodes.
+Large sites can opt to disable this by setting <code>zmlocalconfig -e zmdbintegrityreport_disabled=TRUE</code>.
+If you choose to disable this, it is recommended that the integrity reports be run by hand during your normal maintenance windows and prior to running any Zimbra 9 upgrades.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_preparing_your_operating_system">Preparing your operating system</h3>
+<div class="paragraph">
+<p>Before you upgrade, Zimbra recommends that the operating system is updated with the latest patches that have been tested with Zimbra Collaboration.</p>
+</div>
+<div class="sect3">
+<h4 id="_ubuntu_os">Ubuntu OS</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Ubuntu 18.04 LTS Server Edition (64-bit)</p>
+</li>
+<li>
+<p>Ubuntu 16.04 LTS Server Edition (64-bit)</p>
+</li>
+<li>
+<p>Ubuntu 14.04 LTS Server Edition (64-bit)</p>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If the original install was done with Ubuntu 12.04.2 or earlier, manual intervention is required to switch to the saucy (3.11) or later kernel series.
+See <a href="https://wiki.ubuntu.com/Kernel/LTSEnablementStack" class="bare">https://wiki.ubuntu.com/Kernel/LTSEnablementStack</a> for further information.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can find your current kernel version by running:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>uname -a</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>build@zre-ubuntu12-64:~$ uname -a
+Linux zre-ubuntu12-64 3.11.0-17-generic #31~precise1-Ubuntu SMP Tue Feb 4 21:25:43 UTC 2014 x86_64 x86_64 x86_64 GNU/Linux</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_red_hat_enterprise_linuxcentos_linux">Red Hat Enterprise Linux/CentOS Linux</h4>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>If running the RHEL linux distribution, you must have a current valid license from RedHat.</p>
+</li>
+<li>
+<p>The server must have a valid yum or apt-get configuration so that it can reach the Zimbra package servers.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>RedHat® Enterprise Linux® 7, AS/ES (64-bit)</p>
+</li>
+<li>
+<p>CentOS Linux® 7 (64-bit)</p>
+</li>
+<li>
+<p>Red Hat Enterprise Linux 6, AS/ES (64-bit), patch level 4 or later is required</p>
+</li>
+<li>
+<p>CentOS Linux 6 (64-bit), patch level 4 or later is required</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_license_activation">License Activation</h3>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>At the beginning of an upgrade installation, the existing license is validated as being current and qualifies for the upgrade.
+If your license is expired, an error message displays and the upgrade cannot be performed.
+Contact Zimbra Sales for a license renewal to continue your upgrade.</p>
+</li>
+<li>
+<p>An upgrade installation will not proceed without automatic activation or a manually activated license file.
+License activations are limited to five activations per license file.
+If you have previously used all activations prior to upgrading your production system, you must contact Zimbra Sales to enable additional license activations.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>All Zimbra Collaboration 9.0.0 installations require a valid license and license activation.
+New installs will have a 10 day grace period from the license issue date before requiring activation.</p>
+</div>
+<div class="paragraph">
+<p>License activation is automatic during the install with systems that have external access to the Zimbra license servers.
+A means of creating manual activations will be provided for systems that do not have external access to the Zimbra license servers.
+See the <a href="https://zimbra.github.io/zimbra-9/adminguide.html">Zimbra Collaboration Administration Guide</a> for more information.</p>
+</div>
+<div class="paragraph">
+<p>When upgrading, the way in which ZCO and archiving licensing is enforced might have changed on the server if you are using an older version of Zimbra Collaboration.
+Older licenses might have <code>MAPIConnectorAccountsLimit</code> set to <kbd>0</kbd> or <code>ArchivingAccountsLimit</code> missing in the license.
+Contact Zimbra sales for an updated license file prior to upgrading if you have licensed either of these features and your current license does not properly reflect the correct number.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_upgrading_ldap_replica_servers_or_multi_master_server">Upgrading LDAP Replica Servers or Multi-Master Server</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+These instructions apply to Zimbra Collaboration 8.0.0 and later.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you have replica servers or are in multi-master mode, you have to install the Zimbra 9 <em>LDAP</em> schema specific to the release you are upgrading to onto the replica servers or onto the multi-master server before you upgrade to Zimbra Collaboration 8.0.4 and later.
+See <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=81048">Bug 81048</a>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>On the master <em>LDAP</em> server, perform a software installation only of Zimbra Collaboration 8.0.4 and later.</p>
+<div class="listingblock">
+<div class="content">
+<pre>./install.sh -s</pre>
+</div>
+</div>
+</li>
+<li>
+<p>On each replica or additional master <em>LDAP</em> server in MMR mode, as the <code>zimbra</code> user:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Stop the server via one of the following commands:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>ldap stop</code></p>
+</li>
+<li>
+<p><code>zmcontrol stop</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Move the <code>zimbra</code> schema out of the way.</p>
+<div class="listingblock">
+<div class="content">
+<pre>cd /opt/zimbra/data/ldap/config/cn=config/cn=schema
+mv cn={4}zimbra.ldif /opt/zimbra/data/ldap/cn={4}zimbra.ldif.dead</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Copy the schema from the master <em>LDAP</em> server.</p>
+<div class="listingblock">
+<div class="content">
+<pre>scp root@&lt;master&gt;:/opt/zimbra/common/etc/openldap/zimbra/schema/zimbra.ldif cn={4}zimbra.ldif</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Edit cn={4}zimbra.ldif to change the following two lines:</p>
+<div class="listingblock">
+<div class="content">
+<pre>dn: cn=zimbra,cn=schema,cn=config     -------&gt;     dn: cn={4}zimbra
+cn: zimbra                            -------&gt;     cn: {4}zimbra</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Start the server via one of the following commands:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p><code>ldap start</code></p>
+</li>
+<li>
+<p><code>zmcontrol start</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>On the master <em>LDAP</em> server run:</p>
+<div class="listingblock">
+<div class="content">
+<pre>/opt/zimbra/libexec/zmsetup.pl</pre>
+</div>
+</div>
+</li>
+<li>
+<p>On each replica server run:</p>
+<div class="listingblock">
+<div class="content">
+<pre> ./install.sh</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To continue the upgrade, see <a href="#_multi_server_environment_upgrade_steps">Multi-Server Environment Upgrade Steps</a>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_disable_sslv3_support">Disable SSLv3 Support</h3>
+<div class="paragraph">
+<p>If upgrading to Zimbra Collaboration 8.7.0 and above, you need to completely disable SSLv3 support after the upgrade.
+Disabling SSLv3 is recommended as a result
+of the SSLv3 vulnerability described in <a href="https://www.us-cert.gov/ncas/alerts/TA14-290A">Alert (TA14-290A)</a>.</p>
+</div>
+<div class="paragraph">
+<p>SSLv3 support has been deprecated by default in 8.6.0, although when upgrading from previous versions of Zimbra Collaboration, some protocols might still be enabled.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>New keys created in Zimbra Collaboration 8.7.0 (or later) have SSLv3 disabled by default.</p>
+</li>
+<li>
+<p>Pre-existing keys from earlier versions of Zimbra 9 will still have SSLv3 enabled.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Follow the steps in the Zimbra wiki article <a href="https://wiki.zimbra.com/wiki/How_to_disable_SSLv3">How to Disable SSLv3</a> to disable SSLv3 after upgrading to Zimbra Collaboration 8.7.0.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_update_default_proxy_ssl_ciphers_attribute">Update Default Proxy SSL Ciphers Attribute</h3>
+<div class="paragraph">
+<p>Whenever upgrading, it is recommended that you check the values of the following attributes (<code>zmprov gcf &lt;attr&gt;</code>) and compare them with the current default values (<code>zmprov desc -a &lt;attr&gt;</code>).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>zimbraReverseProxySSLCiphers
+zimbraReverseProxySSLProtocols
+zimbraSSLExcludeCipherSuites
+zimbraMailboxdSSLProtocols</pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+If you have not performed any recent hardening of your settings,
+your config should already match the Zimbra 9 default; and no action would be required.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In addition, it is recommended to make the following changes:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Remove the following from <code>zimbraReverseProxySSLCiphers</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre>ECDHE-RSA-RC4-SHA
+ECDHE-ECDSA-RC4-SHA
+RC4-SHA</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add the following to <code>zimbraReverseProxySSLCiphers</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre>!RC4</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+See <a href="https://wiki.zimbra.com/wiki/Cipher_suites" class="bare">https://wiki.zimbra.com/wiki/Cipher_suites</a> for the most current information on cipher suite configuration.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_customizing_zco_installations">Customizing ZCO Installations</h3>
+<div class="paragraph">
+<p>Administrators who want to customize the <em>ZCO</em> installation MSI should use the unsigned version of the MSI (<code>ZimbraConnectorOLK_n.n.n.nnnn_xnn-unsigned.msi</code>), available in the Zimbra download directory.
+The modified MSI should then replace the standard signed MSI (<code>ZimbraConnectorOLK_n.n.n.nnnn_xnn.msi</code>) in order to be available to end users from <code>/downloads/index.html</code> and the <em>ZCO</em> auto-upgrade process.
+(<a href="https://bugzilla.zimbra.com/show_bug.cgi?id=85067">Bug 85067</a>).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_upgrade_instructions">Upgrade Instructions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_download_the_software">Download the Software</h3>
+<div class="paragraph">
+<p>Go to <a href="http://www.zimbra.com/downloads/zimbra-collaboration" class="bare">http://www.zimbra.com/downloads/zimbra-collaboration</a> to access the downloads section.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Before you begin the upgrade, make sure you have a good backup for all users!</p>
+</li>
+<li>
+<p>Database reloads are performed on 7.x to any 8.x upgrade.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When you run the install script and Zimbra 9 is already installed, a prompt appears asking if you want to upgrade.
+Follow the instructions in this release note to perform the upgrade.
+For additional information, refer to the installation guide.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Zimbra recommends that an install or upgrade session be run with a UNIX command such as <code>screen</code> to help prevent an install or upgrade session from terminating before it is completed.
+This is important when the upgrade includes restoring a configuration that has a large number of accounts.</p>
+</div>
+<div class="paragraph">
+<p>Example command usage:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>screen ./install.sh</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_single_server_upgrade_steps">Single Server Upgrade Steps</h3>
+<div class="paragraph">
+<p>You do not need to stop the services before upgrading.
+The upgrade process automatically stops and starts the services as required for the upgrade.</p>
+</div>
+<div class="sect3">
+<h4 id="_process">Process</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log in as <code>root</code> to the Zimbra 9 server and <code>cd</code> to the directory where the Zimbra Collaboration 9.0.0 archive tar file is saved. For example, <code>cd /var/tmp</code>. Then type the following commands:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Unpack the file</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>tar xzvf zcs.tgz</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Change to the correct directory.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cd &lt;expanded-directory&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Begin the upgrade installation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>./install.sh</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>The upgrade script checks if <code>proxy</code> and <code>memcached</code> are present. If both are found, the upgrade will proceed. If either are missing then the upgrade will abort and alert.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>From 8.7.0 onwards proxy and memcached are required.</p>
+</li>
+<li>
+<p>See <a href="https://wiki.zimbra.com/wiki/Enabling_Zimbra_Proxy_and_memcached#Using_existing_servers">Enabling Zimbra Proxy and memcached</a></p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>The Zimbra 9 software agreement appears in 2 parts. Read this software license agreement and type <kbd>Y</kbd> when prompted.</p>
+</li>
+<li>
+<p>When <code>Use Zimbra&#8217;s package repository [Y]</code> appears, press <kbd>Enter</kbd> to continue.
+Your system will be configured to add the Zimbra packaging repository for <code>yum</code> or <code>apt-get</code> so it can install the Zimbra third party packages.</p>
+</li>
+<li>
+<p>When <code>Do you wish to upgrade? [Y]</code> is displayed, press <kbd>Enter</kbd> to continue.
+The upgrade packages are unpacked.</p>
+</li>
+<li>
+<p>Type <kbd>Y</kbd> when <code>Install zimbra-connect [Y]</code> appears.</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<code>zimbra-connect</code> replaces <code>zimbra-talk</code> in Zimbra 9.
+However, to make this transition seamless it is important that you install <code>zimbra-connect</code> when prompted, as <code>zimbra-talk</code> is removed later during the installation.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>The packages are listed.
+The installer also lists packages that are not installed.
+If you want to install the packages at this time, type <kbd>Y</kbd>; otherwise press <kbd>Enter</kbd>.
+The upgrade checks that there is enough space to perform the upgrade. If there is not enough space, the upgrade stops.</p>
+</li>
+<li>
+<p>When <code>The system will be modified. Continue? [N]</code> is displayed, type <kbd>Y</kbd> and press <kbd>Enter</kbd>.
+The Zimbra 9 server is stopped, and the older packages are removed.
+The upgrade process verifies which version of Zimbra 9 is being run and proceeds to upgrade the services, restores the existing configuration files, and restarts the server. If you have a configuration with a large number of accounts created, this can take a while.</p>
+</li>
+<li>
+<p>If you have not set the time zone, you will be asked to set it. This sets the time zone in the default COS. The time zone that should be entered is the time zone that the majority of users in the COS will be located in.</p>
+</li>
+<li>
+<p>When the Configuration completes, press <kbd>Enter</kbd>.</p>
+</li>
+<li>
+<p>Once all the MTA nodes are upgraded to Zimbra Collaboration 9.0.0, the following commands may be run to fix the default <code>globalconfig</code> values, if necessary.</p>
+<div class="listingblock">
+<div class="content">
+<pre>zmprov mcf zimbraMtaCommandDirectory /opt/zimbra/common/sbin
+zmprov mcf zimbraMtaDaemonDirectory /opt/zimbra/common/libexec
+zmprov mcf zimbraMtaMailqPath /opt/zimbra/common/sbin/mailq
+zmprov mcf zimbraMtaManpageDirectory /opt/zimbra/common/share/man
+zmprov mcf zimbraMtaNewaliasesPath /opt/zimbra/common/sbin/newaliases
+zmprov mcf zimbraMtaSendmailPath /opt/zimbra/common/sbin/sendmail</pre>
+</div>
+</div>
+</li>
+<li>
+<p><a href="https://bugzilla.zimbra.com/show_bug.cgi?id=104158">DSPAM is no longer shipped</a> starting <em>Zimbra Collaboration 8.7</em>. Please enter the
+following commands to disable it.</p>
+<div class="listingblock">
+<div class="content">
+<pre>zmprov ms `zmhostname` zimbraAmavisDSPAMEnabled FALSE
+zmlocalconfig -e amavis_dspam_enabled=false
+zmamavisdctl restart</pre>
+</div>
+</div>
+</li>
+<li>
+<p>It is recommended that you perform a full backup after a major upgrade, due to database schema changes.</p>
+</li>
+<li>
+<p>For the next steps after the upgrade, refer to the section <a href="#_after_the_upgrade_is_complete">After the Upgrade is Complete</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_multi_server_environment_upgrade_steps">Multi-Server Environment Upgrade Steps</h3>
+<div class="paragraph">
+<p>Upgrade the servers in the following order.
+Update each server one at a time, following the instructions under <a href="#_process_2">Process</a> below.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><em>LDAP</em> master server.
+The <em>LDAP</em> master servers must all be upgraded before proceeding, and they must be running as you upgrade the other servers.</p>
+</li>
+<li>
+<p><em>LDAP</em> replicas</p>
+</li>
+<li>
+<p><em>MTA</em> servers - see <a href="#_using_lmdb_as_the_supported_back_end_for_on_disk_database_maps">Using LMDB as the Supported Back-end for On-disk Database Maps</a>.</p>
+</li>
+<li>
+<p>Proxy servers</p>
+</li>
+<li>
+<p>Mailstore servers</p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="_process_2">Process</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log in as <code>root</code> to the Zimbra 9 server and <code>cd</code> to the directory where the Zimbra Collaboration 9.0.0 archive tar file is saved. For example, <code>cd /var/tmp</code>. Then type the following commands:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Unpack the file</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>tar xzvf zcs.tgz</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Change to the correct directory.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cd &lt;expanded-directory&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Begin the upgrade installation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>./install.sh</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>The upgrade script checks if <code>proxy</code> and <code>memcached</code> are present. If both are found, the upgrade will proceed. If either are missing then the upgrade will abort and alert.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>From 8.7.0 onwards proxy and memcached are required.</p>
+</li>
+<li>
+<p>See <a href="https://wiki.zimbra.com/wiki/Enabling_Zimbra_Proxy_and_memcached#Using_existing_servers">Enabling Zimbra Proxy and memcached</a></p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>The Zimbra 9 software agreement appears in 2 parts. Read this software license agreement and type <kbd>Y</kbd> when prompted.</p>
+</li>
+<li>
+<p>When <code>Use Zimbra&#8217;s package repository [Y]</code> appears, press <kbd>Enter</kbd> to continue.
+Your system will be configured to add the Zimbra packaging repository for <code>yum</code> or <code>apt-get</code> so it can install the Zimbra third party packages.</p>
+</li>
+<li>
+<p>When <code>Do you wish to upgrade? [Y]</code> is displayed, press <kbd>Enter</kbd> to continue.
+The upgrade packages are unpacked.</p>
+</li>
+<li>
+<p>Type <kbd>Y</kbd> when <code>Install zimbra-connect [Y]</code> appears.</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<code>zimbra-connect</code> replaces <code>zimbra-talk</code> in Zimbra 9.
+However, to make this transition seamless it is important that you install <code>zimbra-connect</code> when prompted, as <code>zimbra-talk</code> is removed later during the installation.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>The packages are listed.
+The installer also lists packages that are not installed.
+If you want to install the packages at this time, type <kbd>Y</kbd>; otherwise press <kbd>Enter</kbd>.
+The upgrade checks that there is enough space to perform the upgrade. If there is not enough space, the upgrade stops.</p>
+</li>
+<li>
+<p>When <code>The system will be modified. Continue? [N]</code> is displayed, type <kbd>Y</kbd> and press <kbd>Enter</kbd>.
+The Zimbra 9 server is stopped, and the older packages are removed.
+The upgrade process verifies which version of Zimbra 9 is being run and proceeds to upgrade the services, restores the existing configuration files, and restarts the server. If you have a configuration with a large number of accounts created, this can take a while.</p>
+</li>
+<li>
+<p>If you have not set the time zone, you will be asked to set it. This sets the time zone in the default COS. The time zone that should be entered is the time zone that the majority of users in the COS will be located in.</p>
+</li>
+<li>
+<p>When the Configuration completes, press <kbd>Enter</kbd>.</p>
+</li>
+<li>
+<p>Once all the MTA nodes are upgraded to Zimbra Collaboration 9.0.0, the following commands may be run to fix the default <code>globalconfig</code> values, if necessary.</p>
+<div class="listingblock">
+<div class="content">
+<pre>zmprov mcf zimbraMtaCommandDirectory /opt/zimbra/common/sbin
+zmprov mcf zimbraMtaDaemonDirectory /opt/zimbra/common/libexec
+zmprov mcf zimbraMtaMailqPath /opt/zimbra/common/sbin/mailq
+zmprov mcf zimbraMtaManpageDirectory /opt/zimbra/common/share/man
+zmprov mcf zimbraMtaNewaliasesPath /opt/zimbra/common/sbin/newaliases
+zmprov mcf zimbraMtaSendmailPath /opt/zimbra/common/sbin/sendmail</pre>
+</div>
+</div>
+</li>
+<li>
+<p><a href="https://bugzilla.zimbra.com/show_bug.cgi?id=104158">DSPAM is no longer shipped</a> starting <em>Zimbra Collaboration 8.7</em>. Please enter the
+following commands to disable it.</p>
+<div class="listingblock">
+<div class="content">
+<pre>zmprov ms `zmhostname` zimbraAmavisDSPAMEnabled FALSE
+zmlocalconfig -e amavis_dspam_enabled=false
+zmamavisdctl restart</pre>
+</div>
+</div>
+</li>
+<li>
+<p>It is recommended that you perform a full backup after a major upgrade, due to database schema changes.</p>
+</li>
+<li>
+<p>For the next steps after the upgrade, refer to the section <a href="#_after_the_upgrade_is_complete">After the Upgrade is Complete</a>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_lmdb_as_the_supported_back_end_for_on_disk_database_maps">Using LMDB as the Supported Back-end for On-disk Database Maps</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Starting with Zimbra Collaboration 8.5 and later, <em>Postfix</em> is linked to <em>LMDB</em>, the same back-end Zimbra 9 uses with <em>OpenLDAP</em>.
+Prior to Zimbra Collaboration 8.0, <em>Postfix</em> was linked to <em>Berkeley DB</em>.</p>
+</div>
+<div class="paragraph">
+<p>Zimbra 9 has not officially supported using any <em>Postfix</em> on-disk database maps prior to Zimbra Collaboration 8.5.
+However, these have been used through custom non-preserved modifications to the <code>postconf</code> configuration.
+These modifications will be lost on upgrade.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To restore the modifications post-upgrade, the following steps need to be performed:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Run postmap against the database input file to generate an LMDB database.</p>
+</li>
+<li>
+<p>It will be necessary to iterate through the postconf keys that have <code>hash:/path/to/db</code> values and update them in LDAP to use <code>lmdb:/path/to/db</code> values instead.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Many previously unsupported features that could be used with on-disk database maps are now fully supported by Zimbra 9.
+Check if your customizations are correctly carried forward when upgrading.
+See <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=77586">Bug 77586</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_after_the_upgrade_is_complete">After the Upgrade is Complete</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After you completed the upgrade, the following might need to be addressed.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Review <a href="https://wiki.zimbra.com/wiki/How_to_disable_SSLv3">How to disable SSLv3</a>.</p>
+</li>
+<li>
+<p>Review <a href="https://wiki.zimbra.com/wiki/Cipher_suites">Cipher suites</a>.</p>
+</li>
+<li>
+<p>During the upgrade process, Zimbra 9 might make a binary backup of existing databases when there are major structural changes occurring to the database format for ease of downgrading.
+Administrators will want to clean these up once they have confirmed a successful upgrade.
+For <em>LDAP</em> servers, these backups are in <code>/opt/zimbra/data/ldap</code>, and in the form of <code>&lt;dbname&gt;.prev.$$</code> where <code>$$</code> is the process ID of the upgrade script.
+See <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=81167">Bug 81167</a>.</p>
+</li>
+<li>
+<p>You should run <code>zmldapupgrade -b 66387</code> after upgrading.
+The <code>zimbraAllowFromAddress</code> attribute cannot be set for internal accounts or distribution lists.
+Running this script will change <code>zimbraAllowFromAddress</code> values to grants.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha">
+<li>
+<p>This step was not included into the installer-driven upgrade due to potentially long delay for sites that set <code>zimbraAllowFromAddress</code> on many accounts.</p>
+</li>
+<li>
+<p>The migration command reports how many accounts had the <code>zimbraAllowFromAddress</code> attribute set and how many of them needed migration.
+One way to verify all accounts got migrated is to run the command again.
+The total won&#8217;t change, and the number migrated should be 0.
+See <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=66387">Bug 66387</a> for more information.</p>
+</li>
+<li>
+<p>If your self-signed SSL certificates have expired, update them.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>To check for expired certificates, run the following command as the <code>zimbra</code> user:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>/opt/zimbra/libexec/zmcheckexpiredcerts -days 1 -verbose</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Zimbra Collaboration requires a valid self-signed or commercial SSL certificate for communication between some components.
+The self-signed certificates that are automatically created by the Zimbra 9 install have a default expiration.</p>
+</div>
+<div class="paragraph">
+<p>If you have a Zimbra Collaboration installation that is over one year old and are using self-signed certificates, your certificates will need to be updated either prior to the upgrade or immediately following the upgrade.</p>
+</div>
+<div class="paragraph">
+<p>After you upgrade, the following commands run as the zimbra user will regenerate the self-signed SSL certificates:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>sudo /opt/zimbra/bin/zmcertmgr createca -new
+sudo /opt/zimbra/bin/zmcertmgr deployca
+sudo /opt/zimbra/bin/zmcertmgr deploycrt self -new</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>If you were using <code>zmlogger</code> prior to Zimbra Collaboration 8.0.7, it is possible that numerous <code>rdd</code> files could be generated causing large amounts of disk space to be used.
+Zimbra Collaboration 8.0.7 and later contain a patch that prevents future additional growth of <code>rdd</code> files on the logger server.
+To clean up existing <code>rdd</code> files, use the following script.
+See <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=85222">Bug 85222</a>.</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>sudo su - zimbra
+zmloggerctl stop
+cd /opt/zimbra/logger/db/data
+
+for nhostid in $(sqlite3 /opt/zimbra/logger/db/data/logger.sqlitedb 'select id from hosts');do for ID in $(sqlite3 logger.sqlitedb "select rrd_file, col_name_19 from rrds Where csv_file == 'imap.csv' and host_id == ${nhostid}" | egrep "__[0-9]+$" | cut -d'|' -f1 | sort -n | uniq); do mv rrds/${nhostid}-$ID.rrd /opt/zimbra/logger/db/data/wrong_rrds/; done ; done
+
+for mon in {1..12}; do MON=$(LANG=en_US; date +%b -d 2013-${mon}-01); sqlite3 logger.sqlitedb "DELETE FROM rrds WHERE col_name_19 LIKE '${MON}_%'"; done
+
+sqlite3 logger.sqlitedb "VACUUM;"
+
+zmloggerctl start
+rm -R /opt/zimbra/logger/db/data/wrong_rrds
+rm /opt/zimbra/logger/db/data/logger.sqlitedb.backup</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>If you have configured the following keys, you will need to replace them as described here.</p>
+</li>
+</ol>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The following keys are deprecated:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>httpclient_client_connection_timeout
+httpclient_connmgr_connection_timeout
+httpclient_connmgr_idle_reaper_connection_timeout
+httpclient_connmgr_idle_reaper_sleep_interval
+httpclient_connmgr_keepalive_connections
+httpclient_connmgr_max_host_connections
+httpclient_connmgr_max_total_connections
+httpclient_connmgr_so_timeout
+httpclient_connmgr_tcp_nodelay</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>They are replaced by the following keys:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>httpclient_internal_client_connection_timeout
+httpclient_internal_connmgr_connection_timeout
+httpclient_internal_connmgr_idle_reaper_connection_timeout
+httpclient_internal_connmgr_idle_reaper_sleep_interval
+httpclient_internal_connmgr_keepalive_connections
+httpclient_internal_connmgr_max_host_connections
+httpclient_internal_connmgr_max_total_connections
+httpclient_internal_connmgr_so_timeout
+httpclient_internal_connmgr_tcp_nodelay
+httpclient_external_client_connection_timeout
+httpclient_external_connmgr_connection_timeout
+httpclient_external_connmgr_idle_reaper_connection_timeout
+httpclient_external_connmgr_idle_reaper_sleep_interval
+httpclient_external_connmgr_keepalive_connections
+httpclient_external_connmgr_max_host_connections
+httpclient_external_connmgr_max_total_connections
+httpclient_external_connmgr_so_timeout
+httpclient_external_connmgr_tcp_nodelay</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installupgrade_zimbra_drive_ng">Install/Upgrade Zimbra Drive NG</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Performing these step installs/updates <code>zimbra-docs</code> as well.</p>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>As <code>root</code> run the below command:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">RHEL</dt>
+<dd>
+<p><code>yum install zimbra-drive-ng</code></p>
+</dd>
+<dt class="hdlist1">Ubuntu</dt>
+<dd>
+<p><code>apt-get install zimbra-drive-ng</code></p>
+</dd>
+</dl>
+</div>
+</li>
+<li>
+<p>Restart mailbox service as a <code>zimbra</code> user:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">su - zimbra
+zmmailboxdctl restart</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installing_zimlets_for_modern_web_app">Installing Zimlets for Modern Web App</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>These five zimlets are available.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Slack</p>
+</li>
+<li>
+<p>Zoom</p>
+</li>
+<li>
+<p>Dropbox</p>
+</li>
+<li>
+<p>Google Drive</p>
+</li>
+<li>
+<p>Onedrive</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You have to install and configure them for users to integrate and use these zimlets.
+Once you are done installing the zimlet(s), you need to restart the mailbox service before configuring them.</p>
+</div>
+<div class="sect2">
+<h3 id="_slack">Slack</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>As <code>root</code> run the below command:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">RHEL</dt>
+<dd>
+<p><code>yum install zimbra-zimlet-slack</code></p>
+</dd>
+<dt class="hdlist1">Ubuntu</dt>
+<dd>
+<p><code>apt-get install zimbra-zimlet-slack</code></p>
+</dd>
+</dl>
+</div>
+</li>
+<li>
+<p>Restart mailbox service as a <code>zimbra</code> user:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">su - zimbra
+zmmailboxdctl restart</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_zoom">Zoom</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>As <code>root</code> run the below command:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">RHEL</dt>
+<dd>
+<p><code>yum install zimbra-zimlet-zoom</code></p>
+</dd>
+<dt class="hdlist1">Ubuntu</dt>
+<dd>
+<p><code>apt-get install zimbra-zimlet-zoom</code></p>
+</dd>
+</dl>
+</div>
+</li>
+<li>
+<p>Restart mailbox service as a <code>zimbra</code> user:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">su - zimbra
+zmmailboxdctl restart</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_dropbox">Dropbox</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>As <code>root</code> run the below command:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">RHEL</dt>
+<dd>
+<p><code>yum install zimbra-zimlet-dropbox</code></p>
+</dd>
+<dt class="hdlist1">Ubuntu</dt>
+<dd>
+<p><code>apt-get install zimbra-zimlet-dropbox</code></p>
+</dd>
+</dl>
+</div>
+</li>
+<li>
+<p>Restart mailbox service as a <code>zimbra</code> user:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">su - zimbra
+zmmailboxdctl restart</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_google_drive">Google Drive</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>As <code>root</code> run the below command:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">RHEL</dt>
+<dd>
+<p><code>yum install zimbra-zimlet-google-drive</code></p>
+</dd>
+<dt class="hdlist1">Ubuntu</dt>
+<dd>
+<p><code>apt-get install zimbra-zimlet-google-drive</code></p>
+</dd>
+</dl>
+</div>
+</li>
+<li>
+<p>Restart mailbox service as a <code>zimbra</code> user:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">su - zimbra
+zmmailboxdctl restart</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_onedrive">Onedrive</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>As <code>root</code> run the below command:</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">RHEL</dt>
+<dd>
+<p><code>yum install zimbra-zimlet-onedrive</code></p>
+</dd>
+<dt class="hdlist1">Ubuntu</dt>
+<dd>
+<p><code>apt-get install zimbra-zimlet-onedrive</code></p>
+</dd>
+</dl>
+</div>
+</li>
+<li>
+<p>Restart mailbox service as a <code>zimbra</code> user:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">su - zimbra
+zmmailboxdctl restart</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Please visit <a href="https://zimbra.github.io/zimbra-9/adminguide.html#_configuring_zimlets_for_modern_web_app">Configuring Zimlets for Modern Web App</a> for instructions for on how to configure zimlets for Modern Web App users.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ephemeral_data_migration">Ephemeral Data Migration</h3>
+<div class="paragraph">
+<p>Versions of Zimbra 9 prior to 9.0.0 stored <em>ephemeral data</em> in <em>LDAP</em>.  Examples of <em>ephemeral data</em> include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>zimbraAuthTokens</code></p>
+</li>
+<li>
+<p><code>zimbraCsrfTokenData</code></p>
+</li>
+<li>
+<p><code>zimbraLastLogonTimestamp</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Zimbra Collaboration version 9.0.0 introduced the ability to store <em>ephemeral data</em> in an external service such as <a href="http://ssdb.io/">SSDB</a>.
+This is an optional feature; however, it can improve <em>LDAP</em> performance and stability.</p>
+</div>
+<div class="paragraph">
+<p>Please refer to the <em><a href="https://zimbra.github.io/zimbra-9/adminguide.html">Zimbra Collaboration Administration Guide</a></em> for more information.
+Migration of <em>ephemeral data</em> out of <em>LDAP</em> and into <em>SSDB</em>  must be performed after an install or upgrade has been completed.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_remove_current_version_and_perform_clean_install_of_zimbra_9">Remove Current Version and Perform Clean Install of Zimbra 9</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you do not want to upgrade, but prefer to install Zimbra Collaboration 9.0.0 as a new installation, when you run the Zimbra Collaboration 9.0.0 install script, enter <kbd>N</kbd> when asked <code>Do you wish to upgrade?</code></p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+A warning displays asking if you want to delete all existing users and mail.
+If you enter <code>Yes</code>, all users, mail, and previous files are removed before proceeding with the new installation.
+Refer to the installation guides for installation instructions.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_status_of_your_customization_after_upgrade">Status of Your Customization after Upgrade</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Upgrading to the newest release does not delete your accounts or change your configuration.
+Configuration settings stored in <em>LDAP</em> and <em>localconfig</em> are preserved during upgrades.
+Any files installed by Zimbra Collaboration might be deprecated and/or overwritten during upgrades, removing any customizations.
+This includes customized themes, logo branding changes, and crontab changes.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Branding needs to be re-configured to work with the Modern Web App.
+And the Modern Web App currently does not support themes.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Only the core Zimlets are enabled after the upgrade.
+Zimlets that you customized and/or deployed are preserved during the upgrade but will be disabled.
+As upgrading of customized Zimlets cannot be tested before the release, Zimbra recommends that you verify that your customized Zimlets work correctly before re-enabling them for your end-users after the upgrade.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Zimlets are supported on both the Classic Web App and the Modern Web App.
+However, Zimlets used for Classic Web Client are not compatible with the Modern Web App.
+Currently, there is no way to migrate the zimlets from Classic to the Modern Web App or vice-versa.
+Existing zimlets need to be re-developed for them to work on the Modern Web App.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When upgrading to Zimbra Collaboration 8.5.x and later from a previous major Zimbra 9 version, the upgrade step disables Zimlets that are not the core Zimlets for Zimbra 9 in all COSs.
+If you have enabled other Zimlets at the account level, you might need to manually disable these Zimlets.
+See <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=77836">Bug 77836</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>All entries between the designated comments in the Zimbra 9 crontab file are overwritten with new defaults upon upgrade.
+Customized backup schedules stored in the Zimbra 9 crontab and customizations to the crontab entry outside the designated comments are preserved.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_changes_to_customized_themes">Changes to Customized Themes</h2>
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In Zimbra Collaboration 8.5.x and later, a new design for default skins was implemented.
+Custom skins created for Zimbra 9 7.x might not work as intended with Zimbra Collaboration 8.5.x and later.
+Depending on what is in the skin, the issues might range from simple things such as colors being used in the wrong places to larger issues like functional components being hidden or placed in inaccessible areas of the screen.
+The proper fix for this is to take an existing 8.5.x or later skin, duplicate it, and update the skin to meet the same needs as the old skin.
+See <a href="https://bugzilla.zimbra.com/show_bug.cgi?id=62523">Bug 62523</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2021-05-12 12:14:40 +0530
+</div>
+</div>
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+</body>
+</html>
