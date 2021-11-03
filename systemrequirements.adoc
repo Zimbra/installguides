@@ -236,6 +236,7 @@ EWS Interoperability
 |*Microsoft Outlook* a|
 * Outlook 2019: 32-bit and 64-bit editions of Microsoft Office, including Click to run.
 * Outlook 2016: 32-bit and 64-bit editions of Microsoft Office, including Office365 and Click to run versions.
+* Outlook 2013: 32-bit and 64-bit editions of Microsoft Office.
 
 |=======================================================================
 
