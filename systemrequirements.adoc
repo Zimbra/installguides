@@ -43,13 +43,15 @@ additional space for mail storage. The other nodes require 100MB.
 |The following operating systems are supported:
 
 * Red Hat® Enterprise Linux® 7 (64-bit)
+* Red Hat® Enterprise Linux® 8 (64-bit)
 * CentOS Linux® 7 (64-bit)
-* Red Hat Enterprise Linux 6 (64-bit), *patch level 4 or later is required*
-* CentOS Linux 6 (64-bit), *patch level 4 or later is required*
+* CentOS Linux® 8 (64-bit)
 * Oracle Linux 7.2
-* Oracle Linux 6.6
+* Oracle Linux 8
 * Ubuntu 16.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.7.1 and above
 * Ubuntu 18.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.8.15 and above
+* Ubuntu 20.04 LTS Server Edition (64-bit), starting from Zimbra Collaboration 8.8.15 and above
+* Rocky Linux 8 Beta (64-bit), starting from Zimbra Collaboration 8.8.15 and above
 +
 
 |*Operating System (Open Source Edition)*
@@ -70,7 +72,10 @@ https://www.zimbra.com.
 
 * *XFS*
 * *ext3* or *ext4* file systems for Linux deployments
-* *NFS* for backup only
+
+The following file system is not supported for *Store/HSM/Backup* features:
+
+* *NFS*
 
 |*Other Dependencies*
 |Netcat (`nc`) is required on all operating systems using {product-name}.
@@ -236,6 +241,7 @@ ifdef::networkeditiondoc[]
 |*Microsoft Outlook* a|
 * Outlook 2019: 32-bit and 64-bit editions of Microsoft Office, including Click to run.
 * Outlook 2016: 32-bit and 64-bit editions of Microsoft Office, including Office365 and Click to run versions.
+* Outlook 2013: 32-bit and 64-bit editions of Microsoft Office.
 
 |=======================================================================
 endif::networkeditiondoc[]
@@ -250,9 +256,9 @@ including:
 
 *Smartphone Operating Systems*:
 
-* iOS versions currently supported by Apple; as of March 2020 those are iOS12 & iOS13
-* Android versions currently supported by Google; as of March 2020 those are 8.0 and above
-* Windows Mobile no longer supported (EOL 10 December 2019)
+* iOS versions currently supported by Apple - iOS12 and above.
+* Android versions currently supported by Google - 8.0 and above.
+* Windows Mobile no longer supported (EOL 10 December 2019).
 
 [[Zimbra_Touch_Client]]
 == {product-short} Touch Client ({product-edition-commercial} Only)
